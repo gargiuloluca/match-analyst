@@ -127,6 +127,19 @@
     font-weight:600;
     margin-bottom:4px;
   }
+  .league-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--text-muted);
+    background:rgba(255,255,255,0.04);
+    border:1px solid var(--panel-border);
+    border-radius:4px;
+    padding:2px 7px;
+    margin-bottom:8px;
+  }
   .pick-outcome{ color:var(--text-muted); font-size:14px; margin-bottom:16px; }
   .pick-outcome b{ color:var(--text); }
 
@@ -223,8 +236,8 @@
 
 <header>
   <div class="eyebrow">Match Analyst</div>
-  <h1>Screening giornaliero — Serie A &amp; B</h1>
-  <p class="subtitle">Filtro automatico degli eventi del giorno: forma recente, quote e notizie extra-campo. Tre pronostici selezionati tra tutti gli eventi validi.</p>
+  <h1>Screening giornaliero — Leghe principali</h1>
+  <p class="subtitle">Filtro automatico degli eventi del giorno su Serie A, Premier League, Liga, Bundesliga, Ligue 1 e Champions League: forma recente, quote e notizie extra-campo. Tre pronostici selezionati tra tutti gli eventi validi.</p>
   <nav>
     <a href="index.html" class="active">Oggi</a>
     <a href="tracker.html">Storico &amp; ROI</a>
@@ -283,6 +296,7 @@ function renderPickCard(type, pick){
         <span>${meta.title}</span>
         <span>${pick.odd.toFixed(2)}</span>
       </div>
+      ${pick.league ? `<div class="league-tag">${pick.league}</div>` : ""}
       <div class="pick-match">${pick.match}</div>
       <div class="pick-outcome">Esito: <b>${pick.outcome_label}</b> · ${meta.desc}</div>
       <div class="pick-stats">
@@ -307,7 +321,7 @@ function renderCandidatesTable(candidates){
   }
   const rows = candidates.map(c => `
     <tr>
-      <td>${c.match}</td>
+      <td>${c.match}${c.league ? `<br><span style="color:var(--text-muted); font-size:11px;">${c.league}</span>` : ""}</td>
       <td>${c.outcome_label}</td>
       <td class="num">${c.odd.toFixed(2)}</td>
       <td class="num">${pct(c.estimated_probability)}</td>
