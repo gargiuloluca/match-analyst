@@ -128,6 +128,7 @@ def build_candidates(fixtures: list, news_by_team: dict) -> list:
             candidates.append(
                 {
                     "fixture_id": fx["fixture_id"],
+                    "league": fx.get("league", ""),
                     "match": f"{fx['home_team']['name']} - {fx['away_team']['name']}",
                     "date": fx["date"],
                     "outcome": outcome,
