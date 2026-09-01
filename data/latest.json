@@ -1,0 +1,119 @@
+{
+  "date": "2026-08-30",
+  "generated_at": "2026-08-30",
+  "total_fixtures_scanned": 9,
+  "candidates_after_filter": 6,
+  "note": "Questi sono dati di esempio (demo). Configura le API key nei GitHub Secrets ed esegui il workflow per vedere i dati reali della giornata.",
+  "picks": {
+    "conservativo": {
+      "fixture_id": 1001,
+      "match": "Inter - Cagliari",
+      "date": "2026-08-30T18:00:00+00:00",
+      "outcome": "home",
+      "outcome_label": "Inter",
+      "odd": 1.42,
+      "estimated_probability": 0.71,
+      "implied_probability": 0.68,
+      "edge": 0.03,
+      "notes": "Inter: 13 pt nelle ultime 5 | Cagliari: 4 pt nelle ultime 5"
+    },
+    "consigliato": {
+      "fixture_id": 1002,
+      "match": "Bologna - Torino",
+      "date": "2026-08-30T15:00:00+00:00",
+      "outcome": "home",
+      "outcome_label": "Bologna",
+      "odd": 2.10,
+      "estimated_probability": 0.55,
+      "implied_probability": 0.46,
+      "edge": 0.09,
+      "notes": "Bologna: 10 pt nelle ultime 5 | Torino: 6 pt nelle ultime 5"
+    },
+    "hard": {
+      "fixture_id": 1003,
+      "match": "Udinese - Fiorentina",
+      "date": "2026-08-30T20:45:00+00:00",
+      "outcome": "draw",
+      "outcome_label": "Pareggio",
+      "odd": 3.40,
+      "estimated_probability": 0.33,
+      "implied_probability": 0.28,
+      "edge": 0.05,
+      "notes": "Udinese: 7 pt nelle ultime 5 | Fiorentina: 8 pt nelle ultime 5"
+    }
+  },
+  "all_candidates": [
+    {
+      "fixture_id": 1002,
+      "match": "Bologna - Torino",
+      "date": "2026-08-30T15:00:00+00:00",
+      "outcome": "home",
+      "outcome_label": "Bologna",
+      "odd": 2.10,
+      "estimated_probability": 0.55,
+      "implied_probability": 0.46,
+      "edge": 0.09,
+      "notes": "Bologna: 10 pt nelle ultime 5 | Torino: 6 pt nelle ultime 5"
+    },
+    {
+      "fixture_id": 1003,
+      "match": "Udinese - Fiorentina",
+      "date": "2026-08-30T20:45:00+00:00",
+      "outcome": "draw",
+      "outcome_label": "Pareggio",
+      "odd": 3.40,
+      "estimated_probability": 0.33,
+      "implied_probability": 0.28,
+      "edge": 0.05,
+      "notes": "Udinese: 7 pt nelle ultime 5 | Fiorentina: 8 pt nelle ultime 5"
+    },
+    {
+      "fixture_id": 1001,
+      "match": "Inter - Cagliari",
+      "date": "2026-08-30T18:00:00+00:00",
+      "outcome": "home",
+      "outcome_label": "Inter",
+      "odd": 1.42,
+      "estimated_probability": 0.71,
+      "implied_probability": 0.68,
+      "edge": 0.03,
+      "notes": "Inter: 13 pt nelle ultime 5 | Cagliari: 4 pt nelle ultime 5"
+    },
+    {
+      "fixture_id": 1004,
+      "match": "Lecce - Verona",
+      "date": "2026-08-30T15:00:00+00:00",
+      "outcome": "away",
+      "outcome_label": "Verona",
+      "odd": 3.10,
+      "estimated_probability": 0.30,
+      "implied_probability": 0.29,
+      "edge": 0.01,
+      "notes": "Lecce: 5 pt nelle ultime 5 | Verona: 6 pt nelle ultime 5"
+    },
+    {
+      "fixture_id": 1005,
+      "match": "Genoa - Empoli",
+      "date": "2026-08-30T15:00:00+00:00",
+      "outcome": "draw",
+      "outcome_label": "Pareggio",
+      "odd": 3.20,
+      "estimated_probability": 0.27,
+      "implied_probability": 0.29,
+      "edge": -0.02,
+      "notes": "Genoa: 6 pt nelle ultime 5 | Empoli: 6 pt nelle ultime 5"
+    },
+    {
+      "fixture_id": 1006,
+      "match": "Monza - Parma",
+      "date": "2026-08-30T15:00:00+00:00",
+      "outcome": "home",
+      "outcome_label": "Monza",
+      "odd": 2.55,
+      "estimated_probability": 0.38,
+      "implied_probability": 0.37,
+      "edge": 0.01,
+      "notes": "Monza: 7 pt nelle ultime 5 | Parma: 6 pt nelle ultime 5 | ⚠ Parma: notizie rilevanti (infortunio)"
+    }
+  ]
+}

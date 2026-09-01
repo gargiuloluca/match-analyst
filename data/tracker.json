@@ -1,0 +1,26 @@
+{
+  "bets": [
+    {
+      "date": "2026-08-23",
+      "match": "Juventus - Roma",
+      "outcome_label": "Juventus",
+      "odd": 1.85,
+      "stake": 10,
+      "pick_type": "consigliato",
+      "estimated_probability": 0.58,
+      "result": "vinta",
+      "profit": 8.5
+    },
+    {
+      "date": "2026-08-24",
+      "match": "Napoli - Atalanta",
+      "outcome_label": "Pareggio",
+      "odd": 3.30,
+      "stake": 10,
+      "pick_type": "hard",
+      "estimated_probability": 0.32,
+      "result": "persa",
+      "profit": -10
+    }
+  ]
+}
