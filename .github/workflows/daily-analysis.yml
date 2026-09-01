@@ -1,0 +1,45 @@
+name: Daily Analysis
+
+on:
+  schedule:
+    # 08:00 UTC = 09:00 o 10:00 ora italiana a seconda dell'ora legale
+    - cron: "0 8 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Fetch fixtures and odds
+        env:
+          FOOTBALLDATA_KEY: ${{ secrets.FOOTBALLDATA_KEY }}
+          ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
+        run: python scripts/fetch_fixtures.py
+
+      - name: Fetch extra-field news
+        run: python scripts/fetch_news.py
+
+      - name: Run analysis and generate picks
+        run: python scripts/analyze.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "match-analyst-bot"
+          git config user.email "actions@github.com"
+          git add data/
+          git diff --quiet && git diff --staged --quiet || git commit -m "Aggiornamento dati $(date -u +%Y-%m-%d)"
+          git push
