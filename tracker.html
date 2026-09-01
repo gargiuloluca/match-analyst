@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Match Analyst — Storico &amp; ROI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F17;
+    --panel:#121A26;
+    --panel-border:#232E42;
+    --text:#E7EAF2;
+    --text-muted:#8B94A7;
+    --positive:#5FB88A;
+    --negative:#C6553A;
+    --consigliato:#2DD4BF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--bg); color:var(--text); font-family:'Inter', sans-serif; line-height:1.5; padding-bottom:80px; }
+  header{ padding:32px 24px 20px; max-width:1080px; margin:0 auto; border-bottom:1px solid var(--panel-border); }
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--consigliato); margin-bottom:8px; }
+  h1{ font-family:'Space Grotesk', sans-serif; font-size:clamp(28px, 5vw, 40px); font-weight:700; letter-spacing:-0.01em; }
+  .subtitle{ color:var(--text-muted); margin-top:8px; font-size:15px; max-width:640px; }
+  nav{ margin-top:20px; display:flex; gap:16px; }
+  nav a{ color:var(--text-muted); text-decoration:none; font-size:14px; font-family:'IBM Plex Mono', monospace; border-bottom:1px solid transparent; padding-bottom:2px; }
+  nav a.active, nav a:hover{ color:var(--text); border-bottom-color:var(--consigliato); }
+  main{ max-width:1080px; margin:0 auto; padding:32px 24px; }
+
+  .stats-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:14px; margin-bottom:40px; }
+  .stat-card{ background:var(--panel); border:1px solid var(--panel-border); border-radius:10px; padding:18px; }
+  .stat-card .value{ font-family:'IBM Plex Mono', monospace; font-size:26px; font-weight:600; }
+  .stat-card .label{ font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; margin-top:4px; }
+  .positive{ color:var(--positive); }
+  .negative{ color:var(--negative); }
+
+  .section-title{ font-family:'Space Grotesk', sans-serif; font-size:18px; font-weight:600; margin-bottom:16px; }
+
+  .how-to{
+    background:var(--panel); border:1px solid var(--panel-border); border-left:3px solid var(--consigliato);
+    border-radius:6px; padding:14px 16px; font-size:13px; color:var(--text-muted); margin-bottom:32px;
+  }
+  .how-to code{ font-family:'IBM Plex Mono', monospace; color:var(--text); background:rgba(255,255,255,0.05); padding:1px 5px; border-radius:3px; }
+
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  th{ text-align:left; font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); padding:10px 12px; border-bottom:1px solid var(--panel-border); }
+  td{ padding:12px; border-bottom:1px solid var(--panel-border); }
+  td.num{ font-family:'IBM Plex Mono', monospace; }
+  tr:hover td{ background:rgba(255,255,255,0.02); }
+  .badge{ font-family:'IBM Plex Mono', monospace; font-size:11px; padding:2px 8px; border-radius:10px; text-transform:uppercase; }
+  .badge.vinta{ background:rgba(95,184,138,0.15); color:var(--positive); }
+  .badge.persa{ background:rgba(198,85,58,0.15); color:var(--negative); }
+  .badge.aperta{ background:rgba(139,148,167,0.15); color:var(--text-muted); }
+
+  .empty-state{ background:var(--panel); border:1px dashed var(--panel-border); border-radius:10px; padding:40px 24px; text-align:center; color:var(--text-muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Match Analyst</div>
+  <h1>Storico &amp; performance</h1>
+  <p class="subtitle">Ogni giocata registrata, con esito ed edge stimato al momento della scelta. I numeri, non la memoria selettiva.</p>
+  <nav>
+    <a href="index.html">Oggi</a>
+    <a href="tracker.html" class="active">Storico &amp; ROI</a>
+  </nav>
+</header>
+
+<main>
+  <div class="how-to">
+    Per aggiungere una giocata: apri <code>data/tracker.json</code> su GitHub, aggiungi un oggetto all'array <code>bets</code> con i campi <code>date, match, outcome_label, odd, stake, pick_type, estimated_probability, result, profit</code>. <code>result</code> può essere <code>vinta</code>, <code>persa</code> o <code>aperta</code>.
+  </div>
+
+  <div class="stats-grid" id="stats-grid"></div>
+
+  <div class="section-title">Tutte le giocate</div>
+  <div id="bets-container"></div>
+</main>
+
+<script>
+function fmt(n, decimals=2){ return n.toFixed(decimals); }
+
+function computeStats(bets){
+  const settled = bets.filter(b => b.result === 'vinta' || b.result === 'persa');
+  const totalStake = settled.reduce((s,b) => s + b.stake, 0);
+  const totalProfit = settled.reduce((s,b) => s + b.profit, 0);
+  const wins = settled.filter(b => b.result === 'vinta').length;
+  const hitRate = settled.length ? (wins / settled.length) * 100 : 0;
+  const roi = totalStake ? (totalProfit / totalStake) * 100 : 0;
+  const avgOddWon = wins ? settled.filter(b=>b.result==='vinta').reduce((s,b)=>s+b.odd,0) / wins : 0;
+
+  return { totalBets: settled.length, totalStake, totalProfit, hitRate, roi, avgOddWon };
+}
+
+function renderStats(stats){
+  const cards = [
+    { label: "Giocate concluse", value: stats.totalBets, cls: "" },
+    { label: "Hit rate", value: fmt(stats.hitRate,1) + "%", cls: "" },
+    { label: "ROI", value: (stats.roi>=0?"+":"") + fmt(stats.roi,1) + "%", cls: stats.roi>=0?"positive":"negative" },
+    { label: "Profitto netto", value: (stats.totalProfit>=0?"+":"") + fmt(stats.totalProfit,2), cls: stats.totalProfit>=0?"positive":"negative" },
+    { label: "Quota media vincente", value: fmt(stats.avgOddWon,2), cls: "" },
+  ];
+  return cards.map(c => `
+    <div class="stat-card">
+      <div class="value ${c.cls}">${c.value}</div>
+      <div class="label">${c.label}</div>
+    </div>
+  `).join("");
+}
+
+function renderBetsTable(bets){
+  if(!bets || bets.length === 0){
+    return `<div class="empty-state">Nessuna giocata registrata ancora.</div>`;
+  }
+  const sorted = [...bets].sort((a,b) => new Date(b.date) - new Date(a.date));
+  const rows = sorted.map(b => `
+    <tr>
+      <td>${b.date}</td>
+      <td>${b.match}</td>
+      <td>${b.outcome_label}</td>
+      <td class="num">${fmt(b.odd)}</td>
+      <td class="num">${b.stake}</td>
+      <td>${b.pick_type}</td>
+      <td><span class="badge ${b.result}">${b.result}</span></td>
+      <td class="num ${b.profit>=0?'positive':'negative'}">${b.profit>=0?"+":""}${fmt(b.profit)}</td>
+    </tr>
+  `).join("");
+  return `
+    <table>
+      <thead>
+        <tr><th>Data</th><th>Partita</th><th>Esito giocato</th><th>Quota</th><th>Stake</th><th>Tipo</th><th>Risultato</th><th>Profitto</th></tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+  `;
+}
+
+async function load(){
+  try{
+    const res = await fetch('data/tracker.json', { cache: "no-store" });
+    const data = await res.json();
+    const bets = data.bets || [];
+
+    document.getElementById('stats-grid').innerHTML = renderStats(computeStats(bets));
+    document.getElementById('bets-container').innerHTML = renderBetsTable(bets);
+  } catch(err){
+    document.getElementById('bets-container').innerHTML =
+      `<div class="empty-state">Impossibile caricare data/tracker.json.</div>`;
+    console.error(err);
+  }
+}
+
+load();
+</script>
+</body>
+</html>

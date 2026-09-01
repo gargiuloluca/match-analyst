@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Match Analyst — Screening giornaliero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F17;
+    --panel:#121A26;
+    --panel-border:#232E42;
+    --text:#E7EAF2;
+    --text-muted:#8B94A7;
+    --conservativo:#5FB88A;
+    --consigliato:#2DD4BF;
+    --hard:#E0A94E;
+    --warn:#C6553A;
+    --track:#1B2432;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    padding-bottom:80px;
+  }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  header{
+    padding:32px 24px 20px;
+    max-width:1080px;
+    margin:0 auto;
+    border-bottom:1px solid var(--panel-border);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--consigliato);
+    margin-bottom:8px;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:clamp(28px, 5vw, 40px);
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .subtitle{ color:var(--text-muted); margin-top:8px; font-size:15px; max-width:640px; }
+  nav{ margin-top:20px; display:flex; gap:16px; }
+  nav a{
+    color:var(--text-muted);
+    text-decoration:none;
+    font-size:14px;
+    font-family:'IBM Plex Mono', monospace;
+    border-bottom:1px solid transparent;
+    padding-bottom:2px;
+  }
+  nav a.active, nav a:hover{ color:var(--text); border-bottom-color:var(--consigliato); }
+
+  main{ max-width:1080px; margin:0 auto; padding:32px 24px; }
+
+  .disclaimer{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-left:3px solid var(--hard);
+    border-radius:6px;
+    padding:14px 16px;
+    font-size:13px;
+    color:var(--text-muted);
+    margin-bottom:32px;
+  }
+
+  .meta-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .meta-row .date{ font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:600; }
+  .meta-row .scan-info{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-muted); }
+
+  .picks-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:16px;
+    margin-bottom:48px;
+  }
+  .pick-card{
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:10px;
+    padding:20px;
+    position:relative;
+    overflow:hidden;
+  }
+  .pick-card::before{
+    content:"";
+    position:absolute;
+    top:0; left:0; right:0;
+    height:3px;
+    background:var(--accent);
+  }
+  .pick-card.conservativo{ --accent:var(--conservativo); }
+  .pick-card.consigliato{ --accent:var(--consigliato); }
+  .pick-card.hard{ --accent:var(--hard); }
+
+  .pick-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .pick-match{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:19px;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .pick-outcome{ color:var(--text-muted); font-size:14px; margin-bottom:16px; }
+  .pick-outcome b{ color:var(--text); }
+
+  .pick-stats{ display:flex; justify-content:space-between; margin-bottom:14px; }
+  .stat{ text-align:left; }
+  .stat .value{ font-family:'IBM Plex Mono', monospace; font-size:22px; font-weight:600; }
+  .stat .label{ font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; margin-top:2px; }
+
+  .gauge{
+    height:8px;
+    background:var(--track);
+    border-radius:4px;
+    position:relative;
+    margin-bottom:6px;
+    overflow:hidden;
+  }
+  .gauge-fill{
+    height:100%;
+    background:var(--accent);
+    border-radius:4px;
+  }
+  .gauge-marker{
+    position:absolute;
+    top:-3px;
+    width:2px;
+    height:14px;
+    background:var(--text);
+    opacity:0.7;
+  }
+  .gauge-legend{
+    display:flex;
+    justify-content:space-between;
+    font-size:10px;
+    color:var(--text-muted);
+    font-family:'IBM Plex Mono', monospace;
+    margin-bottom:14px;
+  }
+
+  .pick-notes{
+    font-size:12.5px;
+    color:var(--text-muted);
+    border-top:1px solid var(--panel-border);
+    padding-top:12px;
+    line-height:1.6;
+  }
+
+  .section-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:16px;
+  }
+
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+  th{
+    text-align:left;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--text-muted);
+    padding:10px 12px;
+    border-bottom:1px solid var(--panel-border);
+  }
+  td{
+    padding:12px;
+    border-bottom:1px solid var(--panel-border);
+    vertical-align:top;
+  }
+  td.num{ font-family:'IBM Plex Mono', monospace; }
+  .edge-positive{ color:var(--consigliato); }
+  .edge-negative{ color:var(--warn); }
+  tr:hover td{ background:rgba(255,255,255,0.02); }
+
+  .empty-state{
+    background:var(--panel);
+    border:1px dashed var(--panel-border);
+    border-radius:10px;
+    padding:40px 24px;
+    text-align:center;
+    color:var(--text-muted);
+  }
+
+  footer{
+    max-width:1080px;
+    margin:40px auto 0;
+    padding:0 24px;
+    color:var(--text-muted);
+    font-size:12px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Match Analyst</div>
+  <h1>Screening giornaliero — Serie A &amp; B</h1>
+  <p class="subtitle">Filtro automatico degli eventi del giorno: forma recente, quote e notizie extra-campo. Tre pronostici selezionati tra tutti gli eventi validi.</p>
+  <nav>
+    <a href="index.html" class="active">Oggi</a>
+    <a href="tracker.html">Storico &amp; ROI</a>
+  </nav>
+</header>
+
+<main>
+  <div class="disclaimer">
+    Le probabilità sono stime statistiche, non certezze. Questo strumento supporta la decisione, non la sostituisce. Gioca in modo responsabile.
+  </div>
+
+  <div class="meta-row">
+    <div class="date mono" id="date-display">—</div>
+    <div class="scan-info" id="scan-info">—</div>
+  </div>
+
+  <div id="picks-container" class="picks-grid"></div>
+
+  <div class="section-title">Tutti i candidati della giornata</div>
+  <div id="candidates-container"></div>
+</main>
+
+<footer>
+  Dati generati automaticamente da GitHub Actions. Ultimo aggiornamento visibile nel campo "generato il" sopra.
+</footer>
+
+<script>
+const PICK_META = {
+  conservativo: { title: "Conservativo", desc: "Probabilità più alta, rischio minimo" },
+  consigliato:  { title: "Consigliato",  desc: "Miglior rapporto probabilità / quota" },
+  hard:         { title: "Hard",         desc: "Quota più alta, edge comunque positivo" },
+};
+
+function pct(x){ return (x*100).toFixed(0) + "%"; }
+
+function renderGauge(estimated, implied){
+  const est = Math.max(0, Math.min(1, estimated));
+  const imp = Math.max(0, Math.min(1, implied));
+  return `
+    <div class="gauge">
+      <div class="gauge-fill" style="width:${est*100}%"></div>
+      <div class="gauge-marker" style="left:${imp*100}%"></div>
+    </div>
+    <div class="gauge-legend">
+      <span>Stimata ${pct(est)}</span>
+      <span>Mercato ${pct(imp)}</span>
+    </div>
+  `;
+}
+
+function renderPickCard(type, pick){
+  const meta = PICK_META[type];
+  return `
+    <div class="pick-card ${type}">
+      <div class="pick-label">
+        <span>${meta.title}</span>
+        <span>${pick.odd.toFixed(2)}</span>
+      </div>
+      <div class="pick-match">${pick.match}</div>
+      <div class="pick-outcome">Esito: <b>${pick.outcome_label}</b> · ${meta.desc}</div>
+      <div class="pick-stats">
+        <div class="stat">
+          <div class="value">${pct(pick.estimated_probability)}</div>
+          <div class="label">Probabilità stimata</div>
+        </div>
+        <div class="stat">
+          <div class="value">${pick.edge >= 0 ? "+" : ""}${(pick.edge*100).toFixed(1)}%</div>
+          <div class="label">Edge vs mercato</div>
+        </div>
+      </div>
+      ${renderGauge(pick.estimated_probability, pick.implied_probability)}
+      <div class="pick-notes">${pick.notes || ""}</div>
+    </div>
+  `;
+}
+
+function renderCandidatesTable(candidates){
+  if(!candidates || candidates.length === 0){
+    return `<div class="empty-state">Nessun candidato ha superato il filtro oggi.</div>`;
+  }
+  const rows = candidates.map(c => `
+    <tr>
+      <td>${c.match}</td>
+      <td>${c.outcome_label}</td>
+      <td class="num">${c.odd.toFixed(2)}</td>
+      <td class="num">${pct(c.estimated_probability)}</td>
+      <td class="num">${pct(c.implied_probability)}</td>
+      <td class="num ${c.edge >= 0 ? 'edge-positive' : 'edge-negative'}">${c.edge >= 0 ? "+" : ""}${(c.edge*100).toFixed(1)}%</td>
+    </tr>
+  `).join("");
+  return `
+    <table>
+      <thead>
+        <tr>
+          <th>Partita</th><th>Esito</th><th>Quota</th><th>Prob. stimata</th><th>Prob. mercato</th><th>Edge</th>
+        </tr>
+      </thead>
+      <tbody>${rows}</tbody>
+    </table>
+  `;
+}
+
+async function load(){
+  try{
+    const res = await fetch('data/latest.json', { cache: "no-store" });
+    const data = await res.json();
+
+    document.getElementById('date-display').textContent = data.date;
+    document.getElementById('scan-info').textContent =
+      `${data.total_fixtures_scanned} partite scansionate · ${data.candidates_after_filter} passate il filtro`;
+
+    const picksContainer = document.getElementById('picks-container');
+    const order = ['conservativo', 'consigliato', 'hard'];
+    const cards = order
+      .filter(k => data.picks && data.picks[k])
+      .map(k => renderPickCard(k, data.picks[k]))
+      .join("");
+    picksContainer.innerHTML = cards || `<div class="empty-state">Nessun pronostico disponibile oggi: nessun evento ha superato i criteri di filtro.</div>`;
+
+    document.getElementById('candidates-container').innerHTML = renderCandidatesTable(data.all_candidates);
+
+  } catch(err){
+    document.getElementById('picks-container').innerHTML =
+      `<div class="empty-state">Impossibile caricare data/latest.json. Esegui il workflow GitHub Actions o verifica il percorso del file.</div>`;
+    console.error(err);
+  }
+}
+
+load();
+</script>
+</body>
+</html>
