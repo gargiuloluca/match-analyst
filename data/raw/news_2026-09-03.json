@@ -1,0 +1,26 @@
+{
+  "Lille OSC": {
+    "team": "Lille OSC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Celta de Vigo": {
+    "team": "RC Celta de Vigo",
+    "articles_scanned": 12,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Sociedad de Fútbol": {
+    "team": "Real Sociedad de Fútbol",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Toulouse FC": {
+    "team": "Toulouse FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}

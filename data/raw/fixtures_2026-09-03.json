@@ -1,0 +1,55 @@
+[
+  {
+    "fixture_id": 564682,
+    "league": "La Liga",
+    "date": "2026-09-03T19:00:00Z",
+    "home_team": {
+      "id": 92,
+      "name": "Real Sociedad de Fútbol",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 558,
+      "name": "RC Celta de Vigo",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559696,
+    "league": "Ligue 1",
+    "date": "2026-09-03T18:45:00Z",
+    "home_team": {
+      "id": 511,
+      "name": "Toulouse FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 521,
+      "name": "Lille OSC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.85,
+      "draw": 3.5,
+      "away": 1.92,
+      "bookmaker": "Winamax (DE)"
+    }
+  }
+]
