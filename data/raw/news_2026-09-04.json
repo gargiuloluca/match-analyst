@@ -1,0 +1,95 @@
+{
+  "1. FC Köln": {
+    "team": "1. FC Köln",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AJ Auxerre": {
+    "team": "AJ Auxerre",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AS Monaco FC": {
+    "team": "AS Monaco FC",
+    "articles_scanned": 28,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Frosinone; Koutsoupias ceduto all'Anderlecht",
+        "summary": "Centrocampista era tra i protagonisti del ritorno in A",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/calcio-frosinone-koutsoupias-ceduto-allanderlecht_0ad37dbf-3474-40bd-92a2-56adb5d16ceb.html",
+        "published_at": "2026-09-04T10:01:45+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: tegola per il Bologna, tre settimane di stop per Orsolini",
+        "summary": "Lesione ai flessori, Bernardeschi e Moro in campo col Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/calcio-tegola-per-il-bologna-tre-settimane-di-stop-per-orsolini_eb5ab1e6-4268-400a-bb56-8ef3098f2559.html",
+        "published_at": "2026-09-03T13:30:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "Como 1907": {
+    "team": "Como 1907",
+    "articles_scanned": 10,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Genoa CFC": {
+    "team": "Genoa CFC",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Ipswich Town FC": {
+    "team": "Ipswich Town FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Liverpool FC": {
+    "team": "Liverpool FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique Lyonnais": {
+    "team": "Olympique Lyonnais",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris Saint-Germain FC": {
+    "team": "Paris Saint-Germain FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Betis Balompié": {
+    "team": "Real Betis Balompié",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Madrid CF": {
+    "team": "Real Madrid CF",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "VfB Stuttgart": {
+    "team": "VfB Stuttgart",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
