@@ -1,0 +1,580 @@
+[
+  {
+    "fixture_id": 558616,
+    "league": "Serie A",
+    "date": "2026-09-05T13:00:00Z",
+    "home_team": {
+      "id": 99,
+      "name": "ACF Fiorentina",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 586,
+      "name": "Torino FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 558614,
+    "league": "Serie A",
+    "date": "2026-09-05T16:00:00Z",
+    "home_team": {
+      "id": 108,
+      "name": "FC Internazionale Milano",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 113,
+      "name": "SSC Napoli",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 558611,
+    "league": "Serie A",
+    "date": "2026-09-05T18:45:00Z",
+    "home_team": {
+      "id": 100,
+      "name": "AS Roma",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 102,
+      "name": "Atalanta BC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.69,
+      "draw": 4.0,
+      "away": 4.8,
+      "bookmaker": "Codere (IT)"
+    }
+  },
+  {
+    "fixture_id": 560571,
+    "league": "Premier League",
+    "date": "2026-09-05T11:30:00Z",
+    "home_team": {
+      "id": 67,
+      "name": "Newcastle United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 1044,
+      "name": "AFC Bournemouth",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 560562,
+    "league": "Premier League",
+    "date": "2026-09-05T14:00:00Z",
+    "home_team": {
+      "id": 351,
+      "name": "Nottingham Forest FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 73,
+      "name": "Tottenham Hotspur FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.5,
+      "draw": 3.4,
+      "away": 2.8,
+      "bookmaker": "Codere (IT)"
+    }
+  },
+  {
+    "fixture_id": 560563,
+    "league": "Premier League",
+    "date": "2026-09-05T14:00:00Z",
+    "home_team": {
+      "id": 65,
+      "name": "Manchester City FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 1076,
+      "name": "Coventry City FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.21,
+      "draw": 7.2,
+      "away": 12.0,
+      "bookmaker": "Codere (IT)"
+    }
+  },
+  {
+    "fixture_id": 560564,
+    "league": "Premier League",
+    "date": "2026-09-05T14:00:00Z",
+    "home_team": {
+      "id": 397,
+      "name": "Brighton & Hove Albion FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 341,
+      "name": "Leeds United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.04,
+      "draw": 3.55,
+      "away": 3.6,
+      "bookmaker": "Codere (IT)"
+    }
+  },
+  {
+    "fixture_id": 560565,
+    "league": "Premier League",
+    "date": "2026-09-05T14:00:00Z",
+    "home_team": {
+      "id": 402,
+      "name": "Brentford FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 71,
+      "name": "Sunderland AFC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.73,
+      "draw": 3.85,
+      "away": 4.8,
+      "bookmaker": "Codere (IT)"
+    }
+  },
+  {
+    "fixture_id": 560568,
+    "league": "Premier League",
+    "date": "2026-09-05T14:00:00Z",
+    "home_team": {
+      "id": 63,
+      "name": "Fulham FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 354,
+      "name": "Crystal Palace FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.1,
+      "draw": 3.4,
+      "away": 3.4,
+      "bookmaker": "Unibet (FR)"
+    }
+  },
+  {
+    "fixture_id": 560569,
+    "league": "Premier League",
+    "date": "2026-09-05T16:30:00Z",
+    "home_team": {
+      "id": 322,
+      "name": "Hull City AFC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 58,
+      "name": "Aston Villa FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 4.21,
+      "draw": 3.81,
+      "away": 1.94,
+      "bookmaker": "1xBet"
+    }
+  },
+  {
+    "fixture_id": 564663,
+    "league": "La Liga",
+    "date": "2026-09-05T14:15:00Z",
+    "home_team": {
+      "id": 77,
+      "name": "Athletic Club",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 78,
+      "name": "Club Atlético de Madrid",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564660,
+    "league": "La Liga",
+    "date": "2026-09-05T16:30:00Z",
+    "home_team": {
+      "id": 87,
+      "name": "Rayo Vallecano de Madrid",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5335,
+      "name": "Real Racing Club de Santander",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.11,
+      "draw": 3.62,
+      "away": 3.76,
+      "bookmaker": "1xBet"
+    }
+  },
+  {
+    "fixture_id": 564662,
+    "league": "La Liga",
+    "date": "2026-09-05T19:00:00Z",
+    "home_team": {
+      "id": 94,
+      "name": "Villarreal CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 560,
+      "name": "RC Deportivo La Coruña",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565785,
+    "league": "Bundesliga",
+    "date": "2026-09-05T13:30:00Z",
+    "home_team": {
+      "id": 12,
+      "name": "SV Werder Bremen",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 721,
+      "name": "RB Leipzig",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565787,
+    "league": "Bundesliga",
+    "date": "2026-09-05T13:30:00Z",
+    "home_team": {
+      "id": 2,
+      "name": "TSG 1899 Hoffenheim",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 4,
+      "name": "Borussia Dortmund",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.65,
+      "draw": 3.8,
+      "away": 2.45,
+      "bookmaker": "Tipico"
+    }
+  },
+  {
+    "fixture_id": 565790,
+    "league": "Bundesliga",
+    "date": "2026-09-05T13:30:00Z",
+    "home_team": {
+      "id": 3,
+      "name": "Bayer 04 Leverkusen",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 28,
+      "name": "1. FC Union Berlin",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565792,
+    "league": "Bundesliga",
+    "date": "2026-09-05T13:30:00Z",
+    "home_team": {
+      "id": 18,
+      "name": "Borussia Mönchengladbach",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 719,
+      "name": "SV 07 Elversberg",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565793,
+    "league": "Bundesliga",
+    "date": "2026-09-05T13:30:00Z",
+    "home_team": {
+      "id": 29,
+      "name": "SC Paderborn 07",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 17,
+      "name": "SC Freiburg",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.88,
+      "draw": 3.9,
+      "away": 1.99,
+      "bookmaker": "1xBet"
+    }
+  },
+  {
+    "fixture_id": 565789,
+    "league": "Bundesliga",
+    "date": "2026-09-05T16:30:00Z",
+    "home_team": {
+      "id": 6,
+      "name": "FC Schalke 04",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5,
+      "name": "FC Bayern München",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559695,
+    "league": "Ligue 1",
+    "date": "2026-09-05T15:15:00Z",
+    "home_team": {
+      "id": 546,
+      "name": "Racing Club de Lens",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 525,
+      "name": "FC Lorient",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559693,
+    "league": "Ligue 1",
+    "date": "2026-09-05T18:45:00Z",
+    "home_team": {
+      "id": 533,
+      "name": "Le Havre AC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 512,
+      "name": "Stade Brestois 29",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559701,
+    "league": "Ligue 1",
+    "date": "2026-09-05T18:45:00Z",
+    "home_team": {
+      "id": 522,
+      "name": "OGC Nice",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 535,
+      "name": "Le Mans FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]

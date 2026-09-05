@@ -1,0 +1,421 @@
+{
+  "1. FC Union Berlin": {
+    "team": "1. FC Union Berlin",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ACF Fiorentina": {
+    "team": "ACF Fiorentina",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AFC Bournemouth": {
+    "team": "AFC Bournemouth",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AS Roma": {
+    "team": "AS Roma",
+    "articles_scanned": 22,
+    "flagged_articles": [
+      {
+        "title": "Ligue1: il Paris SG ko in casa, il Monaco vince 2-1",
+        "summary": "Delusione per Luis Enrique dopo l'annuncio del prolungamento del contratto",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/ligue-il-paris-sg-ko-in-casa-il-monaco-vince-2-1_fbbb0d39-a9e6-4b54-8404-180da3fb1a5f.html",
+        "published_at": "2026-09-05T09:41:28+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Frosinone; Koutsoupias ceduto all'Anderlecht",
+        "summary": "Centrocampista era tra i protagonisti del ritorno in A",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/calcio-frosinone-koutsoupias-ceduto-allanderlecht_0ad37dbf-3474-40bd-92a2-56adb5d16ceb.html",
+        "published_at": "2026-09-04T10:01:45+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: tegola per il Bologna, tre settimane di stop per Orsolini",
+        "summary": "Lesione ai flessori, Bernardeschi e Moro in campo col Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/calcio-tegola-per-il-bologna-tre-settimane-di-stop-per-orsolini_eb5ab1e6-4268-400a-bb56-8ef3098f2559.html",
+        "published_at": "2026-09-03T13:30:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Aston Villa FC": {
+    "team": "Aston Villa FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Atalanta BC": {
+    "team": "Atalanta BC",
+    "articles_scanned": 5,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Athletic Club": {
+    "team": "Athletic Club",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Bayer 04 Leverkusen": {
+    "team": "Bayer 04 Leverkusen",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Borussia Dortmund": {
+    "team": "Borussia Dortmund",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Borussia Mönchengladbach": {
+    "team": "Borussia Mönchengladbach",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Brentford FC": {
+    "team": "Brentford FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Brighton & Hove Albion FC": {
+    "team": "Brighton & Hove Albion FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 5,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Coventry City FC": {
+    "team": "Coventry City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Crystal Palace FC": {
+    "team": "Crystal Palace FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Bayern München": {
+    "team": "FC Bayern München",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Internazionale Milano": {
+    "team": "FC Internazionale Milano",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Lorient": {
+    "team": "FC Lorient",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Schalke 04": {
+    "team": "FC Schalke 04",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Fulham FC": {
+    "team": "Fulham FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hull City AFC": {
+    "team": "Hull City AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Le Havre AC": {
+    "team": "Le Havre AC",
+    "articles_scanned": 52,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Frosinone; Koutsoupias ceduto all'Anderlecht",
+        "summary": "Centrocampista era tra i protagonisti del ritorno in A",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/calcio-frosinone-koutsoupias-ceduto-allanderlecht_0ad37dbf-3474-40bd-92a2-56adb5d16ceb.html",
+        "published_at": "2026-09-04T10:01:45+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: tegola per il Bologna, tre settimane di stop per Orsolini",
+        "summary": "Lesione ai flessori, Bernardeschi e Moro in campo col Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/calcio-tegola-per-il-bologna-tre-settimane-di-stop-per-orsolini_eb5ab1e6-4268-400a-bb56-8ef3098f2559.html",
+        "published_at": "2026-09-03T13:30:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "La Juve perde Cabal per lesione muscolare, out un mese. Thuram operato, torna nel 2027",
+        "summary": "Il laterale costretto allo stop per un infortunio muscolare, il centrocampista fermo per condropatia rotulea del ginocchio destro",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/la-juve-perde-cabal-per-lesione-muscolare-out-un-mese_6dbfecae-815c-4ff6-9fcd-0c2151b99623.html",
+        "published_at": "2026-09-03T10:33:41+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Cremonese: Pecchia è il nuovo allenatore",
+        "summary": "Dopo l'esonero di Giampaolo il ritorno del tecnico della promozione di 4 anni fa",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/02/cremonese-pecchia-e-il-nuovo-allenatore_a9a99625-45ce-4d23-81c1-6852df1a13b0.html",
+        "published_at": "2026-09-02T15:04:02+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      }
+    ],
+    "high_impact_count": 4
+  },
+  "Le Mans FC": {
+    "team": "Le Mans FC",
+    "articles_scanned": 52,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Frosinone; Koutsoupias ceduto all'Anderlecht",
+        "summary": "Centrocampista era tra i protagonisti del ritorno in A",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/calcio-frosinone-koutsoupias-ceduto-allanderlecht_0ad37dbf-3474-40bd-92a2-56adb5d16ceb.html",
+        "published_at": "2026-09-04T10:01:45+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: tegola per il Bologna, tre settimane di stop per Orsolini",
+        "summary": "Lesione ai flessori, Bernardeschi e Moro in campo col Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/calcio-tegola-per-il-bologna-tre-settimane-di-stop-per-orsolini_eb5ab1e6-4268-400a-bb56-8ef3098f2559.html",
+        "published_at": "2026-09-03T13:30:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "La Juve perde Cabal per lesione muscolare, out un mese. Thuram operato, torna nel 2027",
+        "summary": "Il laterale costretto allo stop per un infortunio muscolare, il centrocampista fermo per condropatia rotulea del ginocchio destro",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/la-juve-perde-cabal-per-lesione-muscolare-out-un-mese_6dbfecae-815c-4ff6-9fcd-0c2151b99623.html",
+        "published_at": "2026-09-03T10:33:41+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Cremonese: Pecchia è il nuovo allenatore",
+        "summary": "Dopo l'esonero di Giampaolo il ritorno del tecnico della promozione di 4 anni fa",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/02/cremonese-pecchia-e-il-nuovo-allenatore_a9a99625-45ce-4d23-81c1-6852df1a13b0.html",
+        "published_at": "2026-09-02T15:04:02+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      }
+    ],
+    "high_impact_count": 4
+  },
+  "Leeds United FC": {
+    "team": "Leeds United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester City FC": {
+    "team": "Manchester City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Newcastle United FC": {
+    "team": "Newcastle United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Nottingham Forest FC": {
+    "team": "Nottingham Forest FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "OGC Nice": {
+    "team": "OGC Nice",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RB Leipzig": {
+    "team": "RB Leipzig",
+    "articles_scanned": 9,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Deportivo La Coruña": {
+    "team": "RC Deportivo La Coruña",
+    "articles_scanned": 16,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Racing Club de Lens": {
+    "team": "Racing Club de Lens",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Rayo Vallecano de Madrid": {
+    "team": "Rayo Vallecano de Madrid",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Racing Club de Santander": {
+    "team": "Real Racing Club de Santander",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SC Freiburg": {
+    "team": "SC Freiburg",
+    "articles_scanned": 18,
+    "flagged_articles": [
+      {
+        "title": "Serie A: tegola per il Bologna, tre settimane di stop per Orsolini",
+        "summary": "Lesione ai flessori, Bernardeschi e Moro in campo col Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/calcio-tegola-per-il-bologna-tre-settimane-di-stop-per-orsolini_eb5ab1e6-4268-400a-bb56-8ef3098f2559.html",
+        "published_at": "2026-09-03T13:30:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "La Juve perde Cabal per lesione muscolare, out un mese. Thuram operato, torna nel 2027",
+        "summary": "Il laterale costretto allo stop per un infortunio muscolare, il centrocampista fermo per condropatia rotulea del ginocchio destro",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/la-juve-perde-cabal-per-lesione-muscolare-out-un-mese_6dbfecae-815c-4ff6-9fcd-0c2151b99623.html",
+        "published_at": "2026-09-03T10:33:41+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "SC Paderborn 07": {
+    "team": "SC Paderborn 07",
+    "articles_scanned": 18,
+    "flagged_articles": [
+      {
+        "title": "Serie A: tegola per il Bologna, tre settimane di stop per Orsolini",
+        "summary": "Lesione ai flessori, Bernardeschi e Moro in campo col Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/calcio-tegola-per-il-bologna-tre-settimane-di-stop-per-orsolini_eb5ab1e6-4268-400a-bb56-8ef3098f2559.html",
+        "published_at": "2026-09-03T13:30:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "La Juve perde Cabal per lesione muscolare, out un mese. Thuram operato, torna nel 2027",
+        "summary": "Il laterale costretto allo stop per un infortunio muscolare, il centrocampista fermo per condropatia rotulea del ginocchio destro",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/la-juve-perde-cabal-per-lesione-muscolare-out-un-mese_6dbfecae-815c-4ff6-9fcd-0c2151b99623.html",
+        "published_at": "2026-09-03T10:33:41+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "SSC Napoli": {
+    "team": "SSC Napoli",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV 07 Elversberg": {
+    "team": "SV 07 Elversberg",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV Werder Bremen": {
+    "team": "SV Werder Bremen",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Stade Brestois 29": {
+    "team": "Stade Brestois 29",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sunderland AFC": {
+    "team": "Sunderland AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "TSG 1899 Hoffenheim": {
+    "team": "TSG 1899 Hoffenheim",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Torino FC": {
+    "team": "Torino FC",
+    "articles_scanned": 6,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Tottenham Hotspur FC": {
+    "team": "Tottenham Hotspur FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Villarreal CF": {
+    "team": "Villarreal CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
