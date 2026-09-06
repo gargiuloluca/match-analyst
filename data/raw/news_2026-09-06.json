@@ -1,0 +1,310 @@
+{
+  "1. FSV Mainz 05": {
+    "team": "1. FSV Mainz 05",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AC Milan": {
+    "team": "AC Milan",
+    "articles_scanned": 10,
+    "flagged_articles": [
+      {
+        "title": "Ligue1: il Paris Saint Germain ko in casa, il Monaco vince 2-1",
+        "summary": "Delusione per Luis Enrique dopo l'annuncio del prolungamento del contratto",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/ligue-il-paris-sg-ko-in-casa-il-monaco-vince-2-1_fbbb0d39-a9e6-4b54-8404-180da3fb1a5f.html",
+        "published_at": "2026-09-05T19:27:01+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "AC Monza": {
+    "team": "AC Monza",
+    "articles_scanned": 10,
+    "flagged_articles": [
+      {
+        "title": "Ligue1: il Paris Saint Germain ko in casa, il Monaco vince 2-1",
+        "summary": "Delusione per Luis Enrique dopo l'annuncio del prolungamento del contratto",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/ligue-il-paris-sg-ko-in-casa-il-monaco-vince-2-1_fbbb0d39-a9e6-4b54-8404-180da3fb1a5f.html",
+        "published_at": "2026-09-05T19:27:01+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Angers SCO": {
+    "team": "Angers SCO",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Arsenal FC": {
+    "team": "Arsenal FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Bologna FC 1909": {
+    "team": "Bologna FC 1909",
+    "articles_scanned": 4,
+    "flagged_articles": [
+      {
+        "title": "Serie A: tegola per il Bologna, tre settimane di stop per Orsolini",
+        "summary": "Lesione ai flessori, Bernardeschi e Moro in campo col Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/calcio-tegola-per-il-bologna-tre-settimane-di-stop-per-orsolini_eb5ab1e6-4268-400a-bb56-8ef3098f2559.html",
+        "published_at": "2026-09-03T13:30:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "CA Osasuna": {
+    "team": "CA Osasuna",
+    "articles_scanned": 38,
+    "flagged_articles": [
+      {
+        "title": "Ligue1: il Paris Saint Germain ko in casa, il Monaco vince 2-1",
+        "summary": "Delusione per Luis Enrique dopo l'annuncio del prolungamento del contratto",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/ligue-il-paris-sg-ko-in-casa-il-monaco-vince-2-1_fbbb0d39-a9e6-4b54-8404-180da3fb1a5f.html",
+        "published_at": "2026-09-05T19:27:01+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Frosinone; Koutsoupias ceduto all'Anderlecht",
+        "summary": "Centrocampista era tra i protagonisti del ritorno in A",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/calcio-frosinone-koutsoupias-ceduto-allanderlecht_0ad37dbf-3474-40bd-92a2-56adb5d16ceb.html",
+        "published_at": "2026-09-04T10:01:45+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: tegola per il Bologna, tre settimane di stop per Orsolini",
+        "summary": "Lesione ai flessori, Bernardeschi e Moro in campo col Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/calcio-tegola-per-il-bologna-tre-settimane-di-stop-per-orsolini_eb5ab1e6-4268-400a-bb56-8ef3098f2559.html",
+        "published_at": "2026-09-03T13:30:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Chelsea FC": {
+    "team": "Chelsea FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Deportivo Alavés": {
+    "team": "Deportivo Alavés",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ES Troyes AC": {
+    "team": "ES Troyes AC",
+    "articles_scanned": 29,
+    "flagged_articles": [
+      {
+        "title": "Stroppa, 'Frosinone ostico, ma noi dobbiamo fare i primi punti'",
+        "summary": "Bella Kotchap è in dubbio, difesa in emergenza",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/05/stroppa-frosinone-ostico-ma-noi-dobbiamo-fare-i-primi-punti_848194e7-b09d-406c-ab9e-dfd79c7cbb14.html",
+        "published_at": "2026-09-05T12:42:59+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: tegola per il Bologna, tre settimane di stop per Orsolini",
+        "summary": "Lesione ai flessori, Bernardeschi e Moro in campo col Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/03/calcio-tegola-per-il-bologna-tre-settimane-di-stop-per-orsolini_eb5ab1e6-4268-400a-bb56-8ef3098f2559.html",
+        "published_at": "2026-09-03T13:30:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "Eintracht Frankfurt": {
+    "team": "Eintracht Frankfurt",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Everton FC": {
+    "team": "Everton FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Augsburg": {
+    "team": "FC Augsburg",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Barcelona": {
+    "team": "FC Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Frosinone Calcio": {
+    "team": "Frosinone Calcio",
+    "articles_scanned": 4,
+    "flagged_articles": [
+      {
+        "title": "Stroppa, 'Frosinone ostico, ma noi dobbiamo fare i primi punti'",
+        "summary": "Bella Kotchap è in dubbio, difesa in emergenza",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/05/stroppa-frosinone-ostico-ma-noi-dobbiamo-fare-i-primi-punti_848194e7-b09d-406c-ab9e-dfd79c7cbb14.html",
+        "published_at": "2026-09-05T12:42:59+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Frosinone; Koutsoupias ceduto all'Anderlecht",
+        "summary": "Centrocampista era tra i protagonisti del ritorno in A",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/calcio-frosinone-koutsoupias-ceduto-allanderlecht_0ad37dbf-3474-40bd-92a2-56adb5d16ceb.html",
+        "published_at": "2026-09-04T10:01:45+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "Hamburger SV": {
+    "team": "Hamburger SV",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Juventus FC": {
+    "team": "Juventus FC",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Levante UD": {
+    "team": "Levante UD",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester United FC": {
+    "team": "Manchester United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Málaga CF": {
+    "team": "Málaga CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique de Marseille": {
+    "team": "Olympique de Marseille",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris FC": {
+    "team": "Paris FC",
+    "articles_scanned": 2,
+    "flagged_articles": [
+      {
+        "title": "Ligue1: il Paris Saint Germain ko in casa, il Monaco vince 2-1",
+        "summary": "Delusione per Luis Enrique dopo l'annuncio del prolungamento del contratto",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/ligue-il-paris-sg-ko-in-casa-il-monaco-vince-2-1_fbbb0d39-a9e6-4b54-8404-180da3fb1a5f.html",
+        "published_at": "2026-09-05T19:27:01+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Parma Calcio 1913": {
+    "team": "Parma Calcio 1913",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Strasbourg Alsace": {
+    "team": "RC Strasbourg Alsace",
+    "articles_scanned": 15,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RCD Espanyol de Barcelona": {
+    "team": "RCD Espanyol de Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sevilla FC": {
+    "team": "Sevilla FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Stade Rennais FC 1901": {
+    "team": "Stade Rennais FC 1901",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "US Sassuolo Calcio": {
+    "team": "US Sassuolo Calcio",
+    "articles_scanned": 9,
+    "flagged_articles": [
+      {
+        "title": "Ligue1: il Paris Saint Germain ko in casa, il Monaco vince 2-1",
+        "summary": "Delusione per Luis Enrique dopo l'annuncio del prolungamento del contratto",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/ligue-il-paris-sg-ko-in-casa-il-monaco-vince-2-1_fbbb0d39-a9e6-4b54-8404-180da3fb1a5f.html",
+        "published_at": "2026-09-05T19:27:01+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Valencia CF": {
+    "team": "Valencia CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Venezia FC": {
+    "team": "Venezia FC",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}

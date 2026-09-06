@@ -1,0 +1,387 @@
+[
+  {
+    "fixture_id": 558612,
+    "league": "Serie A",
+    "date": "2026-09-06T13:00:00Z",
+    "home_team": {
+      "id": 112,
+      "name": "Parma Calcio 1913",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5911,
+      "name": "AC Monza",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 558615,
+    "league": "Serie A",
+    "date": "2026-09-06T13:00:00Z",
+    "home_team": {
+      "id": 470,
+      "name": "Frosinone Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 454,
+      "name": "Venezia FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.44,
+      "draw": 3.5,
+      "away": 2.8,
+      "bookmaker": "Codere (IT)"
+    }
+  },
+  {
+    "fixture_id": 558613,
+    "league": "Serie A",
+    "date": "2026-09-06T16:00:00Z",
+    "home_team": {
+      "id": 103,
+      "name": "Bologna FC 1909",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 471,
+      "name": "US Sassuolo Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 558618,
+    "league": "Serie A",
+    "date": "2026-09-06T18:45:00Z",
+    "home_team": {
+      "id": 109,
+      "name": "Juventus FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 98,
+      "name": "AC Milan",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.05,
+      "draw": 3.25,
+      "away": 3.6,
+      "bookmaker": "Unibet (FR)"
+    }
+  },
+  {
+    "fixture_id": 560567,
+    "league": "Premier League",
+    "date": "2026-09-06T13:00:00Z",
+    "home_team": {
+      "id": 62,
+      "name": "Everton FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 66,
+      "name": "Manchester United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.6,
+      "draw": 3.8,
+      "away": 1.9,
+      "bookmaker": "Unibet (FR)"
+    }
+  },
+  {
+    "fixture_id": 560570,
+    "league": "Premier League",
+    "date": "2026-09-06T15:30:00Z",
+    "home_team": {
+      "id": 57,
+      "name": "Arsenal FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 61,
+      "name": "Chelsea FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.71,
+      "draw": 3.8,
+      "away": 4.7,
+      "bookmaker": "MyBookie.ag"
+    }
+  },
+  {
+    "fixture_id": 564659,
+    "league": "La Liga",
+    "date": "2026-09-06T14:15:00Z",
+    "home_team": {
+      "id": 95,
+      "name": "Valencia CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 81,
+      "name": "FC Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564664,
+    "league": "La Liga",
+    "date": "2026-09-06T16:30:00Z",
+    "home_team": {
+      "id": 263,
+      "name": "Deportivo Alavés",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 79,
+      "name": "CA Osasuna",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564666,
+    "league": "La Liga",
+    "date": "2026-09-06T16:30:00Z",
+    "home_team": {
+      "id": 84,
+      "name": "Málaga CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 88,
+      "name": "Levante UD",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.38,
+      "draw": 3.3,
+      "away": 3.05,
+      "bookmaker": "Betclic (FR)"
+    }
+  },
+  {
+    "fixture_id": 564661,
+    "league": "La Liga",
+    "date": "2026-09-06T19:00:00Z",
+    "home_team": {
+      "id": 80,
+      "name": "RCD Espanyol de Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 559,
+      "name": "Sevilla FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565788,
+    "league": "Bundesliga",
+    "date": "2026-09-06T13:30:00Z",
+    "home_team": {
+      "id": 7,
+      "name": "Hamburger SV",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 15,
+      "name": "1. FSV Mainz 05",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565786,
+    "league": "Bundesliga",
+    "date": "2026-09-06T15:30:00Z",
+    "home_team": {
+      "id": 19,
+      "name": "Eintracht Frankfurt",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 16,
+      "name": "FC Augsburg",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559700,
+    "league": "Ligue 1",
+    "date": "2026-09-06T13:00:00Z",
+    "home_team": {
+      "id": 531,
+      "name": "ES Troyes AC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 576,
+      "name": "RC Strasbourg Alsace",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559698,
+    "league": "Ligue 1",
+    "date": "2026-09-06T15:15:00Z",
+    "home_team": {
+      "id": 532,
+      "name": "Angers SCO",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 529,
+      "name": "Stade Rennais FC 1901",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559694,
+    "league": "Ligue 1",
+    "date": "2026-09-06T18:45:00Z",
+    "home_team": {
+      "id": 516,
+      "name": "Olympique de Marseille",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 1045,
+      "name": "Paris FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]
