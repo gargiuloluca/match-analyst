@@ -1,0 +1,72 @@
+{
+  "Cagliari Calcio": {
+    "team": "Cagliari Calcio",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Elche CF": {
+    "team": "Elche CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Getafe CF": {
+    "team": "Getafe CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Celta de Vigo": {
+    "team": "RC Celta de Vigo",
+    "articles_scanned": 15,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Sociedad de Fútbol": {
+    "team": "Real Sociedad de Fútbol",
+    "articles_scanned": 8,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SS Lazio": {
+    "team": "SS Lazio",
+    "articles_scanned": 28,
+    "flagged_articles": [
+      {
+        "title": "Serie A: Spalletti, 'sono sul carro Kolo Muani e lì rimango fino alla fine'",
+        "summary": "Il tecnico bianconero: \"Milan grande squadra, noi possiamo diventarlo\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/06/serie-a-spalletti-sono-sul-carro-kolo-muani-e-li-rimango-fino-alla_9ca83329-f811-4757-8211-54991a27719a.html",
+        "published_at": "2026-09-06T21:37:10+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "US Lecce": {
+    "team": "US Lecce",
+    "articles_scanned": 11,
+    "flagged_articles": [
+      {
+        "title": "Ligue1: il Paris Saint Germain ko in casa, il Monaco vince 2-1",
+        "summary": "Delusione per Luis Enrique dopo l'annuncio del prolungamento del contratto",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/04/ligue-il-paris-sg-ko-in-casa-il-monaco-vince-2-1_fbbb0d39-a9e6-4b54-8404-180da3fb1a5f.html",
+        "published_at": "2026-09-05T19:27:01+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Udinese Calcio": {
+    "team": "Udinese Calcio",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}

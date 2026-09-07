@@ -1,0 +1,103 @@
+[
+  {
+    "fixture_id": 558610,
+    "league": "Serie A",
+    "date": "2026-09-07T16:30:00Z",
+    "home_team": {
+      "id": 104,
+      "name": "Cagliari Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5890,
+      "name": "US Lecce",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 558617,
+    "league": "Serie A",
+    "date": "2026-09-07T18:45:00Z",
+    "home_team": {
+      "id": 115,
+      "name": "Udinese Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 110,
+      "name": "SS Lazio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564665,
+    "league": "La Liga",
+    "date": "2026-09-07T17:00:00Z",
+    "home_team": {
+      "id": 82,
+      "name": "Getafe CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 558,
+      "name": "RC Celta de Vigo",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564658,
+    "league": "La Liga",
+    "date": "2026-09-07T19:30:00Z",
+    "home_team": {
+      "id": 285,
+      "name": "Elche CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 92,
+      "name": "Real Sociedad de Fútbol",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.56,
+      "draw": 3.6,
+      "away": 2.19,
+      "bookmaker": "1xBet"
+    }
+  }
+]
