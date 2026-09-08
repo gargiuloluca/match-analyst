@@ -1,0 +1,161 @@
+[
+  {
+    "fixture_id": 575323,
+    "league": "Champions League",
+    "date": "2026-09-08T16:45:00Z",
+    "home_team": {
+      "id": 851,
+      "name": "Club Brugge KV",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 58,
+      "name": "Aston Villa FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.53,
+      "draw": 3.66,
+      "away": 2.75,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575324,
+    "league": "Champions League",
+    "date": "2026-09-08T16:45:00Z",
+    "home_team": {
+      "id": 1899,
+      "name": "PAE AEK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 2016,
+      "name": "LASK Linz",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575325,
+    "league": "Champions League",
+    "date": "2026-09-08T19:00:00Z",
+    "home_team": {
+      "id": 86,
+      "name": "Real Madrid CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 108,
+      "name": "FC Internazionale Milano",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575326,
+    "league": "Champions League",
+    "date": "2026-09-08T19:00:00Z",
+    "home_team": {
+      "id": 503,
+      "name": "FC Porto",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 65,
+      "name": "Manchester City FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575327,
+    "league": "Champions League",
+    "date": "2026-09-08T19:00:00Z",
+    "home_team": {
+      "id": 4,
+      "name": "Borussia Dortmund",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 94,
+      "name": "Villarreal CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.81,
+      "draw": 4.1,
+      "away": 4.25,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575328,
+    "league": "Champions League",
+    "date": "2026-09-08T19:00:00Z",
+    "home_team": {
+      "id": 521,
+      "name": "Lille OSC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 90,
+      "name": "Real Betis Balompié",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.24,
+      "draw": 3.5,
+      "away": 3.34,
+      "bookmaker": "Marathon Bet"
+    }
+  }
+]
