@@ -1,0 +1,95 @@
+{
+  "Arsenal FC": {
+    "team": "Arsenal FC",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 6,
+    "flagged_articles": [
+      {
+        "title": "Fiorentina: club valuta un'azione disciplinare nei confronti di Grosso",
+        "summary": "Il tecnico è stato esonerato all'indomani della sconfitta con il Torino",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/08/fiorentina-club-valuta-unazione-disciplinare-nei-confronti-di-grosso_81ea2e91-1711-4ae5-9add-c67ba40f1406.html",
+        "published_at": "2026-09-08T19:10:00+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      },
+      {
+        "title": "Calcio: un turno di squalifica a Gaetano e due al tecnico del Bologna Tedesco",
+        "summary": "Inibito il presidente del club rossoblù Saputo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/08/calcio-un-turno-di-squalifica-a-gaetano-e-due-al-tecnico-del-bologna-tedesco_12ecbc1f-3ac8-4d50-aa01-fa282f699078.html",
+        "published_at": "2026-09-08T13:38:31+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "FC Barcelona": {
+    "team": "FC Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Feyenoord Rotterdam": {
+    "team": "Feyenoord Rotterdam",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Galatasaray SK": {
+    "team": "Galatasaray SK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Liverpool FC": {
+    "team": "Liverpool FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris Saint-Germain FC": {
+    "team": "Paris Saint-Germain FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SSC Napoli": {
+    "team": "SSC Napoli",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sporting Clube de Portugal": {
+    "team": "Sporting Clube de Portugal",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "VfB Stuttgart": {
+    "team": "VfB Stuttgart",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Viking FK": {
+    "team": "Viking FK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ŠK Slovan Bratislava": {
+    "team": "ŠK Slovan Bratislava",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}

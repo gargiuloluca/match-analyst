@@ -1,0 +1,161 @@
+[
+  {
+    "fixture_id": 575329,
+    "league": "Champions League",
+    "date": "2026-09-09T16:45:00Z",
+    "home_team": {
+      "id": 81,
+      "name": "FC Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 675,
+      "name": "Feyenoord Rotterdam",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575330,
+    "league": "Champions League",
+    "date": "2026-09-09T16:45:00Z",
+    "home_team": {
+      "id": 10,
+      "name": "VfB Stuttgart",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5720,
+      "name": "Viking FK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.27,
+      "draw": 6.7,
+      "away": 10.5,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575331,
+    "league": "Champions League",
+    "date": "2026-09-09T19:00:00Z",
+    "home_team": {
+      "id": 64,
+      "name": "Liverpool FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 78,
+      "name": "Club Atlético de Madrid",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575332,
+    "league": "Champions League",
+    "date": "2026-09-09T19:00:00Z",
+    "home_team": {
+      "id": 524,
+      "name": "Paris Saint-Germain FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 7509,
+      "name": "ŠK Slovan Bratislava",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.04,
+      "draw": 20.0,
+      "away": 56.0,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575333,
+    "league": "Champions League",
+    "date": "2026-09-09T19:00:00Z",
+    "home_team": {
+      "id": 113,
+      "name": "SSC Napoli",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 57,
+      "name": "Arsenal FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575334,
+    "league": "Champions League",
+    "date": "2026-09-09T19:00:00Z",
+    "home_team": {
+      "id": 498,
+      "name": "Sporting Clube de Portugal",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 610,
+      "name": "Galatasaray SK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.73,
+      "draw": 4.15,
+      "away": 4.75,
+      "bookmaker": "Marathon Bet"
+    }
+  }
+]
