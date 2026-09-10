@@ -1,0 +1,156 @@
+[
+  {
+    "fixture_id": 575335,
+    "league": "Champions League",
+    "date": "2026-09-10T16:45:00Z",
+    "home_team": {
+      "id": 613,
+      "name": "Fenerbahçe SK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 100,
+      "name": "AS Roma",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575336,
+    "league": "Champions League",
+    "date": "2026-09-10T16:45:00Z",
+    "home_team": {
+      "id": 674,
+      "name": "PSV",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 1887,
+      "name": "FK Shakhtar Donetsk",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575337,
+    "league": "Champions League",
+    "date": "2026-09-10T19:00:00Z",
+    "home_team": {
+      "id": 5,
+      "name": "FC Bayern München",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5721,
+      "name": "FK Bodø/Glimt",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575338,
+    "league": "Champions League",
+    "date": "2026-09-10T19:00:00Z",
+    "home_team": {
+      "id": 66,
+      "name": "Manchester United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 10233,
+      "name": "Sabah FK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.09,
+      "draw": 11.75,
+      "away": 33.0,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575339,
+    "league": "Champions League",
+    "date": "2026-09-10T19:00:00Z",
+    "home_team": {
+      "id": 7397,
+      "name": "Como 1907",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 721,
+      "name": "RB Leipzig",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.67,
+      "draw": 3.9,
+      "away": 4.0,
+      "bookmaker": "888sport"
+    }
+  },
+  {
+    "fixture_id": 575340,
+    "league": "Champions League",
+    "date": "2026-09-10T19:00:00Z",
+    "home_team": {
+      "id": 930,
+      "name": "SK Slavia Praha",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 546,
+      "name": "Racing Club de Lens",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]

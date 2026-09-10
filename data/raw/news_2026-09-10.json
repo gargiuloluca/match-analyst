@@ -1,0 +1,85 @@
+{
+  "AS Roma": {
+    "team": "AS Roma",
+    "articles_scanned": 27,
+    "flagged_articles": [
+      {
+        "title": "Serie A: Venezia, Franjic operato alla clavicola, starà fuori tre mesi",
+        "summary": "Si era infortunato nella gara in trasferta contro il Milan",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/09/serie-a-venezia-franjic-operato-alla-clavicola-stara-fuori-tre-mesi_db65116b-e128-4ee9-9f1a-0c548de1eb92.html",
+        "published_at": "2026-09-09T14:17:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Como 1907": {
+    "team": "Como 1907",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Bayern München": {
+    "team": "FC Bayern München",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FK Bodø/Glimt": {
+    "team": "FK Bodø/Glimt",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FK Shakhtar Donetsk": {
+    "team": "FK Shakhtar Donetsk",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Fenerbahçe SK": {
+    "team": "Fenerbahçe SK",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester United FC": {
+    "team": "Manchester United FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "PSV": {
+    "team": "PSV",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RB Leipzig": {
+    "team": "RB Leipzig",
+    "articles_scanned": 6,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Racing Club de Lens": {
+    "team": "Racing Club de Lens",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SK Slavia Praha": {
+    "team": "SK Slavia Praha",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sabah FK": {
+    "team": "Sabah FK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
