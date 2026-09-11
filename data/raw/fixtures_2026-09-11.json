@@ -1,0 +1,103 @@
+[
+  {
+    "fixture_id": 558606,
+    "league": "Serie A",
+    "date": "2026-09-11T18:45:00Z",
+    "home_team": {
+      "id": 454,
+      "name": "Venezia FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 99,
+      "name": "ACF Fiorentina",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564669,
+    "league": "La Liga",
+    "date": "2026-09-11T19:00:00Z",
+    "home_team": {
+      "id": 559,
+      "name": "Sevilla FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 95,
+      "name": "Valencia CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.9,
+      "draw": 3.25,
+      "away": 4.3,
+      "bookmaker": "Unibet (FR)"
+    }
+  },
+  {
+    "fixture_id": 565797,
+    "league": "Bundesliga",
+    "date": "2026-09-11T18:30:00Z",
+    "home_team": {
+      "id": 28,
+      "name": "1. FC Union Berlin",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 6,
+      "name": "FC Schalke 04",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559689,
+    "league": "Ligue 1",
+    "date": "2026-09-11T18:45:00Z",
+    "home_team": {
+      "id": 529,
+      "name": "Stade Rennais FC 1901",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 516,
+      "name": "Olympique de Marseille",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]

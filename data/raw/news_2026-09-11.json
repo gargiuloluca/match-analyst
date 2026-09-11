@@ -1,0 +1,61 @@
+{
+  "1. FC Union Berlin": {
+    "team": "1. FC Union Berlin",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ACF Fiorentina": {
+    "team": "ACF Fiorentina",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Schalke 04": {
+    "team": "FC Schalke 04",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique de Marseille": {
+    "team": "Olympique de Marseille",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sevilla FC": {
+    "team": "Sevilla FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Stade Rennais FC 1901": {
+    "team": "Stade Rennais FC 1901",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Valencia CF": {
+    "team": "Valencia CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Venezia FC": {
+    "team": "Venezia FC",
+    "articles_scanned": 3,
+    "flagged_articles": [
+      {
+        "title": "Serie A: Venezia, Franjic operato alla clavicola, starà fuori tre mesi",
+        "summary": "Si era infortunato nella gara in trasferta contro il Milan",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/09/serie-a-venezia-franjic-operato-alla-clavicola-stara-fuori-tre-mesi_db65116b-e128-4ee9-9f1a-0c548de1eb92.html",
+        "published_at": "2026-09-09T14:17:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  }
+}
