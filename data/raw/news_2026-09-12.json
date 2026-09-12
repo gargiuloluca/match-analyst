@@ -1,0 +1,388 @@
+{
+  "1. FC Köln": {
+    "team": "1. FC Köln",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "1. FSV Mainz 05": {
+    "team": "1. FSV Mainz 05",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AC Milan": {
+    "team": "AC Milan",
+    "articles_scanned": 17,
+    "flagged_articles": [
+      {
+        "title": "Roma: fastidio al ginocchio per Koné, ma non sono previsti accertamenti",
+        "summary": "Il francese resta in dubbio per Torino-Roma di lunedì",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/roma-fastidio-al-ginocchio-per-kone-ma-non-sono-previsti-accertamenti_c2c3cddf-aab0-4354-9119-3659ef480a43.html",
+        "published_at": "2026-09-11T09:37:50+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "AFC Bournemouth": {
+    "team": "AFC Bournemouth",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AJ Auxerre": {
+    "team": "AJ Auxerre",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AS Monaco FC": {
+    "team": "AS Monaco FC",
+    "articles_scanned": 40,
+    "flagged_articles": [
+      {
+        "title": "Serie A: una tripletta di Mastantuono dà la scossa alla Fiorentina, Venezia ko 4-2",
+        "summary": "Tre volte l'argentino e gol di Pellegrino dopo il vantaggio lagunare con Adams",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/serie-a-una-tripletta-di-mastantuono-da-la-scossa-alla-fiorentina-venezia-ko-4-2_ac8c2718-3f6b-4722-baa1-63f186753031.html",
+        "published_at": "2026-09-11T20:44:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Roma: fastidio al ginocchio per Koné, ma non sono previsti accertamenti",
+        "summary": "Il francese resta in dubbio per Torino-Roma di lunedì",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/roma-fastidio-al-ginocchio-per-kone-ma-non-sono-previsti-accertamenti_c2c3cddf-aab0-4354-9119-3659ef480a43.html",
+        "published_at": "2026-09-11T09:37:50+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: Venezia, Franjic operato alla clavicola, starà fuori tre mesi",
+        "summary": "Si era infortunato nella gara in trasferta contro il Milan",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/09/serie-a-venezia-franjic-operato-alla-clavicola-stara-fuori-tre-mesi_db65116b-e128-4ee9-9f1a-0c548de1eb92.html",
+        "published_at": "2026-09-09T14:17:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Angers SCO": {
+    "team": "Angers SCO",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Arsenal FC": {
+    "team": "Arsenal FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Aston Villa FC": {
+    "team": "Aston Villa FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Atalanta BC": {
+    "team": "Atalanta BC",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Athletic Club": {
+    "team": "Athletic Club",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Bayer 04 Leverkusen": {
+    "team": "Bayer 04 Leverkusen",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Borussia Dortmund": {
+    "team": "Borussia Dortmund",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Borussia Mönchengladbach": {
+    "team": "Borussia Mönchengladbach",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Brentford FC": {
+    "team": "Brentford FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "CA Osasuna": {
+    "team": "CA Osasuna",
+    "articles_scanned": 51,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Cagliari Calcio": {
+    "team": "Cagliari Calcio",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Chelsea FC": {
+    "team": "Chelsea FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Crystal Palace FC": {
+    "team": "Crystal Palace FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Deportivo Alavés": {
+    "team": "Deportivo Alavés",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Eintracht Frankfurt": {
+    "team": "Eintracht Frankfurt",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Elche CF": {
+    "team": "Elche CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Everton FC": {
+    "team": "Everton FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Augsburg": {
+    "team": "FC Augsburg",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Lorient": {
+    "team": "FC Lorient",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Frosinone Calcio": {
+    "team": "Frosinone Calcio",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Fulham FC": {
+    "team": "Fulham FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Genoa CFC": {
+    "team": "Genoa CFC",
+    "articles_scanned": 3,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hull City AFC": {
+    "team": "Hull City AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Ipswich Town FC": {
+    "team": "Ipswich Town FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Le Havre AC": {
+    "team": "Le Havre AC",
+    "articles_scanned": 50,
+    "flagged_articles": [
+      {
+        "title": "Serie A: una tripletta di Mastantuono dà la scossa alla Fiorentina, Venezia ko 4-2",
+        "summary": "Tre volte l'argentino e gol di Pellegrino dopo il vantaggio lagunare con Adams",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/serie-a-una-tripletta-di-mastantuono-da-la-scossa-alla-fiorentina-venezia-ko-4-2_ac8c2718-3f6b-4722-baa1-63f186753031.html",
+        "published_at": "2026-09-11T20:44:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Liverpool FC": {
+    "team": "Liverpool FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Nottingham Forest FC": {
+    "team": "Nottingham Forest FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "OGC Nice": {
+    "team": "OGC Nice",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique Lyonnais": {
+    "team": "Olympique Lyonnais",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris FC": {
+    "team": "Paris FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Strasbourg Alsace": {
+    "team": "RC Strasbourg Alsace",
+    "articles_scanned": 11,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RCD Espanyol de Barcelona": {
+    "team": "RCD Espanyol de Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Rayo Vallecano de Madrid": {
+    "team": "Rayo Vallecano de Madrid",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Madrid CF": {
+    "team": "Real Madrid CF",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Racing Club de Santander": {
+    "team": "Real Racing Club de Santander",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SC Freiburg": {
+    "team": "SC Freiburg",
+    "articles_scanned": 17,
+    "flagged_articles": [
+      {
+        "title": "Serie A: una tripletta di Mastantuono dà la scossa alla Fiorentina, Venezia ko 4-2",
+        "summary": "Tre volte l'argentino e gol di Pellegrino dopo il vantaggio lagunare con Adams",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/serie-a-una-tripletta-di-mastantuono-da-la-scossa-alla-fiorentina-venezia-ko-4-2_ac8c2718-3f6b-4722-baa1-63f186753031.html",
+        "published_at": "2026-09-11T20:44:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "SC Paderborn 07": {
+    "team": "SC Paderborn 07",
+    "articles_scanned": 17,
+    "flagged_articles": [
+      {
+        "title": "Serie A: una tripletta di Mastantuono dà la scossa alla Fiorentina, Venezia ko 4-2",
+        "summary": "Tre volte l'argentino e gol di Pellegrino dopo il vantaggio lagunare con Adams",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/serie-a-una-tripletta-di-mastantuono-da-la-scossa-alla-fiorentina-venezia-ko-4-2_ac8c2718-3f6b-4722-baa1-63f186753031.html",
+        "published_at": "2026-09-11T20:44:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "SS Lazio": {
+    "team": "SS Lazio",
+    "articles_scanned": 34,
+    "flagged_articles": [
+      {
+        "title": "Serie A: una tripletta di Mastantuono dà la scossa alla Fiorentina, Venezia ko 4-2",
+        "summary": "Tre volte l'argentino e gol di Pellegrino dopo il vantaggio lagunare con Adams",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/serie-a-una-tripletta-di-mastantuono-da-la-scossa-alla-fiorentina-venezia-ko-4-2_ac8c2718-3f6b-4722-baa1-63f186753031.html",
+        "published_at": "2026-09-11T20:44:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "SV Werder Bremen": {
+    "team": "SV Werder Bremen",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sunderland AFC": {
+    "team": "Sunderland AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "TSG 1899 Hoffenheim": {
+    "team": "TSG 1899 Hoffenheim",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Tottenham Hotspur FC": {
+    "team": "Tottenham Hotspur FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Toulouse FC": {
+    "team": "Toulouse FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "VfB Stuttgart": {
+    "team": "VfB Stuttgart",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
