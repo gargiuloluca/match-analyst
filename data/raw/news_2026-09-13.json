@@ -1,0 +1,275 @@
+{
+  "AC Monza": {
+    "team": "AC Monza",
+    "articles_scanned": 17,
+    "flagged_articles": [
+      {
+        "title": "Serie A: colpo Cagliari a Bergamo contro l'Atalanta, decide l'ex Maldini su rigore",
+        "summary": "Ingenuità di Kolasinac dopo il botta e risposta tra Mendy e Scamacca nel primo tempo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/12/serie-a-colpo-cagliari-a-bergamo-contro-latalanta-decide-lex-maldini-su-rigore_9162db63-e241-49d8-874e-37ba25fc4fbc.html",
+        "published_at": "2026-09-12T21:03:44+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Roma: fastidio al ginocchio per Koné, ma non sono previsti accertamenti",
+        "summary": "Il francese resta in dubbio per Torino-Roma di lunedì",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/roma-fastidio-al-ginocchio-per-kone-ma-non-sono-previsti-accertamenti_c2c3cddf-aab0-4354-9119-3659ef480a43.html",
+        "published_at": "2026-09-11T09:37:50+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "Bologna FC 1909": {
+    "team": "Bologna FC 1909",
+    "articles_scanned": 5,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Brighton & Hove Albion FC": {
+    "team": "Brighton & Hove Albion FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Coventry City FC": {
+    "team": "Coventry City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ES Troyes AC": {
+    "team": "ES Troyes AC",
+    "articles_scanned": 36,
+    "flagged_articles": [
+      {
+        "title": "Inter: Chivu, io non bado al modulo ma al modo in cui si gioca",
+        "summary": "Dimarco convocato, Spence no, Calha va gestito dopo Mondiale da infortunato",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/13/inter-chivu-io-non-bado-al-modulo-ma-al-modo-in-cui-si-gioca_7f2cdd18-ea0c-436b-a866-fc9fc00d2393.html",
+        "published_at": "2026-09-13T12:29:12+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Juve: Spalletti, 'Kolo Muani ha voglia di determinare'",
+        "summary": "Tecnico sul francese, 'è arrivato al campo con cinque ore d'anticipo'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/12/juve-spalletti-kolo-muani-ha-voglia-di-determinare_6ff0accd-d46a-49b1-b42d-8f275a4bb491.html",
+        "published_at": "2026-09-12T14:23:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Roma: fastidio al ginocchio per Koné, ma non sono previsti accertamenti",
+        "summary": "Il francese resta in dubbio per Torino-Roma di lunedì",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/roma-fastidio-al-ginocchio-per-kone-ma-non-sono-previsti-accertamenti_c2c3cddf-aab0-4354-9119-3659ef480a43.html",
+        "published_at": "2026-09-11T09:37:50+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "FC Barcelona": {
+    "team": "FC Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Bayern München": {
+    "team": "FC Bayern München",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Getafe CF": {
+    "team": "Getafe CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hamburger SV": {
+    "team": "Hamburger SV",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Juventus FC": {
+    "team": "Juventus FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Le Mans FC": {
+    "team": "Le Mans FC",
+    "articles_scanned": 51,
+    "flagged_articles": [
+      {
+        "title": "Inter: Chivu, io non bado al modulo ma al modo in cui si gioca",
+        "summary": "Dimarco convocato, Spence no, Calha va gestito dopo Mondiale da infortunato",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/13/inter-chivu-io-non-bado-al-modulo-ma-al-modo-in-cui-si-gioca_7f2cdd18-ea0c-436b-a866-fc9fc00d2393.html",
+        "published_at": "2026-09-13T12:29:12+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Juve: Spalletti, 'Kolo Muani ha voglia di determinare'",
+        "summary": "Tecnico sul francese, 'è arrivato al campo con cinque ore d'anticipo'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/12/juve-spalletti-kolo-muani-ha-voglia-di-determinare_6ff0accd-d46a-49b1-b42d-8f275a4bb491.html",
+        "published_at": "2026-09-12T14:23:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: una tripletta di Mastantuono dà la scossa alla Fiorentina, Venezia ko 4-2",
+        "summary": "Tre volte l'argentino e gol di Pellegrino dopo il vantaggio lagunare con Adams",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/serie-a-una-tripletta-di-mastantuono-da-la-scossa-alla-fiorentina-venezia-ko-4-2_ac8c2718-3f6b-4722-baa1-63f186753031.html",
+        "published_at": "2026-09-11T20:44:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Levante UD": {
+    "team": "Levante UD",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Lille OSC": {
+    "team": "Lille OSC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester City FC": {
+    "team": "Manchester City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester United FC": {
+    "team": "Manchester United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Málaga CF": {
+    "team": "Málaga CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris Saint-Germain FC": {
+    "team": "Paris Saint-Germain FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RB Leipzig": {
+    "team": "RB Leipzig",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Celta de Vigo": {
+    "team": "RC Celta de Vigo",
+    "articles_scanned": 9,
+    "flagged_articles": [
+      {
+        "title": "Inter: Chivu, io non bado al modulo ma al modo in cui si gioca",
+        "summary": "Dimarco convocato, Spence no, Calha va gestito dopo Mondiale da infortunato",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/13/inter-chivu-io-non-bado-al-modulo-ma-al-modo-in-cui-si-gioca_7f2cdd18-ea0c-436b-a866-fc9fc00d2393.html",
+        "published_at": "2026-09-13T12:29:12+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "RC Deportivo La Coruña": {
+    "team": "RC Deportivo La Coruña",
+    "articles_scanned": 9,
+    "flagged_articles": [
+      {
+        "title": "Inter: Chivu, io non bado al modulo ma al modo in cui si gioca",
+        "summary": "Dimarco convocato, Spence no, Calha va gestito dopo Mondiale da infortunato",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/13/inter-chivu-io-non-bado-al-modulo-ma-al-modo-in-cui-si-gioca_7f2cdd18-ea0c-436b-a866-fc9fc00d2393.html",
+        "published_at": "2026-09-13T12:29:12+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Racing Club de Lens": {
+    "team": "Racing Club de Lens",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Sociedad de Fútbol": {
+    "team": "Real Sociedad de Fútbol",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SSC Napoli": {
+    "team": "SSC Napoli",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV 07 Elversberg": {
+    "team": "SV 07 Elversberg",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Stade Brestois 29": {
+    "team": "Stade Brestois 29",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "US Lecce": {
+    "team": "US Lecce",
+    "articles_scanned": 12,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "US Sassuolo Calcio": {
+    "team": "US Sassuolo Calcio",
+    "articles_scanned": 12,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
