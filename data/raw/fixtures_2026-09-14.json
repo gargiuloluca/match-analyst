@@ -1,0 +1,142 @@
+[
+  {
+    "fixture_id": 558602,
+    "league": "Serie A",
+    "date": "2026-09-14T16:30:00Z",
+    "home_team": {
+      "id": 7397,
+      "name": "Como 1907",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 112,
+      "name": "Parma Calcio 1913",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.21,
+      "draw": 6.5,
+      "away": 11.5,
+      "bookmaker": "Winamax (DE)"
+    }
+  },
+  {
+    "fixture_id": 558603,
+    "league": "Serie A",
+    "date": "2026-09-14T16:30:00Z",
+    "home_team": {
+      "id": 586,
+      "name": "Torino FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 100,
+      "name": "AS Roma",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 5.9,
+      "draw": 4.5,
+      "away": 1.49,
+      "bookmaker": "Winamax (DE)"
+    }
+  },
+  {
+    "fixture_id": 558601,
+    "league": "Serie A",
+    "date": "2026-09-14T18:45:00Z",
+    "home_team": {
+      "id": 108,
+      "name": "FC Internazionale Milano",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 115,
+      "name": "Udinese Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 560579,
+    "league": "Premier League",
+    "date": "2026-09-14T19:00:00Z",
+    "home_team": {
+      "id": 341,
+      "name": "Leeds United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 67,
+      "name": "Newcastle United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.2,
+      "draw": 3.4,
+      "away": 2.95,
+      "bookmaker": "Winamax (FR)"
+    }
+  },
+  {
+    "fixture_id": 564671,
+    "league": "La Liga",
+    "date": "2026-09-14T19:00:00Z",
+    "home_team": {
+      "id": 94,
+      "name": "Villarreal CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 90,
+      "name": "Real Betis Balompié",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.0,
+      "draw": 3.9,
+      "away": 3.3,
+      "bookmaker": "Tipico"
+    }
+  }
+]

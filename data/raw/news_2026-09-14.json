@@ -1,0 +1,93 @@
+{
+  "AS Roma": {
+    "team": "AS Roma",
+    "articles_scanned": 32,
+    "flagged_articles": [
+      {
+        "title": "Serie A: alla Juventus non basta la doppietta di Zhegrova, ko con il Sassuolo",
+        "summary": "I bianconeri subiscono dall'ex Adzic il gol decisivo al 94' in contropiede",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/13/serie-a-in-campo-sassuolo-juventus-3-2-diretta_48fdc61e-1f1c-41f6-975e-ca747d608379.html",
+        "published_at": "2026-09-13T21:15:30+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: colpo Cagliari a Bergamo contro l'Atalanta, decide l'ex Maldini su rigore",
+        "summary": "Ingenuità di Kolasinac dopo il botta e risposta tra Mendy e Scamacca nel primo tempo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/12/serie-a-colpo-cagliari-a-bergamo-contro-latalanta-decide-lex-maldini-su-rigore_9162db63-e241-49d8-874e-37ba25fc4fbc.html",
+        "published_at": "2026-09-12T21:03:44+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: una tripletta di Mastantuono dà la scossa alla Fiorentina, Venezia ko 4-2",
+        "summary": "Tre volte l'argentino e gol di Pellegrino dopo il vantaggio lagunare con Adams",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/11/serie-a-una-tripletta-di-mastantuono-da-la-scossa-alla-fiorentina-venezia-ko-4-2_ac8c2718-3f6b-4722-baa1-63f186753031.html",
+        "published_at": "2026-09-11T20:44:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Como 1907": {
+    "team": "Como 1907",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Internazionale Milano": {
+    "team": "FC Internazionale Milano",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Leeds United FC": {
+    "team": "Leeds United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Newcastle United FC": {
+    "team": "Newcastle United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Parma Calcio 1913": {
+    "team": "Parma Calcio 1913",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Betis Balompié": {
+    "team": "Real Betis Balompié",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Torino FC": {
+    "team": "Torino FC",
+    "articles_scanned": 3,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Udinese Calcio": {
+    "team": "Udinese Calcio",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Villarreal CF": {
+    "team": "Villarreal CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
