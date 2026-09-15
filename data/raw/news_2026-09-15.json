@@ -1,0 +1,38 @@
+{
+  "Deportivo Alavés": {
+    "team": "Deportivo Alavés",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Elche CF": {
+    "team": "Elche CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RCD Espanyol de Barcelona": {
+    "team": "RCD Espanyol de Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Rayo Vallecano de Madrid": {
+    "team": "Rayo Vallecano de Madrid",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Madrid CF": {
+    "team": "Real Madrid CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Valencia CF": {
+    "team": "Valencia CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}

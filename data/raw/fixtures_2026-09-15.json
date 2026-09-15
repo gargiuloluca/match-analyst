@@ -1,0 +1,79 @@
+[
+  {
+    "fixture_id": 564678,
+    "league": "La Liga",
+    "date": "2026-09-15T17:00:00Z",
+    "home_team": {
+      "id": 87,
+      "name": "Rayo Vallecano de Madrid",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 80,
+      "name": "RCD Espanyol de Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564680,
+    "league": "La Liga",
+    "date": "2026-09-15T18:00:00Z",
+    "home_team": {
+      "id": 263,
+      "name": "Deportivo Alavés",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 95,
+      "name": "Valencia CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564681,
+    "league": "La Liga",
+    "date": "2026-09-15T19:30:00Z",
+    "home_team": {
+      "id": 285,
+      "name": "Elche CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 86,
+      "name": "Real Madrid CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 11.0,
+      "draw": 7.6,
+      "away": 1.2,
+      "bookmaker": "Codere (IT)"
+    }
+  }
+]
