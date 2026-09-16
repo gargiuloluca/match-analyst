@@ -1,0 +1,92 @@
+{
+  "Athletic Club": {
+    "team": "Athletic Club",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "CA Osasuna": {
+    "team": "CA Osasuna",
+    "articles_scanned": 44,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Tedesco dopo l'esonero, 'Dispiaciuto e amareggiato'",
+        "summary": "\"Quello che ci siamo detti con la società resta tra noi, questo è il calcio\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/calcio-tedesco-dopo-lesonero-dispiaciuto-e-amareggiato_a2c849cc-1643-427f-81dd-48969fc93f3f.html",
+        "published_at": "2026-09-16T09:36:14+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      },
+      {
+        "title": "Serie A: Venezia, distrazione al bicipite per Busio",
+        "summary": "Il capitano rischia un lungo stop, per la Lazio out anche Adorante, Franjic e Sverko",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/15/serie-a-venezia-distrazione-al-bicipite-per-busio_3fcd236a-6607-42b7-9eb5-336ba61207d6.html",
+        "published_at": "2026-09-15T15:03:36+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: giudice sportivo, salta un turno Vasquez, out due giornate Kolarov",
+        "summary": "Squalifica solo per il genoano in campo, negli staff fuori anche Biglia e Nenci",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/15/serie-a-giudice-sportivo-salta-un-turno-vasquez-out-due-giornate-kolarov_3ce8d0a4-8bea-4673-8d6a-25121ec79551.html",
+        "published_at": "2026-09-15T14:46:39+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio",
+          "squalifica"
+        ]
+      },
+      {
+        "title": "Serie A: la doppietta di Coulibaly spinge il Lecce, Monza ko 3-2",
+        "summary": "Partita ricca di gol al Via del Mare, ai lombardi non riesce la rimonta",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/13/serie-a-la-doppietta-di-coulibaly-spinge-il-lecce-monza-ko-3-2_ec9b84a4-0b23-41d5-9247-e8d7327629f3.html",
+        "published_at": "2026-09-13T15:50:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 4
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Barcelona": {
+    "team": "FC Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Levante UD": {
+    "team": "Levante UD",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Deportivo La Coruña": {
+    "team": "RC Deportivo La Coruña",
+    "articles_scanned": 13,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Racing Club de Santander": {
+    "team": "Real Racing Club de Santander",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sevilla FC": {
+    "team": "Sevilla FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}

@@ -1,0 +1,103 @@
+[
+  {
+    "fixture_id": 564679,
+    "league": "La Liga",
+    "date": "2026-09-16T17:00:00Z",
+    "home_team": {
+      "id": 560,
+      "name": "RC Deportivo La Coruña",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 559,
+      "name": "Sevilla FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564684,
+    "league": "La Liga",
+    "date": "2026-09-16T17:00:00Z",
+    "home_team": {
+      "id": 78,
+      "name": "Club Atlético de Madrid",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 79,
+      "name": "CA Osasuna",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564685,
+    "league": "La Liga",
+    "date": "2026-09-16T19:30:00Z",
+    "home_team": {
+      "id": 88,
+      "name": "Levante UD",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 77,
+      "name": "Athletic Club",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.3,
+      "draw": 3.5,
+      "away": 2.16,
+      "bookmaker": "Codere (IT)"
+    }
+  },
+  {
+    "fixture_id": 564687,
+    "league": "La Liga",
+    "date": "2026-09-16T19:30:00Z",
+    "home_team": {
+      "id": 81,
+      "name": "FC Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5335,
+      "name": "Real Racing Club de Santander",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]
