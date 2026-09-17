@@ -1,0 +1,60 @@
+[
+  {
+    "fixture_id": 564686,
+    "league": "La Liga",
+    "date": "2026-09-17T17:00:00Z",
+    "home_team": {
+      "id": 90,
+      "name": "Real Betis Balompié",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 82,
+      "name": "Getafe CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.52,
+      "draw": 3.8,
+      "away": 5.8,
+      "bookmaker": "Unibet (FR)"
+    }
+  },
+  {
+    "fixture_id": 564683,
+    "league": "La Liga",
+    "date": "2026-09-17T19:30:00Z",
+    "home_team": {
+      "id": 84,
+      "name": "Málaga CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 94,
+      "name": "Villarreal CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.5,
+      "draw": 3.6,
+      "away": 1.88,
+      "bookmaker": "Unibet (FR)"
+    }
+  }
+]

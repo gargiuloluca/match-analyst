@@ -1,0 +1,26 @@
+{
+  "Getafe CF": {
+    "team": "Getafe CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Málaga CF": {
+    "team": "Málaga CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Betis Balompié": {
+    "team": "Real Betis Balompié",
+    "articles_scanned": 3,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Villarreal CF": {
+    "team": "Villarreal CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
