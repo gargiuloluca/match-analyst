@@ -1,0 +1,116 @@
+{
+  "1. FC Union Berlin": {
+    "team": "1. FC Union Berlin",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AC Monza": {
+    "team": "AC Monza",
+    "articles_scanned": 16,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Tedesco dopo l'esonero, 'Dispiaciuto e amareggiato'",
+        "summary": "\"Quello che ci siamo detti con la società resta tra noi, questo è il calcio\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/calcio-tedesco-dopo-lesonero-dispiaciuto-e-amareggiato_a2c849cc-1643-427f-81dd-48969fc93f3f.html",
+        "published_at": "2026-09-16T09:36:14+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "AS Monaco FC": {
+    "team": "AS Monaco FC",
+    "articles_scanned": 25,
+    "flagged_articles": [
+      {
+        "title": "Serie A: giudice sportivo, salta un turno Vasquez, out due giornate Kolarov",
+        "summary": "Squalifica solo per il genoano in campo, negli staff fuori anche Biglia e Nenci",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/15/serie-a-giudice-sportivo-salta-un-turno-vasquez-out-due-giornate-kolarov_3ce8d0a4-8bea-4673-8d6a-25121ec79551.html",
+        "published_at": "2026-09-15T14:46:39+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio",
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Brentford FC": {
+    "team": "Brentford FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Chelsea FC": {
+    "team": "Chelsea FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Elche CF": {
+    "team": "Elche CF",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Bayern München": {
+    "team": "FC Bayern München",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RCD Espanyol de Barcelona": {
+    "team": "RCD Espanyol de Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Racing Club de Lens": {
+    "team": "Racing Club de Lens",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "US Sassuolo Calcio": {
+    "team": "US Sassuolo Calcio",
+    "articles_scanned": 16,
+    "flagged_articles": [
+      {
+        "title": "Inter: Stones out con la Roma, risentimento muscolare alla coscia",
+        "summary": "Nessuna lesione ma sarà rivalutato nei prossimi giorni",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/inter-stones-out-con-la-roma-risentimento-muscolare-alla-coscia_67a15b0b-b056-4f1b-b231-20fe1c44b18a.html",
+        "published_at": "2026-09-17T10:24:37+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Torino: lesione muscolare per Adams, salta il Bologna",
+        "summary": "Lo scozzese tornerà a disposizione dopo la sosta per le Nazionali",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/15/torino-lesione-muscolare-per-adams-salta-il-bologna_030d6140-974c-4963-88a2-f8c360a594f2.html",
+        "published_at": "2026-09-15T15:50:21+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: Venezia, distrazione al bicipite per Busio",
+        "summary": "Il capitano rischia un lungo stop, per la Lazio out anche Adorante, Franjic e Sverko",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/15/serie-a-venezia-distrazione-al-bicipite-per-busio_3fcd236a-6607-42b7-9eb5-336ba61207d6.html",
+        "published_at": "2026-09-15T15:03:36+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  }
+}

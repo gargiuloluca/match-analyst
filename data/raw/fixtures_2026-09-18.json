@@ -1,0 +1,127 @@
+[
+  {
+    "fixture_id": 558596,
+    "league": "Serie A",
+    "date": "2026-09-18T18:45:00Z",
+    "home_team": {
+      "id": 5911,
+      "name": "AC Monza",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 471,
+      "name": "US Sassuolo Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 560591,
+    "league": "Premier League",
+    "date": "2026-09-18T19:00:00Z",
+    "home_team": {
+      "id": 402,
+      "name": "Brentford FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 61,
+      "name": "Chelsea FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.5,
+      "draw": 3.7,
+      "away": 2.5,
+      "bookmaker": "Winamax (DE)"
+    }
+  },
+  {
+    "fixture_id": 564692,
+    "league": "La Liga",
+    "date": "2026-09-18T19:00:00Z",
+    "home_team": {
+      "id": 80,
+      "name": "RCD Espanyol de Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 285,
+      "name": "Elche CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565804,
+    "league": "Bundesliga",
+    "date": "2026-09-18T18:30:00Z",
+    "home_team": {
+      "id": 5,
+      "name": "FC Bayern München",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 28,
+      "name": "1. FC Union Berlin",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559682,
+    "league": "Ligue 1",
+    "date": "2026-09-18T18:45:00Z",
+    "home_team": {
+      "id": 548,
+      "name": "AS Monaco FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 546,
+      "name": "Racing Club de Lens",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]
