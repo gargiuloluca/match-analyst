@@ -1,0 +1,587 @@
+{
+  "1. FC Köln": {
+    "team": "1. FC Köln",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "1. FSV Mainz 05": {
+    "team": "1. FSV Mainz 05",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AS Roma": {
+    "team": "AS Roma",
+    "articles_scanned": 27,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Angers SCO": {
+    "team": "Angers SCO",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Arsenal FC": {
+    "team": "Arsenal FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Aston Villa FC": {
+    "team": "Aston Villa FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Athletic Club": {
+    "team": "Athletic Club",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Bologna FC 1909": {
+    "team": "Bologna FC 1909",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Borussia Dortmund": {
+    "team": "Borussia Dortmund",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Borussia Mönchengladbach": {
+    "team": "Borussia Mönchengladbach",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Brighton & Hove Albion FC": {
+    "team": "Brighton & Hove Albion FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "CA Osasuna": {
+    "team": "CA Osasuna",
+    "articles_scanned": 57,
+    "flagged_articles": [
+      {
+        "title": "Europa League: riscatto Juve con goleada, Nec travolto 5-0",
+        "summary": "Woltemade e Kolo Muani si sbloccano tra gli svarioni degli olandesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-la-juventus-asfalta-5-0-il-nec_6e175d87-1b2f-479a-89bb-cc9982cc094c.html",
+        "published_at": "2026-09-17T21:03:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: Milan ko con il Benfica, fischi a San Siro",
+        "summary": "I gol di Lukébakio al 16' e Kaminski al 53' per i portoghesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/europa-league-milan-ko-con-il-benfica-fischi-a-san-siro-cronaca-e-foto_512ed9f3-3195-40a2-86c4-3b4f23f60d44.html",
+        "published_at": "2026-09-17T15:30:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: lutto per Koeman, addio alla moglie Bartina",
+        "summary": "Il messaggio commosso dell'allenatore sui social",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/calcio-lutto-per-koeman-addio-alla-moglie-bartina_49d5cc32-d0c4-4ce3-96f5-fe2c41064c8a.html",
+        "published_at": "2026-09-16T15:02:17+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Cagliari Calcio": {
+    "team": "Cagliari Calcio",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Coventry City FC": {
+    "team": "Coventry City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Deportivo Alavés": {
+    "team": "Deportivo Alavés",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ES Troyes AC": {
+    "team": "ES Troyes AC",
+    "articles_scanned": 38,
+    "flagged_articles": [
+      {
+        "title": "Europa League: Juve travolgente all'esordio, 5-0 al Nec",
+        "summary": "In gol anche Woltemade su rigore e Kolo Muani",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-juve-travolgente-allesordio-5-0-al-nec_dd3b618c-7359-4dbe-915c-14454423c628.html",
+        "published_at": "2026-09-17T20:59:07+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: riscatto Juve con goleada, Nec travolto 5-0",
+        "summary": "Woltemade e Kolo Muani si sbloccano tra gli svarioni degli olandesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-la-juventus-asfalta-5-0-il-nec_6e175d87-1b2f-479a-89bb-cc9982cc094c.html",
+        "published_at": "2026-09-17T21:03:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Inter: Stones out con la Roma, risentimento muscolare alla coscia",
+        "summary": "Nessuna lesione ma sarà rivalutato nei prossimi giorni",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/inter-stones-out-con-la-roma-risentimento-muscolare-alla-coscia_67a15b0b-b056-4f1b-b231-20fe1c44b18a.html",
+        "published_at": "2026-09-17T10:24:37+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Tuchel e 'la ferita' dei Mondiali: 'Posso solo conviverci'",
+        "summary": "Il ct dell'Inghilterra verso la Nations League, resta il rammarico del ko con l'Argentina",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/tuchel-e-la-ferita-dei-mondiali-posso-solo-conviverci_deff5716-1992-439a-abc4-aba082a45ffb.html",
+        "published_at": "2026-09-17T09:48:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: Milan ko con il Benfica, fischi a San Siro",
+        "summary": "I gol di Lukébakio al 16' e Kaminski al 53' per i portoghesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/europa-league-milan-ko-con-il-benfica-fischi-a-san-siro-cronaca-e-foto_512ed9f3-3195-40a2-86c4-3b4f23f60d44.html",
+        "published_at": "2026-09-17T15:30:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: lutto per Koeman, addio alla moglie Bartina",
+        "summary": "Il messaggio commosso dell'allenatore sui social",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/calcio-lutto-per-koeman-addio-alla-moglie-bartina_49d5cc32-d0c4-4ce3-96f5-fe2c41064c8a.html",
+        "published_at": "2026-09-16T15:02:17+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 6
+  },
+  "Eintracht Frankfurt": {
+    "team": "Eintracht Frankfurt",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Everton FC": {
+    "team": "Everton FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Augsburg": {
+    "team": "FC Augsburg",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Barcelona": {
+    "team": "FC Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Internazionale Milano": {
+    "team": "FC Internazionale Milano",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Lorient": {
+    "team": "FC Lorient",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hamburger SV": {
+    "team": "Hamburger SV",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hull City AFC": {
+    "team": "Hull City AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Ipswich Town FC": {
+    "team": "Ipswich Town FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Le Havre AC": {
+    "team": "Le Havre AC",
+    "articles_scanned": 56,
+    "flagged_articles": [
+      {
+        "title": "Europa League: Juve travolgente all'esordio, 5-0 al Nec",
+        "summary": "In gol anche Woltemade su rigore e Kolo Muani",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-juve-travolgente-allesordio-5-0-al-nec_dd3b618c-7359-4dbe-915c-14454423c628.html",
+        "published_at": "2026-09-17T20:59:07+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: riscatto Juve con goleada, Nec travolto 5-0",
+        "summary": "Woltemade e Kolo Muani si sbloccano tra gli svarioni degli olandesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-la-juventus-asfalta-5-0-il-nec_6e175d87-1b2f-479a-89bb-cc9982cc094c.html",
+        "published_at": "2026-09-17T21:03:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Inter: Stones out con la Roma, risentimento muscolare alla coscia",
+        "summary": "Nessuna lesione ma sarà rivalutato nei prossimi giorni",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/inter-stones-out-con-la-roma-risentimento-muscolare-alla-coscia_67a15b0b-b056-4f1b-b231-20fe1c44b18a.html",
+        "published_at": "2026-09-17T10:24:37+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Tuchel e 'la ferita' dei Mondiali: 'Posso solo conviverci'",
+        "summary": "Il ct dell'Inghilterra verso la Nations League, resta il rammarico del ko con l'Argentina",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/tuchel-e-la-ferita-dei-mondiali-posso-solo-conviverci_deff5716-1992-439a-abc4-aba082a45ffb.html",
+        "published_at": "2026-09-17T09:48:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: Milan ko con il Benfica, fischi a San Siro",
+        "summary": "I gol di Lukébakio al 16' e Kaminski al 53' per i portoghesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/europa-league-milan-ko-con-il-benfica-fischi-a-san-siro-cronaca-e-foto_512ed9f3-3195-40a2-86c4-3b4f23f60d44.html",
+        "published_at": "2026-09-17T15:30:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: lutto per Koeman, addio alla moglie Bartina",
+        "summary": "Il messaggio commosso dell'allenatore sui social",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/calcio-lutto-per-koeman-addio-alla-moglie-bartina_49d5cc32-d0c4-4ce3-96f5-fe2c41064c8a.html",
+        "published_at": "2026-09-16T15:02:17+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 6
+  },
+  "Le Mans FC": {
+    "team": "Le Mans FC",
+    "articles_scanned": 56,
+    "flagged_articles": [
+      {
+        "title": "Europa League: Juve travolgente all'esordio, 5-0 al Nec",
+        "summary": "In gol anche Woltemade su rigore e Kolo Muani",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-juve-travolgente-allesordio-5-0-al-nec_dd3b618c-7359-4dbe-915c-14454423c628.html",
+        "published_at": "2026-09-17T20:59:07+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: riscatto Juve con goleada, Nec travolto 5-0",
+        "summary": "Woltemade e Kolo Muani si sbloccano tra gli svarioni degli olandesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-la-juventus-asfalta-5-0-il-nec_6e175d87-1b2f-479a-89bb-cc9982cc094c.html",
+        "published_at": "2026-09-17T21:03:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Inter: Stones out con la Roma, risentimento muscolare alla coscia",
+        "summary": "Nessuna lesione ma sarà rivalutato nei prossimi giorni",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/inter-stones-out-con-la-roma-risentimento-muscolare-alla-coscia_67a15b0b-b056-4f1b-b231-20fe1c44b18a.html",
+        "published_at": "2026-09-17T10:24:37+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Tuchel e 'la ferita' dei Mondiali: 'Posso solo conviverci'",
+        "summary": "Il ct dell'Inghilterra verso la Nations League, resta il rammarico del ko con l'Argentina",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/tuchel-e-la-ferita-dei-mondiali-posso-solo-conviverci_deff5716-1992-439a-abc4-aba082a45ffb.html",
+        "published_at": "2026-09-17T09:48:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: Milan ko con il Benfica, fischi a San Siro",
+        "summary": "I gol di Lukébakio al 16' e Kaminski al 53' per i portoghesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/europa-league-milan-ko-con-il-benfica-fischi-a-san-siro-cronaca-e-foto_512ed9f3-3195-40a2-86c4-3b4f23f60d44.html",
+        "published_at": "2026-09-17T15:30:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: lutto per Koeman, addio alla moglie Bartina",
+        "summary": "Il messaggio commosso dell'allenatore sui social",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/calcio-lutto-per-koeman-addio-alla-moglie-bartina_49d5cc32-d0c4-4ce3-96f5-fe2c41064c8a.html",
+        "published_at": "2026-09-16T15:02:17+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 6
+  },
+  "Newcastle United FC": {
+    "team": "Newcastle United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Nottingham Forest FC": {
+    "team": "Nottingham Forest FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique Lyonnais": {
+    "team": "Olympique Lyonnais",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris FC": {
+    "team": "Paris FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Celta de Vigo": {
+    "team": "RC Celta de Vigo",
+    "articles_scanned": 10,
+    "flagged_articles": [
+      {
+        "title": "Tuchel e 'la ferita' dei Mondiali: 'Posso solo conviverci'",
+        "summary": "Il ct dell'Inghilterra verso la Nations League, resta il rammarico del ko con l'Argentina",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/tuchel-e-la-ferita-dei-mondiali-posso-solo-conviverci_deff5716-1992-439a-abc4-aba082a45ffb.html",
+        "published_at": "2026-09-17T09:48:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "RC Strasbourg Alsace": {
+    "team": "RC Strasbourg Alsace",
+    "articles_scanned": 10,
+    "flagged_articles": [
+      {
+        "title": "Tuchel e 'la ferita' dei Mondiali: 'Posso solo conviverci'",
+        "summary": "Il ct dell'Inghilterra verso la Nations League, resta il rammarico del ko con l'Argentina",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/tuchel-e-la-ferita-dei-mondiali-posso-solo-conviverci_deff5716-1992-439a-abc4-aba082a45ffb.html",
+        "published_at": "2026-09-17T09:48:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Rayo Vallecano de Madrid": {
+    "team": "Rayo Vallecano de Madrid",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Racing Club de Santander": {
+    "team": "Real Racing Club de Santander",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SC Freiburg": {
+    "team": "SC Freiburg",
+    "articles_scanned": 14,
+    "flagged_articles": [
+      {
+        "title": "Europa League: riscatto Juve con goleada, Nec travolto 5-0",
+        "summary": "Woltemade e Kolo Muani si sbloccano tra gli svarioni degli olandesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-la-juventus-asfalta-5-0-il-nec_6e175d87-1b2f-479a-89bb-cc9982cc094c.html",
+        "published_at": "2026-09-17T21:03:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Inter: Stones out con la Roma, risentimento muscolare alla coscia",
+        "summary": "Nessuna lesione ma sarà rivalutato nei prossimi giorni",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/inter-stones-out-con-la-roma-risentimento-muscolare-alla-coscia_67a15b0b-b056-4f1b-b231-20fe1c44b18a.html",
+        "published_at": "2026-09-17T10:24:37+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: Milan ko con il Benfica, fischi a San Siro",
+        "summary": "I gol di Lukébakio al 16' e Kaminski al 53' per i portoghesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/europa-league-milan-ko-con-il-benfica-fischi-a-san-siro-cronaca-e-foto_512ed9f3-3195-40a2-86c4-3b4f23f60d44.html",
+        "published_at": "2026-09-17T15:30:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "SS Lazio": {
+    "team": "SS Lazio",
+    "articles_scanned": 29,
+    "flagged_articles": [
+      {
+        "title": "Inter: Stones out con la Roma, risentimento muscolare alla coscia",
+        "summary": "Nessuna lesione ma sarà rivalutato nei prossimi giorni",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/inter-stones-out-con-la-roma-risentimento-muscolare-alla-coscia_67a15b0b-b056-4f1b-b231-20fe1c44b18a.html",
+        "published_at": "2026-09-17T10:24:37+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Tuchel e 'la ferita' dei Mondiali: 'Posso solo conviverci'",
+        "summary": "Il ct dell'Inghilterra verso la Nations League, resta il rammarico del ko con l'Argentina",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/tuchel-e-la-ferita-dei-mondiali-posso-solo-conviverci_deff5716-1992-439a-abc4-aba082a45ffb.html",
+        "published_at": "2026-09-17T09:48:49+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: lutto per Koeman, addio alla moglie Bartina",
+        "summary": "Il messaggio commosso dell'allenatore sui social",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/16/calcio-lutto-per-koeman-addio-alla-moglie-bartina_49d5cc32-d0c4-4ce3-96f5-fe2c41064c8a.html",
+        "published_at": "2026-09-16T15:02:17+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "SV Werder Bremen": {
+    "team": "SV Werder Bremen",
+    "articles_scanned": 2,
+    "flagged_articles": [
+      {
+        "title": "Europa League: riscatto Juve con goleada, Nec travolto 5-0",
+        "summary": "Woltemade e Kolo Muani si sbloccano tra gli svarioni degli olandesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-la-juventus-asfalta-5-0-il-nec_6e175d87-1b2f-479a-89bb-cc9982cc094c.html",
+        "published_at": "2026-09-17T21:03:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Sevilla FC": {
+    "team": "Sevilla FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Stade Rennais FC 1901": {
+    "team": "Stade Rennais FC 1901",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Torino FC": {
+    "team": "Torino FC",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Tottenham Hotspur FC": {
+    "team": "Tottenham Hotspur FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Toulouse FC": {
+    "team": "Toulouse FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Udinese Calcio": {
+    "team": "Udinese Calcio",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Venezia FC": {
+    "team": "Venezia FC",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "VfB Stuttgart": {
+    "team": "VfB Stuttgart",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
