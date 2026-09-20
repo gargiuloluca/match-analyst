@@ -1,0 +1,339 @@
+{
+  "AC Milan": {
+    "team": "AC Milan",
+    "articles_scanned": 18,
+    "flagged_articles": [
+      {
+        "title": "All'Olimpico un 2-2 da spettacolo, la Roma avanti e l'Inter la riprende",
+        "summary": "Primo tempo giallorosso e doppietta di Kone, ripresa nerazzurra con due gol di Lautaro",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/19/serie-a-roma-inter-termina-2-2-cronaca-e-foto_9dee726b-13e0-4040-b6f8-fa5250cb001f.html",
+        "published_at": "2026-09-19T18:59:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "ACF Fiorentina": {
+    "team": "ACF Fiorentina",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AFC Bournemouth": {
+    "team": "AFC Bournemouth",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AJ Auxerre": {
+    "team": "AJ Auxerre",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Atalanta BC": {
+    "team": "Atalanta BC",
+    "articles_scanned": 3,
+    "flagged_articles": [
+      {
+        "title": "Atalanta, Kossounou salta la Juventus per un risentimento muscolare",
+        "summary": "Infortunio nell'allenamento mattutino a Zingonia per il difensore",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/19/atalanta-kossounou-salta-la-juventus-per-un-risentimento-muscolare_c94a042d-1afa-44cb-b70d-da492e5a4394.html",
+        "published_at": "2026-09-19T13:35:07+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Bayer 04 Leverkusen": {
+    "team": "Bayer 04 Leverkusen",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Como 1907": {
+    "team": "Como 1907",
+    "articles_scanned": 4,
+    "flagged_articles": [
+      {
+        "title": "Serie A: doppiette di Koné e Lautaro, 2-2 tra Roma e Inter nella sfida al vertice",
+        "summary": "L'argentino risponde al francese, per Lazio e Como chance di primato",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/19/serie-a-doppiette-di-kone-e-lautaro-2-2-tra-roma-e-inter-nella-sfida-al-vertice_1586b30f-7d7d-4ba9-8f93-cdbe2c73ece9.html",
+        "published_at": "2026-09-19T17:59:27+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Crystal Palace FC": {
+    "team": "Crystal Palace FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Schalke 04": {
+    "team": "FC Schalke 04",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Frosinone Calcio": {
+    "team": "Frosinone Calcio",
+    "articles_scanned": 3,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Fulham FC": {
+    "team": "Fulham FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Genoa CFC": {
+    "team": "Genoa CFC",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Getafe CF": {
+    "team": "Getafe CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Juventus FC": {
+    "team": "Juventus FC",
+    "articles_scanned": 3,
+    "flagged_articles": [
+      {
+        "title": "Atalanta, Kossounou salta la Juventus per un risentimento muscolare",
+        "summary": "Infortunio nell'allenamento mattutino a Zingonia per il difensore",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/19/atalanta-kossounou-salta-la-juventus-per-un-risentimento-muscolare_c94a042d-1afa-44cb-b70d-da492e5a4394.html",
+        "published_at": "2026-09-19T13:35:07+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Leeds United FC": {
+    "team": "Leeds United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Levante UD": {
+    "team": "Levante UD",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Lille OSC": {
+    "team": "Lille OSC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Liverpool FC": {
+    "team": "Liverpool FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester City FC": {
+    "team": "Manchester City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester United FC": {
+    "team": "Manchester United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Málaga CF": {
+    "team": "Málaga CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "OGC Nice": {
+    "team": "OGC Nice",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique de Marseille": {
+    "team": "Olympique de Marseille",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris Saint-Germain FC": {
+    "team": "Paris Saint-Germain FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Parma Calcio 1913": {
+    "team": "Parma Calcio 1913",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RB Leipzig": {
+    "team": "RB Leipzig",
+    "articles_scanned": 3,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Deportivo La Coruña": {
+    "team": "RC Deportivo La Coruña",
+    "articles_scanned": 11,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Betis Balompié": {
+    "team": "Real Betis Balompié",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Madrid CF": {
+    "team": "Real Madrid CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Sociedad de Fútbol": {
+    "team": "Real Sociedad de Fútbol",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SC Paderborn 07": {
+    "team": "SC Paderborn 07",
+    "articles_scanned": 14,
+    "flagged_articles": [
+      {
+        "title": "Serie A: il Cagliari passa a Udine grazie a Maldini, il Torino ferma il Bologna 1-1",
+        "summary": "Sardi a quota 12 in classifica. Kulenovic risponde a Bernardeschi, ancora male Skorupski",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/19/serie-a-il-cagliari-passa-a-udine-grazie-a-maldini-il-torino-ferma-il-bologna-1-1_ca97cbbb-3671-41d6-bdbc-20acbdd625df.html",
+        "published_at": "2026-09-19T14:57:57+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Atalanta, Kossounou salta la Juventus per un risentimento muscolare",
+        "summary": "Infortunio nell'allenamento mattutino a Zingonia per il difensore",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/19/atalanta-kossounou-salta-la-juventus-per-un-risentimento-muscolare_c94a042d-1afa-44cb-b70d-da492e5a4394.html",
+        "published_at": "2026-09-19T13:35:07+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: riscatto Juve con goleada, Nec travolto 5-0",
+        "summary": "Woltemade e Kolo Muani si sbloccano tra gli svarioni degli olandesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-la-juventus-asfalta-5-0-il-nec_6e175d87-1b2f-479a-89bb-cc9982cc094c.html",
+        "published_at": "2026-09-17T21:03:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "SSC Napoli": {
+    "team": "SSC Napoli",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV 07 Elversberg": {
+    "team": "SV 07 Elversberg",
+    "articles_scanned": 2,
+    "flagged_articles": [
+      {
+        "title": "Europa League: riscatto Juve con goleada, Nec travolto 5-0",
+        "summary": "Woltemade e Kolo Muani si sbloccano tra gli svarioni degli olandesi",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/17/europa-league-la-juventus-asfalta-5-0-il-nec_6e175d87-1b2f-479a-89bb-cc9982cc094c.html",
+        "published_at": "2026-09-17T21:03:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Stade Brestois 29": {
+    "team": "Stade Brestois 29",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sunderland AFC": {
+    "team": "Sunderland AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "TSG 1899 Hoffenheim": {
+    "team": "TSG 1899 Hoffenheim",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "US Lecce": {
+    "team": "US Lecce",
+    "articles_scanned": 17,
+    "flagged_articles": [
+      {
+        "title": "Atalanta, Kossounou salta la Juventus per un risentimento muscolare",
+        "summary": "Infortunio nell'allenamento mattutino a Zingonia per il difensore",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/09/19/atalanta-kossounou-salta-la-juventus-per-un-risentimento-muscolare_c94a042d-1afa-44cb-b70d-da492e5a4394.html",
+        "published_at": "2026-09-19T13:35:07+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Valencia CF": {
+    "team": "Valencia CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Villarreal CF": {
+    "team": "Villarreal CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
