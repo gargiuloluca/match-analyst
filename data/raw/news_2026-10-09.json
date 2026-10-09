@@ -1,0 +1,49 @@
+{
+  "Borussia Dortmund": {
+    "team": "Borussia Dortmund",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Málaga CF": {
+    "team": "Málaga CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique Lyonnais": {
+    "team": "Olympique Lyonnais",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RCD Espanyol de Barcelona": {
+    "team": "RCD Espanyol de Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Racing Club de Lens": {
+    "team": "Racing Club de Lens",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV Werder Bremen": {
+    "team": "SV Werder Bremen",
+    "articles_scanned": 1,
+    "flagged_articles": [
+      {
+        "title": "Serie A: il Bologna ufficializza l'acquisto dello svincolato Darmian",
+        "summary": "Prenderà il posto in lista dell'infortunato Holm, contratto fino a 30 giugno",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/serie-a-il-bologna-ufficializza-lacquisto-dello-svincolato-darmian_afedbfdc-6e8e-4ab3-8adc-fb4f6aa61079.html",
+        "published_at": "2026-10-08T15:56:27+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  }
+}

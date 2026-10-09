@@ -1,0 +1,74 @@
+[
+  {
+    "fixture_id": 564706,
+    "league": "La Liga",
+    "date": "2026-10-09T19:00:00Z",
+    "home_team": {
+      "id": 84,
+      "name": "Málaga CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 80,
+      "name": "RCD Espanyol de Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565820,
+    "league": "Bundesliga",
+    "date": "2026-10-09T18:30:00Z",
+    "home_team": {
+      "id": 4,
+      "name": "Borussia Dortmund",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 12,
+      "name": "SV Werder Bremen",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559669,
+    "league": "Ligue 1",
+    "date": "2026-10-09T18:45:00Z",
+    "home_team": {
+      "id": 546,
+      "name": "Racing Club de Lens",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 523,
+      "name": "Olympique Lyonnais",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]
