@@ -1,0 +1,468 @@
+{
+  "1. FC Union Berlin": {
+    "team": "1. FC Union Berlin",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "1. FSV Mainz 05": {
+    "team": "1. FSV Mainz 05",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ACF Fiorentina": {
+    "team": "ACF Fiorentina",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AFC Bournemouth": {
+    "team": "AFC Bournemouth",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AS Monaco FC": {
+    "team": "AS Monaco FC",
+    "articles_scanned": 25,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Fabregas 'Kean 10 giorni ko, Federazioni dovrebbero comunicare meglio'",
+        "summary": "Tecnico Como: \"Contro la Roma partita importantissima\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/calcio-fabregas-kean-10-giorni-ko-federazioni-dovrebbero-comunicare-meglio_731fe9c6-fa02-4711-b7f0-b0bdebdd0ac5.html",
+        "published_at": "2026-10-10T14:02:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "Angers SCO": {
+    "team": "Angers SCO",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Arsenal FC": {
+    "team": "Arsenal FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Aston Villa FC": {
+    "team": "Aston Villa FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Athletic Club": {
+    "team": "Athletic Club",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Bayer 04 Leverkusen": {
+    "team": "Bayer 04 Leverkusen",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Brentford FC": {
+    "team": "Brentford FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Brighton & Hove Albion FC": {
+    "team": "Brighton & Hove Albion FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Chelsea FC": {
+    "team": "Chelsea FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 3,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Deportivo Alavés": {
+    "team": "Deportivo Alavés",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Eintracht Frankfurt": {
+    "team": "Eintracht Frankfurt",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Augsburg": {
+    "team": "FC Augsburg",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Barcelona": {
+    "team": "FC Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Bayern München": {
+    "team": "FC Bayern München",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Internazionale Milano": {
+    "team": "FC Internazionale Milano",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Lorient": {
+    "team": "FC Lorient",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Frosinone Calcio": {
+    "team": "Frosinone Calcio",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Fulham FC": {
+    "team": "Fulham FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Genoa CFC": {
+    "team": "Genoa CFC",
+    "articles_scanned": 4,
+    "flagged_articles": [
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Getafe CF": {
+    "team": "Getafe CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hamburger SV": {
+    "team": "Hamburger SV",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Ipswich Town FC": {
+    "team": "Ipswich Town FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Le Havre AC": {
+    "team": "Le Havre AC",
+    "articles_scanned": 48,
+    "flagged_articles": [
+      {
+        "title": "Nuoto: Coetze realizza nuovo record del mondo sui 50 dorso",
+        "summary": "Il sudafricano chiude in 22.09, supera il primato di Kolesnikov",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/nuoto-coetze-realizza-nuovo-record-del-mondo-sui-50-dorso_4e86fd52-cb37-402b-92a9-d035b5fa248e.html",
+        "published_at": "2026-10-09T17:47:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Arriva l'annuncio ufficiale, la Turchia esonera Montella",
+        "summary": "Il tecnico italiano non è più il ct della nazionale, paga i ko in Nations League",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/arriva-lannuncio-ufficiale-la-turchia-esonera-montella_25da5528-c09d-46a6-abd6-cd52c21c3e2d.html",
+        "published_at": "2026-10-09T16:17:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: sabato alle 18 in campo Inter-Parma DIRETTA",
+        "summary": "Infortunio per l'inglese, 20 giorni ko. Contro Parma probabile Provedel fra i pali",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/serie-a-inter-parma-in-campo-sabato-alle-18-diretta_3de142c7-04e2-4b64-b000-cc44ad95cfcf.html",
+        "published_at": "2026-10-09T13:18:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: lunedì alle 18.30 in campo Atalanta-Venezia DIRETTA",
+        "summary": "Recuperato Bella-Kotchap, ma la lista degli indisponibili è ancora lunga",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/il-venezia-a-bergamo-per-iniziare-a-muovere-la-classifica_3d5ee077-f4fc-4c18-9745-518c2c7291bb.html",
+        "published_at": "2026-10-09T13:25:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 5
+  },
+  "Le Mans FC": {
+    "team": "Le Mans FC",
+    "articles_scanned": 48,
+    "flagged_articles": [
+      {
+        "title": "Nuoto: Coetze realizza nuovo record del mondo sui 50 dorso",
+        "summary": "Il sudafricano chiude in 22.09, supera il primato di Kolesnikov",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/nuoto-coetze-realizza-nuovo-record-del-mondo-sui-50-dorso_4e86fd52-cb37-402b-92a9-d035b5fa248e.html",
+        "published_at": "2026-10-09T17:47:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Arriva l'annuncio ufficiale, la Turchia esonera Montella",
+        "summary": "Il tecnico italiano non è più il ct della nazionale, paga i ko in Nations League",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/arriva-lannuncio-ufficiale-la-turchia-esonera-montella_25da5528-c09d-46a6-abd6-cd52c21c3e2d.html",
+        "published_at": "2026-10-09T16:17:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: sabato alle 18 in campo Inter-Parma DIRETTA",
+        "summary": "Infortunio per l'inglese, 20 giorni ko. Contro Parma probabile Provedel fra i pali",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/serie-a-inter-parma-in-campo-sabato-alle-18-diretta_3de142c7-04e2-4b64-b000-cc44ad95cfcf.html",
+        "published_at": "2026-10-09T13:18:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: lunedì alle 18.30 in campo Atalanta-Venezia DIRETTA",
+        "summary": "Recuperato Bella-Kotchap, ma la lista degli indisponibili è ancora lunga",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/il-venezia-a-bergamo-per-iniziare-a-muovere-la-classifica_3d5ee077-f4fc-4c18-9745-518c2c7291bb.html",
+        "published_at": "2026-10-09T13:25:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 5
+  },
+  "Leeds United FC": {
+    "team": "Leeds United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Lille OSC": {
+    "team": "Lille OSC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester United FC": {
+    "team": "Manchester United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris FC": {
+    "team": "Paris FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris Saint-Germain FC": {
+    "team": "Paris Saint-Germain FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Parma Calcio 1913": {
+    "team": "Parma Calcio 1913",
+    "articles_scanned": 2,
+    "flagged_articles": [
+      {
+        "title": "Serie A: sabato alle 18 in campo Inter-Parma DIRETTA",
+        "summary": "Infortunio per l'inglese, 20 giorni ko. Contro Parma probabile Provedel fra i pali",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/serie-a-inter-parma-in-campo-sabato-alle-18-diretta_3de142c7-04e2-4b64-b000-cc44ad95cfcf.html",
+        "published_at": "2026-10-09T13:18:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "RB Leipzig": {
+    "team": "RB Leipzig",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Rayo Vallecano de Madrid": {
+    "team": "Rayo Vallecano de Madrid",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Madrid CF": {
+    "team": "Real Madrid CF",
+    "articles_scanned": 1,
+    "flagged_articles": [
+      {
+        "title": "Nuoto: Coetze realizza nuovo record del mondo sui 50 dorso",
+        "summary": "Il sudafricano chiude in 22.09, supera il primato di Kolesnikov",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/nuoto-coetze-realizza-nuovo-record-del-mondo-sui-50-dorso_4e86fd52-cb37-402b-92a9-d035b5fa248e.html",
+        "published_at": "2026-10-09T17:47:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "SC Paderborn 07": {
+    "team": "SC Paderborn 07",
+    "articles_scanned": 15,
+    "flagged_articles": [
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "SSC Napoli": {
+    "team": "SSC Napoli",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV 07 Elversberg": {
+    "team": "SV 07 Elversberg",
+    "articles_scanned": 2,
+    "flagged_articles": [
+      {
+        "title": "Serie A: il Bologna ufficializza l'acquisto dello svincolato Darmian",
+        "summary": "Prenderà il posto in lista dell'infortunato Holm, contratto fino a 30 giugno",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/serie-a-il-bologna-ufficializza-lacquisto-dello-svincolato-darmian_afedbfdc-6e8e-4ab3-8adc-fb4f6aa61079.html",
+        "published_at": "2026-10-08T15:56:27+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Stade Brestois 29": {
+    "team": "Stade Brestois 29",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sunderland AFC": {
+    "team": "Sunderland AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "TSG 1899 Hoffenheim": {
+    "team": "TSG 1899 Hoffenheim",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Tottenham Hotspur FC": {
+    "team": "Tottenham Hotspur FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Toulouse FC": {
+    "team": "Toulouse FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "VfB Stuttgart": {
+    "team": "VfB Stuttgart",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Villarreal CF": {
+    "team": "Villarreal CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
