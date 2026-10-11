@@ -1,0 +1,563 @@
+{
+  "1. FC Köln": {
+    "team": "1. FC Köln",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AC Milan": {
+    "team": "AC Milan",
+    "articles_scanned": 18,
+    "flagged_articles": [
+      {
+        "title": "Atalanta: Raspadori verso la convocazione col Venezia",
+        "summary": "L'attaccante infortunatosi in Nazionale è tornato in gruppo: domani sessione decisiva",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/atalanta-raspadori-verso-la-convocazione-col-venezia_86eda489-a566-4f54-9daf-e9566f4b1518.html",
+        "published_at": "2026-10-10T16:54:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: il Bologna ufficializza l'acquisto dello svincolato Darmian",
+        "summary": "Prenderà il posto in lista dell'infortunato Holm, contratto fino a 30 giugno",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/serie-a-il-bologna-ufficializza-lacquisto-dello-svincolato-darmian_afedbfdc-6e8e-4ab3-8adc-fb4f6aa61079.html",
+        "published_at": "2026-10-08T15:56:27+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "AC Monza": {
+    "team": "AC Monza",
+    "articles_scanned": 18,
+    "flagged_articles": [
+      {
+        "title": "Atalanta: Raspadori verso la convocazione col Venezia",
+        "summary": "L'attaccante infortunatosi in Nazionale è tornato in gruppo: domani sessione decisiva",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/atalanta-raspadori-verso-la-convocazione-col-venezia_86eda489-a566-4f54-9daf-e9566f4b1518.html",
+        "published_at": "2026-10-10T16:54:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: il Bologna ufficializza l'acquisto dello svincolato Darmian",
+        "summary": "Prenderà il posto in lista dell'infortunato Holm, contratto fino a 30 giugno",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/serie-a-il-bologna-ufficializza-lacquisto-dello-svincolato-darmian_afedbfdc-6e8e-4ab3-8adc-fb4f6aa61079.html",
+        "published_at": "2026-10-08T15:56:27+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "AJ Auxerre": {
+    "team": "AJ Auxerre",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AS Roma": {
+    "team": "AS Roma",
+    "articles_scanned": 27,
+    "flagged_articles": [
+      {
+        "title": "Serie A: Alvini, 'vittoria Napoli meritata, rigore morbido ma passiamo oltre'",
+        "summary": "Il tecnico del Frosinone dopo il ko: \"Gara che lascia spunti per migliorare\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/serie-a-alvini-vittoria-napoli-meritata-rigore-morbido-ma-passiamo-oltre_e8bde1a6-d39c-4b6a-8758-ee563ecb19ed.html",
+        "published_at": "2026-10-10T21:47:10+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Atalanta: Raspadori verso la convocazione col Venezia",
+        "summary": "L'attaccante infortunatosi in Nazionale è tornato in gruppo: domani sessione decisiva",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/atalanta-raspadori-verso-la-convocazione-col-venezia_86eda489-a566-4f54-9daf-e9566f4b1518.html",
+        "published_at": "2026-10-10T16:54:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Fabregas 'Kean 10 giorni ko, Federazioni dovrebbero comunicare meglio'",
+        "summary": "Tecnico Como: \"Contro la Roma partita importantissima\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/calcio-fabregas-kean-10-giorni-ko-federazioni-dovrebbero-comunicare-meglio_731fe9c6-fa02-4711-b7f0-b0bdebdd0ac5.html",
+        "published_at": "2026-10-10T14:02:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 4
+  },
+  "Bologna FC 1909": {
+    "team": "Bologna FC 1909",
+    "articles_scanned": 2,
+    "flagged_articles": [
+      {
+        "title": "Serie A: il Bologna ufficializza l'acquisto dello svincolato Darmian",
+        "summary": "Prenderà il posto in lista dell'infortunato Holm, contratto fino a 30 giugno",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/serie-a-il-bologna-ufficializza-lacquisto-dello-svincolato-darmian_afedbfdc-6e8e-4ab3-8adc-fb4f6aa61079.html",
+        "published_at": "2026-10-08T15:56:27+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Borussia Mönchengladbach": {
+    "team": "Borussia Mönchengladbach",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "CA Osasuna": {
+    "team": "CA Osasuna",
+    "articles_scanned": 45,
+    "flagged_articles": [
+      {
+        "title": "Calcio: infortunio a Fabbri, cambia l'arbitro durante Como-Roma",
+        "summary": "Partita sospesa per tre minuti, a dirigere entra il quarto uomo Sozza",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/11/calcio-infortunio-a-fabbri-cambia-larbitro-durante-como-roma_b2a330fd-0c84-47d4-a635-07359f07cc79.html",
+        "published_at": "2026-10-11T12:14:33+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Atalanta: Raspadori verso la convocazione col Venezia",
+        "summary": "L'attaccante infortunatosi in Nazionale è tornato in gruppo: domani sessione decisiva",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/atalanta-raspadori-verso-la-convocazione-col-venezia_86eda489-a566-4f54-9daf-e9566f4b1518.html",
+        "published_at": "2026-10-10T16:54:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Fabregas 'Kean 10 giorni ko, Federazioni dovrebbero comunicare meglio'",
+        "summary": "Tecnico Como: \"Contro la Roma partita importantissima\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/calcio-fabregas-kean-10-giorni-ko-federazioni-dovrebbero-comunicare-meglio_731fe9c6-fa02-4711-b7f0-b0bdebdd0ac5.html",
+        "published_at": "2026-10-10T14:02:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Nuoto: Coetze realizza nuovo record del mondo sui 50 dorso",
+        "summary": "Il sudafricano chiude in 22.09, supera il primato di Kolesnikov",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/nuoto-coetze-realizza-nuovo-record-del-mondo-sui-50-dorso_4e86fd52-cb37-402b-92a9-d035b5fa248e.html",
+        "published_at": "2026-10-09T17:47:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 4
+  },
+  "Cagliari Calcio": {
+    "team": "Cagliari Calcio",
+    "articles_scanned": 3,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Como 1907": {
+    "team": "Como 1907",
+    "articles_scanned": 6,
+    "flagged_articles": [
+      {
+        "title": "Calcio: infortunio a Fabbri, cambia l'arbitro durante Como-Roma",
+        "summary": "Partita sospesa per tre minuti, a dirigere entra il quarto uomo Sozza",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/11/calcio-infortunio-a-fabbri-cambia-larbitro-durante-como-roma_b2a330fd-0c84-47d4-a635-07359f07cc79.html",
+        "published_at": "2026-10-11T12:14:33+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Fabregas 'Kean 10 giorni ko, Federazioni dovrebbero comunicare meglio'",
+        "summary": "Tecnico Como: \"Contro la Roma partita importantissima\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/calcio-fabregas-kean-10-giorni-ko-federazioni-dovrebbero-comunicare-meglio_731fe9c6-fa02-4711-b7f0-b0bdebdd0ac5.html",
+        "published_at": "2026-10-10T14:02:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "Crystal Palace FC": {
+    "team": "Crystal Palace FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ES Troyes AC": {
+    "team": "ES Troyes AC",
+    "articles_scanned": 41,
+    "flagged_articles": [
+      {
+        "title": "Calcio: infortunio a Fabbri, cambia l'arbitro durante Como-Roma",
+        "summary": "Partita sospesa per tre minuti, a dirigere entra il quarto uomo Sozza",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/11/calcio-infortunio-a-fabbri-cambia-larbitro-durante-como-roma_b2a330fd-0c84-47d4-a635-07359f07cc79.html",
+        "published_at": "2026-10-11T12:14:33+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Atalanta: Raspadori verso la convocazione col Venezia",
+        "summary": "L'attaccante infortunatosi in Nazionale è tornato in gruppo: domani sessione decisiva",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/atalanta-raspadori-verso-la-convocazione-col-venezia_86eda489-a566-4f54-9daf-e9566f4b1518.html",
+        "published_at": "2026-10-10T16:54:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Nuoto: Coetze realizza nuovo record del mondo sui 50 dorso",
+        "summary": "Il sudafricano chiude in 22.09, supera il primato di Kolesnikov",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/nuoto-coetze-realizza-nuovo-record-del-mondo-sui-50-dorso_4e86fd52-cb37-402b-92a9-d035b5fa248e.html",
+        "published_at": "2026-10-09T17:47:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Arriva l'annuncio ufficiale, la Turchia esonera Montella",
+        "summary": "Il tecnico italiano non è più il ct della nazionale, paga i ko in Nations League",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/arriva-lannuncio-ufficiale-la-turchia-esonera-montella_25da5528-c09d-46a6-abd6-cd52c21c3e2d.html",
+        "published_at": "2026-10-09T16:17:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 5
+  },
+  "Elche CF": {
+    "team": "Elche CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Everton FC": {
+    "team": "Everton FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Schalke 04": {
+    "team": "FC Schalke 04",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hull City AFC": {
+    "team": "Hull City AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Juventus FC": {
+    "team": "Juventus FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Liverpool FC": {
+    "team": "Liverpool FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester City FC": {
+    "team": "Manchester City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Nottingham Forest FC": {
+    "team": "Nottingham Forest FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "OGC Nice": {
+    "team": "OGC Nice",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique de Marseille": {
+    "team": "Olympique de Marseille",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Celta de Vigo": {
+    "team": "RC Celta de Vigo",
+    "articles_scanned": 8,
+    "flagged_articles": [
+      {
+        "title": "Arriva l'annuncio ufficiale, la Turchia esonera Montella",
+        "summary": "Il tecnico italiano non è più il ct della nazionale, paga i ko in Nations League",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/arriva-lannuncio-ufficiale-la-turchia-esonera-montella_25da5528-c09d-46a6-abd6-cd52c21c3e2d.html",
+        "published_at": "2026-10-09T16:17:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "RC Deportivo La Coruña": {
+    "team": "RC Deportivo La Coruña",
+    "articles_scanned": 8,
+    "flagged_articles": [
+      {
+        "title": "Arriva l'annuncio ufficiale, la Turchia esonera Montella",
+        "summary": "Il tecnico italiano non è più il ct della nazionale, paga i ko in Nations League",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/arriva-lannuncio-ufficiale-la-turchia-esonera-montella_25da5528-c09d-46a6-abd6-cd52c21c3e2d.html",
+        "published_at": "2026-10-09T16:17:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "RC Strasbourg Alsace": {
+    "team": "RC Strasbourg Alsace",
+    "articles_scanned": 8,
+    "flagged_articles": [
+      {
+        "title": "Arriva l'annuncio ufficiale, la Turchia esonera Montella",
+        "summary": "Il tecnico italiano non è più il ct della nazionale, paga i ko in Nations League",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/arriva-lannuncio-ufficiale-la-turchia-esonera-montella_25da5528-c09d-46a6-abd6-cd52c21c3e2d.html",
+        "published_at": "2026-10-09T16:17:20+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Real Betis Balompié": {
+    "team": "Real Betis Balompié",
+    "articles_scanned": 3,
+    "flagged_articles": [
+      {
+        "title": "Nuoto: Coetze realizza nuovo record del mondo sui 50 dorso",
+        "summary": "Il sudafricano chiude in 22.09, supera il primato di Kolesnikov",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/nuoto-coetze-realizza-nuovo-record-del-mondo-sui-50-dorso_4e86fd52-cb37-402b-92a9-d035b5fa248e.html",
+        "published_at": "2026-10-09T17:47:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Real Racing Club de Santander": {
+    "team": "Real Racing Club de Santander",
+    "articles_scanned": 3,
+    "flagged_articles": [
+      {
+        "title": "Nuoto: Coetze realizza nuovo record del mondo sui 50 dorso",
+        "summary": "Il sudafricano chiude in 22.09, supera il primato di Kolesnikov",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/nuoto-coetze-realizza-nuovo-record-del-mondo-sui-50-dorso_4e86fd52-cb37-402b-92a9-d035b5fa248e.html",
+        "published_at": "2026-10-09T17:47:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Real Sociedad de Fútbol": {
+    "team": "Real Sociedad de Fútbol",
+    "articles_scanned": 3,
+    "flagged_articles": [
+      {
+        "title": "Nuoto: Coetze realizza nuovo record del mondo sui 50 dorso",
+        "summary": "Il sudafricano chiude in 22.09, supera il primato di Kolesnikov",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/09/nuoto-coetze-realizza-nuovo-record-del-mondo-sui-50-dorso_4e86fd52-cb37-402b-92a9-d035b5fa248e.html",
+        "published_at": "2026-10-09T17:47:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "SC Freiburg": {
+    "team": "SC Freiburg",
+    "articles_scanned": 18,
+    "flagged_articles": [
+      {
+        "title": "Serie A: Alvini, 'vittoria Napoli meritata, rigore morbido ma passiamo oltre'",
+        "summary": "Il tecnico del Frosinone dopo il ko: \"Gara che lascia spunti per migliorare\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/serie-a-alvini-vittoria-napoli-meritata-rigore-morbido-ma-passiamo-oltre_e8bde1a6-d39c-4b6a-8758-ee563ecb19ed.html",
+        "published_at": "2026-10-10T21:47:10+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "SS Lazio": {
+    "team": "SS Lazio",
+    "articles_scanned": 35,
+    "flagged_articles": [
+      {
+        "title": "Serie A: Alvini, 'vittoria Napoli meritata, rigore morbido ma passiamo oltre'",
+        "summary": "Il tecnico del Frosinone dopo il ko: \"Gara che lascia spunti per migliorare\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/serie-a-alvini-vittoria-napoli-meritata-rigore-morbido-ma-passiamo-oltre_e8bde1a6-d39c-4b6a-8758-ee563ecb19ed.html",
+        "published_at": "2026-10-10T21:47:10+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Atalanta: Raspadori verso la convocazione col Venezia",
+        "summary": "L'attaccante infortunatosi in Nazionale è tornato in gruppo: domani sessione decisiva",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/atalanta-raspadori-verso-la-convocazione-col-venezia_86eda489-a566-4f54-9daf-e9566f4b1518.html",
+        "published_at": "2026-10-10T16:54:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Fabregas 'Kean 10 giorni ko, Federazioni dovrebbero comunicare meglio'",
+        "summary": "Tecnico Como: \"Contro la Roma partita importantissima\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/calcio-fabregas-kean-10-giorni-ko-federazioni-dovrebbero-comunicare-meglio_731fe9c6-fa02-4711-b7f0-b0bdebdd0ac5.html",
+        "published_at": "2026-10-10T14:02:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 4
+  },
+  "Stade Rennais FC 1901": {
+    "team": "Stade Rennais FC 1901",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "US Lecce": {
+    "team": "US Lecce",
+    "articles_scanned": 17,
+    "flagged_articles": [
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "US Sassuolo Calcio": {
+    "team": "US Sassuolo Calcio",
+    "articles_scanned": 17,
+    "flagged_articles": [
+      {
+        "title": "Genoa: contro la Fiorentina out anche Sow per lesione muscolare",
+        "summary": "De Rossi fa i conti con l'infermeria: sei gli assenti sabato nell'anticipo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/08/genoa-contro-la-fiorentina-out-anche-sow-per-lesione-muscolare_2383b52f-589c-4f2a-ade3-79656993a4a2.html",
+        "published_at": "2026-10-08T16:51:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Valencia CF": {
+    "team": "Valencia CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
