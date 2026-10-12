@@ -1,0 +1,72 @@
+{
+  "Atalanta BC": {
+    "team": "Atalanta BC",
+    "articles_scanned": 2,
+    "flagged_articles": [
+      {
+        "title": "Atalanta: Raspadori verso la convocazione col Venezia",
+        "summary": "L'attaccante infortunatosi in Nazionale è tornato in gruppo: domani sessione decisiva",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/atalanta-raspadori-verso-la-convocazione-col-venezia_86eda489-a566-4f54-9daf-e9566f4b1518.html",
+        "published_at": "2026-10-10T16:54:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Coventry City FC": {
+    "team": "Coventry City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Levante UD": {
+    "team": "Levante UD",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Newcastle United FC": {
+    "team": "Newcastle United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sevilla FC": {
+    "team": "Sevilla FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Torino FC": {
+    "team": "Torino FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Udinese Calcio": {
+    "team": "Udinese Calcio",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Venezia FC": {
+    "team": "Venezia FC",
+    "articles_scanned": 2,
+    "flagged_articles": [
+      {
+        "title": "Atalanta: Raspadori verso la convocazione col Venezia",
+        "summary": "L'attaccante infortunatosi in Nazionale è tornato in gruppo: domani sessione decisiva",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/atalanta-raspadori-verso-la-convocazione-col-venezia_86eda489-a566-4f54-9daf-e9566f4b1518.html",
+        "published_at": "2026-10-10T16:54:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  }
+}

@@ -1,0 +1,118 @@
+[
+  {
+    "fixture_id": 558579,
+    "league": "Serie A",
+    "date": "2026-10-12T16:30:00Z",
+    "home_team": {
+      "id": 102,
+      "name": "Atalanta BC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 454,
+      "name": "Venezia FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.01,
+      "draw": 14.0,
+      "away": 41.0,
+      "bookmaker": "LeoVegas (SE)"
+    }
+  },
+  {
+    "fixture_id": 558587,
+    "league": "Serie A",
+    "date": "2026-10-12T18:45:00Z",
+    "home_team": {
+      "id": 586,
+      "name": "Torino FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 115,
+      "name": "Udinese Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.5,
+      "draw": 2.85,
+      "away": 2.95,
+      "bookmaker": "LeoVegas (SE)"
+    }
+  },
+  {
+    "fixture_id": 560597,
+    "league": "Premier League",
+    "date": "2026-10-12T19:00:00Z",
+    "home_team": {
+      "id": 1076,
+      "name": "Coventry City FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 67,
+      "name": "Newcastle United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.48,
+      "draw": 3.7,
+      "away": 2.19,
+      "bookmaker": "1xBet"
+    }
+  },
+  {
+    "fixture_id": 564704,
+    "league": "La Liga",
+    "date": "2026-10-12T19:00:00Z",
+    "home_team": {
+      "id": 88,
+      "name": "Levante UD",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 559,
+      "name": "Sevilla FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.79,
+      "draw": 3.23,
+      "away": 2.79,
+      "bookmaker": "Pinnacle"
+    }
+  }
+]
