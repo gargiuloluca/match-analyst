@@ -1,0 +1,163 @@
+{
+  "Arsenal FC": {
+    "team": "Arsenal FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 7,
+    "flagged_articles": [
+      {
+        "title": "Serie A: il Venezia esonera Stroppa, Nicola in pole per la panchina",
+        "summary": "Dopo il sesto ko di fila il club lagunare licenzia l'allenatore: è il quarto in Serie A",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/13/venezia-ufficiale-lesonero-di-stroppa_c34b0f72-1e30-4bf7-91b5-882fdf536d79.html",
+        "published_at": "2026-10-13T15:21:15+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Club Brugge KV": {
+    "team": "Club Brugge KV",
+    "articles_scanned": 7,
+    "flagged_articles": [
+      {
+        "title": "Serie A: il Venezia esonera Stroppa, Nicola in pole per la panchina",
+        "summary": "Dopo il sesto ko di fila il club lagunare licenzia l'allenatore: è il quarto in Serie A",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/13/venezia-ufficiale-lesonero-di-stroppa_c34b0f72-1e30-4bf7-91b5-882fdf536d79.html",
+        "published_at": "2026-10-13T15:21:15+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "FC Barcelona": {
+    "team": "FC Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Bayern München": {
+    "team": "FC Bayern München",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Internazionale Milano": {
+    "team": "FC Internazionale Milano",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Galatasaray SK": {
+    "team": "Galatasaray SK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Lille OSC": {
+    "team": "Lille OSC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester United FC": {
+    "team": "Manchester United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "PSV": {
+    "team": "PSV",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RB Leipzig": {
+    "team": "RB Leipzig",
+    "articles_scanned": 11,
+    "flagged_articles": [
+      {
+        "title": "Champions: Leko, il Bruges vuole fare risultato contro l'Inter",
+        "summary": "Il tecnico dei belgi: 'Saremo coraggiosi e furbi, giocheremo per vincere'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/12/champions-leko-il-bruges-vuole-fare-risultato-contro-linter_d228499e-e3e2-47b9-980a-e01470806144.html",
+        "published_at": "2026-10-12T18:13:48+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: infortunio a Fabbri, cambia l'arbitro durante Como-Roma",
+        "summary": "Partita sospesa per tre minuti, a dirigere entra il quarto uomo Sozza",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/11/calcio-infortunio-a-fabbri-cambia-larbitro-durante-como-roma_b2a330fd-0c84-47d4-a635-07359f07cc79.html",
+        "published_at": "2026-10-11T12:14:33+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: Alvini, 'vittoria Napoli meritata, rigore morbido ma passiamo oltre'",
+        "summary": "Il tecnico del Frosinone dopo il ko: \"Gara che lascia spunti per migliorare\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/10/serie-a-alvini-vittoria-napoli-meritata-rigore-morbido-ma-passiamo-oltre_e8bde1a6-d39c-4b6a-8758-ee563ecb19ed.html",
+        "published_at": "2026-10-10T21:47:10+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Racing Club de Lens": {
+    "team": "Racing Club de Lens",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SK Slavia Praha": {
+    "team": "SK Slavia Praha",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SSC Napoli": {
+    "team": "SSC Napoli",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sabah FK": {
+    "team": "Sabah FK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sporting Clube de Portugal": {
+    "team": "Sporting Clube de Portugal",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Viking FK": {
+    "team": "Viking FK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Villarreal CF": {
+    "team": "Villarreal CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}

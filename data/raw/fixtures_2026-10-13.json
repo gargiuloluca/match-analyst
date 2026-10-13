@@ -1,0 +1,228 @@
+[
+  {
+    "fixture_id": 575341,
+    "league": "Champions League",
+    "date": "2026-10-13T16:45:00Z",
+    "home_team": {
+      "id": 546,
+      "name": "Racing Club de Lens",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 498,
+      "name": "Sporting Clube de Portugal",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575342,
+    "league": "Champions League",
+    "date": "2026-10-13T16:45:00Z",
+    "home_team": {
+      "id": 10233,
+      "name": "Sabah FK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 930,
+      "name": "SK Slavia Praha",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575343,
+    "league": "Champions League",
+    "date": "2026-10-13T19:00:00Z",
+    "home_team": {
+      "id": 108,
+      "name": "FC Internazionale Milano",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 851,
+      "name": "Club Brugge KV",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575344,
+    "league": "Champions League",
+    "date": "2026-10-13T19:00:00Z",
+    "home_team": {
+      "id": 610,
+      "name": "Galatasaray SK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 81,
+      "name": "FC Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575345,
+    "league": "Champions League",
+    "date": "2026-10-13T19:00:00Z",
+    "home_team": {
+      "id": 78,
+      "name": "Club Atlético de Madrid",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 66,
+      "name": "Manchester United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575346,
+    "league": "Champions League",
+    "date": "2026-10-13T19:00:00Z",
+    "home_team": {
+      "id": 57,
+      "name": "Arsenal FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 521,
+      "name": "Lille OSC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.21,
+      "draw": 6.75,
+      "away": 14.5,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575347,
+    "league": "Champions League",
+    "date": "2026-10-13T19:00:00Z",
+    "home_team": {
+      "id": 5720,
+      "name": "Viking FK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5,
+      "name": "FC Bayern München",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575348,
+    "league": "Champions League",
+    "date": "2026-10-13T19:00:00Z",
+    "home_team": {
+      "id": 721,
+      "name": "RB Leipzig",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 674,
+      "name": "PSV",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.57,
+      "draw": 4.95,
+      "away": 4.9,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575349,
+    "league": "Champions League",
+    "date": "2026-10-13T19:00:00Z",
+    "home_team": {
+      "id": 94,
+      "name": "Villarreal CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 113,
+      "name": "SSC Napoli",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]
