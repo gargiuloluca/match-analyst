@@ -1,0 +1,243 @@
+[
+  {
+    "fixture_id": 575350,
+    "league": "Champions League",
+    "date": "2026-10-14T16:45:00Z",
+    "home_team": {
+      "id": 2016,
+      "name": "LASK Linz",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 64,
+      "name": "Liverpool FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 7.6,
+      "draw": 5.25,
+      "away": 1.41,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575351,
+    "league": "Champions League",
+    "date": "2026-10-14T16:45:00Z",
+    "home_team": {
+      "id": 675,
+      "name": "Feyenoord Rotterdam",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 7397,
+      "name": "Como 1907",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.27,
+      "draw": 3.96,
+      "away": 2.19,
+      "bookmaker": "1xBet"
+    }
+  },
+  {
+    "fixture_id": 575352,
+    "league": "Champions League",
+    "date": "2026-10-14T19:00:00Z",
+    "home_team": {
+      "id": 100,
+      "name": "AS Roma",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 86,
+      "name": "Real Madrid CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.68,
+      "draw": 4.05,
+      "away": 1.97,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575353,
+    "league": "Champions League",
+    "date": "2026-10-14T19:00:00Z",
+    "home_team": {
+      "id": 65,
+      "name": "Manchester City FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 524,
+      "name": "Paris Saint-Germain FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.03,
+      "draw": 4.15,
+      "away": 3.38,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 575354,
+    "league": "Champions League",
+    "date": "2026-10-14T19:00:00Z",
+    "home_team": {
+      "id": 5721,
+      "name": "FK Bodø/Glimt",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 4,
+      "name": "Borussia Dortmund",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575355,
+    "league": "Champions League",
+    "date": "2026-10-14T19:00:00Z",
+    "home_team": {
+      "id": 58,
+      "name": "Aston Villa FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 613,
+      "name": "Fenerbahçe SK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575356,
+    "league": "Champions League",
+    "date": "2026-10-14T19:00:00Z",
+    "home_team": {
+      "id": 90,
+      "name": "Real Betis Balompié",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 503,
+      "name": "FC Porto",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575357,
+    "league": "Champions League",
+    "date": "2026-10-14T19:00:00Z",
+    "home_team": {
+      "id": 1887,
+      "name": "FK Shakhtar Donetsk",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 1899,
+      "name": "PAE AEK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575358,
+    "league": "Champions League",
+    "date": "2026-10-14T19:00:00Z",
+    "home_team": {
+      "id": 7509,
+      "name": "ŠK Slovan Bratislava",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 10,
+      "name": "VfB Stuttgart",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 7.5,
+      "draw": 5.4,
+      "away": 1.38,
+      "bookmaker": "Marathon Bet"
+    }
+  }
+]

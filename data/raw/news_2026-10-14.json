@@ -1,0 +1,121 @@
+{
+  "AS Roma": {
+    "team": "AS Roma",
+    "articles_scanned": 37,
+    "flagged_articles": [
+      {
+        "title": "Udinese: infortunio muscolare per Bayo, attacco decimato",
+        "summary": "Si aggiunge ad assenze di Gueye e Zaniolo, con Davis appena tornato ma a mezzo servizio",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/13/udinese-infortunio-muscolare-per-bayo-attacco-decimato_5ca21d83-053d-4e33-bf00-df21720af98f.html",
+        "published_at": "2026-10-13T15:02:39+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Aston Villa FC": {
+    "team": "Aston Villa FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Borussia Dortmund": {
+    "team": "Borussia Dortmund",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Como 1907": {
+    "team": "Como 1907",
+    "articles_scanned": 5,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Porto": {
+    "team": "FC Porto",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FK Bodø/Glimt": {
+    "team": "FK Bodø/Glimt",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FK Shakhtar Donetsk": {
+    "team": "FK Shakhtar Donetsk",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Fenerbahçe SK": {
+    "team": "Fenerbahçe SK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Feyenoord Rotterdam": {
+    "team": "Feyenoord Rotterdam",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "LASK Linz": {
+    "team": "LASK Linz",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Liverpool FC": {
+    "team": "Liverpool FC",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester City FC": {
+    "team": "Manchester City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "PAE AEK": {
+    "team": "PAE AEK",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris Saint-Germain FC": {
+    "team": "Paris Saint-Germain FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Betis Balompié": {
+    "team": "Real Betis Balompié",
+    "articles_scanned": 8,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Madrid CF": {
+    "team": "Real Madrid CF",
+    "articles_scanned": 8,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "VfB Stuttgart": {
+    "team": "VfB Stuttgart",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ŠK Slovan Bratislava": {
+    "team": "ŠK Slovan Bratislava",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
