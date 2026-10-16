@@ -1,0 +1,182 @@
+{
+  "1. FC Köln": {
+    "team": "1. FC Köln",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Eintracht Frankfurt": {
+    "team": "Eintracht Frankfurt",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Frosinone Calcio": {
+    "team": "Frosinone Calcio",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Le Mans FC": {
+    "team": "Le Mans FC",
+    "articles_scanned": 49,
+    "flagged_articles": [
+      {
+        "title": "Calcio: per Kone' lesione primo grado, per Dybala affaticamento",
+        "summary": "Gasperini: speriamo di riavere il francese per il Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/calcio-per-kone-lesione-primo-grado-per-dybala-affaticamento_04648ed5-1796-4184-95c9-1c83121da78f.html",
+        "published_at": "2026-10-16T11:55:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: Conceicao, 'litigio? falso, solo un colpo alla panchina'",
+        "summary": "Il portoghese, 'bella risposta Juve nella ripresa, ripartiamo da qui'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/europa-league-conceicao-litigio-falso-solo-un-colpo-alla-panchina_54cc439f-4a79-476d-90da-b43160f1987e.html",
+        "published_at": "2026-10-15T21:41:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "spogliatoio"
+        ]
+      },
+      {
+        "title": "Europa League: la Juve sorride a Vigo, Kolo Muani rimonta al 92'",
+        "summary": "I bianconeri battono il Celta 2-1, ancora a segno anche Woltemade. Tripletta Cisse rilancia il Milan, poker a Salisburgo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/europa-league-celta-vigo-juventus-1-2_a8c2f086-dd79-4c79-9e3c-c88fc635d9a9.html",
+        "published_at": "2026-10-15T21:17:18+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "++ Europa League: Celta Vigo-Juve 1-2 ++",
+        "summary": "Vittoria in rimonta dei bianconeri grazie ad un gol di Kolo Muani nel recupero",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/-europa-league-celta-vigo-juve-1-2-_e66374a3-c491-45a4-8185-092bcfd19497.html",
+        "published_at": "2026-10-15T20:54:45+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Cagliari, Murelli in panchina al posto dello squalificato Pisacane",
+        "summary": "Deiola pronto a riprendere il suo posto nell'undici iniziale",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/cagliari-murelli-in-panchina-al-posto-dello-squalificato-pisacane_a16aa91a-4ac8-4d9b-a053-55310347c414.html",
+        "published_at": "2026-10-15T17:50:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      },
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Sconfitta amara per la Roma, avanti 3-1 il Real Madrid la ribalta in otto minuti: finisce 4-3",
+        "summary": "Mourinho osannato dai 70 mila dell'Olimpico sorride per un incredibile 4-3, Konè si fa male",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/14/sconfitta-amara-per-la-roma-avanti-3-1-il-real-madrid-la-ribalta-in-otto-minuti_d32e57f1-7e06-4727-a272-394e02130a10.html",
+        "published_at": "2026-10-15T11:21:25+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Lecce; stop per Ilic, ha lesione al retto femorale",
+        "summary": "Da valutare i tempi di recupero per il centrocampista",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/13/lecce-stop-per-ilic-ha-lesione-al-retto-femorale_0841005c-6be2-4af6-9f90-9ab793a99fb1.html",
+        "published_at": "2026-10-13T15:13:29+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: Spalletti e Pisacane squalificati per un turno, stop anche per Malen",
+        "summary": "I tecnici espulsi per una lite al termine di Cagliari-Juventus",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/13/serie-a-spalletti-e-pisacane-squalificati-per-un-turno-stop-anche-per-malen_8d43561e-3bbb-4112-8d0c-d26a5a726c44.html",
+        "published_at": "2026-10-13T14:45:36+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 9
+  },
+  "Levante UD": {
+    "team": "Levante UD",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Deportivo La Coruña": {
+    "team": "RC Deportivo La Coruña",
+    "articles_scanned": 8,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Toulouse FC": {
+    "team": "Toulouse FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "US Sassuolo Calcio": {
+    "team": "US Sassuolo Calcio",
+    "articles_scanned": 18,
+    "flagged_articles": [
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "LaLiga: Vinicius Jr squalificato per 4 giornate, salterà il Clásico",
+        "summary": "Il brasiliano era stato espulso sabato contro il Villarreal",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/14/vinicius-jr-squalificato-per-4-giornate-saltera-il-clasico_7f00f773-0c58-474e-91ab-53f18d896ee7.html",
+        "published_at": "2026-10-14T19:11:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      },
+      {
+        "title": "Udinese: infortunio muscolare per Bayo, attacco decimato",
+        "summary": "Si aggiunge ad assenze di Gueye e Zaniolo, con Davis appena tornato ma a mezzo servizio",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/13/udinese-infortunio-muscolare-per-bayo-attacco-decimato_5ca21d83-053d-4e33-bf00-df21720af98f.html",
+        "published_at": "2026-10-13T15:02:39+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: Spalletti e Pisacane squalificati per un turno, stop anche per Malen",
+        "summary": "I tecnici espulsi per una lite al termine di Cagliari-Juventus",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/13/serie-a-spalletti-e-pisacane-squalificati-per-un-turno-stop-anche-per-malen_8d43561e-3bbb-4112-8d0c-d26a5a726c44.html",
+        "published_at": "2026-10-13T14:45:36+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 4
+  }
+}

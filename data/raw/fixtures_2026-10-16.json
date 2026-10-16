@@ -1,0 +1,108 @@
+[
+  {
+    "fixture_id": 558573,
+    "league": "Serie A",
+    "date": "2026-10-16T18:45:00Z",
+    "home_team": {
+      "id": 470,
+      "name": "Frosinone Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 471,
+      "name": "US Sassuolo Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564716,
+    "league": "La Liga",
+    "date": "2026-10-16T19:00:00Z",
+    "home_team": {
+      "id": 560,
+      "name": "RC Deportivo La Coruña",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 88,
+      "name": "Levante UD",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565828,
+    "league": "Bundesliga",
+    "date": "2026-10-16T18:30:00Z",
+    "home_team": {
+      "id": 19,
+      "name": "Eintracht Frankfurt",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 1,
+      "name": "1. FC Köln",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.88,
+      "draw": 4.3,
+      "away": 3.78,
+      "bookmaker": "Pinnacle"
+    }
+  },
+  {
+    "fixture_id": 559661,
+    "league": "Ligue 1",
+    "date": "2026-10-16T18:45:00Z",
+    "home_team": {
+      "id": 535,
+      "name": "Le Mans FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 511,
+      "name": "Toulouse FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.18,
+      "draw": 3.68,
+      "away": 2.26,
+      "bookmaker": "Pinnacle"
+    }
+  }
+]
