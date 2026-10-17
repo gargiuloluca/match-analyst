@@ -1,0 +1,389 @@
+{
+  "1. FC Union Berlin": {
+    "team": "1. FC Union Berlin",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "1. FSV Mainz 05": {
+    "team": "1. FSV Mainz 05",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AS Roma": {
+    "team": "AS Roma",
+    "articles_scanned": 25,
+    "flagged_articles": [
+      {
+        "title": "Calcio: per Kone' lesione primo grado, per Dybala affaticamento",
+        "summary": "Gasperini: speriamo di riavere il francese per il Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/calcio-per-kone-lesione-primo-grado-per-dybala-affaticamento_04648ed5-1796-4184-95c9-1c83121da78f.html",
+        "published_at": "2026-10-16T11:55:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "LaLiga: Vinicius Jr squalificato per 4 giornate, salterà il Clásico",
+        "summary": "Il brasiliano era stato espulso sabato contro il Villarreal",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/14/vinicius-jr-squalificato-per-4-giornate-saltera-il-clasico_7f00f773-0c58-474e-91ab-53f18d896ee7.html",
+        "published_at": "2026-10-14T19:11:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Aston Villa FC": {
+    "team": "Aston Villa FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Athletic Club": {
+    "team": "Athletic Club",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Bologna FC 1909": {
+    "team": "Bologna FC 1909",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Borussia Dortmund": {
+    "team": "Borussia Dortmund",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Brentford FC": {
+    "team": "Brentford FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Chelsea FC": {
+    "team": "Chelsea FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ES Troyes AC": {
+    "team": "ES Troyes AC",
+    "articles_scanned": 37,
+    "flagged_articles": [
+      {
+        "title": "Nicola, 'equilibrio e identità per la salvezza, nessuno ci regala niente'",
+        "summary": "Gm Antonelli, 'l'esonero di Stroppa decisione sofferta ma ragionata, non istintiva'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/nicola-equilibrio-e-identita-per-la-salvezza-nessuno-ci-regala-niente_e3ac93c5-f21b-423e-a614-e35d322a4863.html",
+        "published_at": "2026-10-16T12:53:06+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      },
+      {
+        "title": "Calcio: per Kone' lesione primo grado, per Dybala affaticamento",
+        "summary": "Gasperini: speriamo di riavere il francese per il Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/calcio-per-kone-lesione-primo-grado-per-dybala-affaticamento_04648ed5-1796-4184-95c9-1c83121da78f.html",
+        "published_at": "2026-10-16T11:55:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: Conceicao, 'litigio? falso, solo un colpo alla panchina'",
+        "summary": "Il portoghese, 'bella risposta Juve nella ripresa, ripartiamo da qui'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/europa-league-conceicao-litigio-falso-solo-un-colpo-alla-panchina_54cc439f-4a79-476d-90da-b43160f1987e.html",
+        "published_at": "2026-10-15T21:41:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "spogliatoio"
+        ]
+      },
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "LaLiga: Vinicius Jr squalificato per 4 giornate, salterà il Clásico",
+        "summary": "Il brasiliano era stato espulso sabato contro il Villarreal",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/14/vinicius-jr-squalificato-per-4-giornate-saltera-il-clasico_7f00f773-0c58-474e-91ab-53f18d896ee7.html",
+        "published_at": "2026-10-14T19:11:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 5
+  },
+  "Elche CF": {
+    "team": "Elche CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Everton FC": {
+    "team": "Everton FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Augsburg": {
+    "team": "FC Augsburg",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Barcelona": {
+    "team": "FC Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Bayern München": {
+    "team": "FC Bayern München",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Internazionale Milano": {
+    "team": "FC Internazionale Milano",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Schalke 04": {
+    "team": "FC Schalke 04",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Fulham FC": {
+    "team": "Fulham FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Genoa CFC": {
+    "team": "Genoa CFC",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hamburger SV": {
+    "team": "Hamburger SV",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hull City AFC": {
+    "team": "Hull City AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Ipswich Town FC": {
+    "team": "Ipswich Town FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Lille OSC": {
+    "team": "Lille OSC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Liverpool FC": {
+    "team": "Liverpool FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester City FC": {
+    "team": "Manchester City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Newcastle United FC": {
+    "team": "Newcastle United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris Saint-Germain FC": {
+    "team": "Paris Saint-Germain FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RB Leipzig": {
+    "team": "RB Leipzig",
+    "articles_scanned": 3,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Strasbourg Alsace": {
+    "team": "RC Strasbourg Alsace",
+    "articles_scanned": 8,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RCD Espanyol de Barcelona": {
+    "team": "RCD Espanyol de Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Racing Club de Lens": {
+    "team": "Racing Club de Lens",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Betis Balompié": {
+    "team": "Real Betis Balompié",
+    "articles_scanned": 8,
+    "flagged_articles": [
+      {
+        "title": "Sconfitta amara per la Roma, avanti 3-1 il Real Madrid la ribalta in otto minuti: finisce 4-3",
+        "summary": "Mourinho osannato dai 70 mila dell'Olimpico sorride per un incredibile 4-3, Konè si fa male",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/14/sconfitta-amara-per-la-roma-avanti-3-1-il-real-madrid-la-ribalta-in-otto-minuti_d32e57f1-7e06-4727-a272-394e02130a10.html",
+        "published_at": "2026-10-15T11:21:25+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "LaLiga: Vinicius Jr squalificato per 4 giornate, salterà il Clásico",
+        "summary": "Il brasiliano era stato espulso sabato contro il Villarreal",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/14/vinicius-jr-squalificato-per-4-giornate-saltera-il-clasico_7f00f773-0c58-474e-91ab-53f18d896ee7.html",
+        "published_at": "2026-10-14T19:11:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "SC Paderborn 07": {
+    "team": "SC Paderborn 07",
+    "articles_scanned": 28,
+    "flagged_articles": [
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Sconfitta amara per la Roma, avanti 3-1 il Real Madrid la ribalta in otto minuti: finisce 4-3",
+        "summary": "Mourinho osannato dai 70 mila dell'Olimpico sorride per un incredibile 4-3, Konè si fa male",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/14/sconfitta-amara-per-la-roma-avanti-3-1-il-real-madrid-la-ribalta-in-otto-minuti_d32e57f1-7e06-4727-a272-394e02130a10.html",
+        "published_at": "2026-10-15T11:21:25+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "SSC Napoli": {
+    "team": "SSC Napoli",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV 07 Elversberg": {
+    "team": "SV 07 Elversberg",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV Werder Bremen": {
+    "team": "SV Werder Bremen",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Stade Brestois 29": {
+    "team": "Stade Brestois 29",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Valencia CF": {
+    "team": "Valencia CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Venezia FC": {
+    "team": "Venezia FC",
+    "articles_scanned": 5,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "VfB Stuttgart": {
+    "team": "VfB Stuttgart",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Villarreal CF": {
+    "team": "Villarreal CF",
+    "articles_scanned": 1,
+    "flagged_articles": [
+      {
+        "title": "LaLiga: Vinicius Jr squalificato per 4 giornate, salterà il Clásico",
+        "summary": "Il brasiliano era stato espulso sabato contro il Villarreal",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/14/vinicius-jr-squalificato-per-4-giornate-saltera-il-clasico_7f00f773-0c58-474e-91ab-53f18d896ee7.html",
+        "published_at": "2026-10-14T19:11:11+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  }
+}

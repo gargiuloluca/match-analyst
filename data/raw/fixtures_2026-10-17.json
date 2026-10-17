@@ -1,0 +1,556 @@
+[
+  {
+    "fixture_id": 558575,
+    "league": "Serie A",
+    "date": "2026-10-17T13:00:00Z",
+    "home_team": {
+      "id": 454,
+      "name": "Venezia FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 113,
+      "name": "SSC Napoli",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 558571,
+    "league": "Serie A",
+    "date": "2026-10-17T16:00:00Z",
+    "home_team": {
+      "id": 103,
+      "name": "Bologna FC 1909",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 108,
+      "name": "FC Internazionale Milano",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 558572,
+    "league": "Serie A",
+    "date": "2026-10-17T18:45:00Z",
+    "home_team": {
+      "id": 100,
+      "name": "AS Roma",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 107,
+      "name": "Genoa CFC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.59,
+      "draw": 4.02,
+      "away": 6.33,
+      "bookmaker": "Pinnacle"
+    }
+  },
+  {
+    "fixture_id": 560603,
+    "league": "Premier League",
+    "date": "2026-10-17T11:30:00Z",
+    "home_team": {
+      "id": 62,
+      "name": "Everton FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 61,
+      "name": "Chelsea FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.95,
+      "draw": 2.65,
+      "away": 2.35,
+      "bookmaker": "Winamax (FR)"
+    }
+  },
+  {
+    "fixture_id": 560602,
+    "league": "Premier League",
+    "date": "2026-10-17T14:00:00Z",
+    "home_team": {
+      "id": 63,
+      "name": "Fulham FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 322,
+      "name": "Hull City AFC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.65,
+      "draw": 3.8,
+      "away": 4.8,
+      "bookmaker": "888sport"
+    }
+  },
+  {
+    "fixture_id": 560610,
+    "league": "Premier League",
+    "date": "2026-10-17T14:00:00Z",
+    "home_team": {
+      "id": 65,
+      "name": "Manchester City FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 349,
+      "name": "Ipswich Town FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.25,
+      "draw": 6.5,
+      "away": 9.0,
+      "bookmaker": "888sport"
+    }
+  },
+  {
+    "fixture_id": 560611,
+    "league": "Premier League",
+    "date": "2026-10-17T14:00:00Z",
+    "home_team": {
+      "id": 402,
+      "name": "Brentford FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 64,
+      "name": "Liverpool FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.25,
+      "draw": 3.55,
+      "away": 2.65,
+      "bookmaker": "Winamax (FR)"
+    }
+  },
+  {
+    "fixture_id": 560607,
+    "league": "Premier League",
+    "date": "2026-10-17T16:30:00Z",
+    "home_team": {
+      "id": 67,
+      "name": "Newcastle United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 58,
+      "name": "Aston Villa FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.25,
+      "draw": 3.5,
+      "away": 2.9,
+      "bookmaker": "888sport"
+    }
+  },
+  {
+    "fixture_id": 564710,
+    "league": "La Liga",
+    "date": "2026-10-17T12:00:00Z",
+    "home_team": {
+      "id": 80,
+      "name": "RCD Espanyol de Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 78,
+      "name": "Club Atlético de Madrid",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564708,
+    "league": "La Liga",
+    "date": "2026-10-17T14:15:00Z",
+    "home_team": {
+      "id": 94,
+      "name": "Villarreal CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 285,
+      "name": "Elche CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.42,
+      "draw": 5.42,
+      "away": 6.91,
+      "bookmaker": "Pinnacle"
+    }
+  },
+  {
+    "fixture_id": 564713,
+    "league": "La Liga",
+    "date": "2026-10-17T16:30:00Z",
+    "home_team": {
+      "id": 90,
+      "name": "Real Betis Balompié",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 81,
+      "name": "FC Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 564711,
+    "league": "La Liga",
+    "date": "2026-10-17T19:00:00Z",
+    "home_team": {
+      "id": 95,
+      "name": "Valencia CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 77,
+      "name": "Athletic Club",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.38,
+      "draw": 3.36,
+      "away": 2.3,
+      "bookmaker": "Pinnacle"
+    }
+  },
+  {
+    "fixture_id": 565821,
+    "league": "Bundesliga",
+    "date": "2026-10-17T13:30:00Z",
+    "home_team": {
+      "id": 28,
+      "name": "1. FC Union Berlin",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 4,
+      "name": "Borussia Dortmund",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565822,
+    "league": "Bundesliga",
+    "date": "2026-10-17T13:30:00Z",
+    "home_team": {
+      "id": 7,
+      "name": "Hamburger SV",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 10,
+      "name": "VfB Stuttgart",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.98,
+      "draw": 4.16,
+      "away": 1.86,
+      "bookmaker": "Pinnacle"
+    }
+  },
+  {
+    "fixture_id": 565823,
+    "league": "Bundesliga",
+    "date": "2026-10-17T13:30:00Z",
+    "home_team": {
+      "id": 12,
+      "name": "SV Werder Bremen",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 29,
+      "name": "SC Paderborn 07",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565824,
+    "league": "Bundesliga",
+    "date": "2026-10-17T13:30:00Z",
+    "home_team": {
+      "id": 719,
+      "name": "SV 07 Elversberg",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 16,
+      "name": "FC Augsburg",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565829,
+    "league": "Bundesliga",
+    "date": "2026-10-17T13:30:00Z",
+    "home_team": {
+      "id": 6,
+      "name": "FC Schalke 04",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 15,
+      "name": "1. FSV Mainz 05",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565825,
+    "league": "Bundesliga",
+    "date": "2026-10-17T16:30:00Z",
+    "home_team": {
+      "id": 5,
+      "name": "FC Bayern München",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 721,
+      "name": "RB Leipzig",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559662,
+    "league": "Ligue 1",
+    "date": "2026-10-17T15:15:00Z",
+    "home_team": {
+      "id": 576,
+      "name": "RC Strasbourg Alsace",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 524,
+      "name": "Paris Saint-Germain FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.0,
+      "draw": 3.7,
+      "away": 3.0,
+      "bookmaker": "Winamax (DE)"
+    }
+  },
+  {
+    "fixture_id": 559659,
+    "league": "Ligue 1",
+    "date": "2026-10-17T18:45:00Z",
+    "home_team": {
+      "id": 531,
+      "name": "ES Troyes AC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 546,
+      "name": "Racing Club de Lens",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 559660,
+    "league": "Ligue 1",
+    "date": "2026-10-17T18:45:00Z",
+    "home_team": {
+      "id": 521,
+      "name": "Lille OSC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 512,
+      "name": "Stade Brestois 29",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]
