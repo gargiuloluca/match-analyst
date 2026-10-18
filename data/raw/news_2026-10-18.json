@@ -1,0 +1,591 @@
+{
+  "AC Milan": {
+    "team": "AC Milan",
+    "articles_scanned": 11,
+    "flagged_articles": [
+      {
+        "title": "Cagliari, Murelli in panchina al posto dello squalificato Pisacane",
+        "summary": "Deiola pronto a riprendere il suo posto nell'undici iniziale",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/cagliari-murelli-in-panchina-al-posto-dello-squalificato-pisacane_a16aa91a-4ac8-4d9b-a053-55310347c414.html",
+        "published_at": "2026-10-15T17:50:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "ACF Fiorentina": {
+    "team": "ACF Fiorentina",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AFC Bournemouth": {
+    "team": "AFC Bournemouth",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AJ Auxerre": {
+    "team": "AJ Auxerre",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AS Monaco FC": {
+    "team": "AS Monaco FC",
+    "articles_scanned": 28,
+    "flagged_articles": [
+      {
+        "title": "Serie A: Lecce corsaro in Friuli, Udinese ko 3-0 e in piena crisi",
+        "summary": "In gol Gaspar, N'Dri e Siebert. Runjaic in bilico, solo 1 punto nelle ultime 6",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/18/serie-a-lecce-corsaro-in-friuli-udinese-ko-3-0-e-in-piena-crisi_c39d7938-f175-49c3-9b46-962b862b7190.html",
+        "published_at": "2026-10-18T12:25:47+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Atalanta; Raspadori fuori due settimane, ancora problemi al bicipite femorale",
+        "summary": "Stesso infortunio riportato il 28 settembre scorso in Nazionale a Bursa contro la Turchia",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/calcio-atalanta-raspadori-fuori-due-settimane-ancora-problemi-al-bicipite-femorale_2d6b760c-0507-4808-88fa-3be622198df6.html",
+        "published_at": "2026-10-17T12:56:52+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: per Kone' lesione primo grado, per Dybala affaticamento",
+        "summary": "Gasperini: speriamo di riavere il francese per il Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/calcio-per-kone-lesione-primo-grado-per-dybala-affaticamento_04648ed5-1796-4184-95c9-1c83121da78f.html",
+        "published_at": "2026-10-16T11:55:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 4
+  },
+  "Angers SCO": {
+    "team": "Angers SCO",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Arsenal FC": {
+    "team": "Arsenal FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Atalanta BC": {
+    "team": "Atalanta BC",
+    "articles_scanned": 5,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Atalanta; Raspadori fuori due settimane, ancora problemi al bicipite femorale",
+        "summary": "Stesso infortunio riportato il 28 settembre scorso in Nazionale a Bursa contro la Turchia",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/calcio-atalanta-raspadori-fuori-due-settimane-ancora-problemi-al-bicipite-femorale_2d6b760c-0507-4808-88fa-3be622198df6.html",
+        "published_at": "2026-10-17T12:56:52+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Bayer 04 Leverkusen": {
+    "team": "Bayer 04 Leverkusen",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Borussia Mönchengladbach": {
+    "team": "Borussia Mönchengladbach",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Brighton & Hove Albion FC": {
+    "team": "Brighton & Hove Albion FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "CA Osasuna": {
+    "team": "CA Osasuna",
+    "articles_scanned": 43,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Atalanta; Raspadori fuori due settimane, ancora problemi al bicipite femorale",
+        "summary": "Stesso infortunio riportato il 28 settembre scorso in Nazionale a Bursa contro la Turchia",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/calcio-atalanta-raspadori-fuori-due-settimane-ancora-problemi-al-bicipite-femorale_2d6b760c-0507-4808-88fa-3be622198df6.html",
+        "published_at": "2026-10-17T12:56:52+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A, Juventus-Lazio in campo domenica alle 20.45 DIRETTA",
+        "summary": "Tecnico sul tandem Woltemade-Kolo Muani, 'è uno dei dilemmi che ho'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/serie-a-juventus-lazio-in-campo-domenica-alle-20.45-diretta_02c6a963-1886-4a93-92ec-be0857426a7b.html",
+        "published_at": "2026-10-17T16:39:53+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: per Kone' lesione primo grado, per Dybala affaticamento",
+        "summary": "Gasperini: speriamo di riavere il francese per il Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/calcio-per-kone-lesione-primo-grado-per-dybala-affaticamento_04648ed5-1796-4184-95c9-1c83121da78f.html",
+        "published_at": "2026-10-16T11:55:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: Conceicao, 'litigio? falso, solo un colpo alla panchina'",
+        "summary": "Il portoghese, 'bella risposta Juve nella ripresa, ripartiamo da qui'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/europa-league-conceicao-litigio-falso-solo-un-colpo-alla-panchina_54cc439f-4a79-476d-90da-b43160f1987e.html",
+        "published_at": "2026-10-15T21:41:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "spogliatoio"
+        ]
+      },
+      {
+        "title": "Cagliari, Murelli in panchina al posto dello squalificato Pisacane",
+        "summary": "Deiola pronto a riprendere il suo posto nell'undici iniziale",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/cagliari-murelli-in-panchina-al-posto-dello-squalificato-pisacane_a16aa91a-4ac8-4d9b-a053-55310347c414.html",
+        "published_at": "2026-10-15T17:50:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 5
+  },
+  "Como 1907": {
+    "team": "Como 1907",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Crystal Palace FC": {
+    "team": "Crystal Palace FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Deportivo Alavés": {
+    "team": "Deportivo Alavés",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Lorient": {
+    "team": "FC Lorient",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Juventus FC": {
+    "team": "Juventus FC",
+    "articles_scanned": 1,
+    "flagged_articles": [
+      {
+        "title": "Serie A, Juventus-Lazio in campo domenica alle 20.45 DIRETTA",
+        "summary": "Tecnico sul tandem Woltemade-Kolo Muani, 'è uno dei dilemmi che ho'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/serie-a-juventus-lazio-in-campo-domenica-alle-20.45-diretta_02c6a963-1886-4a93-92ec-be0857426a7b.html",
+        "published_at": "2026-10-17T16:39:53+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Le Havre AC": {
+    "team": "Le Havre AC",
+    "articles_scanned": 45,
+    "flagged_articles": [
+      {
+        "title": "Serie A: Lecce corsaro in Friuli, Udinese ko 3-0 e in piena crisi",
+        "summary": "In gol Gaspar, N'Dri e Siebert. Runjaic in bilico, solo 1 punto nelle ultime 6",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/18/serie-a-lecce-corsaro-in-friuli-udinese-ko-3-0-e-in-piena-crisi_c39d7938-f175-49c3-9b46-962b862b7190.html",
+        "published_at": "2026-10-18T12:25:47+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: Adams rilancia il Venezia, Napoli battuto 1-0",
+        "summary": "Nicola arriva e porta ai lagunari i primi punti, altro ko per Allegri",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/serie-a-adams-rilancia-il-venezia-napoli-battuto-1-0_b1745edb-128a-42f6-8265-b65eaf4c1106.html",
+        "published_at": "2026-10-17T14:55:19+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Atalanta; Raspadori fuori due settimane, ancora problemi al bicipite femorale",
+        "summary": "Stesso infortunio riportato il 28 settembre scorso in Nazionale a Bursa contro la Turchia",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/calcio-atalanta-raspadori-fuori-due-settimane-ancora-problemi-al-bicipite-femorale_2d6b760c-0507-4808-88fa-3be622198df6.html",
+        "published_at": "2026-10-17T12:56:52+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A, Juventus-Lazio in campo domenica alle 20.45 DIRETTA",
+        "summary": "Tecnico sul tandem Woltemade-Kolo Muani, 'è uno dei dilemmi che ho'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/serie-a-juventus-lazio-in-campo-domenica-alle-20.45-diretta_02c6a963-1886-4a93-92ec-be0857426a7b.html",
+        "published_at": "2026-10-17T16:39:53+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: per Kone' lesione primo grado, per Dybala affaticamento",
+        "summary": "Gasperini: speriamo di riavere il francese per il Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/calcio-per-kone-lesione-primo-grado-per-dybala-affaticamento_04648ed5-1796-4184-95c9-1c83121da78f.html",
+        "published_at": "2026-10-16T11:55:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: Conceicao, 'litigio? falso, solo un colpo alla panchina'",
+        "summary": "Il portoghese, 'bella risposta Juve nella ripresa, ripartiamo da qui'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/europa-league-conceicao-litigio-falso-solo-un-colpo-alla-panchina_54cc439f-4a79-476d-90da-b43160f1987e.html",
+        "published_at": "2026-10-15T21:41:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "spogliatoio"
+        ]
+      },
+      {
+        "title": "Europa League: la Juve sorride a Vigo, Kolo Muani rimonta al 92'",
+        "summary": "I bianconeri battono il Celta 2-1, ancora a segno anche Woltemade. Tripletta Cisse rilancia il Milan, poker a Salisburgo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/europa-league-celta-vigo-juventus-1-2_a8c2f086-dd79-4c79-9e3c-c88fc635d9a9.html",
+        "published_at": "2026-10-15T21:17:18+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "++ Europa League: Celta Vigo-Juve 1-2 ++",
+        "summary": "Vittoria in rimonta dei bianconeri grazie ad un gol di Kolo Muani nel recupero",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/-europa-league-celta-vigo-juve-1-2-_e66374a3-c491-45a4-8185-092bcfd19497.html",
+        "published_at": "2026-10-15T20:54:45+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Cagliari, Murelli in panchina al posto dello squalificato Pisacane",
+        "summary": "Deiola pronto a riprendere il suo posto nell'undici iniziale",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/cagliari-murelli-in-panchina-al-posto-dello-squalificato-pisacane_a16aa91a-4ac8-4d9b-a053-55310347c414.html",
+        "published_at": "2026-10-15T17:50:22+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      },
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 10
+  },
+  "Leeds United FC": {
+    "team": "Leeds United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester United FC": {
+    "team": "Manchester United FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Málaga CF": {
+    "team": "Málaga CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Nottingham Forest FC": {
+    "team": "Nottingham Forest FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "OGC Nice": {
+    "team": "OGC Nice",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique Lyonnais": {
+    "team": "Olympique Lyonnais",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Olympique de Marseille": {
+    "team": "Olympique de Marseille",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris FC": {
+    "team": "Paris FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Celta de Vigo": {
+    "team": "RC Celta de Vigo",
+    "articles_scanned": 7,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Atalanta; Raspadori fuori due settimane, ancora problemi al bicipite femorale",
+        "summary": "Stesso infortunio riportato il 28 settembre scorso in Nazionale a Bursa contro la Turchia",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/calcio-atalanta-raspadori-fuori-due-settimane-ancora-problemi-al-bicipite-femorale_2d6b760c-0507-4808-88fa-3be622198df6.html",
+        "published_at": "2026-10-17T12:56:52+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Real Madrid CF": {
+    "team": "Real Madrid CF",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Racing Club de Santander": {
+    "team": "Real Racing Club de Santander",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Sociedad de Fútbol": {
+    "team": "Real Sociedad de Fútbol",
+    "articles_scanned": 4,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SC Freiburg": {
+    "team": "SC Freiburg",
+    "articles_scanned": 24,
+    "flagged_articles": [
+      {
+        "title": "Napoli nuovo scivolone, con Nicola Venezia conquista la prima vittoria",
+        "summary": "Adams segna e Stankovic ipnotizza De Bruyne dal dischetto: finisce 1-0",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/napoli-nuovo-scivolone-con-nicola-venezia-conquista-la-prima-vittoria_2ed8a220-3cb7-4cd9-8d78-8fc22a67c37f.html",
+        "published_at": "2026-10-17T15:18:39+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: Napoli nuovo scivolone, con Nicola Venezia conquista la prima vittoria",
+        "summary": "Adams segna e Stankovic ipnotizza De Bruyne dal dischetto: finisce 1-0",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/serie-a-venezia-napoli-1-0_4b9dbd4b-e40f-450f-9e4c-2fc17932d705.html",
+        "published_at": "2026-10-17T20:51:37+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Atalanta; Raspadori fuori due settimane, ancora problemi al bicipite femorale",
+        "summary": "Stesso infortunio riportato il 28 settembre scorso in Nazionale a Bursa contro la Turchia",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/calcio-atalanta-raspadori-fuori-due-settimane-ancora-problemi-al-bicipite-femorale_2d6b760c-0507-4808-88fa-3be622198df6.html",
+        "published_at": "2026-10-17T12:56:52+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 4
+  },
+  "SS Lazio": {
+    "team": "SS Lazio",
+    "articles_scanned": 25,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Atalanta; Raspadori fuori due settimane, ancora problemi al bicipite femorale",
+        "summary": "Stesso infortunio riportato il 28 settembre scorso in Nazionale a Bursa contro la Turchia",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/17/calcio-atalanta-raspadori-fuori-due-settimane-ancora-problemi-al-bicipite-femorale_2d6b760c-0507-4808-88fa-3be622198df6.html",
+        "published_at": "2026-10-17T12:56:52+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Nicola, 'equilibrio e identità per la salvezza, nessuno ci regala niente'",
+        "summary": "Gm Antonelli, 'l'esonero di Stroppa decisione sofferta ma ragionata, non istintiva'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/nicola-equilibrio-e-identita-per-la-salvezza-nessuno-ci-regala-niente_e3ac93c5-f21b-423e-a614-e35d322a4863.html",
+        "published_at": "2026-10-16T12:53:06+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      },
+      {
+        "title": "Calcio: per Kone' lesione primo grado, per Dybala affaticamento",
+        "summary": "Gasperini: speriamo di riavere il francese per il Sassuolo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/calcio-per-kone-lesione-primo-grado-per-dybala-affaticamento_04648ed5-1796-4184-95c9-1c83121da78f.html",
+        "published_at": "2026-10-16T11:55:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Europa League: la Juve sorride a Vigo, Kolo Muani rimonta al 92'",
+        "summary": "I bianconeri battono il Celta 2-1, ancora a segno anche Woltemade. Tripletta Cisse rilancia il Milan, poker a Salisburgo",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/europa-league-celta-vigo-juventus-1-2_a8c2f086-dd79-4c79-9e3c-c88fc635d9a9.html",
+        "published_at": "2026-10-15T21:17:18+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 5
+  },
+  "Sevilla FC": {
+    "team": "Sevilla FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Stade Rennais FC 1901": {
+    "team": "Stade Rennais FC 1901",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sunderland AFC": {
+    "team": "Sunderland AFC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "TSG 1899 Hoffenheim": {
+    "team": "TSG 1899 Hoffenheim",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "US Lecce": {
+    "team": "US Lecce",
+    "articles_scanned": 15,
+    "flagged_articles": [
+      {
+        "title": "Serie A, Juventus-Lazio in campo domenica alle 20.45 DIRETTA",
+        "summary": "Tecnico sul tandem Woltemade-Kolo Muani, 'è uno dei dilemmi che ho'",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/16/serie-a-juventus-lazio-in-campo-domenica-alle-20.45-diretta_02c6a963-1886-4a93-92ec-be0857426a7b.html",
+        "published_at": "2026-10-17T16:39:53+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Ancora un infortunio nel Napoli, Neres si ferma per tre settimane",
+        "summary": "Ha riportato una lesione di basso grado del muscolo semimembranoso della coscia destra.",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/15/ancora-un-infortunio-nel-napoli-neres-si-ferma-per-tre-settimane_341defb9-476d-421e-8610-d0bc02d95178.html",
+        "published_at": "2026-10-15T14:55:34+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "Udinese Calcio": {
+    "team": "Udinese Calcio",
+    "articles_scanned": 3,
+    "flagged_articles": [
+      {
+        "title": "Serie A: Lecce corsaro in Friuli, Udinese ko 3-0 e in piena crisi",
+        "summary": "In gol Gaspar, N'Dri e Siebert. Runjaic in bilico, solo 1 punto nelle ultime 6",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/18/serie-a-lecce-corsaro-in-friuli-udinese-ko-3-0-e-in-piena-crisi_c39d7938-f175-49c3-9b46-962b862b7190.html",
+        "published_at": "2026-10-18T12:25:47+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  }
+}
