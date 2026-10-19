@@ -1,0 +1,113 @@
+[
+  {
+    "fixture_id": 558576,
+    "league": "Serie A",
+    "date": "2026-10-19T16:30:00Z",
+    "home_team": {
+      "id": 5911,
+      "name": "AC Monza",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 104,
+      "name": "Cagliari Calcio",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 558578,
+    "league": "Serie A",
+    "date": "2026-10-19T18:45:00Z",
+    "home_team": {
+      "id": 112,
+      "name": "Parma Calcio 1913",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 586,
+      "name": "Torino FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.41,
+      "draw": 3.07,
+      "away": 2.45,
+      "bookmaker": "Pinnacle"
+    }
+  },
+  {
+    "fixture_id": 560606,
+    "league": "Premier League",
+    "date": "2026-10-19T19:00:00Z",
+    "home_team": {
+      "id": 73,
+      "name": "Tottenham Hotspur FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 1076,
+      "name": "Coventry City FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.55,
+      "draw": 4.5,
+      "away": 6.1,
+      "bookmaker": "Marathon Bet"
+    }
+  },
+  {
+    "fixture_id": 564717,
+    "league": "La Liga",
+    "date": "2026-10-19T19:00:00Z",
+    "home_team": {
+      "id": 82,
+      "name": "Getafe CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 87,
+      "name": "Rayo Vallecano de Madrid",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.17,
+      "draw": 2.92,
+      "away": 2.7,
+      "bookmaker": "Pinnacle"
+    }
+  }
+]

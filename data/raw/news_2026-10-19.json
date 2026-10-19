@@ -1,0 +1,61 @@
+{
+  "AC Monza": {
+    "team": "AC Monza",
+    "articles_scanned": 7,
+    "flagged_articles": [
+      {
+        "title": "Zoma infortunato deve operarsi, l'azzurro rientra nel 2027",
+        "summary": "L'attaccante del Norimberga salterà le gare di Nations League",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/19/zoma-infortunato-deve-operarsi-lazzurro-rientra-nel-2027_0688bcb7-db0e-40e9-8bc5-797ac7556be9.html",
+        "published_at": "2026-10-19T13:45:05+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Cagliari Calcio": {
+    "team": "Cagliari Calcio",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Coventry City FC": {
+    "team": "Coventry City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Getafe CF": {
+    "team": "Getafe CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Parma Calcio 1913": {
+    "team": "Parma Calcio 1913",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Rayo Vallecano de Madrid": {
+    "team": "Rayo Vallecano de Madrid",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Torino FC": {
+    "team": "Torino FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Tottenham Hotspur FC": {
+    "team": "Tottenham Hotspur FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
