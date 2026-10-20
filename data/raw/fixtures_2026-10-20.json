@@ -1,0 +1,233 @@
+[
+  {
+    "fixture_id": 575359,
+    "league": "Champions League",
+    "date": "2026-10-20T16:45:00Z",
+    "home_team": {
+      "id": 10233,
+      "name": "Sabah FK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 4,
+      "name": "Borussia Dortmund",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 10.0,
+      "draw": 6.25,
+      "away": 1.31,
+      "bookmaker": "Coolbet"
+    }
+  },
+  {
+    "fixture_id": 575360,
+    "league": "Champions League",
+    "date": "2026-10-20T16:45:00Z",
+    "home_team": {
+      "id": 613,
+      "name": "Fenerbahçe SK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 930,
+      "name": "SK Slavia Praha",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575361,
+    "league": "Champions League",
+    "date": "2026-10-20T19:00:00Z",
+    "home_team": {
+      "id": 65,
+      "name": "Manchester City FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 1899,
+      "name": "PAE AEK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575362,
+    "league": "Champions League",
+    "date": "2026-10-20T19:00:00Z",
+    "home_team": {
+      "id": 10,
+      "name": "VfB Stuttgart",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 78,
+      "name": "Club Atlético de Madrid",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575363,
+    "league": "Champions League",
+    "date": "2026-10-20T19:00:00Z",
+    "home_team": {
+      "id": 64,
+      "name": "Liverpool FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 94,
+      "name": "Villarreal CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.52,
+      "draw": 4.66,
+      "away": 5.89,
+      "bookmaker": "GTbets"
+    }
+  },
+  {
+    "fixture_id": 575364,
+    "league": "Champions League",
+    "date": "2026-10-20T19:00:00Z",
+    "home_team": {
+      "id": 100,
+      "name": "AS Roma",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 7509,
+      "name": "ŠK Slovan Bratislava",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.16,
+      "draw": 9.72,
+      "away": 22.5,
+      "bookmaker": "GTbets"
+    }
+  },
+  {
+    "fixture_id": 575365,
+    "league": "Champions League",
+    "date": "2026-10-20T19:00:00Z",
+    "home_team": {
+      "id": 503,
+      "name": "FC Porto",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 674,
+      "name": "PSV",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575366,
+    "league": "Champions League",
+    "date": "2026-10-20T19:00:00Z",
+    "home_team": {
+      "id": 113,
+      "name": "SSC Napoli",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5721,
+      "name": "FK Bodø/Glimt",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575367,
+    "league": "Champions League",
+    "date": "2026-10-20T19:00:00Z",
+    "home_team": {
+      "id": 524,
+      "name": "Paris Saint-Germain FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 81,
+      "name": "FC Barcelona",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]

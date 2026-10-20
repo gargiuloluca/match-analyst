@@ -1,0 +1,131 @@
+{
+  "AS Roma": {
+    "team": "AS Roma",
+    "articles_scanned": 30,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Napoli; ricaduta dal precedente infortunio per Alisson",
+        "summary": "Lesione distrattiva di medio grado del bicipite femorale sinistro per il brasiliano",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/19/calcio-napoli-ricaduta-dal-precedente-infortunio-per-alisson_c9672d8e-9d49-4ec5-b8cd-e1e277771722.html",
+        "published_at": "2026-10-19T13:39:06+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Serie A: Lecce corsaro in Friuli, Udinese ko 3-0 e in piena crisi",
+        "summary": "In gol Gaspar, N'Dri e Siebert. Runjaic in bilico, quinta sconfitta consecutiva",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/18/serie-a-lecce-corsaro-in-friuli-udinese-ko-3-0-e-in-piena-crisi_c39d7938-f175-49c3-9b46-962b862b7190.html",
+        "published_at": "2026-10-18T12:48:40+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "Borussia Dortmund": {
+    "team": "Borussia Dortmund",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Barcelona": {
+    "team": "FC Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Porto": {
+    "team": "FC Porto",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FK Bodø/Glimt": {
+    "team": "FK Bodø/Glimt",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Fenerbahçe SK": {
+    "team": "Fenerbahçe SK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Liverpool FC": {
+    "team": "Liverpool FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester City FC": {
+    "team": "Manchester City FC",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "PAE AEK": {
+    "team": "PAE AEK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "PSV": {
+    "team": "PSV",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Paris Saint-Germain FC": {
+    "team": "Paris Saint-Germain FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SK Slavia Praha": {
+    "team": "SK Slavia Praha",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SSC Napoli": {
+    "team": "SSC Napoli",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Sabah FK": {
+    "team": "Sabah FK",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "VfB Stuttgart": {
+    "team": "VfB Stuttgart",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Villarreal CF": {
+    "team": "Villarreal CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "ŠK Slovan Bratislava": {
+    "team": "ŠK Slovan Bratislava",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
