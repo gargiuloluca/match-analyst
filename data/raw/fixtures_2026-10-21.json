@@ -1,0 +1,277 @@
+[
+  {
+    "fixture_id": 564685,
+    "league": "La Liga",
+    "date": "2026-10-21T18:00:00Z",
+    "home_team": {
+      "id": 88,
+      "name": "Levante UD",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 77,
+      "name": "Athletic Club",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.5,
+      "draw": 3.4,
+      "away": 2.05,
+      "bookmaker": "Winamax (DE)"
+    }
+  },
+  {
+    "fixture_id": 575368,
+    "league": "Champions League",
+    "date": "2026-10-21T16:45:00Z",
+    "home_team": {
+      "id": 7397,
+      "name": "Como 1907",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 66,
+      "name": "Manchester United FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.5,
+      "draw": 3.92,
+      "away": 2.77,
+      "bookmaker": "1xBet"
+    }
+  },
+  {
+    "fixture_id": 575369,
+    "league": "Champions League",
+    "date": "2026-10-21T16:45:00Z",
+    "home_team": {
+      "id": 521,
+      "name": "Lille OSC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 610,
+      "name": "Galatasaray SK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 2.25,
+      "draw": 3.7,
+      "away": 3.19,
+      "bookmaker": "Pinnacle"
+    }
+  },
+  {
+    "fixture_id": 575370,
+    "league": "Champions League",
+    "date": "2026-10-21T19:00:00Z",
+    "home_team": {
+      "id": 86,
+      "name": "Real Madrid CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 721,
+      "name": "RB Leipzig",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.26,
+      "draw": 7.25,
+      "away": 9.68,
+      "bookmaker": "GTbets"
+    }
+  },
+  {
+    "fixture_id": 575371,
+    "league": "Champions League",
+    "date": "2026-10-21T19:00:00Z",
+    "home_team": {
+      "id": 108,
+      "name": "FC Internazionale Milano",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 1887,
+      "name": "FK Shakhtar Donetsk",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575372,
+    "league": "Champions League",
+    "date": "2026-10-21T19:00:00Z",
+    "home_team": {
+      "id": 5,
+      "name": "FC Bayern München",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 57,
+      "name": "Arsenal FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575373,
+    "league": "Champions League",
+    "date": "2026-10-21T19:00:00Z",
+    "home_team": {
+      "id": 851,
+      "name": "Club Brugge KV",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 546,
+      "name": "Racing Club de Lens",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 575374,
+    "league": "Champions League",
+    "date": "2026-10-21T19:00:00Z",
+    "home_team": {
+      "id": 58,
+      "name": "Aston Villa FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5720,
+      "name": "Viking FK",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.26,
+      "draw": 7.06,
+      "away": 12.1,
+      "bookmaker": "1xBet"
+    }
+  },
+  {
+    "fixture_id": 575375,
+    "league": "Champions League",
+    "date": "2026-10-21T19:00:00Z",
+    "home_team": {
+      "id": 498,
+      "name": "Sporting Clube de Portugal",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 2016,
+      "name": "LASK Linz",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.22,
+      "draw": 6.5,
+      "away": 9.5,
+      "bookmaker": "Betclic (FR)"
+    }
+  },
+  {
+    "fixture_id": 575376,
+    "league": "Champions League",
+    "date": "2026-10-21T19:00:00Z",
+    "home_team": {
+      "id": 90,
+      "name": "Real Betis Balompié",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 675,
+      "name": "Feyenoord Rotterdam",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.65,
+      "draw": 4.5,
+      "away": 4.5,
+      "bookmaker": "Codere (IT)"
+    }
+  }
+]
