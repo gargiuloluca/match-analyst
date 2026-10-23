@@ -1,0 +1,93 @@
+{
+  "AC Monza": {
+    "team": "AC Monza",
+    "articles_scanned": 15,
+    "flagged_articles": [
+      {
+        "title": "Germania: il Bayern Monaco perde Diaz, fuori 4-6 settimane",
+        "summary": "Infortunio muscolare serio per l'attaccante colombiano",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/germania-il-bayern-monaco-perde-diaz-fuori-4-6-settimane_3e04cb46-c853-4037-9736-5c5d95372518.html",
+        "published_at": "2026-10-22T18:11:16+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
+        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
+        "published_at": "2026-10-22T13:46:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      },
+      {
+        "title": "Atalanta: distrazione al retto femorale per Kolasinac",
+        "summary": "Fino a due settimane i tempi di recupero, il difensore è uscito dopo 20 minuti col Milan",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/20/atalanta-distrazione-al-retto-femorale-per-kolasinac_d1f4d05d-039e-43f4-a8a8-c8b8b849490e.html",
+        "published_at": "2026-10-20T14:45:35+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Borussia Mönchengladbach": {
+    "team": "Borussia Mönchengladbach",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Deportivo Alavés": {
+    "team": "Deportivo Alavés",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Ipswich Town FC": {
+    "team": "Ipswich Town FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Málaga CF": {
+    "team": "Málaga CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Nottingham Forest FC": {
+    "team": "Nottingham Forest FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "OGC Nice": {
+    "team": "OGC Nice",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Stade Brestois 29": {
+    "team": "Stade Brestois 29",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Torino FC": {
+    "team": "Torino FC",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "VfB Stuttgart": {
+    "team": "VfB Stuttgart",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}

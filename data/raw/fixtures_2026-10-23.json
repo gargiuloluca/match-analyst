@@ -1,0 +1,132 @@
+[
+  {
+    "fixture_id": 558567,
+    "league": "Serie A",
+    "date": "2026-10-23T18:45:00Z",
+    "home_team": {
+      "id": 586,
+      "name": "Torino FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 5911,
+      "name": "AC Monza",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 560620,
+    "league": "Premier League",
+    "date": "2026-10-23T19:00:00Z",
+    "home_team": {
+      "id": 349,
+      "name": "Ipswich Town FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 351,
+      "name": "Nottingham Forest FC",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 3.02,
+      "draw": 3.44,
+      "away": 2.29,
+      "bookmaker": "MyBookie.ag"
+    }
+  },
+  {
+    "fixture_id": 564719,
+    "league": "La Liga",
+    "date": "2026-10-23T19:00:00Z",
+    "home_team": {
+      "id": 263,
+      "name": "Deportivo Alavés",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 84,
+      "name": "Málaga CF",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  },
+  {
+    "fixture_id": 565833,
+    "league": "Bundesliga",
+    "date": "2026-10-23T18:30:00Z",
+    "home_team": {
+      "id": 10,
+      "name": "VfB Stuttgart",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 18,
+      "name": "Borussia Mönchengladbach",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {
+      "home": 1.36,
+      "draw": 5.98,
+      "away": 7.57,
+      "bookmaker": "Pinnacle"
+    }
+  },
+  {
+    "fixture_id": 559654,
+    "league": "Ligue 1",
+    "date": "2026-10-23T18:45:00Z",
+    "home_team": {
+      "id": 512,
+      "name": "Stade Brestois 29",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "away_team": {
+      "id": 522,
+      "name": "OGC Nice",
+      "form": {
+        "points_last5": 0,
+        "goal_diff_last5": 0,
+        "matches_analyzed": 0
+      }
+    },
+    "odds": {}
+  }
+]
