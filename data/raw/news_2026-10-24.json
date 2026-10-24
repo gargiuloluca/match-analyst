@@ -1,0 +1,448 @@
+{
+  "1. FC Köln": {
+    "team": "1. FC Köln",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "1. FC Union Berlin": {
+    "team": "1. FC Union Berlin",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "1. FSV Mainz 05": {
+    "team": "1. FSV Mainz 05",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "AS Roma": {
+    "team": "AS Roma",
+    "articles_scanned": 26,
+    "flagged_articles": [
+      {
+        "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
+        "summary": "Il tecnico del Bayern debilitato da infezione virale, soccorso in elicottero",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/calcio-paura-per-kompany-collassa-in-allenamento-ed-e-ricoverato-in-ospedale_ea36c21a-d0a5-46c9-a442-6164e0e8fe88.html",
+        "published_at": "2026-10-23T16:09:16+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Conference: uno-due Ajax nel finale, Atalanta ko anche in Europa",
+        "summary": "Arokodare e Ouazane decisivi tra 87' e 93': i bergamaschi reclamano un rigore su Zalewski",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-uno-due-ajax-nel-finale-atalanta-ko-anche-in-europa_ded0fafa-c0a7-49ca-a975-feaf837f72bc.html",
+        "published_at": "2026-10-22T21:32:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Conference League: l'Ajax passa due volte nel finale, Atalanta ko",
+        "summary": "L'incontro deciso dalle reti di Tolou e Ouazane nella ripresa",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-league-lajax-passa-due-volte-nel-finale-atalanta-ko_9a5f6150-1743-4089-80ad-ca0df5320df8.html",
+        "published_at": "2026-10-22T20:56:12+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Arsenal FC": {
+    "team": "Arsenal FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Aston Villa FC": {
+    "team": "Aston Villa FC",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Bologna FC 1909": {
+    "team": "Bologna FC 1909",
+    "articles_scanned": 4,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
+        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
+        "published_at": "2026-10-22T13:46:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Borussia Dortmund": {
+    "team": "Borussia Dortmund",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Cagliari Calcio": {
+    "team": "Cagliari Calcio",
+    "articles_scanned": 4,
+    "flagged_articles": [
+      {
+        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
+        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
+        "published_at": "2026-10-22T13:46:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Chelsea FC": {
+    "team": "Chelsea FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Club Atlético de Madrid": {
+    "team": "Club Atlético de Madrid",
+    "articles_scanned": 3,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Como 1907": {
+    "team": "Como 1907",
+    "articles_scanned": 5,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Coventry City FC": {
+    "team": "Coventry City FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Eintracht Frankfurt": {
+    "team": "Eintracht Frankfurt",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Elche CF": {
+    "team": "Elche CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Everton FC": {
+    "team": "Everton FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Augsburg": {
+    "team": "FC Augsburg",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "FC Schalke 04": {
+    "team": "FC Schalke 04",
+    "articles_scanned": 1,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Fulham FC": {
+    "team": "Fulham FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Hamburger SV": {
+    "team": "Hamburger SV",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Manchester City FC": {
+    "team": "Manchester City FC",
+    "articles_scanned": 3,
+    "flagged_articles": [
+      {
+        "title": "Premier League: Manchester United, Carrick resta per il Bournemouth ma rischia l'esonero",
+        "summary": "In pole per la sostituzione ci sarebbe anche Antonio Conte",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/premier-manchester-utd-carrick-resta-per-il-bournemouth-ma-rischia-lesonero_261ed048-e00b-4792-a3be-92470ab2c457.html",
+        "published_at": "2026-10-23T11:18:10+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      }
+    ],
+    "high_impact_count": 1
+  },
+  "Paris FC": {
+    "team": "Paris FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Parma Calcio 1913": {
+    "team": "Parma Calcio 1913",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RB Leipzig": {
+    "team": "RB Leipzig",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "RC Deportivo La Coruña": {
+    "team": "RC Deportivo La Coruña",
+    "articles_scanned": 5,
+    "flagged_articles": [
+      {
+        "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
+        "summary": "Il giocatore si era infortunato in Champions contro lo Slovan Bratislava",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/roma-lesione-di-alto-grado-per-pellegrini-stop-di-circa-due-mesi_6bbfd4d5-716e-47ac-a24a-93dfe87d3a41.html",
+        "published_at": "2026-10-22T15:41:42+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Sampdoria: D'Angelo è il nuovo allenatore blucerchiato",
+        "summary": "Sostituisce l'esonerato Corradi, la squadra è fanalino di coda della serie B",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/sampdoria-dangelo-e-il-nuovo-allenatore-blucerchiato_761f2c9e-9734-4762-ba08-63dfa2d318ed.html",
+        "published_at": "2026-10-22T14:18:31+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      }
+    ],
+    "high_impact_count": 2
+  },
+  "RCD Espanyol de Barcelona": {
+    "team": "RCD Espanyol de Barcelona",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Racing Club de Lens": {
+    "team": "Racing Club de Lens",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Rayo Vallecano de Madrid": {
+    "team": "Rayo Vallecano de Madrid",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Real Racing Club de Santander": {
+    "team": "Real Racing Club de Santander",
+    "articles_scanned": 2,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SC Paderborn 07": {
+    "team": "SC Paderborn 07",
+    "articles_scanned": 23,
+    "flagged_articles": [
+      {
+        "title": "Venezia: Nicola, 'col Genoa corti e compatti, siamo ancora ultimi'",
+        "summary": "'Conosciamo l'obiettivo'. Sulla via del rientro Busio e Bella-Kotchap",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/venezia-nicola-col-genoa-corti-e-compatti-siamo-ancora-ultimi_d29785fd-4c1b-4ae3-9248-1977116702fa.html",
+        "published_at": "2026-10-24T12:32:47+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Premier League: Manchester United, Carrick resta per il Bournemouth ma rischia l'esonero",
+        "summary": "In pole per la sostituzione ci sarebbe anche Antonio Conte",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/premier-manchester-utd-carrick-resta-per-il-bournemouth-ma-rischia-lesonero_261ed048-e00b-4792-a3be-92470ab2c457.html",
+        "published_at": "2026-10-23T11:18:10+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      },
+      {
+        "title": "Conference: uno-due Ajax nel finale, Atalanta ko anche in Europa",
+        "summary": "Arokodare e Ouazane decisivi tra 87' e 93': i bergamaschi reclamano un rigore su Zalewski",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-uno-due-ajax-nel-finale-atalanta-ko-anche-in-europa_ded0fafa-c0a7-49ca-a975-feaf837f72bc.html",
+        "published_at": "2026-10-22T21:32:55+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Germania: il Bayern Monaco perde Diaz, fuori 4-6 settimane",
+        "summary": "Infortunio muscolare serio per l'attaccante colombiano",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/germania-il-bayern-monaco-perde-diaz-fuori-4-6-settimane_3e04cb46-c853-4037-9736-5c5d95372518.html",
+        "published_at": "2026-10-22T18:11:16+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Sampdoria: D'Angelo è il nuovo allenatore blucerchiato",
+        "summary": "Sostituisce l'esonerato Corradi, la squadra è fanalino di coda della serie B",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/sampdoria-dangelo-e-il-nuovo-allenatore-blucerchiato_761f2c9e-9734-4762-ba08-63dfa2d318ed.html",
+        "published_at": "2026-10-22T14:18:31+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "panchina"
+        ]
+      }
+    ],
+    "high_impact_count": 5
+  },
+  "SS Lazio": {
+    "team": "SS Lazio",
+    "articles_scanned": 35,
+    "flagged_articles": [
+      {
+        "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
+        "summary": "Il tecnico del Bayern debilitato da infezione virale, soccorso in elicottero",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/calcio-paura-per-kompany-collassa-in-allenamento-ed-e-ricoverato-in-ospedale_ea36c21a-d0a5-46c9-a442-6164e0e8fe88.html",
+        "published_at": "2026-10-23T16:09:16+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Conference League: l'Ajax passa due volte nel finale, Atalanta ko",
+        "summary": "L'incontro deciso dalle reti di Tolou e Ouazane nella ripresa",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-league-lajax-passa-due-volte-nel-finale-atalanta-ko_9a5f6150-1743-4089-80ad-ca0df5320df8.html",
+        "published_at": "2026-10-22T20:56:12+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Isaksen 'questa Lazio può fare qualcosa di importante'",
+        "summary": "L'esterno danese: \"Nello spogliatoio atmosfera bellissima, Gattuso presente per tutti\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/isaksen-questa-lazio-puo-fare-qualcosa-di-importante_d19d5f38-5ede-4f55-bdfe-9e324416ff7b.html",
+        "published_at": "2026-10-22T16:12:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "spogliatoio"
+        ]
+      },
+      {
+        "title": "Milan: nessuna lesione per Ramos, risonanza negativa",
+        "summary": "Chukwueze ha iniziato le infiltrazioni, rivalutato tra 15 giorni",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/milan-nessuna-lesione-per-ramos-risonanza-negativa_2af57c38-3993-4aa9-ad84-05c5a3c9cf2b.html",
+        "published_at": "2026-10-22T15:42:15+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
+        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
+        "published_at": "2026-10-22T13:46:23+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "squalifica"
+        ]
+      }
+    ],
+    "high_impact_count": 5
+  },
+  "SSC Napoli": {
+    "team": "SSC Napoli",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV 07 Elversberg": {
+    "team": "SV 07 Elversberg",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "SV Werder Bremen": {
+    "team": "SV Werder Bremen",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Tottenham Hotspur FC": {
+    "team": "Tottenham Hotspur FC",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "US Sassuolo Calcio": {
+    "team": "US Sassuolo Calcio",
+    "articles_scanned": 15,
+    "flagged_articles": [
+      {
+        "title": "Venezia: Nicola, 'col Genoa corti e compatti, siamo ancora ultimi'",
+        "summary": "'Conosciamo l'obiettivo'. Sulla via del rientro Busio e Bella-Kotchap",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/venezia-nicola-col-genoa-corti-e-compatti-siamo-ancora-ultimi_d29785fd-4c1b-4ae3-9248-1977116702fa.html",
+        "published_at": "2026-10-24T12:32:47+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Germania: il Bayern Monaco perde Diaz, fuori 4-6 settimane",
+        "summary": "Infortunio muscolare serio per l'attaccante colombiano",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/germania-il-bayern-monaco-perde-diaz-fuori-4-6-settimane_3e04cb46-c853-4037-9736-5c5d95372518.html",
+        "published_at": "2026-10-22T18:11:16+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "infortunio"
+        ]
+      },
+      {
+        "title": "Isaksen 'questa Lazio può fare qualcosa di importante'",
+        "summary": "L'esterno danese: \"Nello spogliatoio atmosfera bellissima, Gattuso presente per tutti\"",
+        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/isaksen-questa-lazio-puo-fare-qualcosa-di-importante_d19d5f38-5ede-4f55-bdfe-9e324416ff7b.html",
+        "published_at": "2026-10-22T16:12:56+00:00",
+        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
+        "categories": [
+          "spogliatoio"
+        ]
+      }
+    ],
+    "high_impact_count": 3
+  },
+  "Valencia CF": {
+    "team": "Valencia CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  },
+  "Villarreal CF": {
+    "team": "Villarreal CF",
+    "articles_scanned": 0,
+    "flagged_articles": [],
+    "high_impact_count": 0
+  }
+}
