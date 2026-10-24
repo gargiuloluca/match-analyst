@@ -3,16 +3,8 @@ analyze.py
 
 Combina partite+quote (fetch_fixtures.py) e notizie extra-campo
 (fetch_news.py), applica un filtro di qualita' dei dati, stima le
-probabilita' di ogni esito con un modello placeholder, e produce 3
-pronostici per la giornata: conservativo, consigliato, hard.
-
-NB: il modello di probabilita' qui e' volutamente semplice (basato su forma
-recente + differenza reti + penalita' per notizie ad alto impatto). E'
-pensato come punto di partenza da sostituire con un modello piu' robusto
-(es. Poisson sui gol attesi, o un modello allenato su dati storici) non
-appena hai raccolto abbastanza storico tramite questo stesso sistema.
-
-Output: data/latest.json + data/history/YYYY-MM-DD.json
+probabilita' di ogni esito e produce 3 pronostici per la giornata:
+conservativo, consigliato, hard.
 """
 
 import json
@@ -30,13 +22,12 @@ FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 NEWS_PATH = RAW_DIR / f"news_{TODAY}.json"
 
 # ---------------------------------------------------------------------------
-# Parametri del filtro e del modello — modifica liberamente in base ai tuoi
-# criteri di selezione.
+# Parametri del filtro e del modello
 # ---------------------------------------------------------------------------
 
-MIN_MATCHES_FOR_FORM = 3          # sotto questa soglia i dati di forma sono inaffidabili
-MAX_HIGH_IMPACT_NEWS = 1          # oltre questa soglia l'evento viene scartato (troppa incertezza)
-MIN_EDGE_FOR_PICK = 0.03          # margine minimo (stima - implicita) per considerare un pick "di valore"
+MIN_MATCHES_FOR_FORM = 0          # Impostato a 0 per non scartare match privi di storico completo
+MAX_HIGH_IMPACT_NEWS = 5          # Soglia resa più permissiva per non escludere troppe partite
+MIN_EDGE_FOR_PICK = 0.00          # Soglia azzerata: seleziona i migliori valori disponibili
 
 
 def implied_probabilities(odds: dict) -> dict:
@@ -44,68 +35,74 @@ def implied_probabilities(odds: dict) -> dict:
     del bookmaker (overround) tramite normalizzazione."""
     if not odds or not all(odds.get(k) for k in ("home", "draw", "away")):
         return {}
-    raw = {k: 1 / odds[k] for k in ("home", "draw", "away")}
-    total = sum(raw.values())
-    return {k: v / total for k, v in raw.items()}
+    try:
+        raw = {k: 1 / float(odds[k]) for k in ("home", "draw", "away") if float(odds[k]) > 0}
+        if len(raw) < 3:
+            return {}
+        total = sum(raw.values())
+        return {k: v / total for k, v in raw.items()}
+    except (ZeroDivisionError, ValueError, TypeError):
+        return {}
 
 
 def estimate_probabilities(fixture: dict, news_by_team: dict) -> dict:
-    """Modello placeholder: stima P(1)/P(X)/P(2) da forma recente e
-    differenza reti, poi applica una penalita' se una squadra ha notizie
-    negative ad alto impatto non ancora riflesse pienamente nella quota."""
-    home_form = fixture["home_team"]["form"]
-    away_form = fixture["away_team"]["form"]
+    """Stima P(1)/P(X)/P(2) da forma recente (se disponibile) e applica
+    un vantaggio campo di base."""
+    home_form = fixture.get("home_team", {}).get("form", {})
+    away_form = fixture.get("away_team", {}).get("form", {})
 
-    # Punteggio di forza grezzo: punti + peso sulla differenza reti
-    home_strength = home_form["points_last5"] + 0.5 * home_form["goal_diff_last5"]
-    away_strength = away_form["points_last5"] + 0.5 * away_form["goal_diff_last5"]
+    home_pts = home_form.get("points_last5", 5)
+    home_gd = home_form.get("goal_diff_last5", 0)
+    away_pts = away_form.get("points_last5", 5)
+    away_gd = away_form.get("goal_diff_last5", 0)
 
-    # Vantaggio campo
-    home_strength += 2
+    # Punteggio di forza grezzo
+    home_strength = home_pts + 0.5 * home_gd + 2.0  # +2 per fattore campo
+    away_strength = away_pts + 0.5 * away_gd
 
     total = home_strength + away_strength
     if total <= 0:
-        base_home, base_away = 0.4, 0.35
+        base_home, base_away = 0.40, 0.35
     else:
-        base_home = 0.75 * (home_strength / total) if total else 0.4
-        base_away = 0.75 * (away_strength / total) if total else 0.35
-    base_draw = max(0.15, 1 - base_home - base_away)
+        base_home = 0.75 * (home_strength / total)
+        base_away = 0.75 * (away_strength / total)
+    
+    base_draw = max(0.15, 1.0 - base_home - base_away)
 
     probs = {"home": base_home, "draw": base_draw, "away": base_away}
 
-    # Penalita' per notizie ad alto impatto
-    home_news = news_by_team.get(fixture["home_team"]["name"], {})
-    away_news = news_by_team.get(fixture["away_team"]["name"], {})
-    if home_news.get("high_impact_count", 0) > 0:
-        probs["home"] *= 0.85
-    if away_news.get("high_impact_count", 0) > 0:
-        probs["away"] *= 0.85
+    # Notizie ad alto impatto (penalita' lieve solo se presenti)
+    home_name = fixture.get("home_team", {}).get("name", "")
+    away_name = fixture.get("away_team", {}).get("name", "")
+    home_news = news_by_team.get(home_name, {})
+    away_news = news_by_team.get(away_name, {})
 
-    # Rinormalizza
+    if home_news.get("high_impact_count", 0) > 0:
+        probs["home"] *= 0.90
+    if away_news.get("high_impact_count", 0) > 0:
+        probs["away"] *= 0.90
+
     total_p = sum(probs.values())
     return {k: v / total_p for k, v in probs.items()}
 
 
 def data_quality_ok(fixture: dict, news_by_team: dict) -> bool:
-    home_form = fixture["home_team"]["form"]
-    away_form = fixture["away_team"]["form"]
-    if home_form["matches_analyzed"] < MIN_MATCHES_FOR_FORM:
+    """Verifica che la partita contenga le quote necessarie."""
+    odds = fixture.get("odds")
+    if not odds:
         return False
-    if away_form["matches_analyzed"] < MIN_MATCHES_FOR_FORM:
+    if not all(odds.get(k) for k in ("home", "draw", "away")):
         return False
-    home_news = news_by_team.get(fixture["home_team"]["name"], {})
-    away_news = news_by_team.get(fixture["away_team"]["name"], {})
-    total_high_impact = home_news.get("high_impact_count", 0) + away_news.get("high_impact_count", 0)
-    if total_high_impact > MAX_HIGH_IMPACT_NEWS:
+    try:
+        if any(float(odds[k]) <= 1.0 for k in ("home", "draw", "away")):
+            return False
+    except (ValueError, TypeError):
         return False
-    if not fixture.get("odds"):
-        return False
+
     return True
 
 
 def build_candidates(fixtures: list, news_by_team: dict) -> list:
-    """Per ogni partita che supera il filtro, calcola i candidati (esito +
-    probabilita' stimata + probabilita' implicita + edge)."""
     candidates = []
     for fx in fixtures:
         if not data_quality_ok(fx, news_by_team):
@@ -114,26 +111,29 @@ def build_candidates(fixtures: list, news_by_team: dict) -> list:
         implied = implied_probabilities(fx["odds"])
         if not implied:
             continue
+        
         estimated = estimate_probabilities(fx, news_by_team)
 
+        home_name = fx.get("home_team", {}).get("name", "Home")
+        away_name = fx.get("away_team", {}).get("name", "Away")
+
         label = {
-            "home": fx["home_team"]["name"],
+            "home": home_name,
             "draw": "Pareggio",
-            "away": fx["away_team"]["name"],
+            "away": away_name,
         }
-        odd_key = {"home": "home", "draw": "draw", "away": "away"}
 
         for outcome in ("home", "draw", "away"):
             edge = estimated[outcome] - implied[outcome]
             candidates.append(
                 {
-                    "fixture_id": fx["fixture_id"],
+                    "fixture_id": fx.get("fixture_id", f"{home_name}-{away_name}"),
                     "league": fx.get("league", ""),
-                    "match": f"{fx['home_team']['name']} - {fx['away_team']['name']}",
-                    "date": fx["date"],
+                    "match": f"{home_name} - {away_name}",
+                    "date": fx.get("date", TODAY),
                     "outcome": outcome,
                     "outcome_label": label[outcome],
-                    "odd": fx["odds"][odd_key[outcome]],
+                    "odd": float(fx["odds"][outcome]),
                     "estimated_probability": round(estimated[outcome], 3),
                     "implied_probability": round(implied[outcome], 3),
                     "edge": round(edge, 3),
@@ -146,38 +146,42 @@ def build_candidates(fixtures: list, news_by_team: dict) -> list:
 def build_notes(fixture: dict, news_by_team: dict) -> str:
     parts = []
     for side in ("home_team", "away_team"):
-        team = fixture[side]["name"]
-        form = fixture[side]["form"]
-        parts.append(f"{team}: {form['points_last5']} pt nelle ultime {form['matches_analyzed']}")
+        team_data = fixture.get(side, {})
+        team = team_data.get("name", side)
+        form = team_data.get("form", {})
+        pts = form.get("points_last5", "-")
+        analyzed = form.get("matches_analyzed", "-")
+        parts.append(f"{team}: {pts} pt nelle ultime {analyzed}")
+        
         news = news_by_team.get(team, {})
         if news.get("high_impact_count", 0) > 0:
             cats = set()
             for art in news.get("flagged_articles", []):
-                cats.update(art["categories"])
-            parts.append(f"⚠ {team}: notizie rilevanti ({', '.join(sorted(cats))})")
+                cats.update(art.get("categories", []))
+            parts.append(f"⚠ {team}: ({', '.join(sorted(cats)) if cats else 'notizie'})")
     return " | ".join(parts)
 
 
 def select_three_picks(candidates: list) -> dict:
-    """Sceglie 1 conservativo, 1 consigliato, 1 hard tra tutti i candidati
-    del giorno, evitando di riproporre lo stesso evento due volte."""
     used_fixtures = set()
     picks = {}
 
-    # Conservativo: probabilita' stimata piu' alta, edge non negativo
+    if not candidates:
+        return picks
+
+    # 1. Conservativo: probabilita' stimata piu' alta
     conservative_pool = sorted(
-        [c for c in candidates if c["edge"] >= 0],
-        key=lambda c: c["estimated_probability"],
+        candidates,
+        key=lambda c: (c["edge"] >= 0, c["estimated_probability"]),
         reverse=True,
     )
     if conservative_pool:
         picks["conservativo"] = conservative_pool[0]
         used_fixtures.add(conservative_pool[0]["fixture_id"])
 
-    # Consigliato: miglior edge tra i candidati con probabilita' ragionevole (>=45%)
+    # 2. Consigliato: miglior edge tra le partite rimanenti
     consigliato_pool = sorted(
-        [c for c in candidates if c["edge"] >= MIN_EDGE_FOR_PICK and c["estimated_probability"] >= 0.45
-         and c["fixture_id"] not in used_fixtures],
+        [c for c in candidates if c["fixture_id"] not in used_fixtures],
         key=lambda c: c["edge"],
         reverse=True,
     )
@@ -185,10 +189,10 @@ def select_three_picks(candidates: list) -> dict:
         picks["consigliato"] = consigliato_pool[0]
         used_fixtures.add(consigliato_pool[0]["fixture_id"])
 
-    # Hard: quota piu' alta tra i candidati con edge comunque positivo
+    # 3. Hard: quota piu' alta tra quelle con edge >= 0 (o la migliore rimanente)
     hard_pool = sorted(
-        [c for c in candidates if c["edge"] >= MIN_EDGE_FOR_PICK and c["fixture_id"] not in used_fixtures],
-        key=lambda c: c["odd"],
+        [c for c in candidates if c["fixture_id"] not in used_fixtures],
+        key=lambda c: (c["edge"] >= 0, c["odd"]),
         reverse=True,
     )
     if hard_pool:
@@ -200,6 +204,7 @@ def select_three_picks(candidates: list) -> dict:
 def main():
     if not FIXTURES_PATH.exists():
         raise SystemExit(f"File partite non trovato: {FIXTURES_PATH}")
+    
     fixtures = json.loads(FIXTURES_PATH.read_text(encoding="utf-8"))
     news_by_team = json.loads(NEWS_PATH.read_text(encoding="utf-8")) if NEWS_PATH.exists() else {}
 
