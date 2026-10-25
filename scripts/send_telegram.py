@@ -1,6 +1,6 @@
 """
-send_telegram.py — Notifiche AtmBetSignal.
-Invia i 3 migliori segnali a massima probabilità con probabilità dettagliata ed edge.
+send_telegram.py — Notifiche Istituzionali AtmBetSignal.
+Invia le 3 Top Pick mattutine complete di probabilità reale, quota e Stake suggerito (Quarter-Kelly).
 """
 
 import os
@@ -25,8 +25,8 @@ def main():
         return
 
     righe = [
-        f"🏧 <b>AtmBetSignal — Top 3 del {date_str}</b>",
-        "<i>Massima probabilità statistica | Quota minima ≥ 1.40</i>\n"
+        f"🏧 <b>AtmBetSignal — Top 3 Istituzionali ({date_str})</b>",
+        "<i>Motore Quantitativo Dixon-Coles | Quota ≥ 1.40 | Staking Quarter-Kelly</i>\n"
     ]
 
     badge_map = [
@@ -43,16 +43,19 @@ def main():
         prob_pct = p['estimated_probability'] * 100
         edge_pct = (p.get('edge', 0)) * 100
         sign = "+" if edge_pct >= 0 else ""
+        stake = p.get('suggested_stake_pct', 1.0)
 
         righe.append(
             f"{title}\n"
             f"⚽ <b>{p['match']}</b>\n"
             f"🏆 <i>{p.get('league', 'Campionato')}</i>\n"
             f"🎯 Esito: <b>{p['outcome_label']}</b>\n"
-            f"📈 Quota: <code>{p['odd']:.2f}</code> | Prob: <b>{prob_pct:.1f}%</b> (Edge: {sign}{edge_pct:.1f}%)\n"
+            f"📈 Quota: <code>{p['odd']:.2f}</code> | Prob: <b>{prob_pct:.1f}%</b>\n"
+            f"💰 Stake Consigliato: <b>{stake}% del Bankroll</b> (Edge: {sign}{edge_pct:.1f}%)\n"
         )
 
-    righe.append("🌐 <i>Analisi e statistiche complete disponibili su GitHub Pages.</i>")
+    righe.append("🛡️ <i>Risk Management: Non superare mai lo stake raccomandato.</i>")
+    righe.append("🌐 <i>Tracker & ROI in tempo reale su GitHub Pages.</i>")
     msg = "\n".join(righe)
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
