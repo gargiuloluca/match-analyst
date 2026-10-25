@@ -11,32 +11,12 @@
     },
     "bookmaker_count": 24,
     "odds": {
-      "home": 4.56,
-      "draw": 3.58,
-      "away": 1.81,
+      "home": 4.65,
+      "draw": 3.6,
+      "away": 1.8,
       "max_home": 5.1,
       "max_draw": 3.8,
       "max_away": 1.86
-    }
-  },
-  {
-    "fixture_id": "3cb8660cd2375b60e81144a7572cfb89",
-    "league": "La Liga",
-    "commence_time": "2026-10-25T17:30:00Z",
-    "home_team": {
-      "name": "Real Sociedad"
-    },
-    "away_team": {
-      "name": "Levante"
-    },
-    "bookmaker_count": 11,
-    "odds": {
-      "home": 1.01,
-      "draw": 15.0,
-      "away": 180.0,
-      "max_home": 1.16,
-      "max_draw": 50.0,
-      "max_away": 1000.0
     }
   },
   {
@@ -54,29 +34,9 @@
       "home": 1.57,
       "draw": 6.0,
       "away": 4.0,
-      "max_home": 1.64,
+      "max_home": 1.65,
       "max_draw": 6.4,
       "max_away": 4.37
-    }
-  },
-  {
-    "fixture_id": "0911f42b66dd1f6544db407bccaeed07",
-    "league": "Segunda División (Spagna)",
-    "commence_time": "2026-10-25T17:30:00Z",
-    "home_team": {
-      "name": "CD Castellón"
-    },
-    "away_team": {
-      "name": "Sporting Gijón"
-    },
-    "bookmaker_count": 3,
-    "odds": {
-      "home": 1.0,
-      "draw": 26.0,
-      "away": 26.0,
-      "max_home": 1.0,
-      "max_draw": 40.0,
-      "max_away": 100.0
     }
   },
   {
@@ -91,12 +51,12 @@
     },
     "bookmaker_count": 17,
     "odds": {
-      "home": 2.5,
-      "draw": 3.0,
+      "home": 2.65,
+      "draw": 2.9,
       "away": 2.7,
-      "max_home": 2.74,
-      "max_draw": 3.45,
-      "max_away": 2.92
+      "max_home": 2.8,
+      "max_draw": 3.25,
+      "max_away": 2.94
     }
   },
   {
@@ -111,12 +71,12 @@
     },
     "bookmaker_count": 17,
     "odds": {
-      "home": 1.81,
-      "draw": 2.75,
-      "away": 5.35,
-      "max_home": 2.21,
-      "max_draw": 3.0,
-      "max_away": 6.4
+      "home": 1.68,
+      "draw": 2.8,
+      "away": 7.0,
+      "max_home": 1.85,
+      "max_draw": 3.15,
+      "max_away": 9.0
     }
   },
   {
@@ -129,14 +89,14 @@
     "away_team": {
       "name": "Famalicão"
     },
-    "bookmaker_count": 17,
+    "bookmaker_count": 16,
     "odds": {
-      "home": 19.75,
-      "draw": 4.5,
-      "away": 1.22,
-      "max_home": 30.0,
-      "max_draw": 5.0,
-      "max_away": 1.3
+      "home": 30.0,
+      "draw": 5.35,
+      "away": 1.16,
+      "max_home": 50.0,
+      "max_draw": 5.9,
+      "max_away": 1.23
     }
   },
   {
@@ -151,32 +111,12 @@
     },
     "bookmaker_count": 19,
     "odds": {
-      "home": 1.2,
-      "draw": 6.5,
+      "home": 1.23,
+      "draw": 6.1,
       "away": 10.0,
       "max_home": 1.27,
-      "max_draw": 7.59,
-      "max_away": 12.0
-    }
-  },
-  {
-    "fixture_id": "851ffb3bcb733e33e0b7dc1dcc2beac6",
-    "league": "Jupiler Pro League (Belgio)",
-    "commence_time": "2026-10-25T17:31:00Z",
-    "home_team": {
-      "name": "Gent"
-    },
-    "away_team": {
-      "name": "Anderlecht"
-    },
-    "bookmaker_count": 3,
-    "odds": {
-      "home": 1.0,
-      "draw": 26.0,
-      "away": 26.0,
-      "max_home": 1.0,
-      "max_draw": 40.0,
-      "max_away": 95.0
+      "max_draw": 7.4,
+      "max_away": 12.5
     }
   },
   {
@@ -191,12 +131,12 @@
     },
     "bookmaker_count": 17,
     "odds": {
-      "home": 3.0,
-      "draw": 2.85,
-      "away": 2.4,
-      "max_home": 3.45,
+      "home": 1.62,
+      "draw": 2.75,
+      "away": 9.25,
+      "max_home": 2.95,
       "max_draw": 3.0,
-      "max_away": 2.82
+      "max_away": 13.0
     }
   }
 ]

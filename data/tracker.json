@@ -20,6 +20,34 @@
       "status": "PENDING",
       "score": "-",
       "profit": 0.0
+    },
+    {
+      "id": "2026-10-25_7a6b3911132caecf83a04948fa6f7d43_1",
+      "date": "2026-10-25",
+      "fixture_id": "7a6b3911132caecf83a04948fa6f7d43",
+      "match": "Union Saint-Gilloise - Cercle Brugge KSV",
+      "league": "Jupiler Pro League (Belgio)",
+      "market_type": "1",
+      "outcome_label": "Vittoria Union Saint-Gilloise",
+      "odd": 1.62,
+      "estimated_prob": 0.8262,
+      "status": "PENDING",
+      "score": "-",
+      "profit": 0.0
+    },
+    {
+      "id": "2026-10-25_070aa87111dbdfdcb504340fe440e63f_1",
+      "date": "2026-10-25",
+      "fixture_id": "070aa87111dbdfdcb504340fe440e63f",
+      "match": "Nacional - Braga",
+      "league": "Primeira Liga (Portogallo)",
+      "market_type": "1",
+      "outcome_label": "Vittoria Nacional",
+      "odd": 1.68,
+      "estimated_prob": 0.8158,
+      "status": "PENDING",
+      "score": "-",
+      "profit": 0.0
     }
   ]
 }
