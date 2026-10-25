@@ -11,11 +11,11 @@
     },
     "bookmaker_count": 23,
     "odds": {
-      "home": 4.6,
-      "draw": 3.64,
-      "away": 1.75,
-      "max_home": 5.2,
-      "max_draw": 3.9,
+      "home": 9.0,
+      "draw": 5.0,
+      "away": 1.29,
+      "max_home": 14.0,
+      "max_draw": 6.0,
       "max_away": 1.81
     }
   },
@@ -34,9 +34,9 @@
       "home": 1.57,
       "draw": 6.0,
       "away": 4.0,
-      "max_home": 1.65,
-      "max_draw": 6.4,
-      "max_away": 4.37
+      "max_home": 1.63,
+      "max_draw": 6.6,
+      "max_away": 4.25
     }
   },
   {
@@ -51,11 +51,11 @@
     },
     "bookmaker_count": 17,
     "odds": {
-      "home": 2.65,
-      "draw": 2.75,
-      "away": 2.85,
-      "max_home": 2.88,
-      "max_draw": 3.05,
+      "home": 2.6,
+      "draw": 2.7,
+      "away": 2.91,
+      "max_home": 2.86,
+      "max_draw": 2.94,
       "max_away": 3.15
     }
   },
@@ -69,14 +69,14 @@
     "away_team": {
       "name": "Braga"
     },
-    "bookmaker_count": 17,
+    "bookmaker_count": 12,
     "odds": {
-      "home": 1.36,
-      "draw": 3.4,
-      "away": 14.5,
-      "max_home": 1.71,
-      "max_draw": 3.8,
-      "max_away": 18.5
+      "home": 1.03,
+      "draw": 10.0,
+      "away": 126.0,
+      "max_home": 1.12,
+      "max_draw": 13.0,
+      "max_away": 1000.0
     }
   },
   {
@@ -89,14 +89,14 @@
     "away_team": {
       "name": "Famalicão"
     },
-    "bookmaker_count": 8,
+    "bookmaker_count": 5,
     "odds": {
-      "home": 65.0,
-      "draw": 19.0,
-      "away": 1.01,
+      "home": 70.0,
+      "draw": 50.0,
+      "away": 1.0,
       "max_home": 151.0,
-      "max_draw": 51.0,
-      "max_away": 1.16
+      "max_draw": 75.0,
+      "max_away": 1.01
     }
   },
   {
@@ -113,10 +113,10 @@
     "odds": {
       "home": 1.23,
       "draw": 6.1,
-      "away": 9.7,
+      "away": 10.0,
       "max_home": 1.27,
-      "max_draw": 7.23,
-      "max_away": 12.5
+      "max_draw": 7.25,
+      "max_away": 13.0
     }
   },
   {
@@ -129,14 +129,14 @@
     "away_team": {
       "name": "Cercle Brugge KSV"
     },
-    "bookmaker_count": 17,
+    "bookmaker_count": 10,
     "odds": {
-      "home": 1.48,
-      "draw": 2.85,
-      "away": 16.0,
-      "max_home": 1.56,
-      "max_draw": 3.25,
-      "max_away": 25.0
+      "home": 1.04,
+      "draw": 13.0,
+      "away": 101.0,
+      "max_home": 1.49,
+      "max_draw": 40.0,
+      "max_away": 130.0
     }
   }
 ]
