@@ -1,9 +1,8 @@
 """
-analyze.py — Quantitative Engine Multi-Campionato.
-- Filtra quote con aggio eccessivo (> 8%).
-- Analizza 1X2, Doppia Chance, Over/Under 2.5 e Goal/No Goal.
-- Vincolo di quota: Minimo 1.40, Massimo 3.00.
-- Seleziona i 3 pronostici con la massima probabilità assoluta di successo.
+analyze.py — Quantitative Engine AtmBetSignal.
+- Vincolo quota minima 1.40, massima 3.00.
+- Calcolo de-margined e matrice di Poisson multi-mercato.
+- Ordinamento gerarchico per spareggio intelligente: (Probabilità, Edge, Quota).
 """
 
 import json
@@ -23,8 +22,8 @@ FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 DEFAULT_LAMBDA = 1.45
 DEFAULT_MU = 1.15
 
-MIN_ODD = 1.40  # Soglia minima di quota richiesta
-MAX_ODD = 3.00  # Evita azzardi a bassa percentuale
+MIN_ODD = 1.40
+MAX_ODD = 3.00
 
 
 def remove_margin(odds: dict) -> dict:
@@ -84,9 +83,6 @@ def build_candidates(fixtures: list) -> list:
         if not odds or not all(odds.get(k) for k in ("home", "draw", "away")):
             continue
 
-        # 1. Filtro di liquidità e affidabilità:
-        # Calcolo della somma delle probabilità inverse (aggio).
-        # Se supera 1.085 (8.5% di margine), la lavagna del bookmaker è troppo svantaggiosa.
         try:
             raw_sum = sum(1.0 / float(odds[k]) for k in ("home", "draw", "away") if float(odds[k]) > 1.0)
             if raw_sum > 1.085:
@@ -117,7 +113,6 @@ def build_candidates(fixtures: list) -> list:
             odd_val = out["odd"]
             prob_val = out["prob"]
 
-            # Quota minima 1.40 e massima 3.00
             if odd_val < MIN_ODD or odd_val > MAX_ODD:
                 continue
 
@@ -129,22 +124,25 @@ def build_candidates(fixtures: list) -> list:
                 "market_type": out["type"],
                 "outcome_label": out["label"],
                 "odd": odd_val,
-                "estimated_probability": round(prob_val, 3),
-                "implied_probability": round(1.0 / odd_val, 3),
-                "edge": round(prob_val - (1.0 / odd_val), 3),
-                "notes": f"Lega: {fx.get('league')} | Quota: {odd_val:.2f} | Prob: {int(prob_val*100)}%",
+                "estimated_probability": round(prob_val, 4),
+                "implied_probability": round(1.0 / odd_val, 4),
+                "edge": round(prob_val - (1.0 / odd_val), 4),
+                "notes": f"Lega: {fx.get('league')} | Quota: {odd_val:.2f}",
             })
 
     return candidates
 
 
 def select_top_probability_picks(candidates: list) -> dict:
-    """Seleziona i 3 pronostici con la più alta probabilità assoluta di successo."""
     picks = {}
     used_fixtures = set()
 
-    # Ordina rigorosamente dal più probabile al meno probabile
-    ranked = sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)
+    # Criterio di ordinamento a 3 livelli: Probabilità > Edge di valore > Quota
+    ranked = sorted(
+        candidates,
+        key=lambda c: (c["estimated_probability"], c["edge"], c["odd"]),
+        reverse=True
+    )
 
     selected = []
     for c in ranked:
@@ -179,12 +177,12 @@ def main():
         "total_fixtures_scanned": len(fixtures),
         "candidates_after_filter": len(candidates),
         "picks": picks,
-        "all_candidates": sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)[:40],
+        "all_candidates": sorted(candidates, key=lambda c: (c["estimated_probability"], c["edge"]), reverse=True)[:40],
     }
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Analisi completata su {len(fixtures)} partite. Selezionati i 3 esiti a probabilità più alta (quota >= 1.40).")
+    print(f"AtmBetSignal: {len(fixtures)} match scansionati, Top 3 estratte per probabilità ed edge.")
 
 
 if __name__ == "__main__":
