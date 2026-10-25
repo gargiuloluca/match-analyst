@@ -1,6 +1,7 @@
 """
-settle_results.py — AtmBetSignal Nightly Settlement & Telegram Recap.
-Valuta esiti WON/LOST, calcola profitto ponderato per Kelly stake e notifica su Telegram.
+settle_results.py — AtmBetSignal Smart Settlement.
+Interroga The Odds API SOLO per i campionati che hanno partite PENDING aperte nel tracker,
+risparmiando fino all'85% delle richieste API serali.
 """
 
 import os
@@ -16,15 +17,30 @@ ODDS_BASE_URL = "https://api.the-odds-api.com/v4"
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 TRACKER_PATH = DATA_DIR / "tracker.json"
 
-SPORT_KEYS = [
-    "soccer_italy_serie_a", "soccer_epl", "soccer_spain_la_liga",
-    "soccer_germany_bundesliga", "soccer_france_ligue_one",
-    "soccer_uefa_champs_league", "soccer_uefa_europa_league",
-    "soccer_italy_serie_b", "soccer_efl_champ", "soccer_spain_segunda_division",
-    "soccer_germany_bundesliga2", "soccer_netherlands_eredivisie",
-    "soccer_portugal_primeira_liga", "soccer_belgium_first_div",
-    "soccer_turkey_super_league", "soccer_spl"
-]
+# Mappa per risalire dalla lega testuale alla chiave sportiva dell'API
+LEAGUE_TO_KEY = {
+    "Serie A": "soccer_italy_serie_a",
+    "Premier League": "soccer_epl",
+    "La Liga": "soccer_spain_la_liga",
+    "Bundesliga": "soccer_germany_bundesliga",
+    "Ligue 1": "soccer_france_ligue_one",
+    "Champions League": "soccer_uefa_champs_league",
+    "Europa League": "soccer_uefa_europa_league",
+    "Conference League": "soccer_uefa_europa_conference_league",
+    "Serie B (Italia)": "soccer_italy_serie_b",
+    "Championship (Inghilterra)": "soccer_efl_champ",
+    "Segunda División (Spagna)": "soccer_spain_segunda_division",
+    "2. Bundesliga (Germania)": "soccer_germany_bundesliga2",
+    "Eredivisie (Olanda)": "soccer_netherlands_eredivisie",
+    "Primeira Liga (Portogallo)": "soccer_portugal_primeira_liga",
+    "Jupiler Pro League (Belgio)": "soccer_belgium_first_div",
+    "Süper Lig (Turchia)": "soccer_turkey_super_league",
+    "Premiership (Scozia)": "soccer_spl",
+    "Super League (Svizzera)": "soccer_switzerland_superleague",
+    "Bundesliga (Austria)": "soccer_austria_bundesliga",
+    "Brasileirão (Brasile)": "soccer_brazil_campeonato",
+    "MLS (USA)": "soccer_usa_mls",
+}
 
 
 def evaluate_bet(market_type: str, h_score: int, a_score: int) -> bool:
@@ -58,23 +74,23 @@ def send_telegram_recap(today_resolved: list, win_rate: float, roi: float, net_p
 
     lines = [
         "🏁 <b>AtmBetSignal — Chiusura & Rendiconto Serale</b>",
-        f"Bilancio di oggi: <b>{won_today}/{len(today_resolved)}</b> vinti (<code>{p_sign}{profit_today:.2f} u</code>)\n"
+        f"Bilancio oggi: <b>{won_today}/{len(today_resolved)}</b> vinti (<code>{p_sign}{profit_today:.2f} u</code>)\n"
     ]
 
     for b in today_resolved:
         icon = "✅" if b["status"] == "WON" else "❌"
         lines.append(
             f"{icon} <b>{b['match']}</b>\n"
-            f"• Scelta: {b['outcome_label']} @ <code>{b['odd']:.2f}</code>\n"
-            f"• Finale: <b>{b['score']}</b> ({b['status']})\n"
+            f"• Giocata: {b['outcome_label']} @ <code>{b['odd']:.2f}</code>\n"
+            f"• Risultato: <b>{b['score']}</b> ({b['status']})\n"
         )
 
     lines.append(
-        f"📊 <b>Bilancio Globale Istituzionale</b>\n"
+        f"📊 <b>Performance Storiche Cumulative</b>\n"
         f"• Win Rate: <b>{win_rate:.1f}%</b>\n"
         f"• ROI Netto: <b>{'+' if roi >= 0 else ''}{roi:.1f}%</b>\n"
-        f"• Profitto Cumulato: <b>{'+' if net_profit >= 0 else ''}{net_profit:.2f} u</b>\n\n"
-        f"🌐 <i>Equity Line aggiornata su GitHub Pages.</i>"
+        f"• Profitto Totale: <b>{'+' if net_profit >= 0 else ''}{net_profit:.2f} u</b>\n\n"
+        f"🌐 <i>Grafico Equity Line aggiornato su GitHub Pages.</i>"
     )
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
@@ -108,8 +124,14 @@ def main():
         print("ODDSAPI_KEY mancante.")
         return
 
+    # SAFE API MODE: Interroga SOLO le leghe necessarie per le scommesse in corso
+    leagues_needed = {b.get("league") for b in pending if b.get("league")}
+    target_sports = {LEAGUE_TO_KEY[l] for l in leagues_needed if l in LEAGUE_TO_KEY}
+
+    print(f"Safe API Mode: richiesta risultati limitata a {len(target_sports)} leghe ({target_sports}).")
+
     completed_scores = {}
-    for sport in SPORT_KEYS:
+    for sport in target_sports:
         url = f"{ODDS_BASE_URL}/sports/{sport}/scores/"
         params = {"apiKey": ODDS_API_KEY, "daysFrom": 3}
         try:
@@ -123,7 +145,7 @@ def main():
                         if h_val is not None and a_val is not None:
                             completed_scores[match["id"]] = (h_val, a_val)
         except Exception as e:
-            print(f"Errore su {sport}: {e}")
+            print(f"Errore risultati per {sport}: {e}")
 
     today_resolved = []
     for b in pending:
@@ -132,12 +154,13 @@ def main():
             h, a = completed_scores[fid]
             b["score"] = f"{h}-{a}"
             won = evaluate_bet(b["market_type"], h, a)
+            stake_pct = b.get("suggested_stake_pct", 1.0)
             if won:
                 b["status"] = "WON"
-                b["profit"] = round(b["odd"] - 1.0, 2)
+                b["profit"] = round((b["odd"] - 1.0) * stake_pct, 2)
             else:
                 b["status"] = "LOST"
-                b["profit"] = -1.0
+                b["profit"] = -round(stake_pct, 2)
             today_resolved.append(b)
 
     settled = [b for b in bets if b.get("status") in ("WON", "LOST")]
