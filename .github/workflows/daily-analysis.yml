@@ -2,7 +2,7 @@ name: Daily Analysis
 
 on:
   schedule:
-    # 08:00 UTC = 09:00 o 10:00 ora italiana a seconda dell'ora legale
+    # Ore 08:00 UTC (09:00 o 10:00 ora italiana a seconda dell'ora legale)
     - cron: "0 8 * * *"
   workflow_dispatch: {}
 
@@ -22,19 +22,21 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r scripts/requirements.txt
+        run: pip install requests
 
       - name: Fetch fixtures and odds
         env:
-          FOOTBALLDATA_KEY: ${{ secrets.FOOTBALLDATA_KEY }}
           ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
         run: python scripts/fetch_fixtures.py
 
-      - name: Fetch extra-field news
-        run: python scripts/fetch_news.py
-
       - name: Run analysis and generate picks
         run: python scripts/analyze.py
+
+      - name: Send Telegram Notification
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/send_telegram.py
 
       - name: Commit updated data
         run: |
