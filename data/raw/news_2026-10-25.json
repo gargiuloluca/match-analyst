@@ -7,7 +7,7 @@
   },
   "AC Milan": {
     "team": "AC Milan",
-    "articles_scanned": 11,
+    "articles_scanned": 12,
     "flagged_articles": [
       {
         "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
@@ -627,7 +627,7 @@
   },
   "CA Osasuna": {
     "team": "CA Osasuna",
-    "articles_scanned": 48,
+    "articles_scanned": 49,
     "flagged_articles": [
       {
         "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
@@ -1179,7 +1179,7 @@
   },
   "Le Havre": {
     "team": "Le Havre",
-    "articles_scanned": 44,
+    "articles_scanned": 43,
     "flagged_articles": [
       {
         "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
@@ -1276,7 +1276,7 @@
   },
   "Le Havre AC": {
     "team": "Le Havre AC",
-    "articles_scanned": 44,
+    "articles_scanned": 43,
     "flagged_articles": [
       {
         "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
@@ -1373,7 +1373,7 @@
   },
   "Le Mans FC": {
     "team": "Le Mans FC",
-    "articles_scanned": 44,
+    "articles_scanned": 43,
     "flagged_articles": [
       {
         "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
@@ -1635,7 +1635,7 @@
   },
   "Napoli": {
     "team": "Napoli",
-    "articles_scanned": 4,
+    "articles_scanned": 3,
     "flagged_articles": [],
     "high_impact_count": 0
   },
@@ -1853,7 +1853,7 @@
   },
   "SC Freiburg": {
     "team": "SC Freiburg",
-    "articles_scanned": 25,
+    "articles_scanned": 26,
     "flagged_articles": [
       {
         "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
@@ -1920,7 +1920,7 @@
   },
   "SC Paderborn": {
     "team": "SC Paderborn",
-    "articles_scanned": 25,
+    "articles_scanned": 26,
     "flagged_articles": [
       {
         "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
