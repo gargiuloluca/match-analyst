@@ -1,130 +1,94 @@
 """
-fetch_news.py
-
-Per ogni squadra presente nelle partite del giorno, cerca notizie recenti
-nei feed RSS di testate sportive italiane e le classifica per categoria
-(infortunio, crisi societaria, spogliatoio, panchina, squalifica).
-
-Nessuna registrazione o API key richiesta: i feed RSS sono pubblici.
-Se in futuro vuoi più copertura, puoi aggiungere altri feed alla lista
-RSS_FEEDS qui sotto (cerca "nome-sito.it rss" per trovarne altri).
-
-Output: data/raw/news_YYYY-MM-DD.json
+send_telegram.py
+Invia il report dei pronostici odierni su Telegram con log di debug completi.
 """
 
+import os
 import json
-import re
-from datetime import date, datetime, timedelta, timezone
+import requests
 from pathlib import Path
 
-import feedparser
+BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
-TODAY = date.today().isoformat()
-SINCE = datetime.now(timezone.utc) - timedelta(days=3)
-
-FIXTURES_PATH = Path(__file__).resolve().parent.parent / "data" / "raw" / f"fixtures_{TODAY}.json"
-OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "raw"
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-
-# Feed RSS pubblici di testate sportive italiane. Aggiungi/rimuovi liberamente.
-RSS_FEEDS = [
-    "https://www.gazzetta.it/rss/calcio.xml",
-    "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-    "https://www.tuttomercatoweb.com/rss/tmwnews.xml",
-]
-
-# Categorie di notizie rilevanti e relative parole chiave (italiano).
-CATEGORY_KEYWORDS = {
-    "infortunio": ["infortunio", "infortunato", "si e' fatto male", "lesione", "salta la partita", "ko", "stop forzato"],
-    "crisi_societaria": ["debiti", "crisi societaria", "pignoramento", "stipendi non pagati", "fallimento", "cessione societa'"],
-    "spogliatoio": ["litigio", "spogliatoio", "malumori", "tensione interna", "ammutinamento", "rottura con lo spogliatoio"],
-    "panchina": ["esonero", "esonerato", "dimissioni allenatore", "cambio allenatore", "sfiducia"],
-    "squalifica": ["squalificato", "squalifica", "giudice sportivo", "diffidato"],
-}
-HIGH_IMPACT_CATEGORIES = set(CATEGORY_KEYWORDS.keys())
-
-
-def normalize(text: str) -> str:
-    return re.sub(r"[’']", "'", text or "").lower()
-
-
-def parse_entry_date(entry) -> datetime:
-    if getattr(entry, "published_parsed", None):
-        return datetime(*entry.published_parsed[:6], tzinfo=timezone.utc)
-    return datetime.now(timezone.utc)
-
-
-def fetch_all_articles() -> list:
-    """Scarica e unisce tutti gli articoli recenti da tutti i feed configurati."""
-    articles = []
-    for feed_url in RSS_FEEDS:
-        try:
-            parsed = feedparser.parse(feed_url)
-            for entry in parsed.entries:
-                pub_date = parse_entry_date(entry)
-                if pub_date < SINCE:
-                    continue
-                articles.append(
-                    {
-                        "title": entry.get("title", ""),
-                        "summary": entry.get("summary", ""),
-                        "url": entry.get("link", ""),
-                        "published_at": pub_date.isoformat(),
-                        "source": feed_url,
-                    }
-                )
-        except Exception as e:
-            print(f"Attenzione: impossibile leggere il feed {feed_url}: {e}")
-    return articles
-
-
-def classify_article(article: dict) -> list:
-    text = normalize(f"{article.get('title', '')} {article.get('summary', '')}")
-    return [cat for cat, keywords in CATEGORY_KEYWORDS.items() if any(kw in text for kw in keywords)]
-
-
-def team_mentioned(article: dict, team_name: str) -> bool:
-    text = normalize(f"{article.get('title', '')} {article.get('summary', '')}")
-    # Usa la prima parola del nome squadra per tollerare varianti (es. "Inter" da "FC Internazionale")
-    key = normalize(team_name).split()[0]
-    return key in text
-
-
-def analyze_team_news(team_name: str, all_articles: list) -> dict:
-    relevant = [a for a in all_articles if team_mentioned(a, team_name)]
-    flagged = []
-    for art in relevant:
-        categories = classify_article(art)
-        if categories:
-            flagged.append({**art, "categories": categories})
-    high_impact_count = sum(1 for a in flagged if any(c in HIGH_IMPACT_CATEGORIES for c in a["categories"]))
-    return {
-        "team": team_name,
-        "articles_scanned": len(relevant),
-        "flagged_articles": flagged,
-        "high_impact_count": high_impact_count,
-    }
-
+DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "latest.json"
 
 def main():
-    if not FIXTURES_PATH.exists():
-        raise SystemExit(f"File partite non trovato: {FIXTURES_PATH}. Esegui prima fetch_fixtures.py.")
+    print("--- INIZIO INVIO TELEGRAM ---")
+    
+    # 1. Verifica Secret
+    if not BOT_TOKEN:
+        print("ERRORE: Secret TELEGRAM_BOT_TOKEN mancante o vuoto!")
+        return
+    if not CHAT_ID:
+        print("ERRORE: Secret TELEGRAM_CHAT_ID mancante o vuoto!")
+        return
+    print(f"Token presente (lunghezza: {len(BOT_TOKEN)}), Chat ID: {CHAT_ID}")
 
-    fixtures = json.loads(FIXTURES_PATH.read_text(encoding="utf-8"))
-    team_names = set()
-    for fx in fixtures:
-        team_names.add(fx["home_team"]["name"])
-        team_names.add(fx["away_team"]["name"])
+    # 2. Verifica File Dati
+    print(f"Cerco file dati in: {DATA_PATH}")
+    if not DATA_PATH.exists():
+        print(f"ERRORE: Il file {DATA_PATH} non esiste!")
+        return
 
-    all_articles = fetch_all_articles()
-    print(f"Scaricati {len(all_articles)} articoli dagli ultimi 3 giorni da {len(RSS_FEEDS)} feed.")
+    data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
+    date_str = data.get("date", "")
+    picks = data.get("picks", {})
+    print(f"Data trovata: {date_str}, Pronostici trovati: {len(picks)}")
 
-    news_by_team = {name: analyze_team_news(name, all_articles) for name in sorted(team_names)}
+    if not picks:
+        msg = f"⚽ <b>Match Analyst — {date_str}</b>\n\nNessuna giocata con edge sufficiente individuata oggi."
+    else:
+        righe = [f"⚽ <b>Match Analyst — Pronostici {date_str}</b>\n"]
+        
+        p_cons = picks.get("conservativo")
+        if p_cons:
+            righe.append(
+                f"🟢 <b>CONSERVATIVO</b>\n"
+                f"• {p_cons['match']}\n"
+                f"• Esito: <b>{p_cons['outcome_label']}</b>\n"
+                f"• Quota: <code>{p_cons['odd']:.2f}</code> (Prob: {int(p_cons['estimated_probability']*100)}%)\n"
+            )
 
-    out_path = OUTPUT_DIR / f"news_{TODAY}.json"
-    out_path.write_text(json.dumps(news_by_team, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Notizie analizzate per {len(news_by_team)} squadre, salvate in {out_path}")
+        p_rec = picks.get("consigliato")
+        if p_rec:
+            righe.append(
+                f"🔵 <b>CONSIGLIATO</b>\n"
+                f"• {p_rec['match']}\n"
+                f"• Esito: <b>{p_rec['outcome_label']}</b>\n"
+                f"• Quota: <code>{p_rec['odd']:.2f}</code> (Prob: {int(p_rec['estimated_probability']*100)}%)\n"
+            )
 
+        p_hard = picks.get("hard")
+        if p_hard:
+            righe.append(
+                f"🟠 <b>HARD</b>\n"
+                f"• {p_hard['match']}\n"
+                f"• Esito: <b>{p_hard['outcome_label']}</b>\n"
+                f"• Quota: <code>{p_hard['odd']:.2f}</code> (Prob: {int(p_hard['estimated_probability']*100)}%)\n"
+            )
+
+        righe.append("📊 <i>Dettagli completi disponibili su GitHub Pages.</i>")
+        msg = "\n".join(righe)
+
+    # 3. Invio effettivo a Telegram
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": CHAT_ID,
+        "text": msg,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True,
+    }
+
+    try:
+        r = requests.post(url, json=payload, timeout=15)
+        print(f"Risposta HTTP Telegram: {r.status_code}")
+        if r.status_code == 200:
+            print("SUCCESSO: Notifica Telegram inviata correttamente!")
+        else:
+            print(f"ERRORE TELEGRAM: {r.text}")
+    except Exception as e:
+        print(f"ECCEZIONE DI RETE: {e}")
 
 if __name__ == "__main__":
     main()
