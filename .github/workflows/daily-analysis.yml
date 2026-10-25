@@ -1,16 +1,18 @@
-name: Daily Analysis
+name: Daily Analysis & Settlement
 
 on:
   schedule:
-    # Ore 08:00 UTC (09:00 o 10:00 ora italiana a seconda dell'ora legale)
+    # Mattina (08:00 UTC): Estrazione Top 3, invio Telegram e salvataggio tracker
     - cron: "0 8 * * *"
+    # Notte (23:00 UTC): Verifica risultati partite concluse e aggiornamento ROI
+    - cron: "0 23 * * *"
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
 jobs:
-  analyze:
+  run-pipeline:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -32,6 +34,11 @@ jobs:
       - name: Run analysis and generate picks
         run: python scripts/analyze.py
 
+      - name: Settle finished bets in tracker
+        env:
+          ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
+        run: python scripts/settle_results.py
+
       - name: Send Telegram Notification
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
@@ -40,8 +47,8 @@ jobs:
 
       - name: Commit updated data
         run: |
-          git config user.name "match-analyst-bot"
+          git config user.name "atmbetsignal-bot"
           git config user.email "actions@github.com"
           git add data/
-          git diff --quiet && git diff --staged --quiet || git commit -m "Aggiornamento dati $(date -u +%Y-%m-%d)"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update data & tracker $(date -u +%Y-%m-%d)"
           git push
