@@ -27,9 +27,9 @@
       "name": "Venezia"
     },
     "odds": {
-      "home": 2.28,
-      "draw": 2.84,
-      "away": 3.83,
+      "home": 1.39,
+      "draw": 4.24,
+      "away": 10.62,
       "bookmaker": "Pinnacle"
     }
   },
@@ -78,9 +78,9 @@
       "name": "Bournemouth"
     },
     "odds": {
-      "home": 5.9,
-      "draw": 3.7,
-      "away": 1.45,
+      "home": 19.0,
+      "draw": 7.25,
+      "away": 1.13,
       "bookmaker": "Winamax (FR)"
     }
   },
@@ -95,9 +95,9 @@
       "name": "Brentford"
     },
     "odds": {
-      "home": 2.2,
-      "draw": 3.25,
-      "away": 3.1,
+      "home": 2.15,
+      "draw": 3.15,
+      "away": 3.25,
       "bookmaker": "Winamax (DE)"
     }
   },
@@ -112,9 +112,9 @@
       "name": "Brighton and Hove Albion"
     },
     "odds": {
-      "home": 1.11,
+      "home": 1.1,
       "draw": 9.0,
-      "away": 19.0,
+      "away": 23.0,
       "bookmaker": "888sport"
     }
   },
@@ -130,8 +130,8 @@
     },
     "odds": {
       "home": 2.65,
-      "draw": 2.75,
-      "away": 2.75,
+      "draw": 2.7,
+      "away": 2.85,
       "bookmaker": "MyBookie.ag"
     }
   },
@@ -163,10 +163,10 @@
       "name": "Getafe"
     },
     "odds": {
-      "home": 1.01,
-      "draw": 28.0,
-      "away": 120.0,
-      "bookmaker": "Winamax (DE)"
+      "home": 1.0,
+      "draw": 75.0,
+      "away": 100.0,
+      "bookmaker": "Betclic (FR)"
     }
   },
   {
@@ -265,9 +265,9 @@
       "name": "Lille"
     },
     "odds": {
-      "home": 3.6,
-      "draw": 3.0,
-      "away": 1.9,
+      "home": 3.95,
+      "draw": 3.05,
+      "away": 1.8,
       "bookmaker": "Winamax (FR)"
     }
   },
