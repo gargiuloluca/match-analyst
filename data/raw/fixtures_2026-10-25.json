@@ -12,9 +12,9 @@
     },
     "bookmaker_count": 17,
     "odds": {
-      "home": 11.0,
-      "draw": 5.3,
-      "away": 1.27
+      "home": 14.5,
+      "draw": 5.0,
+      "away": 1.23
     }
   },
   {
@@ -28,11 +28,11 @@
     "away_team": {
       "name": "Real Madrid"
     },
-    "bookmaker_count": 20,
+    "bookmaker_count": 16,
     "odds": {
-      "home": 1.54,
-      "draw": 5.8,
-      "away": 4.1
+      "home": 1.68,
+      "draw": 4.33,
+      "away": 3.98
     }
   },
   {
@@ -48,45 +48,9 @@
     },
     "bookmaker_count": 17,
     "odds": {
-      "home": 2.7,
-      "draw": 2.65,
-      "away": 2.9
-    }
-  },
-  {
-    "fixture_id": "070aa87111dbdfdcb504340fe440e63f",
-    "league": "Primeira Liga (Portogallo)",
-    "odds_key": "soccer_portugal_primeira_liga",
-    "commence_time": "2026-10-25T18:00:00Z",
-    "home_team": {
-      "name": "Nacional"
-    },
-    "away_team": {
-      "name": "Braga"
-    },
-    "bookmaker_count": 12,
-    "odds": {
-      "home": 1.03,
-      "draw": 11.0,
-      "away": 126.0
-    }
-  },
-  {
-    "fixture_id": "fa1bd8d92c7780ff1ebb56219fcb6ea6",
-    "league": "Primeira Liga (Portogallo)",
-    "odds_key": "soccer_portugal_primeira_liga",
-    "commence_time": "2026-10-25T18:00:00Z",
-    "home_team": {
-      "name": "Rio Ave FC"
-    },
-    "away_team": {
-      "name": "Famalicão"
-    },
-    "bookmaker_count": 3,
-    "odds": {
-      "home": 26.0,
-      "draw": 26.0,
-      "away": 1.0
+      "home": 3.6,
+      "draw": 1.82,
+      "away": 3.75
     }
   },
   {
@@ -103,26 +67,8 @@
     "bookmaker_count": 19,
     "odds": {
       "home": 1.23,
-      "draw": 6.0,
-      "away": 10.0
-    }
-  },
-  {
-    "fixture_id": "7a6b3911132caecf83a04948fa6f7d43",
-    "league": "Jupiler Pro League (Belgio)",
-    "odds_key": "soccer_belgium_first_div",
-    "commence_time": "2026-10-25T18:17:00Z",
-    "home_team": {
-      "name": "Union Saint-Gilloise"
-    },
-    "away_team": {
-      "name": "Cercle Brugge KSV"
-    },
-    "bookmaker_count": 8,
-    "odds": {
-      "home": 1.03,
-      "draw": 17.0,
-      "away": 101.0
+      "draw": 5.75,
+      "away": 9.7
     }
   }
 ]

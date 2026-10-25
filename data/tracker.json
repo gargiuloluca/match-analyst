@@ -1,11 +1,11 @@
 {
-  "total_bets": 1,
-  "won": 1,
+  "total_bets": 2,
+  "won": 2,
   "lost": 0,
   "void": 0,
   "win_rate": 100.0,
-  "net_profit_units": 0.68,
-  "roi_pct": 68.0,
+  "net_profit_units": 1.3,
+  "roi_pct": 65.0,
   "bets": [
     {
       "id": "2026-10-25_72089d103a5fe6a922c35e17efba6ffc_1",
@@ -31,9 +31,9 @@
       "outcome_label": "Vittoria Union Saint-Gilloise",
       "odd": 1.62,
       "estimated_prob": 0.8262,
-      "status": "PENDING",
-      "score": "-",
-      "profit": 0.0
+      "status": "WON",
+      "score": "5-2",
+      "profit": 0.62
     },
     {
       "id": "2026-10-25_070aa87111dbdfdcb504340fe440e63f_1",
