@@ -1,373 +1,474 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Match Analyst — Screening giornaliero</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0B0F17;
-    --panel:#121A26;
-    --panel-border:#232E42;
-    --text:#E7EAF2;
-    --text-muted:#8B94A7;
-    --conservativo:#5FB88A;
-    --consigliato:#2DD4BF;
-    --hard:#E0A94E;
-    --warn:#C6553A;
-    --track:#1B2432;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:'Inter', sans-serif;
-    line-height:1.5;
-    padding-bottom:80px;
-  }
-  .mono{ font-family:'IBM Plex Mono', monospace; }
-  header{
-    padding:32px 24px 20px;
-    max-width:1080px;
-    margin:0 auto;
-    border-bottom:1px solid var(--panel-border);
-  }
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:0.12em;
-    text-transform:uppercase;
-    color:var(--consigliato);
-    margin-bottom:8px;
-  }
-  h1{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:clamp(28px, 5vw, 40px);
-    font-weight:700;
-    letter-spacing:-0.01em;
-  }
-  .subtitle{ color:var(--text-muted); margin-top:8px; font-size:15px; max-width:640px; }
-  nav{ margin-top:20px; display:flex; gap:16px; }
-  nav a{
-    color:var(--text-muted);
-    text-decoration:none;
-    font-size:14px;
-    font-family:'IBM Plex Mono', monospace;
-    border-bottom:1px solid transparent;
-    padding-bottom:2px;
-  }
-  nav a.active, nav a:hover{ color:var(--text); border-bottom-color:var(--consigliato); }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match Analyst — Screening Giornaliero</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --card-bg: #121824;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-1: #10b981;
+      --accent-2: #38bdf8;
+      --accent-3: #f59e0b;
+      --edge-pos: #10b981;
+      --edge-neg: #ef4444;
+      --badge-bg: rgba(255, 255, 255, 0.05);
+    }
 
-  main{ max-width:1080px; margin:0 auto; padding:32px 24px; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  .disclaimer{
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-left:3px solid var(--hard);
-    border-radius:6px;
-    padding:14px 16px;
-    font-size:13px;
-    color:var(--text-muted);
-    margin-bottom:32px;
-  }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.5;
+      padding: 24px 16px;
+      min-height: 100vh;
+    }
 
-  .meta-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:baseline;
-    margin-bottom:20px;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .meta-row .date{ font-family:'Space Grotesk', sans-serif; font-size:20px; font-weight:600; }
-  .meta-row .scan-info{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-muted); }
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
 
-  .picks-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-    gap:16px;
-    margin-bottom:48px;
-  }
-  .pick-card{
-    background:var(--panel);
-    border:1px solid var(--panel-border);
-    border-radius:10px;
-    padding:20px;
-    position:relative;
-    overflow:hidden;
-  }
-  .pick-card::before{
-    content:"";
-    position:absolute;
-    top:0; left:0; right:0;
-    height:3px;
-    background:var(--accent);
-  }
-  .pick-card.conservativo{ --accent:var(--conservativo); }
-  .pick-card.consigliato{ --accent:var(--consigliato); }
-  .pick-card.hard{ --accent:var(--hard); }
+    header {
+      margin-bottom: 24px;
+    }
 
-  .pick-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    letter-spacing:0.1em;
-    text-transform:uppercase;
-    color:var(--accent);
-    margin-bottom:10px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-  }
-  .pick-match{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:19px;
-    font-weight:600;
-    margin-bottom:4px;
-  }
-  .league-tag{
-    display:inline-block;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:10px;
-    letter-spacing:0.05em;
-    text-transform:uppercase;
-    color:var(--text-muted);
-    background:rgba(255,255,255,0.04);
-    border:1px solid var(--panel-border);
-    border-radius:4px;
-    padding:2px 7px;
-    margin-bottom:8px;
-  }
-  .pick-outcome{ color:var(--text-muted); font-size:14px; margin-bottom:16px; }
-  .pick-outcome b{ color:var(--text); }
+    .brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-2);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
 
-  .pick-stats{ display:flex; justify-content:space-between; margin-bottom:14px; }
-  .stat{ text-align:left; }
-  .stat .value{ font-family:'IBM Plex Mono', monospace; font-size:22px; font-weight:600; }
-  .stat .label{ font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.06em; margin-top:2px; }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
 
-  .gauge{
-    height:8px;
-    background:var(--track);
-    border-radius:4px;
-    position:relative;
-    margin-bottom:6px;
-    overflow:hidden;
-  }
-  .gauge-fill{
-    height:100%;
-    background:var(--accent);
-    border-radius:4px;
-  }
-  .gauge-marker{
-    position:absolute;
-    top:-3px;
-    width:2px;
-    height:14px;
-    background:var(--text);
-    opacity:0.7;
-  }
-  .gauge-legend{
-    display:flex;
-    justify-content:space-between;
-    font-size:10px;
-    color:var(--text-muted);
-    font-family:'IBM Plex Mono', monospace;
-    margin-bottom:14px;
-  }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      max-width: 750px;
+      line-height: 1.4;
+    }
 
-  .pick-notes{
-    font-size:12.5px;
-    color:var(--text-muted);
-    border-top:1px solid var(--panel-border);
-    padding-top:12px;
-    line-height:1.6;
-  }
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 14px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 12px;
+    }
 
-  .section-title{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:18px;
-    font-weight:600;
-    margin-bottom:16px;
-  }
+    .nav-link {
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
 
-  table{ width:100%; border-collapse:collapse; font-size:13.5px; }
-  th{
-    text-align:left;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:0.06em;
-    color:var(--text-muted);
-    padding:10px 12px;
-    border-bottom:1px solid var(--panel-border);
-  }
-  td{
-    padding:12px;
-    border-bottom:1px solid var(--panel-border);
-    vertical-align:top;
-  }
-  td.num{ font-family:'IBM Plex Mono', monospace; }
-  .edge-positive{ color:var(--consigliato); }
-  .edge-negative{ color:var(--warn); }
-  tr:hover td{ background:rgba(255,255,255,0.02); }
+    .nav-link.active {
+      color: var(--text-main);
+      border-bottom: 2px solid var(--accent-2);
+      padding-bottom: 10px;
+    }
 
-  .empty-state{
-    background:var(--panel);
-    border:1px dashed var(--panel-border);
-    border-radius:10px;
-    padding:40px 24px;
-    text-align:center;
-    color:var(--text-muted);
-  }
+    .alert-box {
+      border-left: 3px solid var(--accent-3);
+      background: rgba(245, 158, 11, 0.05);
+      padding: 10px 14px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin: 20px 0;
+      border-radius: 0 4px 4px 0;
+    }
 
-  footer{
-    max-width:1080px;
-    margin:40px auto 0;
-    padding:0 24px;
-    color:var(--text-muted);
-    font-size:12px;
-  }
-</style>
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+    }
+
+    .meta-date {
+      font-weight: 700;
+    }
+
+    .meta-stats {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+
+    /* CARDS TOP 3 */
+    .picks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card.top1 { border-top: 3px solid var(--accent-1); }
+    .card.top2 { border-top: 3px solid var(--accent-2); }
+    .card.top3 { border-top: 3px solid var(--accent-3); }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .card-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .card.top1 .card-tag { color: var(--accent-1); }
+    .card.top2 .card-tag { color: var(--accent-2); }
+    .card.top3 .card-tag { color: var(--accent-3); }
+
+    .card-odd {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .card-league {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--badge-bg);
+      border: 1px solid var(--card-border);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .card-pick {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .card-pick strong {
+      color: var(--text-main);
+    }
+
+    .card-stats {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 8px;
+    }
+
+    .stat-val {
+      font-size: 1.3rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 4px;
+      background: var(--card-border);
+      border-radius: 2px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .card.top1 .progress-fill { background: var(--accent-1); }
+    .card.top2 .progress-fill { background: var(--accent-2); }
+    .card.top3 .progress-fill { background: var(--accent-3); }
+
+    .card-footer {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 8px;
+    }
+
+    /* TABELLA CANDIDATI */
+    .table-section-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      background: var(--card-bg);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      text-align: left;
+    }
+
+    th {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .match-name {
+      font-weight: 600;
+    }
+
+    .match-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .mono-cell {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .edge-pos { color: var(--edge-pos); font-weight: 700; }
+    .edge-neg { color: var(--edge-neg); font-weight: 700; }
+
+    footer {
+      margin-top: 36px;
+      padding-top: 16px;
+      border-top: 1px solid var(--card-border);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <div class="brand">MATCH ANALYST</div>
+      <h1>Screening Giornaliero — Massima Affidabilità</h1>
+      <p class="subtitle">
+        Modello quantitativo ad alta probabilità di successo su campionati europei e leghe secondarie.
+        Filtro su quota minima &ge; 1.40 e de-margining delle probabilità reali.
+      </p>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Oggi</a>
+        <a href="tracker.html" class="nav-link">Storico & ROI</a>
+      </div>
+    </header>
 
-<header>
-  <div class="eyebrow">Match Analyst</div>
-  <h1>Screening giornaliero — Leghe principali</h1>
-  <p class="subtitle">Filtro automatico degli eventi del giorno su Serie A, Premier League, Liga, Bundesliga, Ligue 1 e Champions League: forma recente, quote e notizie extra-campo. Tre pronostici selezionati tra tutti gli eventi validi.</p>
-  <nav>
-    <a href="index.html" class="active">Oggi</a>
-    <a href="tracker.html">Storico &amp; ROI</a>
-  </nav>
-</header>
+    <div class="alert-box">
+      Le probabilità indicate sono stime statistiche quantitative, non certezze. Lo strumento supporta la decisione analitica. Gioca sempre responsabilmente.
+    </div>
 
-<main>
-  <div class="disclaimer">
-    Le probabilità sono stime statistiche, non certezze. Questo strumento supporta la decisione, non la sostituisce. Gioca in modo responsabile.
+    <div class="meta-bar">
+      <span class="meta-date" id="match-date">Caricamento data...</span>
+      <span class="meta-stats" id="match-counts">Scansione in corso...</span>
+    </div>
+
+    <!-- TOP 3 PICKS -->
+    <div class="picks-grid" id="picks-grid">
+      <!-- Inserite dinamicamente da JavaScript -->
+    </div>
+
+    <!-- TUTTI I CANDIDATI -->
+    <div class="table-section-title">Tutti i candidati a valore della giornata</div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Partita</th>
+            <th>Esito</th>
+            <th>Quota</th>
+            <th>Prob. Stimata</th>
+            <th>Prob. Mercato</th>
+            <th>Edge</th>
+          </tr>
+        </thead>
+        <tbody id="candidates-body">
+          <tr>
+            <td colspan="6" style="text-align:center; padding: 24px; color: var(--text-muted);">Caricamento pronostici odierni...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer id="footer-note">
+      Dati generati automaticamente con GitHub Actions.
+    </footer>
   </div>
 
-  <div class="meta-row">
-    <div class="date mono" id="date-display">—</div>
-    <div class="scan-info" id="scan-info">—</div>
-  </div>
+  <script>
+    async function loadData() {
+      try {
+        // Query param casuale per forzare il refresh e ignorare la cache del browser mobile
+        const res = await fetch(`data/latest.json?t=${new Date().getTime()}`);
+        if (!res.ok) throw new Error("File latest.json non trovato");
+        const data = await res.json();
 
-  <div id="picks-container" class="picks-grid"></div>
+        document.getElementById('match-date').textContent = data.date || 'Oggi';
+        document.getElementById('match-counts').textContent = 
+          `${data.total_fixtures_scanned || 0} partite scansionate · ${data.candidates_after_filter || 0} passate al filtro`;
 
-  <div class="section-title">Tutti i candidati della giornata</div>
-  <div id="candidates-container"></div>
-</main>
+        const picksGrid = document.getElementById('picks-grid');
+        picksGrid.innerHTML = '';
 
-<footer>
-  Dati generati automaticamente da GitHub Actions. Ultimo aggiornamento visibile nel campo "generato il" sopra.
-</footer>
+        const pickConfigs = [
+          { key: 'conservativo', label: 'TOP PICK #1', sub: 'Massima probabilità del giorno', cls: 'top1' },
+          { key: 'consigliato',  label: 'TOP PICK #2', sub: 'Alta affidabilità',              cls: 'top2' },
+          { key: 'hard',         label: 'TOP PICK #3', sub: 'Alta affidabilità',              cls: 'top3' }
+        ];
 
-<script>
-const PICK_META = {
-  conservativo: { title: "Conservativo", desc: "Probabilità più alta, rischio minimo" },
-  consigliato:  { title: "Consigliato",  desc: "Miglior rapporto probabilità / quota" },
-  hard:         { title: "Hard",         desc: "Quota più alta, edge comunque positivo" },
-};
+        pickConfigs.forEach(cfg => {
+          const p = data.picks ? data.picks[cfg.key] : null;
+          if (!p) return;
 
-function pct(x){ return (x*100).toFixed(0) + "%"; }
+          const probPct = Math.round((p.estimated_probability || 0) * 100);
+          const mktPct = Math.round((p.implied_probability || 0) * 100);
+          const edgeVal = (p.edge !== undefined) ? (p.edge * 100).toFixed(1) : '+0.0';
+          const edgeSign = parseFloat(edgeVal) >= 0 ? `+${edgeVal}%` : `${edgeVal}%`;
 
-function renderGauge(estimated, implied){
-  const est = Math.max(0, Math.min(1, estimated));
-  const imp = Math.max(0, Math.min(1, implied));
-  return `
-    <div class="gauge">
-      <div class="gauge-fill" style="width:${est*100}%"></div>
-      <div class="gauge-marker" style="left:${imp*100}%"></div>
-    </div>
-    <div class="gauge-legend">
-      <span>Stimata ${pct(est)}</span>
-      <span>Mercato ${pct(imp)}</span>
-    </div>
-  `;
-}
+          const card = document.createElement('div');
+          card.className = `card ${cfg.cls}`;
+          card.innerHTML = `
+            <div>
+              <div class="card-header">
+                <span class="card-tag">${cfg.label}</span>
+                <span class="card-odd">${(p.odd || 0).toFixed(2)}</span>
+              </div>
+              <div class="card-league">${p.league || 'Calcio'}</div>
+              <div class="card-title">${p.match}</div>
+              <div class="card-pick">
+                Esito: <strong>${p.outcome_label}</strong> · <span style="font-size: 0.75rem;">${cfg.sub}</span>
+              </div>
+            </div>
+            <div>
+              <div class="card-stats">
+                <div>
+                  <div class="stat-val">${probPct}%</div>
+                  <div class="stat-label">Probabilità Stimata</div>
+                </div>
+                <div style="text-align: right;">
+                  <div class="stat-val" style="color: ${parseFloat(edgeVal) >= 0 ? 'var(--edge-pos)' : 'var(--text-muted)'};">${edgeSign}</div>
+                  <div class="stat-label">Edge vs Mercato</div>
+                </div>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: ${probPct}%;"></div>
+              </div>
+              <div class="card-footer">
+                ${p.notes || `Quota: ${(p.odd || 0).toFixed(2)} | Mercato: ${mktPct}%`}
+              </div>
+            </div>
+          `;
+          picksGrid.appendChild(card);
+        });
 
-function renderPickCard(type, pick){
-  const meta = PICK_META[type];
-  return `
-    <div class="pick-card ${type}">
-      <div class="pick-label">
-        <span>${meta.title}</span>
-        <span>${pick.odd.toFixed(2)}</span>
-      </div>
-      ${pick.league ? `<div class="league-tag">${pick.league}</div>` : ""}
-      <div class="pick-match">${pick.match}</div>
-      <div class="pick-outcome">Esito: <b>${pick.outcome_label}</b> · ${meta.desc}</div>
-      <div class="pick-stats">
-        <div class="stat">
-          <div class="value">${pct(pick.estimated_probability)}</div>
-          <div class="label">Probabilità stimata</div>
-        </div>
-        <div class="stat">
-          <div class="value">${pick.edge >= 0 ? "+" : ""}${(pick.edge*100).toFixed(1)}%</div>
-          <div class="label">Edge vs mercato</div>
-        </div>
-      </div>
-      ${renderGauge(pick.estimated_probability, pick.implied_probability)}
-      <div class="pick-notes">${pick.notes || ""}</div>
-    </div>
-  `;
-}
+        const tbody = document.getElementById('candidates-body');
+        tbody.innerHTML = '';
 
-function renderCandidatesTable(candidates){
-  if(!candidates || candidates.length === 0){
-    return `<div class="empty-state">Nessun candidato ha superato il filtro oggi.</div>`;
-  }
-  const rows = candidates.map(c => `
-    <tr>
-      <td>${c.match}${c.league ? `<br><span style="color:var(--text-muted); font-size:11px;">${c.league}</span>` : ""}</td>
-      <td>${c.outcome_label}</td>
-      <td class="num">${c.odd.toFixed(2)}</td>
-      <td class="num">${pct(c.estimated_probability)}</td>
-      <td class="num">${pct(c.implied_probability)}</td>
-      <td class="num ${c.edge >= 0 ? 'edge-positive' : 'edge-negative'}">${c.edge >= 0 ? "+" : ""}${(c.edge*100).toFixed(1)}%</td>
-    </tr>
-  `).join("");
-  return `
-    <table>
-      <thead>
-        <tr>
-          <th>Partita</th><th>Esito</th><th>Quota</th><th>Prob. stimata</th><th>Prob. mercato</th><th>Edge</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>
-  `;
-}
+        const candidates = data.all_candidates || [];
+        if (candidates.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding: 20px; color: var(--text-muted);">Nessun candidato rilevato oggi sopra quota 1.40 con edge positivo.</td></tr>`;
+        } else {
+          candidates.forEach(c => {
+            const probPct = Math.round((c.estimated_probability || 0) * 100);
+            const mktPct = Math.round((c.implied_probability || 0) * 100);
+            const edgeVal = (c.edge !== undefined) ? (c.edge * 100).toFixed(1) : '0.0';
+            const isPos = parseFloat(edgeVal) >= 0;
 
-async function load(){
-  try{
-    const res = await fetch('data/latest.json', { cache: "no-store" });
-    const data = await res.json();
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td>
+                <div class="match-name">${c.match}</div>
+                <div class="match-sub">${c.league || ''}</div>
+              </td>
+              <td>${c.outcome_label}</td>
+              <td class="mono-cell">${(c.odd || 0).toFixed(2)}</td>
+              <td class="mono-cell">${probPct}%</td>
+              <td class="mono-cell" style="color: var(--text-muted);">${mktPct}%</td>
+              <td class="mono-cell ${isPos ? 'edge-pos' : 'edge-neg'}">${isPos ? '+' : ''}${edgeVal}%</td>
+            `;
+            tbody.appendChild(tr);
+          });
+        }
 
-    document.getElementById('date-display').textContent = data.date;
-    document.getElementById('scan-info').textContent =
-      `${data.total_fixtures_scanned} partite scansionate · ${data.candidates_after_filter} passate il filtro`;
+        if (data.generated_at) {
+          document.getElementById('footer-note').textContent = 
+            `Dati generati automaticamente con GitHub Actions. Ultimo aggiornamento: ${data.generated_at}`;
+        }
+      } catch (err) {
+        console.error(err);
+        document.getElementById('candidates-body').innerHTML = 
+          `<tr><td colspan="6" style="text-align:center; color: #ef4444; padding: 20px;">Errore nel caricamento dati (${err.message}). Riprova tra poco.</td></tr>`;
+      }
+    }
 
-    const picksContainer = document.getElementById('picks-container');
-    const order = ['conservativo', 'consigliato', 'hard'];
-    const cards = order
-      .filter(k => data.picks && data.picks[k])
-      .map(k => renderPickCard(k, data.picks[k]))
-      .join("");
-    picksContainer.innerHTML = cards || `<div class="empty-state">Nessun pronostico disponibile oggi: nessun evento ha superato i criteri di filtro.</div>`;
-
-    document.getElementById('candidates-container').innerHTML = renderCandidatesTable(data.all_candidates);
-
-  } catch(err){
-    document.getElementById('picks-container').innerHTML =
-      `<div class="empty-state">Impossibile caricare data/latest.json. Esegui il workflow GitHub Actions o verifica il percorso del file.</div>`;
-    console.error(err);
-  }
-}
-
-load();
-</script>
+    loadData();
+  </script>
 </body>
 </html>
