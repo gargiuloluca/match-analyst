@@ -1,10 +1,11 @@
 """
-analyze.py — AtmBetSignal Pro Engine.
-- Parametri lambda e mu dinamici per lega (calibrazione empirica gol casa/trasferta).
-- Correzione Dixon-Coles bivariata per pareggi e punteggi bassi.
-- Quota minima 1.40, massima 3.00.
-- Selezione assoluta: massima probabilità stimata di riuscita.
-- Registrazione automatica delle 3 Top Pick in data/tracker.json.
+analyze.py — AtmBetSignal Institutional Engine.
+- Modello Dixon-Coles bivariato per correzione empirica su pareggi e punteggi bassi.
+- Profili goal dinamici lambda/mu calibrati per lega.
+- Dimensionamento del capitale istituzionale tramite Criterio Quarter-Kelly:
+  f* = 0.25 * ((b * p - (1 - p)) / b), con cap prudenziale al 2.5% del bankroll.
+- Selezione per massima probabilità e valore atteso.
+- Registrazione automatica in data/tracker.json.
 """
 
 import json
@@ -22,7 +23,6 @@ HISTORY_DIR.mkdir(parents=True, exist_ok=True)
 FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 TRACKER_PATH = DATA_DIR / "tracker.json"
 
-# Parametri medi storici specifici per lega: (media_gol_casa, media_gol_trasferta)
 LEAGUE_GOAL_PROFILES = {
     "Serie A": (1.46, 1.14),
     "Premier League": (1.58, 1.28),
@@ -53,6 +53,7 @@ RHO_CORRELATION = -0.11
 
 MIN_ODD = 1.40
 MAX_ODD = 3.00
+MAX_KELLY_STAKE = 2.5  # Max 2.5% del bankroll per singola operazione (risk management)
 
 
 def remove_margin(odds: dict) -> dict:
@@ -118,6 +119,20 @@ def generate_dixon_coles_probabilities(fair_1x2: dict, league_name: str) -> dict
     }
 
 
+def calculate_quarter_kelly(prob: float, odd: float) -> float:
+    """Calcola la percentuale di allocazione ottimale con il criterio Quarter-Kelly."""
+    b = odd - 1.0
+    if b <= 0:
+        return 0.5
+    raw_kelly = (b * prob - (1.0 - prob)) / b
+    if raw_kelly <= 0:
+        # Stake difensivo minimo per quote a forte probabilità
+        return 0.5
+    quarter_kelly = (raw_kelly * 0.25) * 100
+    # Limita l'esposizione tra 0.5% e 2.5% del bankroll
+    return round(max(0.5, min(MAX_KELLY_STAKE, quarter_kelly)), 1)
+
+
 def build_candidates(fixtures: list) -> list:
     candidates = []
 
@@ -155,6 +170,7 @@ def build_candidates(fixtures: list) -> list:
 
             implied_prob = 1.0 / odd_val
             edge = prob_val - implied_prob
+            stake_pct = calculate_quarter_kelly(prob_val, odd_val)
 
             candidates.append({
                 "fixture_id": fx.get("fixture_id"),
@@ -167,7 +183,8 @@ def build_candidates(fixtures: list) -> list:
                 "estimated_probability": round(prob_val, 4),
                 "implied_probability": round(implied_prob, 4),
                 "edge": round(edge, 4),
-                "notes": f"Lega: {league} | Quota: {odd_val:.2f}",
+                "suggested_stake_pct": stake_pct,
+                "notes": f"Lega: {league} | Quota: {odd_val:.2f} | Stake: {stake_pct}%",
             })
 
     return candidates
@@ -233,6 +250,7 @@ def record_picks_to_tracker(picks: dict):
                 "outcome_label": p["outcome_label"],
                 "odd": float(p["odd"]),
                 "estimated_prob": p.get("estimated_probability"),
+                "suggested_stake_pct": p.get("suggested_stake_pct", 1.0),
                 "status": "PENDING",
                 "score": "-",
                 "profit": 0.0
@@ -263,7 +281,7 @@ def main():
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"AtmBetSignal: {len(candidates)} candidati analizzati con profili dinamici di lega.")
+    print(f"AtmBetSignal Quant Engine: Top 3 estratte con dimensionamento Quarter-Kelly.")
 
 
 if __name__ == "__main__":
