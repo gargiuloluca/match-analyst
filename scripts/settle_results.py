@@ -1,7 +1,8 @@
 """
-settle_results.py — AtmBetSignal
-Verifica automatica dei punteggi finali tramite The Odds API.
-Risolve le scommesse PENDING in WON / LOST e aggiorna ROI e Win Rate nel tracker.json.
+settle_results.py — AtmBetSignal Nightly Settlement & Telegram Recap.
+1. Interroga le API per recuperare i punteggi finali delle scommesse PENDING.
+2. Determina se l'esito è WON o LOST e ricalcola il ROI globale.
+3. Se sono state risolte scommesse oggi, invia automaticamente il recap serale su Telegram.
 """
 
 import os
@@ -10,8 +11,10 @@ from pathlib import Path
 import requests
 
 ODDS_API_KEY = os.environ.get("ODDSAPI_KEY", "").strip()
-ODDS_BASE_URL = "https://api.the-odds-api.com/v4"
+BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
+ODDS_BASE_URL = "https://api.the-odds-api.com/v4"
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 TRACKER_PATH = DATA_DIR / "tracker.json"
 
@@ -24,6 +27,7 @@ SPORT_KEYS = [
     "soccer_portugal_primeira_liga", "soccer_belgium_first_div",
     "soccer_turkey_super_league", "soccer_spl"
 ]
+
 
 def evaluate_bet(market_type: str, h_score: int, a_score: int) -> bool:
     tot = h_score + a_score
@@ -45,9 +49,53 @@ def evaluate_bet(market_type: str, h_score: int, a_score: int) -> bool:
         return h_score == 0 or a_score == 0
     return False
 
+
+def send_telegram_recap(today_resolved: list, win_rate: float, roi: float, net_profit: float):
+    if not BOT_TOKEN or not CHAT_ID or not today_resolved:
+        return
+
+    won_today = sum(1 for b in today_resolved if b["status"] == "WON")
+    profit_today = sum(b.get("profit", 0.0) for b in today_resolved)
+    p_sign = "+" if profit_today >= 0 else ""
+
+    lines = [
+        "🏁 <b>AtmBetSignal — Recap Esiti di Oggi</b>",
+        f"Bilancio giornata: <b>{won_today}/{len(today_resolved)}</b> vinti (<code>{p_sign}{profit_today:.2f} u</code>)\n"
+    ]
+
+    for b in today_resolved:
+        icon = "✅" if b["status"] == "WON" else "❌"
+        lines.append(
+            f"{icon} <b>{b['match']}</b>\n"
+            f"• Scelta: {b['outcome_label']} @ <code>{b['odd']:.2f}</code>\n"
+            f"• Finale: <b>{b['score']}</b> ({b['status']})\n"
+        )
+
+    lines.append(
+        f"📈 <b>Statistiche Storiche Globali</b>\n"
+        f"• Win Rate: <b>{win_rate:.1f}%</b>\n"
+        f"• ROI Netto: <b>{'+' if roi >= 0 else ''}{roi:.1f}%</b>\n"
+        f"• Profitto Totale: <b>{'+' if net_profit >= 0 else ''}{net_profit:.2f} u</b>\n\n"
+        f"🌐 <i>Grafico Equity Line aggiornato su GitHub Pages.</i>"
+    )
+
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    payload = {
+        "chat_id": CHAT_ID,
+        "text": "\n".join(lines),
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True,
+    }
+
+    try:
+        requests.post(url, json=payload, timeout=15)
+    except Exception as e:
+        print(f"Errore recap Telegram: {e}")
+
+
 def main():
     if not TRACKER_PATH.exists():
-        print("Nessun file tracker.json trovato.")
+        print("Nessun tracker trovato.")
         return
 
     tracker = json.loads(TRACKER_PATH.read_text(encoding="utf-8"))
@@ -55,11 +103,11 @@ def main():
     pending = [b for b in bets if b.get("status") == "PENDING"]
 
     if not pending:
-        print("Nessuna scommessa in attesa da verificare.")
+        print("Nessuna scommessa PENDING da verificare.")
         return
 
     if not ODDS_API_KEY:
-        print("ODDSAPI_KEY mancante nei secrets.")
+        print("ODDSAPI_KEY mancante.")
         return
 
     completed_scores = {}
@@ -77,9 +125,9 @@ def main():
                         if h_val is not None and a_val is not None:
                             completed_scores[match["id"]] = (h_val, a_val)
         except Exception as e:
-            print(f"Errore recupero punteggi per {sport}: {e}")
+            print(f"Errore su {sport}: {e}")
 
-    updated = 0
+    today_resolved = []
     for b in pending:
         fid = b.get("fixture_id")
         if fid in completed_scores:
@@ -92,7 +140,7 @@ def main():
             else:
                 b["status"] = "LOST"
                 b["profit"] = -1.0
-            updated += 1
+            today_resolved.append(b)
 
     settled = [b for b in bets if b.get("status") in ("WON", "LOST")]
     tot_settled = len(settled)
@@ -108,7 +156,11 @@ def main():
     tracker["roi_pct"] = round((tot_profit / tot_settled * 100), 1) if tot_settled > 0 else 0.0
 
     TRACKER_PATH.write_text(json.dumps(tracker, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Verifica completata: {updated} pronostici risolti oggi. Win Rate: {tracker['win_rate']}% | ROI: {tracker['roi_pct']}%")
+    print(f"Risolte {len(today_resolved)} scommesse stasera.")
+
+    if today_resolved:
+        send_telegram_recap(today_resolved, tracker["win_rate"], tracker["roi_pct"], tracker["net_profit_units"])
+
 
 if __name__ == "__main__":
     main()
