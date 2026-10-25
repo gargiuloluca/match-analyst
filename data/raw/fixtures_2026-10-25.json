@@ -10,9 +10,9 @@
       "name": "Frosinone"
     },
     "odds": {
-      "home": 1.94,
-      "draw": 4.18,
-      "away": 3.63,
+      "home": 2.11,
+      "draw": 3.4,
+      "away": 3.43,
       "bookmaker": "Pinnacle"
     }
   },
@@ -27,9 +27,9 @@
       "name": "Venezia"
     },
     "odds": {
-      "home": 2.24,
-      "draw": 3.32,
-      "away": 3.56,
+      "home": 2.28,
+      "draw": 2.84,
+      "away": 3.83,
       "bookmaker": "Pinnacle"
     }
   },
@@ -44,8 +44,8 @@
       "name": "Juventus"
     },
     "odds": {
-      "home": 6.38,
-      "draw": 4.32,
+      "home": 6.34,
+      "draw": 4.3,
       "away": 1.55,
       "bookmaker": "Pinnacle"
     }
@@ -78,10 +78,10 @@
       "name": "Bournemouth"
     },
     "odds": {
-      "home": 2.35,
-      "draw": 3.53,
-      "away": 3.0,
-      "bookmaker": "1xBet"
+      "home": 5.9,
+      "draw": 3.7,
+      "away": 1.45,
+      "bookmaker": "Winamax (FR)"
     }
   },
   {
@@ -95,9 +95,9 @@
       "name": "Brentford"
     },
     "odds": {
-      "home": 4.6,
-      "draw": 3.85,
-      "away": 1.66,
+      "home": 2.2,
+      "draw": 3.25,
+      "away": 3.1,
       "bookmaker": "Winamax (DE)"
     }
   },
@@ -112,9 +112,9 @@
       "name": "Brighton and Hove Albion"
     },
     "odds": {
-      "home": 1.95,
-      "draw": 3.5,
-      "away": 3.3,
+      "home": 1.11,
+      "draw": 9.0,
+      "away": 19.0,
       "bookmaker": "888sport"
     }
   },
@@ -129,9 +129,9 @@
       "name": "Newcastle United"
     },
     "odds": {
-      "home": 2.45,
-      "draw": 3.4,
-      "away": 2.55,
+      "home": 2.65,
+      "draw": 2.75,
+      "away": 2.75,
       "bookmaker": "MyBookie.ag"
     }
   },
@@ -163,9 +163,9 @@
       "name": "Getafe"
     },
     "odds": {
-      "home": 1.02,
-      "draw": 21.0,
-      "away": 65.0,
+      "home": 1.01,
+      "draw": 28.0,
+      "away": 120.0,
       "bookmaker": "Winamax (DE)"
     }
   },
@@ -180,9 +180,9 @@
       "name": "Real Betis"
     },
     "odds": {
-      "home": 3.15,
+      "home": 2.9,
       "draw": 3.3,
-      "away": 2.45,
+      "away": 2.62,
       "bookmaker": "Coolbet"
     }
   },
@@ -231,9 +231,9 @@
       "name": "Bayer Leverkusen"
     },
     "odds": {
-      "home": 3.25,
-      "draw": 4.09,
-      "away": 2.1,
+      "home": 3.01,
+      "draw": 3.89,
+      "away": 2.16,
       "bookmaker": "Pinnacle"
     }
   },
@@ -248,9 +248,9 @@
       "name": "Bayern Munich"
     },
     "odds": {
-      "home": 5.55,
-      "draw": 5.17,
-      "away": 1.51,
+      "home": 5.57,
+      "draw": 5.18,
+      "away": 1.5,
       "bookmaker": "Pinnacle"
     }
   },
@@ -265,9 +265,9 @@
       "name": "Lille"
     },
     "odds": {
-      "home": 1.8,
-      "draw": 3.4,
-      "away": 3.5,
+      "home": 3.6,
+      "draw": 3.0,
+      "away": 1.9,
       "bookmaker": "Winamax (FR)"
     }
   },
@@ -316,9 +316,9 @@
       "name": "Le Havre"
     },
     "odds": {
-      "home": 1.42,
+      "home": 1.43,
       "draw": 5.0,
-      "away": 5.8,
+      "away": 5.7,
       "bookmaker": "Winamax (DE)"
     }
   },
