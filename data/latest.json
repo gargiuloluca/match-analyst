@@ -1,6 +1,6 @@
 {
   "date": "2026-10-25",
-  "generated_at": "2026-10-25T14:46:21.438627+00:00",
+  "generated_at": "2026-10-25T14:49:08.825284+00:00",
   "total_fixtures_scanned": 21,
   "candidates_after_filter": 116,
   "picks": {
@@ -11,11 +11,11 @@
       "date": "2026-10-25",
       "market_type": "X2",
       "outcome_label": "X2 (Doppia Chance Lille)",
-      "odd": 1.23,
-      "estimated_probability": 0.777,
-      "implied_probability": 0.813,
-      "edge": -0.036,
-      "notes": "Mercato: X2 | Quota: 1.23 | Prob: 77%"
+      "odd": 1.22,
+      "estimated_probability": 0.782,
+      "implied_probability": 0.82,
+      "edge": -0.038,
+      "notes": "Mercato: X2 | Quota: 1.22 | Prob: 78%"
     },
     "consigliato": {
       "fixture_id": "3cb8660cd2375b60e81144a7572cfb89",
@@ -65,11 +65,11 @@
       "date": "2026-10-25",
       "market_type": "X2",
       "outcome_label": "X2 (Doppia Chance Lille)",
-      "odd": 1.23,
-      "estimated_probability": 0.777,
-      "implied_probability": 0.813,
-      "edge": -0.036,
-      "notes": "Mercato: X2 | Quota: 1.23 | Prob: 77%"
+      "odd": 1.22,
+      "estimated_probability": 0.782,
+      "implied_probability": 0.82,
+      "edge": -0.038,
+      "notes": "Mercato: X2 | Quota: 1.22 | Prob: 78%"
     },
     {
       "fixture_id": "72089d103a5fe6a922c35e17efba6ffc",
@@ -98,6 +98,19 @@
       "notes": "Mercato: 1X | Quota: 1.26 | Prob: 75%"
     },
     {
+      "fixture_id": "69493b5ebb84f24ab1d6023a30ee89f0",
+      "league": "Premier League",
+      "match": "Hull City - Brentford",
+      "date": "2026-10-25",
+      "market_type": "1X",
+      "outcome_label": "1X (Doppia Chance Hull City)",
+      "odd": 1.31,
+      "estimated_probability": 0.729,
+      "implied_probability": 0.763,
+      "edge": -0.034,
+      "notes": "Mercato: 1X | Quota: 1.31 | Prob: 72%"
+    },
+    {
       "fixture_id": "63aa6e3f679ee4c68de5b4bd8d3361bb",
       "league": "Serie A",
       "match": "Atalanta BC - Frosinone",
@@ -111,19 +124,6 @@
       "notes": "Mercato: 1X | Quota: 1.31 | Prob: 72%"
     },
     {
-      "fixture_id": "69493b5ebb84f24ab1d6023a30ee89f0",
-      "league": "Premier League",
-      "match": "Hull City - Brentford",
-      "date": "2026-10-25",
-      "market_type": "1X",
-      "outcome_label": "1X (Doppia Chance Hull City)",
-      "odd": 1.33,
-      "estimated_probability": 0.718,
-      "implied_probability": 0.752,
-      "edge": -0.034,
-      "notes": "Mercato: 1X | Quota: 1.33 | Prob: 71%"
-    },
-    {
       "fixture_id": "8eab078a37a63df32ffa443302a2a7ba",
       "league": "Ligue 1",
       "match": "Auxerre - Le Mans FC",
@@ -135,6 +135,19 @@
       "implied_probability": 0.746,
       "edge": -0.035,
       "notes": "Mercato: 1X | Quota: 1.34 | Prob: 71%"
+    },
+    {
+      "fixture_id": "fe235b26408c477368c40672a4488694",
+      "league": "Premier League",
+      "match": "Crystal Palace - Newcastle United",
+      "date": "2026-10-25",
+      "market_type": "1X",
+      "outcome_label": "1X (Doppia Chance Crystal Palace)",
+      "odd": 1.37,
+      "estimated_probability": 0.696,
+      "implied_probability": 0.73,
+      "edge": -0.034,
+      "notes": "Mercato: 1X | Quota: 1.37 | Prob: 69%"
     },
     {
       "fixture_id": "95cfaecfe96bb7ced1fb6af974a4110b",
@@ -193,13 +206,13 @@
       "league": "Premier League",
       "match": "Crystal Palace - Newcastle United",
       "date": "2026-10-25",
-      "market_type": "1X",
-      "outcome_label": "1X (Doppia Chance Crystal Palace)",
-      "odd": 1.4,
-      "estimated_probability": 0.681,
-      "implied_probability": 0.714,
-      "edge": -0.034,
-      "notes": "Mercato: 1X | Quota: 1.40 | Prob: 68%"
+      "market_type": "X2",
+      "outcome_label": "X2 (Doppia Chance Newcastle United)",
+      "odd": 1.42,
+      "estimated_probability": 0.669,
+      "implied_probability": 0.704,
+      "edge": -0.036,
+      "notes": "Mercato: X2 | Quota: 1.42 | Prob: 66%"
     },
     {
       "fixture_id": "2013e3955186ebe5258e85eb741a7553",
@@ -213,19 +226,6 @@
       "implied_probability": 0.699,
       "edge": -0.034,
       "notes": "Mercato: X2 | Quota: 1.43 | Prob: 66%"
-    },
-    {
-      "fixture_id": "fe235b26408c477368c40672a4488694",
-      "league": "Premier League",
-      "match": "Crystal Palace - Newcastle United",
-      "date": "2026-10-25",
-      "market_type": "X2",
-      "outcome_label": "X2 (Doppia Chance Newcastle United)",
-      "odd": 1.45,
-      "estimated_probability": 0.657,
-      "implied_probability": 0.69,
-      "edge": -0.033,
-      "notes": "Mercato: X2 | Quota: 1.45 | Prob: 65%"
     },
     {
       "fixture_id": "fcc34b753fc61a0cc0e11d7cb0a0c36b",
@@ -436,19 +436,6 @@
       "notes": "Mercato: Over2.5 | Quota: 1.62 | Prob: 58%"
     },
     {
-      "fixture_id": "69493b5ebb84f24ab1d6023a30ee89f0",
-      "league": "Premier League",
-      "match": "Hull City - Brentford",
-      "date": "2026-10-25",
-      "market_type": "X2",
-      "outcome_label": "X2 (Doppia Chance Brentford)",
-      "odd": 1.66,
-      "estimated_probability": 0.573,
-      "implied_probability": 0.602,
-      "edge": -0.029,
-      "notes": "Mercato: X2 | Quota: 1.66 | Prob: 57%"
-    },
-    {
       "fixture_id": "33fb7467b23c91d57dc976d9ab05ea97",
       "league": "Premier League",
       "match": "Manchester United - Bournemouth",
@@ -460,6 +447,19 @@
       "implied_probability": 0.606,
       "edge": -0.034,
       "notes": "Mercato: Over2.5 | Quota: 1.65 | Prob: 57%"
+    },
+    {
+      "fixture_id": "69493b5ebb84f24ab1d6023a30ee89f0",
+      "league": "Premier League",
+      "match": "Hull City - Brentford",
+      "date": "2026-10-25",
+      "market_type": "X2",
+      "outcome_label": "X2 (Doppia Chance Brentford)",
+      "odd": 1.66,
+      "estimated_probability": 0.572,
+      "implied_probability": 0.602,
+      "edge": -0.03,
+      "notes": "Mercato: X2 | Quota: 1.66 | Prob: 57%"
     },
     {
       "fixture_id": "f2bd909f25eea6b4ce42d2f52275e5c4",

@@ -78,9 +78,9 @@
       "name": "Bournemouth"
     },
     "odds": {
-      "home": 19.0,
-      "draw": 7.25,
-      "away": 1.13,
+      "home": 17.0,
+      "draw": 7.0,
+      "away": 1.14,
       "bookmaker": "Winamax (FR)"
     }
   },
@@ -96,8 +96,8 @@
     },
     "odds": {
       "home": 2.15,
-      "draw": 3.15,
-      "away": 3.25,
+      "draw": 3.05,
+      "away": 3.4,
       "bookmaker": "Winamax (DE)"
     }
   },
@@ -112,9 +112,9 @@
       "name": "Brighton and Hove Albion"
     },
     "odds": {
-      "home": 1.1,
-      "draw": 9.0,
-      "away": 23.0,
+      "home": 1.08,
+      "draw": 9.5,
+      "away": 26.0,
       "bookmaker": "888sport"
     }
   },
@@ -129,9 +129,9 @@
       "name": "Newcastle United"
     },
     "odds": {
-      "home": 2.65,
-      "draw": 2.7,
-      "away": 2.85,
+      "home": 2.75,
+      "draw": 2.5,
+      "away": 3.0,
       "bookmaker": "MyBookie.ag"
     }
   },
@@ -265,9 +265,9 @@
       "name": "Lille"
     },
     "odds": {
-      "home": 3.95,
-      "draw": 3.05,
-      "away": 1.8,
+      "home": 4.0,
+      "draw": 3.0,
+      "away": 1.78,
       "bookmaker": "Winamax (FR)"
     }
   },
