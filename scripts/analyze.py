@@ -1,10 +1,10 @@
 """
-analyze.py — AtmBetSignal (Win-Rate First Engine).
-- Priorità assoluta: Massima probabilità di vittoria stimata.
-- Vincolo di quota: Minimo 1.40, Massimo 3.00.
-- Calcolo probabilità con Poisson e correzione Dixon-Coles per i pareggi.
-- Estrae sempre i 3 eventi più probabili della giornata senza filtri restrittivi che bloccano il podio.
-- Registra automaticamente le 3 Top Pick nel tracker come PENDING.
+analyze.py — AtmBetSignal Pro Engine.
+- Parametri lambda e mu dinamici per lega (calibrazione empirica gol casa/trasferta).
+- Correzione Dixon-Coles bivariata per pareggi e punteggi bassi.
+- Quota minima 1.40, massima 3.00.
+- Selezione assoluta: massima probabilità stimata di riuscita.
+- Registrazione automatica delle 3 Top Pick in data/tracker.json.
 """
 
 import json
@@ -21,6 +21,31 @@ HISTORY_DIR.mkdir(parents=True, exist_ok=True)
 
 FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 TRACKER_PATH = DATA_DIR / "tracker.json"
+
+# Parametri medi storici specifici per lega: (media_gol_casa, media_gol_trasferta)
+LEAGUE_GOAL_PROFILES = {
+    "Serie A": (1.46, 1.14),
+    "Premier League": (1.58, 1.28),
+    "La Liga": (1.42, 1.08),
+    "Bundesliga": (1.75, 1.42),
+    "Ligue 1": (1.48, 1.18),
+    "Champions League": (1.65, 1.35),
+    "Europa League": (1.55, 1.28),
+    "Conference League": (1.52, 1.25),
+    "Serie B (Italia)": (1.28, 0.98),
+    "Championship (Inghilterra)": (1.42, 1.15),
+    "Segunda División (Spagna)": (1.22, 0.88),
+    "2. Bundesliga (Germania)": (1.68, 1.38),
+    "Eredivisie (Olanda)": (1.78, 1.40),
+    "Primeira Liga (Portogallo)": (1.38, 1.05),
+    "Jupiler Pro League (Belgio)": (1.58, 1.28),
+    "Süper Lig (Turchia)": (1.52, 1.22),
+    "Premiership (Scozia)": (1.45, 1.15),
+    "Super League (Svizzera)": (1.62, 1.32),
+    "Bundesliga (Austria)": (1.55, 1.25),
+    "Brasileirão (Brasile)": (1.35, 0.98),
+    "MLS (USA)": (1.60, 1.25),
+}
 
 DEFAULT_LAMBDA = 1.48
 DEFAULT_MU = 1.12
@@ -55,10 +80,11 @@ def poisson_prob(k: int, lamb: float) -> float:
     return (math.pow(lamb, k) * math.exp(-lamb)) / math.factorial(k)
 
 
-def generate_dixon_coles_probabilities(fair_1x2: dict) -> dict:
+def generate_dixon_coles_probabilities(fair_1x2: dict, league_name: str) -> dict:
+    base_l, base_m = LEAGUE_GOAL_PROFILES.get(league_name, (DEFAULT_LAMBDA, DEFAULT_MU))
     ratio = fair_1x2["home"] / max(0.01, fair_1x2["away"])
-    lamb = max(0.65, min(2.70, DEFAULT_LAMBDA * math.sqrt(ratio)))
-    mu = max(0.50, min(2.35, DEFAULT_MU / math.sqrt(ratio)))
+    lamb = max(0.60, min(2.80, base_l * math.sqrt(ratio)))
+    mu = max(0.45, min(2.40, base_m / math.sqrt(ratio)))
 
     p_matrix = {}
     for h in range(7):
@@ -104,7 +130,8 @@ def build_candidates(fixtures: list) -> list:
         if not fair_1x2:
             continue
 
-        probs = generate_dixon_coles_probabilities(fair_1x2)
+        league = fx.get("league", "")
+        probs = generate_dixon_coles_probabilities(fair_1x2, league)
         home = fx.get("home_team", {}).get("name", "Casa")
         away = fx.get("away_team", {}).get("name", "Trasferta")
         match_title = f"{home} - {away}"
@@ -123,7 +150,6 @@ def build_candidates(fixtures: list) -> list:
             odd_val = out["odd"]
             prob_val = out["prob"]
 
-            # Quota minima 1.40 e massima 3.00
             if odd_val < MIN_ODD or odd_val > MAX_ODD:
                 continue
 
@@ -132,7 +158,7 @@ def build_candidates(fixtures: list) -> list:
 
             candidates.append({
                 "fixture_id": fx.get("fixture_id"),
-                "league": fx.get("league", ""),
+                "league": league,
                 "match": match_title,
                 "date": TODAY,
                 "market_type": out["type"],
@@ -141,7 +167,7 @@ def build_candidates(fixtures: list) -> list:
                 "estimated_probability": round(prob_val, 4),
                 "implied_probability": round(implied_prob, 4),
                 "edge": round(edge, 4),
-                "notes": f"Lega: {fx.get('league')} | Quota: {odd_val:.2f}",
+                "notes": f"Lega: {league} | Quota: {odd_val:.2f}",
             })
 
     return candidates
@@ -151,8 +177,6 @@ def select_top_probability_picks(candidates: list) -> dict:
     picks = {}
     used_fixtures = set()
 
-    # PRIORITÀ ASSOLUTA: Probabilità stimata decrescente.
-    # In caso di parità, premia chi ha l'Edge o la Quota migliore.
     ranked = sorted(
         candidates,
         key=lambda c: (c["estimated_probability"], c["edge"], c["odd"]),
@@ -239,7 +263,7 @@ def main():
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"AtmBetSignal: Selezionati i 3 eventi a più alta probabilità assoluta (quota >= {MIN_ODD}).")
+    print(f"AtmBetSignal: {len(candidates)} candidati analizzati con profili dinamici di lega.")
 
 
 if __name__ == "__main__":
