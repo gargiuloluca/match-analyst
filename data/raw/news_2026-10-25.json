@@ -1,10 +1,4 @@
 {
-  "1. FC Köln": {
-    "team": "1. FC Köln",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "AC Milan": {
     "team": "AC Milan",
     "articles_scanned": 11,
@@ -32,54 +26,9 @@
     ],
     "high_impact_count": 2
   },
-  "ACF Fiorentina": {
-    "team": "ACF Fiorentina",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "AEK Athens": {
-    "team": "AEK Athens",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "AFC Bournemouth": {
-    "team": "AFC Bournemouth",
-    "articles_scanned": 1,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "AJ Auxerre": {
-    "team": "AJ Auxerre",
-    "articles_scanned": 2,
-    "flagged_articles": [
-      {
-        "title": "Conference: uno-due Ajax nel finale, Atalanta ko anche in Europa",
-        "summary": "Arokodare e Ouazane decisivi tra 87' e 93': i bergamaschi reclamano un rigore su Zalewski",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-uno-due-ajax-nel-finale-atalanta-ko-anche-in-europa_ded0fafa-c0a7-49ca-a975-feaf837f72bc.html",
-        "published_at": "2026-10-22T21:32:55+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Conference League: l'Ajax passa due volte nel finale, Atalanta ko",
-        "summary": "L'incontro deciso dalle reti di Tolou e Ouazane nella ripresa",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-league-lajax-passa-due-volte-nel-finale-atalanta-ko_9a5f6150-1743-4089-80ad-ca0df5320df8.html",
-        "published_at": "2026-10-22T20:56:12+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 2
-  },
   "AS Monaco": {
     "team": "AS Monaco",
-    "articles_scanned": 28,
+    "articles_scanned": 27,
     "flagged_articles": [
       {
         "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
@@ -143,178 +92,9 @@
       }
     ],
     "high_impact_count": 6
-  },
-  "AS Monaco FC": {
-    "team": "AS Monaco FC",
-    "articles_scanned": 28,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Milan: brutte notizie per Amorim, ko Rabiot, Moreira e Gila",
-        "summary": "Non a disposizione per la trasferta di Udine in campionato",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/milan-brutte-notizie-per-amorim-ko-rabiot-moreira-e-gila_0fbbd5c5-f800-4ff9-ac8d-b00581c80b9e.html",
-        "published_at": "2026-10-24T17:03:35+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
-        "summary": "Doppietta di Douvikas al 'Sinigaglia', secondo ko di fila per i sardi di Pisacane",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/serie-a-il-como-batte-il-sassuolo-il-bologna-passa-a-cagliari_ca5763fa-1781-433a-a736-02e711e2f603.html",
-        "published_at": "2026-10-24T14:57:07+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
-        "summary": "Il tecnico del Bayern debilitato da infezione virale, soccorso in elicottero",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/calcio-paura-per-kompany-collassa-in-allenamento-ed-e-ricoverato-in-ospedale_ea36c21a-d0a5-46c9-a442-6164e0e8fe88.html",
-        "published_at": "2026-10-23T16:09:16+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Conference: uno-due Ajax nel finale, Atalanta ko anche in Europa",
-        "summary": "Arokodare e Ouazane decisivi tra 87' e 93': i bergamaschi reclamano un rigore su Zalewski",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-uno-due-ajax-nel-finale-atalanta-ko-anche-in-europa_ded0fafa-c0a7-49ca-a975-feaf837f72bc.html",
-        "published_at": "2026-10-22T21:32:55+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Conference League: l'Ajax passa due volte nel finale, Atalanta ko",
-        "summary": "L'incontro deciso dalle reti di Tolou e Ouazane nella ripresa",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-league-lajax-passa-due-volte-nel-finale-atalanta-ko_9a5f6150-1743-4089-80ad-ca0df5320df8.html",
-        "published_at": "2026-10-22T20:56:12+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 6
-  },
-  "AS Roma": {
-    "team": "AS Roma",
-    "articles_scanned": 28,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Milan: brutte notizie per Amorim, ko Rabiot, Moreira e Gila",
-        "summary": "Non a disposizione per la trasferta di Udine in campionato",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/milan-brutte-notizie-per-amorim-ko-rabiot-moreira-e-gila_0fbbd5c5-f800-4ff9-ac8d-b00581c80b9e.html",
-        "published_at": "2026-10-24T17:03:35+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
-        "summary": "Doppietta di Douvikas al 'Sinigaglia', secondo ko di fila per i sardi di Pisacane",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/serie-a-il-como-batte-il-sassuolo-il-bologna-passa-a-cagliari_ca5763fa-1781-433a-a736-02e711e2f603.html",
-        "published_at": "2026-10-24T14:57:07+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
-        "summary": "Il tecnico del Bayern debilitato da infezione virale, soccorso in elicottero",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/calcio-paura-per-kompany-collassa-in-allenamento-ed-e-ricoverato-in-ospedale_ea36c21a-d0a5-46c9-a442-6164e0e8fe88.html",
-        "published_at": "2026-10-23T16:09:16+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Conference: uno-due Ajax nel finale, Atalanta ko anche in Europa",
-        "summary": "Arokodare e Ouazane decisivi tra 87' e 93': i bergamaschi reclamano un rigore su Zalewski",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-uno-due-ajax-nel-finale-atalanta-ko-anche-in-europa_ded0fafa-c0a7-49ca-a975-feaf837f72bc.html",
-        "published_at": "2026-10-22T21:32:55+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Conference League: l'Ajax passa due volte nel finale, Atalanta ko",
-        "summary": "L'incontro deciso dalle reti di Tolou e Ouazane nella ripresa",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-league-lajax-passa-due-volte-nel-finale-atalanta-ko_9a5f6150-1743-4089-80ad-ca0df5320df8.html",
-        "published_at": "2026-10-22T20:56:12+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 6
-  },
-  "Alavés": {
-    "team": "Alavés",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
   },
   "Angers": {
     "team": "Angers",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Angers SCO": {
-    "team": "Angers SCO",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Arsenal": {
-    "team": "Arsenal",
-    "articles_scanned": 2,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
-  "Aston Villa": {
-    "team": "Aston Villa",
     "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
@@ -352,24 +132,6 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Athletic Club": {
-    "team": "Athletic Club",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Atlético Madrid": {
-    "team": "Atlético Madrid",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Augsburg": {
-    "team": "Augsburg",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Auxerre": {
     "team": "Auxerre",
     "articles_scanned": 0,
@@ -381,53 +143,6 @@
     "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
-  },
-  "Bayer 04 Leverkusen": {
-    "team": "Bayer 04 Leverkusen",
-    "articles_scanned": 5,
-    "flagged_articles": [
-      {
-        "title": "Kompany é in 'condizioni stabili', ma resta ricoverato",
-        "summary": "Il ds del Bayern: 'Il tecnico mancherà a lungo, parliamo di settimane'",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/kompany-e-in-condizioni-stabili-ma-resta-ricoverato_ae06e4b2-8b71-493b-85c6-42d45681c44f.html",
-        "published_at": "2026-10-24T17:16:12+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Kompany é in \"condizioni stabili\", ma resta ricoverato",
-        "summary": "Il ds del Bayern: il tecnico mancherà a lungo, \"parliamo di settimane\"",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/kompany-e-in-condizioni-stabili-ma-resta-ricoverato_6e0ea632-8ef4-40a6-b31f-97e4b6c9b1db.html",
-        "published_at": "2026-10-24T09:10:05+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
-        "summary": "Il tecnico del Bayern debilitato da infezione virale, soccorso in elicottero",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/calcio-paura-per-kompany-collassa-in-allenamento-ed-e-ricoverato-in-ospedale_ea36c21a-d0a5-46c9-a442-6164e0e8fe88.html",
-        "published_at": "2026-10-23T16:09:16+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Germania: il Bayern Monaco perde Diaz, fuori 4-6 settimane",
-        "summary": "Infortunio muscolare serio per l'attaccante colombiano",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/germania-il-bayern-monaco-perde-diaz-fuori-4-6-settimane_3e04cb46-c853-4037-9736-5c5d95372518.html",
-        "published_at": "2026-10-22T18:11:16+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 4
   },
   "Bayer Leverkusen": {
     "team": "Bayer Leverkusen",
@@ -523,41 +238,6 @@
     ],
     "high_impact_count": 4
   },
-  "Bodø/Glimt": {
-    "team": "Bodø/Glimt",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Bologna": {
-    "team": "Bologna",
-    "articles_scanned": 5,
-    "flagged_articles": [
-      {
-        "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
-        "summary": "Doppietta di Douvikas al 'Sinigaglia', secondo ko di fila per i sardi di Pisacane",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/serie-a-il-como-batte-il-sassuolo-il-bologna-passa-a-cagliari_ca5763fa-1781-433a-a736-02e711e2f603.html",
-        "published_at": "2026-10-24T14:57:07+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
-  "Borussia Dortmund": {
-    "team": "Borussia Dortmund",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Borussia Monchengladbach": {
-    "team": "Borussia Monchengladbach",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Bournemouth": {
     "team": "Bournemouth",
     "articles_scanned": 3,
@@ -581,173 +261,15 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Brentford FC": {
-    "team": "Brentford FC",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Brest": {
-    "team": "Brest",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Brighton & Hove Albion FC": {
-    "team": "Brighton & Hove Albion FC",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Brighton and Hove Albion": {
     "team": "Brighton and Hove Albion",
     "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "CA Osasuna": {
-    "team": "CA Osasuna",
-    "articles_scanned": 47,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Milan: brutte notizie per Amorim, ko Rabiot, Moreira e Gila",
-        "summary": "Non a disposizione per la trasferta di Udine in campionato",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/milan-brutte-notizie-per-amorim-ko-rabiot-moreira-e-gila_0fbbd5c5-f800-4ff9-ac8d-b00581c80b9e.html",
-        "published_at": "2026-10-24T17:03:35+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
-        "summary": "Doppietta di Douvikas al 'Sinigaglia', secondo ko di fila per i sardi di Pisacane",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/serie-a-il-como-batte-il-sassuolo-il-bologna-passa-a-cagliari_ca5763fa-1781-433a-a736-02e711e2f603.html",
-        "published_at": "2026-10-24T14:57:07+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
-        "summary": "Il tecnico del Bayern debilitato da infezione virale, soccorso in elicottero",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/calcio-paura-per-kompany-collassa-in-allenamento-ed-e-ricoverato-in-ospedale_ea36c21a-d0a5-46c9-a442-6164e0e8fe88.html",
-        "published_at": "2026-10-23T16:09:16+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Premier League: Manchester United, Carrick resta per il Bournemouth ma rischia l'esonero",
-        "summary": "In pole per la sostituzione ci sarebbe anche Antonio Conte",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/premier-manchester-utd-carrick-resta-per-il-bournemouth-ma-rischia-lesonero_261ed048-e00b-4792-a3be-92470ab2c457.html",
-        "published_at": "2026-10-23T11:18:10+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      },
-      {
-        "title": "Germania: il Bayern Monaco perde Diaz, fuori 4-6 settimane",
-        "summary": "Infortunio muscolare serio per l'attaccante colombiano",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/germania-il-bayern-monaco-perde-diaz-fuori-4-6-settimane_3e04cb46-c853-4037-9736-5c5d95372518.html",
-        "published_at": "2026-10-22T18:11:16+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
-        "summary": "Il giocatore si era infortunato in Champions contro lo Slovan Bratislava",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/roma-lesione-di-alto-grado-per-pellegrini-stop-di-circa-due-mesi_6bbfd4d5-716e-47ac-a24a-93dfe87d3a41.html",
-        "published_at": "2026-10-22T15:41:42+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 7
-  },
-  "Cagliari": {
-    "team": "Cagliari",
-    "articles_scanned": 4,
-    "flagged_articles": [
-      {
-        "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
-        "summary": "Doppietta di Douvikas al 'Sinigaglia', secondo ko di fila per i sardi di Pisacane",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/serie-a-il-como-batte-il-sassuolo-il-bologna-passa-a-cagliari_ca5763fa-1781-433a-a736-02e711e2f603.html",
-        "published_at": "2026-10-24T14:57:07+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
   "Celta Vigo": {
     "team": "Celta Vigo",
     "articles_scanned": 1,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Chelsea": {
-    "team": "Chelsea",
-    "articles_scanned": 2,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
-  "Club Brugge": {
-    "team": "Club Brugge",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Como": {
-    "team": "Como",
-    "articles_scanned": 2,
-    "flagged_articles": [
-      {
-        "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
-        "summary": "Doppietta di Douvikas al 'Sinigaglia', secondo ko di fila per i sardi di Pisacane",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/serie-a-il-como-batte-il-sassuolo-il-bologna-passa-a-cagliari_ca5763fa-1781-433a-a736-02e711e2f603.html",
-        "published_at": "2026-10-24T14:57:07+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
-  "Coventry City": {
-    "team": "Coventry City",
-    "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
   },
@@ -757,273 +279,14 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Crystal Palace FC": {
-    "team": "Crystal Palace FC",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Deportivo La Coruña": {
-    "team": "Deportivo La Coruña",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "ES Troyes AC": {
-    "team": "ES Troyes AC",
-    "articles_scanned": 43,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Kompany é in 'condizioni stabili', ma resta ricoverato",
-        "summary": "Il ds del Bayern: 'Il tecnico mancherà a lungo, parliamo di settimane'",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/kompany-e-in-condizioni-stabili-ma-resta-ricoverato_ae06e4b2-8b71-493b-85c6-42d45681c44f.html",
-        "published_at": "2026-10-24T17:16:12+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Fiorentina affamata di punti, con l'Inter serve un'impresa",
-        "summary": "I viola sono penultimi e reduci da due ko di fila, ancora out Ranieri e Atta",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/fiorentina-affamata-di-punti-con-linter-serve-unimpresa_874beba8-379d-45a2-9294-eaff61c0a9f6.html",
-        "published_at": "2026-10-24T15:59:20+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Kompany é in \"condizioni stabili\", ma resta ricoverato",
-        "summary": "Il ds del Bayern: il tecnico mancherà a lungo, \"parliamo di settimane\"",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/kompany-e-in-condizioni-stabili-ma-resta-ricoverato_6e0ea632-8ef4-40a6-b31f-97e4b6c9b1db.html",
-        "published_at": "2026-10-24T09:10:05+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Inter: altro infortunio per i nerazzurri, si ferma Luis Henrique",
-        "summary": "Indisponibile insieme a Lautaro, Pavard, Stones e Jones",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/inter-altro-infortunio-per-i-nerazzurri-si-ferma-luis-henrique_bd9baf5f-b9ee-4a2c-ae4d-584785862a6f.html",
-        "published_at": "2026-10-23T12:25:31+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Premier League: Manchester United, Carrick resta per il Bournemouth ma rischia l'esonero",
-        "summary": "In pole per la sostituzione ci sarebbe anche Antonio Conte",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/premier-manchester-utd-carrick-resta-per-il-bournemouth-ma-rischia-lesonero_261ed048-e00b-4792-a3be-92470ab2c457.html",
-        "published_at": "2026-10-23T11:18:10+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      },
-      {
-        "title": "Conference League: l'Ajax passa due volte nel finale, Atalanta ko",
-        "summary": "L'incontro deciso dalle reti di Tolou e Ouazane nella ripresa",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-league-lajax-passa-due-volte-nel-finale-atalanta-ko_9a5f6150-1743-4089-80ad-ca0df5320df8.html",
-        "published_at": "2026-10-22T20:56:12+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Isaksen 'questa Lazio può fare qualcosa di importante'",
-        "summary": "L'esterno danese: \"Nello spogliatoio atmosfera bellissima, Gattuso presente per tutti\"",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/isaksen-questa-lazio-puo-fare-qualcosa-di-importante_d19d5f38-5ede-4f55-bdfe-9e324416ff7b.html",
-        "published_at": "2026-10-22T16:12:56+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "spogliatoio"
-        ]
-      },
-      {
-        "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
-        "summary": "Il giocatore si era infortunato in Champions contro lo Slovan Bratislava",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/roma-lesione-di-alto-grado-per-pellegrini-stop-di-circa-due-mesi_6bbfd4d5-716e-47ac-a24a-93dfe87d3a41.html",
-        "published_at": "2026-10-22T15:41:42+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Milan: nessuna lesione per Ramos, risonanza negativa",
-        "summary": "Chukwueze ha iniziato le infiltrazioni, rivalutato tra 15 giorni",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/milan-nessuna-lesione-per-ramos-risonanza-negativa_2af57c38-3993-4aa9-ad84-05c5a3c9cf2b.html",
-        "published_at": "2026-10-22T15:42:15+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Sampdoria: D'Angelo è il nuovo allenatore blucerchiato",
-        "summary": "Sostituisce l'esonerato Corradi, la squadra è fanalino di coda della serie B",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/sampdoria-dangelo-e-il-nuovo-allenatore-blucerchiato_761f2c9e-9734-4762-ba08-63dfa2d318ed.html",
-        "published_at": "2026-10-22T14:18:31+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      }
-    ],
-    "high_impact_count": 11
-  },
-  "Eintracht Frankfurt": {
-    "team": "Eintracht Frankfurt",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Elche CF": {
-    "team": "Elche CF",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Elversberg": {
-    "team": "Elversberg",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Espanyol": {
-    "team": "Espanyol",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Everton": {
-    "team": "Everton",
-    "articles_scanned": 1,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "FC Barcelona": {
-    "team": "FC Barcelona",
-    "articles_scanned": 1,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "FC Bayern München": {
-    "team": "FC Bayern München",
-    "articles_scanned": 1,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "FC Internazionale Milano": {
-    "team": "FC Internazionale Milano",
-    "articles_scanned": 1,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "FC Lorient": {
-    "team": "FC Lorient",
-    "articles_scanned": 1,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "FC Schalke 04": {
-    "team": "FC Schalke 04",
-    "articles_scanned": 1,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "FSV Mainz 05": {
-    "team": "FSV Mainz 05",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Fenerbahce": {
-    "team": "Fenerbahce",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Feyenoord": {
-    "team": "Feyenoord",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Fiorentina": {
-    "team": "Fiorentina",
-    "articles_scanned": 3,
-    "flagged_articles": [
-      {
-        "title": "Fiorentina affamata di punti, con l'Inter serve un'impresa",
-        "summary": "I viola sono penultimi e reduci da due ko di fila, ancora out Ranieri e Atta",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/fiorentina-affamata-di-punti-con-linter-serve-unimpresa_874beba8-379d-45a2-9294-eaff61c0a9f6.html",
-        "published_at": "2026-10-24T15:59:20+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
   "Frosinone": {
     "team": "Frosinone",
     "articles_scanned": 2,
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Frosinone Calcio": {
-    "team": "Frosinone Calcio",
-    "articles_scanned": 2,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Fulham": {
-    "team": "Fulham",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Galatasaray": {
-    "team": "Galatasaray",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Genoa": {
     "team": "Genoa",
-    "articles_scanned": 2,
-    "flagged_articles": [
-      {
-        "title": "Venezia: Nicola, 'col Genoa corti e compatti, siamo ancora ultimi'",
-        "summary": "'Conosciamo l'obiettivo'. Sulla via del rientro Busio e Bella-Kotchap",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/venezia-nicola-col-genoa-corti-e-compatti-siamo-ancora-ultimi_d29785fd-4c1b-4ae3-9248-1977116702fa.html",
-        "published_at": "2026-10-24T12:32:47+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
-  "Genoa CFC": {
-    "team": "Genoa CFC",
     "articles_scanned": 2,
     "flagged_articles": [
       {
@@ -1045,59 +308,8 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Getafe CF": {
-    "team": "Getafe CF",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Hamburger SV": {
-    "team": "Hamburger SV",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Hull City": {
     "team": "Hull City",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Hull City AFC": {
-    "team": "Hull City AFC",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Inter Milan": {
-    "team": "Inter Milan",
-    "articles_scanned": 6,
-    "flagged_articles": [
-      {
-        "title": "Fiorentina affamata di punti, con l'Inter serve un'impresa",
-        "summary": "I viola sono penultimi e reduci da due ko di fila, ancora out Ranieri e Atta",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/fiorentina-affamata-di-punti-con-linter-serve-unimpresa_874beba8-379d-45a2-9294-eaff61c0a9f6.html",
-        "published_at": "2026-10-24T15:59:20+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Inter: altro infortunio per i nerazzurri, si ferma Luis Henrique",
-        "summary": "Indisponibile insieme a Lautaro, Pavard, Stones e Jones",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/inter-altro-infortunio-per-i-nerazzurri-si-ferma-luis-henrique_bd9baf5f-b9ee-4a2c-ae4d-584785862a6f.html",
-        "published_at": "2026-10-23T12:25:31+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 2
-  },
-  "Ipswich Town": {
-    "team": "Ipswich Town",
     "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
@@ -1108,125 +320,9 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Juventus FC": {
-    "team": "Juventus FC",
-    "articles_scanned": 4,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "LASK": {
-    "team": "LASK",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Lazio": {
-    "team": "Lazio",
-    "articles_scanned": 5,
-    "flagged_articles": [
-      {
-        "title": "Isaksen 'questa Lazio può fare qualcosa di importante'",
-        "summary": "L'esterno danese: \"Nello spogliatoio atmosfera bellissima, Gattuso presente per tutti\"",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/isaksen-questa-lazio-puo-fare-qualcosa-di-importante_d19d5f38-5ede-4f55-bdfe-9e324416ff7b.html",
-        "published_at": "2026-10-22T16:12:56+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "spogliatoio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
   "Le Havre": {
     "team": "Le Havre",
-    "articles_scanned": 40,
-    "flagged_articles": [
-      {
-        "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
-        "summary": "Il tecnico del Bayern debilitato da infezione virale, soccorso in elicottero",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/calcio-paura-per-kompany-collassa-in-allenamento-ed-e-ricoverato-in-ospedale_ea36c21a-d0a5-46c9-a442-6164e0e8fe88.html",
-        "published_at": "2026-10-23T16:09:16+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Inter: altro infortunio per i nerazzurri, si ferma Luis Henrique",
-        "summary": "Indisponibile insieme a Lautaro, Pavard, Stones e Jones",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/inter-altro-infortunio-per-i-nerazzurri-si-ferma-luis-henrique_bd9baf5f-b9ee-4a2c-ae4d-584785862a6f.html",
-        "published_at": "2026-10-23T12:25:31+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Premier League: Manchester United, Carrick resta per il Bournemouth ma rischia l'esonero",
-        "summary": "In pole per la sostituzione ci sarebbe anche Antonio Conte",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/premier-manchester-utd-carrick-resta-per-il-bournemouth-ma-rischia-lesonero_261ed048-e00b-4792-a3be-92470ab2c457.html",
-        "published_at": "2026-10-23T11:18:10+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      },
-      {
-        "title": "Conference: uno-due Ajax nel finale, Atalanta ko anche in Europa",
-        "summary": "Arokodare e Ouazane decisivi tra 87' e 93': i bergamaschi reclamano un rigore su Zalewski",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-uno-due-ajax-nel-finale-atalanta-ko-anche-in-europa_ded0fafa-c0a7-49ca-a975-feaf837f72bc.html",
-        "published_at": "2026-10-22T21:32:55+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Conference League: l'Ajax passa due volte nel finale, Atalanta ko",
-        "summary": "L'incontro deciso dalle reti di Tolou e Ouazane nella ripresa",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-league-lajax-passa-due-volte-nel-finale-atalanta-ko_9a5f6150-1743-4089-80ad-ca0df5320df8.html",
-        "published_at": "2026-10-22T20:56:12+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
-        "summary": "Il giocatore si era infortunato in Champions contro lo Slovan Bratislava",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/roma-lesione-di-alto-grado-per-pellegrini-stop-di-circa-due-mesi_6bbfd4d5-716e-47ac-a24a-93dfe87d3a41.html",
-        "published_at": "2026-10-22T15:41:42+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Milan: nessuna lesione per Ramos, risonanza negativa",
-        "summary": "Chukwueze ha iniziato le infiltrazioni, rivalutato tra 15 giorni",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/milan-nessuna-lesione-per-ramos-risonanza-negativa_2af57c38-3993-4aa9-ad84-05c5a3c9cf2b.html",
-        "published_at": "2026-10-22T15:42:15+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Sampdoria: D'Angelo è il nuovo allenatore blucerchiato",
-        "summary": "Sostituisce l'esonerato Corradi, la squadra è fanalino di coda della serie B",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/sampdoria-dangelo-e-il-nuovo-allenatore-blucerchiato_761f2c9e-9734-4762-ba08-63dfa2d318ed.html",
-        "published_at": "2026-10-22T14:18:31+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      }
-    ],
-    "high_impact_count": 8
-  },
-  "Le Havre AC": {
-    "team": "Le Havre AC",
-    "articles_scanned": 40,
+    "articles_scanned": 39,
     "flagged_articles": [
       {
         "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
@@ -1313,7 +409,7 @@
   },
   "Le Mans FC": {
     "team": "Le Mans FC",
-    "articles_scanned": 40,
+    "articles_scanned": 39,
     "flagged_articles": [
       {
         "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
@@ -1410,20 +506,8 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Leeds United FC": {
-    "team": "Leeds United FC",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Levante": {
     "team": "Levante",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Levante UD": {
-    "team": "Levante UD",
     "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
@@ -1434,20 +518,8 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Lille OSC": {
-    "team": "Lille OSC",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Liverpool": {
     "team": "Liverpool",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Liverpool FC": {
-    "team": "Liverpool FC",
     "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
@@ -1458,68 +530,8 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Lyon": {
-    "team": "Lyon",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Manchester City": {
-    "team": "Manchester City",
-    "articles_scanned": 2,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Premier League: Manchester United, Carrick resta per il Bournemouth ma rischia l'esonero",
-        "summary": "In pole per la sostituzione ci sarebbe anche Antonio Conte",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/premier-manchester-utd-carrick-resta-per-il-bournemouth-ma-rischia-lesonero_261ed048-e00b-4792-a3be-92470ab2c457.html",
-        "published_at": "2026-10-23T11:18:10+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      }
-    ],
-    "high_impact_count": 2
-  },
   "Manchester United": {
     "team": "Manchester United",
-    "articles_scanned": 2,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Premier League: Manchester United, Carrick resta per il Bournemouth ma rischia l'esonero",
-        "summary": "In pole per la sostituzione ci sarebbe anche Antonio Conte",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/premier-manchester-utd-carrick-resta-per-il-bournemouth-ma-rischia-lesonero_261ed048-e00b-4792-a3be-92470ab2c457.html",
-        "published_at": "2026-10-23T11:18:10+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      }
-    ],
-    "high_impact_count": 2
-  },
-  "Manchester United FC": {
-    "team": "Manchester United FC",
     "articles_scanned": 2,
     "flagged_articles": [
       {
@@ -1551,184 +563,8 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Monza": {
-    "team": "Monza",
-    "articles_scanned": 4,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Málaga": {
-    "team": "Málaga",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Napoli": {
-    "team": "Napoli",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Newcastle United": {
     "team": "Newcastle United",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Newcastle United FC": {
-    "team": "Newcastle United FC",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Nice": {
-    "team": "Nice",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Nottingham Forest": {
-    "team": "Nottingham Forest",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Olympique de Marseille": {
-    "team": "Olympique de Marseille",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "PSV Eindhoven": {
-    "team": "PSV Eindhoven",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Paris FC": {
-    "team": "Paris FC",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Paris Saint Germain": {
-    "team": "Paris Saint Germain",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Parma": {
-    "team": "Parma",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Porto": {
-    "team": "Porto",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "RB Leipzig": {
-    "team": "RB Leipzig",
-    "articles_scanned": 3,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
-  "RC Celta de Vigo": {
-    "team": "RC Celta de Vigo",
-    "articles_scanned": 7,
-    "flagged_articles": [
-      {
-        "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
-        "summary": "Il giocatore si era infortunato in Champions contro lo Slovan Bratislava",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/roma-lesione-di-alto-grado-per-pellegrini-stop-di-circa-due-mesi_6bbfd4d5-716e-47ac-a24a-93dfe87d3a41.html",
-        "published_at": "2026-10-22T15:41:42+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Sampdoria: D'Angelo è il nuovo allenatore blucerchiato",
-        "summary": "Sostituisce l'esonerato Corradi, la squadra è fanalino di coda della serie B",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/sampdoria-dangelo-e-il-nuovo-allenatore-blucerchiato_761f2c9e-9734-4762-ba08-63dfa2d318ed.html",
-        "published_at": "2026-10-22T14:18:31+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      }
-    ],
-    "high_impact_count": 2
-  },
-  "RC Lens": {
-    "team": "RC Lens",
-    "articles_scanned": 7,
-    "flagged_articles": [
-      {
-        "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
-        "summary": "Il giocatore si era infortunato in Champions contro lo Slovan Bratislava",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/roma-lesione-di-alto-grado-per-pellegrini-stop-di-circa-due-mesi_6bbfd4d5-716e-47ac-a24a-93dfe87d3a41.html",
-        "published_at": "2026-10-22T15:41:42+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Sampdoria: D'Angelo è il nuovo allenatore blucerchiato",
-        "summary": "Sostituisce l'esonerato Corradi, la squadra è fanalino di coda della serie B",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/sampdoria-dangelo-e-il-nuovo-allenatore-blucerchiato_761f2c9e-9734-4762-ba08-63dfa2d318ed.html",
-        "published_at": "2026-10-22T14:18:31+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      }
-    ],
-    "high_impact_count": 2
-  },
-  "RC Strasbourg Alsace": {
-    "team": "RC Strasbourg Alsace",
-    "articles_scanned": 7,
-    "flagged_articles": [
-      {
-        "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
-        "summary": "Il giocatore si era infortunato in Champions contro lo Slovan Bratislava",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/roma-lesione-di-alto-grado-per-pellegrini-stop-di-circa-due-mesi_6bbfd4d5-716e-47ac-a24a-93dfe87d3a41.html",
-        "published_at": "2026-10-22T15:41:42+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Sampdoria: D'Angelo è il nuovo allenatore blucerchiato",
-        "summary": "Sostituisce l'esonerato Corradi, la squadra è fanalino di coda della serie B",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/sampdoria-dangelo-e-il-nuovo-allenatore-blucerchiato_761f2c9e-9734-4762-ba08-63dfa2d318ed.html",
-        "published_at": "2026-10-22T14:18:31+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      }
-    ],
-    "high_impact_count": 2
-  },
-  "Rayo Vallecano": {
-    "team": "Rayo Vallecano",
     "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
@@ -1739,38 +575,14 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Real Betis Balompié": {
-    "team": "Real Betis Balompié",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Real Madrid": {
     "team": "Real Madrid",
     "articles_scanned": 3,
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Real Madrid CF": {
-    "team": "Real Madrid CF",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Real Racing Club de Santander": {
-    "team": "Real Racing Club de Santander",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Real Sociedad": {
     "team": "Real Sociedad",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Real Sociedad de Fútbol": {
-    "team": "Real Sociedad de Fútbol",
     "articles_scanned": 3,
     "flagged_articles": [],
     "high_impact_count": 0
@@ -1848,126 +660,6 @@
     ],
     "high_impact_count": 6
   },
-  "SC Paderborn": {
-    "team": "SC Paderborn",
-    "articles_scanned": 25,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Venezia: Nicola, 'col Genoa corti e compatti, siamo ancora ultimi'",
-        "summary": "'Conosciamo l'obiettivo'. Sulla via del rientro Busio e Bella-Kotchap",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/venezia-nicola-col-genoa-corti-e-compatti-siamo-ancora-ultimi_d29785fd-4c1b-4ae3-9248-1977116702fa.html",
-        "published_at": "2026-10-24T12:32:47+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Premier League: Manchester United, Carrick resta per il Bournemouth ma rischia l'esonero",
-        "summary": "In pole per la sostituzione ci sarebbe anche Antonio Conte",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/23/premier-manchester-utd-carrick-resta-per-il-bournemouth-ma-rischia-lesonero_261ed048-e00b-4792-a3be-92470ab2c457.html",
-        "published_at": "2026-10-23T11:18:10+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      },
-      {
-        "title": "Conference: uno-due Ajax nel finale, Atalanta ko anche in Europa",
-        "summary": "Arokodare e Ouazane decisivi tra 87' e 93': i bergamaschi reclamano un rigore su Zalewski",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/conference-uno-due-ajax-nel-finale-atalanta-ko-anche-in-europa_ded0fafa-c0a7-49ca-a975-feaf837f72bc.html",
-        "published_at": "2026-10-22T21:32:55+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Germania: il Bayern Monaco perde Diaz, fuori 4-6 settimane",
-        "summary": "Infortunio muscolare serio per l'attaccante colombiano",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/germania-il-bayern-monaco-perde-diaz-fuori-4-6-settimane_3e04cb46-c853-4037-9736-5c5d95372518.html",
-        "published_at": "2026-10-22T18:11:16+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Sampdoria: D'Angelo è il nuovo allenatore blucerchiato",
-        "summary": "Sostituisce l'esonerato Corradi, la squadra è fanalino di coda della serie B",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/sampdoria-dangelo-e-il-nuovo-allenatore-blucerchiato_761f2c9e-9734-4762-ba08-63dfa2d318ed.html",
-        "published_at": "2026-10-22T14:18:31+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "panchina"
-        ]
-      }
-    ],
-    "high_impact_count": 6
-  },
-  "Sabah FK": {
-    "team": "Sabah FK",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Sassuolo": {
-    "team": "Sassuolo",
-    "articles_scanned": 3,
-    "flagged_articles": [
-      {
-        "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
-        "summary": "Doppietta di Douvikas al 'Sinigaglia', secondo ko di fila per i sardi di Pisacane",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/serie-a-il-como-batte-il-sassuolo-il-bologna-passa-a-cagliari_ca5763fa-1781-433a-a736-02e711e2f603.html",
-        "published_at": "2026-10-24T14:57:07+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
-  "Sevilla": {
-    "team": "Sevilla",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Shakhtar Donetsk": {
-    "team": "Shakhtar Donetsk",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Slavia Praha": {
-    "team": "Slavia Praha",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Sporting Lisbon": {
-    "team": "Sporting Lisbon",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Stade Rennais FC 1901": {
-    "team": "Stade Rennais FC 1901",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "Strasbourg": {
     "team": "Strasbourg",
     "articles_scanned": 0,
@@ -1980,55 +672,14 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Sunderland AFC": {
-    "team": "Sunderland AFC",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "TSG 1899 Hoffenheim": {
-    "team": "TSG 1899 Hoffenheim",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
   "TSG Hoffenheim": {
     "team": "TSG Hoffenheim",
     "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "Torino": {
-    "team": "Torino",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Tottenham Hotspur": {
-    "team": "Tottenham Hotspur",
-    "articles_scanned": 2,
-    "flagged_articles": [
-      {
-        "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
-        "summary": "Il Chelsea è stato sconfitto in casa dal Tottenham di De Zerbi",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/premier-primo-ko-del-manchester-city-di-maresca-larsenal-lo-aggancia-in-vetta_27da02f6-aacc-4ab7-9001-0945a6e23024.html",
-        "published_at": "2026-10-24T18:31:43+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
   "Toulouse": {
     "team": "Toulouse",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Toulouse FC": {
-    "team": "Toulouse FC",
     "articles_scanned": 0,
     "flagged_articles": [],
     "high_impact_count": 0
@@ -2039,64 +690,9 @@
     "flagged_articles": [],
     "high_impact_count": 0
   },
-  "US Lecce": {
-    "team": "US Lecce",
-    "articles_scanned": 14,
-    "flagged_articles": [
-      {
-        "title": "Venezia: Nicola, 'col Genoa corti e compatti, siamo ancora ultimi'",
-        "summary": "'Conosciamo l'obiettivo'. Sulla via del rientro Busio e Bella-Kotchap",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/venezia-nicola-col-genoa-corti-e-compatti-siamo-ancora-ultimi_d29785fd-4c1b-4ae3-9248-1977116702fa.html",
-        "published_at": "2026-10-24T12:32:47+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Germania: il Bayern Monaco perde Diaz, fuori 4-6 settimane",
-        "summary": "Infortunio muscolare serio per l'attaccante colombiano",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/germania-il-bayern-monaco-perde-diaz-fuori-4-6-settimane_3e04cb46-c853-4037-9736-5c5d95372518.html",
-        "published_at": "2026-10-22T18:11:16+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      },
-      {
-        "title": "Isaksen 'questa Lazio può fare qualcosa di importante'",
-        "summary": "L'esterno danese: \"Nello spogliatoio atmosfera bellissima, Gattuso presente per tutti\"",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/isaksen-questa-lazio-puo-fare-qualcosa-di-importante_d19d5f38-5ede-4f55-bdfe-9e324416ff7b.html",
-        "published_at": "2026-10-22T16:12:56+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "spogliatoio"
-        ]
-      }
-    ],
-    "high_impact_count": 3
-  },
   "Udinese": {
     "team": "Udinese",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Udinese Calcio": {
-    "team": "Udinese Calcio",
-    "articles_scanned": 3,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Union Berlin": {
-    "team": "Union Berlin",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Valencia": {
-    "team": "Valencia",
-    "articles_scanned": 0,
+    "articles_scanned": 2,
     "flagged_articles": [],
     "high_impact_count": 0
   },
@@ -2116,52 +712,5 @@
       }
     ],
     "high_impact_count": 1
-  },
-  "Venezia FC": {
-    "team": "Venezia FC",
-    "articles_scanned": 2,
-    "flagged_articles": [
-      {
-        "title": "Venezia: Nicola, 'col Genoa corti e compatti, siamo ancora ultimi'",
-        "summary": "'Conosciamo l'obiettivo'. Sulla via del rientro Busio e Bella-Kotchap",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/24/venezia-nicola-col-genoa-corti-e-compatti-siamo-ancora-ultimi_d29785fd-4c1b-4ae3-9248-1977116702fa.html",
-        "published_at": "2026-10-24T12:32:47+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "infortunio"
-        ]
-      }
-    ],
-    "high_impact_count": 1
-  },
-  "VfB Stuttgart": {
-    "team": "VfB Stuttgart",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Viking FK": {
-    "team": "Viking FK",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Villarreal": {
-    "team": "Villarreal",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "Werder Bremen": {
-    "team": "Werder Bremen",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
-  },
-  "ŠK Slovan Bratislava": {
-    "team": "ŠK Slovan Bratislava",
-    "articles_scanned": 0,
-    "flagged_articles": [],
-    "high_impact_count": 0
   }
 }
