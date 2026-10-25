@@ -1,8 +1,8 @@
 {
   "date": "2026-10-25",
-  "generated_at": "2026-10-25T15:05:23.610182+00:00",
-  "total_fixtures_scanned": 46,
-  "candidates_after_filter": 206,
+  "generated_at": "2026-10-25T15:12:39.047597+00:00",
+  "total_fixtures_scanned": 42,
+  "candidates_after_filter": 198,
   "picks": {
     "conservativo": {
       "fixture_id": "d7cc66c747ebe993d5b80ffc5d968af6",
@@ -109,6 +109,19 @@
       "implied_probability": 0.704,
       "edge": -0.028,
       "notes": "Lega: Bundesliga (Austria) | Quota: 1.42 | Prob: 67%"
+    },
+    {
+      "fixture_id": "c655584661b81e424d8979da8b040c46",
+      "league": "Eredivisie (Olanda)",
+      "match": "NEC Nijmegen - Groningen",
+      "date": "2026-10-25",
+      "market_type": "X2",
+      "outcome_label": "X2 (Groningen o Pareggio)",
+      "odd": 1.44,
+      "estimated_probability": 0.667,
+      "implied_probability": 0.694,
+      "edge": -0.028,
+      "notes": "Lega: Eredivisie (Olanda) | Quota: 1.44 | Prob: 66%"
     },
     {
       "fixture_id": "2fd479cbb110c8f057e363bb06195f2b",
@@ -226,19 +239,6 @@
       "implied_probability": 0.676,
       "edge": -0.033,
       "notes": "Lega: Ligue 1 | Quota: 1.48 | Prob: 64%"
-    },
-    {
-      "fixture_id": "9b70765a6abd2b34bae75afa9d3acedb",
-      "league": "Eredivisie (Olanda)",
-      "match": "PSV Eindhoven - Feyenoord",
-      "date": "2026-10-25",
-      "market_type": "X2",
-      "outcome_label": "X2 (Feyenoord o Pareggio)",
-      "odd": 1.5,
-      "estimated_probability": 0.64,
-      "implied_probability": 0.667,
-      "edge": -0.027,
-      "notes": "Lega: Eredivisie (Olanda) | Quota: 1.50 | Prob: 63%"
     },
     {
       "fixture_id": "0911f42b66dd1f6544db407bccaeed07",
@@ -381,7 +381,7 @@
       "estimated_probability": 0.63,
       "implied_probability": 0.654,
       "edge": -0.024,
-      "notes": "Lega: Eredivisie (Olanda) | Quota: 1.53 | Prob: 63%"
+      "notes": "Lega: Eredivisie (Olanda) | Quota: 1.53 | Prob: 62%"
     },
     {
       "fixture_id": "3cd10979dc2ce2d75eb529b6ff1dfbc3",
@@ -514,6 +514,19 @@
       "notes": "Lega: Serie B (Italia) | Quota: 1.62 | Prob: 59%"
     },
     {
+      "fixture_id": "cc338030ec8bd12ae96cb998ace47cd4",
+      "league": "Segunda División (Spagna)",
+      "match": "Albacete - CD Eldense",
+      "date": "2026-10-25",
+      "market_type": "X2",
+      "outcome_label": "X2 (CD Eldense o Pareggio)",
+      "odd": 1.62,
+      "estimated_probability": 0.594,
+      "implied_probability": 0.617,
+      "edge": -0.024,
+      "notes": "Lega: Segunda División (Spagna) | Quota: 1.62 | Prob: 59%"
+    },
+    {
       "fixture_id": "69493b5ebb84f24ab1d6023a30ee89f0",
       "league": "Premier League",
       "match": "Hull City - Brentford",
@@ -538,19 +551,6 @@
       "implied_probability": 0.617,
       "edge": -0.028,
       "notes": "Lega: Primeira Liga (Portogallo) | Quota: 1.62 | Prob: 58%"
-    },
-    {
-      "fixture_id": "cc338030ec8bd12ae96cb998ace47cd4",
-      "league": "Segunda División (Spagna)",
-      "match": "Albacete - CD Eldense",
-      "date": "2026-10-25",
-      "market_type": "X2",
-      "outcome_label": "X2 (CD Eldense o Pareggio)",
-      "odd": 1.64,
-      "estimated_probability": 0.588,
-      "implied_probability": 0.61,
-      "edge": -0.022,
-      "notes": "Lega: Segunda División (Spagna) | Quota: 1.64 | Prob: 58%"
     },
     {
       "fixture_id": "72089d103a5fe6a922c35e17efba6ffc",
