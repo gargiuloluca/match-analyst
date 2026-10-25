@@ -1,13 +1,10 @@
 """
-analyze.py — AtmBetSignal "Sniper" Engine.
-- Regola di volume dinamica:
-    * Lunedì - Venerdì: Max 3 pronostici (solo se eccellenti).
-    * Sabato - Domenica: Max 5 pronostici al giorno (Max 10 nel weekend).
-- Soglia minima invalicabile di probabilità: >= 65% (alta frequenza di vincita).
-- Quota minima: 1.40, massima: 3.00.
-- Modello Dixon-Coles con profili goal dinamici per lega.
-- Stake Quarter-Kelly prudenziale (max 2.5% per trade).
-- Registrazione automatica nel tracker PENDING.
+analyze.py — AtmBetSignal Dynamic Value Engine.
+- Nessun freno artificiale: prende tutti gli eventi ad alta probabilità (>= 65%).
+- Tetto massimo di sicurezza: fino a 7 pronostici al giorno (così non perdi i turni infrasettimanali da 5-6 eventi).
+- Quota minima 1.40, massima 3.00.
+- Modello Dixon-Coles con correzione per leghe e correlazione rho.
+- Quarter-Kelly dinamico per il corretto dimensionamento del bankroll.
 """
 
 import json
@@ -17,7 +14,7 @@ from pathlib import Path
 
 NOW_UTC = datetime.now(timezone.utc)
 TODAY = NOW_UTC.strftime("%Y-%m-%d")
-WEEKDAY = NOW_UTC.weekday()  # 0 = Lunedì, ..., 5 = Sabato, 6 = Domenica
+WEEKDAY = NOW_UTC.weekday()
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 RAW_DIR = DATA_DIR / "raw"
@@ -27,14 +24,16 @@ HISTORY_DIR.mkdir(parents=True, exist_ok=True)
 FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 TRACKER_PATH = DATA_DIR / "tracker.json"
 
-# Soglie qualitative "Sniper"
+# Parametri Qualitativi
 MIN_PROBABILITY_THRESHOLD = 0.65  # Minimo 65% di probabilità stimata
 MIN_ODD = 1.40
 MAX_ODD = 3.00
 MAX_KELLY_STAKE = 2.5
 
-# Volume dinamico: Sabato e Domenica max 5; giorni feriali max 3
-MAX_DAILY_PICKS = 5 if WEEKDAY in (5, 6) else 3
+# TETTO MASSIMO DI SICUREZZA:
+# Permette di prendere fino a 6-7 eventi se la giornata è ricca (es. Coppe o Weekend),
+# ma evita di scommettere su 15 partite contemporaneamente.
+MAX_DAILY_PICKS = 7
 
 LEAGUE_GOAL_PROFILES = {
     "Serie A": (1.46, 1.14),
@@ -171,11 +170,9 @@ def build_candidates(fixtures: list) -> list:
             odd_val = out["odd"]
             prob_val = out["prob"]
 
-            # FILTRO 1: Quota minima 1.40 e massima 3.00
             if odd_val < MIN_ODD or odd_val > MAX_ODD:
                 continue
 
-            # FILTRO 2: Soglia di probabilità invalicabile (>= 65%)
             if prob_val < MIN_PROBABILITY_THRESHOLD:
                 continue
 
@@ -201,7 +198,7 @@ def build_candidates(fixtures: list) -> list:
     return candidates
 
 
-def select_sniper_picks(candidates: list) -> list:
+def select_dynamic_picks(candidates: list) -> list:
     used_fixtures = set()
     selected = []
 
@@ -266,11 +263,10 @@ def main():
 
     fixtures = json.loads(FIXTURES_PATH.read_text(encoding="utf-8"))
     candidates = build_candidates(fixtures)
-    picks = select_sniper_picks(candidates)
+    picks = select_dynamic_picks(candidates)
 
     record_picks_to_tracker(picks)
 
-    # Dizionario retrocompatibile per le card web (Top 1, 2, 3)
     picks_dict = {}
     keys = ["conservativo", "consigliato", "hard"]
     for idx, p in enumerate(picks[:3]):
@@ -291,7 +287,7 @@ def main():
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Sniper Engine: {len(picks)} pronostici selezionati oggi (Soglia >= 65%, Max consentiti: {MAX_DAILY_PICKS}).")
+    print(f"Dynamic Engine: {len(picks)} pronostici selezionati oggi con probabilità >= 65%.")
 
 
 if __name__ == "__main__":
