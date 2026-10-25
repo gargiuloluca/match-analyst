@@ -1,5 +1,20 @@
+"""
+fetch_fixtures.py
+Scarica le partite in programma OGGI (00:00 - 23:59 UTC)
+per campionati primari, coppe europee e leghe secondarie ad alto valore statistico.
+"""
+
+import json
+import os
+from datetime import datetime, timezone
+from pathlib import Path
+import requests
+
+ODDS_API_KEY = os.environ.get("ODDSAPI_KEY", "")
+ODDS_BASE_URL = "https://api.the-odds-api.com/v4"
+
 LEAGUES = [
-    # Top 5 Campionati e Coppe
+    # Top 5 Campionati e Coppe Europee
     {"name": "Serie A", "odds_key": "soccer_italy_serie_a"},
     {"name": "Premier League", "odds_key": "soccer_epl"},
     {"name": "La Liga", "odds_key": "soccer_spain_la_liga"},
@@ -9,13 +24,13 @@ LEAGUES = [
     {"name": "Europa League", "odds_key": "soccer_uefa_europa_league"},
     {"name": "Conference League", "odds_key": "soccer_uefa_europa_conference_league"},
 
-    # Seconde Divisioni ad alto valore
+    # Seconde Divisioni
     {"name": "Serie B (Italia)", "odds_key": "soccer_italy_serie_b"},
     {"name": "Championship (Inghilterra)", "odds_key": "soccer_efl_champ"},
     {"name": "Segunda División (Spagna)", "odds_key": "soccer_spain_segunda_division"},
     {"name": "2. Bundesliga (Germania)", "odds_key": "soccer_germany_bundesliga2"},
 
-    # Campionati Europei Secondari (Mercati spesso sbilanciati)
+    # Campionati Europei Secondari (ad alto disallineamento quote)
     {"name": "Eredivisie (Olanda)", "odds_key": "soccer_netherlands_eredivisie"},
     {"name": "Primeira Liga (Portogallo)", "odds_key": "soccer_portugal_primeira_liga"},
     {"name": "Jupiler Pro League (Belgio)", "odds_key": "soccer_belgium_first_div"},
@@ -24,7 +39,106 @@ LEAGUES = [
     {"name": "Super League (Svizzera)", "odds_key": "soccer_switzerland_superleague"},
     {"name": "Bundesliga (Austria)", "odds_key": "soccer_austria_bundesliga"},
 
-    # Campionati Extra-Europei
+    # Campionati Extra-Europei Principali
     {"name": "Brasileirão (Brasile)", "odds_key": "soccer_brazil_campeonato"},
     {"name": "MLS (USA)", "odds_key": "soccer_usa_mls"},
 ]
+
+OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "raw"
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def fetch_today_matches():
+    if not ODDS_API_KEY:
+        print("ERRORE: Secret ODDSAPI_KEY mancante!")
+        return []
+
+    now_utc = datetime.now(timezone.utc)
+    today_str = now_utc.strftime("%Y-%m-%d")
+
+    from_iso = f"{today_str}T00:00:00Z"
+    to_iso = f"{today_str}T23:59:59Z"
+
+    fixtures_today = []
+
+    for league in LEAGUES:
+        url = f"{ODDS_BASE_URL}/sports/{league['odds_key']}/odds"
+        params = {
+            "apiKey": ODDS_API_KEY,
+            "regions": "eu",
+            "markets": "h2h",
+            "oddsFormat": "decimal",
+            "dateFormat": "iso",
+            "commenceTimeFrom": from_iso,
+            "commenceTimeTo": to_iso,
+        }
+
+        try:
+            resp = requests.get(url, params=params, timeout=20)
+            if resp.status_code != 200:
+                continue
+
+            events = resp.json()
+            for ev in events:
+                commence_time = ev.get("commence_time", "")
+                if not commence_time.startswith(today_str):
+                    continue
+
+                home = ev.get("home_team")
+                away = ev.get("away_team")
+
+                if not ev.get("bookmakers"):
+                    continue
+
+                # Cerca bookmaker primari con maggiore liquidità se presenti
+                bookmakers = ev["bookmakers"]
+                chosen_bm = bookmakers[0]
+                for bm in bookmakers:
+                    if bm.get("key") in ("pinnacle", "bet365", "unibet", "betfair"):
+                        chosen_bm = bm
+                        break
+
+                markets = chosen_bm.get("markets", [])
+                if not markets:
+                    continue
+
+                market = markets[0]
+                outcomes = {o["name"]: float(o["price"]) for o in market.get("outcomes", [])}
+
+                h_odd = outcomes.get(home)
+                d_odd = outcomes.get("Draw")
+                a_odd = outcomes.get(away)
+
+                if h_odd and d_odd and a_odd:
+                    fixtures_today.append({
+                        "fixture_id": ev.get("id"),
+                        "league": league["name"],
+                        "commence_time": commence_time,
+                        "home_team": {"name": home},
+                        "away_team": {"name": away},
+                        "odds": {
+                            "home": h_odd,
+                            "draw": d_odd,
+                            "away": a_odd,
+                            "bookmaker": chosen_bm.get("title", "Bookmaker"),
+                        }
+                    })
+        except Exception as e:
+            print(f"Errore su {league['name']}: {e}")
+
+    return fixtures_today
+
+
+def main():
+    now_utc = datetime.now(timezone.utc)
+    today_str = now_utc.strftime("%Y-%m-%d")
+
+    fixtures = fetch_today_matches()
+
+    out_path = OUTPUT_DIR / f"fixtures_{today_str}.json"
+    out_path.write_text(json.dumps(fixtures, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Partite programmate scaricate per OGGI ({today_str}): {len(fixtures)}")
+
+
+if __name__ == "__main__":
+    main()
