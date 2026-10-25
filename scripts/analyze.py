@@ -1,11 +1,13 @@
 """
-analyze.py — AtmBetSignal Institutional Engine.
-- Modello Dixon-Coles bivariato per correzione empirica su pareggi e punteggi bassi.
-- Profili goal dinamici lambda/mu calibrati per lega.
-- Dimensionamento del capitale istituzionale tramite Criterio Quarter-Kelly:
-  f* = 0.25 * ((b * p - (1 - p)) / b), con cap prudenziale al 2.5% del bankroll.
-- Selezione per massima probabilità e valore atteso.
-- Registrazione automatica in data/tracker.json.
+analyze.py — AtmBetSignal "Sniper" Engine.
+- Regola di volume dinamica:
+    * Lunedì - Venerdì: Max 3 pronostici (solo se eccellenti).
+    * Sabato - Domenica: Max 5 pronostici al giorno (Max 10 nel weekend).
+- Soglia minima invalicabile di probabilità: >= 65% (alta frequenza di vincita).
+- Quota minima: 1.40, massima: 3.00.
+- Modello Dixon-Coles con profili goal dinamici per lega.
+- Stake Quarter-Kelly prudenziale (max 2.5% per trade).
+- Registrazione automatica nel tracker PENDING.
 """
 
 import json
@@ -13,7 +15,9 @@ import math
 from datetime import datetime, timezone
 from pathlib import Path
 
-TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+NOW_UTC = datetime.now(timezone.utc)
+TODAY = NOW_UTC.strftime("%Y-%m-%d")
+WEEKDAY = NOW_UTC.weekday()  # 0 = Lunedì, ..., 5 = Sabato, 6 = Domenica
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 RAW_DIR = DATA_DIR / "raw"
@@ -22,6 +26,15 @@ HISTORY_DIR.mkdir(parents=True, exist_ok=True)
 
 FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 TRACKER_PATH = DATA_DIR / "tracker.json"
+
+# Soglie qualitative "Sniper"
+MIN_PROBABILITY_THRESHOLD = 0.65  # Minimo 65% di probabilità stimata
+MIN_ODD = 1.40
+MAX_ODD = 3.00
+MAX_KELLY_STAKE = 2.5
+
+# Volume dinamico: Sabato e Domenica max 5; giorni feriali max 3
+MAX_DAILY_PICKS = 5 if WEEKDAY in (5, 6) else 3
 
 LEAGUE_GOAL_PROFILES = {
     "Serie A": (1.46, 1.14),
@@ -50,10 +63,6 @@ LEAGUE_GOAL_PROFILES = {
 DEFAULT_LAMBDA = 1.48
 DEFAULT_MU = 1.12
 RHO_CORRELATION = -0.11
-
-MIN_ODD = 1.40
-MAX_ODD = 3.00
-MAX_KELLY_STAKE = 2.5  # Max 2.5% del bankroll per singola operazione (risk management)
 
 
 def remove_margin(odds: dict) -> dict:
@@ -120,16 +129,13 @@ def generate_dixon_coles_probabilities(fair_1x2: dict, league_name: str) -> dict
 
 
 def calculate_quarter_kelly(prob: float, odd: float) -> float:
-    """Calcola la percentuale di allocazione ottimale con il criterio Quarter-Kelly."""
     b = odd - 1.0
     if b <= 0:
         return 0.5
     raw_kelly = (b * prob - (1.0 - prob)) / b
     if raw_kelly <= 0:
-        # Stake difensivo minimo per quote a forte probabilità
         return 0.5
     quarter_kelly = (raw_kelly * 0.25) * 100
-    # Limita l'esposizione tra 0.5% e 2.5% del bankroll
     return round(max(0.5, min(MAX_KELLY_STAKE, quarter_kelly)), 1)
 
 
@@ -165,7 +171,12 @@ def build_candidates(fixtures: list) -> list:
             odd_val = out["odd"]
             prob_val = out["prob"]
 
+            # FILTRO 1: Quota minima 1.40 e massima 3.00
             if odd_val < MIN_ODD or odd_val > MAX_ODD:
+                continue
+
+            # FILTRO 2: Soglia di probabilità invalicabile (>= 65%)
+            if prob_val < MIN_PROBABILITY_THRESHOLD:
                 continue
 
             implied_prob = 1.0 / odd_val
@@ -190,35 +201,28 @@ def build_candidates(fixtures: list) -> list:
     return candidates
 
 
-def select_top_probability_picks(candidates: list) -> dict:
-    picks = {}
+def select_sniper_picks(candidates: list) -> list:
     used_fixtures = set()
+    selected = []
 
+    # Ordina per Massima Probabilità Assoluta Decrescente (e miglior Edge a parità)
     ranked = sorted(
         candidates,
         key=lambda c: (c["estimated_probability"], c["edge"], c["odd"]),
         reverse=True
     )
 
-    selected = []
     for c in ranked:
         if c["fixture_id"] not in used_fixtures:
             selected.append(c)
             used_fixtures.add(c["fixture_id"])
-        if len(selected) == 3:
+        if len(selected) == MAX_DAILY_PICKS:
             break
 
-    if len(selected) > 0:
-        picks["conservativo"] = selected[0]
-    if len(selected) > 1:
-        picks["consigliato"] = selected[1]
-    if len(selected) > 2:
-        picks["hard"] = selected[2]
-
-    return picks
+    return selected
 
 
-def record_picks_to_tracker(picks: dict):
+def record_picks_to_tracker(selected_picks: list):
     tracker_data = {
         "total_bets": 0, "won": 0, "lost": 0,
         "win_rate": 0.0, "net_profit_units": 0.0, "roi_pct": 0.0,
@@ -233,11 +237,7 @@ def record_picks_to_tracker(picks: dict):
 
     existing_ids = {b.get("id") for b in tracker_data.get("bets", [])}
 
-    for key in ("conservativo", "consigliato", "hard"):
-        p = picks.get(key)
-        if not p:
-            continue
-
+    for p in selected_picks:
         unique_id = f"{p['date']}_{p['fixture_id']}_{p['market_type']}"
         if unique_id not in existing_ids:
             tracker_data.setdefault("bets", []).append({
@@ -266,22 +266,32 @@ def main():
 
     fixtures = json.loads(FIXTURES_PATH.read_text(encoding="utf-8"))
     candidates = build_candidates(fixtures)
-    picks = select_top_probability_picks(candidates)
+    picks = select_sniper_picks(candidates)
 
     record_picks_to_tracker(picks)
 
+    # Dizionario retrocompatibile per le card web (Top 1, 2, 3)
+    picks_dict = {}
+    keys = ["conservativo", "consigliato", "hard"]
+    for idx, p in enumerate(picks[:3]):
+        picks_dict[keys[idx]] = p
+
     output = {
         "date": TODAY,
+        "weekday": WEEKDAY,
+        "max_allowed_today": MAX_DAILY_PICKS,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_fixtures_scanned": len(fixtures),
-        "candidates_after_filter": len(candidates),
-        "picks": picks,
-        "all_candidates": sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)[:40],
+        "candidates_above_65pct": len(candidates),
+        "selected_picks_count": len(picks),
+        "picks": picks_dict,
+        "all_selected_picks": picks,
+        "all_candidates": sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)[:30],
     }
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"AtmBetSignal Quant Engine: Top 3 estratte con dimensionamento Quarter-Kelly.")
+    print(f"Sniper Engine: {len(picks)} pronostici selezionati oggi (Soglia >= 65%, Max consentiti: {MAX_DAILY_PICKS}).")
 
 
 if __name__ == "__main__":
