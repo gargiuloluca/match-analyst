@@ -1,10 +1,11 @@
 """
-analyze.py
-Motore quantitativo di selezione segnali a valore reale (Value Betting).
-Scarta quote da lotteria (>3.80) e seleziona i segnali a maggior solidità statistica.
+analyze.py — Quantitative Value Engine multi-mercato.
+Calcola 1X2, Doppia Chance (1X, X2), Over/Under 2.5 e Goal/No Goal (GG/NG)
+tramite matrice di Poisson bivariata.
 """
 
 import json
+import math
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -17,85 +18,136 @@ HISTORY_DIR.mkdir(parents=True, exist_ok=True)
 
 FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 
+DEFAULT_LAMBDA = 1.45  # media gol casa
+DEFAULT_MU = 1.15      # media gol trasferta
 
-def remove_margin(odds: dict) -> dict:
-    """Calcola le probabilità reali del mercato eliminando l'aggio del bookmaker."""
+
+def remove_margin_1x2(odds: dict) -> dict:
+    """De-margining delle quote 1X2."""
     try:
         inv = {k: 1.0 / float(odds[k]) for k in ("home", "draw", "away") if float(odds[k]) > 1.0}
-        total = sum(inv.values())
-        return {k: inv[k] / total for k in ("home", "draw", "away")}
+        tot = sum(inv.values())
+        return {k: inv[k] / tot for k in ("home", "draw", "away")}
     except Exception:
         return {}
 
 
-def build_signals(fixtures: list) -> list:
-    signals = []
+def poisson(k: int, lamb: float) -> float:
+    return (math.pow(lamb, k) * math.exp(-lamb)) / math.factorial(k)
+
+
+def generate_market_probabilities(fair_1x2: dict) -> dict:
+    """Calcola la matrice punteggi e ricava probabilità per 1X2, Doppia Chance,
+
+    Over/Under 2.5 e Goal/No Goal.
+    """
+    # Stima dei parametri Poisson ancorati alle probabilità implicite de-margined
+    ratio = fair_1x2["home"] / max(0.01, fair_1x2["away"])
+    lamb = max(0.6, min(2.8, DEFAULT_LAMBDA * math.sqrt(ratio)))
+    mu = max(0.5, min(2.4, DEFAULT_MU / math.sqrt(ratio)))
+
+    # Matrice esiti fino a 6 gol per squadra
+    p_matrix = {}
+    for h in range(7):
+        for a in range(7):
+            p_matrix[(h, a)] = poisson(h, lamb) * poisson(a, mu)
+
+    # Normalizzazione matrice
+    tot_mat = sum(p_matrix.values())
+    p_matrix = {k: v / tot_mat for k, v in p_matrix.items()}
+
+    # Calcolo Over / Under 2.5
+    prob_under25 = sum(prob for (h, a), prob in p_matrix.items() if (h + a) <= 2)
+    prob_over25 = 1.0 - prob_under25
+
+    # Calcolo Goal / No Goal
+    prob_ng = sum(prob for (h, a), prob in p_matrix.items() if h == 0 or a == 0)
+    prob_gg = 1.0 - prob_ng
+
+    # Calcolo 1X2 e Doppia Chance
+    p_1 = fair_1x2["home"]
+    p_x = fair_1x2["draw"]
+    p_2 = fair_1x2["away"]
+
+    p_1x = p_1 + p_x
+    p_x2 = p_x + p_2
+
+    return {
+        "1": p_1,
+        "X": p_x,
+        "2": p_2,
+        "1X": p_1x,
+        "X2": p_x2,
+        "Over2.5": prob_over25,
+        "Under2.5": prob_under25,
+        "GG": prob_gg,
+        "NG": prob_ng,
+    }
+
+
+def build_candidates(fixtures: list) -> list:
+    candidates = []
 
     for fx in fixtures:
         odds = fx.get("odds")
         if not odds or not all(odds.get(k) for k in ("home", "draw", "away")):
             continue
 
-        fair_probs = remove_margin(odds)
-        if not fair_probs:
+        fair_1x2 = remove_margin_1x2(odds)
+        if not fair_1x2:
             continue
 
-        home_name = fx.get("home_team", {}).get("name", "Casa")
-        away_name = fx.get("away_team", {}).get("name", "Trasferta")
+        probs = generate_market_probabilities(fair_1x2)
+        home = fx.get("home_team", {}).get("name", "Casa")
+        away = fx.get("away_team", {}).get("name", "Trasferta")
+        match_title = f"{home} - {away}"
 
-        labels = {
-            "home": f"Vittoria {home_name}",
-            "draw": "Pareggio",
-            "away": f"Vittoria {away_name}",
-        }
+        # 1. Mercato 1X2 e Doppie Chance
+        outcomes_spec = [
+            {"type": "1", "label": f"Vittoria {home}", "prob": probs["1"], "odd": float(odds["home"])},
+            {"type": "2", "label": f"Vittoria {away}", "prob": probs["2"], "odd": float(odds["away"])},
+            {"type": "1X", "label": f"1X (Doppia Chance {home})", "prob": probs["1X"], "odd": round(1.0 / (probs["1X"] * 1.05), 2)},
+            {"type": "X2", "label": f"X2 (Doppia Chance {away})", "prob": probs["X2"], "odd": round(1.0 / (probs["X2"] * 1.05), 2)},
+            {"type": "Over2.5", "label": "Over 2.5 Gol", "prob": probs["Over2.5"], "odd": round(1.0 / (probs["Over2.5"] * 1.06), 2)},
+            {"type": "Under2.5", "label": "Under 2.5 Gol", "prob": probs["Under2.5"], "odd": round(1.0 / (probs["Under2.5"] * 1.06), 2)},
+            {"type": "GG", "label": "Goal (Entrambe segnano)", "prob": probs["GG"], "odd": round(1.0 / (probs["GG"] * 1.06), 2)},
+        ]
 
-        # Bonus campo standard: il mercato tende a sottostimare leggermente il fattore campo sulle favorite
-        model_probs = {
-            "home": fair_probs["home"] * 1.025,
-            "draw": fair_probs["draw"] * 0.98,
-            "away": fair_probs["away"] * 0.99,
-        }
-        tot = sum(model_probs.values())
-        model_probs = {k: v / tot for k, v in model_probs.items()}
+        for out in outcomes_spec:
+            odd_val = out["odd"]
+            prob_val = out["prob"]
 
-        for outcome in ("home", "draw", "away"):
-            odd_val = float(odds[outcome])
-
-            # Scarta quote da lotteria: sopra quota 3.80 il rischio matematico è eccessivo
-            if odd_val > 3.80 or odd_val < 1.15:
+            # Filtri di sicurezza e quota
+            if odd_val < 1.18 or odd_val > 3.60:
                 continue
 
-            est_p = model_probs[outcome]
-            mkt_p = fair_probs[outcome]
-            edge = est_p - mkt_p
-
-            signals.append({
+            candidates.append({
                 "fixture_id": fx.get("fixture_id"),
                 "league": fx.get("league", ""),
-                "match": f"{home_name} - {away_name}",
+                "match": match_title,
                 "date": TODAY,
-                "outcome": outcome,
-                "outcome_label": labels[outcome],
+                "market_type": out["type"],
+                "outcome_label": out["label"],
                 "odd": odd_val,
-                "estimated_probability": round(est_p, 3),
-                "implied_probability": round(mkt_p, 3),
-                "edge": round(edge, 3),
-                "notes": f"Quota: {odd_val:.2f} | Probabilità Reale: {int(est_p*100)}%",
+                "estimated_probability": round(prob_val, 3),
+                "implied_probability": round(1.0 / odd_val, 3),
+                "edge": round(prob_val - (1.0 / odd_val), 3),
+                "notes": f"Mercato: {out['type']} | Quota: {odd_val:.2f} | Prob: {int(prob_val*100)}%",
             })
 
-    return signals
+    return candidates
 
 
-def pick_top_signals(candidates: list) -> dict:
+def select_best_picks(candidates: list) -> dict:
     picks = {}
     used_fixtures = set()
 
     if not candidates:
         return picks
 
-    # 1. CONSERVATIVO: Massima probabilità di riuscita (quota 1.25 - 1.65, prob >= 58%)
+    # 1. CONSERVATIVO: Alta affidabilità (probabilità >= 70%, ottima per 1X o Over 1.5/Doppia Chance)
     conservativi = sorted(
-        [c for c in candidates if 1.20 <= c["odd"] <= 1.65 and c["estimated_probability"] >= 0.58],
+        [c for c in candidates if c["estimated_probability"] >= 0.68 and 1.22 <= c["odd"] <= 1.55],
         key=lambda c: c["estimated_probability"],
         reverse=True,
     )
@@ -103,20 +155,20 @@ def pick_top_signals(candidates: list) -> dict:
         picks["conservativo"] = conservativi[0]
         used_fixtures.add(conservativi[0]["fixture_id"])
 
-    # 2. CONSIGLIATO: Quota bilanciata ideale (1.65 - 2.25) con il miglior rapporto probabilità/quota
+    # 2. CONSIGLIATO: Quota bilanciata (1.60 - 2.15) con solidità statistica (es. Goal, 1 secco o Over 2.5)
     consigliati = sorted(
-        [c for c in candidates if c["fixture_id"] not in used_fixtures and 1.65 <= c["odd"] <= 2.25],
-        key=lambda c: (c["edge"] > 0, c["estimated_probability"]),
+        [c for c in candidates if c["fixture_id"] not in used_fixtures and 1.60 <= c["odd"] <= 2.15],
+        key=lambda c: (c["estimated_probability"] >= 0.52, c["estimated_probability"]),
         reverse=True,
     )
     if consigliati:
         picks["consigliato"] = consigliati[0]
         used_fixtures.add(consigliati[0]["fixture_id"])
 
-    # 3. HARD: Quota alta controllata (2.30 - 3.50) con solidità statistica
+    # 3. HARD: Quota alta controllata (2.20 - 3.40)
     hard = sorted(
-        [c for c in candidates if c["fixture_id"] not in used_fixtures and 2.30 <= c["odd"] <= 3.50],
-        key=lambda c: (c["edge"] > 0, c["estimated_probability"]),
+        [c for c in candidates if c["fixture_id"] not in used_fixtures and 2.20 <= c["odd"] <= 3.40],
+        key=lambda c: c["estimated_probability"],
         reverse=True,
     )
     if hard:
@@ -131,8 +183,8 @@ def main():
         return
 
     fixtures = json.loads(FIXTURES_PATH.read_text(encoding="utf-8"))
-    candidates = build_signals(fixtures)
-    picks = pick_top_signals(candidates)
+    candidates = build_candidates(fixtures)
+    picks = select_best_picks(candidates)
 
     output = {
         "date": TODAY,
@@ -140,12 +192,12 @@ def main():
         "total_fixtures_scanned": len(fixtures),
         "candidates_after_filter": len(candidates),
         "picks": picks,
-        "all_candidates": sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)[:25],
+        "all_candidates": sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)[:35],
     }
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Analisi completata: {len(fixtures)} match odierni, {len(picks)} pronostici selezionati.")
+    print(f"Analisi multi-mercato completata: {len(candidates)} opzioni analizzate.")
 
 
 if __name__ == "__main__":
