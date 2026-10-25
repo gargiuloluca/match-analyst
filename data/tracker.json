@@ -1,11 +1,11 @@
 {
-  "total_bets": 0,
-  "won": 0,
+  "total_bets": 1,
+  "won": 1,
   "lost": 0,
   "void": 0,
-  "win_rate": 0.0,
-  "net_profit_units": 0,
-  "roi_pct": 0.0,
+  "win_rate": 100.0,
+  "net_profit_units": 0.68,
+  "roi_pct": 68.0,
   "bets": [
     {
       "id": "2026-10-25_72089d103a5fe6a922c35e17efba6ffc_1",
@@ -45,9 +45,9 @@
       "outcome_label": "Vittoria Nacional",
       "odd": 1.68,
       "estimated_prob": 0.8158,
-      "status": "PENDING",
-      "score": "-",
-      "profit": 0.0
+      "status": "WON",
+      "score": "1-0",
+      "profit": 0.68
     },
     {
       "id": "2026-10-25_b435848f58054cad7d3fad610a96c4b5_GG",

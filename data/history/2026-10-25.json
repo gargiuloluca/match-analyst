@@ -2,7 +2,7 @@
   "date": "2026-10-25",
   "weekday": 6,
   "max_allowed_today": 5,
-  "generated_at": "2026-10-25T19:56:57.456029+00:00",
+  "generated_at": "2026-10-25T20:05:52.149687+00:00",
   "total_fixtures_scanned": 7,
   "candidates_above_65pct": 1,
   "selected_picks_count": 1,
@@ -14,12 +14,12 @@
       "date": "2026-10-25",
       "market_type": "1",
       "outcome_label": "Vittoria Barcelona",
-      "odd": 1.57,
-      "estimated_probability": 0.7233,
-      "implied_probability": 0.6369,
-      "edge": 0.0863,
+      "odd": 1.54,
+      "estimated_probability": 0.7353,
+      "implied_probability": 0.6494,
+      "edge": 0.086,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.57 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.54 | Stake: 2.5%"
     }
   },
   "all_selected_picks": [
@@ -30,12 +30,12 @@
       "date": "2026-10-25",
       "market_type": "1",
       "outcome_label": "Vittoria Barcelona",
-      "odd": 1.57,
-      "estimated_probability": 0.7233,
-      "implied_probability": 0.6369,
-      "edge": 0.0863,
+      "odd": 1.54,
+      "estimated_probability": 0.7353,
+      "implied_probability": 0.6494,
+      "edge": 0.086,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.57 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.54 | Stake: 2.5%"
     }
   ],
   "all_candidates": [
@@ -46,12 +46,12 @@
       "date": "2026-10-25",
       "market_type": "1",
       "outcome_label": "Vittoria Barcelona",
-      "odd": 1.57,
-      "estimated_probability": 0.7233,
-      "implied_probability": 0.6369,
-      "edge": 0.0863,
+      "odd": 1.54,
+      "estimated_probability": 0.7353,
+      "implied_probability": 0.6494,
+      "edge": 0.086,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.57 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.54 | Stake: 2.5%"
     }
   ]
 }

@@ -2,6 +2,7 @@
   {
     "fixture_id": "3564688383b255192409c9deb8e526ed",
     "league": "Serie A",
+    "odds_key": "soccer_italy_serie_a",
     "commence_time": "2026-10-25T19:45:00Z",
     "home_team": {
       "name": "Udinese"
@@ -9,19 +10,17 @@
     "away_team": {
       "name": "AC Milan"
     },
-    "bookmaker_count": 23,
+    "bookmaker_count": 17,
     "odds": {
-      "home": 9.0,
-      "draw": 5.0,
-      "away": 1.29,
-      "max_home": 14.0,
-      "max_draw": 6.0,
-      "max_away": 1.81
+      "home": 11.0,
+      "draw": 5.3,
+      "away": 1.27
     }
   },
   {
     "fixture_id": "72089d103a5fe6a922c35e17efba6ffc",
     "league": "La Liga",
+    "odds_key": "soccer_spain_la_liga",
     "commence_time": "2026-10-25T20:00:00Z",
     "home_team": {
       "name": "Barcelona"
@@ -31,17 +30,15 @@
     },
     "bookmaker_count": 20,
     "odds": {
-      "home": 1.57,
-      "draw": 6.0,
-      "away": 4.0,
-      "max_home": 1.63,
-      "max_draw": 6.6,
-      "max_away": 4.25
+      "home": 1.54,
+      "draw": 5.8,
+      "away": 4.1
     }
   },
   {
     "fixture_id": "b435848f58054cad7d3fad610a96c4b5",
     "league": "Eredivisie (Olanda)",
+    "odds_key": "soccer_netherlands_eredivisie",
     "commence_time": "2026-10-25T19:00:00Z",
     "home_team": {
       "name": "AZ Alkmaar"
@@ -51,17 +48,15 @@
     },
     "bookmaker_count": 17,
     "odds": {
-      "home": 2.6,
-      "draw": 2.7,
-      "away": 2.91,
-      "max_home": 2.86,
-      "max_draw": 2.94,
-      "max_away": 3.15
+      "home": 2.7,
+      "draw": 2.65,
+      "away": 2.9
     }
   },
   {
     "fixture_id": "070aa87111dbdfdcb504340fe440e63f",
     "league": "Primeira Liga (Portogallo)",
+    "odds_key": "soccer_portugal_primeira_liga",
     "commence_time": "2026-10-25T18:00:00Z",
     "home_team": {
       "name": "Nacional"
@@ -72,16 +67,14 @@
     "bookmaker_count": 12,
     "odds": {
       "home": 1.03,
-      "draw": 10.0,
-      "away": 126.0,
-      "max_home": 1.12,
-      "max_draw": 13.0,
-      "max_away": 1000.0
+      "draw": 11.0,
+      "away": 126.0
     }
   },
   {
     "fixture_id": "fa1bd8d92c7780ff1ebb56219fcb6ea6",
     "league": "Primeira Liga (Portogallo)",
+    "odds_key": "soccer_portugal_primeira_liga",
     "commence_time": "2026-10-25T18:00:00Z",
     "home_team": {
       "name": "Rio Ave FC"
@@ -89,19 +82,17 @@
     "away_team": {
       "name": "Famalicão"
     },
-    "bookmaker_count": 5,
+    "bookmaker_count": 3,
     "odds": {
-      "home": 70.0,
-      "draw": 50.0,
-      "away": 1.0,
-      "max_home": 151.0,
-      "max_draw": 75.0,
-      "max_away": 1.01
+      "home": 26.0,
+      "draw": 26.0,
+      "away": 1.0
     }
   },
   {
     "fixture_id": "9b60d2e564e8761e9ec267bd7baf6998",
     "league": "Primeira Liga (Portogallo)",
+    "odds_key": "soccer_portugal_primeira_liga",
     "commence_time": "2026-10-25T20:30:00Z",
     "home_team": {
       "name": "Sporting Lisbon"
@@ -112,16 +103,14 @@
     "bookmaker_count": 19,
     "odds": {
       "home": 1.23,
-      "draw": 6.1,
-      "away": 10.0,
-      "max_home": 1.27,
-      "max_draw": 7.25,
-      "max_away": 13.0
+      "draw": 6.0,
+      "away": 10.0
     }
   },
   {
     "fixture_id": "7a6b3911132caecf83a04948fa6f7d43",
     "league": "Jupiler Pro League (Belgio)",
+    "odds_key": "soccer_belgium_first_div",
     "commence_time": "2026-10-25T18:17:00Z",
     "home_team": {
       "name": "Union Saint-Gilloise"
@@ -129,14 +118,11 @@
     "away_team": {
       "name": "Cercle Brugge KSV"
     },
-    "bookmaker_count": 10,
+    "bookmaker_count": 8,
     "odds": {
-      "home": 1.04,
-      "draw": 13.0,
-      "away": 101.0,
-      "max_home": 1.49,
-      "max_draw": 40.0,
-      "max_away": 130.0
+      "home": 1.03,
+      "draw": 17.0,
+      "away": 101.0
     }
   }
 ]
