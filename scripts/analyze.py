@@ -1,10 +1,9 @@
 """
-analyze.py — Selezione Rigorosa su Massima Probabilità di Successo (Win-Rate Priority).
-Vincoli:
-- Quota minima: 1.40 (nessun rendimento microscopico).
-- Quota massima: 3.00 (nessuna giocata speculativa a bassa probabilità).
-- Ordinamento assoluto per Probabilità Stimata Decrescente:
-  passano solo i 3 eventi con le percentuali di successo più elevate dell'intera giornata.
+analyze.py — Quantitative Engine Multi-Campionato.
+- Filtra quote con aggio eccessivo (> 8%).
+- Analizza 1X2, Doppia Chance, Over/Under 2.5 e Goal/No Goal.
+- Vincolo di quota: Minimo 1.40, Massimo 3.00.
+- Seleziona i 3 pronostici con la massima probabilità assoluta di successo.
 """
 
 import json
@@ -25,7 +24,7 @@ DEFAULT_LAMBDA = 1.45
 DEFAULT_MU = 1.15
 
 MIN_ODD = 1.40  # Soglia minima di quota richiesta
-MAX_ODD = 3.00  # Evita azzardi a bassa probabilità
+MAX_ODD = 3.00  # Evita azzardi a bassa percentuale
 
 
 def remove_margin(odds: dict) -> dict:
@@ -85,6 +84,16 @@ def build_candidates(fixtures: list) -> list:
         if not odds or not all(odds.get(k) for k in ("home", "draw", "away")):
             continue
 
+        # 1. Filtro di liquidità e affidabilità:
+        # Calcolo della somma delle probabilità inverse (aggio).
+        # Se supera 1.085 (8.5% di margine), la lavagna del bookmaker è troppo svantaggiosa.
+        try:
+            raw_sum = sum(1.0 / float(odds[k]) for k in ("home", "draw", "away") if float(odds[k]) > 1.0)
+            if raw_sum > 1.085:
+                continue
+        except Exception:
+            continue
+
         fair_1x2 = remove_margin(odds)
         if not fair_1x2:
             continue
@@ -108,7 +117,7 @@ def build_candidates(fixtures: list) -> list:
             odd_val = out["odd"]
             prob_val = out["prob"]
 
-            # Filtro rigido: quota minima 1.40 e massima 3.00
+            # Quota minima 1.40 e massima 3.00
             if odd_val < MIN_ODD or odd_val > MAX_ODD:
                 continue
 
@@ -123,21 +132,18 @@ def build_candidates(fixtures: list) -> list:
                 "estimated_probability": round(prob_val, 3),
                 "implied_probability": round(1.0 / odd_val, 3),
                 "edge": round(prob_val - (1.0 / odd_val), 3),
-                "notes": f"Quota: {odd_val:.2f} | Prob: {int(prob_val*100)}%",
+                "notes": f"Lega: {fx.get('league')} | Quota: {odd_val:.2f} | Prob: {int(prob_val*100)}%",
             })
 
     return candidates
 
 
 def select_top_probability_picks(candidates: list) -> dict:
-    """Seleziona i 3 pronostici con la più alta probabilità di vincita assoluta
-
-    (escludendo partite duplicate per non concentrare il rischio sullo stesso match).
-    """
+    """Seleziona i 3 pronostici con la più alta probabilità assoluta di successo."""
     picks = {}
     used_fixtures = set()
 
-    # Ordina tutti i candidati dal più probabile in assoluto al meno probabile
+    # Ordina rigorosamente dal più probabile al meno probabile
     ranked = sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)
 
     selected = []
@@ -148,13 +154,12 @@ def select_top_probability_picks(candidates: list) -> dict:
         if len(selected) == 3:
             break
 
-    # Assegna i 3 migliori slot mantenendo la compatibilità con la grafica
     if len(selected) > 0:
-        picks["conservativo"] = selected[0]  # La giocata più probabile in assoluto
+        picks["conservativo"] = selected[0]
     if len(selected) > 1:
-        picks["consigliato"] = selected[1]   # La seconda più probabile
+        picks["consigliato"] = selected[1]
     if len(selected) > 2:
-        picks["hard"] = selected[2]          # La terza più probabile
+        picks["hard"] = selected[2]
 
     return picks
 
@@ -174,12 +179,12 @@ def main():
         "total_fixtures_scanned": len(fixtures),
         "candidates_after_filter": len(candidates),
         "picks": picks,
-        "all_candidates": sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)[:35],
+        "all_candidates": sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)[:40],
     }
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Analisi completata: {len(candidates)} candidati validi. Selezionati i 3 a più alta probabilità.")
+    print(f"Analisi completata su {len(fixtures)} partite. Selezionati i 3 esiti a probabilità più alta (quota >= 1.40).")
 
 
 if __name__ == "__main__":
