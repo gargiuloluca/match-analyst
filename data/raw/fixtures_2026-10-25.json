@@ -10,9 +10,9 @@
       "name": "Juventus"
     },
     "odds": {
-      "home": 19.76,
-      "draw": 5.86,
-      "away": 1.2,
+      "home": 94.39,
+      "draw": 19.63,
+      "away": 1.04,
       "bookmaker": "Pinnacle"
     }
   },
@@ -44,9 +44,9 @@
       "name": "Leeds United"
     },
     "odds": {
-      "home": 3.32,
-      "draw": 2.18,
-      "away": 3.42,
+      "home": 3.94,
+      "draw": 1.92,
+      "away": 3.65,
       "bookmaker": "Pinnacle"
     }
   },
@@ -61,9 +61,9 @@
       "name": "Levante"
     },
     "odds": {
-      "home": 1.56,
-      "draw": 4.42,
-      "away": 5.48,
+      "home": 1.24,
+      "draw": 6.02,
+      "away": 12.76,
       "bookmaker": "Pinnacle"
     }
   },
@@ -95,10 +95,10 @@
       "name": "Bayern Munich"
     },
     "odds": {
-      "home": 78.71,
-      "draw": 19.81,
-      "away": 1.04,
-      "bookmaker": "Pinnacle"
+      "home": 85.0,
+      "draw": 22.0,
+      "away": 1.02,
+      "bookmaker": "Winamax (FR)"
     }
   },
   {
@@ -112,9 +112,9 @@
       "name": "Lorient"
     },
     "odds": {
-      "home": 4.66,
-      "draw": 1.78,
-      "away": 3.66,
+      "home": 6.1,
+      "draw": 1.44,
+      "away": 5.11,
       "bookmaker": "Pinnacle"
     }
   },
@@ -129,9 +129,9 @@
       "name": "Le Mans FC"
     },
     "odds": {
-      "home": 2.83,
-      "draw": 2.06,
-      "away": 4.71,
+      "home": 3.8,
+      "draw": 1.6,
+      "away": 6.13,
       "bookmaker": "Pinnacle"
     }
   },
@@ -163,10 +163,10 @@
       "name": "Strasbourg"
     },
     "odds": {
-      "home": 1.06,
-      "draw": 14.49,
-      "away": 61.84,
-      "bookmaker": "Pinnacle"
+      "home": 1.0,
+      "draw": 75.0,
+      "away": 100.0,
+      "bookmaker": "Betclic (FR)"
     }
   },
   {
@@ -180,9 +180,9 @@
       "name": "Troyes"
     },
     "odds": {
-      "home": 2.49,
-      "draw": 2.09,
-      "away": 5.81,
+      "home": 3.48,
+      "draw": 1.57,
+      "away": 7.87,
       "bookmaker": "Pinnacle"
     }
   },
@@ -197,10 +197,10 @@
       "name": "Pisa"
     },
     "odds": {
-      "home": 1.36,
-      "draw": 3.9,
-      "away": 10.0,
-      "bookmaker": "888sport"
+      "home": 1.34,
+      "draw": 4.13,
+      "away": 15.29,
+      "bookmaker": "Pinnacle"
     }
   },
   {
@@ -221,23 +221,6 @@
     }
   },
   {
-    "fixture_id": "6a5709e9c094b7f5d089026af10fb820",
-    "league": "Eredivisie (Olanda)",
-    "commence_time": "2026-10-25T15:45:00Z",
-    "home_team": {
-      "name": "Sparta Rotterdam"
-    },
-    "away_team": {
-      "name": "Ajax"
-    },
-    "odds": {
-      "home": 300.0,
-      "draw": 24.0,
-      "away": 1.01,
-      "bookmaker": "Coolbet"
-    }
-  },
-  {
     "fixture_id": "b435848f58054cad7d3fad610a96c4b5",
     "league": "Eredivisie (Olanda)",
     "commence_time": "2026-10-25T19:00:00Z",
@@ -248,9 +231,9 @@
       "name": "FC Twente Enschede"
     },
     "odds": {
-      "home": 2.22,
-      "draw": 3.94,
-      "away": 3.03,
+      "home": 2.32,
+      "draw": 4.05,
+      "away": 2.82,
       "bookmaker": "Pinnacle"
     }
   },
@@ -265,9 +248,9 @@
       "name": "Braga"
     },
     "odds": {
-      "home": 6.43,
-      "draw": 4.25,
-      "away": 1.54,
+      "home": 6.52,
+      "draw": 4.35,
+      "away": 1.53,
       "bookmaker": "Pinnacle"
     }
   },
@@ -282,9 +265,9 @@
       "name": "Famalicão"
     },
     "odds": {
-      "home": 3.62,
-      "draw": 3.36,
-      "away": 2.17,
+      "home": 3.79,
+      "draw": 3.41,
+      "away": 2.1,
       "bookmaker": "Pinnacle"
     }
   },
@@ -299,9 +282,9 @@
       "name": "Académico de Viseu"
     },
     "odds": {
-      "home": 1.21,
-      "draw": 7.28,
-      "away": 12.79,
+      "home": 1.22,
+      "draw": 7.14,
+      "away": 12.37,
       "bookmaker": "Pinnacle"
     }
   },
@@ -316,9 +299,9 @@
       "name": "Anderlecht"
     },
     "odds": {
-      "home": 2.76,
-      "draw": 2.98,
-      "away": 2.77,
+      "home": 1.54,
+      "draw": 3.84,
+      "away": 6.65,
       "bookmaker": "Pinnacle"
     }
   },
@@ -333,9 +316,9 @@
       "name": "Cercle Brugge KSV"
     },
     "odds": {
-      "home": 1.32,
-      "draw": 5.96,
-      "away": 8.86,
+      "home": 1.33,
+      "draw": 5.6,
+      "away": 9.07,
       "bookmaker": "Pinnacle"
     }
   },
@@ -351,8 +334,8 @@
     },
     "odds": {
       "home": 1.0,
-      "draw": 25.0,
-      "away": 65.0,
+      "draw": 40.0,
+      "away": 100.0,
       "bookmaker": "Betclic (FR)"
     }
   },
@@ -367,10 +350,10 @@
       "name": "RB Salzburg"
     },
     "odds": {
-      "home": 9.11,
-      "draw": 3.54,
-      "away": 1.5,
-      "bookmaker": "Pinnacle"
+      "home": 151.0,
+      "draw": 56.0,
+      "away": 1.0,
+      "bookmaker": "888sport"
     }
   }
 ]
