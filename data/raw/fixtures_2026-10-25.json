@@ -1,22 +1,5 @@
 [
   {
-    "fixture_id": "63af660d4d0d52f8ac7685172ef939c4",
-    "league": "Serie A",
-    "commence_time": "2026-10-25T17:00:00Z",
-    "home_team": {
-      "name": "Lecce"
-    },
-    "away_team": {
-      "name": "Juventus"
-    },
-    "odds": {
-      "home": 94.39,
-      "draw": 19.63,
-      "away": 1.04,
-      "bookmaker": "Pinnacle"
-    }
-  },
-  {
     "fixture_id": "3564688383b255192409c9deb8e526ed",
     "league": "Serie A",
     "commence_time": "2026-10-25T19:45:00Z",
@@ -26,28 +9,14 @@
     "away_team": {
       "name": "AC Milan"
     },
+    "bookmaker_count": 24,
     "odds": {
-      "home": 4.95,
-      "draw": 3.61,
+      "home": 4.56,
+      "draw": 3.58,
       "away": 1.81,
-      "bookmaker": "Pinnacle"
-    }
-  },
-  {
-    "fixture_id": "e82f6b60fa41b82c8510f5b67ce61849",
-    "league": "Premier League",
-    "commence_time": "2026-10-25T16:30:00Z",
-    "home_team": {
-      "name": "Sunderland"
-    },
-    "away_team": {
-      "name": "Leeds United"
-    },
-    "odds": {
-      "home": 3.94,
-      "draw": 1.92,
-      "away": 3.65,
-      "bookmaker": "Pinnacle"
+      "max_home": 5.1,
+      "max_draw": 3.8,
+      "max_away": 1.86
     }
   },
   {
@@ -60,11 +29,14 @@
     "away_team": {
       "name": "Levante"
     },
+    "bookmaker_count": 11,
     "odds": {
-      "home": 1.24,
-      "draw": 6.02,
-      "away": 12.76,
-      "bookmaker": "Pinnacle"
+      "home": 1.01,
+      "draw": 15.0,
+      "away": 180.0,
+      "max_home": 1.16,
+      "max_draw": 50.0,
+      "max_away": 1000.0
     }
   },
   {
@@ -77,130 +49,14 @@
     "away_team": {
       "name": "Real Madrid"
     },
+    "bookmaker_count": 21,
     "odds": {
-      "home": 1.6,
-      "draw": 6.32,
-      "away": 3.99,
-      "bookmaker": "Pinnacle"
-    }
-  },
-  {
-    "fixture_id": "f2bd909f25eea6b4ce42d2f52275e5c4",
-    "league": "Bundesliga",
-    "commence_time": "2026-10-25T16:30:00Z",
-    "home_team": {
-      "name": "SC Freiburg"
-    },
-    "away_team": {
-      "name": "Bayern Munich"
-    },
-    "odds": {
-      "home": 85.0,
-      "draw": 22.0,
-      "away": 1.02,
-      "bookmaker": "Winamax (FR)"
-    }
-  },
-  {
-    "fixture_id": "1a83b5ebabe7cb572ae6e029b3149c42",
-    "league": "Ligue 1",
-    "commence_time": "2026-10-25T16:15:00Z",
-    "home_team": {
-      "name": "Angers"
-    },
-    "away_team": {
-      "name": "Lorient"
-    },
-    "odds": {
-      "home": 6.1,
-      "draw": 1.44,
-      "away": 5.11,
-      "bookmaker": "Pinnacle"
-    }
-  },
-  {
-    "fixture_id": "8eab078a37a63df32ffa443302a2a7ba",
-    "league": "Ligue 1",
-    "commence_time": "2026-10-25T16:15:00Z",
-    "home_team": {
-      "name": "Auxerre"
-    },
-    "away_team": {
-      "name": "Le Mans FC"
-    },
-    "odds": {
-      "home": 3.8,
-      "draw": 1.6,
-      "away": 6.13,
-      "bookmaker": "Pinnacle"
-    }
-  },
-  {
-    "fixture_id": "fcc34b753fc61a0cc0e11d7cb0a0c36b",
-    "league": "Ligue 1",
-    "commence_time": "2026-10-25T16:15:00Z",
-    "home_team": {
-      "name": "Marseille"
-    },
-    "away_team": {
-      "name": "Le Havre"
-    },
-    "odds": {
-      "home": 1.0,
-      "draw": 80.0,
-      "away": 100.0,
-      "bookmaker": "Betclic (FR)"
-    }
-  },
-  {
-    "fixture_id": "31dcb6d13ed240fc4a5c7a696149967e",
-    "league": "Ligue 1",
-    "commence_time": "2026-10-25T16:15:00Z",
-    "home_team": {
-      "name": "Rennes"
-    },
-    "away_team": {
-      "name": "Strasbourg"
-    },
-    "odds": {
-      "home": 1.0,
-      "draw": 75.0,
-      "away": 100.0,
-      "bookmaker": "Betclic (FR)"
-    }
-  },
-  {
-    "fixture_id": "18e4425261f7dd6b245f82056d424411",
-    "league": "Ligue 1",
-    "commence_time": "2026-10-25T16:15:00Z",
-    "home_team": {
-      "name": "Toulouse"
-    },
-    "away_team": {
-      "name": "Troyes"
-    },
-    "odds": {
-      "home": 3.48,
-      "draw": 1.57,
-      "away": 7.87,
-      "bookmaker": "Pinnacle"
-    }
-  },
-  {
-    "fixture_id": "d7cc66c747ebe993d5b80ffc5d968af6",
-    "league": "Serie B (Italia)",
-    "commence_time": "2026-10-25T16:16:00Z",
-    "home_team": {
-      "name": "Hellas Verona"
-    },
-    "away_team": {
-      "name": "Pisa"
-    },
-    "odds": {
-      "home": 1.34,
-      "draw": 4.13,
-      "away": 15.29,
-      "bookmaker": "Pinnacle"
+      "home": 1.57,
+      "draw": 6.0,
+      "away": 4.0,
+      "max_home": 1.64,
+      "max_draw": 6.4,
+      "max_away": 4.37
     }
   },
   {
@@ -213,11 +69,14 @@
     "away_team": {
       "name": "Sporting Gijón"
     },
+    "bookmaker_count": 3,
     "odds": {
-      "home": 1.22,
-      "draw": 6.02,
-      "away": 14.77,
-      "bookmaker": "Pinnacle"
+      "home": 1.0,
+      "draw": 26.0,
+      "away": 26.0,
+      "max_home": 1.0,
+      "max_draw": 40.0,
+      "max_away": 100.0
     }
   },
   {
@@ -230,11 +89,14 @@
     "away_team": {
       "name": "FC Twente Enschede"
     },
+    "bookmaker_count": 17,
     "odds": {
-      "home": 2.32,
-      "draw": 4.05,
-      "away": 2.82,
-      "bookmaker": "Pinnacle"
+      "home": 2.5,
+      "draw": 3.0,
+      "away": 2.7,
+      "max_home": 2.74,
+      "max_draw": 3.45,
+      "max_away": 2.92
     }
   },
   {
@@ -247,11 +109,14 @@
     "away_team": {
       "name": "Braga"
     },
+    "bookmaker_count": 17,
     "odds": {
-      "home": 6.52,
-      "draw": 4.35,
-      "away": 1.53,
-      "bookmaker": "Pinnacle"
+      "home": 1.81,
+      "draw": 2.75,
+      "away": 5.35,
+      "max_home": 2.21,
+      "max_draw": 3.0,
+      "max_away": 6.4
     }
   },
   {
@@ -264,11 +129,14 @@
     "away_team": {
       "name": "Famalicão"
     },
+    "bookmaker_count": 17,
     "odds": {
-      "home": 3.79,
-      "draw": 3.41,
-      "away": 2.1,
-      "bookmaker": "Pinnacle"
+      "home": 19.75,
+      "draw": 4.5,
+      "away": 1.22,
+      "max_home": 30.0,
+      "max_draw": 5.0,
+      "max_away": 1.3
     }
   },
   {
@@ -281,11 +149,14 @@
     "away_team": {
       "name": "Académico de Viseu"
     },
+    "bookmaker_count": 19,
     "odds": {
-      "home": 1.22,
-      "draw": 7.14,
-      "away": 12.37,
-      "bookmaker": "Pinnacle"
+      "home": 1.2,
+      "draw": 6.5,
+      "away": 10.0,
+      "max_home": 1.27,
+      "max_draw": 7.59,
+      "max_away": 12.0
     }
   },
   {
@@ -298,62 +169,34 @@
     "away_team": {
       "name": "Anderlecht"
     },
+    "bookmaker_count": 3,
     "odds": {
-      "home": 1.54,
-      "draw": 3.84,
-      "away": 6.65,
-      "bookmaker": "Pinnacle"
+      "home": 1.0,
+      "draw": 26.0,
+      "away": 26.0,
+      "max_home": 1.0,
+      "max_draw": 40.0,
+      "max_away": 95.0
     }
   },
   {
     "fixture_id": "7a6b3911132caecf83a04948fa6f7d43",
     "league": "Jupiler Pro League (Belgio)",
-    "commence_time": "2026-10-25T18:15:00Z",
+    "commence_time": "2026-10-25T18:17:00Z",
     "home_team": {
       "name": "Union Saint-Gilloise"
     },
     "away_team": {
       "name": "Cercle Brugge KSV"
     },
+    "bookmaker_count": 17,
     "odds": {
-      "home": 1.33,
-      "draw": 5.6,
-      "away": 9.07,
-      "bookmaker": "Pinnacle"
-    }
-  },
-  {
-    "fixture_id": "000c8712b61f7ecec007f08d3ecad35b",
-    "league": "Süper Lig (Turchia)",
-    "commence_time": "2026-10-25T16:00:00Z",
-    "home_team": {
-      "name": "Goztepe"
-    },
-    "away_team": {
-      "name": "Çorum FK"
-    },
-    "odds": {
-      "home": 1.0,
-      "draw": 40.0,
-      "away": 100.0,
-      "bookmaker": "Betclic (FR)"
-    }
-  },
-  {
-    "fixture_id": "18c0a6c9fac5d9e02af8066376cfac72",
-    "league": "Bundesliga (Austria)",
-    "commence_time": "2026-10-25T16:00:00Z",
-    "home_team": {
-      "name": "LASK"
-    },
-    "away_team": {
-      "name": "RB Salzburg"
-    },
-    "odds": {
-      "home": 151.0,
-      "draw": 56.0,
-      "away": 1.0,
-      "bookmaker": "888sport"
+      "home": 3.0,
+      "draw": 2.85,
+      "away": 2.4,
+      "max_home": 3.45,
+      "max_draw": 3.0,
+      "max_away": 2.82
     }
   }
 ]

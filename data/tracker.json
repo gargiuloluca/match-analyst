@@ -4,7 +4,22 @@
   "lost": 0,
   "void": 0,
   "win_rate": 0.0,
-  "net_profit_units": 0.0,
+  "net_profit_units": 0,
   "roi_pct": 0.0,
-  "bets": []
+  "bets": [
+    {
+      "id": "2026-10-25_72089d103a5fe6a922c35e17efba6ffc_1",
+      "date": "2026-10-25",
+      "fixture_id": "72089d103a5fe6a922c35e17efba6ffc",
+      "match": "Barcelona - Real Madrid",
+      "league": "La Liga",
+      "market_type": "1",
+      "outcome_label": "Vittoria Barcelona",
+      "odd": 1.57,
+      "estimated_prob": 0.7333,
+      "status": "PENDING",
+      "score": "-",
+      "profit": 0.0
+    }
+  ]
 }
