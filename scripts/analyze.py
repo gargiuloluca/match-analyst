@@ -1,6 +1,10 @@
 """
-analyze.py — Quantitative Engine ad Alta Probabilità (Quota Minima 1.40).
-Filtra mercati 1X2, Doppia Chance, Over/Under 2.5 e Goal con Edge positivo.
+analyze.py — Selezione Rigorosa su Massima Probabilità di Successo (Win-Rate Priority).
+Vincoli:
+- Quota minima: 1.40 (nessun rendimento microscopico).
+- Quota massima: 3.00 (nessuna giocata speculativa a bassa probabilità).
+- Ordinamento assoluto per Probabilità Stimata Decrescente:
+  passano solo i 3 eventi con le percentuali di successo più elevate dell'intera giornata.
 """
 
 import json
@@ -20,8 +24,8 @@ FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 DEFAULT_LAMBDA = 1.45
 DEFAULT_MU = 1.15
 
-MIN_ODD_ALLOWED = 1.40  # Soglia minima imposta dall'utente
-MAX_ODD_ALLOWED = 3.20  # Soglia massima per evitare varianza estrema
+MIN_ODD = 1.40  # Soglia minima di quota richiesta
+MAX_ODD = 3.00  # Evita azzardi a bassa probabilità
 
 
 def remove_margin(odds: dict) -> dict:
@@ -93,25 +97,20 @@ def build_candidates(fixtures: list) -> list:
         outcomes_spec = [
             {"type": "1", "label": f"Vittoria {home}", "prob": probs["1"], "odd": float(odds["home"])},
             {"type": "2", "label": f"Vittoria {away}", "prob": probs["2"], "odd": float(odds["away"])},
-            {"type": "1X", "label": f"1X (Doppia Chance {home})", "prob": probs["1X"], "odd": round(1.0 / (probs["1X"] * 1.04), 2)},
-            {"type": "X2", "label": f"X2 (Doppia Chance {away})", "prob": probs["X2"], "odd": round(1.0 / (probs["X2"] * 1.04), 2)},
+            {"type": "1X", "label": f"1X ({home} o Pareggio)", "prob": probs["1X"], "odd": round(1.0 / (probs["1X"] * 1.04), 2)},
+            {"type": "X2", "label": f"X2 ({away} o Pareggio)", "prob": probs["X2"], "odd": round(1.0 / (probs["X2"] * 1.04), 2)},
             {"type": "Over2.5", "label": "Over 2.5 Gol", "prob": probs["Over2.5"], "odd": round(1.0 / (probs["Over2.5"] * 1.05), 2)},
             {"type": "Under2.5", "label": "Under 2.5 Gol", "prob": probs["Under2.5"], "odd": round(1.0 / (probs["Under2.5"] * 1.05), 2)},
-            {"type": "GG", "label": "Goal (Entrambe segnano)", "prob": probs["GG"], "odd": round(1.0 / (probs["GG"] * 1.05), 2)},
+            {"type": "GG", "label": "Goal (Entrambe a segno)", "prob": probs["GG"], "odd": round(1.0 / (probs["GG"] * 1.05), 2)},
         ]
 
         for out in outcomes_spec:
             odd_val = out["odd"]
             prob_val = out["prob"]
 
-            # Quota minima 1.40 e massima 3.20
-            if odd_val < MIN_ODD_ALLOWED or odd_val > MAX_ODD_ALLOWED:
+            # Filtro rigido: quota minima 1.40 e massima 3.00
+            if odd_val < MIN_ODD or odd_val > MAX_ODD:
                 continue
-
-            # Calcolo Half-Kelly per lo stake consigliato
-            b = odd_val - 1.0
-            kelly = ((b * prob_val) - (1.0 - prob_val)) / b if b > 0 else 0
-            stake_pct = max(0.0, round((kelly * 0.5) * 100, 1))
 
             candidates.append({
                 "fixture_id": fx.get("fixture_id"),
@@ -124,48 +123,38 @@ def build_candidates(fixtures: list) -> list:
                 "estimated_probability": round(prob_val, 3),
                 "implied_probability": round(1.0 / odd_val, 3),
                 "edge": round(prob_val - (1.0 / odd_val), 3),
-                "stake_kelly": f"{stake_pct}%",
-                "notes": f"Quota: {odd_val:.2f} | Prob: {int(prob_val*100)}% | Stake: {stake_pct}%",
+                "notes": f"Quota: {odd_val:.2f} | Prob: {int(prob_val*100)}%",
             })
 
     return candidates
 
 
-def select_best_picks(candidates: list) -> dict:
+def select_top_probability_picks(candidates: list) -> dict:
+    """Seleziona i 3 pronostici con la più alta probabilità di vincita assoluta
+
+    (escludendo partite duplicate per non concentrare il rischio sullo stesso match).
+    """
     picks = {}
     used_fixtures = set()
 
-    if not candidates:
-        return picks
+    # Ordina tutti i candidati dal più probabile in assoluto al meno probabile
+    ranked = sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)
 
-    # 1. CONSERVATIVO: Alta probabilità reale (>= 65%), quota protetta compresa tra 1.40 e 1.65
-    conservativi = sorted(
-        [c for c in candidates if c["estimated_probability"] >= 0.65 and 1.40 <= c["odd"] <= 1.65],
-        key=lambda c: c["estimated_probability"],
-        reverse=True,
-    )
-    if conservativi:
-        picks["conservativo"] = conservativi[0]
-        used_fixtures.add(conservativi[0]["fixture_id"])
+    selected = []
+    for c in ranked:
+        if c["fixture_id"] not in used_fixtures:
+            selected.append(c)
+            used_fixtures.add(c["fixture_id"])
+        if len(selected) == 3:
+            break
 
-    # 2. CONSIGLIATO: Quota bilanciata (1.65 - 2.20) con probabilità stimata solida (>= 50%)
-    consigliati = sorted(
-        [c for c in candidates if c["fixture_id"] not in used_fixtures and 1.65 <= c["odd"] <= 2.20 and c["estimated_probability"] >= 0.50],
-        key=lambda c: (c["edge"] > 0, c["estimated_probability"]),
-        reverse=True,
-    )
-    if consigliati:
-        picks["consigliato"] = consigliati[0]
-        used_fixtures.add(consigliati[0]["fixture_id"])
-
-    # 3. HARD: Quota controllata (2.20 - 3.20) ad alto valore
-    hard = sorted(
-        [c for c in candidates if c["fixture_id"] not in used_fixtures and 2.20 <= c["odd"] <= 3.20],
-        key=lambda c: (c["edge"] > 0, c["estimated_probability"]),
-        reverse=True,
-    )
-    if hard:
-        picks["hard"] = hard[0]
+    # Assegna i 3 migliori slot mantenendo la compatibilità con la grafica
+    if len(selected) > 0:
+        picks["conservativo"] = selected[0]  # La giocata più probabile in assoluto
+    if len(selected) > 1:
+        picks["consigliato"] = selected[1]   # La seconda più probabile
+    if len(selected) > 2:
+        picks["hard"] = selected[2]          # La terza più probabile
 
     return picks
 
@@ -177,7 +166,7 @@ def main():
 
     fixtures = json.loads(FIXTURES_PATH.read_text(encoding="utf-8"))
     candidates = build_candidates(fixtures)
-    picks = select_best_picks(candidates)
+    picks = select_top_probability_picks(candidates)
 
     output = {
         "date": TODAY,
@@ -190,7 +179,7 @@ def main():
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Completato: {len(picks)} pronostici selezionati con quota >= 1.40.")
+    print(f"Analisi completata: {len(candidates)} candidati validi. Selezionati i 3 a più alta probabilità.")
 
 
 if __name__ == "__main__":
