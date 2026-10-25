@@ -1,8 +1,8 @@
 {
   "date": "2026-10-25",
-  "generated_at": "2026-10-25T14:49:08.825284+00:00",
+  "generated_at": "2026-10-25T14:53:21.010343+00:00",
   "total_fixtures_scanned": 21,
-  "candidates_after_filter": 116,
+  "candidates_after_filter": 114,
   "picks": {
     "conservativo": {
       "fixture_id": "c177a3c900d7febf9870ca8de90a9e35",
@@ -12,9 +12,9 @@
       "market_type": "X2",
       "outcome_label": "X2 (Doppia Chance Lille)",
       "odd": 1.22,
-      "estimated_probability": 0.782,
+      "estimated_probability": 0.78,
       "implied_probability": 0.82,
-      "edge": -0.038,
+      "edge": -0.039,
       "notes": "Mercato: X2 | Quota: 1.22 | Prob: 78%"
     },
     "consigliato": {
@@ -55,7 +55,7 @@
       "odd": 1.2,
       "estimated_probability": 0.791,
       "implied_probability": 0.833,
-      "edge": -0.042,
+      "edge": -0.043,
       "notes": "Mercato: X2 | Quota: 1.20 | Prob: 79%"
     },
     {
@@ -66,9 +66,9 @@
       "market_type": "X2",
       "outcome_label": "X2 (Doppia Chance Lille)",
       "odd": 1.22,
-      "estimated_probability": 0.782,
+      "estimated_probability": 0.78,
       "implied_probability": 0.82,
-      "edge": -0.038,
+      "edge": -0.039,
       "notes": "Mercato: X2 | Quota: 1.22 | Prob: 78%"
     },
     {
@@ -104,24 +104,11 @@
       "date": "2026-10-25",
       "market_type": "1X",
       "outcome_label": "1X (Doppia Chance Hull City)",
-      "odd": 1.31,
-      "estimated_probability": 0.729,
-      "implied_probability": 0.763,
-      "edge": -0.034,
-      "notes": "Mercato: 1X | Quota: 1.31 | Prob: 72%"
-    },
-    {
-      "fixture_id": "63aa6e3f679ee4c68de5b4bd8d3361bb",
-      "league": "Serie A",
-      "match": "Atalanta BC - Frosinone",
-      "date": "2026-10-25",
-      "market_type": "1X",
-      "outcome_label": "1X (Doppia Chance Atalanta BC)",
-      "odd": 1.31,
-      "estimated_probability": 0.725,
-      "implied_probability": 0.763,
-      "edge": -0.039,
-      "notes": "Mercato: 1X | Quota: 1.31 | Prob: 72%"
+      "odd": 1.34,
+      "estimated_probability": 0.713,
+      "implied_probability": 0.746,
+      "edge": -0.033,
+      "notes": "Mercato: 1X | Quota: 1.34 | Prob: 71%"
     },
     {
       "fixture_id": "8eab078a37a63df32ffa443302a2a7ba",
@@ -143,11 +130,11 @@
       "date": "2026-10-25",
       "market_type": "1X",
       "outcome_label": "1X (Doppia Chance Crystal Palace)",
-      "odd": 1.37,
-      "estimated_probability": 0.696,
-      "implied_probability": 0.73,
-      "edge": -0.034,
-      "notes": "Mercato: 1X | Quota: 1.37 | Prob: 69%"
+      "odd": 1.36,
+      "estimated_probability": 0.698,
+      "implied_probability": 0.735,
+      "edge": -0.037,
+      "notes": "Mercato: 1X | Quota: 1.36 | Prob: 69%"
     },
     {
       "fixture_id": "95cfaecfe96bb7ced1fb6af974a4110b",
@@ -156,24 +143,11 @@
       "date": "2026-10-25",
       "market_type": "1",
       "outcome_label": "Vittoria Genoa",
-      "odd": 1.39,
-      "estimated_probability": 0.686,
-      "implied_probability": 0.719,
+      "odd": 1.37,
+      "estimated_probability": 0.696,
+      "implied_probability": 0.73,
       "edge": -0.034,
-      "notes": "Mercato: 1 | Quota: 1.39 | Prob: 68%"
-    },
-    {
-      "fixture_id": "2fd479cbb110c8f057e363bb06195f2b",
-      "league": "Bundesliga",
-      "match": "TSG Hoffenheim - Bayer Leverkusen",
-      "date": "2026-10-25",
-      "market_type": "X2",
-      "outcome_label": "X2 (Doppia Chance Bayer Leverkusen)",
-      "odd": 1.39,
-      "estimated_probability": 0.684,
-      "implied_probability": 0.719,
-      "edge": -0.035,
-      "notes": "Mercato: X2 | Quota: 1.39 | Prob: 68%"
+      "notes": "Mercato: 1 | Quota: 1.37 | Prob: 69%"
     },
     {
       "fixture_id": "e82f6b60fa41b82c8510f5b67ce61849",
@@ -202,6 +176,32 @@
       "notes": "Mercato: X2 | Quota: 1.40 | Prob: 68%"
     },
     {
+      "fixture_id": "63aa6e3f679ee4c68de5b4bd8d3361bb",
+      "league": "Serie A",
+      "match": "Atalanta BC - Frosinone",
+      "date": "2026-10-25",
+      "market_type": "1",
+      "outcome_label": "Vittoria Atalanta BC",
+      "odd": 1.39,
+      "estimated_probability": 0.679,
+      "implied_probability": 0.719,
+      "edge": -0.04,
+      "notes": "Mercato: 1 | Quota: 1.39 | Prob: 67%"
+    },
+    {
+      "fixture_id": "2fd479cbb110c8f057e363bb06195f2b",
+      "league": "Bundesliga",
+      "match": "TSG Hoffenheim - Bayer Leverkusen",
+      "date": "2026-10-25",
+      "market_type": "X2",
+      "outcome_label": "X2 (Doppia Chance Bayer Leverkusen)",
+      "odd": 1.42,
+      "estimated_probability": 0.672,
+      "implied_probability": 0.704,
+      "edge": -0.032,
+      "notes": "Mercato: X2 | Quota: 1.42 | Prob: 67%"
+    },
+    {
       "fixture_id": "fe235b26408c477368c40672a4488694",
       "league": "Premier League",
       "match": "Crystal Palace - Newcastle United",
@@ -209,10 +209,10 @@
       "market_type": "X2",
       "outcome_label": "X2 (Doppia Chance Newcastle United)",
       "odd": 1.42,
-      "estimated_probability": 0.669,
+      "estimated_probability": 0.671,
       "implied_probability": 0.704,
-      "edge": -0.036,
-      "notes": "Mercato: X2 | Quota: 1.42 | Prob: 66%"
+      "edge": -0.033,
+      "notes": "Mercato: X2 | Quota: 1.42 | Prob: 67%"
     },
     {
       "fixture_id": "2013e3955186ebe5258e85eb741a7553",
@@ -273,11 +273,24 @@
       "date": "2026-10-25",
       "market_type": "2",
       "outcome_label": "Vittoria Bayern Munich",
-      "odd": 1.5,
-      "estimated_probability": 0.641,
-      "implied_probability": 0.667,
-      "edge": -0.025,
-      "notes": "Mercato: 2 | Quota: 1.50 | Prob: 64%"
+      "odd": 1.51,
+      "estimated_probability": 0.639,
+      "implied_probability": 0.662,
+      "edge": -0.023,
+      "notes": "Mercato: 2 | Quota: 1.51 | Prob: 63%"
+    },
+    {
+      "fixture_id": "63aa6e3f679ee4c68de5b4bd8d3361bb",
+      "league": "Serie A",
+      "match": "Atalanta BC - Frosinone",
+      "date": "2026-10-25",
+      "market_type": "Over2.5",
+      "outcome_label": "Over 2.5 Gol",
+      "odd": 1.49,
+      "estimated_probability": 0.632,
+      "implied_probability": 0.671,
+      "edge": -0.04,
+      "notes": "Mercato: Over2.5 | Quota: 1.49 | Prob: 63%"
     },
     {
       "fixture_id": "95cfaecfe96bb7ced1fb6af974a4110b",
@@ -332,6 +345,19 @@
       "notes": "Mercato: Over2.5 | Quota: 1.50 | Prob: 62%"
     },
     {
+      "fixture_id": "63af660d4d0d52f8ac7685172ef939c4",
+      "league": "Serie A",
+      "match": "Lecce - Juventus",
+      "date": "2026-10-25",
+      "market_type": "2",
+      "outcome_label": "Vittoria Juventus",
+      "odd": 1.55,
+      "estimated_probability": 0.624,
+      "implied_probability": 0.645,
+      "edge": -0.021,
+      "notes": "Mercato: 2 | Quota: 1.55 | Prob: 62%"
+    },
+    {
       "fixture_id": "e82f6b60fa41b82c8510f5b67ce61849",
       "league": "Premier League",
       "match": "Sunderland - Leeds United",
@@ -343,19 +369,6 @@
       "implied_probability": 0.654,
       "edge": -0.029,
       "notes": "Mercato: 1X | Quota: 1.53 | Prob: 62%"
-    },
-    {
-      "fixture_id": "63af660d4d0d52f8ac7685172ef939c4",
-      "league": "Serie A",
-      "match": "Lecce - Juventus",
-      "date": "2026-10-25",
-      "market_type": "2",
-      "outcome_label": "Vittoria Juventus",
-      "odd": 1.55,
-      "estimated_probability": 0.623,
-      "implied_probability": 0.645,
-      "edge": -0.022,
-      "notes": "Mercato: 2 | Quota: 1.55 | Prob: 62%"
     },
     {
       "fixture_id": "18e4425261f7dd6b245f82056d424411",
@@ -423,6 +436,19 @@
       "notes": "Mercato: Over2.5 | Quota: 1.61 | Prob: 58%"
     },
     {
+      "fixture_id": "2fd479cbb110c8f057e363bb06195f2b",
+      "league": "Bundesliga",
+      "match": "TSG Hoffenheim - Bayer Leverkusen",
+      "date": "2026-10-25",
+      "market_type": "1X",
+      "outcome_label": "1X (Doppia Chance TSG Hoffenheim)",
+      "odd": 1.62,
+      "estimated_probability": 0.587,
+      "implied_probability": 0.617,
+      "edge": -0.031,
+      "notes": "Mercato: 1X | Quota: 1.62 | Prob: 58%"
+    },
+    {
       "fixture_id": "63af660d4d0d52f8ac7685172ef939c4",
       "league": "Serie A",
       "match": "Lecce - Juventus",
@@ -430,10 +456,23 @@
       "market_type": "Over2.5",
       "outcome_label": "Over 2.5 Gol",
       "odd": 1.62,
-      "estimated_probability": 0.582,
+      "estimated_probability": 0.583,
       "implied_probability": 0.617,
-      "edge": -0.035,
+      "edge": -0.034,
       "notes": "Mercato: Over2.5 | Quota: 1.62 | Prob: 58%"
+    },
+    {
+      "fixture_id": "69493b5ebb84f24ab1d6023a30ee89f0",
+      "league": "Premier League",
+      "match": "Hull City - Brentford",
+      "date": "2026-10-25",
+      "market_type": "X2",
+      "outcome_label": "X2 (Doppia Chance Brentford)",
+      "odd": 1.63,
+      "estimated_probability": 0.583,
+      "implied_probability": 0.613,
+      "edge": -0.031,
+      "notes": "Mercato: X2 | Quota: 1.63 | Prob: 58%"
     },
     {
       "fixture_id": "33fb7467b23c91d57dc976d9ab05ea97",
@@ -449,19 +488,6 @@
       "notes": "Mercato: Over2.5 | Quota: 1.65 | Prob: 57%"
     },
     {
-      "fixture_id": "69493b5ebb84f24ab1d6023a30ee89f0",
-      "league": "Premier League",
-      "match": "Hull City - Brentford",
-      "date": "2026-10-25",
-      "market_type": "X2",
-      "outcome_label": "X2 (Doppia Chance Brentford)",
-      "odd": 1.66,
-      "estimated_probability": 0.572,
-      "implied_probability": 0.602,
-      "edge": -0.03,
-      "notes": "Mercato: X2 | Quota: 1.66 | Prob: 57%"
-    },
-    {
       "fixture_id": "f2bd909f25eea6b4ce42d2f52275e5c4",
       "league": "Bundesliga",
       "match": "SC Freiburg - Bayern Munich",
@@ -471,34 +497,8 @@
       "odd": 1.67,
       "estimated_probability": 0.566,
       "implied_probability": 0.599,
-      "edge": -0.032,
+      "edge": -0.033,
       "notes": "Mercato: Over2.5 | Quota: 1.67 | Prob: 56%"
-    },
-    {
-      "fixture_id": "2fd479cbb110c8f057e363bb06195f2b",
-      "league": "Bundesliga",
-      "match": "TSG Hoffenheim - Bayer Leverkusen",
-      "date": "2026-10-25",
-      "market_type": "1X",
-      "outcome_label": "1X (Doppia Chance TSG Hoffenheim)",
-      "odd": 1.7,
-      "estimated_probability": 0.56,
-      "implied_probability": 0.588,
-      "edge": -0.028,
-      "notes": "Mercato: 1X | Quota: 1.70 | Prob: 56%"
-    },
-    {
-      "fixture_id": "31dcb6d13ed240fc4a5c7a696149967e",
-      "league": "Ligue 1",
-      "match": "Rennes - Strasbourg",
-      "date": "2026-10-25",
-      "market_type": "Over2.5",
-      "outcome_label": "Over 2.5 Gol",
-      "odd": 1.69,
-      "estimated_probability": 0.557,
-      "implied_probability": 0.592,
-      "edge": -0.034,
-      "notes": "Mercato: Over2.5 | Quota: 1.69 | Prob: 55%"
     }
   ]
 }

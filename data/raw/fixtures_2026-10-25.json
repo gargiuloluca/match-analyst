@@ -10,9 +10,9 @@
       "name": "Frosinone"
     },
     "odds": {
-      "home": 2.11,
-      "draw": 3.4,
-      "away": 3.43,
+      "home": 1.39,
+      "draw": 4.46,
+      "away": 8.68,
       "bookmaker": "Pinnacle"
     }
   },
@@ -27,9 +27,9 @@
       "name": "Venezia"
     },
     "odds": {
-      "home": 1.39,
+      "home": 1.37,
       "draw": 4.24,
-      "away": 10.62,
+      "away": 12.13,
       "bookmaker": "Pinnacle"
     }
   },
@@ -44,8 +44,8 @@
       "name": "Juventus"
     },
     "odds": {
-      "home": 6.34,
-      "draw": 4.3,
+      "home": 6.37,
+      "draw": 4.32,
       "away": 1.55,
       "bookmaker": "Pinnacle"
     }
@@ -61,7 +61,7 @@
       "name": "AC Milan"
     },
     "odds": {
-      "home": 4.64,
+      "home": 4.62,
       "draw": 3.61,
       "away": 1.85,
       "bookmaker": "Pinnacle"
@@ -78,9 +78,9 @@
       "name": "Bournemouth"
     },
     "odds": {
-      "home": 17.0,
-      "draw": 7.0,
-      "away": 1.14,
+      "home": 16.0,
+      "draw": 6.75,
+      "away": 1.15,
       "bookmaker": "Winamax (FR)"
     }
   },
@@ -95,9 +95,9 @@
       "name": "Brentford"
     },
     "odds": {
-      "home": 2.15,
-      "draw": 3.05,
-      "away": 3.4,
+      "home": 2.2,
+      "draw": 3.1,
+      "away": 3.2,
       "bookmaker": "Winamax (DE)"
     }
   },
@@ -112,9 +112,9 @@
       "name": "Brighton and Hove Albion"
     },
     "odds": {
-      "home": 1.08,
-      "draw": 9.5,
-      "away": 26.0,
+      "home": 1.1,
+      "draw": 9.0,
+      "away": 23.0,
       "bookmaker": "888sport"
     }
   },
@@ -130,7 +130,7 @@
     },
     "odds": {
       "home": 2.75,
-      "draw": 2.5,
+      "draw": 2.45,
       "away": 3.0,
       "bookmaker": "MyBookie.ag"
     }
@@ -231,9 +231,9 @@
       "name": "Bayer Leverkusen"
     },
     "odds": {
-      "home": 3.01,
-      "draw": 3.89,
-      "away": 2.16,
+      "home": 2.9,
+      "draw": 3.67,
+      "away": 2.3,
       "bookmaker": "Pinnacle"
     }
   },
@@ -248,9 +248,9 @@
       "name": "Bayern Munich"
     },
     "odds": {
-      "home": 5.57,
-      "draw": 5.18,
-      "away": 1.5,
+      "home": 5.58,
+      "draw": 5.15,
+      "away": 1.51,
       "bookmaker": "Pinnacle"
     }
   },
@@ -267,7 +267,7 @@
     "odds": {
       "home": 4.0,
       "draw": 3.0,
-      "away": 1.78,
+      "away": 1.8,
       "bookmaker": "Winamax (FR)"
     }
   },
