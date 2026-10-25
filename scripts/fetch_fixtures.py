@@ -1,16 +1,16 @@
 """
-fetch_fixtures.py
-Scarica le partite in programma OGGI (00:00 - 23:59 UTC)
-per campionati primari, coppe europee e leghe secondarie ad alto valore statistico.
+fetch_fixtures.py — AtmBetSignal Consensus Fetcher.
+Scarica le partite odierne (UTC) verificando la presenza di consenso tra bookmaker
+su campionati principali e secondari.
 """
 
-import json
 import os
+import json
 from datetime import datetime, timezone
 from pathlib import Path
 import requests
 
-ODDS_API_KEY = os.environ.get("ODDSAPI_KEY", "")
+ODDS_API_KEY = os.environ.get("ODDSAPI_KEY", "").strip()
 ODDS_BASE_URL = "https://api.the-odds-api.com/v4"
 
 LEAGUES = [
@@ -30,7 +30,7 @@ LEAGUES = [
     {"name": "Segunda División (Spagna)", "odds_key": "soccer_spain_segunda_division"},
     {"name": "2. Bundesliga (Germania)", "odds_key": "soccer_germany_bundesliga2"},
 
-    # Campionati Europei Secondari (ad alto disallineamento quote)
+    # Campionati Europei Secondari ad alto valore
     {"name": "Eredivisie (Olanda)", "odds_key": "soccer_netherlands_eredivisie"},
     {"name": "Primeira Liga (Portogallo)", "odds_key": "soccer_portugal_primeira_liga"},
     {"name": "Jupiler Pro League (Belgio)", "odds_key": "soccer_belgium_first_div"},
@@ -39,7 +39,7 @@ LEAGUES = [
     {"name": "Super League (Svizzera)", "odds_key": "soccer_switzerland_superleague"},
     {"name": "Bundesliga (Austria)", "odds_key": "soccer_austria_bundesliga"},
 
-    # Campionati Extra-Europei Principali
+    # Campionati Extra-Europei
     {"name": "Brasileirão (Brasile)", "odds_key": "soccer_brazil_campeonato"},
     {"name": "MLS (USA)", "odds_key": "soccer_usa_mls"},
 ]
@@ -48,7 +48,7 @@ OUTPUT_DIR = Path(__file__).resolve().parent.parent / "data" / "raw"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def fetch_today_matches():
+def fetch_matches():
     if not ODDS_API_KEY:
         print("ERRORE: Secret ODDSAPI_KEY mancante!")
         return []
@@ -86,45 +86,54 @@ def fetch_today_matches():
 
                 home = ev.get("home_team")
                 away = ev.get("away_team")
+                bookmakers = ev.get("bookmakers", [])
 
-                if not ev.get("bookmakers"):
+                # Filtro Liquidità: Richiede almeno 2 bookmaker per validare il consenso
+                if len(bookmakers) < 2:
                     continue
 
-                # Cerca bookmaker primari con maggiore liquidità se presenti
-                bookmakers = ev["bookmakers"]
-                chosen_bm = bookmakers[0]
+                h_odds, d_odds, a_odds = [], [], []
+
                 for bm in bookmakers:
-                    if bm.get("key") in ("pinnacle", "bet365", "unibet", "betfair"):
-                        chosen_bm = bm
-                        break
+                    markets = bm.get("markets", [])
+                    if not markets:
+                        continue
+                    outcomes = {o["name"]: float(o["price"]) for o in markets[0].get("outcomes", [])}
+                    if outcomes.get(home) and outcomes.get("Draw") and outcomes.get(away):
+                        h_odds.append(outcomes[home])
+                        d_odds.append(outcomes["Draw"])
+                        a_odds.append(outcomes[away])
 
-                markets = chosen_bm.get("markets", [])
-                if not markets:
+                if len(h_odds) < 2:
                     continue
 
-                market = markets[0]
-                outcomes = {o["name"]: float(o["price"]) for o in market.get("outcomes", [])}
+                # Calcolo quota mediana/consenso di mercato
+                h_odds.sort()
+                d_odds.sort()
+                a_odds.sort()
+                mid = len(h_odds) // 2
+                median_h = h_odds[mid]
+                median_d = d_odds[mid]
+                median_a = a_odds[mid]
 
-                h_odd = outcomes.get(home)
-                d_odd = outcomes.get("Draw")
-                a_odd = outcomes.get(away)
-
-                if h_odd and d_odd and a_odd:
-                    fixtures_today.append({
-                        "fixture_id": ev.get("id"),
-                        "league": league["name"],
-                        "commence_time": commence_time,
-                        "home_team": {"name": home},
-                        "away_team": {"name": away},
-                        "odds": {
-                            "home": h_odd,
-                            "draw": d_odd,
-                            "away": a_odd,
-                            "bookmaker": chosen_bm.get("title", "Bookmaker"),
-                        }
-                    })
+                fixtures_today.append({
+                    "fixture_id": ev.get("id"),
+                    "league": league["name"],
+                    "commence_time": commence_time,
+                    "home_team": {"name": home},
+                    "away_team": {"name": away},
+                    "bookmaker_count": len(h_odds),
+                    "odds": {
+                        "home": round(median_h, 2),
+                        "draw": round(median_d, 2),
+                        "away": round(median_a, 2),
+                        "max_home": max(h_odds),
+                        "max_draw": max(d_odds),
+                        "max_away": max(a_odds)
+                    }
+                })
         except Exception as e:
-            print(f"Errore su {league['name']}: {e}")
+            print(f"Errore scansione {league['name']}: {e}")
 
     return fixtures_today
 
@@ -133,11 +142,10 @@ def main():
     now_utc = datetime.now(timezone.utc)
     today_str = now_utc.strftime("%Y-%m-%d")
 
-    fixtures = fetch_today_matches()
-
+    fixtures = fetch_matches()
     out_path = OUTPUT_DIR / f"fixtures_{today_str}.json"
     out_path.write_text(json.dumps(fixtures, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Partite programmate scaricate per OGGI ({today_str}): {len(fixtures)}")
+    print(f"Scaricamento completato: {len(fixtures)} partite con consenso confermato per oggi ({today_str}).")
 
 
 if __name__ == "__main__":
