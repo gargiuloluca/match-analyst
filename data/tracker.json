@@ -48,6 +48,20 @@
       "status": "PENDING",
       "score": "-",
       "profit": 0.0
+    },
+    {
+      "id": "2026-10-25_b435848f58054cad7d3fad610a96c4b5_GG",
+      "date": "2026-10-25",
+      "fixture_id": "b435848f58054cad7d3fad610a96c4b5",
+      "match": "AZ Alkmaar - FC Twente Enschede",
+      "league": "Eredivisie (Olanda)",
+      "market_type": "GG",
+      "outcome_label": "Goal (Entrambe a segno)",
+      "odd": 1.52,
+      "estimated_prob": 0.6346,
+      "status": "PENDING",
+      "score": "-",
+      "profit": 0.0
     }
   ]
 }
