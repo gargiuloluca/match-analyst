@@ -1,8 +1,6 @@
 """
 settle_results.py — AtmBetSignal Nightly Settlement & Telegram Recap.
-1. Interroga le API per recuperare i punteggi finali delle scommesse PENDING.
-2. Determina se l'esito è WON o LOST e ricalcola il ROI globale.
-3. Se sono state risolte scommesse oggi, invia automaticamente il recap serale su Telegram.
+Valuta esiti WON/LOST, calcola profitto ponderato per Kelly stake e notifica su Telegram.
 """
 
 import os
@@ -59,8 +57,8 @@ def send_telegram_recap(today_resolved: list, win_rate: float, roi: float, net_p
     p_sign = "+" if profit_today >= 0 else ""
 
     lines = [
-        "🏁 <b>AtmBetSignal — Recap Esiti di Oggi</b>",
-        f"Bilancio giornata: <b>{won_today}/{len(today_resolved)}</b> vinti (<code>{p_sign}{profit_today:.2f} u</code>)\n"
+        "🏁 <b>AtmBetSignal — Chiusura & Rendiconto Serale</b>",
+        f"Bilancio di oggi: <b>{won_today}/{len(today_resolved)}</b> vinti (<code>{p_sign}{profit_today:.2f} u</code>)\n"
     ]
 
     for b in today_resolved:
@@ -72,11 +70,11 @@ def send_telegram_recap(today_resolved: list, win_rate: float, roi: float, net_p
         )
 
     lines.append(
-        f"📈 <b>Statistiche Storiche Globali</b>\n"
+        f"📊 <b>Bilancio Globale Istituzionale</b>\n"
         f"• Win Rate: <b>{win_rate:.1f}%</b>\n"
         f"• ROI Netto: <b>{'+' if roi >= 0 else ''}{roi:.1f}%</b>\n"
-        f"• Profitto Totale: <b>{'+' if net_profit >= 0 else ''}{net_profit:.2f} u</b>\n\n"
-        f"🌐 <i>Grafico Equity Line aggiornato su GitHub Pages.</i>"
+        f"• Profitto Cumulato: <b>{'+' if net_profit >= 0 else ''}{net_profit:.2f} u</b>\n\n"
+        f"🌐 <i>Equity Line aggiornata su GitHub Pages.</i>"
     )
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
