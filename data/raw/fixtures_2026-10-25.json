@@ -46,9 +46,9 @@
       }
     },
     "odds": {
-      "home": 2.06,
-      "draw": 4.09,
-      "away": 3.34,
+      "home": 1.94,
+      "draw": 4.18,
+      "away": 3.63,
       "bookmaker": "Pinnacle",
       "raw_home": "Atalanta BC",
       "raw_away": "Frosinone"
@@ -77,9 +77,9 @@
       }
     },
     "odds": {
-      "home": 2.39,
-      "draw": 3.26,
-      "away": 3.31,
+      "home": 2.24,
+      "draw": 3.32,
+      "away": 3.56,
       "bookmaker": "Pinnacle",
       "raw_home": "Genoa",
       "raw_away": "Venezia"
@@ -139,43 +139,12 @@
       }
     },
     "odds": {
-      "home": 4.63,
+      "home": 4.64,
       "draw": 3.61,
       "away": 1.85,
       "bookmaker": "Pinnacle",
       "raw_home": "Udinese",
       "raw_away": "AC Milan"
-    }
-  },
-  {
-    "fixture_id": "intermilan_fiorentina",
-    "league": "Serie A",
-    "date": "2026-10-25",
-    "home_team": {
-      "id": 0,
-      "name": "Inter Milan",
-      "form": {
-        "points_last5": 5,
-        "goal_diff_last5": 0,
-        "matches_analyzed": 5
-      }
-    },
-    "away_team": {
-      "id": 0,
-      "name": "Fiorentina",
-      "form": {
-        "points_last5": 5,
-        "goal_diff_last5": 0,
-        "matches_analyzed": 5
-      }
-    },
-    "odds": {
-      "home": 22.38,
-      "draw": 4.12,
-      "away": 1.31,
-      "bookmaker": "Pinnacle",
-      "raw_home": "Inter Milan",
-      "raw_away": "Fiorentina"
     }
   },
   {
@@ -511,9 +480,9 @@
       }
     },
     "odds": {
-      "home": 2.05,
-      "draw": 3.7,
-      "away": 3.1,
+      "home": 2.0,
+      "draw": 3.6,
+      "away": 3.3,
       "bookmaker": "888sport",
       "raw_home": "Liverpool",
       "raw_away": "Brighton and Hove Albion"
@@ -542,9 +511,9 @@
       }
     },
     "odds": {
-      "home": 2.57,
-      "draw": 3.46,
-      "away": 2.62,
+      "home": 2.59,
+      "draw": 3.44,
+      "away": 2.61,
       "bookmaker": "MyBookie.ag",
       "raw_home": "Crystal Palace",
       "raw_away": "Newcastle United"
@@ -573,9 +542,9 @@
       }
     },
     "odds": {
-      "home": 2.45,
-      "draw": 3.54,
-      "away": 3.08,
+      "home": 2.35,
+      "draw": 3.53,
+      "away": 3.0,
       "bookmaker": "1xBet",
       "raw_home": "Manchester United",
       "raw_away": "Bournemouth"
@@ -604,7 +573,7 @@
       }
     },
     "odds": {
-      "home": 4.6,
+      "home": 4.7,
       "draw": 4.2,
       "away": 1.62,
       "bookmaker": "Winamax (DE)",
@@ -1317,9 +1286,9 @@
       }
     },
     "odds": {
-      "home": 1.17,
-      "draw": 6.25,
-      "away": 16.0,
+      "home": 1.03,
+      "draw": 20.0,
+      "away": 65.0,
       "bookmaker": "Winamax (DE)",
       "raw_home": "Athletic Bilbao",
       "raw_away": "Getafe"
@@ -1350,7 +1319,7 @@
     "odds": {
       "home": 3.22,
       "draw": 3.4,
-      "away": 2.36,
+      "away": 2.35,
       "bookmaker": "Coolbet",
       "raw_home": "Celta Vigo",
       "raw_away": "Real Betis"
@@ -1782,9 +1751,9 @@
       }
     },
     "odds": {
-      "home": 3.28,
-      "draw": 4.19,
-      "away": 2.06,
+      "home": 3.25,
+      "draw": 4.09,
+      "away": 2.1,
       "bookmaker": "Pinnacle",
       "raw_home": "TSG Hoffenheim",
       "raw_away": "Bayer Leverkusen"
@@ -1813,8 +1782,8 @@
       }
     },
     "odds": {
-      "home": 5.5,
-      "draw": 5.14,
+      "home": 5.56,
+      "draw": 5.16,
       "away": 1.51,
       "bookmaker": "Pinnacle",
       "raw_home": "SC Freiburg",
@@ -2123,9 +2092,9 @@
       }
     },
     "odds": {
-      "home": 1.82,
+      "home": 1.76,
       "draw": 3.45,
-      "away": 3.85,
+      "away": 3.6,
       "bookmaker": "Winamax (FR)",
       "raw_home": "AS Monaco",
       "raw_away": "Lille"
@@ -2154,9 +2123,9 @@
       }
     },
     "odds": {
-      "home": 1.44,
-      "draw": 4.9,
-      "away": 5.6,
+      "home": 1.42,
+      "draw": 5.0,
+      "away": 5.8,
       "bookmaker": "Winamax (DE)",
       "raw_home": "Marseille",
       "raw_away": "Le Havre"
@@ -2302,9 +2271,9 @@
       }
     },
     "odds": {
-      "home": 1.72,
+      "home": 1.7,
       "draw": 4.1,
-      "away": 3.7,
+      "away": 3.75,
       "bookmaker": "Winamax (FR)",
       "raw_home": "Rennes",
       "raw_away": "Strasbourg"

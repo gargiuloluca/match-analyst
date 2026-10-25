@@ -7,7 +7,7 @@
   },
   "AC Milan": {
     "team": "AC Milan",
-    "articles_scanned": 12,
+    "articles_scanned": 11,
     "flagged_articles": [
       {
         "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
@@ -28,19 +28,9 @@
         "categories": [
           "infortunio"
         ]
-      },
-      {
-        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
-        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
-        "published_at": "2026-10-22T13:46:23+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "squalifica"
-        ]
       }
     ],
-    "high_impact_count": 3
+    "high_impact_count": 2
   },
   "ACF Fiorentina": {
     "team": "ACF Fiorentina",
@@ -541,7 +531,7 @@
   },
   "Bologna": {
     "team": "Bologna",
-    "articles_scanned": 6,
+    "articles_scanned": 5,
     "flagged_articles": [
       {
         "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
@@ -552,19 +542,9 @@
         "categories": [
           "infortunio"
         ]
-      },
-      {
-        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
-        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
-        "published_at": "2026-10-22T13:46:23+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "squalifica"
-        ]
       }
     ],
-    "high_impact_count": 2
+    "high_impact_count": 1
   },
   "Borussia Dortmund": {
     "team": "Borussia Dortmund",
@@ -627,7 +607,7 @@
   },
   "CA Osasuna": {
     "team": "CA Osasuna",
-    "articles_scanned": 49,
+    "articles_scanned": 47,
     "flagged_articles": [
       {
         "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
@@ -698,23 +678,13 @@
         "categories": [
           "infortunio"
         ]
-      },
-      {
-        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
-        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
-        "published_at": "2026-10-22T13:46:23+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "squalifica"
-        ]
       }
     ],
-    "high_impact_count": 8
+    "high_impact_count": 7
   },
   "Cagliari": {
     "team": "Cagliari",
-    "articles_scanned": 5,
+    "articles_scanned": 4,
     "flagged_articles": [
       {
         "title": "Serie A: il Como batte il Sassuolo, il Bologna passa a Cagliari",
@@ -725,19 +695,9 @@
         "categories": [
           "infortunio"
         ]
-      },
-      {
-        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
-        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
-        "published_at": "2026-10-22T13:46:23+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "squalifica"
-        ]
       }
     ],
-    "high_impact_count": 2
+    "high_impact_count": 1
   },
   "Celta Vigo": {
     "team": "Celta Vigo",
@@ -811,7 +771,7 @@
   },
   "ES Troyes AC": {
     "team": "ES Troyes AC",
-    "articles_scanned": 42,
+    "articles_scanned": 43,
     "flagged_articles": [
       {
         "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
@@ -1006,7 +966,7 @@
   },
   "Fiorentina": {
     "team": "Fiorentina",
-    "articles_scanned": 2,
+    "articles_scanned": 3,
     "flagged_articles": [
       {
         "title": "Fiorentina affamata di punti, con l'Inter serve un'impresa",
@@ -1111,7 +1071,7 @@
   },
   "Inter Milan": {
     "team": "Inter Milan",
-    "articles_scanned": 5,
+    "articles_scanned": 6,
     "flagged_articles": [
       {
         "title": "Fiorentina affamata di punti, con l'Inter serve un'impresa",
@@ -1162,7 +1122,7 @@
   },
   "Lazio": {
     "team": "Lazio",
-    "articles_scanned": 4,
+    "articles_scanned": 5,
     "flagged_articles": [
       {
         "title": "Isaksen 'questa Lazio può fare qualcosa di importante'",
@@ -1179,7 +1139,7 @@
   },
   "Le Havre": {
     "team": "Le Havre",
-    "articles_scanned": 43,
+    "articles_scanned": 40,
     "flagged_articles": [
       {
         "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
@@ -1260,23 +1220,13 @@
         "categories": [
           "panchina"
         ]
-      },
-      {
-        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
-        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
-        "published_at": "2026-10-22T13:46:23+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "squalifica"
-        ]
       }
     ],
-    "high_impact_count": 9
+    "high_impact_count": 8
   },
   "Le Havre AC": {
     "team": "Le Havre AC",
-    "articles_scanned": 43,
+    "articles_scanned": 40,
     "flagged_articles": [
       {
         "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
@@ -1357,23 +1307,13 @@
         "categories": [
           "panchina"
         ]
-      },
-      {
-        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
-        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
-        "published_at": "2026-10-22T13:46:23+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "squalifica"
-        ]
       }
     ],
-    "high_impact_count": 9
+    "high_impact_count": 8
   },
   "Le Mans FC": {
     "team": "Le Mans FC",
-    "articles_scanned": 43,
+    "articles_scanned": 40,
     "flagged_articles": [
       {
         "title": "Calcio: paura per Kompany, collassa in allenamento ed è ricoverato in ospedale",
@@ -1454,19 +1394,9 @@
         "categories": [
           "panchina"
         ]
-      },
-      {
-        "title": "Calcio: Pisacane contro il Bologna pronto a tornare al modulo a una punta",
-        "summary": "Tecnico del Cagliari torna in panchina dopo la squalifica, possibile qualche cambio",
-        "url": "https://www.ansa.it/sito/notizie/sport/calcio/2026/10/22/calcio-pisacane-contro-il-bologna-pronto-a-tornare-al-modulo-a-una-punta_e45f4be7-4262-469c-98a8-a3b4eeae2b16.html",
-        "published_at": "2026-10-22T13:46:23+00:00",
-        "source": "https://www.ansa.it/sito/notizie/sport/calcio/calcio_rss.xml",
-        "categories": [
-          "squalifica"
-        ]
       }
     ],
-    "high_impact_count": 9
+    "high_impact_count": 8
   },
   "Lecce": {
     "team": "Lecce",
@@ -1718,7 +1648,7 @@
   },
   "RC Celta de Vigo": {
     "team": "RC Celta de Vigo",
-    "articles_scanned": 8,
+    "articles_scanned": 7,
     "flagged_articles": [
       {
         "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
@@ -1745,7 +1675,7 @@
   },
   "RC Lens": {
     "team": "RC Lens",
-    "articles_scanned": 8,
+    "articles_scanned": 7,
     "flagged_articles": [
       {
         "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
@@ -1772,7 +1702,7 @@
   },
   "RC Strasbourg Alsace": {
     "team": "RC Strasbourg Alsace",
-    "articles_scanned": 8,
+    "articles_scanned": 7,
     "flagged_articles": [
       {
         "title": "Roma: lesione di alto grado per Pellegrini, stop di circa due mesi",
@@ -1853,7 +1783,7 @@
   },
   "SC Freiburg": {
     "team": "SC Freiburg",
-    "articles_scanned": 26,
+    "articles_scanned": 25,
     "flagged_articles": [
       {
         "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
@@ -1920,7 +1850,7 @@
   },
   "SC Paderborn": {
     "team": "SC Paderborn",
-    "articles_scanned": 26,
+    "articles_scanned": 25,
     "flagged_articles": [
       {
         "title": "Premier: primo ko del Manchester City di Maresca, L'Arsenal lo aggancia in vetta",
