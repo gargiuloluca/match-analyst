@@ -6,31 +6,38 @@
   <title>AtmBetSignal — Institutional Quantitative Betting Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #070a11;
-      --card-bg: #0f172a;
-      --card-border: #1e293b;
-      --accent-green: #10b981;
+      --bg: #05070d;
+      --card-bg: rgba(15, 23, 42, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #10b981;
       --accent-glow: rgba(16, 185, 129, 0.25);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --accent-soft: rgba(16, 185, 129, 0.1);
+      --cyan: #38bdf8;
       --gold: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --red: #f43f5e;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
       line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
       overflow-x: hidden;
     }
     header {
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(12px);
+      background: rgba(5, 7, 13, 0.85);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--card-border);
-      padding: 16px 32px;
+      padding: 18px 32px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -42,59 +49,70 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: 700;
-      font-size: 1.3rem;
+      font-weight: 800;
+      font-size: 1.25rem;
       letter-spacing: -0.5px;
     }
     .brand-badge {
-      background: var(--accent-green);
+      background: var(--accent);
       color: #000;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       padding: 3px 8px;
-      border-radius: 4px;
-      font-weight: 700;
-      text-transform: uppercase;
+      border-radius: 6px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
     nav a {
       color: var(--text-muted);
       text-decoration: none;
       font-size: 0.95rem;
+      font-weight: 500;
       margin-left: 24px;
-      transition: color 0.2s;
+      transition: all 0.2s;
     }
-    nav a:hover, nav a.active { color: var(--accent-green); }
+    nav a:hover, nav a.active { color: #fff; }
     .nav-admin {
       color: var(--gold) !important;
-      font-weight: 600;
+      background: rgba(245, 158, 11, 0.1);
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(245, 158, 11, 0.2);
     }
     .container {
-      max-width: 1050px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 60px 24px;
+      padding: 40px 24px 80px;
     }
+    
+    /* HERO */
     .hero {
       text-align: center;
-      padding: 40px 0 60px;
+      padding: 60px 0 50px;
     }
     .pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(16, 185, 129, 0.1);
+      background: var(--accent-soft);
       border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 6px 16px;
-      border-radius: 20px;
-      color: var(--accent-green);
+      padding: 6px 18px;
+      border-radius: 30px;
+      color: var(--accent);
       font-size: 0.85rem;
       font-weight: 600;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      animation: pulse 3s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+      50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
     }
     .hero h1 {
-      font-size: clamp(2.3rem, 5vw, 3.6rem);
-      font-weight: 700;
-      letter-spacing: -1.5px;
-      line-height: 1.15;
-      margin-bottom: 20px;
+      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.1;
+      margin-bottom: 24px;
     }
     .hero h1 span {
       background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
@@ -102,133 +120,240 @@
       -webkit-text-fill-color: transparent;
     }
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 720px;
-      margin: 0 auto 36px;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-weight: 400;
     }
-    .cta-group {
+    .btn-group {
       display: flex;
       justify-content: center;
       gap: 16px;
       flex-wrap: wrap;
     }
     .btn-primary {
-      background: var(--accent-green);
+      background: var(--accent);
       color: #000;
       font-weight: 700;
-      padding: 14px 32px;
-      border-radius: 8px;
+      padding: 16px 36px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 1.05rem;
-      transition: all 0.2s;
-      box-shadow: 0 4px 20px var(--accent-glow);
+      box-shadow: 0 6px 25px var(--accent-glow);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 10px 35px rgba(16, 185, 129, 0.4);
     }
     .btn-secondary {
-      background: var(--card-bg);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
-      color: var(--text-main);
+      color: #fff;
       font-weight: 600;
-      padding: 14px 28px;
-      border-radius: 8px;
+      padding: 16px 32px;
+      border-radius: 10px;
       text-decoration: none;
       font-size: 1.05rem;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
     .btn-secondary:hover {
-      border-color: var(--text-muted);
-      background: #1e293b;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
     }
-    .kpi-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin: 40px 0 80px;
-    }
-    .kpi-card {
+
+    /* KPI STRIP */
+    .kpi-container {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 24px;
-      text-align: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 50px 0 80px;
+      backdrop-filter: blur(10px);
     }
-    .kpi-label {
-      font-size: 0.85rem;
+    .kpi-box {
+      text-align: center;
+      padding: 10px;
+    }
+    .kpi-title {
+      font-size: 0.8rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
+      font-weight: 600;
       margin-bottom: 8px;
     }
-    .kpi-value {
+    .kpi-val {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.8rem;
+      font-size: 2.1rem;
       font-weight: 700;
-      color: var(--text-main);
+      color: #fff;
     }
-    .kpi-value.green { color: var(--accent-green); }
-    .features-grid {
+    .kpi-val.green { color: var(--accent); }
+
+    /* COMPARISON TABLE */
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .section-title h2 {
+      font-size: 2.2rem;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+    .comp-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 90px;
+    }
+    .comp-table th, .comp-table td {
+      padding: 20px 24px;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .comp-table th {
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+    .comp-table td { font-size: 0.95rem; }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .col-highlight {
+      background: rgba(16, 185, 129, 0.04);
+      color: #fff;
+      font-weight: 600;
+      border-left: 1px solid rgba(16, 185, 129, 0.2);
+      border-right: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    /* CARDS METHOD */
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
-      margin-bottom: 80px;
+      margin-bottom: 90px;
     }
     .feature-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 32px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(16, 185, 129, 0.4);
     }
     .feature-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
     }
     .feature-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
     }
     .feature-card p {
       color: var(--text-muted);
       font-size: 0.95rem;
+      line-height: 1.6;
     }
-    .pricing-box {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.95) 100%);
-      border: 1px solid var(--accent-green);
-      border-radius: 16px;
+
+    /* PRICING BOX */
+    .vip-card {
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
       padding: 48px 32px;
       text-align: center;
-      max-width: 650px;
-      margin: 0 auto;
-      box-shadow: 0 0 35px var(--accent-glow);
+      max-width: 640px;
+      margin: 0 auto 90px;
+      box-shadow: 0 0 50px rgba(16, 185, 129, 0.15);
+      position: relative;
     }
-    .pricing-box h2 {
-      font-size: 2rem;
-      margin-bottom: 12px;
+    .vip-tag {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.75rem;
+      padding: 4px 16px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
     }
-    .pricing-box p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      margin-bottom: 24px;
-    }
-    .pricing-price {
+    .price-num {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--text-main);
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin: 20px 0 4px;
+    }
+    .price-sub {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+    .benefits-list {
+      text-align: left;
+      max-width: 440px;
+      margin: 0 auto 32px;
+      list-style: none;
+    }
+    .benefits-list li {
+      padding: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+      color: #e2e8f0;
+    }
+    .benefits-list li span { color: var(--accent); font-weight: 700; }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto 80px;
+    }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .faq-item h4 {
+      font-size: 1.1rem;
       margin-bottom: 8px;
     }
-    .pricing-period {
-      font-size: 1rem;
+    .faq-item p {
       color: var(--text-muted);
-      margin-bottom: 32px;
+      font-size: 0.95rem;
     }
+
     footer {
       border-top: 1px solid var(--card-border);
       text-align: center;
-      padding: 32px 24px;
+      padding: 40px 24px;
       color: var(--text-muted);
       font-size: 0.85rem;
     }
@@ -239,99 +364,196 @@
   <header>
     <div class="brand">
       <span>🏧 AtmBetSignal</span>
-      <span class="brand-badge">Institutional</span>
+      <span class="brand-badge">PRO</span>
     </div>
     <nav>
       <a href="index.html" class="active">Metodo</a>
-      <a href="tracker.html">Storico Verificato</a>
-      <a href="admin.html" class="nav-admin">Area Riservata 🔒</a>
+      <a href="tracker.html">Storico Live</a>
+      <a href="admin.html" class="nav-admin">Area Admin 🔒</a>
     </nav>
   </header>
 
   <div class="container">
+    <!-- HERO -->
     <section class="hero">
-      <div class="pill">● Modello Quantitativo Operativo 2026</div>
-      <h1>Il Betting Sportivo Non È Gioco d'Azzardo.<br>È <span>Matematica di Valore</span>.</h1>
-      <p>Niente schedine multiple impossibili o pronostici da tifosi. AtmBetSignal applica modelli quantitativi bivariati e il criterio di Quarter-Kelly per estrarre profitto dai mercati sportivi.</p>
+      <div class="pill">● Algoritmo Matematico Operativo 2026</div>
+      <h1>Il Betting Tradizionale È Morto.<br>Benvenuto nel <span>Metodo Quantitativo</span>.</h1>
+      <p>I bookmaker usano la matematica contro di te. Noi usiamo modelli bivariati Dixon-Coles e il criterio Quarter-Kelly per invertire il vantaggio statistico a tuo favore.</p>
       
-      <div class="cta-group">
-        <!-- SOSTITUISCI CON IL TUO BOT TELEGRAM O LINK TRIBUTE -->
-        <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary">Entra nel Canale VIP su Telegram</a>
-        <a href="tracker.html" class="btn-secondary">Esamina lo Storico Live ↗</a>
+      <div class="btn-group">
+        <!-- SOSTITUISCI IL LINK CON IL TUO BOT TELEGRAM O TRIBUTE -->
+        <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary">
+          <span>🚀 Accedi al Canale VIP su Telegram</span>
+        </a>
+        <a href="tracker.html" class="btn-secondary">
+          <span>Verifica lo Storico Certificato ↗</span>
+        </a>
       </div>
     </section>
 
-    <!-- KPI REALI RICAVATI DA TRACKER.JSON -->
-    <section class="kpi-strip">
-      <div class="kpi-card">
-        <div class="kpi-label">Soglia Minima Probabilità</div>
-        <div class="kpi-value green">≥ 65.0%</div>
+    <!-- LIVE STATS STRIP -->
+    <section class="kpi-container">
+      <div class="kpi-box">
+        <div class="kpi-title">Soglia Minima Sniper</div>
+        <div class="kpi-val green">≥ 65%</div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Win Rate Certificato</div>
-        <div class="kpi-value green" id="winRateVal">--%</div>
+      <div class="kpi-box">
+        <div class="kpi-title">Win Rate Certificato</div>
+        <div class="kpi-val green" id="winRateVal">--%</div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">ROI Netto Medio</div>
-        <div class="kpi-value green" id="roiVal">--%</div>
+      <div class="kpi-box">
+        <div class="kpi-title">ROI Netto Medio</div>
+        <div class="kpi-val green" id="roiVal">--%</div>
       </div>
-      <div class="kpi-card">
-        <div class="kpi-label">Operazioni Tracciate</div>
-        <div class="kpi-value" id="totalBetsVal">--</div>
-      </div>
-    </section>
-
-    <!-- METODO ISTITUZIONALE -->
-    <section class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">📐</div>
-        <h3>Modello Dixon-Coles Bivariato</h3>
-        <p>A differenza della classica distribuzione di Poisson, il nostro algoritmo include il fattore di correlazione tau (&tau;) per i punteggi bassi e calibra i valori di forza offensiva e difensiva per singola lega.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">🛡️</div>
-        <h3>Filtro "Sniper" Anti-Sovraesposizione</h3>
-        <p>Non forziamo mai volume: il software scansiona oltre 20 campionati europei ma genera segnali solo ed esclusivamente quando la probabilità reale supera la soglia di sicurezza del 65%.</p>
-      </div>
-
-      <div class="feature-card">
-        <div class="feature-icon">⚖️</div>
-        <h3>Gestione del Rischio Quarter-Kelly</h3>
-        <p>Ogni giocata include il dimensionamento matematico dello stake (massimo 2.5% del bankroll). Zero martingale, zero rincorse: protezione totale del capitale nei periodi di fisiologica varianza.</p>
+      <div class="kpi-box">
+        <div class="kpi-title">Operazioni Concluse</div>
+        <div class="kpi-val" id="totalBetsVal">--</div>
       </div>
     </section>
 
-    <!-- BOX REGISTRAZIONE / ABBONAMENTO -->
-    <section class="pricing-box">
-      <h2>Inizia a Operare con Metodo</h2>
-      <p>Ricevi ogni mattina alle ore 08:00 la Top 5 ad altissima probabilità direttamente sul tuo Telegram, con stake e quote in tempo reale.</p>
-      <div class="pricing-price">29€</div>
-      <div class="pricing-period">al mese • Disdici in qualsiasi momento con 1 clic</div>
+    <!-- TABELLA COMPARATIVA -->
+    <section>
+      <div class="section-title">
+        <h2>Perché il 96% degli Scommettitori Perde</h2>
+        <p>Il confronto netto tra il comportamento del pubblico comune e l'approccio istituzionale AtmBetSignal.</p>
+      </div>
+
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th style="width: 28%;">Parametro</th>
+            <th style="width: 36%;">Tipster Comune / Pubblico</th>
+            <th class="col-highlight" style="width: 36%;">🏧 Modello Quantitativo AtmBet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Scelta delle Giocate</strong></td>
+            <td>Ispirazione da tifoso, schedine multiple a quota impossibile</td>
+            <td class="col-highlight">Solo singole con probabilità oggettiva ≥ 65% e quota ≥ 1.40</td>
+          </tr>
+          <tr>
+            <td><strong>Modello di Calcolo</strong></td>
+            <td>"Sensazione", statistiche generiche o tabelle superficiali</td>
+            <td class="col-highlight">Distribuzione bivariata Dixon-Coles con correzione &tau; e profili lega</td>
+          </tr>
+          <tr>
+            <td><strong>Gestione del Capitale</strong></td>
+            <td>Puntate a caso, martingale o rincorsa furiosa dopo una perdita</td>
+            <td class="col-highlight">Quarter-Kelly rigoroso: max 2.5% di bankroll per singola operazione</td>
+          </tr>
+          <tr>
+            <td><strong>Trasparenza Storico</strong></td>
+            <td>Screenshot Telegram ritagliati, giocate cancellate a posteriori</td>
+            <td class="col-highlight">100% Verificabile e immutabile su codice open source GitHub Pages</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- I 3 PILASTRI -->
+    <section>
+      <div class="section-title">
+        <h2>L'Architettura dietro a Ogni Segnale</h2>
+        <p>Un processo interamente automatizzato che non dorme mai.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Scansione Oraria dei Bookmaker</h3>
+          <p>Lo script interroga le API per analizzare in tempo reale i flussi di quota e rimuovere istantaneamente l'overround (aggio del banco), estraendo la pura probabilità fair di ciascun evento.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📐</div>
+          <h3>Matrice Dixon-Coles Bivariata</h3>
+          <p>Supera la normale legge di Poisson considerando la correlazione effettiva per i punteggi a basso numero di reti (0-0, 1-1, 1-0) e applicando parametri offensivi/difensivi unici per ogni campionato europeo.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Filtro Anti-Sovraesposizione</h3>
+          <p>Se in una giornata non ci sono occasioni di valore matematico sopra il 65%, il bot non genera segnali. Il primo dovere di un investitore quantitativo è proteggere la liquidità.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING VIP -->
+    <section class="vip-card">
+      <div class="vip-tag">ACCESSO ESCLUSIVO</div>
+      <h2 style="font-size: 2.2rem; letter-spacing: -0.5px;">Community VIP AtmBetSignal</h2>
+      <p style="color: var(--text-muted); margin-top: 8px;">Ricevi ogni mattina alle ore 08:00 la Top 5 ad altissima probabilità con notifiche istantanee.</p>
       
-      <!-- LINK AL TUO SISTEMA DI PAGAMENTO O BOT -->
-      <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary" style="width: 100%; display: block; font-size: 1.1rem; padding: 16px 0;">
-        Iscriviti e Accedi Subito ai Segnali VIP
+      <div class="price-num">29€</div>
+      <div class="price-sub">al mese • Cancella quando vuoi con 1 clic</div>
+
+      <ul class="benefits-list">
+        <li><span>✓</span> Top 5 giornaliera ad alta probabilità (≥ 65%)</li>
+        <li><span>✓</span> Dimensionamento dello Stake calcolato con Quarter-Kelly</li>
+        <li><span>✓</span> Notifiche in tempo reale sul canale privato Telegram</li>
+        <li><span>✓</span> Tracciamento trasparente sul tracker certificato</li>
+        <li><span>✓</span> Nessun vincolo: stop o rinnovo automatico a tua scelta</li>
+      </ul>
+
+      <!-- LINK DI ISCRIZIONE -->
+      <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 18px 0;">
+        Attiva Abbonamento VIP su Telegram
       </a>
-      <p style="font-size: 0.85rem; margin-top: 16px; color: var(--text-muted);">Accesso istantaneo tramite Telegram • Garanzia di storico certificato su GitHub</p>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 14px;">Attivazione istantanea del canale VIP subito dopo il pagamento</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-container">
+      <div class="section-title">
+        <h2>Domande Frequenti</h2>
+      </div>
+
+      <div class="faq-item">
+        <h4>Come ricevo i segnali una volta abbonato?</h4>
+        <p>I pronostici vengono spediti ogni mattina alle ore 08:00 UTC sul Canale Privato Telegram riservato ai membri VIP, completi di partita, quota, probabilità stimata e percentuale di stake consigliata.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Le quote delle giocate sono accessibili su tutti i bookmaker?</h4>
+        <p>Sì. Le giocate utilizzano mercati standard (1X2, Doppie Chance, Over/Under 2.5, Gol/NoGol) disponibili su qualsiasi bookmaker con licenza regolare.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Come posso verificare che i risultati siano autentici?</h4>
+        <p>Tutti gli esiti sono caricati in modo immutabile su questo repository GitHub. La pagina "Storico Live" calcola automaticamente Win Rate ed Equity Line senza possibilità di modifica arbitraria.</p>
+      </div>
     </section>
   </div>
 
   <footer>
     <p>AtmBetSignal Quantitative Intelligence © 2026. Tutti i diritti riservati.</p>
-    <p style="margin-top: 6px; font-size: 0.8rem;">Il gioco è riservato ai maggiori di 18 anni. I rendimenti passati non sono garanzia di rendimenti futuri.</p>
+    <p style="margin-top: 6px; font-size: 0.78rem;">Il gioco d'azzardo può creare dipendenza patologica ed è vietato ai minori di 18 anni. I dati storici non costituiscono garanzia di profitti futuri.</p>
   </footer>
 
   <script>
-    // Carica automaticamente i dati reali dal tracker.json per mostrarli in tempo reale ai visitatori
+    // Caricamento dinamico dei KPI reali da data/tracker.json
     fetch('data/tracker.json')
       .then(r => r.json())
       .then(d => {
-        document.getElementById('winRateVal').innerText = (d.win_rate || 0.0).toFixed(1) + '%';
-        document.getElementById('roiVal').innerText = (d.roi_pct > 0 ? '+' : '') + (d.roi_pct || 0.0).toFixed(1) + '%';
-        document.getElementById('totalBetsVal').innerText = d.total_bets || 0;
+        const bets = d.bets || [];
+        const settled = bets.filter(b => b.status === 'WON' || b.status === 'LOST');
+        const won = settled.filter(b => b.status === 'WON').length;
+        const total = settled.length;
+        const netProfit = settled.reduce((acc, b) => acc + (b.profit || 0), 0);
+
+        const winRate = total > 0 ? (won / total * 100).toFixed(1) : '0.0';
+        const roi = total > 0 ? (netProfit / total * 100).toFixed(1) : '0.0';
+
+        document.getElementById('winRateVal').innerText = winRate + '%';
+        document.getElementById('roiVal').innerText = (roi > 0 ? '+' : '') + roi + '%';
+        document.getElementById('totalBetsVal').innerText = total;
       })
-      .catch(e => console.log('Caricamento KPI in corso...'));
+      .catch(() => {
+        document.getElementById('winRateVal').innerText = '0.0%';
+        document.getElementById('roiVal').innerText = '+0.0%';
+        document.getElementById('totalBetsVal').innerText = '0';
+      });
   </script>
 </body>
 </html>
