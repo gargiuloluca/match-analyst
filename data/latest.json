@@ -2,7 +2,7 @@
   "date": "2026-10-26",
   "weekday": 0,
   "target_count": 5,
-  "generated_at": "2026-10-26T09:49:54.520492+00:00",
+  "generated_at": "2026-10-26T15:05:14.568827+00:00",
   "total_fixtures_scanned": 6,
   "official_picks_count": 1,
   "picks": {
@@ -13,12 +13,12 @@
       "date": "2026-10-26",
       "market_type": "1",
       "outcome_label": "Vittoria Sevilla",
-      "odd": 1.88,
-      "estimated_probability": 0.6993,
-      "implied_probability": 0.5319,
-      "edge": 0.1674,
+      "odd": 1.85,
+      "estimated_probability": 0.7165,
+      "implied_probability": 0.5405,
+      "edge": 0.1759,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.88 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.85 | Stake: 2.5%"
     }
   },
   "all_selected_picks": [
@@ -29,12 +29,12 @@
       "date": "2026-10-26",
       "market_type": "1",
       "outcome_label": "Vittoria Sevilla",
-      "odd": 1.88,
-      "estimated_probability": 0.6993,
-      "implied_probability": 0.5319,
-      "edge": 0.1674,
+      "odd": 1.85,
+      "estimated_probability": 0.7165,
+      "implied_probability": 0.5405,
+      "edge": 0.1759,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.88 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.85 | Stake: 2.5%"
     }
   ],
   "radar_watchlist": [
@@ -45,12 +45,12 @@
       "date": "2026-10-26",
       "market_type": "Over2.5",
       "outcome_label": "Over 2.5 Gol",
-      "odd": 1.51,
-      "estimated_probability": 0.6352,
-      "implied_probability": 0.6623,
-      "edge": -0.0271,
+      "odd": 1.5,
+      "estimated_probability": 0.6393,
+      "implied_probability": 0.6667,
+      "edge": -0.0274,
       "suggested_stake_pct": 0.5,
-      "notes": "Lega: Süper Lig (Turchia) | Quota: 1.51 | Stake: 0.5%"
+      "notes": "Lega: Süper Lig (Turchia) | Quota: 1.50 | Stake: 0.5%"
     },
     {
       "fixture_id": "9d5238c50f04d24ae92e556a438e188e",
@@ -73,12 +73,12 @@
       "date": "2026-10-26",
       "market_type": "1",
       "outcome_label": "Vittoria Galatasaray",
-      "odd": 1.98,
-      "estimated_probability": 0.5881,
-      "implied_probability": 0.5051,
-      "edge": 0.083,
+      "odd": 1.95,
+      "estimated_probability": 0.608,
+      "implied_probability": 0.5128,
+      "edge": 0.0952,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: Süper Lig (Turchia) | Quota: 1.98 | Stake: 2.5%"
+      "notes": "Lega: Süper Lig (Turchia) | Quota: 1.95 | Stake: 2.5%"
     },
     {
       "fixture_id": "51f2cea4f466d0df8335ff12dab72dd4",
@@ -88,9 +88,9 @@
       "market_type": "1",
       "outcome_label": "Vittoria Coritiba",
       "odd": 2.15,
-      "estimated_probability": 0.566,
+      "estimated_probability": 0.5613,
       "implied_probability": 0.4651,
-      "edge": 0.1009,
+      "edge": 0.0961,
       "suggested_stake_pct": 2.5,
       "notes": "Lega: Brasileirão (Brasile) | Quota: 2.15 | Stake: 2.5%"
     },
@@ -101,12 +101,12 @@
       "date": "2026-10-26",
       "market_type": "GG",
       "outcome_label": "Goal (Entrambe a segno)",
-      "odd": 1.73,
-      "estimated_probability": 0.5549,
-      "implied_probability": 0.578,
-      "edge": -0.0231,
+      "odd": 1.74,
+      "estimated_probability": 0.5518,
+      "implied_probability": 0.5747,
+      "edge": -0.0229,
       "suggested_stake_pct": 0.5,
-      "notes": "Lega: Süper Lig (Turchia) | Quota: 1.73 | Stake: 0.5%"
+      "notes": "Lega: Süper Lig (Turchia) | Quota: 1.74 | Stake: 0.5%"
     }
   ]
 }

@@ -12,9 +12,9 @@
     },
     "bookmaker_count": 20,
     "odds": {
-      "home": 1.88,
+      "home": 1.85,
       "draw": 3.45,
-      "away": 4.4
+      "away": 4.6
     }
   },
   {
@@ -28,11 +28,11 @@
     "away_team": {
       "name": "Basaksehir"
     },
-    "bookmaker_count": 21,
+    "bookmaker_count": 19,
     "odds": {
-      "home": 1.35,
-      "draw": 5.3,
-      "away": 7.5
+      "home": 1.36,
+      "draw": 5.2,
+      "away": 7.0
     }
   },
   {
@@ -46,11 +46,11 @@
     "away_team": {
       "name": "Trabzonspor"
     },
-    "bookmaker_count": 21,
+    "bookmaker_count": 20,
     "odds": {
-      "home": 3.6,
-      "draw": 3.84,
-      "away": 1.85
+      "home": 3.75,
+      "draw": 3.95,
+      "away": 1.82
     }
   },
   {
@@ -64,11 +64,11 @@
     "away_team": {
       "name": "Fenerbahce"
     },
-    "bookmaker_count": 21,
+    "bookmaker_count": 20,
     "odds": {
-      "home": 1.98,
-      "draw": 3.8,
-      "away": 3.2
+      "home": 1.95,
+      "draw": 3.84,
+      "away": 3.35
     }
   },
   {
@@ -82,11 +82,11 @@
     "away_team": {
       "name": "Grêmio"
     },
-    "bookmaker_count": 23,
+    "bookmaker_count": 22,
     "odds": {
       "home": 2.15,
       "draw": 3.3,
-      "away": 3.25
+      "away": 3.2
     }
   },
   {
@@ -100,7 +100,7 @@
     "away_team": {
       "name": "Atletico Mineiro"
     },
-    "bookmaker_count": 24,
+    "bookmaker_count": 23,
     "odds": {
       "home": 1.26,
       "draw": 5.7,
