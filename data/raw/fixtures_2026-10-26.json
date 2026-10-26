@@ -32,7 +32,7 @@
     "odds": {
       "home": 1.35,
       "draw": 5.25,
-      "away": 7.42
+      "away": 7.5
     }
   },
   {
@@ -67,8 +67,8 @@
     "bookmaker_count": 21,
     "odds": {
       "home": 2.02,
-      "draw": 3.75,
-      "away": 3.14
+      "draw": 3.78,
+      "away": 3.15
     }
   },
   {
@@ -102,27 +102,9 @@
     },
     "bookmaker_count": 24,
     "odds": {
-      "home": 1.3,
-      "draw": 5.25,
+      "home": 1.31,
+      "draw": 5.2,
       "away": 9.0
-    }
-  },
-  {
-    "fixture_id": "f635049de97c44eff491a027de0e4863",
-    "league": "MLS (USA)",
-    "odds_key": "soccer_usa_mls",
-    "commence_time": "2026-10-26T01:00:00Z",
-    "home_team": {
-      "name": "Los Angeles FC"
-    },
-    "away_team": {
-      "name": "LA Galaxy"
-    },
-    "bookmaker_count": 23,
-    "odds": {
-      "home": 1.55,
-      "draw": 4.5,
-      "away": 5.0
     }
   }
 ]

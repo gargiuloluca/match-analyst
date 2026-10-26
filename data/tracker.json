@@ -1,11 +1,11 @@
 {
-  "total_bets": 4,
+  "total_bets": 5,
   "won": 2,
-  "lost": 2,
+  "lost": 3,
   "void": 0,
-  "win_rate": 50.0,
-  "net_profit_units": -0.7,
-  "roi_pct": -17.5,
+  "win_rate": 40.0,
+  "net_profit_units": -3.2,
+  "roi_pct": -64.0,
   "bets": [
     {
       "id": "2026-10-25_72089d103a5fe6a922c35e17efba6ffc_1",
@@ -74,9 +74,9 @@
       "odd": 1.55,
       "estimated_prob": 0.7971,
       "suggested_stake_pct": 2.5,
-      "status": "PENDING",
-      "score": "-",
-      "profit": 0.0
+      "status": "LOST",
+      "score": "2-2",
+      "profit": -2.5
     },
     {
       "id": "2026-10-26_85e464708d03287f24590e1478aeca31_1",
