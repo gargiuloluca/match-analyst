@@ -22,7 +22,7 @@
       background: var(--bg);
       color: var(--text);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      padding: 30px 20px;
+      padding: 30px 20px 80px;
     }
     .container { max-width: 950px; margin: 0 auto; }
     .login-box {
@@ -69,8 +69,8 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 16px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
     }
     .badge-official {
       background: var(--accent);
@@ -89,7 +89,7 @@
       font-weight: 700;
     }
     .section-title {
-      font-size: 1.3rem;
+      font-size: 1.25rem;
       margin: 30px 0 16px;
       display: flex;
       align-items: center;
@@ -102,7 +102,7 @@
   <div class="container">
     <div class="login-box" id="loginBox">
       <h2>🔐 Console Riservata Admin</h2>
-      <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Inserisci la password di amministrazione.</p>
+      <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Inserisci la master password.</p>
       <input type="password" id="adminPass" placeholder="Master Password" onkeydown="if(event.key==='Enter') checkAuth()">
       <button onclick="checkAuth()">Accedi alla Console</button>
       <p id="errText" style="color: #ef4444; font-size: 0.85rem; margin-top: 10px; display: none;">Password non valida.</p>
@@ -153,27 +153,30 @@
     }
 
     function loadData() {
-      fetch('data/latest.json')
+      // ?nocache=... evita che il browser dello smartphone usi file vecchi in memoria
+      fetch('data/latest.json?nocache=' + new Date().getTime())
         .then(r => r.json())
         .then(d => {
-          // 1. Ufficiali
+          // 1. UFFICIALI (>= 65%)
           const officials = d.all_selected_picks || [];
           const offCont = document.getElementById('officialContainer');
           if (officials.length === 0) {
-            offCont.innerHTML = '<p style="color: var(--muted); padding: 15px; background: var(--card-bg); border-radius: 8px;">Nessuna selezione ha superato il 65% oggi. Capitale protetto.</p>';
+            offCont.innerHTML = '<p style="color: var(--muted); padding: 16px; background: var(--card-bg); border-radius: 8px;">Nessuna selezione ha superato il 65% oggi. Capitale protetto.</p>';
           } else {
             let html = '';
             officials.forEach((p, i) => {
+              const prob = ((p.estimated_probability || 0) * 100).toFixed(1);
+              const edge = (((p.edge || 0)) * 100).toFixed(1);
               html += `
                 <div class="pick-item">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                     <span class="badge-official">TOP PICK #${i+1}</span>
-                    <span style="color: var(--muted); font-size: 0.85rem;">${p.league}</span>
+                    <span style="color: var(--muted); font-size: 0.85rem;">${p.league || ''}</span>
                   </div>
                   <h3 style="margin-bottom: 6px;">${p.match}</h3>
-                  <p style="color: var(--accent); font-weight: 700; margin-bottom: 8px;">🎯 Esito: ${p.outcome_label} @ ${p.odd.toFixed(2)}</p>
+                  <p style="color: var(--accent); font-weight: 700; margin-bottom: 8px;">🎯 Esito: ${p.outcome_label} @ ${Number(p.odd).toFixed(2)}</p>
                   <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--muted);">
-                    Probabilità: ${(p.estimated_probability * 100).toFixed(1)}% | Stake Kelly: ${p.suggested_stake_pct}% | Edge: +${((p.edge || 0) * 100).toFixed(1)}%
+                    Probabilità: ${prob}% | Stake Kelly: ${p.suggested_stake_pct}% | Edge: +${edge}%
                   </div>
                 </div>
               `;
@@ -181,24 +184,25 @@
             offCont.innerHTML = html;
           }
 
-          // 2. Radar
-          const radar = d.radar_watchlist || [];
+          // 2. WATCHLIST RADAR (Legge sia radar_watchlist che watchlist_radar)
+          const radar = d.radar_watchlist || d.watchlist_radar || [];
           const radCont = document.getElementById('radarContainer');
           if (radar.length === 0) {
-            radCont.innerHTML = '<p style="color: var(--muted);">Nessun evento disponibile nel radar oggi.</p>';
+            radCont.innerHTML = '<p style="color: var(--muted); padding: 16px; background: var(--card-bg); border-radius: 8px;">Nessun evento disponibile nel radar oggi.</p>';
           } else {
             let htmlRadar = '';
             radar.forEach((r, i) => {
+              const prob = ((r.estimated_probability || 0) * 100).toFixed(1);
               htmlRadar += `
-                <div class="pick-item" style="opacity: 0.85;">
+                <div class="pick-item" style="border-left: 3px solid #64748b;">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
                     <span class="badge-radar">RADAR #${i+1}</span>
-                    <span style="color: var(--muted); font-size: 0.85rem;">${r.league}</span>
+                    <span style="color: var(--muted); font-size: 0.85rem;">${r.league || ''}</span>
                   </div>
-                  <h4 style="margin-bottom: 4px;">${r.match}</h4>
-                  <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 6px;">Esito: <b>${r.outcome_label}</b> @ ${r.odd.toFixed(2)}</p>
+                  <h4 style="margin-bottom: 4px; font-size: 1.05rem;">${r.match}</h4>
+                  <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 6px;">🎯 Esito: <b>${r.outcome_label}</b> @ <b>${Number(r.odd).toFixed(2)}</b></p>
                   <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--muted);">
-                    Probabilità stimata: ${(r.estimated_probability * 100).toFixed(1)}% (Solo Studio)
+                    Probabilità stimata: <strong>${prob}%</strong> (Esclusivamente per Studio)
                   </div>
                 </div>
               `;
@@ -206,7 +210,8 @@
             radCont.innerHTML = htmlRadar;
           }
         })
-        .catch(() => {
+        .catch(err => {
+          console.error(err);
           document.getElementById('officialContainer').innerHTML = '<p>Errore nel caricamento dei dati.</p>';
         });
     }
