@@ -3,526 +3,335 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AtmBetSignal — Quantitative Sports Screening</title>
+  <title>AtmBetSignal — Institutional Quantitative Betting Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #07090e;
-      --card-bg: #0f141f;
-      --card-border: #1a2233;
+      --bg-dark: #070a11;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --accent-green: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
       --text-main: #f8fafc;
-      --text-muted: #8b9bb4;
-      --atm-green: #22c55e;
-      --atm-green-glow: rgba(34, 197, 94, 0.25);
-      --atm-silver: #cbd5e1;
-      --gold: #eab308;
-      --silver: #94a3b8;
-      --bronze: #d97706;
-      --edge-pos: #22c55e;
-      --edge-neg: #ef4444;
+      --text-muted: #94a3b8;
+      --gold: #f59e0b;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background-color: var(--bg);
+      background-color: var(--bg-dark);
       color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.5;
-      padding: 24px 16px;
-      min-height: 100vh;
-      background-image: radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.08), transparent 45%);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-
-    .container {
-      max-width: 1040px;
-      margin: 0 auto;
-    }
-
-    /* HEADER CON LOGO */
     header {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      margin-bottom: 24px;
-      padding-bottom: 20px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--card-border);
-    }
-
-    .brand-logo-wrap {
-      width: 72px;
-      height: 72px;
-      flex-shrink: 0;
-      background: #000;
-      border-radius: 14px;
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      box-shadow: 0 4px 16px var(--atm-green-glow);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .brand-logo-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .header-text {
-      flex: 1;
-    }
-
-    .brand-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
-      color: var(--atm-green);
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
-
-    h1 {
-      font-size: 1.65rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 4px;
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      max-width: 720px;
-      line-height: 1.4;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 16px;
-      margin-top: 12px;
-    }
-
-    .nav-link {
-      font-size: 0.82rem;
-      text-decoration: none;
-      color: var(--text-muted);
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-
-    .nav-link.active {
-      color: var(--atm-green);
-      border-bottom: 2px solid var(--atm-green);
-      padding-bottom: 4px;
-    }
-
-    .alert-box {
-      border-left: 3px solid var(--atm-green);
-      background: rgba(34, 197, 94, 0.05);
-      padding: 10px 14px;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 20px;
-      border-radius: 0 6px 6px 0;
-    }
-
-    .meta-bar {
+      padding: 16px 32px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
     }
-
-    .meta-date {
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-weight: 700;
-      color: var(--text-main);
+      font-size: 1.3rem;
+      letter-spacing: -0.5px;
     }
-
-    .meta-stats {
-      color: var(--text-muted);
+    .brand-badge {
+      background: var(--accent-green);
+      color: #000;
       font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
     }
-
-    /* GRID TOP 3 */
-    .picks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      margin-left: 24px;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent-green); }
+    .nav-admin {
+      color: var(--gold) !important;
+      font-weight: 600;
+    }
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .hero {
+      text-align: center;
+      padding: 40px 0 60px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px 16px;
+      border-radius: 20px;
+      color: var(--accent-green);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2.3rem, 5vw, 3.6rem);
+      font-weight: 700;
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 36px;
+    }
+    .cta-group {
+      display: flex;
+      justify-content: center;
       gap: 16px;
-      margin-bottom: 36px;
+      flex-wrap: wrap;
     }
-
-    .card {
+    .btn-primary {
+      background: var(--accent-green);
+      color: #000;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.05rem;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+    }
+    .btn-secondary {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1.05rem;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--text-muted);
+      background: #1e293b;
+    }
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 40px 0 80px;
+    }
+    .kpi-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 3px;
-    }
-
-    .card.top1::before { background: var(--gold); }
-    .card.top2::before { background: var(--silver); }
-    .card.top3::before { background: var(--bronze); }
-
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .card-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .card.top1 .card-tag { color: var(--gold); }
-    .card.top2 .card-tag { color: var(--silver); }
-    .card.top3 .card-tag { color: var(--bronze); }
-
-    .card-odd {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--atm-green);
-    }
-
-    .card-league {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-family: 'JetBrains Mono', monospace;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--card-border);
-      padding: 3px 8px;
-      border-radius: 4px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .card-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-      letter-spacing: -0.01em;
-    }
-
-    .card-pick {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
-    .card-pick strong {
-      color: #fff;
-    }
-
-    .card-stats {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 8px;
-    }
-
-    .stat-val {
-      font-size: 1.35rem;
-      font-weight: 700;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .stat-label {
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 4px;
-      background: var(--card-border);
-      border-radius: 2px;
-      overflow: hidden;
-      margin-bottom: 12px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--atm-green);
-      box-shadow: 0 0 8px var(--atm-green-glow);
-    }
-
-    .card-footer {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 8px;
-    }
-
-    /* TABELLA SEGNALI */
-    .table-section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-
-    .table-container {
-      width: 100%;
-      overflow-x: auto;
-      border: 1px solid var(--card-border);
-      border-radius: 10px;
-      background: var(--card-bg);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.82rem;
-      text-align: left;
-    }
-
-    th {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.68rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--card-border);
-    }
-
-    td {
-      padding: 12px 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    tr:hover td {
-      background: rgba(34, 197, 94, 0.02);
-    }
-
-    .match-name {
-      font-weight: 600;
-    }
-
-    .match-sub {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    .mono-cell {
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .edge-pos { color: var(--edge-pos); font-weight: 700; }
-    .edge-neg { color: var(--edge-neg); font-weight: 700; }
-
-    footer {
-      margin-top: 36px;
-      padding-top: 16px;
-      border-top: 1px solid var(--card-border);
-      font-size: 0.72rem;
-      color: var(--text-muted);
+      padding: 24px;
       text-align: center;
     }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
+    .kpi-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .kpi-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .kpi-value.green { color: var(--accent-green); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 80px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+    .pricing-box {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1px solid var(--accent-green);
+      border-radius: 16px;
+      padding: 48px 32px;
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto;
+      box-shadow: 0 0 35px var(--accent-glow);
+    }
+    .pricing-box h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .pricing-box p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 24px;
+    }
+    .pricing-price {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+    .pricing-period {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    footer {
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      padding: 32px 24px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
     }
   </style>
 </head>
 <body>
+
+  <header>
+    <div class="brand">
+      <span>🏧 AtmBetSignal</span>
+      <span class="brand-badge">Institutional</span>
+    </div>
+    <nav>
+      <a href="index.html" class="active">Metodo</a>
+      <a href="tracker.html">Storico Verificato</a>
+      <a href="admin.html" class="nav-admin">Area Riservata 🔒</a>
+    </nav>
+  </header>
+
   <div class="container">
-    <header>
-      <div class="brand-logo-wrap">
-        <img src="assets/logo.png" alt="AtmBet Logo" onerror="this.style.display='none'">
+    <section class="hero">
+      <div class="pill">● Modello Quantitativo Operativo 2026</div>
+      <h1>Il Betting Sportivo Non È Gioco d'Azzardo.<br>È <span>Matematica di Valore</span>.</h1>
+      <p>Niente schedine multiple impossibili o pronostici da tifosi. AtmBetSignal applica modelli quantitativi bivariati e il criterio di Quarter-Kelly per estrarre profitto dai mercati sportivi.</p>
+      
+      <div class="cta-group">
+        <!-- SOSTITUISCI CON IL TUO BOT TELEGRAM O LINK TRIBUTE -->
+        <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary">Entra nel Canale VIP su Telegram</a>
+        <a href="tracker.html" class="btn-secondary">Esamina lo Storico Live ↗</a>
       </div>
-      <div class="header-text">
-        <div class="brand-tag">ATMBET SIGNAL</div>
-        <h1>Quantitative Sports Screening</h1>
-        <p class="subtitle">
-          Motore analitico su campionati europei e tornei secondari. Selezione gerarchica per massima probabilità di riuscita (quota minima &ge; 1.40).
-        </p>
-        <div class="nav-links">
-          <a href="index.html" class="nav-link active">Oggi</a>
-          <a href="tracker.html" class="nav-link">Storico & ROI</a>
-        </div>
+    </section>
+
+    <!-- KPI REALI RICAVATI DA TRACKER.JSON -->
+    <section class="kpi-strip">
+      <div class="kpi-card">
+        <div class="kpi-label">Soglia Minima Probabilità</div>
+        <div class="kpi-value green">≥ 65.0%</div>
       </div>
-    </header>
+      <div class="kpi-card">
+        <div class="kpi-label">Win Rate Certificato</div>
+        <div class="kpi-value green" id="winRateVal">--%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">ROI Netto Medio</div>
+        <div class="kpi-value green" id="roiVal">--%</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Operazioni Tracciate</div>
+        <div class="kpi-value" id="totalBetsVal">--</div>
+      </div>
+    </section>
 
-    <div class="alert-box">
-      Stime statistiche e modelli quantitativi a supporto decisionale. Nessuna garanzia di risultato. Gioca sempre con moderazione e responsabilità.
-    </div>
+    <!-- METODO ISTITUZIONALE -->
+    <section class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📐</div>
+        <h3>Modello Dixon-Coles Bivariato</h3>
+        <p>A differenza della classica distribuzione di Poisson, il nostro algoritmo include il fattore di correlazione tau (&tau;) per i punteggi bassi e calibra i valori di forza offensiva e difensiva per singola lega.</p>
+      </div>
 
-    <div class="meta-bar">
-      <span class="meta-date" id="match-date">Caricamento...</span>
-      <span class="meta-stats" id="match-counts">Scansione dati...</span>
-    </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>Filtro "Sniper" Anti-Sovraesposizione</h3>
+        <p>Non forziamo mai volume: il software scansiona oltre 20 campionati europei ma genera segnali solo ed esclusivamente quando la probabilità reale supera la soglia di sicurezza del 65%.</p>
+      </div>
 
-    <!-- TOP 3 PODIO -->
-    <div class="picks-grid" id="picks-grid"></div>
+      <div class="feature-card">
+        <div class="feature-icon">⚖️</div>
+        <h3>Gestione del Rischio Quarter-Kelly</h3>
+        <p>Ogni giocata include il dimensionamento matematico dello stake (massimo 2.5% del bankroll). Zero martingale, zero rincorse: protezione totale del capitale nei periodi di fisiologica varianza.</p>
+      </div>
+    </section>
 
-    <!-- CANDIDATI -->
-    <div class="table-section-title">Tutti i candidati scansionati ad alta probabilità</div>
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Partita</th>
-            <th>Esito</th>
-            <th>Quota</th>
-            <th>Prob. Stimata</th>
-            <th>Prob. Mercato</th>
-            <th>Edge</th>
-          </tr>
-        </thead>
-        <tbody id="candidates-body">
-          <tr>
-            <td colspan="6" style="text-align:center; padding: 24px; color: var(--text-muted);">Caricamento dati di mercato...</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <footer id="footer-note">
-      AtmBetSignal · Aggiornato automaticamente con GitHub Actions.
-    </footer>
+    <!-- BOX REGISTRAZIONE / ABBONAMENTO -->
+    <section class="pricing-box">
+      <h2>Inizia a Operare con Metodo</h2>
+      <p>Ricevi ogni mattina alle ore 08:00 la Top 5 ad altissima probabilità direttamente sul tuo Telegram, con stake e quote in tempo reale.</p>
+      <div class="pricing-price">29€</div>
+      <div class="pricing-period">al mese • Disdici in qualsiasi momento con 1 clic</div>
+      
+      <!-- LINK AL TUO SISTEMA DI PAGAMENTO O BOT -->
+      <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary" style="width: 100%; display: block; font-size: 1.1rem; padding: 16px 0;">
+        Iscriviti e Accedi Subito ai Segnali VIP
+      </a>
+      <p style="font-size: 0.85rem; margin-top: 16px; color: var(--text-muted);">Accesso istantaneo tramite Telegram • Garanzia di storico certificato su GitHub</p>
+    </section>
   </div>
 
+  <footer>
+    <p>AtmBetSignal Quantitative Intelligence © 2026. Tutti i diritti riservati.</p>
+    <p style="margin-top: 6px; font-size: 0.8rem;">Il gioco è riservato ai maggiori di 18 anni. I rendimenti passati non sono garanzia di rendimenti futuri.</p>
+  </footer>
+
   <script>
-    async function loadData() {
-      try {
-        const res = await fetch(`data/latest.json?t=${new Date().getTime()}`);
-        if (!res.ok) throw new Error("File latest.json non trovato");
-        const data = await res.json();
-
-        document.getElementById('match-date').textContent = data.date || 'Oggi';
-        document.getElementById('match-counts').textContent = 
-          `${data.total_fixtures_scanned || 0} partite scansionate · ${data.candidates_after_filter || 0} candidate idonee`;
-
-        const picksGrid = document.getElementById('picks-grid');
-        picksGrid.innerHTML = '';
-
-        const pickConfigs = [
-          { key: 'conservativo', label: '🥇 TOP PICK #1', sub: 'Massima probabilità statistica', cls: 'top1' },
-          { key: 'consigliato',  label: '🥈 TOP PICK #2', sub: 'Alta affidabilità',              cls: 'top2' },
-          { key: 'hard',         label: '🥉 TOP PICK #3', sub: 'Alta affidabilità',              cls: 'top3' }
-        ];
-
-        pickConfigs.forEach(cfg => {
-          const p = data.picks ? data.picks[cfg.key] : null;
-          if (!p) return;
-
-          const probPct = (p.estimated_probability * 100).toFixed(1);
-          const mktPct = (p.implied_probability * 100).toFixed(1);
-          const edgeVal = (p.edge !== undefined) ? (p.edge * 100).toFixed(1) : '0.0';
-          const isPos = parseFloat(edgeVal) >= 0;
-
-          const card = document.createElement('div');
-          card.className = `card ${cfg.cls}`;
-          card.innerHTML = `
-            <div>
-              <div class="card-header">
-                <span class="card-tag">${cfg.label}</span>
-                <span class="card-odd">${(p.odd || 0).toFixed(2)}</span>
-              </div>
-              <div class="card-league">${p.league || 'Calcio'}</div>
-              <div class="card-title">${p.match}</div>
-              <div class="card-pick">
-                Esito: <strong>${p.outcome_label}</strong> · <span style="font-size: 0.75rem;">${cfg.sub}</span>
-              </div>
-            </div>
-            <div>
-              <div class="card-stats">
-                <div>
-                  <div class="stat-val">${probPct}%</div>
-                  <div class="stat-label">Probabilità Stimata</div>
-                </div>
-                <div style="text-align: right;">
-                  <div class="stat-val" style="color: ${isPos ? 'var(--edge-pos)' : 'var(--text-muted)'};">${isPos ? '+' : ''}${edgeVal}%</div>
-                  <div class="stat-label">Edge Reale</div>
-                </div>
-              </div>
-              <div class="progress-bar">
-                <div class="progress-fill" style="width: ${Math.min(100, probPct)}%;"></div>
-              </div>
-              <div class="card-footer">
-                ${p.notes || `Quota: ${(p.odd || 0).toFixed(2)} | Implicita: ${mktPct}%`}
-              </div>
-            </div>
-          `;
-          picksGrid.appendChild(card);
-        });
-
-        const tbody = document.getElementById('candidates-body');
-        tbody.innerHTML = '';
-
-        const candidates = data.all_candidates || [];
-        if (candidates.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding: 20px; color: var(--text-muted);">Nessun candidato idoneo sopra quota 1.40 rilevato.</td></tr>`;
-        } else {
-          candidates.forEach(c => {
-            const probPct = (c.estimated_probability * 100).toFixed(1);
-            const mktPct = (c.implied_probability * 100).toFixed(1);
-            const edgeVal = (c.edge !== undefined) ? (c.edge * 100).toFixed(1) : '0.0';
-            const isPos = parseFloat(edgeVal) >= 0;
-
-            const tr = document.createElement('tr');
-            tr.innerHTML = `
-              <td>
-                <div class="match-name">${c.match}</div>
-                <div class="match-sub">${c.league || ''}</div>
-              </td>
-              <td>${c.outcome_label}</td>
-              <td class="mono-cell">${(c.odd || 0).toFixed(2)}</td>
-              <td class="mono-cell">${probPct}%</td>
-              <td class="mono-cell" style="color: var(--text-muted);">${mktPct}%</td>
-              <td class="mono-cell ${isPos ? 'edge-pos' : 'edge-neg'}">${isPos ? '+' : ''}${edgeVal}%</td>
-            `;
-            tbody.appendChild(tr);
-          });
-        }
-
-        if (data.generated_at) {
-          document.getElementById('footer-note').textContent = 
-            `AtmBetSignal · Aggiornamento automatico: ${data.generated_at}`;
-        }
-      } catch (err) {
-        console.error(err);
-        document.getElementById('candidates-body').innerHTML = 
-          `<tr><td colspan="6" style="text-align:center; color: #ef4444; padding: 20px;">Errore nel caricamento dati (${err.message}). Riprova tra poco.</td></tr>`;
-      }
-    }
-
-    loadData();
+    // Carica automaticamente i dati reali dal tracker.json per mostrarli in tempo reale ai visitatori
+    fetch('data/tracker.json')
+      .then(r => r.json())
+      .then(d => {
+        document.getElementById('winRateVal').innerText = (d.win_rate || 0.0).toFixed(1) + '%';
+        document.getElementById('roiVal').innerText = (d.roi_pct > 0 ? '+' : '') + (d.roi_pct || 0.0).toFixed(1) + '%';
+        document.getElementById('totalBetsVal').innerText = d.total_bets || 0;
+      })
+      .catch(e => console.log('Caricamento KPI in corso...'));
   </script>
 </body>
 </html>
