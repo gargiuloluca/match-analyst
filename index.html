@@ -1,589 +1,585 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AtmBet | Analisi Statistica e Betting Quantitativo Certificato</title>
-    <link rel="icon" type="image/png" href="logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AtmBetSignal — Institutional Quantitative Betting Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #05070d;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --accent-soft: rgba(16, 185, 129, 0.1);
+      --cyan: #38bdf8;
+      --gold: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+    header {
+      background: rgba(5, 7, 13, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+    .brand-badge {
+      background: var(--accent);
+      color: #000;
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    nav a:hover, nav a.active { color: #fff; }
+    .nav-admin {
+      color: var(--gold) !important;
+      background: rgba(245, 158, 11, 0.1);
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+    }
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        mono: ['"JetBrains Mono"', 'monospace'],
-                    },
-                    colors: {
-                        atm: {
-                            green: '#22c55e',
-                            darkGreen: '#15803d',
-                            bg: '#070a10',
-                            card: '#0e1522',
-                            border: '#1e293b',
-                            gold: '#fbbf24'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .unit-pill-active {
-            background-color: #22c55e !important;
-            color: #020617 !important;
-            border-color: #22c55e !important;
-            font-weight: 800 !important;
-        }
-        .sim-pill-active {
-            background-color: #3b82f6 !important;
-            color: #ffffff !important;
-            border-color: #3b82f6 !important;
-            font-weight: 800 !important;
-        }
-        * { -webkit-tap-highlight-color: transparent; }
-    </style>
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 40px 0 35px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px 16px;
+      border-radius: 30px;
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 32px;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      padding: 14px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 20px var(--accent-glow);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      color: #fff;
+      font-weight: 600;
+      padding: 14px 26px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* KPI STRIP */
+    .kpi-container {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 40px 0 65px;
+      backdrop-filter: blur(10px);
+    }
+    .kpi-box {
+      text-align: center;
+      padding: 8px;
+    }
+    .kpi-title {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .kpi-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .kpi-val.green { color: var(--accent); }
+
+    /* COMPARISON TABLE */
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+    .section-title h2 {
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 75px;
+    }
+    .comp-table {
+      width: 100%;
+      min-width: 620px;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .comp-table th, .comp-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--card-border);
+    }
+    .comp-table th {
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+    }
+    .comp-table td { font-size: 0.92rem; }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .col-highlight {
+      background: rgba(16, 185, 129, 0.04);
+      color: #fff;
+      font-weight: 600;
+      border-left: 1px solid rgba(16, 185, 129, 0.2);
+      border-right: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    /* 4 RIQUADRI STRUTTURATI E RESPONSIVE */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 70px;
+    }
+    @media (max-width: 992px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(16, 185, 129, 0.35);
+    }
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.55;
+    }
+
+    /* PRICING VIP */
+    .vip-card {
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.85) 100%);
+      border: 1px solid var(--accent);
+      border-radius: 18px;
+      padding: 42px 28px;
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 75px;
+      box-shadow: 0 0 45px rgba(16, 185, 129, 0.15);
+      position: relative;
+    }
+    .vip-tag {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.72rem;
+      padding: 4px 14px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+    .price-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin: 16px 0 2px;
+    }
+    .price-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+    .benefits-list {
+      text-align: left;
+      max-width: 420px;
+      margin: 0 auto 28px;
+      list-style: none;
+    }
+    .benefits-list li {
+      padding: 7px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: #e2e8f0;
+    }
+    .benefits-list li span { color: var(--accent); font-weight: 700; }
+
+    /* FAQ */
+    .faq-container {
+      max-width: 760px;
+      margin: 0 auto 70px;
+    }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .faq-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+      padding: 35px 20px;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+  </style>
 </head>
-<body class="bg-atm-bg text-slate-100 min-h-screen flex flex-col font-sans antialiased selection:bg-emerald-500 selection:text-black overflow-x-hidden">
+<body>
 
-    <!-- Navbar Pubblica -->
-    <nav class="border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-3 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <a href="index.html" class="flex items-center gap-2">
-                    <img src="logo.png" onerror="this.src='atmbet.png'" alt="AtmBet" class="h-8 sm:h-10 w-auto">
-                    <span class="text-lg sm:text-xl font-black text-white">ATM<span class="text-atm-green">BET</span></span>
-                </a>
-            </div>
-
-            <div class="flex items-center gap-2 sm:gap-4">
-                <a href="auth.html" class="text-xs sm:text-sm font-semibold text-slate-300 hover:text-white px-2 py-1 transition">Accedi</a>
-                <a href="auth.html?mode=register" class="text-xs sm:text-sm bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl font-black flex items-center gap-1.5 transition shadow-lg shadow-emerald-500/10">
-                    <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Registrati VIP
-                </a>
-            </div>
-        </div>
+  <header>
+    <div class="brand">
+      <span>🏧 AtmBetSignal</span>
+      <span class="brand-badge">PRO</span>
+    </div>
+    <nav>
+      <a href="index.html" class="active">Metodo</a>
+      <a href="tracker.html">Storico Live</a>
+      <a href="admin.html" class="nav-admin">Area Admin 🔒</a>
     </nav>
-
-    <!-- Main Content -->
-    <main class="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-10 space-y-8 sm:space-y-12 flex-1 w-full">
-
-        <!-- Hero Section -->
-        <section class="text-center max-w-3xl mx-auto pt-4 pb-2 space-y-4">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[11px] font-mono uppercase tracking-wider font-bold">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Archivio Verificato & Aggiornato Giornalmente
-            </div>
-            <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-                Non scommettere sul caso.<br><span class="text-atm-green">Investi nei Dati.</span>
-            </h1>
-            <p class="text-xs sm:text-base text-slate-400 leading-relaxed px-2">
-                Modelli quantitativi per scovare anomalie di quota nei campionati mondiali. Money management scientifico e disciplina statistica costante.
-            </p>
-            
-            <div class="pt-2">
-                <div class="inline-block bg-slate-900 border border-slate-800 p-4 rounded-2xl max-w-md w-full shadow-2xl">
-                    <div class="flex items-center justify-between text-[11px] text-slate-400 mb-2 border-b border-slate-800 pb-2">
-                        <span class="flex items-center gap-1 text-emerald-400 font-bold"><i data-lucide="gift" class="w-3.5 h-3.5"></i> OFFERTA BENVENUTO</span>
-                        <span class="font-mono text-slate-500">Zero Carta Richiesta</span>
-                    </div>
-                    <div class="text-base sm:text-lg font-black text-white text-left mb-1">7 Giorni VIP + 5 Crediti Omaggio</div>
-                    <p class="text-[11px] text-slate-400 text-left mb-3">Registrati gratis per sbloccare all'istante tutte le quote, i mercati e le selezioni del giorno nel tuo cruscotto personale.</p>
-                    <a href="auth.html?mode=register" class="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm py-2.5 rounded-xl transition flex items-center justify-center gap-1.5 shadow-lg shadow-emerald-500/20">
-                        Crea Account Gratuito <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- SIMULATORE TEMPORALE DINAMICO VETRINA -->
-        <section class="bg-slate-900/90 border border-slate-800 p-4 sm:p-6 rounded-2xl sm:rounded-3xl space-y-4 shadow-xl">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-3">
-                <div>
-                    <div class="flex items-center gap-2 mb-1">
-                        <span class="p-1.5 bg-blue-500/10 text-blue-400 rounded-lg">
-                            <i data-lucide="calendar-clock" class="w-4 h-4"></i>
-                        </span>
-                        <h2 class="text-sm sm:text-base font-black text-white">Simulatore di Rendimento nel Tempo</h2>
-                    </div>
-                    <p class="text-[11px] sm:text-xs text-slate-400">Verifica i guadagni simulando la partenza da una data specifica.</p>
-                </div>
-
-                <div class="flex flex-wrap items-center gap-2">
-                    <div class="flex items-center gap-2 bg-slate-950 border border-slate-800 px-2.5 py-1.5 rounded-xl">
-                        <span class="text-[10px] sm:text-[11px] text-slate-400 font-semibold">Dal:</span>
-                        <input type="date" id="sim-start-date" onchange="applySimulationDate(this.value)"
-                            class="bg-transparent text-xs text-blue-400 font-mono font-bold focus:outline-none cursor-pointer">
-                    </div>
-
-                    <div class="flex items-center gap-1 bg-slate-950 border border-slate-800 p-1 rounded-xl overflow-x-auto max-w-full">
-                        <button type="button" onclick="setDynamicPreset('today', this)" id="btn-preset-today" class="sim-btn px-2.5 py-1 text-[10px] sm:text-[11px] font-bold rounded-lg border border-transparent text-slate-300 transition whitespace-nowrap">Oggi</button>
-                        <button type="button" onclick="setDynamicPreset('yesterday', this)" id="btn-preset-yesterday" class="sim-btn sim-pill-active px-2.5 py-1 text-[10px] sm:text-[11px] font-bold rounded-lg border border-transparent text-slate-300 transition whitespace-nowrap">Ieri</button>
-                        <button type="button" onclick="setDynamicPreset('7days', this)" id="btn-preset-7days" class="sim-btn px-2.5 py-1 text-[10px] sm:text-[11px] font-bold rounded-lg border border-transparent text-slate-300 transition whitespace-nowrap">Ultimi 7gg</button>
-                        <button type="button" onclick="setDynamicPreset('all', this)" id="btn-preset-all" class="sim-btn px-2.5 py-1 text-[10px] sm:text-[11px] font-bold rounded-lg border border-transparent text-slate-300 transition whitespace-nowrap">Tutto</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3">
-                <div class="bg-slate-950/80 border border-slate-800/80 p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                    <span class="text-[10px] text-slate-400 uppercase tracking-wider block">Profitto Periodo</span>
-                    <div id="sim-profit-units" class="text-xl sm:text-2xl font-mono font-black text-emerald-400 mt-0.5">+0.00u</div>
-                    <div id="sim-profit-fiat" class="text-[11px] font-mono font-bold text-emerald-400 mt-0.5">≈ +0.00 €</div>
-                </div>
-
-                <div class="bg-slate-950/80 border border-slate-800/80 p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                    <span class="text-[10px] text-slate-400 uppercase tracking-wider block">Yield / ROI</span>
-                    <div id="sim-roi" class="text-xl sm:text-2xl font-mono font-black text-white mt-0.5">0.0%</div>
-                    <span class="text-[9px] text-slate-500">Giocate chiuse</span>
-                </div>
-
-                <div class="bg-slate-950/80 border border-slate-800/80 p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                    <span class="text-[10px] text-slate-400 uppercase tracking-wider block">Win Rate</span>
-                    <div id="sim-winrate" class="text-xl sm:text-2xl font-mono font-black text-amber-400 mt-0.5">0.0%</div>
-                    <span class="text-[9px] text-slate-500">Accuratezza esiti</span>
-                </div>
-
-                <div class="bg-slate-950/80 border border-slate-800/80 p-3 sm:p-4 rounded-xl sm:rounded-2xl">
-                    <span class="text-[10px] text-slate-400 uppercase tracking-wider block">Operazioni Chiuse</span>
-                    <div id="sim-resolved-count" class="text-xl sm:text-2xl font-mono font-black text-slate-200 mt-0.5">0</div>
-                    <div class="text-[9px] text-slate-500 mt-0.5"><span id="sim-won-count" class="text-emerald-400 font-bold">0V</span> - <span id="sim-lost-count" class="text-rose-400 font-bold">0P</span></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Rendiconto Finanziario Storico Globale -->
-        <section class="space-y-4">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
-                <div>
-                    <h2 class="text-base sm:text-xl font-black text-white flex items-center gap-2">
-                        <i data-lucide="activity" class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400"></i> Performance Globale Certificata
-                    </h2>
-                    <p class="text-[11px] sm:text-xs text-slate-400">Dati cumulativi di tutto l'archivio.</p>
-                </div>
-
-                <div class="flex items-center justify-between sm:justify-start gap-1 bg-slate-900 border border-slate-800 p-1 rounded-xl w-full sm:w-auto overflow-x-auto">
-                    <span class="text-[10px] text-slate-400 font-bold px-1.5 hidden sm:inline">1u =</span>
-                    <button type="button" onclick="setUnitValue(5, this)" class="unit-btn flex-1 sm:flex-initial px-2 py-1 text-xs font-mono font-bold rounded-lg border border-transparent text-slate-300 hover:text-white transition">5€</button>
-                    <button type="button" onclick="setUnitValue(10, this)" class="unit-btn flex-1 sm:flex-initial px-2 py-1 text-xs font-mono font-bold rounded-lg border border-transparent text-slate-300 hover:text-white transition">10€</button>
-                    <button type="button" onclick="setUnitValue(20, this)" class="unit-btn flex-1 sm:flex-initial px-2 py-1 text-xs font-mono font-bold rounded-lg border border-transparent text-slate-300 hover:text-white transition">20€</button>
-                    <button type="button" onclick="setUnitValue(50, this)" id="default-unit-btn" class="unit-btn unit-pill-active flex-1 sm:flex-initial px-2 py-1 text-xs font-mono font-bold rounded-lg border border-transparent text-slate-300 hover:text-white transition">50€</button>
-                    <button type="button" onclick="setUnitValue(100, this)" class="unit-btn flex-1 sm:flex-initial px-2 py-1 text-xs font-mono font-bold rounded-lg border border-transparent text-slate-300 hover:text-white transition">100€</button>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
-                <div class="bg-slate-900/90 border border-slate-800 p-3.5 sm:p-5 rounded-2xl flex flex-col justify-between shadow-lg">
-                    <div class="flex items-center justify-between text-slate-400 text-[10px] sm:text-xs mb-1">
-                        <span>YIELD / ROI</span>
-                        <i data-lucide="trending-up" class="w-3.5 h-3.5 text-emerald-400"></i>
-                    </div>
-                    <div id="stat-roi" class="text-xl sm:text-3xl font-mono font-black text-emerald-400">+0.0%</div>
-                    <div class="text-[9px] text-slate-500 mt-1">Sul capitale investito</div>
-                </div>
-
-                <div class="bg-slate-900/90 border border-slate-800 p-3.5 sm:p-5 rounded-2xl flex flex-col justify-between shadow-lg">
-                    <div class="flex items-center justify-between text-slate-400 text-[10px] sm:text-xs mb-1">
-                        <span>WIN RATE</span>
-                        <i data-lucide="target" class="w-3.5 h-3.5 text-white"></i>
-                    </div>
-                    <div id="stat-winrate" class="text-xl sm:text-3xl font-mono font-black text-white">0.0%</div>
-                    <div class="text-[9px] text-slate-500 mt-1">Percentuale vincenti</div>
-                </div>
-
-                <div class="bg-slate-900/90 border border-slate-800 p-3.5 sm:p-5 rounded-2xl flex flex-col justify-between shadow-lg">
-                    <div class="flex items-center justify-between text-slate-400 text-[10px] sm:text-xs mb-1">
-                        <span>PROFITTO NETTO</span>
-                        <i data-lucide="wallet" class="w-3.5 h-3.5 text-amber-400"></i>
-                    </div>
-                    <div>
-                        <div id="stat-profit-units" class="text-xl sm:text-3xl font-mono font-black text-amber-400">+0.00u</div>
-                        <div id="stat-profit-fiat" class="text-[11px] sm:text-xs font-mono font-bold text-amber-400 mt-0.5">≈ +0.00 €</div>
-                    </div>
-                    <div class="text-[9px] text-slate-500 mt-1">Guadagno cumulativo</div>
-                </div>
-
-                <div class="bg-slate-900/90 border border-slate-800 p-3.5 sm:p-5 rounded-2xl flex flex-col justify-between shadow-lg">
-                    <div class="flex items-center justify-between text-slate-400 text-[10px] sm:text-xs mb-1">
-                        <span>GIOCATE CHIUSE</span>
-                        <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-slate-400"></i>
-                    </div>
-                    <div id="stat-total-resolved" class="text-xl sm:text-3xl font-mono font-black text-slate-200">0</div>
-                    <div class="text-[9px] text-slate-500 mt-1">Verificate in archivio</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SELEZIONI DEL GIORNO IN VETRINA (CARD CON PARLAY ACCORDION) -->
-        <section class="space-y-4 pt-4 border-t border-slate-800/80">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div>
-                    <h2 class="text-base sm:text-xl font-black text-white flex items-center gap-2">
-                        <i data-lucide="flame" class="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400"></i> Selezioni Aperte del Giorno
-                    </h2>
-                    <p class="text-[11px] sm:text-xs text-slate-400">Pronostici attualmente in monitoraggio.</p>
-                </div>
-                <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20 self-start sm:self-auto font-bold">Verifica Automatica Attiva</span>
-            </div>
-
-            <div id="public-bets-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
-                <!-- Generato via JavaScript -->
-            </div>
-        </section>
-
-        <!-- SEZIONE PERCHÉ FUNZIONA -->
-        <section class="bg-slate-900/50 border border-slate-800/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 space-y-4">
-            <div class="text-center max-w-xl mx-auto space-y-1">
-                <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest font-bold">Protocollo Operativo</span>
-                <h3 class="text-lg sm:text-2xl font-black text-white">Perché Funziona nel Lungo Termine</h3>
-                <p class="text-xs text-slate-400">Nessuna giocata casuale. Il betting quantitativo sfrutta il vantaggio matematico sul banco (Expected Value positivo).</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 text-xs">
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1.5">
-                    <div class="text-emerald-400 font-bold flex items-center gap-1.5"><i data-lucide="crosshair" class="w-4 h-4"></i> Selezione Rigorosa</div>
-                    <p class="text-slate-400">Ogni pronostico supera un test incrociato di quote e probabilità reali calcolate da modelli Poisson e intelligenze artificiali esterne.</p>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1.5">
-                    <div class="text-amber-400 font-bold flex items-center gap-1.5"><i data-lucide="shield" class="w-4 h-4"></i> Money Management Rigido</div>
-                    <p class="text-slate-400">L'allocazione del capitale usa porzioni fisse di cassa (1 Unità standard) per eliminare il rischio di rovina ed assorbire le normali serie negative.</p>
-                </div>
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-1.5">
-                    <div class="text-blue-400 font-bold flex items-center gap-1.5"><i data-lucide="check-check" class="w-4 h-4"></i> Verifica Indipendente</div>
-                    <p class="text-slate-400">Nessun esito manipolato: i risultati vengono confrontati via API dai feed ufficiali del calcio mondiale a fine partita.</p>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="py-6 text-center text-xs text-slate-600 border-t border-slate-900 mt-8">
-        AtmBet &copy; 2026. Analisi e Modellazione Quantitativa per il Betting Sportivo.
-    </footer>
-
-    <!-- LOGICA SCRIPT DINAMICO VETRINA -->
-    <script>
-        const PRIMARY_KEY = 'tipster_tracker_v1';
-        const ATMBET_KEY = 'atmbet_bets_data';
-
-        let currentMultiplier = 50;
-        let globalNetProfitUnits = 0;
-        let currentSimStartDate = '2026-10-25';
-
-        function getLocalDateString(d) {
-            const year = d.getFullYear();
-            const month = String(d.getMonth() + 1).padStart(2, '0');
-            const day = String(d.getDate()).padStart(2, '0');
-            return `${year}-${month}-${day}`;
-        }
-
-        function setupDynamicDatePresets() {
-            const today = new Date();
-            const yesterday = new Date();
-            yesterday.setDate(today.getDate() - 1);
-
-            const monthNames = ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"];
-            
-            const todayLabel = `Oggi (${today.getDate()} ${monthNames[today.getMonth()]})`;
-            const yesterdayLabel = `Ieri (${yesterday.getDate()} ${monthNames[yesterday.getMonth()]})`;
-
-            const btnToday = document.getElementById('btn-preset-today');
-            const btnYesterday = document.getElementById('btn-preset-yesterday');
-            const dateInput = document.getElementById('sim-start-date');
-
-            if (btnToday) btnToday.innerText = todayLabel;
-            if (btnYesterday) btnYesterday.innerText = yesterdayLabel;
-
-            const defaultDate = getLocalDateString(yesterday);
-            if (dateInput) {
-                dateInput.value = defaultDate;
-                dateInput.max = getLocalDateString(today);
-            }
-            
-            currentSimStartDate = defaultDate;
-            if (btnYesterday) {
-                document.querySelectorAll('.sim-btn').forEach(b => b.classList.remove('sim-pill-active'));
-                btnYesterday.classList.add('sim-pill-active');
-            }
-        }
-
-        async function fetchAllBets() {
-            let bets = [];
-
-            // 1. Prova a caricare da file bets.json su GitHub
-            try {
-                const res = await fetch('bets.json?t=' + Date.now());
-                if (res.ok) {
-                    const data = await res.json();
-                    if (Array.isArray(data) && data.length > 0) {
-                        bets = data;
-                    }
-                }
-            } catch(e) {}
-
-            // 2. Se non presente o vuoto, fallback su localStorage
-            if (bets.length === 0) {
-                const rawV1 = localStorage.getItem(PRIMARY_KEY);
-                if (rawV1) {
-                    try {
-                        const parsed = JSON.parse(rawV1);
-                        if (Array.isArray(parsed) && parsed.length > 0) bets = parsed;
-                    } catch(e) {}
-                }
-            }
-
-            if (bets.length === 0) {
-                const rawAtm = localStorage.getItem(ATMBET_KEY);
-                if (rawAtm) {
-                    try {
-                        const parsed = JSON.parse(rawAtm);
-                        if (Array.isArray(parsed) && parsed.length > 0) bets = parsed;
-                    } catch(e) {}
-                }
-            }
-
-            return bets.map((b, idx) => ({
-                id: String(b.id || idx),
-                event_date: b.event_date || b.date || '',
-                league: b.league || 'Generale',
-                match_name: b.match_name || b.match || 'Evento',
-                market: b.market || 'Mercato',
-                prediction: b.prediction || b.pick || '-',
-                original_tipster: b.original_tipster || b.tipster || 'AtmBet Selection',
-                odds: parseFloat(b.odds || b.odd || 1.80),
-                stake: parseFloat(b.stake || 1.0) > 10 ? 1.0 : parseFloat(b.stake || 1.0),
-                status: b.status || 'pending',
-                is_published: b.is_published !== undefined ? b.is_published : true
-            })).filter(b => b.is_published === true);
-        }
-
-        function setUnitValue(val, btnElement) {
-            currentMultiplier = parseFloat(val);
-            document.querySelectorAll('.unit-btn').forEach(b => b.classList.remove('unit-pill-active'));
-            if (btnElement) btnElement.classList.add('unit-pill-active');
-            updateMonetaryCalculations();
-            calculateSimulationPerformance();
-        }
-
-        function updateMonetaryCalculations() {
-            const fiatAmount = globalNetProfitUnits * currentMultiplier;
-            const fiatEl = document.getElementById('stat-profit-fiat');
-            if (fiatEl) {
-                fiatEl.innerText = `≈ ${fiatAmount >= 0 ? '+' : ''}${fiatAmount.toFixed(2)} €`;
-                fiatEl.className = `text-[11px] sm:text-xs font-mono font-bold ${fiatAmount >= 0 ? 'text-amber-400' : 'text-rose-400'} mt-0.5`;
-            }
-        }
-
-        function applySimulationDate(dateStr) {
-            currentSimStartDate = dateStr;
-            document.querySelectorAll('.sim-btn').forEach(b => b.classList.remove('sim-pill-active'));
-            calculateSimulationPerformance();
-        }
-
-        function setDynamicPreset(type, btnElement) {
-            const dateInput = document.getElementById('sim-start-date');
-            document.querySelectorAll('.sim-btn').forEach(b => b.classList.remove('sim-pill-active'));
-            if (btnElement) btnElement.classList.add('sim-pill-active');
-
-            const today = new Date();
-
-            if (type === 'today') {
-                currentSimStartDate = getLocalDateString(today);
-            } else if (type === 'yesterday') {
-                const y = new Date();
-                y.setDate(today.getDate() - 1);
-                currentSimStartDate = getLocalDateString(y);
-            } else if (type === '7days') {
-                const d7 = new Date();
-                d7.setDate(today.getDate() - 7);
-                currentSimStartDate = getLocalDateString(d7);
-            } else if (type === 'all') {
-                currentSimStartDate = '2020-01-01';
-            }
-
-            if (dateInput && type !== 'all') {
-                dateInput.value = currentSimStartDate;
-            }
-
-            calculateSimulationPerformance();
-        }
-
-        let cachedAllBets = [];
-
-        function calculateSimulationPerformance() {
-            const simBets = cachedAllBets.filter(b => {
-                const isResolved = b.status === 'won' || b.status === 'lost';
-                if (!isResolved) return false;
-                const betDate = (b.event_date || '').slice(0, 10);
-                return betDate >= currentSimStartDate;
-            });
-
-            const total = simBets.length;
-            const won = simBets.filter(b => b.status === 'won').length;
-            const lost = simBets.filter(b => b.status === 'lost').length;
-            const winRate = total > 0 ? ((won / total) * 100).toFixed(1) : 0;
-
-            let netProfit = 0;
-            let totalStake = 0;
-
-            simBets.forEach(b => {
-                const s = b.stake || 1.0;
-                if (b.status === 'won') {
-                    netProfit += (b.odds - 1) * s;
-                } else if (b.status === 'lost') {
-                    netProfit -= s;
-                }
-                totalStake += s;
-            });
-
-            const roi = totalStake > 0 ? ((netProfit / totalStake) * 100).toFixed(1) : 0;
-            const fiatSimAmount = netProfit * currentMultiplier;
-
-            const profitEl = document.getElementById('sim-profit-units');
-            profitEl.innerText = (netProfit >= 0 ? '+' : '') + netProfit.toFixed(2) + 'u';
-            profitEl.className = `text-xl sm:text-2xl font-mono font-black ${netProfit >= 0 ? 'text-emerald-400' : 'text-rose-400'} mt-0.5`;
-
-            const fiatEl = document.getElementById('sim-profit-fiat');
-            fiatEl.innerText = `≈ ${fiatSimAmount >= 0 ? '+' : ''}${fiatSimAmount.toFixed(2)} €`;
-            fiatEl.className = `text-[11px] font-mono font-bold ${fiatSimAmount >= 0 ? 'text-emerald-400' : 'text-rose-400'} mt-0.5`;
-
-            document.getElementById('sim-roi').innerText = (roi >= 0 ? '+' : '') + roi + '%';
-            document.getElementById('sim-winrate').innerText = winRate + '%';
-            document.getElementById('sim-resolved-count').innerText = total;
-            document.getElementById('sim-won-count').innerText = won + 'V';
-            document.getElementById('sim-lost-count').innerText = lost + 'P';
-        }
-
-        function calculateGlobalPerformance() {
-            const completed = cachedAllBets.filter(b => b.status === 'won' || b.status === 'lost');
-            const total = completed.length;
-            const won = completed.filter(b => b.status === 'won').length;
-            const winRate = total > 0 ? ((won / total) * 100).toFixed(1) : 0;
-
-            let netProfit = 0;
-            let totalStake = 0;
-
-            completed.forEach(b => {
-                const s = b.stake || 1.0;
-                if (b.status === 'won') {
-                    netProfit += (b.odds - 1) * s;
-                } else if (b.status === 'lost') {
-                    netProfit -= s;
-                }
-                totalStake += s;
-            });
-
-            globalNetProfitUnits = netProfit;
-            const roi = totalStake > 0 ? ((netProfit / totalStake) * 100).toFixed(1) : 0;
-
-            document.getElementById('stat-roi').innerText = (roi >= 0 ? '+' : '') + roi + '%';
-            document.getElementById('stat-winrate').innerText = winRate + '%';
-            document.getElementById('stat-profit-units').innerText = (netProfit >= 0 ? '+' : '') + netProfit.toFixed(2) + 'u';
-            document.getElementById('stat-total-resolved').innerText = total;
-
-            updateMonetaryCalculations();
-        }
-
-        window.togglePublicParlay = function(betId) {
-            const box = document.getElementById('public-submatches-' + betId);
-            const btn = document.getElementById('public-btn-toggle-' + betId);
-            if (!box) return;
-            if (box.classList.contains('hidden')) {
-                box.classList.remove('hidden');
-                if (btn) btn.innerHTML = 'Nascondi Match ▲';
-            } else {
-                box.classList.add('hidden');
-                if (btn) btn.innerHTML = 'Mostra Match Multipla ▼';
-            }
-        };
-
-        function renderPublicCards() {
-            const container = document.getElementById('public-bets-container');
-            container.innerHTML = '';
-
-            const pendingBets = cachedAllBets.filter(b => b.status === 'pending');
-
-            if (pendingBets.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center py-8 text-slate-500 font-medium text-xs">Nessuna giocata aperta al momento. Torna più tardi per i nuovi segnali.</div>`;
-                return;
-            }
-
-            pendingBets.forEach(bet => {
-                const card = document.createElement('div');
-                card.className = "bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-5 flex flex-col justify-between shadow-lg hover:border-slate-700 transition";
-
-                let submatchesHtml = '';
-                let toggleBtnHtml = '';
-                if (bet.match_name.includes('/')) {
-                    const subList = bet.match_name.split('/').map(s => s.trim()).filter(Boolean);
-                    toggleBtnHtml = `
-                        <button type="button" id="public-btn-toggle-${bet.id}" onclick="togglePublicParlay('${bet.id}')" class="text-[10px] font-bold text-emerald-400 hover:text-emerald-300 py-1 px-2 rounded bg-emerald-500/10 border border-emerald-500/20 transition mt-2">
-                            Mostra Match Multipla (${subList.length}) ▼
-                        </button>
-                    `;
-                    submatchesHtml = `
-                        <div id="public-submatches-${bet.id}" class="hidden space-y-1.5 mt-2 pt-2 border-t border-slate-800/80">
-                            ${subList.map((m, idx) => `
-                                <div class="bg-slate-950 p-2 rounded-lg border border-slate-800 flex items-center justify-between text-[11px]">
-                                    <span class="font-bold text-slate-200">${idx+1}. ${m}</span>
-                                    <span class="text-[9px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20">Evento ${idx+1}</span>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-
-                card.innerHTML = `
-                    <div>
-                        <div class="flex items-center justify-between text-xs text-slate-400 mb-2">
-                            <span class="bg-slate-950 px-2 py-0.5 rounded border border-slate-800 text-[10px] sm:text-[11px] font-medium">${bet.league}</span>
-                            <span class="text-[10px] text-slate-500 font-mono">${bet.event_date}</span>
-                        </div>
-                        <h3 class="text-sm sm:text-base font-bold text-white mb-2 leading-snug break-words">${bet.match_name}</h3>
-                        ${toggleBtnHtml}
-                        ${submatchesHtml}
-
-                        <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-800/80 my-3">
-                            <div class="text-[9px] uppercase font-mono tracking-widest text-slate-500 mb-1">Dettagli Segnale:</div>
-                            <div class="flex items-center justify-between py-1">
-                                <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="lock" class="w-3.5 h-3.5 text-amber-400"></i> Quota & Mercato Riservati</span>
-                                <a href="auth.html?mode=register" class="text-[10px] bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-1 rounded-lg font-bold transition">
-                                    Sblocca VIP
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-2.5 border-t border-slate-800/80 flex items-center justify-between text-xs font-medium">
-                        <div>
-                            <span class="text-slate-500 text-[10px]">Stake:</span>
-                            <span class="text-white font-mono font-bold ml-1">${bet.stake.toFixed(1)}u</span>
-                        </div>
-                        <div>
-                            <span class="text-emerald-400 font-bold uppercase text-[9px] bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20 truncate max-w-[120px] inline-block text-right">${bet.original_tipster}</span>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-
-            lucide.createIcons();
-        }
-
-        document.addEventListener('DOMContentLoaded', async () => {
-            setupDynamicDatePresets();
-            cachedAllBets = await fetchAllBets();
-            calculateGlobalPerformance();
-            calculateSimulationPerformance();
-            renderPublicCards();
-            lucide.createIcons();
-        });
-    </script>
+  </header>
+
+  <div class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="pill">● Algoritmo Matematico Operativo 2026</div>
+      <h1>Il Betting Tradizionale È Morto.<br>Benvenuto nel <span>Metodo Quantitativo</span>.</h1>
+      <p>I bookmaker usano la matematica contro di te. Noi applichiamo modelli bivariati Dixon-Coles e il criterio Quarter-Kelly per invertire il vantaggio statistico a tuo favore.</p>
+      
+      <div class="btn-group">
+        <!-- SOSTITUISCI CON IL TUO BOT TELEGRAM O LINK TRIBUTE -->
+        <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary">
+          <span>🚀 Accedi al Canale VIP su Telegram</span>
+        </a>
+        <a href="tracker.html" class="btn-secondary">
+          <span>Verifica lo Storico Certificato ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- LIVE STATS STRIP -->
+    <section class="kpi-container">
+      <div class="kpi-box">
+        <div class="kpi-title">Soglia Minima Sniper</div>
+        <div class="kpi-val green">≥ 65%</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-title">Win Rate Certificato</div>
+        <div class="kpi-val green" id="winRateVal">--%</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-title">ROI Netto Medio</div>
+        <div class="kpi-val green" id="roiVal">--%</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-title">Operazioni Concluse</div>
+        <div class="kpi-val" id="totalBetsVal">--</div>
+      </div>
+    </section>
+
+    <!-- TABELLA COMPARATIVA -->
+    <section>
+      <div class="section-title">
+        <h2>Perché il 96% degli Scommettitori Perde</h2>
+        <p>Il confronto netto tra il comportamento del pubblico comune e l'approccio istituzionale AtmBetSignal.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th style="width: 28%;">Parametro</th>
+              <th style="width: 36%;">Tipster Comune / Pubblico</th>
+              <th class="col-highlight" style="width: 36%;">🏧 Modello Quantitativo AtmBet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Scelta delle Giocate</strong></td>
+              <td>Ispirazione da tifoso, schedine multiple a quota impossibile</td>
+              <td class="col-highlight">Solo singole con probabilità oggettiva ≥ 65% e quota ≥ 1.40</td>
+            </tr>
+            <tr>
+              <td><strong>Modello di Calcolo</strong></td>
+              <td>"Sensazione", statistiche generiche o tabelle superficiali</td>
+              <td class="col-highlight">Distribuzione bivariata Dixon-Coles con correzione &tau; e profili lega</td>
+            </tr>
+            <tr>
+              <td><strong>Gestione del Capitale</strong></td>
+              <td>Puntate a caso, martingale o rincorsa furiosa dopo una perdita</td>
+              <td class="col-highlight">Quarter-Kelly rigoroso: max 2.5% di bankroll per singola operazione</td>
+            </tr>
+            <tr>
+              <td><strong>Trasparenza Storico</strong></td>
+              <td>Screenshot Telegram ritagliati, giocate cancellate a posteriori</td>
+              <td class="col-highlight">100% Verificabile e immutabile su codice open source GitHub Pages</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- I 4 PILASTRI SIMMETRICI -->
+    <section>
+      <div class="section-title">
+        <h2>L'Architettura dietro a Ogni Segnale</h2>
+        <p>Un processo quantitativo a 4 stadi completamente automatizzato.</p>
+      </div>
+
+      <div class="grid-4">
+        <!-- BOX 1 -->
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Scansione Oraria</h3>
+          <p>Interroga costantemente i bookmaker europei per estrarre le quote aggregate ed eliminare istantaneamente l'overround (aggio del banco).</p>
+        </div>
+
+        <!-- BOX 2 -->
+        <div class="feature-card">
+          <div class="feature-icon">📐</div>
+          <h3>Matrice Dixon-Coles</h3>
+          <p>Corregge la classica legge di Poisson integrando il coefficiente &tau; per i pareggi e i punteggi bassi con profili statistici per singolo campionato.</p>
+        </div>
+
+        <!-- BOX 3 -->
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3>Filtro Sniper Anti-Trappola</h3>
+          <p>Nessun volume forzato: se una partita non supera la probabilità minima certificata del 65%, viene scartata per preservare il capitale.</p>
+        </div>
+
+        <!-- BOX 4 -->
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <h3>Money Management Kelly</h3>
+          <p>Ogni giocata calcola lo stake frazionario (Quarter-Kelly con cap al 2.5%) per massimizzare la crescita della cassa controllando i drawdown.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING VIP -->
+    <section class="vip-card">
+      <div class="vip-tag">ACCESSO ESCLUSIVO</div>
+      <h2 style="font-size: 2rem; letter-spacing: -0.5px;">Community VIP AtmBetSignal</h2>
+      <p style="color: var(--text-muted); margin-top: 8px;">Ricevi ogni mattina alle ore 08:00 la Top 5 ad altissima probabilità con notifiche istantanee.</p>
+      
+      <div class="price-num">29€</div>
+      <div class="price-sub">al mese • Cancella quando vuoi con 1 clic</div>
+
+      <ul class="benefits-list">
+        <li><span>✓</span> Top 5 giornaliera ad altissima probabilità (≥ 65%)</li>
+        <li><span>✓</span> Dimensionamento matematico dello Stake con Quarter-Kelly</li>
+        <li><span>✓</span> Watchlist Radar (Top 10) per studio statistico extra</li>
+        <li><span>✓</span> Notifiche istantanee ogni mattina sul Canale Privato VIP</li>
+        <li><span>✓</span> Storico 100% trasparente certificato su GitHub Pages</li>
+      </ul>
+
+      <!-- LINK DI ISCRIZIONE -->
+      <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 16px 0;">
+        Attiva Abbonamento VIP su Telegram
+      </a>
+      <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 14px;">Attivazione istantanea del canale VIP subito dopo l'accesso</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-container">
+      <div class="section-title">
+        <h2>Domande Frequenti</h2>
+      </div>
+
+      <div class="faq-item">
+        <h4>Come ricevo i segnali una volta abbonato?</h4>
+        <p>I pronostici vengono spediti ogni mattina alle ore 08:00 UTC sul Canale Privato Telegram riservato ai membri VIP, completi di partita, quota, probabilità stimata e percentuale di stake consigliata.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Le quote delle giocate sono accessibili su tutti i bookmaker?</h4>
+        <p>Sì. Le giocate utilizzano mercati standard (1X2, Doppie Chance, Over/Under 2.5, Gol/NoGol) disponibili su qualsiasi bookmaker con licenza regolare.</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Come posso verificare che i risultati siano autentici?</h4>
+        <p>Tutti gli esiti sono caricati in modo immutabile su questo repository GitHub. La pagina "Storico Live" calcola automaticamente Win Rate ed Equity Line senza possibilità di modifica arbitraria.</p>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>AtmBetSignal Quantitative Intelligence © 2026. Tutti i diritti riservati.</p>
+    <p style="margin-top: 6px; font-size: 0.78rem;">Il gioco d'azzardo può creare dipendenza patologica ed è vietato ai minori di 18 anni. I dati storici non costituiscono garanzia di profitti futuri.</p>
+  </footer>
+
+  <script>
+    fetch('data/tracker.json?nocache=' + new Date().getTime())
+      .then(r => r.json())
+      .then(d => {
+        const bets = d.bets || [];
+        const settled = bets.filter(b => b.status === 'WON' || b.status === 'LOST');
+        const won = settled.filter(b => b.status === 'WON').length;
+        const total = settled.length;
+        const netProfit = settled.reduce((acc, b) => acc + (b.profit || 0), 0);
+
+        const winRate = total > 0 ? (won / total * 100).toFixed(1) : '0.0';
+        const roi = total > 0 ? (netProfit / total * 100).toFixed(1) : '0.0';
+
+        document.getElementById('winRateVal').innerText = winRate + '%';
+        document.getElementById('roiVal').innerText = (roi > 0 ? '+' : '') + roi + '%';
+        document.getElementById('totalBetsVal').innerText = total;
+      })
+      .catch(() => {
+        document.getElementById('winRateVal').innerText = '0.0%';
+        document.getElementById('roiVal').innerText = '+0.0%';
+        document.getElementById('totalBetsVal').innerText = '0';
+      });
+  </script>
 </body>
 </html>
