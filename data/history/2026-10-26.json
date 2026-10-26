@@ -1,8 +1,8 @@
 {
   "date": "2026-10-26",
   "weekday": 0,
-  "max_allowed_today": 7,
-  "generated_at": "2026-10-26T04:15:59.407983+00:00",
+  "target_count": 5,
+  "generated_at": "2026-10-26T07:15:42.371189+00:00",
   "total_fixtures_scanned": 6,
   "candidates_above_65pct": 1,
   "selected_picks_count": 1,
@@ -14,12 +14,12 @@
       "date": "2026-10-26",
       "market_type": "1",
       "outcome_label": "Vittoria Sevilla",
-      "odd": 1.91,
-      "estimated_probability": 0.6881,
-      "implied_probability": 0.5236,
-      "edge": 0.1646,
+      "odd": 1.87,
+      "estimated_probability": 0.7009,
+      "implied_probability": 0.5348,
+      "edge": 0.1661,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.91 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.87 | Stake: 2.5%"
     }
   },
   "all_selected_picks": [
@@ -30,12 +30,12 @@
       "date": "2026-10-26",
       "market_type": "1",
       "outcome_label": "Vittoria Sevilla",
-      "odd": 1.91,
-      "estimated_probability": 0.6881,
-      "implied_probability": 0.5236,
-      "edge": 0.1646,
+      "odd": 1.87,
+      "estimated_probability": 0.7009,
+      "implied_probability": 0.5348,
+      "edge": 0.1661,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.91 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.87 | Stake: 2.5%"
     }
   ],
   "all_candidates": [
@@ -46,12 +46,12 @@
       "date": "2026-10-26",
       "market_type": "1",
       "outcome_label": "Vittoria Sevilla",
-      "odd": 1.91,
-      "estimated_probability": 0.6881,
-      "implied_probability": 0.5236,
-      "edge": 0.1646,
+      "odd": 1.87,
+      "estimated_probability": 0.7009,
+      "implied_probability": 0.5348,
+      "edge": 0.1661,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.91 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.87 | Stake: 2.5%"
     }
   ]
 }
