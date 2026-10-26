@@ -1,10 +1,11 @@
 """
-analyze.py — AtmBetSignal Dynamic Value Engine.
-- Nessun freno artificiale: prende tutti gli eventi ad alta probabilità (>= 65%).
-- Tetto massimo di sicurezza: fino a 7 pronostici al giorno (così non perdi i turni infrasettimanali da 5-6 eventi).
-- Quota minima 1.40, massima 3.00.
-- Modello Dixon-Coles con correzione per leghe e correlazione rho.
-- Quarter-Kelly dinamico per il corretto dimensionamento del bankroll.
+analyze.py — AtmBetSignal Top 5 High-Probability Engine.
+- Estrae esattamente i migliori 5 pronostici del giorno (Top 5).
+- Vincolo rigido di qualità: probabilità stimata >= 65%.
+- Quota minima: 1.40, massima: 3.00.
+- Calcolo con Dixon-Coles bivariato e profili gol specifici per campionato.
+- Calcolo dello stake ottimale tramite Criterio Quarter-Kelly (cap al 2.5%).
+- Registrazione nel tracker (data/tracker.json) come PENDING.
 """
 
 import json
@@ -24,16 +25,12 @@ HISTORY_DIR.mkdir(parents=True, exist_ok=True)
 FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 TRACKER_PATH = DATA_DIR / "tracker.json"
 
-# Parametri Qualitativi
-MIN_PROBABILITY_THRESHOLD = 0.65  # Minimo 65% di probabilità stimata
+# Parametri Rigidi
+TARGET_PICKS_COUNT = 5            # Esattamente la Top 5 di giornata
+MIN_PROBABILITY_THRESHOLD = 0.65  # Soglia invalicabile >= 65%
 MIN_ODD = 1.40
 MAX_ODD = 3.00
 MAX_KELLY_STAKE = 2.5
-
-# TETTO MASSIMO DI SICUREZZA:
-# Permette di prendere fino a 6-7 eventi se la giornata è ricca (es. Coppe o Weekend),
-# ma evita di scommettere su 15 partite contemporaneamente.
-MAX_DAILY_PICKS = 7
 
 LEAGUE_GOAL_PROFILES = {
     "Serie A": (1.46, 1.14),
@@ -170,9 +167,11 @@ def build_candidates(fixtures: list) -> list:
             odd_val = out["odd"]
             prob_val = out["prob"]
 
+            # Quota minima 1.40 e massima 3.00
             if odd_val < MIN_ODD or odd_val > MAX_ODD:
                 continue
 
+            # Filtro probabilità minima 65%
             if prob_val < MIN_PROBABILITY_THRESHOLD:
                 continue
 
@@ -198,11 +197,11 @@ def build_candidates(fixtures: list) -> list:
     return candidates
 
 
-def select_dynamic_picks(candidates: list) -> list:
+def select_top_5_picks(candidates: list) -> list:
     used_fixtures = set()
     selected = []
 
-    # Ordina per Massima Probabilità Assoluta Decrescente (e miglior Edge a parità)
+    # Priorità assoluta: massima probabilità stimata decrescente
     ranked = sorted(
         candidates,
         key=lambda c: (c["estimated_probability"], c["edge"], c["odd"]),
@@ -213,7 +212,7 @@ def select_dynamic_picks(candidates: list) -> list:
         if c["fixture_id"] not in used_fixtures:
             selected.append(c)
             used_fixtures.add(c["fixture_id"])
-        if len(selected) == MAX_DAILY_PICKS:
+        if len(selected) == TARGET_PICKS_COUNT:
             break
 
     return selected
@@ -263,19 +262,19 @@ def main():
 
     fixtures = json.loads(FIXTURES_PATH.read_text(encoding="utf-8"))
     candidates = build_candidates(fixtures)
-    picks = select_dynamic_picks(candidates)
+    picks = select_top_5_picks(candidates)
 
     record_picks_to_tracker(picks)
 
     picks_dict = {}
-    keys = ["conservativo", "consigliato", "hard"]
-    for idx, p in enumerate(picks[:3]):
+    keys = ["conservativo", "consigliato", "hard", "pick4", "pick5"]
+    for idx, p in enumerate(picks[:5]):
         picks_dict[keys[idx]] = p
 
     output = {
         "date": TODAY,
         "weekday": WEEKDAY,
-        "max_allowed_today": MAX_DAILY_PICKS,
+        "target_count": TARGET_PICKS_COUNT,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_fixtures_scanned": len(fixtures),
         "candidates_above_65pct": len(candidates),
@@ -287,7 +286,7 @@ def main():
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Dynamic Engine: {len(picks)} pronostici selezionati oggi con probabilità >= 65%.")
+    print(f"AtmBetSignal: Selezionate le Top {len(picks)} giocate (Target: 5, Soglia >= 65%).")
 
 
 if __name__ == "__main__":
