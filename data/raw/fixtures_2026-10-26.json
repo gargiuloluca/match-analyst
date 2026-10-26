@@ -1,0 +1,128 @@
+[
+  {
+    "fixture_id": "85e464708d03287f24590e1478aeca31",
+    "league": "La Liga",
+    "odds_key": "soccer_spain_la_liga",
+    "commence_time": "2026-10-26T20:00:00Z",
+    "home_team": {
+      "name": "Sevilla"
+    },
+    "away_team": {
+      "name": "CA Osasuna"
+    },
+    "bookmaker_count": 20,
+    "odds": {
+      "home": 1.91,
+      "draw": 3.45,
+      "away": 4.3
+    }
+  },
+  {
+    "fixture_id": "54ecd2cf77168d62e84f2fd5ccc54a82",
+    "league": "Süper Lig (Turchia)",
+    "odds_key": "soccer_turkey_super_league",
+    "commence_time": "2026-10-26T16:00:00Z",
+    "home_team": {
+      "name": "Besiktas JK"
+    },
+    "away_team": {
+      "name": "Basaksehir"
+    },
+    "bookmaker_count": 21,
+    "odds": {
+      "home": 1.35,
+      "draw": 5.25,
+      "away": 7.42
+    }
+  },
+  {
+    "fixture_id": "e1c9aa56abe5e911eb57403d78376270",
+    "league": "Süper Lig (Turchia)",
+    "odds_key": "soccer_turkey_super_league",
+    "commence_time": "2026-10-26T16:00:00Z",
+    "home_team": {
+      "name": "Çaykur Rizespor"
+    },
+    "away_team": {
+      "name": "Trabzonspor"
+    },
+    "bookmaker_count": 21,
+    "odds": {
+      "home": 3.55,
+      "draw": 3.75,
+      "away": 1.91
+    }
+  },
+  {
+    "fixture_id": "a05d15a5f230d25da72b18dc92084f8f",
+    "league": "Süper Lig (Turchia)",
+    "odds_key": "soccer_turkey_super_league",
+    "commence_time": "2026-10-26T18:30:00Z",
+    "home_team": {
+      "name": "Galatasaray"
+    },
+    "away_team": {
+      "name": "Fenerbahce"
+    },
+    "bookmaker_count": 21,
+    "odds": {
+      "home": 2.02,
+      "draw": 3.75,
+      "away": 3.14
+    }
+  },
+  {
+    "fixture_id": "51f2cea4f466d0df8335ff12dab72dd4",
+    "league": "Brasileirão (Brasile)",
+    "odds_key": "soccer_brazil_campeonato",
+    "commence_time": "2026-10-26T22:30:00Z",
+    "home_team": {
+      "name": "Coritiba"
+    },
+    "away_team": {
+      "name": "Grêmio"
+    },
+    "bookmaker_count": 23,
+    "odds": {
+      "home": 2.1,
+      "draw": 3.4,
+      "away": 3.29
+    }
+  },
+  {
+    "fixture_id": "9d5238c50f04d24ae92e556a438e188e",
+    "league": "Brasileirão (Brasile)",
+    "odds_key": "soccer_brazil_campeonato",
+    "commence_time": "2026-10-26T23:00:00Z",
+    "home_team": {
+      "name": "Flamengo"
+    },
+    "away_team": {
+      "name": "Atletico Mineiro"
+    },
+    "bookmaker_count": 24,
+    "odds": {
+      "home": 1.3,
+      "draw": 5.25,
+      "away": 9.0
+    }
+  },
+  {
+    "fixture_id": "f635049de97c44eff491a027de0e4863",
+    "league": "MLS (USA)",
+    "odds_key": "soccer_usa_mls",
+    "commence_time": "2026-10-26T01:00:00Z",
+    "home_team": {
+      "name": "Los Angeles FC"
+    },
+    "away_team": {
+      "name": "LA Galaxy"
+    },
+    "bookmaker_count": 23,
+    "odds": {
+      "home": 1.55,
+      "draw": 4.5,
+      "away": 5.0
+    }
+  }
+]

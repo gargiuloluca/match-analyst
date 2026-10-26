@@ -1,0 +1,113 @@
+{
+  "date": "2026-10-26",
+  "weekday": 0,
+  "max_allowed_today": 7,
+  "generated_at": "2026-10-26T00:58:48.885049+00:00",
+  "total_fixtures_scanned": 7,
+  "candidates_above_65pct": 3,
+  "selected_picks_count": 2,
+  "picks": {
+    "conservativo": {
+      "fixture_id": "f635049de97c44eff491a027de0e4863",
+      "league": "MLS (USA)",
+      "match": "Los Angeles FC - LA Galaxy",
+      "date": "2026-10-26",
+      "market_type": "1",
+      "outcome_label": "Vittoria Los Angeles FC",
+      "odd": 1.55,
+      "estimated_probability": 0.7971,
+      "implied_probability": 0.6452,
+      "edge": 0.152,
+      "suggested_stake_pct": 2.5,
+      "notes": "Lega: MLS (USA) | Quota: 1.55 | Stake: 2.5%"
+    },
+    "consigliato": {
+      "fixture_id": "85e464708d03287f24590e1478aeca31",
+      "league": "La Liga",
+      "match": "Sevilla - CA Osasuna",
+      "date": "2026-10-26",
+      "market_type": "1",
+      "outcome_label": "Vittoria Sevilla",
+      "odd": 1.91,
+      "estimated_probability": 0.6881,
+      "implied_probability": 0.5236,
+      "edge": 0.1646,
+      "suggested_stake_pct": 2.5,
+      "notes": "Lega: La Liga | Quota: 1.91 | Stake: 2.5%"
+    }
+  },
+  "all_selected_picks": [
+    {
+      "fixture_id": "f635049de97c44eff491a027de0e4863",
+      "league": "MLS (USA)",
+      "match": "Los Angeles FC - LA Galaxy",
+      "date": "2026-10-26",
+      "market_type": "1",
+      "outcome_label": "Vittoria Los Angeles FC",
+      "odd": 1.55,
+      "estimated_probability": 0.7971,
+      "implied_probability": 0.6452,
+      "edge": 0.152,
+      "suggested_stake_pct": 2.5,
+      "notes": "Lega: MLS (USA) | Quota: 1.55 | Stake: 2.5%"
+    },
+    {
+      "fixture_id": "85e464708d03287f24590e1478aeca31",
+      "league": "La Liga",
+      "match": "Sevilla - CA Osasuna",
+      "date": "2026-10-26",
+      "market_type": "1",
+      "outcome_label": "Vittoria Sevilla",
+      "odd": 1.91,
+      "estimated_probability": 0.6881,
+      "implied_probability": 0.5236,
+      "edge": 0.1646,
+      "suggested_stake_pct": 2.5,
+      "notes": "Lega: La Liga | Quota: 1.91 | Stake: 2.5%"
+    }
+  ],
+  "all_candidates": [
+    {
+      "fixture_id": "f635049de97c44eff491a027de0e4863",
+      "league": "MLS (USA)",
+      "match": "Los Angeles FC - LA Galaxy",
+      "date": "2026-10-26",
+      "market_type": "1",
+      "outcome_label": "Vittoria Los Angeles FC",
+      "odd": 1.55,
+      "estimated_probability": 0.7971,
+      "implied_probability": 0.6452,
+      "edge": 0.152,
+      "suggested_stake_pct": 2.5,
+      "notes": "Lega: MLS (USA) | Quota: 1.55 | Stake: 2.5%"
+    },
+    {
+      "fixture_id": "85e464708d03287f24590e1478aeca31",
+      "league": "La Liga",
+      "match": "Sevilla - CA Osasuna",
+      "date": "2026-10-26",
+      "market_type": "1",
+      "outcome_label": "Vittoria Sevilla",
+      "odd": 1.91,
+      "estimated_probability": 0.6881,
+      "implied_probability": 0.5236,
+      "edge": 0.1646,
+      "suggested_stake_pct": 2.5,
+      "notes": "Lega: La Liga | Quota: 1.91 | Stake: 2.5%"
+    },
+    {
+      "fixture_id": "f635049de97c44eff491a027de0e4863",
+      "league": "MLS (USA)",
+      "match": "Los Angeles FC - LA Galaxy",
+      "date": "2026-10-26",
+      "market_type": "Over2.5",
+      "outcome_label": "Over 2.5 Gol",
+      "odd": 1.43,
+      "estimated_probability": 0.6704,
+      "implied_probability": 0.6993,
+      "edge": -0.0289,
+      "suggested_stake_pct": 0.5,
+      "notes": "Lega: MLS (USA) | Quota: 1.43 | Stake: 0.5%"
+    }
+  ]
+}
