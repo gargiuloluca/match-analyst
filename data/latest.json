@@ -2,10 +2,9 @@
   "date": "2026-10-26",
   "weekday": 0,
   "target_count": 5,
-  "generated_at": "2026-10-26T07:15:42.371189+00:00",
+  "generated_at": "2026-10-26T09:49:54.520492+00:00",
   "total_fixtures_scanned": 6,
-  "candidates_above_65pct": 1,
-  "selected_picks_count": 1,
+  "official_picks_count": 1,
   "picks": {
     "conservativo": {
       "fixture_id": "85e464708d03287f24590e1478aeca31",
@@ -14,12 +13,12 @@
       "date": "2026-10-26",
       "market_type": "1",
       "outcome_label": "Vittoria Sevilla",
-      "odd": 1.87,
-      "estimated_probability": 0.7009,
-      "implied_probability": 0.5348,
-      "edge": 0.1661,
+      "odd": 1.88,
+      "estimated_probability": 0.6993,
+      "implied_probability": 0.5319,
+      "edge": 0.1674,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.87 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.88 | Stake: 2.5%"
     }
   },
   "all_selected_picks": [
@@ -30,28 +29,84 @@
       "date": "2026-10-26",
       "market_type": "1",
       "outcome_label": "Vittoria Sevilla",
-      "odd": 1.87,
-      "estimated_probability": 0.7009,
-      "implied_probability": 0.5348,
-      "edge": 0.1661,
+      "odd": 1.88,
+      "estimated_probability": 0.6993,
+      "implied_probability": 0.5319,
+      "edge": 0.1674,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.87 | Stake: 2.5%"
+      "notes": "Lega: La Liga | Quota: 1.88 | Stake: 2.5%"
     }
   ],
-  "all_candidates": [
+  "radar_watchlist": [
     {
-      "fixture_id": "85e464708d03287f24590e1478aeca31",
-      "league": "La Liga",
-      "match": "Sevilla - CA Osasuna",
+      "fixture_id": "54ecd2cf77168d62e84f2fd5ccc54a82",
+      "league": "Süper Lig (Turchia)",
+      "match": "Besiktas JK - Basaksehir",
+      "date": "2026-10-26",
+      "market_type": "Over2.5",
+      "outcome_label": "Over 2.5 Gol",
+      "odd": 1.51,
+      "estimated_probability": 0.6352,
+      "implied_probability": 0.6623,
+      "edge": -0.0271,
+      "suggested_stake_pct": 0.5,
+      "notes": "Lega: Süper Lig (Turchia) | Quota: 1.51 | Stake: 0.5%"
+    },
+    {
+      "fixture_id": "9d5238c50f04d24ae92e556a438e188e",
+      "league": "Brasileirão (Brasile)",
+      "match": "Flamengo - Atletico Mineiro",
+      "date": "2026-10-26",
+      "market_type": "Over2.5",
+      "outcome_label": "Over 2.5 Gol",
+      "odd": 1.55,
+      "estimated_probability": 0.6212,
+      "implied_probability": 0.6452,
+      "edge": -0.024,
+      "suggested_stake_pct": 0.5,
+      "notes": "Lega: Brasileirão (Brasile) | Quota: 1.55 | Stake: 0.5%"
+    },
+    {
+      "fixture_id": "a05d15a5f230d25da72b18dc92084f8f",
+      "league": "Süper Lig (Turchia)",
+      "match": "Galatasaray - Fenerbahce",
       "date": "2026-10-26",
       "market_type": "1",
-      "outcome_label": "Vittoria Sevilla",
-      "odd": 1.87,
-      "estimated_probability": 0.7009,
-      "implied_probability": 0.5348,
-      "edge": 0.1661,
+      "outcome_label": "Vittoria Galatasaray",
+      "odd": 1.98,
+      "estimated_probability": 0.5881,
+      "implied_probability": 0.5051,
+      "edge": 0.083,
       "suggested_stake_pct": 2.5,
-      "notes": "Lega: La Liga | Quota: 1.87 | Stake: 2.5%"
+      "notes": "Lega: Süper Lig (Turchia) | Quota: 1.98 | Stake: 2.5%"
+    },
+    {
+      "fixture_id": "51f2cea4f466d0df8335ff12dab72dd4",
+      "league": "Brasileirão (Brasile)",
+      "match": "Coritiba - Grêmio",
+      "date": "2026-10-26",
+      "market_type": "1",
+      "outcome_label": "Vittoria Coritiba",
+      "odd": 2.15,
+      "estimated_probability": 0.566,
+      "implied_probability": 0.4651,
+      "edge": 0.1009,
+      "suggested_stake_pct": 2.5,
+      "notes": "Lega: Brasileirão (Brasile) | Quota: 2.15 | Stake: 2.5%"
+    },
+    {
+      "fixture_id": "e1c9aa56abe5e911eb57403d78376270",
+      "league": "Süper Lig (Turchia)",
+      "match": "Çaykur Rizespor - Trabzonspor",
+      "date": "2026-10-26",
+      "market_type": "GG",
+      "outcome_label": "Goal (Entrambe a segno)",
+      "odd": 1.73,
+      "estimated_probability": 0.5549,
+      "implied_probability": 0.578,
+      "edge": -0.0231,
+      "suggested_stake_pct": 0.5,
+      "notes": "Lega: Süper Lig (Turchia) | Quota: 1.73 | Stake: 0.5%"
     }
   ]
 }

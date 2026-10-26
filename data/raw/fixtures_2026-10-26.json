@@ -10,10 +10,10 @@
     "away_team": {
       "name": "CA Osasuna"
     },
-    "bookmaker_count": 21,
+    "bookmaker_count": 20,
     "odds": {
-      "home": 1.87,
-      "draw": 3.4,
+      "home": 1.88,
+      "draw": 3.45,
       "away": 4.4
     }
   },
@@ -31,8 +31,8 @@
     "bookmaker_count": 21,
     "odds": {
       "home": 1.35,
-      "draw": 5.2,
-      "away": 7.35
+      "draw": 5.3,
+      "away": 7.5
     }
   },
   {
@@ -48,9 +48,9 @@
     },
     "bookmaker_count": 21,
     "odds": {
-      "home": 3.55,
-      "draw": 3.75,
-      "away": 1.91
+      "home": 3.6,
+      "draw": 3.84,
+      "away": 1.85
     }
   },
   {
@@ -66,9 +66,9 @@
     },
     "bookmaker_count": 21,
     "odds": {
-      "home": 2.0,
-      "draw": 3.78,
-      "away": 3.15
+      "home": 1.98,
+      "draw": 3.8,
+      "away": 3.2
     }
   },
   {
@@ -84,7 +84,7 @@
     },
     "bookmaker_count": 23,
     "odds": {
-      "home": 2.17,
+      "home": 2.15,
       "draw": 3.3,
       "away": 3.25
     }
@@ -102,9 +102,9 @@
     },
     "bookmaker_count": 24,
     "odds": {
-      "home": 1.29,
-      "draw": 5.5,
-      "away": 9.5
+      "home": 1.26,
+      "draw": 5.7,
+      "away": 10.0
     }
   }
 ]
