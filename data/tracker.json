@@ -1,11 +1,11 @@
 {
-  "total_bets": 1,
+  "total_bets": 0,
   "won": 0,
   "lost": 0,
   "void": 0,
-  "win_rate": 0,
-  "net_profit_units": 0,
-  "roi_pct": 0,
+  "win_rate": 0.0,
+  "net_profit_units": 0.0,
+  "roi_pct": 0.0,
   "bets": [
     {
       "id": "2026-10-26_85e464708d03287f24590e1478aeca31_1",
