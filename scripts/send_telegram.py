@@ -1,9 +1,6 @@
 """
-send_telegram.py — Notifiche Sniper AtmBetSignal.
-Adatta il messaggio in base al giorno:
-- Infrasettimanale: Max 2-3 colpi chirurgici.
-- Weekend: Max 5 selezioni ad altissima probabilità.
-- Se nessuna partita supera il 65%: notifica di protezione del capitale.
+send_telegram.py — Notifiche Top 5 AtmBetSignal.
+Invia su Telegram le migliori 5 operazioni del giorno con probabilità >= 65% e quota >= 1.40.
 """
 
 import os
@@ -23,45 +20,44 @@ def main():
     data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     date_str = data.get("date", "")
     picks = data.get("all_selected_picks", [])
-    weekday = data.get("weekday", 0)
-
-    periodo = "Edizione Weekend" if weekday in (5, 6) else "Edizione Infrasettimanale"
 
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
-    # Se nessuna partita ha superato il 65% di probabilità
+    # Se nessuna partita ha superato la soglia del 65%
     if not picks:
         msg = (
-            f"🏧 <b>AtmBetSignal — {periodo} ({date_str})</b>\n\n"
-            f"🛡️ <b>Capitale Protetto: Nessun segnale oggi.</b>\n"
-            f"Tutte le partite scansionate avevano probabilità &lt; 65% o quote non vantaggiose.\n"
-            f"<i>La regola fondamentale dell'investimento sportivo è preservare il bankroll quando non c'è reale valore.</i>"
+            f"🏧 <b>AtmBetSignal — Selezione Top 5 ({date_str})</b>\n\n"
+            f"🛡️ <b>Capitale Protetto: Nessun segnale conforme oggi.</b>\n"
+            f"Nessuna partita ha raggiunto i parametri minimi di sicurezza (Probabilità ≥ 65% e Quota ≥ 1.40).\n"
+            f"<i>La regola primaria è preservare il capitale quando il mercato non offre valore reale.</i>"
         )
         requests.post(url, json={"chat_id": CHAT_ID, "text": msg, "parse_mode": "HTML"}, timeout=15)
         return
 
-    medaglie = ["🥇", "🥈", "🥉", "🎯", "🎯"]
+    badges = ["🥇", "🥈", "🥉", "4️⃣", "5️⃣"]
     righe = [
-        f"🏧 <b>AtmBetSignal — {periodo} ({date_str})</b>",
-        f"<i>{len(picks)} Operazioni ad Alta Probabilità (Soglia ≥ 65% | Quota ≥ 1.40)</i>\n"
+        f"🏧 <b>AtmBetSignal — I Migliori {len(picks)} Pronostici ({date_str})</b>",
+        f"<i>Selezione Quantitativa ad Altissima Probabilità (≥ 65% | Quota ≥ 1.40)</i>\n"
     ]
 
     for idx, p in enumerate(picks):
-        badge = medaglie[idx] if idx < len(medaglie) else "🎯"
+        icon = badges[idx] if idx < len(badges) else "🎯"
         prob_pct = p['estimated_probability'] * 100
+        edge_pct = (p.get('edge', 0)) * 100
+        sign = "+" if edge_pct >= 0 else ""
         stake = p.get('suggested_stake_pct', 1.0)
 
         righe.append(
-            f"{badge} <b>SELEZIONE #{idx + 1}</b>\n"
+            f"{icon} <b>TOP PICK #{idx + 1}</b>\n"
             f"⚽ <b>{p['match']}</b>\n"
             f"🏆 <i>{p.get('league', 'Campionato')}</i>\n"
-            f"🎯 Giocata: <b>{p['outcome_label']}</b>\n"
+            f"🎯 Esito: <b>{p['outcome_label']}</b>\n"
             f"📈 Quota: <code>{p['odd']:.2f}</code> | Probabilità: <b>{prob_pct:.1f}%</b>\n"
-            f"💰 Stake Suggerito: <b>{stake}% del Bankroll</b>\n"
+            f"💰 Stake Consigliato: <b>{stake}% del Bankroll</b> (Edge: {sign}{edge_pct:.1f}%)\n"
         )
 
-    righe.append("🛡️ <i>Gestione del rischio: Massima disciplina, segui rigorosamente lo stake indicato.</i>")
-    righe.append("🌐 <i>Tracker & Storico certificato su GitHub Pages.</i>")
+    righe.append("🛡️ <i>Risk Management: Giocare solo in singola. Non superare gli stake consigliati.</i>")
+    righe.append("🌐 <i>Equity Line e Storico certificato su GitHub Pages.</i>")
 
     payload = {
         "chat_id": CHAT_ID,
