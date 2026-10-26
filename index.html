@@ -10,7 +10,7 @@
   <style>
     :root {
       --bg: #05070d;
-      --card-bg: rgba(15, 23, 42, 0.7);
+      --card-bg: rgba(15, 23, 42, 0.75);
       --card-border: rgba(255, 255, 255, 0.08);
       --accent: #10b981;
       --accent-glow: rgba(16, 185, 129, 0.25);
@@ -19,7 +19,6 @@
       --gold: #f59e0b;
       --text: #f8fafc;
       --text-muted: #94a3b8;
-      --red: #f43f5e;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -34,10 +33,10 @@
       overflow-x: hidden;
     }
     header {
-      background: rgba(5, 7, 13, 0.85);
+      background: rgba(5, 7, 13, 0.88);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--card-border);
-      padding: 18px 32px;
+      padding: 16px 24px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -48,46 +47,50 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       font-weight: 800;
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       letter-spacing: -0.5px;
     }
     .brand-badge {
       background: var(--accent);
       color: #000;
-      font-size: 0.7rem;
-      padding: 3px 8px;
-      border-radius: 6px;
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 5px;
       font-weight: 800;
       letter-spacing: 0.5px;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
     nav a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      margin-left: 24px;
       transition: all 0.2s;
     }
     nav a:hover, nav a.active { color: #fff; }
     .nav-admin {
       color: var(--gold) !important;
       background: rgba(245, 158, 11, 0.1);
-      padding: 6px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(245, 158, 11, 0.2);
+      padding: 5px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(245, 158, 11, 0.25);
     }
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 24px 80px;
+      padding: 30px 20px 80px;
     }
     
     /* HERO */
     .hero {
       text-align: center;
-      padding: 60px 0 50px;
+      padding: 40px 0 35px;
     }
     .pill {
       display: inline-flex;
@@ -95,24 +98,19 @@
       gap: 8px;
       background: var(--accent-soft);
       border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 6px 18px;
+      padding: 6px 16px;
       border-radius: 30px;
       color: var(--accent);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      margin-bottom: 28px;
-      animation: pulse 3s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-      50% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+      margin-bottom: 22px;
     }
     .hero h1 {
-      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
       font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.1;
-      margin-bottom: 24px;
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+      margin-bottom: 20px;
     }
     .hero h1 span {
       background: linear-gradient(135deg, #10b981 0%, #38bdf8 100%);
@@ -120,27 +118,26 @@
       -webkit-text-fill-color: transparent;
     }
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--text-muted);
-      max-width: 700px;
-      margin: 0 auto 40px;
-      font-weight: 400;
+      max-width: 680px;
+      margin: 0 auto 32px;
     }
     .btn-group {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
     }
     .btn-primary {
       background: var(--accent);
       color: #000;
       font-weight: 700;
-      padding: 16px 36px;
+      padding: 14px 30px;
       border-radius: 10px;
       text-decoration: none;
-      font-size: 1.05rem;
-      box-shadow: 0 6px 25px var(--accent-glow);
+      font-size: 1rem;
+      box-shadow: 0 4px 20px var(--accent-glow);
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
@@ -148,17 +145,17 @@
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 35px rgba(16, 185, 129, 0.4);
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
     }
     .btn-secondary {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--card-border);
       color: #fff;
       font-weight: 600;
-      padding: 16px 32px;
+      padding: 14px 26px;
       border-radius: 10px;
       text-decoration: none;
-      font-size: 1.05rem;
+      font-size: 1rem;
       transition: all 0.2s ease;
     }
     .btn-secondary:hover {
@@ -170,29 +167,29 @@
     .kpi-container {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 24px;
+      border-radius: 14px;
+      padding: 20px 16px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      margin: 50px 0 80px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 40px 0 65px;
       backdrop-filter: blur(10px);
     }
     .kpi-box {
       text-align: center;
-      padding: 10px;
+      padding: 8px;
     }
     .kpi-title {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       font-weight: 600;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     .kpi-val {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 2.1rem;
+      font-size: 1.85rem;
       font-weight: 700;
       color: #fff;
     }
@@ -201,40 +198,44 @@
     /* COMPARISON TABLE */
     .section-title {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 35px;
     }
     .section-title h2 {
-      font-size: 2.2rem;
+      font-size: clamp(1.8rem, 4vw, 2.3rem);
       letter-spacing: -1px;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .section-title p {
       color: var(--text-muted);
-      font-size: 1.05rem;
+      font-size: 1rem;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 75px;
     }
     .comp-table {
       width: 100%;
+      min-width: 620px;
       border-collapse: separate;
       border-spacing: 0;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
-      margin-bottom: 90px;
     }
     .comp-table th, .comp-table td {
-      padding: 20px 24px;
+      padding: 16px 20px;
       text-align: left;
       border-bottom: 1px solid var(--card-border);
     }
     .comp-table th {
       background: rgba(255, 255, 255, 0.02);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       color: var(--text-muted);
     }
-    .comp-table td { font-size: 0.95rem; }
+    .comp-table td { font-size: 0.92rem; }
     .comp-table tr:last-child td { border-bottom: none; }
     .col-highlight {
       background: rgba(16, 185, 129, 0.04);
@@ -244,118 +245,121 @@
       border-right: 1px solid rgba(16, 185, 129, 0.2);
     }
 
-    /* CARDS METHOD */
-    .grid-3 {
+    /* 4 RIQUADRI SIMMETRICI (2X2 SU MOBILE/TABLET, 4 AFFIANCATI SU DESKTOP) */
+    .grid-4 {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-bottom: 90px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-bottom: 75px;
     }
     .feature-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 32px;
+      border-radius: 14px;
+      padding: 26px 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
       transition: transform 0.2s, border-color 0.2s;
     }
     .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(16, 185, 129, 0.4);
+      transform: translateY(-3px);
+      border-color: rgba(16, 185, 129, 0.35);
     }
     .feature-icon {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
+      font-size: 2rem;
+      margin-bottom: 16px;
     }
     .feature-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 12px;
-      letter-spacing: -0.5px;
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.4px;
     }
     .feature-card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.88rem;
+      line-height: 1.55;
     }
 
-    /* PRICING BOX */
+    /* PRICING VIP */
     .vip-card {
-      background: linear-gradient(180deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.8) 100%);
+      background: linear-gradient(180deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.85) 100%);
       border: 1px solid var(--accent);
-      border-radius: 20px;
-      padding: 48px 32px;
+      border-radius: 18px;
+      padding: 42px 28px;
       text-align: center;
-      max-width: 640px;
-      margin: 0 auto 90px;
-      box-shadow: 0 0 50px rgba(16, 185, 129, 0.15);
+      max-width: 600px;
+      margin: 0 auto 75px;
+      box-shadow: 0 0 45px rgba(16, 185, 129, 0.15);
       position: relative;
     }
     .vip-tag {
       position: absolute;
-      top: -14px;
+      top: -13px;
       left: 50%;
       transform: translateX(-50%);
       background: var(--accent);
       color: #000;
       font-weight: 800;
-      font-size: 0.75rem;
-      padding: 4px 16px;
+      font-size: 0.72rem;
+      padding: 4px 14px;
       border-radius: 20px;
       letter-spacing: 0.5px;
     }
     .price-num {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 3.5rem;
+      font-size: 3.2rem;
       font-weight: 800;
-      margin: 20px 0 4px;
+      margin: 16px 0 2px;
     }
     .price-sub {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 28px;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
     }
     .benefits-list {
       text-align: left;
-      max-width: 440px;
-      margin: 0 auto 32px;
+      max-width: 420px;
+      margin: 0 auto 28px;
       list-style: none;
     }
     .benefits-list li {
-      padding: 8px 0;
+      padding: 7px 0;
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 0.95rem;
+      gap: 10px;
+      font-size: 0.9rem;
       color: #e2e8f0;
     }
     .benefits-list li span { color: var(--accent); font-weight: 700; }
 
     /* FAQ */
     .faq-container {
-      max-width: 800px;
-      margin: 0 auto 80px;
+      max-width: 760px;
+      margin: 0 auto 70px;
     }
     .faq-item {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 16px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
     }
     .faq-item h4 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
     }
     .faq-item p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
     footer {
       border-top: 1px solid var(--card-border);
       text-align: center;
-      padding: 40px 24px;
+      padding: 35px 20px;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
     }
   </style>
 </head>
@@ -378,10 +382,10 @@
     <section class="hero">
       <div class="pill">● Algoritmo Matematico Operativo 2026</div>
       <h1>Il Betting Tradizionale È Morto.<br>Benvenuto nel <span>Metodo Quantitativo</span>.</h1>
-      <p>I bookmaker usano la matematica contro di te. Noi usiamo modelli bivariati Dixon-Coles e il criterio Quarter-Kelly per invertire il vantaggio statistico a tuo favore.</p>
+      <p>I bookmaker usano la matematica contro di te. Noi applichiamo modelli bivariati Dixon-Coles e il criterio Quarter-Kelly per invertire il vantaggio statistico a tuo favore.</p>
       
       <div class="btn-group">
-        <!-- SOSTITUISCI IL LINK CON IL TUO BOT TELEGRAM O TRIBUTE -->
+        <!-- SOSTITUISCI CON IL TUO BOT TELEGRAM O LINK TRIBUTE -->
         <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary">
           <span>🚀 Accedi al Canale VIP su Telegram</span>
         </a>
@@ -418,63 +422,75 @@
         <p>Il confronto netto tra il comportamento del pubblico comune e l'approccio istituzionale AtmBetSignal.</p>
       </div>
 
-      <table class="comp-table">
-        <thead>
-          <tr>
-            <th style="width: 28%;">Parametro</th>
-            <th style="width: 36%;">Tipster Comune / Pubblico</th>
-            <th class="col-highlight" style="width: 36%;">🏧 Modello Quantitativo AtmBet</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Scelta delle Giocate</strong></td>
-            <td>Ispirazione da tifoso, schedine multiple a quota impossibile</td>
-            <td class="col-highlight">Solo singole con probabilità oggettiva ≥ 65% e quota ≥ 1.40</td>
-          </tr>
-          <tr>
-            <td><strong>Modello di Calcolo</strong></td>
-            <td>"Sensazione", statistiche generiche o tabelle superficiali</td>
-            <td class="col-highlight">Distribuzione bivariata Dixon-Coles con correzione &tau; e profili lega</td>
-          </tr>
-          <tr>
-            <td><strong>Gestione del Capitale</strong></td>
-            <td>Puntate a caso, martingale o rincorsa furiosa dopo una perdita</td>
-            <td class="col-highlight">Quarter-Kelly rigoroso: max 2.5% di bankroll per singola operazione</td>
-          </tr>
-          <tr>
-            <td><strong>Trasparenza Storico</strong></td>
-            <td>Screenshot Telegram ritagliati, giocate cancellate a posteriori</td>
-            <td class="col-highlight">100% Verificabile e immutabile su codice open source GitHub Pages</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrapper">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th style="width: 28%;">Parametro</th>
+              <th style="width: 36%;">Tipster Comune / Pubblico</th>
+              <th class="col-highlight" style="width: 36%;">🏧 Modello Quantitativo AtmBet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Scelta delle Giocate</strong></td>
+              <td>Ispirazione da tifoso, schedine multiple a quota impossibile</td>
+              <td class="col-highlight">Solo singole con probabilità oggettiva ≥ 65% e quota ≥ 1.40</td>
+            </tr>
+            <tr>
+              <td><strong>Modello di Calcolo</strong></td>
+              <td>"Sensazione", statistiche generiche o tabelle superficiali</td>
+              <td class="col-highlight">Distribuzione bivariata Dixon-Coles con correzione &tau; e profili lega</td>
+            </tr>
+            <tr>
+              <td><strong>Gestione del Capitale</strong></td>
+              <td>Puntate a caso, martingale o rincorsa furiosa dopo una perdita</td>
+              <td class="col-highlight">Quarter-Kelly rigoroso: max 2.5% di bankroll per singola operazione</td>
+            </tr>
+            <tr>
+              <td><strong>Trasparenza Storico</strong></td>
+              <td>Screenshot Telegram ritagliati, giocate cancellate a posteriori</td>
+              <td class="col-highlight">100% Verificabile e immutabile su codice open source GitHub Pages</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </section>
 
-    <!-- I 3 PILASTRI -->
+    <!-- I 4 PILASTRI SIMMETRICI -->
     <section>
       <div class="section-title">
         <h2>L'Architettura dietro a Ogni Segnale</h2>
-        <p>Un processo interamente automatizzato che non dorme mai.</p>
+        <p>Un processo quantitativo a 4 stadi completamente automatizzato.</p>
       </div>
 
-      <div class="grid-3">
+      <div class="grid-4">
+        <!-- BOX 1 -->
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
-          <h3>Scansione Oraria dei Bookmaker</h3>
-          <p>Lo script interroga le API per analizzare in tempo reale i flussi di quota e rimuovere istantaneamente l'overround (aggio del banco), estraendo la pura probabilità fair di ciascun evento.</p>
+          <h3>Scansione Oraria</h3>
+          <p>Interroga costantemente i bookmaker europei per estrarre le quote aggregate ed eliminare istantaneamente l'overround (aggio del banco).</p>
         </div>
 
+        <!-- BOX 2 -->
         <div class="feature-card">
           <div class="feature-icon">📐</div>
-          <h3>Matrice Dixon-Coles Bivariata</h3>
-          <p>Supera la normale legge di Poisson considerando la correlazione effettiva per i punteggi a basso numero di reti (0-0, 1-1, 1-0) e applicando parametri offensivi/difensivi unici per ogni campionato europeo.</p>
+          <h3>Matrice Dixon-Coles</h3>
+          <p>Corregge la classica legge di Poisson integrando il coefficiente &tau; per i pareggi e i punteggi bassi con profili statistici per singolo campionato.</p>
         </div>
 
+        <!-- BOX 3 -->
         <div class="feature-card">
           <div class="feature-icon">🛡️</div>
-          <h3>Filtro Anti-Sovraesposizione</h3>
-          <p>Se in una giornata non ci sono occasioni di valore matematico sopra il 65%, il bot non genera segnali. Il primo dovere di un investitore quantitativo è proteggere la liquidità.</p>
+          <h3>Filtro Sniper Anti-Trappola</h3>
+          <p>Nessun volume forzato: se una partita non supera la probabilità minima certificata del 65%, viene scartata per preservare il capitale.</p>
+        </div>
+
+        <!-- BOX 4 (COMPLETA LA SIMMETRIA) -->
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <h3>Money Management Kelly</h3>
+          <p>Ogni giocata calcola lo stake frazionario (Quarter-Kelly con cap al 2.5%) per massimizzare la crescita della cassa controllando i drawdown.</p>
         </div>
       </div>
     </section>
@@ -482,25 +498,25 @@
     <!-- PRICING VIP -->
     <section class="vip-card">
       <div class="vip-tag">ACCESSO ESCLUSIVO</div>
-      <h2 style="font-size: 2.2rem; letter-spacing: -0.5px;">Community VIP AtmBetSignal</h2>
+      <h2 style="font-size: 2rem; letter-spacing: -0.5px;">Community VIP AtmBetSignal</h2>
       <p style="color: var(--text-muted); margin-top: 8px;">Ricevi ogni mattina alle ore 08:00 la Top 5 ad altissima probabilità con notifiche istantanee.</p>
       
       <div class="price-num">29€</div>
       <div class="price-sub">al mese • Cancella quando vuoi con 1 clic</div>
 
       <ul class="benefits-list">
-        <li><span>✓</span> Top 5 giornaliera ad alta probabilità (≥ 65%)</li>
-        <li><span>✓</span> Dimensionamento dello Stake calcolato con Quarter-Kelly</li>
-        <li><span>✓</span> Notifiche in tempo reale sul canale privato Telegram</li>
-        <li><span>✓</span> Tracciamento trasparente sul tracker certificato</li>
-        <li><span>✓</span> Nessun vincolo: stop o rinnovo automatico a tua scelta</li>
+        <li><span>✓</span> Top 5 giornaliera ad altissima probabilità (≥ 65%)</li>
+        <li><span>✓</span> Dimensionamento matematico dello Stake con Quarter-Kelly</li>
+        <li><span>✓</span> Watchlist Radar (Top 10) per studio statistico extra</li>
+        <li><span>✓</span> Notifiche istantanee ogni mattina sul Canale Privato VIP</li>
+        <li><span>✓</span> Storico 100% trasparente certificato su GitHub Pages</li>
       </ul>
 
       <!-- LINK DI ISCRIZIONE -->
-      <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.1rem; padding: 18px 0;">
+      <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 16px 0;">
         Attiva Abbonamento VIP su Telegram
       </a>
-      <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 14px;">Attivazione istantanea del canale VIP subito dopo il pagamento</p>
+      <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 14px;">Attivazione istantanea del canale VIP subito dopo l'accesso</p>
     </section>
 
     <!-- FAQ -->
@@ -532,7 +548,6 @@
   </footer>
 
   <script>
-    // Caricamento dinamico dei KPI reali da data/tracker.json
     fetch('data/tracker.json')
       .then(r => r.json())
       .then(d => {
