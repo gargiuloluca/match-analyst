@@ -2,18 +2,25 @@ name: Daily Analysis & Settlement
 
 on:
   schedule:
-    # Mattina (08:00 UTC): Estrazione Top 3, invio Telegram e salvataggio tracker
-    - cron: "0 8 * * *"
-    # Notte (23:00 UTC): Verifica risultati partite concluse e aggiornamento ROI
-    - cron: "0 23 * * *"
-  workflow_dispatch: {}
-
-permissions:
-  contents: write
+    # Mattina (08:00 UTC): Analisi e invio pronostici del giorno
+    - cron: '0 8 * * *'
+    # Notte (23:00 UTC): Verifica risultati e invio riepilogo serale
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+    inputs:
+      job_type:
+        description: 'Seleziona operazione manuale'
+        required: true
+        default: 'morning_picks'
+        type: choice
+        options:
+          - 'morning_picks'
+          - 'night_settlement'
 
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -21,34 +28,50 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
 
-      - name: Fetch fixtures and odds
+      # ==========================================
+      # OPERAZIONI DEL MATTINO (Pronostici)
+      # ==========================================
+      - name: Fetch fixtures and odds (Morning)
+        if: github.event.schedule == '0 8 * * *' || github.event.inputs.job_type == 'morning_picks'
         env:
           ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
         run: python scripts/fetch_fixtures.py
 
-      - name: Run analysis and generate picks
+      - name: Run analysis and generate picks (Morning)
+        if: github.event.schedule == '0 8 * * *' || github.event.inputs.job_type == 'morning_picks'
         run: python scripts/analyze.py
 
-      - name: Settle finished bets in tracker
-        env:
-          ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
-        run: python scripts/settle_results.py
-
-      - name: Send Telegram Notification
+      - name: Send Telegram Picks (Morning)
+        if: github.event.schedule == '0 8 * * *' || github.event.inputs.job_type == 'morning_picks'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python scripts/send_telegram.py
 
+      # ==========================================
+      # OPERAZIONI DELLA NOTTE (Riepilogo Risultati)
+      # ==========================================
+      - name: Settle finished bets & Send Nightly Recap
+        if: github.event.schedule == '0 23 * * *' || github.event.inputs.job_type == 'night_settlement'
+        env:
+          ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/settle_results.py
+
+      # ==========================================
+      # SALVATAGGIO DEI DATI SU GITHUB
+      # ==========================================
       - name: Commit updated data
         run: |
-          git config user.name "atmbetsignal-bot"
-          git config user.email "actions@github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
-          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update data & tracker $(date -u +%Y-%m-%d)"
-          git push
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated update [skip ci]" && git push)
