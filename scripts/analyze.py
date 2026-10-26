@@ -1,11 +1,8 @@
 """
-analyze.py — AtmBetSignal Top 5 High-Probability Engine.
-- Estrae esattamente i migliori 5 pronostici del giorno (Top 5).
-- Vincolo rigido di qualità: probabilità stimata >= 65%.
-- Quota minima: 1.40, massima: 3.00.
-- Calcolo con Dixon-Coles bivariato e profili gol specifici per campionato.
-- Calcolo dello stake ottimale tramite Criterio Quarter-Kelly (cap al 2.5%).
-- Registrazione nel tracker (data/tracker.json) come PENDING.
+analyze.py — AtmBetSignal Institutional Engine.
+- Estrae la Top 5 Ufficiale con soglia severa di probabilità >= 65% e quota >= 1.40.
+- Registra nel tracker SOLO le giocate ufficiali conformi.
+- Seleziona una Watchlist Radar di 10 eventi (probabilità 55%-64.9%) a solo scopo di studio.
 """
 
 import json
@@ -25,12 +22,14 @@ HISTORY_DIR.mkdir(parents=True, exist_ok=True)
 FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
 TRACKER_PATH = DATA_DIR / "tracker.json"
 
-# Parametri Rigidi
-TARGET_PICKS_COUNT = 5            # Esattamente la Top 5 di giornata
-MIN_PROBABILITY_THRESHOLD = 0.65  # Soglia invalicabile >= 65%
+# Parametri Rigidi Ufficiali
+TARGET_PICKS_COUNT = 5
+MIN_OFFICIAL_PROBABILITY = 0.65  # Soglia invalicabile >= 65% per i segnali operativi
+MIN_RADAR_PROBABILITY = 0.55     # Soglia minima per la sola Watchlist di studio
 MIN_ODD = 1.40
 MAX_ODD = 3.00
 MAX_KELLY_STAKE = 2.5
+MAX_RADAR_PICKS = 10
 
 LEAGUE_GOAL_PROFILES = {
     "Serie A": (1.46, 1.14),
@@ -167,12 +166,11 @@ def build_candidates(fixtures: list) -> list:
             odd_val = out["odd"]
             prob_val = out["prob"]
 
-            # Quota minima 1.40 e massima 3.00
             if odd_val < MIN_ODD or odd_val > MAX_ODD:
                 continue
 
-            # Filtro probabilità minima 65%
-            if prob_val < MIN_PROBABILITY_THRESHOLD:
+            # Includiamo gli eventi con probabilità >= 55% per alimentare sia le ufficiali che il radar
+            if prob_val < MIN_RADAR_PROBABILITY:
                 continue
 
             implied_prob = 1.0 / odd_val
@@ -197,30 +195,39 @@ def build_candidates(fixtures: list) -> list:
     return candidates
 
 
-def select_top_5_picks(candidates: list) -> list:
+def split_official_and_radar(candidates: list):
     used_fixtures = set()
-    selected = []
+    official_picks = []
+    radar_watchlist = []
 
-    # Priorità assoluta: massima probabilità stimata decrescente
     ranked = sorted(
         candidates,
         key=lambda c: (c["estimated_probability"], c["edge"], c["odd"]),
         reverse=True
     )
 
+    # 1. Selezione Rigida: SOLO eventi con probabilità >= 65% (Fino a 5)
     for c in ranked:
-        if c["fixture_id"] not in used_fixtures:
-            selected.append(c)
+        if c["fixture_id"] not in used_fixtures and c["estimated_probability"] >= MIN_OFFICIAL_PROBABILITY:
+            official_picks.append(c)
             used_fixtures.add(c["fixture_id"])
-        if len(selected) == TARGET_PICKS_COUNT:
+        if len(official_picks) == TARGET_PICKS_COUNT:
             break
 
-    return selected
+    # 2. Watchlist Radar: Le successive 10 migliori esclusioni (non usate nelle ufficiali)
+    for c in ranked:
+        if c["fixture_id"] not in used_fixtures:
+            radar_watchlist.append(c)
+            used_fixtures.add(c["fixture_id"])
+        if len(radar_watchlist) == MAX_RADAR_PICKS:
+            break
+
+    return official_picks, radar_watchlist
 
 
 def record_picks_to_tracker(selected_picks: list):
     tracker_data = {
-        "total_bets": 0, "won": 0, "lost": 0,
+        "total_bets": 0, "won": 0, "lost": 0, "void": 0,
         "win_rate": 0.0, "net_profit_units": 0.0, "roi_pct": 0.0,
         "bets": []
     }
@@ -262,13 +269,14 @@ def main():
 
     fixtures = json.loads(FIXTURES_PATH.read_text(encoding="utf-8"))
     candidates = build_candidates(fixtures)
-    picks = select_top_5_picks(candidates)
+    official_picks, radar_watchlist = split_official_and_radar(candidates)
 
-    record_picks_to_tracker(picks)
+    # Si registrano nel tracker SOLO le giocate ufficiali conformi al 65%
+    record_picks_to_tracker(official_picks)
 
     picks_dict = {}
     keys = ["conservativo", "consigliato", "hard", "pick4", "pick5"]
-    for idx, p in enumerate(picks[:5]):
+    for idx, p in enumerate(official_picks[:5]):
         picks_dict[keys[idx]] = p
 
     output = {
@@ -277,16 +285,15 @@ def main():
         "target_count": TARGET_PICKS_COUNT,
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_fixtures_scanned": len(fixtures),
-        "candidates_above_65pct": len(candidates),
-        "selected_picks_count": len(picks),
+        "official_picks_count": len(official_picks),
         "picks": picks_dict,
-        "all_selected_picks": picks,
-        "all_candidates": sorted(candidates, key=lambda c: c["estimated_probability"], reverse=True)[:30],
+        "all_selected_picks": official_picks,
+        "radar_watchlist": radar_watchlist,
     }
 
     (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
     (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"AtmBetSignal: Selezionate le Top {len(picks)} giocate (Target: 5, Soglia >= 65%).")
+    print(f"AtmBetSignal: {len(official_picks)} pronostici ufficiali (>= 65%) e {len(radar_watchlist)} eventi nella Watchlist Radar.")
 
 
 if __name__ == "__main__":
