@@ -2,9 +2,9 @@ name: Daily Analysis & Settlement
 
 on:
   schedule:
-    # Mattina: 09:47 UTC (circa 10:47 ora italiana) -> Quote assestate e mercati aperti
+    # Mattina: 09:47 UTC (circa 10:47 ora italiana)
     - cron: '47 9 * * *'
-    # Notte: 22:47 UTC (circa 23:47 ora italiana) -> Posticipi conclusi e refertazione completa
+    # Notte: 22:47 UTC (circa 23:47 ora italiana)
     - cron: '47 22 * * *'
   workflow_dispatch:
     inputs:
@@ -39,19 +39,20 @@ jobs:
 
       # ==========================================
       # OPERAZIONI DEL MATTINO (Pronostici)
+      # Parte SOLO alle 09:47 UTC o su avvio manuale esplicito
       # ==========================================
       - name: Fetch fixtures and odds (Morning)
-        if: github.event.schedule == '47 9 * * *' || github.event.inputs.job_type == 'morning_picks'
+        if: (github.event_name == 'schedule' && github.event.schedule == '47 9 * * *') || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'morning_picks')
         env:
           ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
         run: python scripts/fetch_fixtures.py
 
       - name: Run analysis and generate picks (Morning)
-        if: github.event.schedule == '47 9 * * *' || github.event.inputs.job_type == 'morning_picks'
+        if: (github.event_name == 'schedule' && github.event.schedule == '47 9 * * *') || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'morning_picks')
         run: python scripts/analyze.py
 
       - name: Send Telegram Picks (Morning)
-        if: github.event.schedule == '47 9 * * *' || github.event.inputs.job_type == 'morning_picks'
+        if: (github.event_name == 'schedule' && github.event.schedule == '47 9 * * *') || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'morning_picks')
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -59,9 +60,10 @@ jobs:
 
       # ==========================================
       # OPERAZIONI DELLA NOTTE (Riepilogo & Gestione Abbonati)
+      # Parte SOLO alle 22:47 UTC o su avvio manuale esplicito
       # ==========================================
       - name: Settle finished bets & Manage Subscribers
-        if: github.event.schedule == '47 22 * * *' || github.event.inputs.job_type == 'night_settlement'
+        if: (github.event_name == 'schedule' && github.event.schedule == '47 22 * * *') || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'night_settlement')
         env:
           ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
