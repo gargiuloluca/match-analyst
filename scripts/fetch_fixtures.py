@@ -1,6 +1,7 @@
 """
 fetch_fixtures.py — AtmBetSignal Odds Fetcher
-Scarica quote e palinsesto per i principali campionati europei e leghe secondarie ad alta liquidità tramite The Odds API.
+Scarica quote e palinsesto per le leghe europee con The Odds API.
+Estrae mercati 1X2, Totali (1.5, 2.5, 3.5), Doppie Chance, Draw No Bet e BTTS.
 """
 
 import os
@@ -13,7 +14,6 @@ API_KEY = os.environ.get("ODDSAPI_KEY", "").strip()
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 OUTPUT_FILE = DATA_DIR / "fixtures.json"
 
-# Paniere Campionati Espanso (Top 5 + Leghe Strategiche ad Alta Efficienza)
 LEAGUES = [
     # Top 5 Europee
     "soccer_italy_serie_a",
@@ -24,13 +24,13 @@ LEAGUES = [
     # Coppe Europee
     "soccer_uefa_champs_league",
     "soccer_uefa_europa_league",
-    # Leghe ad Alta Liquidità & Regolarità Statistica
-    "soccer_england_efl_cup",
-    "soccer_england_league1",
+    # Leghe Strategiche ad Alta Efficienza & Liquidità
     "soccer_england_championship",
     "soccer_netherlands_eredivisie",
     "soccer_portugal_primeira_liga",
-    "soccer_belgium_first_div"
+    "soccer_belgium_first_div",
+    "soccer_england_league1",
+    "soccer_england_efl_cup"
 ]
 
 def fetch_league_odds(sport_key: str):
@@ -53,7 +53,7 @@ def fetch_league_odds(sport_key: str):
         elif res.status_code == 401:
             print("Errore: Chiave The Odds API non valida o scaduta.")
         else:
-            print(f"Info: Nessun dato o status {res.status_code} per {sport_key}")
+            print(f"Info: Status {res.status_code} per {sport_key}")
     except Exception as e:
         print(f"Errore connessione su {sport_key}: {e}")
     return []
@@ -69,30 +69,39 @@ def parse_match_data(raw_matches, sport_key: str):
         if not bookmakers:
             continue
 
-        # Estrazione quote medie di mercato
         h2h_home, h2h_draw, h2h_away = [], [], []
+        over15, under15 = [], []
         over25, under25 = [], []
+        over35, under35 = [], []
 
         for b in bookmakers:
             for market in b.get("markets", []):
-                if market.get("key") == "h2h":
+                m_key = market.get("key")
+                if m_key == "h2h":
                     for outcome in market.get("outcomes", []):
                         price = outcome.get("price", 0.0)
-                        if outcome.get("name") == home_team and price > 1.0:
+                        name = outcome.get("name")
+                        if name == home_team and price > 1.0:
                             h2h_home.append(price)
-                        elif outcome.get("name") == away_team and price > 1.0:
+                        elif name == away_team and price > 1.0:
                             h2h_away.append(price)
-                        elif outcome.get("name").lower() in ["draw", "pareggio"] and price > 1.0:
+                        elif name.lower() in ["draw", "pareggio"] and price > 1.0:
                             h2h_draw.append(price)
-                elif market.get("key") == "totals":
+                elif m_key == "totals":
                     for outcome in market.get("outcomes", []):
                         price = outcome.get("price", 0.0)
                         point = outcome.get("point", 0.0)
-                        if point == 2.5:
-                            if outcome.get("name").lower() in ["over", "più"]:
-                                over25.append(price)
-                            elif outcome.get("name").lower() in ["under", "meno"]:
-                                under25.append(price)
+                        name_low = outcome.get("name", "").lower()
+                        
+                        if point == 1.5:
+                            if name_low in ["over", "più"]: over15.append(price)
+                            elif name_low in ["under", "meno"]: under15.append(price)
+                        elif point == 2.5:
+                            if name_low in ["over", "più"]: over25.append(price)
+                            elif name_low in ["under", "meno"]: under25.append(price)
+                        elif point == 3.5:
+                            if name_low in ["over", "più"]: over35.append(price)
+                            elif name_low in ["under", "meno"]: under35.append(price)
 
         if not (h2h_home and h2h_draw and h2h_away):
             continue
@@ -101,22 +110,28 @@ def parse_match_data(raw_matches, sport_key: str):
         odd_x = sum(h2h_draw) / len(h2h_draw)
         odd_2 = sum(h2h_away) / len(h2h_away)
 
-                # Calcolo quote sintetiche per Doppie Chance con correzione aggio standard
-        prob_implied_1x = (1.0 / odd_1) + (1.0 / odd_x)
-        odd_1x = round(1.0 / (prob_implied_1x * 0.94), 2) if prob_implied_1x > 0 else 0.0
+        # Doppie Chance sintetiche con aggio standard (6%)
+        prob_1x = (1.0 / odd_1) + (1.0 / odd_x)
+        odd_1x = round(1.0 / (prob_1x * 0.94), 2) if prob_1x > 0 else 0.0
 
-        prob_implied_x2 = (1.0 / odd_2) + (1.0 / odd_x)
-        odd_x2 = round(1.0 / (prob_implied_x2 * 0.94), 2) if prob_implied_x2 > 0 else 0.0
+        prob_x2 = (1.0 / odd_2) + (1.0 / odd_x)
+        odd_x2 = round(1.0 / (prob_x2 * 0.94), 2) if prob_x2 > 0 else 0.0
 
-        # Calcolo quote sintetiche Draw No Bet (DNB / Rimborso in caso di parità)
+        # Draw No Bet sintetico (Rimborso Pareggio)
         odd_dnb_1 = round(odd_1 * (1.0 - (1.0 / max(1.05, odd_x))), 2)
         odd_dnb_2 = round(odd_2 * (1.0 - (1.0 / max(1.05, odd_x))), 2)
 
-        odd_over25 = sum(over25) / len(over25) if over25 else 0.0
-        odd_under25 = sum(under25) / len(under25) if under25 else 0.0
+        # Totali Gol
+        o25 = sum(over25) / len(over25) if over25 else 0.0
+        u25 = sum(under25) / len(under25) if under25 else 0.0
+        o15 = sum(over15) / len(over15) if over15 else (round(1.0 + (o25 - 1.0) * 0.45, 2) if o25 > 1.0 else 1.28)
+        u15 = sum(under15) / len(under15) if under15 else 3.50
+        o35 = sum(over35) / len(over35) if over35 else (round(o25 * 1.85, 2) if o25 > 1.0 else 3.20)
+        u35 = sum(under35) / len(under35) if under35 else (round(1.0 + (u25 - 1.0) * 0.45, 2) if u25 > 1.0 else 1.30)
 
-        # Stima implicita Goal/NoGoal da Under/Over
-        odd_btts_yes = round(odd_over25 * 0.95, 2) if odd_over25 > 1.30 else 1.80
+        # Gol / NoGol (BTTS)
+        btts_yes = round(o25 * 0.95, 2) if o25 > 1.30 else 1.80
+        btts_no = round(1.0 / (1.0 - (1.0 / max(1.1, btts_yes)) * 0.94), 2) if btts_yes > 1.0 else 1.95
 
         odds_dict = {
             "1": round(odd_1, 2),
@@ -124,9 +139,16 @@ def parse_match_data(raw_matches, sport_key: str):
             "2": round(odd_2, 2),
             "1X": max(1.20, odd_1x),
             "X2": max(1.20, odd_x2),
-            "OVER_25": round(odd_over25, 2) if odd_over25 > 1.0 else 0.0,
-            "UNDER_25": round(odd_under25, 2) if odd_under25 > 1.0 else 0.0,
-            "BTTS_YES": odd_btts_yes
+            "DNB_1": max(1.25, odd_dnb_1),
+            "DNB_2": max(1.25, odd_dnb_2),
+            "OVER_15": max(1.15, o15),
+            "UNDER_15": max(1.50, u15),
+            "OVER_25": round(o25, 2) if o25 > 1.0 else 0.0,
+            "UNDER_25": round(u25, 2) if u25 > 1.0 else 0.0,
+            "OVER_35": max(1.60, o35),
+            "UNDER_35": max(1.18, u35),
+            "BTTS_YES": btts_yes,
+            "BTTS_NO": max(1.40, btts_no)
         }
 
         parsed.append({
@@ -158,7 +180,7 @@ def main():
     }
 
     OUTPUT_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Completato: {len(all_fixtures)} match totali scaricati e pronti in data/fixtures.json.")
+    print(f"Completato: {len(all_fixtures)} match totali scaricati in data/fixtures.json.")
 
 if __name__ == "__main__":
     main()
