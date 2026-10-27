@@ -131,6 +131,7 @@
       pointer-events: none;
     }
 
+    /* BOX SEGNALI */
     .pick-item {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -158,28 +159,53 @@
       font-size: 1.25rem;
       margin: 30px 0 16px;
     }
+
+    /* BLUR PER UTENTI SCADUTI */
+    .locked-card {
+      filter: blur(5px);
+      user-select: none;
+      pointer-events: none;
+    }
+    .renew-banner {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid var(--red);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .renew-banner a {
+      display: inline-block;
+      margin-top: 10px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- LOGIN UTENTE -->
+    <!-- 1. LOGIN UTENTE -->
     <div class="auth-box" id="authBox">
       <h2>⚡ Accesso Area Membri</h2>
-      <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Inserisci la tua email o codice licenza per consultare i segnali quantitativi e gestire Telegram.</p>
-      <input type="text" id="userKey" placeholder="Es: tua_email@gmail.com">
+      <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Inserisci la tua email di attivazione per visualizzare le analisi e gestire l'accesso a Telegram.</p>
+      <input type="email" id="userKey" placeholder="Es: tua_email@dominio.it" onkeydown="if(event.key==='Enter') handleLogin()">
       <button onclick="handleLogin()">Accedi alla Dashboard</button>
       <p style="font-size: 0.85rem; color: var(--muted); margin-top: 18px;">
-        Non hai ancora un account? <a href="index.html#piani" style="color: var(--accent); text-decoration: none;">Attiva la prova di 7 giorni</a>
+        Non sei ancora registrato? <a href="index.html#piani" style="color: var(--accent); text-decoration: none;">Attiva 7 giorni di prova gratis</a>
       </p>
     </div>
 
-    <!-- PANNELLO UTENTE RISERVATO -->
+    <!-- 2. PANNELLO RISERVATO -->
     <div class="user-panel" id="userPanel">
       <div class="header-bar">
         <div>
           <h2>📊 Dashboard Personale</h2>
-          <p style="color: var(--muted); font-size: 0.9rem;">Accesso Web alle analisi quantitative di oggi.</p>
+          <p style="color: var(--muted); font-size: 0.9rem;" id="userGreeting">Accesso Web alle analisi quantitative di oggi.</p>
         </div>
         <div>
           <a href="index.html" style="color: var(--muted); text-decoration: none; margin-right: 15px;">← Torna al Sito</a>
@@ -187,24 +213,32 @@
         </div>
       </div>
 
-      <!-- BOX COLLEGAMENTO TELEGRAM CON CONTROLLO STATO -->
+      <!-- BANNER SCADENZA / STATO TELEGRAM -->
       <div class="vip-status-card" id="subscriptionCard">
         <div class="vip-info">
           <h3>
             <span>Stato Abbonamento:</span>
-            <span class="status-pill pill-active" id="subStatus">ATTIVO (PROVA 7 GG)</span>
+            <span class="status-pill" id="subStatus">VERIFICA...</span>
           </h3>
-          <p id="subExpiry">Scadenza accesso: calcolo in corso...</p>
-          <small style="color: var(--muted); display: block; margin-top: 4px;">L'accesso al canale Telegram è vincolato alla validità dell'abbonamento attivo.</small>
+          <p id="subExpiry">Scadenza accesso in calcolo...</p>
+          <small style="color: var(--muted); display: block; margin-top: 4px;">L'accesso al canale Telegram è sincronizzato in tempo reale con il tuo abbonamento.</small>
         </div>
         <div>
-          <!-- SOSTITUISCI IL LINK CON IL LINK AL TUO BOT O PIATTAFORMA DI INVITO -->
-          <a id="telegramLinkBtn" href="https://t.me/tuo_bot_telegram?start=sync" target="_blank" class="telegram-btn">
+          <a id="telegramLinkBtn" href="https://t.me/tuo_bot_telegram" target="_blank" class="telegram-btn">
             <span>✈️ Entra nel Canale VIP</span>
           </a>
         </div>
       </div>
 
+      <div id="renewContainer" style="display: none;">
+        <div class="renew-banner">
+          <h3 style="color: var(--red); margin-bottom: 6px;">⛔ Periodo di Prova o Abbonamento Scaduto</h3>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">I tuoi 7 giorni di prova gratuita sono terminati. Per sbloccare nuovamente le quote e rientrare nel canale Telegram VIP, attiva uno dei piani disponibili.</p>
+          <a href="index.html#piani">Rinnova Adesso l'Abbonamento</a>
+        </div>
+      </div>
+
+      <!-- SEGNALI DEL GIORNO -->
       <div class="section-title">🎯 Selezioni Ufficiali (Probabilità ≥ 65%)</div>
       <div id="officialContainer">Caricamento segnali in corso...</div>
 
@@ -215,61 +249,98 @@
 
   <script>
     function handleLogin() {
-      const val = document.getElementById('userKey').value.trim();
-      if (val.length > 3) {
-        sessionStorage.setItem('atm_user_session', val);
-        showDashboard();
-      } else {
-        alert('Inserisci un indirizzo email o un codice licenza valido.');
+      const email = document.getElementById('userKey').value.trim().toLowerCase();
+      if (!email.includes('@') || email.length < 5) {
+        alert('Per favore inserisci un indirizzo email valido.');
+        return;
       }
+
+      fetch('data/subscribers.json?nocache=' + new Date().getTime())
+        .then(r => r.json())
+        .then(data => {
+          const subs = data.subscribers || [];
+          const user = subs.find(s => s.email.toLowerCase() === email);
+
+          let expiryDate;
+          let isNewTrial = false;
+
+          if (user) {
+            expiryDate = new Date(user.valid_until);
+          } else {
+            // Nuova prova locale di 7 giorni se non ancora censito nel JSON
+            let localTrial = localStorage.getItem('atm_trial_' + email);
+            if (!localTrial) {
+              const d = new Date();
+              d.setDate(d.getDate() + 7);
+              localTrial = d.toISOString();
+              localStorage.setItem('atm_trial_' + email, localTrial);
+              isNewTrial = true;
+            }
+            expiryDate = new Date(localTrial);
+          }
+
+          const now = new Date();
+          const isExpired = now > expiryDate;
+
+          sessionStorage.setItem('atm_user_email', email);
+          sessionStorage.setItem('atm_user_expiry', expiryDate.toISOString());
+          sessionStorage.setItem('atm_user_expired', isExpired ? 'true' : 'false');
+          sessionStorage.setItem('atm_user_trial', isNewTrial ? 'true' : 'false');
+
+          showDashboard();
+        })
+        .catch(() => {
+          // Fallback se subscribers.json non è ancora caricato
+          sessionStorage.setItem('atm_user_email', email);
+          sessionStorage.setItem('atm_user_expired', 'false');
+          showDashboard();
+        });
     }
 
     function showDashboard() {
       document.getElementById('authBox').style.display = 'none';
       document.getElementById('userPanel').style.display = 'block';
 
-      // Simulazione data di scadenza (7 giorni a partire da oggi se nuovo accesso)
-      let expiry = localStorage.getItem('atm_user_expiry');
-      if (!expiry) {
-        const d = new Date();
-        d.setDate(d.getDate() + 7);
-        expiry = d.toISOString();
-        localStorage.setItem('atm_user_expiry', expiry);
-      }
+      const email = sessionStorage.getItem('atm_user_email') || 'Utente';
+      const isExpired = sessionStorage.getItem('atm_user_expired') === 'true';
+      const expiryStr = sessionStorage.getItem('atm_user_expiry');
+      const expiryDate = expiryStr ? new Date(expiryStr) : new Date();
 
-      const expiryDate = new Date(expiry);
-      const isExpired = new Date() > expiryDate;
+      document.getElementById('userGreeting').innerText = `Sessione attiva: ${email}`;
 
       const subStatus = document.getElementById('subStatus');
       const subExpiry = document.getElementById('subExpiry');
       const telegramBtn = document.getElementById('telegramLinkBtn');
+      const renewContainer = document.getElementById('renewContainer');
 
       if (isExpired) {
         subStatus.className = 'status-pill pill-expired';
         subStatus.innerText = 'SCADUTO';
-        subExpiry.innerHTML = 'Periodo di prova terminato. <a href="index.html#piani" style="color: var(--accent);">Rinnova per riattivare Telegram e i segnali.</a>';
+        subExpiry.innerText = 'Accesso terminato il: ' + expiryDate.toLocaleDateString('it-IT');
         telegramBtn.classList.add('disabled');
-        telegramBtn.innerText = 'Accesso Telegram Revocato 🔒';
+        telegramBtn.innerText = 'Telegram Revocato 🔒';
         telegramBtn.href = '#';
+        renewContainer.style.display = 'block';
       } else {
         subStatus.className = 'status-pill pill-active';
-        subStatus.innerText = 'ATTIVO (7 GG PROVA)';
+        subStatus.innerText = 'ATTIVO';
         subExpiry.innerText = 'Valido fino al: ' + expiryDate.toLocaleDateString('it-IT') + ' ore ' + expiryDate.toLocaleTimeString('it-IT', {hour: '2-digit', minute:'2-digit'});
+        renewContainer.style.display = 'none';
       }
 
-      loadPicks();
+      loadPicks(isExpired);
     }
 
     function logout() {
-      sessionStorage.removeItem('atm_user_session');
+      sessionStorage.clear();
       location.reload();
     }
 
-    function loadPicks() {
+    function loadPicks(isExpired) {
       fetch('data/latest.json?nocache=' + new Date().getTime())
         .then(r => r.json())
         .then(d => {
-          // Ufficiali
+          // 1. UFFICIALI (>= 65%)
           const officials = d.all_selected_picks || [];
           const offCont = document.getElementById('officialContainer');
           if (officials.length === 0) {
@@ -279,8 +350,9 @@
             officials.forEach((p, i) => {
               const prob = ((p.estimated_probability || 0) * 100).toFixed(1);
               const edge = (((p.edge || 0)) * 100).toFixed(1);
+              const blurClass = isExpired ? 'locked-card' : '';
               html += `
-                <div class="pick-item">
+                <div class="pick-item ${blurClass}">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                     <span class="badge-official">TOP PICK #${i+1}</span>
                     <span style="color: var(--muted); font-size: 0.85rem;">${p.league || ''}</span>
@@ -296,7 +368,7 @@
             offCont.innerHTML = html;
           }
 
-          // Radar
+          // 2. RADAR
           const radar = d.radar_watchlist || d.watchlist_radar || [];
           const radCont = document.getElementById('radarContainer');
           if (radar.length === 0) {
@@ -305,8 +377,9 @@
             let htmlRadar = '';
             radar.forEach((r, i) => {
               const prob = ((r.estimated_probability || 0) * 100).toFixed(1);
+              const blurClass = isExpired ? 'locked-card' : '';
               htmlRadar += `
-                <div class="pick-item" style="border-left: 3px solid #64748b;">
+                <div class="pick-item ${blurClass}" style="border-left: 3px solid #64748b;">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
                     <span class="badge-radar">RADAR #${i+1}</span>
                     <span style="color: var(--muted); font-size: 0.85rem;">${r.league || ''}</span>
@@ -327,7 +400,7 @@
         });
     }
 
-    if (sessionStorage.getItem('atm_user_session')) {
+    if (sessionStorage.getItem('atm_user_email')) {
       showDashboard();
     }
   </script>
