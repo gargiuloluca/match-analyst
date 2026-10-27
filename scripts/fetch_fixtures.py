@@ -101,12 +101,16 @@ def parse_match_data(raw_matches, sport_key: str):
         odd_x = sum(h2h_draw) / len(h2h_draw)
         odd_2 = sum(h2h_away) / len(h2h_away)
 
-        # Calcolo quote sintetiche per Doppie Chance con correzione aggio standard
+                # Calcolo quote sintetiche per Doppie Chance con correzione aggio standard
         prob_implied_1x = (1.0 / odd_1) + (1.0 / odd_x)
         odd_1x = round(1.0 / (prob_implied_1x * 0.94), 2) if prob_implied_1x > 0 else 0.0
 
         prob_implied_x2 = (1.0 / odd_2) + (1.0 / odd_x)
         odd_x2 = round(1.0 / (prob_implied_x2 * 0.94), 2) if prob_implied_x2 > 0 else 0.0
+
+        # Calcolo quote sintetiche Draw No Bet (DNB / Rimborso in caso di parità)
+        odd_dnb_1 = round(odd_1 * (1.0 - (1.0 / max(1.05, odd_x))), 2)
+        odd_dnb_2 = round(odd_2 * (1.0 - (1.0 / max(1.05, odd_x))), 2)
 
         odd_over25 = sum(over25) / len(over25) if over25 else 0.0
         odd_under25 = sum(under25) / len(under25) if under25 else 0.0
