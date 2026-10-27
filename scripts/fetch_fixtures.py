@@ -1,14 +1,14 @@
 """
-fetch_fixtures.py — AtmBetSignal Odds & Line Movement Fetcher
-Scarica quote per le principali leghe europee con The Odds API.
-Tiene traccia delle opening odds per calcolare il trend di quota (Smart Money).
+fetch_fixtures.py — AtmBetSignal Odds & Daily Window Fetcher
+Scarica quote per le leghe europee con The Odds API.
+FILTRO TEMPORALE RIGIDO: analizza esclusivamente i match in programma entro le prossime 36 ore.
 """
 
 import os
 import json
 import requests
 from pathlib import Path
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 API_KEY = os.environ.get("ODDSAPI_KEY", "").strip()
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
@@ -60,10 +60,26 @@ def fetch_league_odds(sport_key: str):
 
 def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
     parsed = []
+    now = datetime.now(timezone.utc)
+    # Finestra temporale rigida: da adesso fino a massimo 36 ore in avanti
+    max_window = now + timedelta(hours=36)
+
     for m in raw_matches:
+        commence_time_str = m.get("commence_time")
+        if not commence_time_str:
+            continue
+
+        try:
+            match_time = datetime.fromisoformat(commence_time_str.replace("Z", "+00:00"))
+        except Exception:
+            continue
+
+        # FILTRO GIORNATA: Esclude partite già iniziate o oltre le 36 ore
+        if match_time < now or match_time > max_window:
+            continue
+
         home_team = m.get("home_team")
         away_team = m.get("away_team")
-        commence_time = m.get("commence_time")
         m_id = m.get("id")
         bookmakers = m.get("bookmakers", [])
 
@@ -111,7 +127,7 @@ def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
         odd_x = sum(h2h_draw) / len(h2h_draw)
         odd_2 = sum(h2h_away) / len(h2h_away)
 
-        # Doppie Chance sintetiche con aggio standard (6%)
+        # Doppie Chance sintetiche
         prob_1x = (1.0 / odd_1) + (1.0 / odd_x)
         odd_1x = round(1.0 / (prob_1x * 0.94), 2) if prob_1x > 0 else 0.0
 
@@ -152,14 +168,13 @@ def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
             "BTTS_NO": max(1.40, btts_no)
         }
 
-        # Tracciamento Opening Odds
         opening_odds = existing_openings.get(m_id, current_odds)
 
         parsed.append({
             "id": m_id,
             "sport_key": sport_key,
             "league_name": m.get("sport_title", sport_key),
-            "commence_time": commence_time,
+            "commence_time": commence_time_str,
             "home_team": home_team,
             "away_team": away_team,
             "odds": current_odds,
@@ -171,7 +186,6 @@ def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     
-    # Recupera le quote storiche precedenti se esistono
     existing_openings = {}
     if OUTPUT_FILE.exists():
         try:
@@ -184,7 +198,7 @@ def main():
             pass
 
     all_fixtures = []
-    print(f"Scansione flussi in corso su {len(LEAGUES)} campionati...")
+    print(f"Scansione flussi in corso su {len(LEAGUES)} campionati (Filtro 36h attivo)...")
     for league in LEAGUES:
         raw = fetch_league_odds(league)
         matches = parse_match_data(raw, league, existing_openings)
@@ -197,7 +211,7 @@ def main():
     }
 
     OUTPUT_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Completato: {len(all_fixtures)} match aggiornati con tracking Smart Money.")
+    print(f"Completato: {len(all_fixtures)} match della giornata scaricati in data/fixtures.json.")
 
 if __name__ == "__main__":
     main()
