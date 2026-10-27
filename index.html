@@ -74,6 +74,13 @@
       transition: all 0.2s;
     }
     nav a:hover, nav a.active { color: #fff; }
+    .nav-login {
+      color: var(--accent) !important;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 5px 14px;
+      border-radius: 6px;
+      background: rgba(16, 185, 129, 0.05);
+    }
     .nav-admin {
       color: var(--gold) !important;
       background: rgba(245, 158, 11, 0.1);
@@ -253,14 +260,10 @@
       margin-bottom: 70px;
     }
     @media (max-width: 992px) {
-      .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 600px) {
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
+      .grid-4 { grid-template-columns: 1fr; }
     }
 
     .feature-card {
@@ -292,15 +295,49 @@
       line-height: 1.55;
     }
 
-    /* PRICING VIP */
+    /* NUOVA SEZIONE PRICING MULTI-PIANO CON TRIAL */
+    .pricing-section {
+      margin-bottom: 75px;
+    }
+    .plan-selector {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 30px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 6px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .plan-tab {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .plan-tab.active {
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+    }
     .vip-card {
       background: linear-gradient(180deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.85) 100%);
       border: 1px solid var(--accent);
       border-radius: 18px;
       padding: 42px 28px;
       text-align: center;
-      max-width: 600px;
-      margin: 0 auto 75px;
+      max-width: 620px;
+      margin: 0 auto;
       box-shadow: 0 0 45px rgba(16, 185, 129, 0.15);
       position: relative;
     }
@@ -328,9 +365,20 @@
       font-size: 0.9rem;
       margin-bottom: 24px;
     }
+    .trial-badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--cyan);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 8px 16px;
+      border-radius: 8px;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
     .benefits-list {
       text-align: left;
-      max-width: 420px;
+      max-width: 440px;
       margin: 0 auto 28px;
       list-style: none;
     }
@@ -384,6 +432,7 @@
     <nav>
       <a href="index.html" class="active">Metodo</a>
       <a href="tracker.html">Storico Live</a>
+      <a href="dashboard.html" class="nav-login">Area Utenti ⚡</a>
       <a href="admin.html" class="nav-admin">Area Admin 🔒</a>
     </nav>
   </header>
@@ -396,9 +445,8 @@
       <p>I bookmaker usano la matematica contro di te. Noi applichiamo modelli bivariati Dixon-Coles e il criterio Quarter-Kelly per invertire il vantaggio statistico a tuo favore.</p>
       
       <div class="btn-group">
-        <!-- SOSTITUISCI CON IL TUO BOT TELEGRAM O LINK TRIBUTE -->
-        <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary">
-          <span>🚀 Accedi al Canale VIP su Telegram</span>
+        <a href="#piani" class="btn-primary">
+          <span>🎁 Inizia 7 Giorni di Prova Gratuita</span>
         </a>
         <a href="tracker.html" class="btn-secondary">
           <span>Verifica lo Storico Certificato ↗</span>
@@ -430,7 +478,7 @@
     <section>
       <div class="section-title">
         <h2>Perché il 96% degli Scommettitori Perde</h2>
-        <p>Il confronto netto tra il comportamento del pubblico comune e l'approccio istituzionale AtmBetSignal.</p>
+        <p>Il confronto netto tra il comportamento del pubblico comune e l'approccio quantitativo AtmBetSignal.</p>
       </div>
 
       <div class="table-wrapper">
@@ -476,28 +524,24 @@
       </div>
 
       <div class="grid-4">
-        <!-- BOX 1 -->
         <div class="feature-card">
           <div class="feature-icon">⚡</div>
           <h3>Scansione Oraria</h3>
           <p>Interroga costantemente i bookmaker europei per estrarre le quote aggregate ed eliminare istantaneamente l'overround (aggio del banco).</p>
         </div>
 
-        <!-- BOX 2 -->
         <div class="feature-card">
           <div class="feature-icon">📐</div>
           <h3>Matrice Dixon-Coles</h3>
           <p>Corregge la classica legge di Poisson integrando il coefficiente &tau; per i pareggi e i punteggi bassi con profili statistici per singolo campionato.</p>
         </div>
 
-        <!-- BOX 3 -->
         <div class="feature-card">
           <div class="feature-icon">🛡️</div>
           <h3>Filtro Sniper Anti-Trappola</h3>
           <p>Nessun volume forzato: se una partita non supera la probabilità minima certificata del 65%, viene scartata per preservare il capitale.</p>
         </div>
 
-        <!-- BOX 4 -->
         <div class="feature-card">
           <div class="feature-icon">⚖️</div>
           <h3>Money Management Kelly</h3>
@@ -506,28 +550,45 @@
       </div>
     </section>
 
-    <!-- PRICING VIP -->
-    <section class="vip-card">
-      <div class="vip-tag">ACCESSO ESCLUSIVO</div>
-      <h2 style="font-size: 2rem; letter-spacing: -0.5px;">Community VIP AtmBetSignal</h2>
-      <p style="color: var(--text-muted); margin-top: 8px;">Ricevi ogni mattina alle ore 08:00 la Top 5 ad altissima probabilità con notifiche istantanee.</p>
-      
-      <div class="price-num">29€</div>
-      <div class="price-sub">al mese • Cancella quando vuoi con 1 clic</div>
+    <!-- NUOVA SEZIONE PRICING (39.90€ / 89€ / 299€ + TRIAL 7 GIORNI) -->
+    <section class="pricing-section" id="piani">
+      <div class="section-title">
+        <h2>Piani di Accesso Istituzionale</h2>
+        <p>Scegli il piano più adatto a te. Prova il sistema per 7 giorni senza rischi.</p>
+      </div>
 
-      <ul class="benefits-list">
-        <li><span>✓</span> Top 5 giornaliera ad altissima probabilità (≥ 65%)</li>
-        <li><span>✓</span> Dimensionamento matematico dello Stake con Quarter-Kelly</li>
-        <li><span>✓</span> Watchlist Radar (Top 10) per studio statistico extra</li>
-        <li><span>✓</span> Notifiche istantanee ogni mattina sul Canale Privato VIP</li>
-        <li><span>✓</span> Storico 100% trasparente certificato su GitHub Pages</li>
-      </ul>
+      <!-- SELECTOR TABS -->
+      <div class="plan-selector">
+        <button class="plan-tab active" onclick="setPlan('mensile')">Mensile</button>
+        <button class="plan-tab" onclick="setPlan('trimestrale')">Trimestrale (-25%)</button>
+        <button class="plan-tab" onclick="setPlan('annuale')">Annuale (-38%)</button>
+      </div>
 
-      <!-- LINK DI ISCRIZIONE -->
-      <a href="https://t.me/tuo_canale_o_bot" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 16px 0;">
-        Attiva Abbonamento VIP su Telegram
-      </a>
-      <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 14px;">Attivazione istantanea del canale VIP subito dopo l'accesso</p>
+      <div class="vip-card">
+        <div class="vip-tag" id="planBadge">PIANO MENSILE</div>
+        
+        <div class="trial-badge">
+          🎉 7 Giorni di Prova Gratuita Inclusi
+        </div>
+
+        <div class="price-num" id="planPrice">39,90€</div>
+        <div class="price-sub" id="planPeriod">al mese dopo 7 giorni di prova gratuita • Disdici quando vuoi con 1 clic</div>
+
+        <ul class="benefits-list">
+          <li><span>✓</span> <strong>Accesso Web Diretto:</strong> consulta i segnali sul sito senza obbligo di Telegram</li>
+          <li><span>✓</span> Top 5 giornaliera ad altissima probabilità (≥ 65%)</li>
+          <li><span>✓</span> Dimensionamento matematico dello Stake con Quarter-Kelly</li>
+          <li><span>✓</span> Watchlist Radar (Top 10) per studio statistico extra</li>
+          <li><span>✓</span> Canale Telegram VIP incluso per chi desidera le notifiche istantanee</li>
+          <li><span>✓</span> Storico 100% trasparente certificato su GitHub Pages</li>
+        </ul>
+
+        <!-- LINK PERSONALIZZABILE CON STRIPE PAYMENT LINK O BOT -->
+        <a id="ctaBtn" href="https://buy.stripe.com/tuo_link_mensile" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 16px 0;">
+          Attiva 7 Giorni di Prova Gratuita
+        </a>
+        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 14px;">Nessun addebito durante i primi 7 giorni. Cancellazione istantanea con un clic.</p>
+      </div>
     </section>
 
     <!-- FAQ -->
@@ -537,18 +598,18 @@
       </div>
 
       <div class="faq-item">
-        <h4>Come ricevo i segnali una volta abbonato?</h4>
-        <p>I pronostici vengono spediti ogni mattina alle ore 08:00 UTC sul Canale Privato Telegram riservato ai membri VIP, completi di partita, quota, probabilità stimata e percentuale di stake consigliata.</p>
+        <h4>Come funziona la prova gratuita di 7 giorni?</h4>
+        <p>Attivi la prova inserendo i tuoi dati. Per 7 giorni hai accesso completo a tutte le Top 5 e alla Watchlist Radar sul pannello web e su Telegram. Se non sei soddisfatto, puoi annullare prima del settimo giorno senza pagare un centesimo.</p>
       </div>
 
       <div class="faq-item">
-        <h4>Le quote delle giocate sono accessibili su tutti i bookmaker?</h4>
-        <p>Sì. Le giocate utilizzano mercati standard (1X2, Doppie Chance, Over/Under 2.5, Gol/NoGol) disponibili su qualsiasi bookmaker con licenza regolare.</p>
+        <h4>È obbligatorio avere Telegram per usare il servizio?</h4>
+        <p>No. Telegram è una comodità per ricevere le notifiche in tempo reale, ma ogni abbonato riceve una chiave di accesso personale per consultare i pronostici e le statistiche direttamente dall'Area Utenti del sito web.</p>
       </div>
 
       <div class="faq-item">
-        <h4>Come posso verificare che i risultati siano autentici?</h4>
-        <p>Tutti gli esiti sono caricati in modo immutabile su questo repository GitHub. La pagina "Storico Live" calcola automaticamente Win Rate ed Equity Line senza possibilità di modifica arbitraria.</p>
+        <h4>Quali mercati vengono analizzati?</h4>
+        <p>Il modello Dixon-Coles opera su mercati liquidi e accessibili su qualsiasi bookmaker: 1X2, Doppie Chance, Over/Under 2.5 e Goal/NoGoal.</p>
       </div>
     </section>
   </div>
@@ -559,6 +620,39 @@
   </footer>
 
   <script>
+    // Configurazione Piani Commerciali
+    const plans = {
+      mensile: {
+        badge: "PIANO MENSILE",
+        price: "39,90€",
+        period: "al mese dopo 7 giorni di prova • Disdici con 1 clic",
+        link: "https://buy.stripe.com/tuo_link_mensile"
+      },
+      trimestrale: {
+        badge: "PIANO TRIMESTRALE (RISPARMIA 30€)",
+        price: "89,00€",
+        period: "ogni 3 mesi (pari a 29,60€/mese) dopo i 7 giorni di prova",
+        link: "https://buy.stripe.com/tuo_link_trimestrale"
+      },
+      annuale: {
+        badge: "PIANO ANNUALE (MIGLIOR VALORE)",
+        price: "299,00€",
+        period: "all'anno (pari a 24,90€/mese) dopo i 7 giorni di prova",
+        link: "https://buy.stripe.com/tuo_link_annuale"
+      }
+    };
+
+    function setPlan(type) {
+      document.querySelectorAll('.plan-tab').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+      const p = plans[type];
+      document.getElementById('planBadge').innerText = p.badge;
+      document.getElementById('planPrice').innerText = p.price;
+      document.getElementById('planPeriod').innerText = p.period;
+      document.getElementById('ctaBtn').href = p.link;
+    }
+
+    // Caricamento dinamico KPI da tracker.json
     fetch('data/tracker.json?nocache=' + new Date().getTime())
       .then(r => r.json())
       .then(d => {
