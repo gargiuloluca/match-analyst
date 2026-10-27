@@ -7,8 +7,6 @@
   "net_profit_units": 2.27,
   "roi_pct": 227.0,
   "bets": [
-      {
-  "bets": [
     {
       "id": "sevilla_osasuna_won",
       "date": "2026-10-26T20:00:00Z",
@@ -95,5 +93,4 @@
       "profit": 0.0
     }
   ]
-    }
-    
+}
