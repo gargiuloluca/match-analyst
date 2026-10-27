@@ -2,10 +2,10 @@ name: Daily Analysis & Settlement
 
 on:
   schedule:
-    # Mattina (08:00 UTC): Analisi e invio pronostici del giorno
-    - cron: '0 8 * * *'
-    # Notte (23:00 UTC): Verifica risultati, riepilogo serale e controllo scadenze abbonati
-    - cron: '0 23 * * *'
+    # Mattina: 09:47 UTC (circa 10:47 ora italiana) -> Quote assestate e mercati aperti
+    - cron: '47 9 * * *'
+    # Notte: 22:47 UTC (circa 23:47 ora italiana) -> Posticipi conclusi e refertazione completa
+    - cron: '47 22 * * *'
   workflow_dispatch:
     inputs:
       job_type:
@@ -41,17 +41,17 @@ jobs:
       # OPERAZIONI DEL MATTINO (Pronostici)
       # ==========================================
       - name: Fetch fixtures and odds (Morning)
-        if: github.event.schedule == '0 8 * * *' || github.event.inputs.job_type == 'morning_picks'
+        if: github.event.schedule == '47 9 * * *' || github.event.inputs.job_type == 'morning_picks'
         env:
           ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
         run: python scripts/fetch_fixtures.py
 
       - name: Run analysis and generate picks (Morning)
-        if: github.event.schedule == '0 8 * * *' || github.event.inputs.job_type == 'morning_picks'
+        if: github.event.schedule == '47 9 * * *' || github.event.inputs.job_type == 'morning_picks'
         run: python scripts/analyze.py
 
       - name: Send Telegram Picks (Morning)
-        if: github.event.schedule == '0 8 * * *' || github.event.inputs.job_type == 'morning_picks'
+        if: github.event.schedule == '47 9 * * *' || github.event.inputs.job_type == 'morning_picks'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -61,7 +61,7 @@ jobs:
       # OPERAZIONI DELLA NOTTE (Riepilogo & Gestione Abbonati)
       # ==========================================
       - name: Settle finished bets & Manage Subscribers
-        if: github.event.schedule == '0 23 * * *' || github.event.inputs.job_type == 'night_settlement'
+        if: github.event.schedule == '47 22 * * *' || github.event.inputs.job_type == 'night_settlement'
         env:
           ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
