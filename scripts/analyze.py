@@ -1,10 +1,11 @@
 """
 analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine
 - Matrice bivariata Dixon-Coles con correzione tau
-- Mercati completi: 1X2, DC, DNB, Totali gol, BTTS
-- Filtro Smart Money (Drop di quota confermato / Rifiuto Drift)
+- Mercati: 1X2, DC, DNB, Totali gol (1.5, 2.5, 3.5), BTTS
+- Filtro Smart Money (Drop vs Drift)
+- Modulo Risk Mitigation: No-Bet List (Derby ad alta tensione) & Penalizzazione Fatica Coppe
 - Quarter-Kelly Money Management (Cap 2.5%)
-- Segmentazione: DIAMOND (Max Edge + Drop), GOLD (Super Affidabilità >= 72%), OFFICIAL (>= 65%), RADAR
+- Segmentazione: DIAMOND (Max Edge + Drop), GOLD (>= 72%), OFFICIAL (>= 65%), RADAR
 """
 
 import json
@@ -16,6 +17,25 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 FIXTURES_FILE = DATA_DIR / "fixtures.json"
 LATEST_FILE = DATA_DIR / "latest.json"
 TRACKER_FILE = DATA_DIR / "tracker.json"
+
+# Derby e rivalità ad altissima tensione (Veto prudenziale sulle scommesse ufficiali)
+HIGH_VARIANCE_DERBIES = [
+    {"roma", "lazio"},
+    {"sevilla", "real betis"},
+    {"arsenal", "tottenham"},
+    {"celtic", "rangers"},
+    {"galatasaray", "fenerbahce"},
+    {"inter", "milan"},
+    {"juventus", "torino"}
+]
+
+# Squadre impegnate regolarmente nelle competizioni UEFA infrasettimanali
+EUROPEAN_COMPETITORS = {
+    "real madrid", "barcelona", "atletico madrid", "manchester city",
+    "arsenal", "liverpool", "bayern munchen", "borussia dortmund",
+    "inter", "juventus", "milan", "atalanta", "paris saint germain",
+    "sporting cp", "benfica", "porto", "feyenoord", "psv eindhoven"
+}
 
 LEAGUE_GOAL_PROFILES = {
     "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.05},
@@ -33,6 +53,15 @@ LEAGUE_GOAL_PROFILES = {
     "soccer_england_efl_cup": {"mu_home": 1.50, "mu_away": 1.20, "tau": -0.04},
     "default": {"mu_home": 1.48, "mu_away": 1.18, "tau": -0.05}
 }
+
+def is_high_variance_derby(home: str, away: str) -> bool:
+    h, a = home.lower(), away.lower()
+    for derby in HIGH_VARIANCE_DERBIES:
+        matches_home = any(team in h for team in derby)
+        matches_away = any(team in a for team in derby)
+        if matches_home and matches_away:
+            return True
+    return False
 
 def poisson_pmf(k: int, lambd: float) -> float:
     return (lambd ** k) * math.exp(-lambd) / math.factorial(k)
@@ -78,16 +107,13 @@ def evaluate_markets(matrix, odds_dict):
     p_draw = sum(prob for (x, y), prob in matrix.items() if x == y)
     p_away = sum(prob for (x, y), prob in matrix.items() if x < y)
 
-    # Doppie Chance
     p_1x = p_home + p_draw
     p_x2 = p_away + p_draw
 
-    # Draw No Bet
     decisive = p_home + p_away
     p_dnb_1 = (p_home / decisive) if decisive > 0 else 0.0
     p_dnb_2 = (p_away / decisive) if decisive > 0 else 0.0
 
-    # Totali Gol
     p_over15 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 1.5)
     p_under15 = 1.0 - p_over15
     p_over25 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 2.5)
@@ -95,7 +121,6 @@ def evaluate_markets(matrix, odds_dict):
     p_over35 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 3.5)
     p_under35 = 1.0 - p_over35
 
-    # Goal / NoGoal
     p_btts_yes = sum(prob for (x, y), prob in matrix.items() if x > 0 and y > 0)
     p_btts_no = 1.0 - p_btts_yes
 
@@ -148,8 +173,17 @@ def main():
         mu_a = profile["mu_away"] / ratio
         rho = profile["tau"]
 
+        # Fattore Affaticamento / Turnover Coppe Europee
+        h_low, a_low = home_team.lower(), away_team.lower()
+        if any(team in h_low for team in EUROPEAN_COMPETITORS):
+            lambda_h *= 0.93  # Penalizzazione -7% gol attesi casa
+        if any(team in a_low for team in EUROPEAN_COMPETITORS):
+            mu_a *= 0.93      # Penalizzazione -7% gol attesi trasferta
+
         matrix = build_score_matrix(lambda_h, mu_a, rho)
         evaluated = evaluate_markets(matrix, odds)
+
+        is_derby = is_high_variance_derby(home_team, away_team)
 
         for ev in evaluated:
             prob = ev["prob"]
@@ -159,7 +193,7 @@ def main():
             ev_ratio = prob * odd
             stake = calculate_quarter_kelly(prob, odd)
 
-            # Analisi Flusso Quota (Smart Money Tracking)
+            # Flusso Quote
             op_odd = open_odds.get(m_key, odd)
             line_shift_pct = 0.0
             if op_odd > 0:
@@ -168,19 +202,20 @@ def main():
             tier = "STANDARD"
             is_official = False
 
-            # Veto di Sicurezza: Se la quota è salita oltre il +7% (drift anomalo), evita la puntata ufficiale
+            # Veto di sicurezza (Drift anomalo o Derby infuocato)
             has_heavy_drift = line_shift_pct >= 7.0
+            is_safe_fixture = not is_derby and not has_heavy_drift
 
-            # Criterio Ufficiale Base: Probabilità >= 65% e Quota 1.40 - 3.00 senza drift
-            if prob >= 0.65 and 1.40 <= odd <= 3.00 and edge > 0 and not has_heavy_drift:
+            # Criterio Ufficiale Base
+            if prob >= 0.65 and 1.40 <= odd <= 3.00 and edge > 0 and is_safe_fixture:
                 is_official = True
                 tier = "OFFICIAL"
 
-                # Super-Filtro GOLD (Probabilità >= 72% e quota >= 1.45)
+                # Super-Filtro GOLD
                 if prob >= 0.72 and odd >= 1.45 and edge >= 0.08:
                     tier = "GOLD"
 
-                # Super-Filtro DIAMOND (Edge Istituzionale >= +12%, Quota >= 1.75 o Quota in forte discesa)
+                # Super-Filtro DIAMOND
                 if (prob >= 0.65 and odd >= 1.75 and edge >= 0.12 and ev_ratio >= 1.15) or (edge >= 0.10 and line_shift_pct <= -3.0):
                     tier = "DIAMOND"
 
@@ -200,6 +235,7 @@ def main():
                 "ev_ratio": round(ev_ratio, 3),
                 "suggested_stake_pct": stake,
                 "tier": tier,
+                "is_derby": is_derby,
                 "is_official": is_official
             })
 
@@ -212,12 +248,10 @@ def main():
 
     all_sorted = list(unique_candidates.values())
 
-    # Top 5 Ufficiali
     official_pool = [c for c in all_sorted if c["is_official"]]
     official_pool.sort(key=lambda x: (tier_order.get(x["tier"], 0), x["estimated_probability"]), reverse=True)
     top_5_officials = official_pool[:5]
 
-    # Watchlist Radar (Top 10 tra 55% e 64.9% o giocate con drift)
     official_ids = {c["match_id"] for c in top_5_officials}
     radar_pool = [c for c in all_sorted if c["match_id"] not in official_ids and c["estimated_probability"] >= 0.55]
     radar_pool.sort(key=lambda x: x["estimated_probability"], reverse=True)
@@ -233,9 +267,8 @@ def main():
     }
 
     LATEST_FILE.write_text(json.dumps(latest_output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Analisi completata: {len(top_5_officials)} Ufficiali ({latest_output['diamond_count']} Diamond, {latest_output['gold_count']} Gold) e {len(top_10_radar)} Radar.")
+    print(f"Analisi conclusa: {len(top_5_officials)} Ufficiali ({latest_output['diamond_count']} Diamond, {latest_output['gold_count']} Gold) e {len(top_10_radar)} Radar.")
 
-    # Sincronizzazione con tracker.json
     if TRACKER_FILE.exists():
         tracker_data = json.loads(TRACKER_FILE.read_text(encoding="utf-8"))
     else:
@@ -261,7 +294,7 @@ def main():
             })
 
     TRACKER_FILE.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
-    print("Tracker sincronizzato.")
+    print("Tracker aggiornato.")
 
 if __name__ == "__main__":
     main()
