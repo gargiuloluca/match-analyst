@@ -1,0 +1,56 @@
+[
+  {
+    "fixture_id": "c7445242bf16a8f37afef7863af45a78",
+    "league": "Serie A",
+    "odds_key": "soccer_italy_serie_a",
+    "commence_time": "2026-10-27T17:30:00Z",
+    "home_team": {
+      "name": "Sassuolo"
+    },
+    "away_team": {
+      "name": "Lazio"
+    },
+    "bookmaker_count": 23,
+    "odds": {
+      "home": 3.35,
+      "draw": 3.6,
+      "away": 2.1
+    }
+  },
+  {
+    "fixture_id": "7eecf109ae6a5f87441a79b0e4111982",
+    "league": "Serie A",
+    "odds_key": "soccer_italy_serie_a",
+    "commence_time": "2026-10-27T19:45:00Z",
+    "home_team": {
+      "name": "AS Roma"
+    },
+    "away_team": {
+      "name": "Cagliari"
+    },
+    "bookmaker_count": 23,
+    "odds": {
+      "home": 1.32,
+      "draw": 5.28,
+      "away": 9.6
+    }
+  },
+  {
+    "fixture_id": "7d989a0a7bae47eb957731e97c5bd9c1",
+    "league": "Serie A",
+    "odds_key": "soccer_italy_serie_a",
+    "commence_time": "2026-10-27T19:45:00Z",
+    "home_team": {
+      "name": "Torino"
+    },
+    "away_team": {
+      "name": "Como"
+    },
+    "bookmaker_count": 23,
+    "odds": {
+      "home": 4.9,
+      "draw": 3.95,
+      "away": 1.67
+    }
+  }
+]
