@@ -6,7 +6,7 @@
   <title>AtmBetSignal — Storico Performance & ROI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root {
@@ -15,6 +15,8 @@
       --border: #1e293b;
       --accent: #10b981;
       --accent-glow: rgba(16, 185, 129, 0.2);
+      --cyan: #38bdf8;
+      --gold: #f59e0b;
       --red: #ef4444;
       --text: #f8fafc;
       --muted: #94a3b8;
@@ -94,6 +96,7 @@
       font-weight: 700;
     }
     .kpi-val.green { color: var(--accent); }
+    .kpi-val.red { color: var(--red); }
     .kpi-sub {
       font-size: 0.8rem;
       color: var(--muted);
@@ -141,8 +144,10 @@
     td {
       padding: 14px 18px;
       border-bottom: 1px solid var(--border);
+      vertical-align: middle;
     }
     tr:last-child td { border-bottom: none; }
+    
     .status-badge {
       display: inline-block;
       padding: 3px 8px;
@@ -153,6 +158,20 @@
     }
     .status-won { background: rgba(16, 185, 129, 0.15); color: var(--accent); border: 1px solid var(--accent); }
     .status-lost { background: rgba(239, 68, 68, 0.15); color: var(--red); border: 1px solid var(--red); }
+    .status-refund { background: rgba(148, 163, 184, 0.15); color: var(--muted); border: 1px solid var(--muted); }
+    .status-pending { background: rgba(245, 158, 11, 0.15); color: var(--gold); border: 1px solid var(--gold); }
+
+    .tier-badge {
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 800;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .tier-diamond { background: #38bdf8; color: #000; }
+    .tier-gold { background: #f59e0b; color: #000; }
+    .tier-official { background: #334155; color: #cbd5e1; }
   </style>
 </head>
 <body>
@@ -163,6 +182,7 @@
     </div>
     <nav>
       <a href="index.html">Metodo</a>
+      <a href="dashboard.html">Area Riservata</a>
       <a href="tracker.html" class="active">Storico Verificato</a>
     </nav>
   </header>
@@ -170,7 +190,7 @@
   <div class="container">
     <div class="header-title">
       <h1>Performance & Storico Certificato</h1>
-      <p>Tracciamento trasparente degli esiti reali. Solo le giocate concluse vengono refertate.</p>
+      <p>Tracciamento trasparente con modello Dixon-Coles, filtri Smart Money e refertazione notturna automatizzata.</p>
     </div>
 
     <!-- KPI REALI -->
@@ -178,109 +198,142 @@
       <div class="kpi-card">
         <div class="kpi-label">Win Rate Reale</div>
         <div class="kpi-val green" id="winRateVal">0%</div>
-        <div class="kpi-sub" id="wonLostSub">0 vinte / 0 perse</div>
+        <div class="kpi-sub" id="wonLostSub">0 vinte / 0 perse (0 rimb.)</div>
       </div>
       <div class="kpi-card">
         <div class="kpi-label">ROI Netto</div>
         <div class="kpi-val green" id="roiVal">+0%</div>
-        <div class="kpi-sub">Rendimento sul turnover</div>
+        <div class="kpi-sub">Rendimento sul volume investito</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label">Profitto Cumulato</div>
-        <div class="kpi-val green" id="profitVal">+0.00 u</div>
-        <div class="kpi-sub">Unità cumulate nel tempo</div>
+        <div class="kpi-label">Rendimento Netto Bankroll</div>
+        <div class="kpi-val green" id="profitVal">+0.00%</div>
+        <div class="kpi-sub">Crescita cumulativa del capitale</div>
       </div>
       <div class="kpi-card">
-        <div class="kpi-label">Giocate Risolte</div>
+        <div class="kpi-label">Operazioni Concluse</div>
         <div class="kpi-val" id="totalBetsVal">0</div>
-        <div class="kpi-sub">Segnali certificati</div>
+        <div class="kpi-sub">Segnali ufficiali refertati</div>
       </div>
     </div>
 
     <!-- GRAFICO EQUITY LINE -->
     <div class="chart-box">
-      <h2>Curva dei Profitti (Equity Line) <span>Unità cumulate</span></h2>
+      <h2>Curva dei Profitti (Equity Line) <span>Base 100.0% Bankroll</span></h2>
       <canvas id="equityChart" height="90"></canvas>
     </div>
 
-    <!-- TABELLA STORICO (SOLO GIOCATE CONCLUSE) -->
+    <!-- TABELLA STORICO (TUTTE LE GIOCATE CERTIFICATE) -->
     <div class="table-box">
       <table>
         <thead>
           <tr>
             <th>Data</th>
-            <th>Match</th>
+            <th>Match & Lega</th>
             <th>Pronostico</th>
             <th>Quota</th>
             <th>Risultato</th>
             <th>Stato</th>
-            <th>Profitto</th>
+            <th>P&L</th>
           </tr>
         </thead>
         <tbody id="betsTableBody">
-          <!-- Righe generate via JS -->
+          <tr><td colspan="7" style="text-align:center; color: var(--muted); padding: 30px;">Caricamento storico in corso...</td></tr>
         </tbody>
       </table>
     </div>
   </div>
 
   <script>
-    fetch('data/tracker.json')
+    fetch('data/tracker.json?nocache=' + new Date().getTime())
       .then(r => r.json())
       .then(d => {
-        // 1. FILTRO FONDAMENTALE: Prendi SOLO le partite concluse (WON o LOST)
         const allBets = d.bets || [];
-        const settledBets = allBets.filter(b => b.status === 'WON' || b.status === 'LOST');
+        // Include WON, LOST e REFUND (DNB pareggiate)
+        const settledBets = allBets.filter(b => b.status === 'WON' || b.status === 'LOST' || b.status === 'REFUND');
 
         // Aggiorna KPI
         const total = settledBets.length;
         const won = settledBets.filter(b => b.status === 'WON').length;
         const lost = settledBets.filter(b => b.status === 'LOST').length;
-        const netProfit = settledBets.reduce((acc, b) => acc + (b.profit || 0), 0);
-        const winRate = total > 0 ? (won / total * 100).toFixed(1) : '0';
-        const roi = total > 0 ? (netProfit / total * 100).toFixed(1) : '0';
+        const refund = settledBets.filter(b => b.status === 'REFUND').length;
+
+        const netProfit = settledBets.reduce((acc, b) => acc + (parseFloat(b.profit) || 0), 0);
+        const totalStaked = settledBets.reduce((acc, b) => acc + (parseFloat(b.stake_pct) || 1.0), 0);
+
+        const winRate = (won + lost) > 0 ? ((won / (won + lost)) * 100).toFixed(1) : '0';
+        const roi = totalStaked > 0 ? ((netProfit / totalStaked) * 100).toFixed(1) : '0';
 
         document.getElementById('winRateVal').innerText = winRate + '%';
-        document.getElementById('wonLostSub').innerText = `${won} vinte / ${lost} perse`;
-        document.getElementById('roiVal').innerText = (roi > 0 ? '+' : '') + roi + '%';
-        document.getElementById('profitVal').innerText = (netProfit >= 0 ? '+' : '') + netProfit.toFixed(2) + ' u';
+        document.getElementById('wonLostSub').innerText = `${won} vinte / ${lost} perse (${refund} rimb.)`;
+
+        const roiElem = document.getElementById('roiVal');
+        roiElem.innerText = (roi >= 0 ? '+' : '') + roi + '%';
+        roiElem.className = 'kpi-val ' + (roi >= 0 ? 'green' : 'red');
+
+        const profitElem = document.getElementById('profitVal');
+        profitElem.innerText = (netProfit >= 0 ? '+' : '') + netProfit.toFixed(2) + '%';
+        profitElem.className = 'kpi-val ' + (netProfit >= 0 ? 'green' : 'red');
+
         document.getElementById('totalBetsVal').innerText = total;
 
-        // Renderizza Tabella (Solo giocate concluse)
+        // Renderizza Tabella (Ultime giocate in alto, include PENDING in attesa)
         const tbody = document.getElementById('betsTableBody');
-        if (settledBets.length === 0) {
-          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color: var(--muted); padding: 30px;">Nessuna giocata conclusa finora. Le selezioni in corso saranno visibili solo a referto serale completato.</td></tr>`;
+        if (allBets.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center; color: var(--muted); padding: 30px;">Nessuna giocata registrata finora.</td></tr>`;
         } else {
           let html = '';
-          // Mostra le più recenti in alto
-          settledBets.slice().reverse().forEach(b => {
-            const isWon = b.status === 'WON';
-            const badgeClass = isWon ? 'status-won' : 'status-lost';
-            const profitStr = (b.profit >= 0 ? '+' : '') + (b.profit || 0).toFixed(2) + ' u';
-            const profitColor = isWon ? 'var(--accent)' : 'var(--red)';
+          allBets.slice().reverse().forEach(b => {
+            let badgeClass = 'status-pending';
+            let pnlColor = 'var(--muted)';
+            let profitStr = '-';
+
+            if (b.status === 'WON') {
+              badgeClass = 'status-won';
+              pnlColor = 'var(--accent)';
+              profitStr = '+' + parseFloat(b.profit).toFixed(2) + '%';
+            } else if (b.status === 'LOST') {
+              badgeClass = 'status-lost';
+              pnlColor = 'var(--red)';
+              profitStr = parseFloat(b.profit).toFixed(2) + '%';
+            } else if (b.status === 'REFUND') {
+              badgeClass = 'status-refund';
+              profitStr = '0.00% (Rimb.)';
+            }
+
+            let tierBadge = `<span class="tier-badge tier-official">OFFICIAL</span>`;
+            if (b.tier === 'DIAMOND') tierBadge = `<span class="tier-badge tier-diamond">💎 DIAMOND</span>`;
+            else if (b.tier === 'GOLD') tierBadge = `<span class="tier-badge tier-gold">🥇 GOLD</span>`;
+
+            const dateStr = b.date ? new Date(b.date).toLocaleDateString('it-IT') : '-';
+            const betLabel = b.bet || b.outcome_label || '-';
 
             html += `
               <tr>
-                <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--muted);">${b.date}</td>
-                <td><strong>${b.match}</strong><br><small style="color: var(--muted);">${b.league || ''}</small></td>
-                <td>${b.outcome_label}</td>
-                <td style="font-family: 'JetBrains Mono', monospace;">${b.odd.toFixed(2)}</td>
+                <td style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--muted);">${dateStr}</td>
+                <td>
+                  ${tierBadge}<br>
+                  <strong>${b.match}</strong><br>
+                  <small style="color: var(--muted);">${b.league || ''}</small>
+                </td>
+                <td><strong>${betLabel}</strong></td>
+                <td style="font-family: 'JetBrains Mono', monospace; font-weight: 700;">${Number(b.odd).toFixed(2)}</td>
                 <td style="font-family: 'JetBrains Mono', monospace; font-weight: 600;">${b.score || '-'}</td>
                 <td><span class="status-badge ${badgeClass}">${b.status}</span></td>
-                <td style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: ${profitColor};">${profitStr}</td>
+                <td style="font-family: 'JetBrains Mono', monospace; font-weight: 700; color: ${pnlColor};">${profitStr}</td>
               </tr>
             `;
           });
           tbody.innerHTML = html;
         }
 
-        // Renderizza Grafico Equity Line
-        let cumulative = 0;
+        // Renderizza Grafico Equity Line (in ordine cronologico)
+        let cumulative = 100.0;
         const labels = ['Start'];
-        const chartData = [0];
+        const chartData = [100.0];
 
-        settledBets.forEach((b, idx) => {
-          cumulative += (b.profit || 0);
+        settledBets.slice().sort((a, b) => new Date(a.date) - new Date(b.date)).forEach((b, idx) => {
+          cumulative += (parseFloat(b.profit) || 0);
           labels.push(`#${idx + 1}`);
           chartData.push(Number(cumulative.toFixed(2)));
         });
@@ -291,11 +344,11 @@
           data: {
             labels: labels,
             datasets: [{
-              label: 'Profitto (Unità)',
+              label: 'Bankroll Growth (%)',
               data: chartData,
               borderColor: '#10b981',
-              backgroundColor: 'rgba(16, 185, 129, 0.1)',
-              borderWidth: 2,
+              backgroundColor: 'rgba(16, 185, 129, 0.08)',
+              borderWidth: 2.2,
               tension: 0.25,
               fill: true,
               pointBackgroundColor: '#10b981',
@@ -304,10 +357,17 @@
           },
           options: {
             responsive: true,
-            plugins: { legend: { display: false } },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(c) { return `Bankroll: ${c.parsed.y}%`; }
+                }
+              }
+            },
             scales: {
-              x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } },
-              y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8' } }
+              x: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono' } } },
+              y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { family: 'JetBrains Mono' } } }
             }
           }
         });
