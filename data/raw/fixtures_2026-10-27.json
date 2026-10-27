@@ -10,7 +10,7 @@
     "away_team": {
       "name": "Lazio"
     },
-    "bookmaker_count": 23,
+    "bookmaker_count": 24,
     "odds": {
       "home": 3.35,
       "draw": 3.6,
@@ -28,7 +28,7 @@
     "away_team": {
       "name": "Cagliari"
     },
-    "bookmaker_count": 23,
+    "bookmaker_count": 24,
     "odds": {
       "home": 1.32,
       "draw": 5.28,
@@ -46,11 +46,11 @@
     "away_team": {
       "name": "Como"
     },
-    "bookmaker_count": 23,
+    "bookmaker_count": 24,
     "odds": {
-      "home": 4.9,
-      "draw": 3.95,
-      "away": 1.67
+      "home": 4.65,
+      "draw": 3.8,
+      "away": 1.75
     }
   }
 ]
