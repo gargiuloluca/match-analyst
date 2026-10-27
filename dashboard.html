@@ -134,10 +134,10 @@
     /* BOX SEGNALI */
     .pick-item {
       background: var(--card-bg);
-      border: 1px solid var(--border);
       border-radius: 12px;
       padding: 20px;
       margin-bottom: 16px;
+      transition: transform 0.2s;
     }
     .badge-official {
       background: var(--accent);
@@ -290,7 +290,6 @@
           showDashboard();
         })
         .catch(() => {
-          // Fallback se subscribers.json non è ancora caricato
           sessionStorage.setItem('atm_user_email', email);
           sessionStorage.setItem('atm_user_expired', 'false');
           showDashboard();
@@ -340,7 +339,7 @@
       fetch('data/latest.json?nocache=' + new Date().getTime())
         .then(r => r.json())
         .then(d => {
-          // 1. UFFICIALI (>= 65%)
+          // 1. UFFICIALI (con supporto per DIAMOND, GOLD e PRO)
           const officials = d.all_selected_picks || [];
           const offCont = document.getElementById('officialContainer');
           if (officials.length === 0) {
@@ -351,10 +350,22 @@
               const prob = ((p.estimated_probability || 0) * 100).toFixed(1);
               const edge = (((p.edge || 0)) * 100).toFixed(1);
               const blurClass = isExpired ? 'locked-card' : '';
+              
+              let badgeHtml = `<span class="badge-official">TOP PICK #${i+1}</span>`;
+              let borderStyle = 'border: 1px solid var(--border);';
+              
+              if (p.tier === 'DIAMOND') {
+                badgeHtml = `<span style="background: #38bdf8; color: #000; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">💎 DIAMOND EDGE</span>`;
+                borderStyle = 'border: 1px solid #38bdf8; box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);';
+              } else if (p.tier === 'GOLD') {
+                badgeHtml = `<span style="background: #f59e0b; color: #000; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 800;">🥇 GOLD SUPER-PICK</span>`;
+                borderStyle = 'border: 1px solid #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);';
+              }
+
               html += `
-                <div class="pick-item ${blurClass}">
+                <div class="pick-item ${blurClass}" style="${borderStyle}">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-                    <span class="badge-official">TOP PICK #${i+1}</span>
+                    ${badgeHtml}
                     <span style="color: var(--muted); font-size: 0.85rem;">${p.league || ''}</span>
                   </div>
                   <h3 style="margin-bottom: 6px;">${p.match}</h3>
@@ -368,7 +379,7 @@
             offCont.innerHTML = html;
           }
 
-          // 2. RADAR
+          // 2. WATCHLIST RADAR (Studio)
           const radar = d.radar_watchlist || d.watchlist_radar || [];
           const radCont = document.getElementById('radarContainer');
           if (radar.length === 0) {
@@ -379,7 +390,7 @@
               const prob = ((r.estimated_probability || 0) * 100).toFixed(1);
               const blurClass = isExpired ? 'locked-card' : '';
               htmlRadar += `
-                <div class="pick-item ${blurClass}" style="border-left: 3px solid #64748b;">
+                <div class="pick-item ${blurClass}" style="border: 1px solid var(--border); border-left: 3px solid #64748b;">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
                     <span class="badge-radar">RADAR #${i+1}</span>
                     <span style="color: var(--muted); font-size: 0.85rem;">${r.league || ''}</span>
