@@ -1,187 +1,191 @@
 """
-settle_results.py — AtmBetSignal Smart Settlement.
-Interroga The Odds API SOLO per i campionati che hanno partite PENDING aperte nel tracker,
-risparmiando fino all'85% delle richieste API serali.
+settle_results.py — AtmBetSignal Automated Settlement Engine
+Verifica i risultati finali su The Odds API e aggiorna tracker.json.
+Supporta: 1X2, DC, DNB (con rimborso in parità), Totali gol e BTTS.
+Invia un resoconto sintetico su Telegram a fine giornata.
 """
 
 import os
 import json
-from pathlib import Path
 import requests
+from pathlib import Path
+from datetime import datetime, timezone
 
-ODDS_API_KEY = os.environ.get("ODDSAPI_KEY", "").strip()
+API_KEY = os.environ.get("ODDSAPI_KEY", "").strip()
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
-ODDS_BASE_URL = "https://api.the-odds-api.com/v4"
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-TRACKER_PATH = DATA_DIR / "tracker.json"
+TRACKER_FILE = DATA_DIR / "tracker.json"
 
-# Mappa per risalire dalla lega testuale alla chiave sportiva dell'API
-LEAGUE_TO_KEY = {
-    "Serie A": "soccer_italy_serie_a",
-    "Premier League": "soccer_epl",
-    "La Liga": "soccer_spain_la_liga",
-    "Bundesliga": "soccer_germany_bundesliga",
-    "Ligue 1": "soccer_france_ligue_one",
-    "Champions League": "soccer_uefa_champs_league",
-    "Europa League": "soccer_uefa_europa_league",
-    "Conference League": "soccer_uefa_europa_conference_league",
-    "Serie B (Italia)": "soccer_italy_serie_b",
-    "Championship (Inghilterra)": "soccer_efl_champ",
-    "Segunda División (Spagna)": "soccer_spain_segunda_division",
-    "2. Bundesliga (Germania)": "soccer_germany_bundesliga2",
-    "Eredivisie (Olanda)": "soccer_netherlands_eredivisie",
-    "Primeira Liga (Portogallo)": "soccer_portugal_primeira_liga",
-    "Jupiler Pro League (Belgio)": "soccer_belgium_first_div",
-    "Süper Lig (Turchia)": "soccer_turkey_super_league",
-    "Premiership (Scozia)": "soccer_spl",
-    "Super League (Svizzera)": "soccer_switzerland_superleague",
-    "Bundesliga (Austria)": "soccer_austria_bundesliga",
-    "Brasileirão (Brasile)": "soccer_brazil_campeonato",
-    "MLS (USA)": "soccer_usa_mls",
-}
+LEAGUES = [
+    "soccer_italy_serie_a", "soccer_spain_la_liga", "soccer_epl",
+    "soccer_germany_bundesliga", "soccer_france_ligue_one",
+    "soccer_uefa_champs_league", "soccer_uefa_europa_league",
+    "soccer_england_championship", "soccer_netherlands_eredivisie",
+    "soccer_portugal_primeira_liga", "soccer_belgium_first_div",
+    "soccer_england_league1", "soccer_england_efl_cup"
+]
 
-
-def evaluate_bet(market_type: str, h_score: int, a_score: int) -> bool:
-    tot = h_score + a_score
-    if market_type == "1":
-        return h_score > a_score
-    elif market_type == "2":
-        return a_score > h_score
-    elif market_type == "1X":
-        return h_score >= a_score
-    elif market_type == "X2":
-        return a_score >= h_score
-    elif market_type == "Over2.5":
-        return tot >= 3
-    elif market_type == "Under2.5":
-        return tot <= 2
-    elif market_type == "GG":
-        return h_score > 0 and a_score > 0
-    elif market_type == "NG":
-        return h_score == 0 or a_score == 0
-    return False
-
-
-def send_telegram_recap(today_resolved: list, win_rate: float, roi: float, net_profit: float):
-    if not BOT_TOKEN or not CHAT_ID or not today_resolved:
+def send_telegram(text: str):
+    if not BOT_TOKEN or not CHAT_ID:
         return
-
-    won_today = sum(1 for b in today_resolved if b["status"] == "WON")
-    profit_today = sum(b.get("profit", 0.0) for b in today_resolved)
-    p_sign = "+" if profit_today >= 0 else ""
-
-    lines = [
-        "🏁 <b>AtmBetSignal — Chiusura & Rendiconto Serale</b>",
-        f"Bilancio oggi: <b>{won_today}/{len(today_resolved)}</b> vinti (<code>{p_sign}{profit_today:.2f} u</code>)\n"
-    ]
-
-    for b in today_resolved:
-        icon = "✅" if b["status"] == "WON" else "❌"
-        lines.append(
-            f"{icon} <b>{b['match']}</b>\n"
-            f"• Giocata: {b['outcome_label']} @ <code>{b['odd']:.2f}</code>\n"
-            f"• Risultato: <b>{b['score']}</b> ({b['status']})\n"
-        )
-
-    lines.append(
-        f"📊 <b>Performance Storiche Cumulative</b>\n"
-        f"• Win Rate: <b>{win_rate:.1f}%</b>\n"
-        f"• ROI Netto: <b>{'+' if roi >= 0 else ''}{roi:.1f}%</b>\n"
-        f"• Profitto Totale: <b>{'+' if net_profit >= 0 else ''}{net_profit:.2f} u</b>\n\n"
-        f"🌐 <i>Grafico Equity Line aggiornato su GitHub Pages.</i>"
-    )
-
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    payload = {
-        "chat_id": CHAT_ID,
-        "text": "\n".join(lines),
-        "parse_mode": "HTML",
-        "disable_web_page_preview": True,
-    }
-
+    payload = {"chat_id": CHAT_ID, "text": text, "parse_mode": "HTML"}
     try:
         requests.post(url, json=payload, timeout=15)
     except Exception as e:
-        print(f"Errore recap Telegram: {e}")
+        print(f"Errore Telegram settlement: {e}")
 
+def fetch_scores_for_league(sport_key: str):
+    if not API_KEY:
+        return []
+    url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/scores"
+    params = {"apiKey": API_KEY, "daysFrom": 3}
+    try:
+        res = requests.get(url, params=params, timeout=20)
+        if res.status_code == 200:
+            return res.json()
+    except Exception as e:
+        print(f"Errore fetch scores {sport_key}: {e}")
+    return []
+
+def evaluate_bet_status(market_key: str, h_score: int, a_score: int, odd: float, stake: float):
+    tot_goals = h_score + a_score
+    status = "LOST"
+    profit = -round(stake, 2)
+
+    # 1X2
+    if market_key == "1":
+        if h_score > a_score:
+            status = "WON"
+            profit = round(stake * (odd - 1.0), 2)
+    elif market_key == "X":
+        if h_score == a_score:
+            status = "WON"
+            profit = round(stake * (odd - 1.0), 2)
+    elif market_key == "2":
+        if a_score > h_score:
+            status = "WON"
+            profit = round(stake * (odd - 1.0), 2)
+    # Doppia Chance
+    elif market_key == "1X":
+        if h_score >= a_score:
+            status = "WON"
+            profit = round(stake * (odd - 1.0), 2)
+    elif market_key == "X2":
+        if a_score >= h_score:
+            status = "WON"
+            profit = round(stake * (odd - 1.0), 2)
+    # Draw No Bet (Rimborso in caso di parità)
+    elif market_key == "DNB_1":
+        if h_score > a_score:
+            status = "WON"
+            profit = round(stake * (odd - 1.0), 2)
+        elif h_score == a_score:
+            status = "REFUND"
+            profit = 0.0
+    elif market_key == "DNB_2":
+        if a_score > h_score:
+            status = "WON"
+            profit = round(stake * (odd - 1.0), 2)
+        elif h_score == a_score:
+            status = "REFUND"
+            profit = 0.0
+    # Totali Gol
+    elif market_key == "OVER_15":
+        if tot_goals > 1.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+    elif market_key == "UNDER_15":
+        if tot_goals < 1.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+    elif market_key == "OVER_25":
+        if tot_goals > 2.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+    elif market_key == "UNDER_25":
+        if tot_goals < 2.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+    elif market_key == "OVER_35":
+        if tot_goals > 3.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+    elif market_key == "UNDER_35":
+        if tot_goals < 3.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+    # BTTS
+    elif market_key == "BTTS_YES":
+        if h_score > 0 and a_score > 0: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+    elif market_key == "BTTS_NO":
+        if h_score == 0 or a_score == 0: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+
+    return status, profit
 
 def main():
-    if not TRACKER_PATH.exists():
-        print("Nessun tracker trovato.")
+    if not TRACKER_FILE.exists():
+        print("tracker.json non trovato.")
         return
 
-    tracker = json.loads(TRACKER_PATH.read_text(encoding="utf-8"))
-    bets = tracker.get("bets", [])
-    pending = [b for b in bets if b.get("status") == "PENDING"]
+    tracker_data = json.loads(TRACKER_FILE.read_text(encoding="utf-8"))
+    bets = tracker_data.get("bets", [])
+    pending_bets = [b for b in bets if b.get("status") == "PENDING"]
 
-    if not pending:
-        print("Nessuna scommessa PENDING da verificare.")
+    if not pending_bets:
+        print("Nessuna scommessa PENDING da refertare.")
         return
 
-    if not ODDS_API_KEY:
-        print("ODDSAPI_KEY mancante.")
-        return
+    # Mappa risultati conclusi
+    scores_by_match = {}
+    for league in LEAGUES:
+        events = fetch_scores_for_league(league)
+        for ev in events:
+            if ev.get("completed"):
+                h_name = ev.get("home_team")
+                a_name = ev.get("away_team")
+                scores = ev.get("scores")
+                if scores and len(scores) >= 2:
+                    h_score = next((int(s["score"]) for s in scores if s["name"] == h_name), None)
+                    a_score = next((int(s["score"]) for s in scores if s["name"] == a_name), None)
+                    if h_score is not None and a_score is not None:
+                        key = f"{h_name}_{a_name}".lower()
+                        scores_by_match[key] = (h_score, a_score)
 
-    # SAFE API MODE: Interroga SOLO le leghe necessarie per le scommesse in corso
-    leagues_needed = {b.get("league") for b in pending if b.get("league")}
-    target_sports = {LEAGUE_TO_KEY[l] for l in leagues_needed if l in LEAGUE_TO_KEY}
+    settled_count = 0
+    won_count = 0
+    refund_count = 0
+    daily_pnl = 0.0
 
-    print(f"Safe API Mode: richiesta risultati limitata a {len(target_sports)} leghe ({target_sports}).")
+    for b in pending_bets:
+        match_str = b.get("match", "")
+        parts = match_str.split(" vs ")
+        if len(parts) != 2:
+            continue
+        h_team, a_team = parts[0].strip(), parts[1].strip()
+        match_key = f"{h_team}_{a_team}".lower()
 
-    completed_scores = {}
-    for sport in target_sports:
-        url = f"{ODDS_BASE_URL}/sports/{sport}/scores/"
-        params = {"apiKey": ODDS_API_KEY, "daysFrom": 3}
-        try:
-            r = requests.get(url, params=params, timeout=15)
-            if r.status_code == 200:
-                for match in r.json():
-                    if match.get("completed") and match.get("scores"):
-                        scores_list = match.get("scores", [])
-                        h_val = next((int(s["score"]) for s in scores_list if s["name"] == match["home_team"]), None)
-                        a_val = next((int(s["score"]) for s in scores_list if s["name"] == match["away_team"]), None)
-                        if h_val is not None and a_val is not None:
-                            completed_scores[match["id"]] = (h_val, a_val)
-        except Exception as e:
-            print(f"Errore risultati per {sport}: {e}")
+        if match_key in scores_by_match:
+            h_score, a_score = scores_by_match[match_key]
+            m_key = b.get("market_key", b.get("id", "").split("_")[-1])
+            odd = float(b.get("odd", 1.0))
+            stake = float(b.get("stake_pct", 1.0))
 
-    today_resolved = []
-    for b in pending:
-        fid = b.get("fixture_id")
-        if fid in completed_scores:
-            h, a = completed_scores[fid]
-            b["score"] = f"{h}-{a}"
-            won = evaluate_bet(b["market_type"], h, a)
-            stake_pct = b.get("suggested_stake_pct", 1.0)
-            if won:
-                b["status"] = "WON"
-                b["profit"] = round((b["odd"] - 1.0) * stake_pct, 2)
-            else:
-                b["status"] = "LOST"
-                b["profit"] = -round(stake_pct, 2)
-            today_resolved.append(b)
+            status, profit = evaluate_bet_status(m_key, h_score, a_score, odd, stake)
 
-    settled = [b for b in bets if b.get("status") in ("WON", "LOST")]
-    tot_settled = len(settled)
-    won_cnt = len([b for b in settled if b.get("status") == "WON"])
-    lost_cnt = len([b for b in settled if b.get("status") == "LOST"])
-    tot_profit = sum(b.get("profit", 0.0) for b in settled)
+            b["status"] = status
+            b["profit"] = profit
+            b["score"] = f"{h_score}-{a_score}"
+            settled_count += 1
+            daily_pnl += profit
+            if status == "WON": won_count += 1
+            elif status == "REFUND": refund_count += 1
 
-    tracker["total_bets"] = tot_settled
-    tracker["won"] = won_cnt
-    tracker["lost"] = lost_cnt
-    tracker["win_rate"] = round((won_cnt / tot_settled * 100), 1) if tot_settled > 0 else 0.0
-    tracker["net_profit_units"] = round(tot_profit, 2)
-    tracker["roi_pct"] = round((tot_profit / tot_settled * 100), 1) if tot_settled > 0 else 0.0
-
-    TRACKER_PATH.write_text(json.dumps(tracker, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Risolte {len(today_resolved)} scommesse stasera.")
-
-    if today_resolved:
-        send_telegram_recap(today_resolved, tracker["win_rate"], tracker["roi_pct"], tracker["net_profit_units"])
-
+    if settled_count > 0:
+        TRACKER_FILE.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
+        
+        # Report Telegram notturno
+        msg = [
+            "<b>🌙 AtmBetSignal — Chiusura Palinsesto & Settlement</b>",
+            f"Operazioni refertate: <b>{settled_count}</b>",
+            f"✅ Vinte: <b>{won_count}</b> | 🔄 Rimborsate: <b>{refund_count}</b> | ❌ Perse: <b>{settled_count - won_count - refund_count}</b>",
+            f"P&L di Giornata: <b>{daily_pnl:+.2f}% Bankroll</b>\n",
+            "📊 Track-record aggiornato e verificabile sul portale web."
+        ]
+        send_telegram("\n".join(msg))
+        print(f"Refertazione completata: {settled_count} scommesse aggiornate.")
+    else:
+        print("I match PENDING non risultano ancora conclusi sui feed.")
 
 if __name__ == "__main__":
     main()
