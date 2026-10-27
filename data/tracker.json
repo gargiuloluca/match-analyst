@@ -7,18 +7,93 @@
   "net_profit_units": 2.27,
   "roi_pct": 227.0,
   "bets": [
+      {
+  "bets": [
     {
-      "id": "2026-10-26_85e464708d03287f24590e1478aeca31_1",
-      "date": "2026-10-26",
-      "fixture_id": "85e464708d03287f24590e1478aeca31",
+      "id": "sevilla_osasuna_won",
+      "date": "2026-10-26T20:00:00Z",
       "match": "Sevilla - CA Osasuna",
       "league": "La Liga",
-      "market_type": "1",
-      "outcome_label": "Vittoria Sevilla",
+      "bet": "Vittoria Sevilla",
+      "market_key": "1",
       "odd": 1.91,
-      "estimated_prob": 0.6881,
-      "suggested_stake_pct": 2.5,
+      "prob": 0.68,
+      "stake_pct": 2.5,
+      "tier": "OFFICIAL",
       "status": "WON",
       "score": "2-0",
       "profit": 2.27
+    },
+    {
+      "id": "venezia_inter_u35",
+      "date": "2026-10-28T19:45:00Z",
+      "match": "Venezia vs Inter Milan",
+      "league": "Serie A - Italy",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.92,
+      "prob": 0.702,
+      "stake_pct": 2.5,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "bournemouth_aston_villa_1x",
+      "date": "2026-10-28T19:45:00Z",
+      "match": "Bournemouth vs Aston Villa",
+      "league": "EFL Cup",
+      "bet": "Doppia Chance 1X",
+      "market_key": "1X",
+      "odd": 1.45,
+      "prob": 0.753,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "oxford_stockport_u35",
+      "date": "2026-10-27T19:45:00Z",
+      "match": "Oxford United vs Stockport County FC",
+      "league": "League 1",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.55,
+      "prob": 0.747,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "parma_udinese_o15",
+      "date": "2026-10-28T17:30:00Z",
+      "match": "Parma vs Udinese",
+      "league": "Serie A - Italy",
+      "bet": "Over 1.5 Gol",
+      "market_key": "OVER_15",
+      "odd": 1.53,
+      "prob": 0.737,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "genoa_juventus_o15",
+      "date": "2026-10-28T19:45:00Z",
+      "match": "Genoa vs Juventus",
+      "league": "Serie A - Italy",
+      "bet": "Over 1.5 Gol",
+      "market_key": "OVER_15",
+      "odd": 1.48,
+      "prob": 0.733,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
     }
+  ]
+    }
+    
