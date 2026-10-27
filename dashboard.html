@@ -14,6 +14,8 @@
       --border: #1e293b;
       --accent: #10b981;
       --cyan: #38bdf8;
+      --gold: #f59e0b;
+      --red: #ef4444;
       --text: #f8fafc;
       --muted: #94a3b8;
     }
@@ -25,6 +27,8 @@
       padding: 30px 20px 80px;
     }
     .container { max-width: 950px; margin: 0 auto; }
+    
+    /* LOGIN BOX */
     .auth-box {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -56,6 +60,8 @@
       cursor: pointer;
       font-size: 1rem;
     }
+
+    /* AREA RISERVATA */
     .user-panel { display: none; }
     .header-bar {
       display: flex;
@@ -63,8 +69,68 @@
       align-items: center;
       border-bottom: 1px solid var(--border);
       padding-bottom: 20px;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
+
+    /* BANNER STATO ABBONAMENTO & TELEGRAM */
+    .vip-status-card {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 14px;
+      padding: 22px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .vip-info h3 {
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .vip-info p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .status-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .pill-active { background: rgba(16, 185, 129, 0.2); color: var(--accent); border: 1px solid var(--accent); }
+    .pill-expired { background: rgba(239, 68, 68, 0.2); color: var(--red); border: 1px solid var(--red); }
+    
+    .telegram-btn {
+      background: #229ED9;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 12px 22px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .telegram-btn:hover {
+      background: #1e8bb5;
+      transform: translateY(-2px);
+    }
+    .telegram-btn.disabled {
+      background: #334155;
+      color: #64748b;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     .pick-item {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -100,8 +166,8 @@
     <!-- LOGIN UTENTE -->
     <div class="auth-box" id="authBox">
       <h2>⚡ Accesso Area Membri</h2>
-      <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Inserisci la tua email o codice di attivazione per visualizzare i segnali odierni sul web.</p>
-      <input type="text" id="userKey" placeholder="La tua email di registrazione">
+      <p style="color: var(--muted); font-size: 0.9rem; margin-top: 8px;">Inserisci la tua email o codice licenza per consultare i segnali quantitativi e gestire Telegram.</p>
+      <input type="text" id="userKey" placeholder="Es: tua_email@gmail.com">
       <button onclick="handleLogin()">Accedi alla Dashboard</button>
       <p style="font-size: 0.85rem; color: var(--muted); margin-top: 18px;">
         Non hai ancora un account? <a href="index.html#piani" style="color: var(--accent); text-decoration: none;">Attiva la prova di 7 giorni</a>
@@ -113,11 +179,29 @@
       <div class="header-bar">
         <div>
           <h2>📊 Dashboard Personale</h2>
-          <p style="color: var(--muted); font-size: 0.9rem;">Segnali quantitativi del giorno aggiornati alle 08:00 UTC.</p>
+          <p style="color: var(--muted); font-size: 0.9rem;">Accesso Web alle analisi quantitative di oggi.</p>
         </div>
         <div>
           <a href="index.html" style="color: var(--muted); text-decoration: none; margin-right: 15px;">← Torna al Sito</a>
           <button onclick="logout()" style="background: none; border: 1px solid var(--border); color: #fff; padding: 6px 12px; border-radius: 6px; cursor: pointer;">Esci</button>
+        </div>
+      </div>
+
+      <!-- BOX COLLEGAMENTO TELEGRAM CON CONTROLLO STATO -->
+      <div class="vip-status-card" id="subscriptionCard">
+        <div class="vip-info">
+          <h3>
+            <span>Stato Abbonamento:</span>
+            <span class="status-pill pill-active" id="subStatus">ATTIVO (PROVA 7 GG)</span>
+          </h3>
+          <p id="subExpiry">Scadenza accesso: calcolo in corso...</p>
+          <small style="color: var(--muted); display: block; margin-top: 4px;">L'accesso al canale Telegram è vincolato alla validità dell'abbonamento attivo.</small>
+        </div>
+        <div>
+          <!-- SOSTITUISCI IL LINK CON IL LINK AL TUO BOT O PIATTAFORMA DI INVITO -->
+          <a id="telegramLinkBtn" href="https://t.me/tuo_bot_telegram?start=sync" target="_blank" class="telegram-btn">
+            <span>✈️ Entra nel Canale VIP</span>
+          </a>
         </div>
       </div>
 
@@ -136,13 +220,43 @@
         sessionStorage.setItem('atm_user_session', val);
         showDashboard();
       } else {
-        alert('Inserisci un indirizzo email o un codice valido.');
+        alert('Inserisci un indirizzo email o un codice licenza valido.');
       }
     }
 
     function showDashboard() {
       document.getElementById('authBox').style.display = 'none';
       document.getElementById('userPanel').style.display = 'block';
+
+      // Simulazione data di scadenza (7 giorni a partire da oggi se nuovo accesso)
+      let expiry = localStorage.getItem('atm_user_expiry');
+      if (!expiry) {
+        const d = new Date();
+        d.setDate(d.getDate() + 7);
+        expiry = d.toISOString();
+        localStorage.setItem('atm_user_expiry', expiry);
+      }
+
+      const expiryDate = new Date(expiry);
+      const isExpired = new Date() > expiryDate;
+
+      const subStatus = document.getElementById('subStatus');
+      const subExpiry = document.getElementById('subExpiry');
+      const telegramBtn = document.getElementById('telegramLinkBtn');
+
+      if (isExpired) {
+        subStatus.className = 'status-pill pill-expired';
+        subStatus.innerText = 'SCADUTO';
+        subExpiry.innerHTML = 'Periodo di prova terminato. <a href="index.html#piani" style="color: var(--accent);">Rinnova per riattivare Telegram e i segnali.</a>';
+        telegramBtn.classList.add('disabled');
+        telegramBtn.innerText = 'Accesso Telegram Revocato 🔒';
+        telegramBtn.href = '#';
+      } else {
+        subStatus.className = 'status-pill pill-active';
+        subStatus.innerText = 'ATTIVO (7 GG PROVA)';
+        subExpiry.innerText = 'Valido fino al: ' + expiryDate.toLocaleDateString('it-IT') + ' ore ' + expiryDate.toLocaleTimeString('it-IT', {hour: '2-digit', minute:'2-digit'});
+      }
+
       loadPicks();
     }
 
