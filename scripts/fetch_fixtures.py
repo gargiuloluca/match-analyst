@@ -1,7 +1,7 @@
 """
-fetch_fixtures.py — AtmBetSignal Odds Fetcher
-Scarica quote e palinsesto per le leghe europee con The Odds API.
-Estrae mercati 1X2, Totali (1.5, 2.5, 3.5), Doppie Chance, Draw No Bet e BTTS.
+fetch_fixtures.py — AtmBetSignal Odds & Line Movement Fetcher
+Scarica quote per le principali leghe europee con The Odds API.
+Tiene traccia delle opening odds per calcolare il trend di quota (Smart Money).
 """
 
 import os
@@ -58,12 +58,13 @@ def fetch_league_odds(sport_key: str):
         print(f"Errore connessione su {sport_key}: {e}")
     return []
 
-def parse_match_data(raw_matches, sport_key: str):
+def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
     parsed = []
     for m in raw_matches:
         home_team = m.get("home_team")
         away_team = m.get("away_team")
         commence_time = m.get("commence_time")
+        m_id = m.get("id")
         bookmakers = m.get("bookmakers", [])
 
         if not bookmakers:
@@ -133,7 +134,7 @@ def parse_match_data(raw_matches, sport_key: str):
         btts_yes = round(o25 * 0.95, 2) if o25 > 1.30 else 1.80
         btts_no = round(1.0 / (1.0 - (1.0 / max(1.1, btts_yes)) * 0.94), 2) if btts_yes > 1.0 else 1.95
 
-        odds_dict = {
+        current_odds = {
             "1": round(odd_1, 2),
             "X": round(odd_x, 2),
             "2": round(odd_2, 2),
@@ -151,26 +152,42 @@ def parse_match_data(raw_matches, sport_key: str):
             "BTTS_NO": max(1.40, btts_no)
         }
 
+        # Tracciamento Opening Odds
+        opening_odds = existing_openings.get(m_id, current_odds)
+
         parsed.append({
-            "id": m.get("id"),
+            "id": m_id,
             "sport_key": sport_key,
             "league_name": m.get("sport_title", sport_key),
             "commence_time": commence_time,
             "home_team": home_team,
             "away_team": away_team,
-            "odds": odds_dict
+            "odds": current_odds,
+            "opening_odds": opening_odds
         })
 
     return parsed
 
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
-    all_fixtures = []
+    
+    # Recupera le quote storiche precedenti se esistono
+    existing_openings = {}
+    if OUTPUT_FILE.exists():
+        try:
+            prev = json.loads(OUTPUT_FILE.read_text(encoding="utf-8"))
+            for fx in prev.get("fixtures", []):
+                m_id = fx.get("id")
+                if m_id:
+                    existing_openings[m_id] = fx.get("opening_odds", fx.get("odds", {}))
+        except Exception:
+            pass
 
-    print(f"Scansione in corso su {len(LEAGUES)} campionati...")
+    all_fixtures = []
+    print(f"Scansione flussi in corso su {len(LEAGUES)} campionati...")
     for league in LEAGUES:
         raw = fetch_league_odds(league)
-        matches = parse_match_data(raw, league)
+        matches = parse_match_data(raw, league, existing_openings)
         all_fixtures.extend(matches)
 
     output_payload = {
@@ -180,7 +197,7 @@ def main():
     }
 
     OUTPUT_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Completato: {len(all_fixtures)} match totali scaricati in data/fixtures.json.")
+    print(f"Completato: {len(all_fixtures)} match aggiornati con tracking Smart Money.")
 
 if __name__ == "__main__":
     main()
