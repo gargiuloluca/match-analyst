@@ -17,13 +17,22 @@ LATEST_FILE = DATA_DIR / "latest.json"
 TRACKER_FILE = DATA_DIR / "tracker.json"
 
 LEAGUE_GOAL_PROFILES = {
+    # Top 5 Europee
     "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.05},
     "soccer_epl": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
     "soccer_spain_la_liga": {"mu_home": 1.40, "mu_away": 1.05, "tau": -0.06},
     "soccer_germany_bundesliga": {"mu_home": 1.70, "mu_away": 1.35, "tau": -0.03},
     "soccer_france_ligue_one": {"mu_home": 1.40, "mu_away": 1.10, "tau": -0.05},
+    # Coppe Europee
     "soccer_uefa_champs_league": {"mu_home": 1.60, "mu_away": 1.30, "tau": -0.04},
     "soccer_uefa_europa_league": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
+    # Nuove Leghe Strategiche
+    "soccer_netherlands_eredivisie": {"mu_home": 1.75, "mu_away": 1.30, "tau": -0.02},  # Campionato a forte trazione offensiva
+    "soccer_england_championship": {"mu_home": 1.42, "mu_away": 1.12, "tau": -0.05},    # Molto equilibrato, ideale per doppie chance
+    "soccer_portugal_primeira_liga": {"mu_home": 1.48, "mu_away": 1.02, "tau": -0.06},  # Forte disparità casa/trasferta per le big
+    "soccer_belgium_first_div": {"mu_home": 1.58, "mu_away": 1.28, "tau": -0.04},
+    "soccer_england_league1": {"mu_home": 1.40, "mu_away": 1.15, "tau": -0.05},
+    "soccer_england_efl_cup": {"mu_home": 1.50, "mu_away": 1.20, "tau": -0.04},
     "default": {"mu_home": 1.48, "mu_away": 1.18, "tau": -0.05}
 }
 
