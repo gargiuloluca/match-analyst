@@ -4,7 +4,7 @@ on:
   schedule:
     # Mattina (08:00 UTC): Analisi e invio pronostici del giorno
     - cron: '0 8 * * *'
-    # Notte (23:00 UTC): Verifica risultati e invio riepilogo serale
+    # Notte (23:00 UTC): Verifica risultati, riepilogo serale e controllo scadenze abbonati
     - cron: '0 23 * * *'
   workflow_dispatch:
     inputs:
@@ -58,15 +58,17 @@ jobs:
         run: python scripts/send_telegram.py
 
       # ==========================================
-      # OPERAZIONI DELLA NOTTE (Riepilogo Risultati)
+      # OPERAZIONI DELLA NOTTE (Riepilogo & Gestione Abbonati)
       # ==========================================
-      - name: Settle finished bets & Send Nightly Recap
+      - name: Settle finished bets & Manage Subscribers
         if: github.event.schedule == '0 23 * * *' || github.event.inputs.job_type == 'night_settlement'
         env:
           ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python scripts/settle_results.py
+        run: |
+          python scripts/settle_results.py
+          python scripts/manage_subscribers.py
 
       # ==========================================
       # SALVATAGGIO DEI DATI SU GITHUB
