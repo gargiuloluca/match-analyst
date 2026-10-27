@@ -91,6 +91,62 @@
       "tier": "DIAMOND",
       "status": "PENDING",
       "profit": 0.0
+    },
+    {
+      "id": "1abac694004a22d77d9a20ef61e6add5_1X",
+      "date": "2026-10-28T19:45:00Z",
+      "match": "Bournemouth vs Aston Villa",
+      "league": "EFL Cup",
+      "bet": "Doppia Chance 1X",
+      "market_key": "1X",
+      "odd": 1.45,
+      "prob": 0.753,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "9e3c8bd5c13372deff55d8552f305141_UNDER_35",
+      "date": "2026-10-27T19:45:00Z",
+      "match": "Oxford United vs Stockport County FC",
+      "league": "League 1",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.55,
+      "prob": 0.7473,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "482c18a8081afdfa310324fa8f37e95a_OVER_15",
+      "date": "2026-10-28T17:30:00Z",
+      "match": "Parma vs Udinese",
+      "league": "Serie A - Italy",
+      "bet": "Over 1.5 Gol",
+      "market_key": "OVER_15",
+      "odd": 1.53,
+      "prob": 0.7367,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "34848497b90b1392f6a767fc183d3ac1_OVER_15",
+      "date": "2026-10-28T19:45:00Z",
+      "match": "Genoa vs Juventus",
+      "league": "Serie A - Italy",
+      "bet": "Over 1.5 Gol",
+      "market_key": "OVER_15",
+      "odd": 1.48,
+      "prob": 0.7327,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ]
 }
