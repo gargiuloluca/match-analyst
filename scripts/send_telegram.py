@@ -1,7 +1,6 @@
 """
 send_telegram.py — Report Istituzionale Giornaliero AtmBetSignal
-- Evidenzia le giocate DIAMOND e GOLD
-- Presenta la Top 5 Ufficiale (>= 65%) e la Watchlist Radar
+Evidenzia giocate DIAMOND, GOLD, OFFICIAL e flussi Smart Money.
 """
 
 import os
@@ -34,7 +33,7 @@ def send_message(text: str):
 
 def main():
     if not LATEST_FILE.exists():
-        print("latest.json non presente.")
+        print("latest.json non trovato.")
         return
 
     data = json.loads(LATEST_FILE.read_text(encoding="utf-8"))
@@ -43,28 +42,30 @@ def main():
 
     lines = []
     lines.append("<b>🏧 AtmBetSignal — Intelligence Report</b>")
-    lines.append("<i>Modello Bivariato Dixon-Coles & Quarter-Kelly</i>\n")
+    lines.append("<i>Modello Bivariato Dixon-Coles & Smart Money Flow</i>\n")
 
     if not officials:
-        lines.append("🛡️ <b>Capitale Protetto:</b> Nessun evento del palinsesto supera la soglia istituzionale del 65%. Zero scommesse forzate per preservare il bankroll.")
+        lines.append("🛡️ <b>Capitale Protetto:</b> Nessun evento del palinsesto supera la soglia istituzionale del 65% o rispetta i vincoli di flusso di quota. Zero scommesse forzate per preservare il bankroll.")
     else:
         lines.append(f"🎯 <b>TOP {len(officials)} SELEZIONI UFFICIALI (Soglia ≥ 65%)</b>\n")
         for i, p in enumerate(officials, 1):
             tier = p.get("tier", "OFFICIAL")
             badge = "🎯 SEGNALE PRO"
             if tier == "DIAMOND":
-                badge = "💎 <b>DIAMOND PICK (Massimo Edge)</b>"
+                badge = "💎 <b>DIAMOND PICK (Massimo Edge & Smart Money)</b>"
             elif tier == "GOLD":
                 badge = "🥇 <b>GOLD PICK (Super Affidabilità)</b>"
 
             prob_pct = f"{p['estimated_probability'] * 100:.1f}%"
             edge_pct = f"{p['edge'] * 100:+.1f}%"
+            shift = p.get("line_shift_pct", 0.0)
+            shift_tag = f" | Quota: {shift:+.1f}%" if shift != 0.0 else ""
 
             lines.append(f"{badge}")
             lines.append(f"⚽ <b>{p['match']}</b>")
             lines.append(f"🏆 {p['league']}")
             lines.append(f"📍 Esito: <b>{p['outcome_label']}</b> @ <b>{p['odd']:.2f}</b>")
-            lines.append(f"📊 Stima: <b>{prob_pct}</b> | Edge: <code>{edge_pct}</code>")
+            lines.append(f"📊 Stima: <b>{prob_pct}</b> | Edge: <code>{edge_pct}</code>{shift_tag}")
             lines.append(f"💰 Stake Kelly: <b>{p['suggested_stake_pct']}% del Bankroll</b>\n")
 
     if radar:
