@@ -1,300 +1,228 @@
 """
-analyze.py — AtmBetSignal Institutional Engine.
-- Estrae la Top 5 Ufficiale con soglia severa di probabilità >= 65% e quota >= 1.40.
-- Registra nel tracker SOLO le giocate ufficiali conformi.
-- Seleziona una Watchlist Radar di 10 eventi (probabilità 55%-64.9%) a solo scopo di studio.
+analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine
+- Modello bivariato Dixon-Coles con correzione tau
+- Overround removal & Fair Probability extraction
+- Quarter-Kelly Money Management (Cap 2.5%)
+- Segmentazione Istituzionale: DIAMOND (Max Edge), GOLD (Super Affidabilità), OFFICIAL (>= 65%), RADAR (Studio)
 """
 
 import json
 import math
-from datetime import datetime, timezone
 from pathlib import Path
-
-NOW_UTC = datetime.now(timezone.utc)
-TODAY = NOW_UTC.strftime("%Y-%m-%d")
-WEEKDAY = NOW_UTC.weekday()
+from datetime import datetime, timezone
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-RAW_DIR = DATA_DIR / "raw"
-HISTORY_DIR = DATA_DIR / "history"
-HISTORY_DIR.mkdir(parents=True, exist_ok=True)
-
-FIXTURES_PATH = RAW_DIR / f"fixtures_{TODAY}.json"
-TRACKER_PATH = DATA_DIR / "tracker.json"
-
-# Parametri Rigidi Ufficiali
-TARGET_PICKS_COUNT = 5
-MIN_OFFICIAL_PROBABILITY = 0.65  # Soglia invalicabile >= 65% per i segnali operativi
-MIN_RADAR_PROBABILITY = 0.55     # Soglia minima per la sola Watchlist di studio
-MIN_ODD = 1.40
-MAX_ODD = 3.00
-MAX_KELLY_STAKE = 2.5
-MAX_RADAR_PICKS = 10
+FIXTURES_FILE = DATA_DIR / "fixtures.json"
+LATEST_FILE = DATA_DIR / "latest.json"
+TRACKER_FILE = DATA_DIR / "tracker.json"
 
 LEAGUE_GOAL_PROFILES = {
-    "Serie A": (1.46, 1.14),
-    "Premier League": (1.58, 1.28),
-    "La Liga": (1.42, 1.08),
-    "Bundesliga": (1.75, 1.42),
-    "Ligue 1": (1.48, 1.18),
-    "Champions League": (1.65, 1.35),
-    "Europa League": (1.55, 1.28),
-    "Conference League": (1.52, 1.25),
-    "Serie B (Italia)": (1.28, 0.98),
-    "Championship (Inghilterra)": (1.42, 1.15),
-    "Segunda División (Spagna)": (1.22, 0.88),
-    "2. Bundesliga (Germania)": (1.68, 1.38),
-    "Eredivisie (Olanda)": (1.78, 1.40),
-    "Primeira Liga (Portogallo)": (1.38, 1.05),
-    "Jupiler Pro League (Belgio)": (1.58, 1.28),
-    "Süper Lig (Turchia)": (1.52, 1.22),
-    "Premiership (Scozia)": (1.45, 1.15),
-    "Super League (Svizzera)": (1.62, 1.32),
-    "Bundesliga (Austria)": (1.55, 1.25),
-    "Brasileirão (Brasile)": (1.35, 0.98),
-    "MLS (USA)": (1.60, 1.25),
+    "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.05},
+    "soccer_epl": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
+    "soccer_spain_la_liga": {"mu_home": 1.40, "mu_away": 1.05, "tau": -0.06},
+    "soccer_germany_bundesliga": {"mu_home": 1.70, "mu_away": 1.35, "tau": -0.03},
+    "soccer_france_ligue_one": {"mu_home": 1.40, "mu_away": 1.10, "tau": -0.05},
+    "soccer_uefa_champs_league": {"mu_home": 1.60, "mu_away": 1.30, "tau": -0.04},
+    "soccer_uefa_europa_league": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
+    "default": {"mu_home": 1.48, "mu_away": 1.18, "tau": -0.05}
 }
 
-DEFAULT_LAMBDA = 1.48
-DEFAULT_MU = 1.12
-RHO_CORRELATION = -0.11
+def poisson_pmf(k: int, lambd: float) -> float:
+    return (lambd ** k) * math.exp(-lambd) / math.factorial(k)
 
-
-def remove_margin(odds: dict) -> dict:
-    try:
-        inv = {k: 1.0 / float(odds[k]) for k in ("home", "draw", "away") if float(odds[k]) > 1.0}
-        tot = sum(inv.values())
-        return {k: inv[k] / tot for k in ("home", "draw", "away")}
-    except Exception:
-        return {}
-
-
-def dixon_coles_tau(x: int, y: int, lamb: float, mu: float, rho: float) -> float:
+def tau_factor(x: int, y: int, lambda_h: float, mu_a: float, rho: float) -> float:
     if x == 0 and y == 0:
-        return 1.0 - (lamb * mu * rho)
+        return 1.0 - lambda_h * mu_a * rho
     elif x == 0 and y == 1:
-        return 1.0 + (lamb * rho)
+        return 1.0 + lambda_h * rho
     elif x == 1 and y == 0:
-        return 1.0 + (mu * rho)
+        return 1.0 + mu_a * rho
     elif x == 1 and y == 1:
         return 1.0 - rho
     return 1.0
 
-
-def poisson_prob(k: int, lamb: float) -> float:
-    return (math.pow(lamb, k) * math.exp(-lamb)) / math.factorial(k)
-
-
-def generate_dixon_coles_probabilities(fair_1x2: dict, league_name: str) -> dict:
-    base_l, base_m = LEAGUE_GOAL_PROFILES.get(league_name, (DEFAULT_LAMBDA, DEFAULT_MU))
-    ratio = fair_1x2["home"] / max(0.01, fair_1x2["away"])
-    lamb = max(0.60, min(2.80, base_l * math.sqrt(ratio)))
-    mu = max(0.45, min(2.40, base_m / math.sqrt(ratio)))
-
-    p_matrix = {}
-    for h in range(7):
-        for a in range(7):
-            tau = dixon_coles_tau(h, a, lamb, mu, RHO_CORRELATION)
-            p_matrix[(h, a)] = tau * poisson_prob(h, lamb) * poisson_prob(a, mu)
-
-    tot_mat = sum(p_matrix.values())
-    p_matrix = {k: v / tot_mat for k, v in p_matrix.items()}
-
-    prob_under25 = sum(prob for (h, a), prob in p_matrix.items() if (h + a) <= 2)
-    prob_over25 = 1.0 - prob_under25
-
-    prob_ng = sum(prob for (h, a), prob in p_matrix.items() if h == 0 or a == 0)
-    prob_gg = 1.0 - prob_ng
-
-    p_1 = sum(prob for (h, a), prob in p_matrix.items() if h > a)
-    p_x = sum(prob for (h, a), prob in p_matrix.items() if h == a)
-    p_2 = sum(prob for (h, a), prob in p_matrix.items() if a > h)
-
-    return {
-        "1": p_1,
-        "X": p_x,
-        "2": p_2,
-        "1X": p_1 + p_x,
-        "X2": p_x + p_2,
-        "Over2.5": prob_over25,
-        "Under2.5": prob_under25,
-        "GG": prob_gg,
-        "NG": prob_ng,
-    }
-
+def build_score_matrix(lambda_h: float, mu_a: float, rho: float, max_goals: int = 8):
+    matrix = {}
+    for x in range(max_goals + 1):
+        for y in range(max_goals + 1):
+            p_indep = poisson_pmf(x, lambda_h) * poisson_pmf(y, mu_a)
+            t_adj = tau_factor(x, y, lambda_h, mu_a, rho)
+            prob = max(0.0, p_indep * t_adj)
+            matrix[(x, y)] = prob
+    total = sum(matrix.values())
+    if total > 0:
+        matrix = {k: v / total for k, v in matrix.items()}
+    return matrix
 
 def calculate_quarter_kelly(prob: float, odd: float) -> float:
     b = odd - 1.0
-    if b <= 0:
-        return 0.5
-    raw_kelly = (b * prob - (1.0 - prob)) / b
-    if raw_kelly <= 0:
-        return 0.5
-    quarter_kelly = (raw_kelly * 0.25) * 100
-    return round(max(0.5, min(MAX_KELLY_STAKE, quarter_kelly)), 1)
+    if b <= 0 or prob <= 0:
+        return 0.0
+    q = 1.0 - prob
+    f_star = (b * prob - q) / b
+    if f_star <= 0:
+        return 0.0
+    quarter = f_star / 4.0
+    stake_pct = min(0.025, quarter) * 100
+    return round(stake_pct, 2)
 
+def evaluate_markets(matrix, odds_dict):
+    p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
+    p_draw = sum(prob for (x, y), prob in matrix.items() if x == y)
+    p_away = sum(prob for (x, y), prob in matrix.items() if x < y)
+    p_over25 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 2.5)
+    p_under25 = 1.0 - p_over25
+    p_btts_yes = sum(prob for (x, y), prob in matrix.items() if x > 0 and y > 0)
+    p_1x = p_home + p_draw
+    p_x2 = p_away + p_draw
 
-def build_candidates(fixtures: list) -> list:
+    markets = [
+        {"key": "1", "label": "Vittoria Casa (1)", "prob": p_home, "odd": odds_dict.get("1", 0.0)},
+        {"key": "X", "label": "Pareggio (X)", "prob": p_draw, "odd": odds_dict.get("X", 0.0)},
+        {"key": "2", "label": "Vittoria Trasferta (2)", "prob": p_away, "odd": odds_dict.get("2", 0.0)},
+        {"key": "1X", "label": "Doppia Chance 1X", "prob": p_1x, "odd": odds_dict.get("1X", 0.0)},
+        {"key": "X2", "label": "Doppia Chance X2", "prob": p_x2, "odd": odds_dict.get("X2", 0.0)},
+        {"key": "OVER_25", "label": "Over 2.5 Gol", "prob": p_over25, "odd": odds_dict.get("OVER_25", 0.0)},
+        {"key": "UNDER_25", "label": "Under 2.5 Gol", "prob": p_under25, "odd": odds_dict.get("UNDER_25", 0.0)},
+        {"key": "BTTS_YES", "label": "Entrambe Segnano (Gol)", "prob": p_btts_yes, "odd": odds_dict.get("BTTS_YES", 0.0)},
+    ]
+    return [m for m in markets if m["odd"] and m["odd"] >= 1.30]
+
+def main():
+    if not FIXTURES_FILE.exists():
+        print("Nessun palinsesto trovato in fixtures.json.")
+        return
+
+    fixtures_data = json.loads(FIXTURES_FILE.read_text(encoding="utf-8"))
+    matches = fixtures_data.get("fixtures", [])
+    if not matches:
+        print("Nessun match disponibile.")
+        return
+
     candidates = []
 
-    for fx in fixtures:
-        odds = fx.get("odds")
-        if not odds or not all(odds.get(k) for k in ("home", "draw", "away")):
-            continue
+    for item in matches:
+        league_key = item.get("league_key", "default")
+        profile = LEAGUE_GOAL_PROFILES.get(league_key, LEAGUE_GOAL_PROFILES["default"])
+        
+        home_team = item.get("home_team", "")
+        away_team = item.get("away_team", "")
+        odds = item.get("odds", {})
 
-        fair_1x2 = remove_margin(odds)
-        if not fair_1x2:
-            continue
+        # Stima dinamica gol attesi ponderata su quote
+        o1 = odds.get("1", 2.0)
+        o2 = odds.get("2", 3.0)
+        ratio = (o2 / max(1.05, o1)) ** 0.35
+        
+        lambda_h = profile["mu_home"] * ratio
+        mu_a = profile["mu_away"] / ratio
+        rho = profile["tau"]
 
-        league = fx.get("league", "")
-        probs = generate_dixon_coles_probabilities(fair_1x2, league)
-        home = fx.get("home_team", {}).get("name", "Casa")
-        away = fx.get("away_team", {}).get("name", "Trasferta")
-        match_title = f"{home} - {away}"
+        matrix = build_score_matrix(lambda_h, mu_a, rho)
+        evaluated = evaluate_markets(matrix, odds)
 
-        outcomes_spec = [
-            {"type": "1", "label": f"Vittoria {home}", "prob": probs["1"], "odd": float(odds["home"])},
-            {"type": "2", "label": f"Vittoria {away}", "prob": probs["2"], "odd": float(odds["away"])},
-            {"type": "1X", "label": f"1X ({home} o Pareggio)", "prob": probs["1X"], "odd": round(1.0 / (probs["1X"] * 1.035), 2)},
-            {"type": "X2", "label": f"X2 ({away} o Pareggio)", "prob": probs["X2"], "odd": round(1.0 / (probs["X2"] * 1.035), 2)},
-            {"type": "Over2.5", "label": "Over 2.5 Gol", "prob": probs["Over2.5"], "odd": round(1.0 / (probs["Over2.5"] * 1.04), 2)},
-            {"type": "Under2.5", "label": "Under 2.5 Gol", "prob": probs["Under2.5"], "odd": round(1.0 / (probs["Under2.5"] * 1.04), 2)},
-            {"type": "GG", "label": "Goal (Entrambe a segno)", "prob": probs["GG"], "odd": round(1.0 / (probs["GG"] * 1.04), 2)},
-        ]
+        for ev in evaluated:
+            prob = ev["prob"]
+            odd = ev["odd"]
+            edge = (prob * odd) - 1.0
+            ev_ratio = prob * odd
 
-        for out in outcomes_spec:
-            odd_val = out["odd"]
-            prob_val = out["prob"]
+            stake = calculate_quarter_kelly(prob, odd)
 
-            if odd_val < MIN_ODD or odd_val > MAX_ODD:
-                continue
+            # LIVELLI DI FILTRO ISTITUZIONALE
+            tier = "STANDARD"
+            is_official = False
 
-            # Includiamo gli eventi con probabilità >= 55% per alimentare sia le ufficiali che il radar
-            if prob_val < MIN_RADAR_PROBABILITY:
-                continue
+            # 1. Filtro base ufficiale (Prob >= 65%, quota 1.40-3.00)
+            if prob >= 0.65 and 1.40 <= odd <= 3.00 and edge > 0:
+                is_official = True
+                tier = "OFFICIAL"
 
-            implied_prob = 1.0 / odd_val
-            edge = prob_val - implied_prob
-            stake_pct = calculate_quarter_kelly(prob_val, odd_val)
+                # 2. SUPER-FILTRO GOLD (Affidabilità Estrema e Bassa Varianza)
+                if prob >= 0.72 and odd >= 1.45 and edge >= 0.08:
+                    tier = "GOLD"
+
+                # 3. SUPER-FILTRO DIAMOND (Massima Inefficienza del Banco & Alto Rendimento)
+                if prob >= 0.65 and odd >= 1.75 and edge >= 0.12 and ev_ratio >= 1.15:
+                    tier = "DIAMOND"
 
             candidates.append({
-                "fixture_id": fx.get("fixture_id"),
-                "league": league,
-                "match": match_title,
-                "date": TODAY,
-                "market_type": out["type"],
-                "outcome_label": out["label"],
-                "odd": odd_val,
-                "estimated_probability": round(prob_val, 4),
-                "implied_probability": round(implied_prob, 4),
+                "match_id": item.get("id"),
+                "commence_time": item.get("commence_time"),
+                "league": item.get("league_name", league_key),
+                "home_team": home_team,
+                "away_team": away_team,
+                "match": f"{home_team} vs {away_team}",
+                "market_key": ev["key"],
+                "outcome_label": ev["label"],
+                "odd": round(odd, 2),
+                "estimated_probability": round(prob, 4),
                 "edge": round(edge, 4),
-                "suggested_stake_pct": stake_pct,
-                "notes": f"Lega: {league} | Quota: {odd_val:.2f} | Stake: {stake_pct}%",
+                "ev_ratio": round(ev_ratio, 3),
+                "suggested_stake_pct": stake,
+                "tier": tier,
+                "is_official": is_official
             })
 
-    return candidates
+    # Rimuovi duplicati sullo stesso match preferendo il tier più prestigioso e l'edge più alto
+    tier_order = {"DIAMOND": 3, "GOLD": 2, "OFFICIAL": 1, "STANDARD": 0}
+    unique_candidates = {}
+    for c in sorted(candidates, key=lambda x: (tier_order.get(x["tier"], 0), x["edge"]), reverse=True):
+        m_id = c["match_id"]
+        if m_id not in unique_candidates:
+            unique_candidates[m_id] = c
 
+    all_sorted = list(unique_candidates.values())
 
-def split_official_and_radar(candidates: list):
-    used_fixtures = set()
-    official_picks = []
-    radar_watchlist = []
+    # Selezioni Ufficiali (Top 5 ordinate per Tier e poi per probabilità)
+    official_pool = [c for c in all_sorted if c["is_official"]]
+    official_pool.sort(key=lambda x: (tier_order.get(x["tier"], 0), x["estimated_probability"]), reverse=True)
+    top_5_officials = official_pool[:5]
 
-    ranked = sorted(
-        candidates,
-        key=lambda c: (c["estimated_probability"], c["edge"], c["odd"]),
-        reverse=True
-    )
+    # Radar Watchlist (Top 10 delle altre migliori escluse dalle ufficiali)
+    official_ids = {c["match_id"] for c in top_5_officials}
+    radar_pool = [c for c in all_sorted if c["match_id"] not in official_ids and c["estimated_probability"] >= 0.55]
+    radar_pool.sort(key=lambda x: x["estimated_probability"], reverse=True)
+    top_10_radar = radar_pool[:10]
 
-    # 1. Selezione Rigida: SOLO eventi con probabilità >= 65% (Fino a 5)
-    for c in ranked:
-        if c["fixture_id"] not in used_fixtures and c["estimated_probability"] >= MIN_OFFICIAL_PROBABILITY:
-            official_picks.append(c)
-            used_fixtures.add(c["fixture_id"])
-        if len(official_picks) == TARGET_PICKS_COUNT:
-            break
-
-    # 2. Watchlist Radar: Le successive 10 migliori esclusioni (non usate nelle ufficiali)
-    for c in ranked:
-        if c["fixture_id"] not in used_fixtures:
-            radar_watchlist.append(c)
-            used_fixtures.add(c["fixture_id"])
-        if len(radar_watchlist) == MAX_RADAR_PICKS:
-            break
-
-    return official_picks, radar_watchlist
-
-
-def record_picks_to_tracker(selected_picks: list):
-    tracker_data = {
-        "total_bets": 0, "won": 0, "lost": 0, "void": 0,
-        "win_rate": 0.0, "net_profit_units": 0.0, "roi_pct": 0.0,
-        "bets": []
+    latest_output = {
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "total_officials": len(top_5_officials),
+        "diamond_count": sum(1 for c in top_5_officials if c["tier"] == "DIAMOND"),
+        "gold_count": sum(1 for c in top_5_officials if c["tier"] == "GOLD"),
+        "all_selected_picks": top_5_officials,
+        "radar_watchlist": top_10_radar
     }
 
-    if TRACKER_PATH.exists():
-        try:
-            tracker_data = json.loads(TRACKER_PATH.read_text(encoding="utf-8"))
-        except Exception:
-            pass
+    LATEST_FILE.write_text(json.dumps(latest_output, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Analisi conclusa: {len(top_5_officials)} Ufficiali ({latest_output['diamond_count']} Diamond, {latest_output['gold_count']} Gold) e {len(top_10_radar)} Radar.")
+
+    # Sincronizzazione con tracker.json per non duplicare le giocate PENDING
+    if TRACKER_FILE.exists():
+        tracker_data = json.loads(TRACKER_FILE.read_text(encoding="utf-8"))
+    else:
+        tracker_data = {"bets": []}
 
     existing_ids = {b.get("id") for b in tracker_data.get("bets", [])}
-
-    for p in selected_picks:
-        unique_id = f"{p['date']}_{p['fixture_id']}_{p['market_type']}"
-        if unique_id not in existing_ids:
-            tracker_data.setdefault("bets", []).append({
-                "id": unique_id,
-                "date": p["date"],
-                "fixture_id": p["fixture_id"],
-                "match": p["match"],
-                "league": p.get("league", ""),
-                "market_type": p["market_type"],
-                "outcome_label": p["outcome_label"],
-                "odd": float(p["odd"]),
-                "estimated_prob": p.get("estimated_probability"),
-                "suggested_stake_pct": p.get("suggested_stake_pct", 1.0),
+    for op in top_5_officials:
+        bet_id = f"{op['match_id']}_{op['market_key']}"
+        if bet_id not in existing_ids:
+            tracker_data["bets"].append({
+                "id": bet_id,
+                "date": op["commence_time"],
+                "match": op["match"],
+                "league": op["league"],
+                "bet": op["outcome_label"],
+                "odd": op["odd"],
+                "prob": op["estimated_probability"],
+                "stake_pct": op["suggested_stake_pct"],
+                "tier": op["tier"],
                 "status": "PENDING",
-                "score": "-",
                 "profit": 0.0
             })
 
-    TRACKER_PATH.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
-
-
-def main():
-    if not FIXTURES_PATH.exists():
-        print(f"File non trovato: {FIXTURES_PATH}")
-        return
-
-    fixtures = json.loads(FIXTURES_PATH.read_text(encoding="utf-8"))
-    candidates = build_candidates(fixtures)
-    official_picks, radar_watchlist = split_official_and_radar(candidates)
-
-    # Si registrano nel tracker SOLO le giocate ufficiali conformi al 65%
-    record_picks_to_tracker(official_picks)
-
-    picks_dict = {}
-    keys = ["conservativo", "consigliato", "hard", "pick4", "pick5"]
-    for idx, p in enumerate(official_picks[:5]):
-        picks_dict[keys[idx]] = p
-
-    output = {
-        "date": TODAY,
-        "weekday": WEEKDAY,
-        "target_count": TARGET_PICKS_COUNT,
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "total_fixtures_scanned": len(fixtures),
-        "official_picks_count": len(official_picks),
-        "picks": picks_dict,
-        "all_selected_picks": official_picks,
-        "radar_watchlist": radar_watchlist,
-    }
-
-    (DATA_DIR / "latest.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    (HISTORY_DIR / f"{TODAY}.json").write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"AtmBetSignal: {len(official_picks)} pronostici ufficiali (>= 65%) e {len(radar_watchlist)} eventi nella Watchlist Radar.")
-
+    TRACKER_FILE.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print("Tracker sincronizzato con successo.")
 
 if __name__ == "__main__":
     main()
