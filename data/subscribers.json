@@ -1,0 +1,18 @@
+{
+  "subscribers": [
+    {
+      "email": "tuoindirizzo@admin.com",
+      "telegram_id": null,
+      "plan": "admin",
+      "status": "ACTIVE",
+      "valid_until": "2030-01-01T00:00:00Z"
+    },
+    {
+      "email": "prova@esempio.com",
+      "telegram_id": null,
+      "plan": "trial_7d",
+      "status": "ACTIVE",
+      "valid_until": "2026-11-03T23:59:59Z"
+    }
+  ]
+}
