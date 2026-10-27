@@ -1,9 +1,10 @@
 """
 analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine
 - Matrice bivariata Dixon-Coles con correzione tau
-- Valutazione completa mercati: 1X2, DC (1X/X2), DNB, Over/Under (1.5/2.5/3.5), BTTS
+- Mercati completi: 1X2, DC, DNB, Totali gol, BTTS
+- Filtro Smart Money (Drop di quota confermato / Rifiuto Drift)
 - Quarter-Kelly Money Management (Cap 2.5%)
-- Segmentazione: DIAMOND (Max Edge), GOLD (Super Affidabilità >= 72%), OFFICIAL (>= 65%), RADAR
+- Segmentazione: DIAMOND (Max Edge + Drop), GOLD (Super Affidabilità >= 72%), OFFICIAL (>= 65%), RADAR
 """
 
 import json
@@ -81,12 +82,12 @@ def evaluate_markets(matrix, odds_dict):
     p_1x = p_home + p_draw
     p_x2 = p_away + p_draw
 
-    # Draw No Bet (Probabilità condizionata)
+    # Draw No Bet
     decisive = p_home + p_away
     p_dnb_1 = (p_home / decisive) if decisive > 0 else 0.0
     p_dnb_2 = (p_away / decisive) if decisive > 0 else 0.0
 
-    # Linee Totali Gol
+    # Totali Gol
     p_over15 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 1.5)
     p_under15 = 1.0 - p_over15
     p_over25 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 2.5)
@@ -137,6 +138,7 @@ def main():
         home_team = item.get("home_team", "")
         away_team = item.get("away_team", "")
         odds = item.get("odds", {})
+        open_odds = item.get("opening_odds", {})
 
         o1 = odds.get("1", 2.0)
         o2 = odds.get("2", 3.0)
@@ -152,24 +154,34 @@ def main():
         for ev in evaluated:
             prob = ev["prob"]
             odd = ev["odd"]
+            m_key = ev["key"]
             edge = (prob * odd) - 1.0
             ev_ratio = prob * odd
             stake = calculate_quarter_kelly(prob, odd)
 
+            # Analisi Flusso Quota (Smart Money Tracking)
+            op_odd = open_odds.get(m_key, odd)
+            line_shift_pct = 0.0
+            if op_odd > 0:
+                line_shift_pct = round(((odd - op_odd) / op_odd) * 100, 1)
+
             tier = "STANDARD"
             is_official = False
 
-            # Criterio Ufficiale Base: Probabilità >= 65% e Quota 1.40 - 3.00
-            if prob >= 0.65 and 1.40 <= odd <= 3.00 and edge > 0:
+            # Veto di Sicurezza: Se la quota è salita oltre il +7% (drift anomalo), evita la puntata ufficiale
+            has_heavy_drift = line_shift_pct >= 7.0
+
+            # Criterio Ufficiale Base: Probabilità >= 65% e Quota 1.40 - 3.00 senza drift
+            if prob >= 0.65 and 1.40 <= odd <= 3.00 and edge > 0 and not has_heavy_drift:
                 is_official = True
                 tier = "OFFICIAL"
 
-                # Super-Filtro GOLD (Affidabilità >= 72% e quota >= 1.45)
+                # Super-Filtro GOLD (Probabilità >= 72% e quota >= 1.45)
                 if prob >= 0.72 and odd >= 1.45 and edge >= 0.08:
                     tier = "GOLD"
 
-                # Super-Filtro DIAMOND (Edge Istituzionale >= +12% e quota >= 1.75)
-                if prob >= 0.65 and odd >= 1.75 and edge >= 0.12 and ev_ratio >= 1.15:
+                # Super-Filtro DIAMOND (Edge Istituzionale >= +12%, Quota >= 1.75 o Quota in forte discesa)
+                if (prob >= 0.65 and odd >= 1.75 and edge >= 0.12 and ev_ratio >= 1.15) or (edge >= 0.10 and line_shift_pct <= -3.0):
                     tier = "DIAMOND"
 
             candidates.append({
@@ -179,9 +191,10 @@ def main():
                 "home_team": home_team,
                 "away_team": away_team,
                 "match": f"{home_team} vs {away_team}",
-                "market_key": ev["key"],
+                "market_key": m_key,
                 "outcome_label": ev["label"],
                 "odd": round(odd, 2),
+                "line_shift_pct": line_shift_pct,
                 "estimated_probability": round(prob, 4),
                 "edge": round(edge, 4),
                 "ev_ratio": round(ev_ratio, 3),
@@ -204,7 +217,7 @@ def main():
     official_pool.sort(key=lambda x: (tier_order.get(x["tier"], 0), x["estimated_probability"]), reverse=True)
     top_5_officials = official_pool[:5]
 
-    # Watchlist Radar (Top 10 tra 55% e 64.9%)
+    # Watchlist Radar (Top 10 tra 55% e 64.9% o giocate con drift)
     official_ids = {c["match_id"] for c in top_5_officials}
     radar_pool = [c for c in all_sorted if c["match_id"] not in official_ids and c["estimated_probability"] >= 0.55]
     radar_pool.sort(key=lambda x: x["estimated_probability"], reverse=True)
@@ -220,7 +233,7 @@ def main():
     }
 
     LATEST_FILE.write_text(json.dumps(latest_output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Analisi conclusa: {len(top_5_officials)} Ufficiali ({latest_output['diamond_count']} Diamond, {latest_output['gold_count']} Gold) e {len(top_10_radar)} Radar.")
+    print(f"Analisi completata: {len(top_5_officials)} Ufficiali ({latest_output['diamond_count']} Diamond, {latest_output['gold_count']} Gold) e {len(top_10_radar)} Radar.")
 
     # Sincronizzazione con tracker.json
     if TRACKER_FILE.exists():
