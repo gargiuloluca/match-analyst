@@ -1,10 +1,10 @@
 """
-analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine (V2 - Dynamic)
-- Matrice bivariata Dixon-Coles con correzione tau
-- Parametri di forza (lambda e mu) estratti dinamicamente dai mercati 1X2 e Over/Under
-- Smorzamento Bayesiano dell'Edge (Edge Shrinkage)
-- Quarter-Kelly Adattivo in base alla volatilità della quota
-- Filtro Smart Money, Protezione Derby e Coppe
+analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine (V3 - Perfect)
+- Matrice bivariata Dixon-Coles con calcolo dinamico dai mercati 1X2 e Totali
+- Smorzamento Bayesiano dell'Edge (Edge Shrinkage contro overconfidence)
+- Quarter-Kelly Adattivo su 3 scaglioni di quota
+- Vincolo Rigido di Diversificazione: MAX 1 SELEZIONE PER MATCH (Zero auto-cannibalizzazione)
+- Sincronizzazione sicura e protetta su data/latest.json e data/tracker.json
 """
 
 import json
@@ -17,7 +17,6 @@ FIXTURES_FILE = DATA_DIR / "fixtures.json"
 LATEST_FILE = DATA_DIR / "latest.json"
 TRACKER_FILE = DATA_DIR / "tracker.json"
 
-# Derby e rivalità ad altissima tensione (Veto sulle ufficiali)
 HIGH_VARIANCE_DERBIES = [
     {"roma", "lazio"},
     {"sevilla", "real betis"},
@@ -28,7 +27,6 @@ HIGH_VARIANCE_DERBIES = [
     {"juventus", "torino"}
 ]
 
-# Squadre impegnate regolarmente nelle competizioni UEFA
 EUROPEAN_COMPETITORS = {
     "real madrid", "barcelona", "atletico madrid", "manchester city",
     "arsenal", "liverpool", "bayern munchen", "borussia dortmund",
@@ -88,7 +86,6 @@ def build_score_matrix(lambda_h: float, mu_a: float, rho: float, max_goals: int 
     return matrix
 
 def shrink_edge(raw_edge: float) -> float:
-    """Smorza l'edge teorico irrealistico verso l'efficienza del mercato."""
     if raw_edge <= 0.05:
         return raw_edge
     elif raw_edge <= 0.15:
@@ -105,10 +102,8 @@ def calculate_adaptive_kelly(prob: float, odd: float) -> float:
     if f_star <= 0:
         return 0.0
     
-    # Kelly conservativo a 1/4
     stake = (f_star / 4.0) * 100
 
-    # Cap calibrato sul rischio quota
     if odd <= 1.60:
         max_stake = 2.5
     elif odd <= 1.85:
@@ -170,9 +165,12 @@ def main():
         print("Nessun match disponibile.")
         return
 
-    candidates = []
+    # Mappa per raggruppare i candidati per singolo match
+    # match_candidates[match_id] = [mercato_1, mercato_2, ...]
+    match_candidates = {}
 
     for item in matches:
+        m_id = item.get("id")
         league_key = item.get("sport_key", item.get("league_key", "default"))
         profile = LEAGUE_GOAL_PROFILES.get(league_key, LEAGUE_GOAL_PROFILES["default"])
         
@@ -185,13 +183,13 @@ def main():
         o2 = odds.get("2", 3.0)
         o_over25 = odds.get("OVER_25", 1.95)
 
-        # 1. Stima dinamica del ritmo partita (Expected Total Goals)
+        # 1. Volume di gol dinamico atteso
         expected_total = profile["mu_home"] + profile["mu_away"]
         if o_over25 > 1.20:
             pace_factor = (1.95 / o_over25) ** 0.45
             expected_total *= pace_factor
 
-        # 2. Ripartizione del volume gol tra Casa e Trasferta in base alle probabilità di mercato
+        # 2. Ripartizione del volume attacco Casa/Trasferta
         p_home_fair = 1.0 / max(1.05, o1)
         p_away_fair = 1.0 / max(1.05, o2)
         strength_sum = p_home_fair + p_away_fair
@@ -203,7 +201,7 @@ def main():
         mu_a = expected_total * share_away
         rho = profile["tau"]
 
-        # Fattore Coppe Europee
+        # Penalizzazione Coppe Europee
         h_low, a_low = home_team.lower(), away_team.lower()
         if any(team in h_low for team in EUROPEAN_COMPETITORS):
             lambda_h *= 0.93
@@ -221,7 +219,6 @@ def main():
             m_key = ev["key"]
             raw_edge = (prob * odd) - 1.0
             
-            # Smorzamento statistico dell'edge
             edge = shrink_edge(raw_edge)
             ev_ratio = 1.0 + edge
             stake = calculate_adaptive_kelly(prob, odd)
@@ -242,16 +239,17 @@ def main():
                 is_official = True
                 tier = "OFFICIAL"
 
-                # GOLD: Affidabilità elevata
                 if prob >= 0.72 and odd >= 1.45 and edge >= 0.05:
                     tier = "GOLD"
 
-                # DIAMOND: Valore reale comprovato dal modello e dal mercato
                 if (prob >= 0.66 and odd >= 1.65 and edge >= 0.09) or (edge >= 0.07 and line_shift_pct <= -3.0):
                     tier = "DIAMOND"
 
-            candidates.append({
-                "match_id": item.get("id"),
+            # Efficienza score per ordinamento qualitativo
+            efficiency_score = (prob * 1.5) + (edge * 2.0)
+
+            c_obj = {
+                "match_id": m_id,
                 "commence_time": item.get("commence_time"),
                 "league": item.get("league_name", league_key),
                 "home_team": home_team,
@@ -266,25 +264,43 @@ def main():
                 "ev_ratio": round(ev_ratio, 3),
                 "suggested_stake_pct": stake,
                 "tier": tier,
+                "efficiency_score": efficiency_score,
                 "is_derby": is_derby,
                 "is_official": is_official
-            })
+            }
 
-    tier_order = {"DIAMOND": 3, "GOLD": 2, "OFFICIAL": 1, "STANDARD": 0}
-    unique_candidates = {}
-    for c in sorted(candidates, key=lambda x: (tier_order.get(x["tier"], 0), x["edge"]), reverse=True):
-        m_id = c["match_id"]
-        if m_id not in unique_candidates:
-            unique_candidates[m_id] = c
+            if m_id not in match_candidates:
+                match_candidates[m_id] = []
+            match_candidates[m_id].append(c_obj)
 
-    all_sorted = list(unique_candidates.values())
+    # REVOLUTION 10 E LODE: SELEZIONE RIGIDA DI 1 SOLO MERCATO OTTIMALE PER MATCH
+    tier_weight = {"DIAMOND": 300, "GOLD": 200, "OFFICIAL": 100, "STANDARD": 0}
+    diversified_picks = []
 
-    official_pool = [c for c in all_sorted if c["is_official"]]
-    official_pool.sort(key=lambda x: (tier_order.get(x["tier"], 0), x["estimated_probability"]), reverse=True)
-    top_5_officials = official_pool[:5]
+    for m_id, candidates_list in match_candidates.items():
+        # Ordina i mercati dello stesso match per Tier di valore ed Efficienza
+        candidates_list.sort(
+            key=lambda x: (tier_weight.get(x["tier"], 0) + x["efficiency_score"]), 
+            reverse=True
+        )
+        # Prendi unicamente il migliore in assoluto
+        best_pick_for_match = candidates_list[0]
+        diversified_picks.append(best_pick_for_match)
 
-    official_ids = {c["match_id"] for c in top_5_officials}
-    radar_pool = [c for c in all_sorted if c["match_id"] not in official_ids and c["estimated_probability"] >= 0.55]
+    # 1. Selezioni Ufficiali (Ordinate per Tier e poi per Probabilità)
+    officials = [p for p in diversified_picks if p["is_official"]]
+    officials.sort(
+        key=lambda x: (tier_weight.get(x["tier"], 0), x["estimated_probability"]), 
+        reverse=True
+    )
+    top_5_officials = officials[:5]
+
+    # 2. Watchlist Radar (Match distinti non già presenti tra le 5 Ufficiali)
+    official_match_ids = {p["match_id"] for p in top_5_officials}
+    radar_pool = [
+        p for p in diversified_picks 
+        if p["match_id"] not in official_match_ids and p["estimated_probability"] >= 0.55
+    ]
     radar_pool.sort(key=lambda x: x["estimated_probability"], reverse=True)
     top_10_radar = radar_pool[:10]
 
@@ -298,9 +314,9 @@ def main():
     }
 
     LATEST_FILE.write_text(json.dumps(latest_output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Analisi Dinamica conclusa: {len(top_5_officials)} Ufficiali ({latest_output['diamond_count']} Diamond, {latest_output['gold_count']} Gold).")
+    print(f"Analisi V3 Conclusa: {len(top_5_officials)} Ufficiali diversificate al 100% (1 pick per match).")
 
-    # Sincronizzazione sicura con tracker.json (protetta da crash)
+    # Sincronizzazione atomica e sicura con tracker.json
     tracker_data = {"bets": []}
     if TRACKER_FILE.exists():
         try:
