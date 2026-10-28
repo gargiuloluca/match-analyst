@@ -1,7 +1,8 @@
 """
-settle_results.py — AtmBetSignal Automated Settlement & Telegram Notifier
-Controlla i risultati delle partite in PENDING tramite The Odds API.
+settle_results.py — AtmBetSignal Automated Settlement & Telegram Notifier (Multi-Key & Fuzzy Matching)
+Controlla i risultati delle partite in PENDING tramite The Odds API con rotazione chiavi.
 Assegna WON, LOST, REFUND (DNB), calcola l'Equity Line e invia il report Telegram.
+Include matching flessibile (ignora FC, AC, AS per evitare mancate refertazioni).
 """
 
 import os
@@ -10,7 +11,9 @@ import requests
 from pathlib import Path
 from datetime import datetime, timezone
 
-API_KEY = os.environ.get("ODDSAPI_KEY", "").strip()
+API_KEYS_RAW = os.environ.get("ODDSAPI_KEY", "").strip()
+API_KEYS = [k.strip() for k in API_KEYS_RAW.split(",") if k.strip()]
+
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
@@ -49,17 +52,24 @@ def send_telegram_msg(text: str):
     except Exception as e:
         print(f"Errore invio report Telegram: {e}")
 
-def fetch_completed_scores(sport_key: str):
-    if not API_KEY:
+def fetch_completed_scores_with_fallback(sport_key: str):
+    if not API_KEYS:
         return []
-    url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/scores"
-    params = {"apiKey": API_KEY, "daysFrom": 3}
-    try:
-        res = requests.get(url, params=params, timeout=20)
-        if res.status_code == 200:
-            return res.json()
-    except Exception as e:
-        print(f"Errore fetch scores {sport_key}: {e}")
+    
+    for idx, key in enumerate(API_KEYS):
+        url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/scores"
+        params = {"apiKey": key, "daysFrom": 3}
+        try:
+            res = requests.get(url, params=params, timeout=20)
+            if res.status_code == 200:
+                return res.json()
+            elif res.status_code in [401, 429]:
+                print(f"Avviso scores: Chiave #{idx+1} esaurita/non valida. Provo successiva...")
+            elif res.status_code == 404:
+                return []
+        except Exception:
+            continue
+
     return []
 
 def evaluate_bet_outcome(market_key: str, home_score: int, away_score: int, odd: float, stake_pct: float):
@@ -145,6 +155,12 @@ def evaluate_bet_outcome(market_key: str, home_score: int, away_score: int, odd:
 
     return status, profit
 
+def clean_team_name(name: str) -> str:
+    n = name.lower()
+    for drop in [" fc", " ac", " as", "cf", "ssc ", "afc "]:
+        n = n.replace(drop, "")
+    return n.strip()
+
 def main():
     if not TRACKER_FILE.exists():
         print("tracker.json non trovato.")
@@ -167,7 +183,7 @@ def main():
     completed_matches = {}
     print(f"Controllo esiti su {len(LEAGUES)} campionati...")
     for league in LEAGUES:
-        scores_data = fetch_completed_scores(league)
+        scores_data = fetch_completed_scores_with_fallback(league)
         for match in scores_data:
             if match.get("completed") and match.get("scores"):
                 h_name = match.get("home_team", "").lower()
@@ -188,14 +204,22 @@ def main():
     for b in bets:
         if b.get("status") == "PENDING":
             m_str = b.get("match", "").lower()
+            clean_m = clean_team_name(m_str)
             
-            # Cerca il match per corrispondenza squadre
             matched_score = None
             for key, score in completed_matches.items():
-                teams = key.split(" vs ")
-                if len(teams) == 2 and teams[0] in m_str and teams[1] in m_str:
-                    matched_score = score
-                    break
+                clean_k = clean_team_name(key)
+                k_teams = [t.strip() for t in clean_k.split(" vs ") if t.strip()]
+                
+                if len(k_teams) == 2:
+                    if k_teams[0] in clean_m and k_teams[1] in clean_m:
+                        matched_score = score
+                        break
+                    
+                    m_teams = [t.strip() for t in clean_m.split(" vs ") if t.strip()]
+                    if len(m_teams) == 2 and m_teams[0] in k_teams[0] and m_teams[1] in k_teams[1]:
+                        matched_score = score
+                        break
 
             if matched_score:
                 h_s, a_s = matched_score
@@ -210,7 +234,6 @@ def main():
                 settled_now.append(b)
 
     if settled_now:
-        # Ricalcola KPI complessivi
         settled_all = [b for b in bets if b.get("status") in ["WON", "LOST", "REFUND"]]
         total_closed = len(settled_all)
         won_cnt = sum(1 for b in settled_all if b.get("status") == "WON")
@@ -234,7 +257,6 @@ def main():
         TRACKER_FILE.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"Refertate {len(settled_now)} scommesse con successo.")
 
-        # Invia messaggio di Resoconto su Telegram
         lines = []
         lines.append("📋 <b>AtmBetSignal — Resoconto Esiti Ufficiali</b>")
         lines.append(f"<i>Verifica risultati e aggiornamento Equity Line</i>\n")
