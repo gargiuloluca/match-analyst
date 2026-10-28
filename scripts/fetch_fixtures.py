@@ -1,6 +1,7 @@
 """
-fetch_fixtures.py — AtmBetSignal Odds & Daily Window Fetcher
+fetch_fixtures.py — AtmBetSignal Odds & Daily Window Fetcher (Multi-Key Fallback)
 Scarica quote per le leghe europee con The Odds API.
+Supporta rotazione automatica su chiavi multiple (separate da virgola in ODDSAPI_KEY).
 FILTRO TEMPORALE RIGIDO: analizza esclusivamente i match in programma entro le prossime 36 ore.
 """
 
@@ -10,7 +11,9 @@ import requests
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
-API_KEY = os.environ.get("ODDSAPI_KEY", "").strip()
+API_KEYS_RAW = os.environ.get("ODDSAPI_KEY", "").strip()
+API_KEYS = [k.strip() for k in API_KEYS_RAW.split(",") if k.strip()]
+
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 OUTPUT_FILE = DATA_DIR / "fixtures.json"
 
@@ -33,35 +36,38 @@ LEAGUES = [
     "soccer_england_efl_cup"
 ]
 
-def fetch_league_odds(sport_key: str):
-    if not API_KEY:
+def fetch_league_odds_with_fallback(sport_key: str):
+    if not API_KEYS:
         print("Errore: ODDSAPI_KEY non trovata nelle variabili d'ambiente.")
         return []
 
-    url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds"
-    params = {
-        "apiKey": API_KEY,
-        "regions": "eu",
-        "markets": "h2h,totals",
-        "oddsFormat": "decimal"
-    }
+    for idx, key in enumerate(API_KEYS):
+        url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds"
+        params = {
+            "apiKey": key,
+            "regions": "eu",
+            "markets": "h2h,totals",
+            "oddsFormat": "decimal"
+        }
+        try:
+            res = requests.get(url, params=params, timeout=20)
+            if res.status_code == 200:
+                return res.json()
+            elif res.status_code in [401, 429]:
+                print(f"Avviso: Chiave API #{idx+1} non valida o crediti esauriti (Status {res.status_code}). Tento con la successiva...")
+            elif res.status_code == 404:
+                return []
+            else:
+                print(f"Info: Status {res.status_code} per {sport_key} con chiave #{idx+1}")
+        except Exception as e:
+            print(f"Errore connessione su {sport_key} con chiave #{idx+1}: {e}")
 
-    try:
-        res = requests.get(url, params=params, timeout=20)
-        if res.status_code == 200:
-            return res.json()
-        elif res.status_code == 401:
-            print("Errore: Chiave The Odds API non valida o scaduta.")
-        else:
-            print(f"Info: Status {res.status_code} per {sport_key}")
-    except Exception as e:
-        print(f"Errore connessione su {sport_key}: {e}")
+    print(f"Errore critico: Tutte le chiavi API fornite sono fallite per {sport_key}.")
     return []
 
 def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
     parsed = []
     now = datetime.now(timezone.utc)
-    # Finestra temporale rigida: da adesso fino a massimo 36 ore in avanti
     max_window = now + timedelta(hours=36)
 
     for m in raw_matches:
@@ -74,7 +80,6 @@ def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
         except Exception:
             continue
 
-        # FILTRO GIORNATA: Esclude partite già iniziate o oltre le 36 ore
         if match_time < now or match_time > max_window:
             continue
 
@@ -198,9 +203,9 @@ def main():
             pass
 
     all_fixtures = []
-    print(f"Scansione flussi in corso su {len(LEAGUES)} campionati (Filtro 36h attivo)...")
+    print(f"Scansione flussi in corso su {len(LEAGUES)} campionati (Filtro 36h attivo con Multi-Key Fallback)...")
     for league in LEAGUES:
-        raw = fetch_league_odds(league)
+        raw = fetch_league_odds_with_fallback(league)
         matches = parse_match_data(raw, league, existing_openings)
         all_fixtures.extend(matches)
 
