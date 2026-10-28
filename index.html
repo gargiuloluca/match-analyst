@@ -252,7 +252,7 @@
       border-right: 1px solid rgba(16, 185, 129, 0.2);
     }
 
-    /* 4 RIQUADRI STRUTTURATI E RESPONSIVE */
+    /* 4 RIQUADRI */
     .grid-4 {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -295,7 +295,7 @@
       line-height: 1.55;
     }
 
-    /* NUOVA SEZIONE PRICING MULTI-PIANO CON TRIAL */
+    /* PRICING */
     .pricing-section {
       margin-bottom: 75px;
     }
@@ -516,7 +516,7 @@
       </div>
     </section>
 
-    <!-- I 4 PILASTRI SIMMETRICI -->
+    <!-- I 4 PILASTRI -->
     <section>
       <div class="section-title">
         <h2>L'Architettura dietro a Ogni Segnale</h2>
@@ -550,14 +550,13 @@
       </div>
     </section>
 
-    <!-- NUOVA SEZIONE PRICING (39.90€ / 89€ / 299€ + TRIAL 7 GIORNI) -->
+    <!-- SEZIONE PRICING -->
     <section class="pricing-section" id="piani">
       <div class="section-title">
         <h2>Piani di Accesso Istituzionale</h2>
         <p>Scegli il piano più adatto a te. Prova il sistema per 7 giorni senza rischi.</p>
       </div>
 
-      <!-- SELECTOR TABS -->
       <div class="plan-selector">
         <button class="plan-tab active" onclick="setPlan('mensile')">Mensile</button>
         <button class="plan-tab" onclick="setPlan('trimestrale')">Trimestrale (-25%)</button>
@@ -583,7 +582,6 @@
           <li><span>✓</span> Storico 100% trasparente certificato su GitHub Pages</li>
         </ul>
 
-        <!-- LINK PERSONALIZZABILE CON STRIPE PAYMENT LINK O BOT -->
         <a id="ctaBtn" href="https://buy.stripe.com/tuo_link_mensile" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 16px 0;">
           Attiva 7 Giorni di Prova Gratuita
         </a>
@@ -627,4 +625,55 @@
         price: "39,90€",
         period: "al mese dopo 7 giorni di prova • Disdici con 1 clic",
         link: "https://buy.stripe.com/tuo_link_mensile"
-     " 
+      },
+      trimestrale: {
+        badge: "PIANO TRIMESTRALE (RISPARMIA 25%)",
+        price: "89,00€",
+        period: "ogni 3 mesi dopo 7 giorni di prova (29,60€/mese)",
+        link: "https://buy.stripe.com/tuo_link_trimestrale"
+      },
+      annuale: {
+        badge: "PIANO ANNUALE VIP (RISPARMIA 38%)",
+        price: "299,00€",
+        period: "all'anno dopo 7 giorni di prova (24,90€/mese)",
+        link: "https://buy.stripe.com/tuo_link_annuale"
+      }
+    };
+
+    function setPlan(tipo) {
+      document.querySelectorAll('.plan-tab').forEach(b => b.classList.remove('active'));
+      const activeBtn = Array.from(document.querySelectorAll('.plan-tab')).find(b => b.textContent.toLowerCase().includes(tipo.substring(0, 4)));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const p = plans[tipo];
+      if (!p) return;
+
+      document.getElementById('planBadge').textContent = p.badge;
+      document.getElementById('planPrice').textContent = p.price;
+      document.getElementById('planPeriod').textContent = p.period;
+      document.getElementById('ctaBtn').href = p.link;
+    }
+
+    // Caricamento KPI Dinamici da data/tracker.json
+    async function loadLiveStats() {
+      try {
+        const res = await fetch('data/tracker.json?nocache=' + Date.now());
+        if (!res.ok) return;
+        const d = await res.json();
+        
+        const wr = d.win_rate !== undefined ? d.win_rate : 100.0;
+        const roi = d.roi_pct !== undefined ? d.roi_pct : 73.7;
+        const total = d.total_bets !== undefined ? d.total_bets : 3;
+
+        document.getElementById('winRateVal').textContent = Number(wr).toFixed(1) + '%';
+        document.getElementById('roiVal').textContent = (roi > 0 ? '+' : '') + Number(roi).toFixed(1) + '%';
+        document.getElementById('totalBetsVal').textContent = total;
+      } catch (e) {
+        console.warn('Statistiche live non disponibili:', e);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadLiveStats);
+  </script>
+</body>
+</html>
