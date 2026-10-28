@@ -2,14 +2,14 @@ name: AtmBetSignal Daily Unified Engine
 
 on:
   schedule:
-    # Esecuzione unica automatica ogni mattina alle 08:30 UTC (09:30 ora italiana)
+    # Esecuzione automatica ogni mattina alle 08:30 UTC (09:30 ora italiana)
     - cron: '30 8 * * *'
   workflow_dispatch:
     inputs:
       action_note:
         description: 'Nota di avvio manuale'
         required: false
-        default: 'Avvio manuale completo'
+        default: 'Avvio manuale unificato'
 
 permissions:
   contents: write
@@ -33,7 +33,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      # FASE 1: Refertazione esiti precedenti, aggiornamento Equity Line e gestione abbonati
+      # FASE 1: Refertazione esiti precedenti e aggiornamento Equity Line Ufficiale
       - name: Settle previous results and manage subscribers
         run: |
           python scripts/settle_results.py
@@ -43,27 +43,31 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
-      # FASE 2: Scaricamento quote fresche di giornata
+      # FASE 2: Scaricamento quote fresche di giornata (con Multi-Key Fallback)
       - name: Fetch daily fixtures
         run: python scripts/fetch_fixtures.py
         env:
           ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
 
-      # FASE 3: Analisi quantitativa Dixon-Coles dinamica (1 pick per match)
-      - name: Run quantitative analysis
+      # FASE 3A: Motore Ufficiale A (Dixon-Coles Matematico Standard)
+      - name: Run official quantitative analysis (Model A)
         run: python scripts/analyze.py
 
-      # FASE 4: Invio nuove selezioni di giornata su Telegram
+      # FASE 3B: Motore Sperimentale B (Dixon-Coles + Rolling xG)
+      - name: Run experimental xG analysis (Model B)
+        run: python scripts/analyze_xg.py
+
+      # FASE 4: Invio selezioni ufficiali su Telegram
       - name: Send new signals to Telegram
         run: python scripts/send_telegram.py
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
-      # FASE 5: Salvataggio sicuro di tutti i dati aggiornati su GitHub
+      # FASE 5: Salvataggio automatico di tutti i file dati (Ufficiali e Sperimentali)
       - name: Commit and push updated data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated update: settlement & daily picks [skip ci]" && git pull --rebase origin main && git push origin main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated update: official & experimental xG data [skip ci]" && git pull --rebase origin main && git push origin main)
