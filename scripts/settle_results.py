@@ -1,8 +1,7 @@
 """
-settle_results.py — AtmBetSignal Automated Settlement Engine
-Verifica i risultati finali su The Odds API e aggiorna tracker.json.
-Supporta: 1X2, DC, DNB (con rimborso in parità), Totali gol e BTTS.
-Invia un resoconto sintetico su Telegram a fine giornata.
+settle_results.py — AtmBetSignal Automated Settlement & Telegram Notifier
+Controlla i risultati delle partite in PENDING tramite The Odds API.
+Assegna WON, LOST, REFUND (DNB), calcola l'Equity Line e invia il report Telegram.
 """
 
 import os
@@ -19,25 +18,38 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 TRACKER_FILE = DATA_DIR / "tracker.json"
 
 LEAGUES = [
-    "soccer_italy_serie_a", "soccer_spain_la_liga", "soccer_epl",
-    "soccer_germany_bundesliga", "soccer_france_ligue_one",
-    "soccer_uefa_champs_league", "soccer_uefa_europa_league",
-    "soccer_england_championship", "soccer_netherlands_eredivisie",
-    "soccer_portugal_primeira_liga", "soccer_belgium_first_div",
-    "soccer_england_league1", "soccer_england_efl_cup"
+    "soccer_italy_serie_a",
+    "soccer_spain_la_liga",
+    "soccer_epl",
+    "soccer_germany_bundesliga",
+    "soccer_france_ligue_one",
+    "soccer_uefa_champs_league",
+    "soccer_uefa_europa_league",
+    "soccer_england_championship",
+    "soccer_netherlands_eredivisie",
+    "soccer_portugal_primeira_liga",
+    "soccer_belgium_first_div",
+    "soccer_england_league1",
+    "soccer_england_efl_cup"
 ]
 
-def send_telegram(text: str):
+def send_telegram_msg(text: str):
     if not BOT_TOKEN or not CHAT_ID:
+        print("Credenziali Telegram non trovate. Messaggio saltato.")
         return
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    payload = {"chat_id": CHAT_ID, "text": text, "parse_mode": "HTML"}
+    payload = {
+        "chat_id": CHAT_ID,
+        "text": text,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True
+    }
     try:
         requests.post(url, json=payload, timeout=15)
     except Exception as e:
-        print(f"Errore Telegram settlement: {e}")
+        print(f"Errore invio report Telegram: {e}")
 
-def fetch_scores_for_league(sport_key: str):
+def fetch_completed_scores(sport_key: str):
     if not API_KEY:
         return []
     url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/scores"
@@ -50,66 +62,86 @@ def fetch_scores_for_league(sport_key: str):
         print(f"Errore fetch scores {sport_key}: {e}")
     return []
 
-def evaluate_bet_status(market_key: str, h_score: int, a_score: int, odd: float, stake: float):
-    tot_goals = h_score + a_score
+def evaluate_bet_outcome(market_key: str, home_score: int, away_score: int, odd: float, stake_pct: float):
+    tot_goals = home_score + away_score
     status = "LOST"
-    profit = -round(stake, 2)
+    profit = -stake_pct
 
-    # 1X2
+    # Mercati 1X2
     if market_key == "1":
-        if h_score > a_score:
+        if home_score > away_score:
             status = "WON"
-            profit = round(stake * (odd - 1.0), 2)
+            profit = round(stake_pct * (odd - 1.0), 2)
     elif market_key == "X":
-        if h_score == a_score:
+        if home_score == away_score:
             status = "WON"
-            profit = round(stake * (odd - 1.0), 2)
+            profit = round(stake_pct * (odd - 1.0), 2)
     elif market_key == "2":
-        if a_score > h_score:
+        if away_score > home_score:
             status = "WON"
-            profit = round(stake * (odd - 1.0), 2)
-    # Doppia Chance
+            profit = round(stake_pct * (odd - 1.0), 2)
+
+    # Doppie Chance
     elif market_key == "1X":
-        if h_score >= a_score:
+        if home_score >= away_score:
             status = "WON"
-            profit = round(stake * (odd - 1.0), 2)
+            profit = round(stake_pct * (odd - 1.0), 2)
     elif market_key == "X2":
-        if a_score >= h_score:
+        if away_score >= home_score:
             status = "WON"
-            profit = round(stake * (odd - 1.0), 2)
-    # Draw No Bet (Rimborso in caso di parità)
+            profit = round(stake_pct * (odd - 1.0), 2)
+
+    # Draw No Bet (Rimborso Parità)
     elif market_key == "DNB_1":
-        if h_score > a_score:
+        if home_score > away_score:
             status = "WON"
-            profit = round(stake * (odd - 1.0), 2)
-        elif h_score == a_score:
+            profit = round(stake_pct * (odd - 1.0), 2)
+        elif home_score == away_score:
             status = "REFUND"
             profit = 0.0
     elif market_key == "DNB_2":
-        if a_score > h_score:
+        if away_score > home_score:
             status = "WON"
-            profit = round(stake * (odd - 1.0), 2)
-        elif h_score == a_score:
+            profit = round(stake_pct * (odd - 1.0), 2)
+        elif home_score == away_score:
             status = "REFUND"
             profit = 0.0
-    # Totali Gol
+
+    # Linee Gol Totali
     elif market_key == "OVER_15":
-        if tot_goals > 1.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+        if tot_goals > 1.5:
+            status = "WON"
+            profit = round(stake_pct * (odd - 1.0), 2)
     elif market_key == "UNDER_15":
-        if tot_goals < 1.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+        if tot_goals < 1.5:
+            status = "WON"
+            profit = round(stake_pct * (odd - 1.0), 2)
     elif market_key == "OVER_25":
-        if tot_goals > 2.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+        if tot_goals > 2.5:
+            status = "WON"
+            profit = round(stake_pct * (odd - 1.0), 2)
     elif market_key == "UNDER_25":
-        if tot_goals < 2.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+        if tot_goals < 2.5:
+            status = "WON"
+            profit = round(stake_pct * (odd - 1.0), 2)
     elif market_key == "OVER_35":
-        if tot_goals > 3.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+        if tot_goals > 3.5:
+            status = "WON"
+            profit = round(stake_pct * (odd - 1.0), 2)
     elif market_key == "UNDER_35":
-        if tot_goals < 3.5: status = "WON"; profit = round(stake * (odd - 1.0), 2)
-    # BTTS
+        if tot_goals < 3.5:
+            status = "WON"
+            profit = round(stake_pct * (odd - 1.0), 2)
+
+    # Goal / NoGoal
     elif market_key == "BTTS_YES":
-        if h_score > 0 and a_score > 0: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+        if home_score > 0 and away_score > 0:
+            status = "WON"
+            profit = round(stake_pct * (odd - 1.0), 2)
     elif market_key == "BTTS_NO":
-        if h_score == 0 or a_score == 0: status = "WON"; profit = round(stake * (odd - 1.0), 2)
+        if home_score == 0 or away_score == 0:
+            status = "WON"
+            profit = round(stake_pct * (odd - 1.0), 2)
 
     return status, profit
 
@@ -118,74 +150,110 @@ def main():
         print("tracker.json non trovato.")
         return
 
-    tracker_data = json.loads(TRACKER_FILE.read_text(encoding="utf-8"))
+    try:
+        tracker_data = json.loads(TRACKER_FILE.read_text(encoding="utf-8"))
+    except Exception as e:
+        print(f"Errore lettura tracker.json: {e}")
+        return
+
     bets = tracker_data.get("bets", [])
     pending_bets = [b for b in bets if b.get("status") == "PENDING"]
 
     if not pending_bets:
-        print("Nessuna scommessa PENDING da refertare.")
+        print("Nessuna giocata in attesa di refertazione.")
         return
 
-    # Mappa risultati conclusi
-    scores_by_match = {}
+    # Mappa i punteggi completati
+    completed_matches = {}
+    print(f"Controllo esiti su {len(LEAGUES)} campionati...")
     for league in LEAGUES:
-        events = fetch_scores_for_league(league)
-        for ev in events:
-            if ev.get("completed"):
-                h_name = ev.get("home_team")
-                a_name = ev.get("away_team")
-                scores = ev.get("scores")
-                if scores and len(scores) >= 2:
-                    h_score = next((int(s["score"]) for s in scores if s["name"] == h_name), None)
-                    a_score = next((int(s["score"]) for s in scores if s["name"] == a_name), None)
-                    if h_score is not None and a_score is not None:
-                        key = f"{h_name}_{a_name}".lower()
-                        scores_by_match[key] = (h_score, a_score)
+        scores_data = fetch_completed_scores(league)
+        for match in scores_data:
+            if match.get("completed") and match.get("scores"):
+                h_name = match.get("home_team", "").lower()
+                a_name = match.get("away_team", "").lower()
+                
+                h_score, a_score = None, None
+                for s in match["scores"]:
+                    if s.get("name", "").lower() == h_name:
+                        h_score = int(s.get("score", 0))
+                    elif s.get("name", "").lower() == a_name:
+                        a_score = int(s.get("score", 0))
 
-    settled_count = 0
-    won_count = 0
-    refund_count = 0
-    daily_pnl = 0.0
+                if h_score is not None and a_score is not None:
+                    completed_matches[f"{h_name} vs {a_name}"] = (h_score, a_score)
 
-    for b in pending_bets:
-        match_str = b.get("match", "")
-        parts = match_str.split(" vs ")
-        if len(parts) != 2:
-            continue
-        h_team, a_team = parts[0].strip(), parts[1].strip()
-        match_key = f"{h_team}_{a_team}".lower()
+    settled_now = []
 
-        if match_key in scores_by_match:
-            h_score, a_score = scores_by_match[match_key]
-            m_key = b.get("market_key", b.get("id", "").split("_")[-1])
-            odd = float(b.get("odd", 1.0))
-            stake = float(b.get("stake_pct", 1.0))
+    for b in bets:
+        if b.get("status") == "PENDING":
+            m_str = b.get("match", "").lower()
+            
+            # Cerca il match per corrispondenza squadre
+            matched_score = None
+            for key, score in completed_matches.items():
+                teams = key.split(" vs ")
+                if len(teams) == 2 and teams[0] in m_str and teams[1] in m_str:
+                    matched_score = score
+                    break
 
-            status, profit = evaluate_bet_status(m_key, h_score, a_score, odd, stake)
+            if matched_score:
+                h_s, a_s = matched_score
+                odd = float(b.get("odd", 1.50))
+                stake_pct = float(b.get("stake_pct", 2.5))
+                m_key = b.get("market_key", "")
 
-            b["status"] = status
-            b["profit"] = profit
-            b["score"] = f"{h_score}-{a_score}"
-            settled_count += 1
-            daily_pnl += profit
-            if status == "WON": won_count += 1
-            elif status == "REFUND": refund_count += 1
+                status, profit = evaluate_bet_outcome(m_key, h_s, a_s, odd, stake_pct)
+                b["status"] = status
+                b["score"] = f"{h_s}-{a_s}"
+                b["profit"] = profit
+                settled_now.append(b)
 
-    if settled_count > 0:
-        TRACKER_FILE.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
+    if settled_now:
+        # Ricalcola KPI complessivi
+        settled_all = [b for b in bets if b.get("status") in ["WON", "LOST", "REFUND"]]
+        total_closed = len(settled_all)
+        won_cnt = sum(1 for b in settled_all if b.get("status") == "WON")
+        lost_cnt = sum(1 for b in settled_all if b.get("status") == "LOST")
+        refund_cnt = sum(1 for b in settled_all if b.get("status") == "REFUND")
         
-        # Report Telegram notturno
-        msg = [
-            "<b>🌙 AtmBetSignal — Chiusura Palinsesto & Settlement</b>",
-            f"Operazioni refertate: <b>{settled_count}</b>",
-            f"✅ Vinte: <b>{won_count}</b> | 🔄 Rimborsate: <b>{refund_count}</b> | ❌ Perse: <b>{settled_count - won_count - refund_count}</b>",
-            f"P&L di Giornata: <b>{daily_pnl:+.2f}% Bankroll</b>\n",
-            "📊 Track-record aggiornato e verificabile sul portale web."
-        ]
-        send_telegram("\n".join(msg))
-        print(f"Refertazione completata: {settled_count} scommesse aggiornate.")
+        tot_profit = sum(float(b.get("profit", 0.0)) for b in settled_all)
+        tot_staked = sum(float(b.get("stake_pct", 2.5)) for b in settled_all)
+
+        win_rate = round((won_cnt / (won_cnt + lost_cnt) * 100), 1) if (won_cnt + lost_cnt) > 0 else 0.0
+        roi_pct = round((tot_profit / tot_staked * 100), 1) if tot_staked > 0 else 0.0
+
+        tracker_data["total_bets"] = total_closed
+        tracker_data["won"] = won_cnt
+        tracker_data["lost"] = lost_cnt
+        tracker_data["void"] = refund_cnt
+        tracker_data["win_rate"] = win_rate
+        tracker_data["net_profit_units"] = round(tot_profit, 2)
+        tracker_data["roi_pct"] = roi_pct
+
+        TRACKER_FILE.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"Refertate {len(settled_now)} scommesse con successo.")
+
+        # Invia messaggio di Resoconto su Telegram
+        lines = []
+        lines.append("📋 <b>AtmBetSignal — Resoconto Esiti Ufficiali</b>")
+        lines.append(f"<i>Verifica risultati e aggiornamento Equity Line</i>\n")
+
+        for s in settled_now:
+            badge = "✅ VINTO" if s["status"] == "WON" else ("❌ PERSO" if s["status"] == "LOST" else "🔄 RIMBORSATO")
+            p_val = f"+{s['profit']:.2f}%" if s['profit'] > 0 else f"{s['profit']:.2f}%"
+            lines.append(f"⚽ <b>{s['match']}</b> (Fin: {s.get('score', '-')})")
+            lines.append(f"   ↳ {s['bet']} @ {s['odd']:.2f} — {badge} (<b>{p_val}</b>)\n")
+
+        lines.append("─────────────────────")
+        lines.append(f"📊 <b>Bilancio Complessivo Certificato:</b>")
+        lines.append(f"• Win Rate: <b>{win_rate}%</b> ({won_cnt}V - {lost_cnt}P - {refund_cnt}R)")
+        lines.append(f"• Rendimento Netto Bankroll: <b>{'+' if tot_profit >= 0 else ''}{tot_profit:.2f}%</b>")
+        lines.append(f"• ROI Globale: <b>{'+' if roi_pct >= 0 else ''}{roi_pct}%</b>")
+
+        send_telegram_msg("\n".join(lines))
     else:
-        print("I match PENDING non risultano ancora conclusi sui feed.")
+        print("Nessun match PENDING terminato al momento del controllo.")
 
 if __name__ == "__main__":
     main()
