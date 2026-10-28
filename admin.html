@@ -92,6 +92,39 @@
     .badge-gold { background: #f59e0b; color: #000; }
     .badge-official { background: var(--accent); color: #000; }
     .badge-radar { background: #334155; color: #cbd5e1; }
+
+    /* Selettore Motori A/B */
+    .engine-switch {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      background: #0c1322;
+      padding: 8px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .engine-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .engine-btn.active {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
   </style>
 </head>
 <body>
@@ -115,7 +148,17 @@
         </div>
       </header>
 
-      <div class="section-title">🎯 Selezioni Ufficiali Tracked (Probabilità ≥ 65%)</div>
+      <!-- SELETTORE MOTORI A / B -->
+      <div class="engine-switch">
+        <button id="btn-official" class="engine-btn active" onclick="switchEngine('official')">
+          🟢 Motore Ufficiale (Dixon-Coles)
+        </button>
+        <button id="btn-xg" class="engine-btn" onclick="switchEngine('xg')">
+          🧪 Lab Sperimentale (Rolling xG)
+        </button>
+      </div>
+
+      <div class="section-title" id="officialsTitle">🎯 Selezioni Ufficiali Tracked (Probabilità ≥ 65%)</div>
       <div id="adminOfficials">Caricamento...</div>
 
       <div class="section-title" style="color: var(--muted);">📡 Watchlist Radar Top 10 (Studio & Monitoraggio)</div>
@@ -124,6 +167,8 @@
   </div>
 
   <script>
+    let currentEngine = 'official';
+
     function checkAdmin() {
       const pass = document.getElementById('adminPass').value;
       if (pass === 'AtmBet2026!') {
@@ -137,7 +182,7 @@
     function showPanel() {
       document.getElementById('adminLogin').style.display = 'none';
       document.getElementById('adminPanel').style.display = 'block';
-      loadAdminData();
+      loadAdminData('data/latest.json');
     }
 
     function logoutAdmin() {
@@ -145,15 +190,43 @@
       location.reload();
     }
 
-    function loadAdminData() {
-      fetch('data/latest.json?nocache=' + new Date().getTime())
-        .then(r => r.json())
+    function switchEngine(engine) {
+      if (currentEngine === engine) return;
+      currentEngine = engine;
+
+      const btnOff = document.getElementById('btn-official');
+      const btnXg = document.getElementById('btn-xg');
+      const title = document.getElementById('officialsTitle');
+
+      if (engine === 'official') {
+        btnOff.classList.add('active');
+        btnXg.classList.remove('active');
+        title.innerHTML = '🎯 Selezioni Ufficiali Tracked (Probabilità ≥ 65%)';
+        loadAdminData('data/latest.json');
+      } else {
+        btnXg.classList.add('active');
+        btnOff.classList.remove('active');
+        title.innerHTML = '🧪 Selezioni Sperimentali Rolling xG (Laboratorio)';
+        loadAdminData('data/latest_xg.json');
+      }
+    }
+
+    function loadAdminData(filePath) {
+      const offCont = document.getElementById('adminOfficials');
+      const radCont = document.getElementById('adminRadar');
+      offCont.innerHTML = '<p style="color: var(--muted);">Caricamento dati...</p>';
+      radCont.innerHTML = '<p style="color: var(--muted);">Caricamento radar...</p>';
+
+      fetch(filePath + '?nocache=' + new Date().getTime())
+        .then(r => {
+          if (!r.ok) throw new Error('File non trovato');
+          return r.json();
+        })
         .then(d => {
-          // 1. UFFICIALI CON BADGE DINAMICO
+          // 1. SELEZIONI CON BADGE DINAMICO
           const officials = d.all_selected_picks || [];
-          const offCont = document.getElementById('adminOfficials');
           if (officials.length === 0) {
-            offCont.innerHTML = '<p style="color: var(--muted); padding: 12px; background: var(--card-bg); border-radius: 8px;">Nessuna selezione sopra il 65% per oggi. Capitale protetto.</p>';
+            offCont.innerHTML = '<p style="color: var(--muted); padding: 12px; background: var(--card-bg); border-radius: 8px;">Nessuna selezione sopra il 65% per questo modello. Capitale protetto.</p>';
           } else {
             let html = '';
             officials.forEach((p, i) => {
@@ -190,9 +263,8 @@
 
           // 2. RADAR
           const radar = d.radar_watchlist || [];
-          const radCont = document.getElementById('adminRadar');
           if (radar.length === 0) {
-            radCont.innerHTML = '<p style="color: var(--muted);">Nessun match nel radar.</p>';
+            radCont.innerHTML = '<p style="color: var(--muted);">Nessun match nel radar per questo modello.</p>';
           } else {
             let htmlR = '';
             radar.forEach((r, i) => {
@@ -213,6 +285,10 @@
             });
             radCont.innerHTML = htmlR;
           }
+        })
+        .catch(err => {
+          offCont.innerHTML = '<p style="color: var(--muted); padding: 12px; background: var(--card-bg); border-radius: 8px;">Dati non ancora disponibili per questo motore. Verranno generati alla prima esecuzione programmata.</p>';
+          radCont.innerHTML = '<p style="color: var(--muted);">Nessun dato radar.</p>';
         });
     }
 
