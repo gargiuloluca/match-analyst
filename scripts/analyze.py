@@ -4,7 +4,8 @@ analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine (V3 - Per
 - Smorzamento Bayesiano dell'Edge (Edge Shrinkage contro overconfidence)
 - Quarter-Kelly Adattivo su 3 scaglioni di quota
 - Vincolo Rigido di Diversificazione: MAX 1 SELEZIONE PER MATCH (Zero auto-cannibalizzazione)
-- Sincronizzazione sicura e protetta su data/latest.json e data/tracker.json
+- Deduplicazione Assoluta su tracker.json (previene duplicati anche con oscillazione quote)
+- Sincronizzazione sicura su data/latest.json e data/tracker.json
 """
 
 import json
@@ -154,6 +155,12 @@ def evaluate_markets(matrix, odds_dict):
     ]
     return [m for m in markets if m["odd"] and m["odd"] >= 1.30]
 
+def normalize_match_str(s: str) -> str:
+    n = s.lower()
+    for drop in [" fc", " ac", " as", "cf", "ssc ", "afc ", " "]:
+        n = n.replace(drop, "")
+    return n
+
 def main():
     if not FIXTURES_FILE.exists():
         print("Nessun palinsesto trovato in fixtures.json.")
@@ -165,8 +172,7 @@ def main():
         print("Nessun match disponibile.")
         return
 
-    # Mappa per raggruppare i candidati per singolo match
-    # match_candidates[match_id] = [mercato_1, mercato_2, ...]
+    # Raggruppa i candidati per singolo match
     match_candidates = {}
 
     for item in matches:
@@ -201,7 +207,7 @@ def main():
         mu_a = expected_total * share_away
         rho = profile["tau"]
 
-        # Penalizzazione Coppe Europee
+        # Penalizzazione impegni coppe europee
         h_low, a_low = home_team.lower(), away_team.lower()
         if any(team in h_low for team in EUROPEAN_COMPETITORS):
             lambda_h *= 0.93
@@ -273,21 +279,19 @@ def main():
                 match_candidates[m_id] = []
             match_candidates[m_id].append(c_obj)
 
-    # REVOLUTION 10 E LODE: SELEZIONE RIGIDA DI 1 SOLO MERCATO OTTIMALE PER MATCH
+    # 1 SOLO MERCATO OTTIMALE PER MATCH
     tier_weight = {"DIAMOND": 300, "GOLD": 200, "OFFICIAL": 100, "STANDARD": 0}
     diversified_picks = []
 
     for m_id, candidates_list in match_candidates.items():
-        # Ordina i mercati dello stesso match per Tier di valore ed Efficienza
         candidates_list.sort(
             key=lambda x: (tier_weight.get(x["tier"], 0) + x["efficiency_score"]), 
             reverse=True
         )
-        # Prendi unicamente il migliore in assoluto
         best_pick_for_match = candidates_list[0]
         diversified_picks.append(best_pick_for_match)
 
-    # 1. Selezioni Ufficiali (Ordinate per Tier e poi per Probabilità)
+    # 1. Selezioni Ufficiali
     officials = [p for p in diversified_picks if p["is_official"]]
     officials.sort(
         key=lambda x: (tier_weight.get(x["tier"], 0), x["estimated_probability"]), 
@@ -295,7 +299,7 @@ def main():
     )
     top_5_officials = officials[:5]
 
-    # 2. Watchlist Radar (Match distinti non già presenti tra le 5 Ufficiali)
+    # 2. Watchlist Radar (Match distinti non nelle prime 5)
     official_match_ids = {p["match_id"] for p in top_5_officials}
     radar_pool = [
         p for p in diversified_picks 
@@ -316,7 +320,7 @@ def main():
     LATEST_FILE.write_text(json.dumps(latest_output, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Analisi V3 Conclusa: {len(top_5_officials)} Ufficiali diversificate al 100% (1 pick per match).")
 
-    # Sincronizzazione atomica e sicura con tracker.json
+    # Sincronizzazione atomica e protetta con tracker.json con DEDUPLICAZIONE RIGIDA
     tracker_data = {"bets": []}
     if TRACKER_FILE.exists():
         try:
@@ -327,10 +331,22 @@ def main():
             print(f"Avviso tracker.json: {e}")
             tracker_data = {"bets": []}
 
-    existing_ids = {b.get("id") for b in tracker_data.get("bets", [])}
+    # Creazione set delle combinazioni uniche già presenti nel tracker
+    existing_pairs = set()
+    for b in tracker_data.get("bets", []):
+        m_norm = normalize_match_str(b.get("match", ""))
+        mkt = str(b.get("market_key", "")).strip().upper()
+        existing_pairs.add((m_norm, mkt))
+
+    # Aggiungi solo se la coppia (match normalizzato, mercato) non esiste già
+    added_count = 0
     for op in top_5_officials:
-        bet_id = f"{op['match_id']}_{op['market_key']}"
-        if bet_id not in existing_ids:
+        op_match_norm = normalize_match_str(op["match"])
+        op_mkt = str(op["market_key"]).strip().upper()
+        pair_key = (op_match_norm, op_mkt)
+
+        if pair_key not in existing_pairs:
+            bet_id = f"{op['match_id']}_{op['market_key']}"
             tracker_data["bets"].append({
                 "id": bet_id,
                 "date": op["commence_time"],
@@ -345,8 +361,11 @@ def main():
                 "status": "PENDING",
                 "profit": 0.0
             })
+            existing_pairs.add(pair_key)
+            added_count += 1
 
     TRACKER_FILE.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Tracker sincronizzato: {added_count} nuove selezioni aggiunte (doppioni saltati).")
 
 if __name__ == "__main__":
     main()
