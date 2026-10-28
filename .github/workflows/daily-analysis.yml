@@ -1,26 +1,22 @@
-name: Daily Analysis & Settlement
+name: AtmBetSignal Daily Unified Engine
 
 on:
   schedule:
-    # Mattina: 09:47 UTC (circa 10:47 ora italiana)
-    - cron: '47 9 * * *'
-    # Notte: 22:47 UTC (circa 23:47 ora italiana)
-    - cron: '47 22 * * *'
+    # Esecuzione unica automatica ogni mattina alle 08:30 UTC (09:30 ora italiana)
+    - cron: '30 8 * * *'
   workflow_dispatch:
     inputs:
-      job_type:
-        description: 'Seleziona operazione manuale'
-        required: true
-        default: 'morning_picks'
-        type: choice
-        options:
-          - 'morning_picks'
-          - 'night_settlement'
+      action_note:
+        description: 'Nota di avvio manuale'
+        required: false
+        default: 'Avvio manuale completo'
+
+permissions:
+  contents: write
 
 jobs:
-  run-pipeline:
+  run-unified-pipeline:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -37,47 +33,37 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      # ==========================================
-      # OPERAZIONI DEL MATTINO (Pronostici)
-      # Parte SOLO alle 09:47 UTC o su avvio manuale esplicito
-      # ==========================================
-      - name: Fetch fixtures and odds (Morning)
-        if: (github.event_name == 'schedule' && github.event.schedule == '47 9 * * *') || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'morning_picks')
-        env:
-          ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
-        run: python scripts/fetch_fixtures.py
-
-      - name: Run analysis and generate picks (Morning)
-        if: (github.event_name == 'schedule' && github.event.schedule == '47 9 * * *') || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'morning_picks')
-        run: python scripts/analyze.py
-
-      - name: Send Telegram Picks (Morning)
-        if: (github.event_name == 'schedule' && github.event.schedule == '47 9 * * *') || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'morning_picks')
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: python scripts/send_telegram.py
-
-      # ==========================================
-      # OPERAZIONI DELLA NOTTE (Riepilogo & Gestione Abbonati)
-      # Parte SOLO alle 22:47 UTC o su avvio manuale esplicito
-      # ==========================================
-      - name: Settle finished bets & Manage Subscribers
-        if: (github.event_name == 'schedule' && github.event.schedule == '47 22 * * *') || (github.event_name == 'workflow_dispatch' && github.event.inputs.job_type == 'night_settlement')
-        env:
-          ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      # FASE 1: Refertazione esiti precedenti, aggiornamento Equity Line e gestione abbonati
+      - name: Settle previous results and manage subscribers
         run: |
           python scripts/settle_results.py
-          python scripts/manage_subscribers.py
+          if [ -f scripts/manage_subscribers.py ]; then python scripts/manage_subscribers.py; fi
+        env:
+          ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
-      # ==========================================
-      # SALVATAGGIO DEI DATI SU GITHUB
-      # ==========================================
-      - name: Commit updated data
+      # FASE 2: Scaricamento quote fresche di giornata
+      - name: Fetch daily fixtures
+        run: python scripts/fetch_fixtures.py
+        env:
+          ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
+
+      # FASE 3: Analisi quantitativa Dixon-Coles dinamica (1 pick per match)
+      - name: Run quantitative analysis
+        run: python scripts/analyze.py
+
+      # FASE 4: Invio nuove selezioni di giornata su Telegram
+      - name: Send new signals to Telegram
+        run: python scripts/send_telegram.py
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+      # FASE 5: Salvataggio sicuro di tutti i dati aggiornati su GitHub
+      - name: Commit and push updated data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated update [skip ci]" && git pull --rebase origin main && git push origin main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated update: settlement & daily picks [skip ci]" && git pull --rebase origin main && git push origin main)
