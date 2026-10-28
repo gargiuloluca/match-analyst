@@ -149,8 +149,6 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      cursor: pointer;
-      border: none;
     }
     .btn-primary:hover {
       transform: translateY(-2px);
@@ -181,7 +179,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 16px;
-      margin: 40px 0 45px;
+      margin: 40px 0 65px;
       backdrop-filter: blur(10px);
     }
     .kpi-box {
@@ -203,147 +201,6 @@
       color: #fff;
     }
     .kpi-val.green { color: var(--accent); }
-
-    /* SIMULATORE DI CONFRONTO PIANI (AtmBet Selection vs AtmBet Signal) */
-    .simulator-container {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 30px 24px;
-      margin-bottom: 65px;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    }
-    .sim-header {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    @media (min-width: 768px) {
-      .sim-header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      }
-    }
-    .sim-title h3 {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .sim-title p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-    .sim-controller {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid var(--card-border);
-      padding: 8px 16px;
-      border-radius: 12px;
-    }
-    .sim-controller label {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-    .sim-input {
-      width: 75px;
-      background: #020617;
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: var(--accent);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.95rem;
-      font-weight: 700;
-      padding: 5px 8px;
-      border-radius: 8px;
-      text-align: center;
-      outline: none;
-    }
-    .sim-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    @media (min-width: 768px) {
-      .sim-grid { grid-template-columns: 1fr 1fr; }
-    }
-    .sim-card {
-      background: rgba(5, 7, 13, 0.6);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 24px 20px;
-      position: relative;
-    }
-    .sim-card.featured {
-      border: 1.5px solid rgba(16, 185, 129, 0.5);
-      background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, rgba(5, 7, 13, 0.7) 100%);
-    }
-    .sim-badge-pure {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: var(--accent);
-      color: #000;
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 3px 10px;
-      border-bottom-left-radius: 10px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-    .sim-fornitore-sub {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-muted);
-      margin-bottom: 2px;
-      font-weight: 600;
-    }
-    .sim-fornitore-name {
-      font-size: 1.35rem;
-      font-weight: 800;
-      margin-bottom: 18px;
-    }
-    .sim-fornitore-name.green { color: var(--accent); }
-    .sim-fornitore-name.blue { color: var(--cyan); }
-    .sim-stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .sim-stat-box {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--card-border);
-      padding: 10px 8px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .sim-stat-label {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      font-weight: 600;
-    }
-    .sim-stat-val {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.18rem;
-      font-weight: 700;
-    }
-    .sim-note {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
 
     /* COMPARISON TABLE */
     .section-title {
@@ -438,7 +295,7 @@
       line-height: 1.55;
     }
 
-    /* SEZIONE PRICING MULTI-PIANO CON TRIAL */
+    /* NUOVA SEZIONE PRICING MULTI-PIANO CON TRIAL */
     .pricing-section {
       margin-bottom: 75px;
     }
@@ -617,80 +474,6 @@
       </div>
     </section>
 
-    <!-- SIMULATORE COMPARATIVO: AtmBet Selection vs AtmBet Signal -->
-    <section class="simulator-container">
-      <div class="sim-header">
-        <div class="sim-title">
-          <h3><span>⚡</span> Simulatore Performance Piani</h3>
-          <p>Confronto matematico certificato tra la selezione d'élite ristretta e il flusso completo di tutti i cluster.</p>
-        </div>
-        <div class="sim-controller">
-          <label for="simUnitInput">Valore 1 Unità (1u):</label>
-          <input type="number" id="simUnitInput" value="10" min="1" step="1" class="sim-input" oninput="aggiornaSimulatore()">
-          <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted);">€</span>
-        </div>
-      </div>
-
-      <div class="sim-grid">
-        <!-- BOX 1: AtmBet Selection (Max 5/die - Consigliato) -->
-        <div class="sim-card featured">
-          <div class="sim-badge-pure">Top 5 / Die • Ristretto</div>
-          <div class="sim-fornitore-sub">Fornitore</div>
-          <div class="sim-fornitore-name green">AtmBet Selection</div>
-
-          <div class="sim-stats-grid">
-            <div class="sim-stat-box">
-              <div class="sim-stat-label">Win Rate</div>
-              <div class="sim-stat-val green" id="simPureWR">--%</div>
-            </div>
-            <div class="sim-stat-box">
-              <div class="sim-stat-label">Yield / ROI</div>
-              <div class="sim-stat-val green" id="simPureYield">--%</div>
-            </div>
-            <div class="sim-stat-box">
-              <div class="sim-stat-label">Profitto Unità</div>
-              <div class="sim-stat-val green" id="simPureUnits">+0.00u</div>
-            </div>
-            <div class="sim-stat-box">
-              <div class="sim-stat-label">Guadagno Reale</div>
-              <div class="sim-stat-val" id="simPureCash" style="color: #fff;">+0.00 €</div>
-            </div>
-          </div>
-          <p class="sim-note">
-            Include esclusivamente i primi 5 segnali giornalieri ad alto edge e probabilità calcolata $\ge 65\%$. Abbassa il volume per massimizzare la tenuta del bankroll.
-          </p>
-        </div>
-
-        <!-- BOX 2: AtmBet Signal (Tutti i Fornitori e Cluster) -->
-        <div class="sim-card">
-          <div class="sim-fornitore-sub">Fornitore</div>
-          <div class="sim-fornitore-name blue">AtmBet Signal</div>
-
-          <div class="sim-stats-grid">
-            <div class="sim-stat-box">
-              <div class="sim-stat-label">Win Rate</div>
-              <div class="sim-stat-val" id="simFullWR" style="color: #fff;">--%</div>
-            </div>
-            <div class="sim-stat-box">
-              <div class="sim-stat-label">Yield / ROI</div>
-              <div class="sim-stat-val blue" id="simFullYield">--%</div>
-            </div>
-            <div class="sim-stat-box">
-              <div class="sim-stat-label">Profitto Unità</div>
-              <div class="sim-stat-val blue" id="simFullUnits">+0.00u</div>
-            </div>
-            <div class="sim-stat-box">
-              <div class="sim-stat-label">Guadagno Reale</div>
-              <div class="sim-stat-val" id="simFullCash" style="color: #fff;">+0.00 €</div>
-            </div>
-          </div>
-          <p class="sim-note">
-            Include il flusso continuo e aggregato di tutti i cluster e i modelli monitorati. Indicato per scommettitori con alto turnover di giocate quotidiane.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <!-- TABELLA COMPARATIVA -->
     <section>
       <div class="section-title">
@@ -776,9 +559,9 @@
 
       <!-- SELECTOR TABS -->
       <div class="plan-selector">
-        <button class="plan-tab active" id="tab-mensile" onclick="setPlan('mensile')">Mensile</button>
-        <button class="plan-tab" id="tab-trimestrale" onclick="setPlan('trimestrale')">Trimestrale (-25%)</button>
-        <button class="plan-tab" id="tab-annuale" onclick="setPlan('annuale')">Annuale (-38%)</button>
+        <button class="plan-tab active" onclick="setPlan('mensile')">Mensile</button>
+        <button class="plan-tab" onclick="setPlan('trimestrale')">Trimestrale (-25%)</button>
+        <button class="plan-tab" onclick="setPlan('annuale')">Annuale (-38%)</button>
       </div>
 
       <div class="vip-card">
@@ -793,10 +576,10 @@
 
         <ul class="benefits-list">
           <li><span>✓</span> <strong>Accesso Web Diretto:</strong> consulta i segnali sul sito senza obbligo di Telegram</li>
-          <li><span>✓</span> <strong>AtmBet Selection:</strong> Top 5 giornaliera ad altissima probabilità (≥ 65%)</li>
+          <li><span>✓</span> Top 5 giornaliera ad altissima probabilità (≥ 65%)</li>
           <li><span>✓</span> Dimensionamento matematico dello Stake con Quarter-Kelly</li>
           <li><span>✓</span> Watchlist Radar (Top 10) per studio statistico extra</li>
-          <li><span>✓</span> Canale Telegram VIP incluso per notifiche istantanee</li>
+          <li><span>✓</span> Canale Telegram VIP incluso per chi desidera le notifiche istantanee</li>
           <li><span>✓</span> Storico 100% trasparente certificato su GitHub Pages</li>
         </ul>
 
@@ -816,17 +599,12 @@
 
       <div class="faq-item">
         <h4>Come funziona la prova gratuita di 7 giorni?</h4>
-        <p>Attivi la prova inserendo i tuoi dati. Per 7 giorni hai accesso completo alle selezioni AtmBet e alla Watchlist Radar sul pannello web e su Telegram. Se non sei soddisfatto, puoi annullare prima del settimo giorno senza pagare un centesimo.</p>
-      </div>
-
-      <div class="faq-item">
-        <h4>Qual è la differenza tra AtmBet Selection e AtmBet Signal?</h4>
-        <p>AtmBet Selection isola in modo rigoroso un massimo di 5 pronostici al giorno con edge statistico elevato e probabilità calcolata superiore al 65%. AtmBet Signal raccoglie l'intero flusso dei modelli quantitativi e dei tipster monitorati, destinato a chi necessita di maggiore turnover operativo.</p>
+        <p>Attivi la prova inserendo i tuoi dati. Per 7 giorni hai accesso completo a tutte le Top 5 e alla Watchlist Radar sul pannello web e su Telegram. Se non sei soddisfatto, puoi annullare prima del settimo giorno senza pagare un centesimo.</p>
       </div>
 
       <div class="faq-item">
         <h4>È obbligatorio avere Telegram per usare il servizio?</h4>
-        <p>No. Telegram è una comodità per ricevere notifiche istantanee, ma ogni membro ha accesso diretto all'Area Riservata del sito per consultare quote, stake e palinsesti in tempo reale.</p>
+        <p>No. Telegram è una comodità per ricevere le notifiche in tempo reale, ma ogni abbonato riceve una chiave di accesso personale per consultare i pronostici e le statistiche direttamente dall'Area Utenti del sito web.</p>
       </div>
 
       <div class="faq-item">
@@ -842,155 +620,11 @@
   </footer>
 
   <script>
-    // 1. Configurazione Piani Commerciali
+    // Configurazione Piani Commerciali
     const plans = {
       mensile: {
         badge: "PIANO MENSILE",
         price: "39,90€",
-        period: "al mese dopo 7 giorni di prova gratuita • Disdici con 1 clic",
+        period: "al mese dopo 7 giorni di prova • Disdici con 1 clic",
         link: "https://buy.stripe.com/tuo_link_mensile"
-      },
-      trimestrale: {
-        badge: "PIANO TRIMESTRALE (RISPARMIA IL 25%)",
-        price: "89,00€",
-        period: "ogni 3 mesi dopo 7 giorni di prova gratuita (pari a 29,60€/mese)",
-        link: "https://buy.stripe.com/tuo_link_trimestrale"
-      },
-      annuale: {
-        badge: "PIANO ANNUALE ELITE (RISPARMIA IL 38%)",
-        price: "299,00€",
-        period: "all'anno dopo 7 giorni di prova gratuita (pari a 24,90€/mese)",
-        link: "https://buy.stripe.com/tuo_link_annuale"
-      }
-    };
-
-    function setPlan(tipo) {
-      document.querySelectorAll('.plan-tab').forEach(tab => tab.classList.remove('active'));
-      const activeBtn = document.getElementById('tab-' + tipo);
-      if (activeBtn) activeBtn.classList.add('active');
-
-      const p = plans[tipo];
-      if (p) {
-        document.getElementById('planBadge').innerText = p.badge;
-        document.getElementById('planPrice').innerText = p.price;
-        document.getElementById('planPeriod').innerText = p.period;
-        document.getElementById('ctaBtn').href = p.link;
-      }
-    }
-
-    // 2. Variabili Globali per Scommesse
-    let cachedBets = [];
-
-    // 3. Calcolo e Aggiornamento Simulatore Dinamico
-    function aggiornaSimulatore() {
-      const unitVal = parseFloat(document.getElementById('simUnitInput')?.value) || 10;
-      
-      // Filtra giocate refertate
-      const closedBets = cachedBets.filter(b => {
-        const s = (b.stato || b.status || '').toUpperCase();
-        return s === 'VINTA' || s === 'WON' || s === 'PERSA' || s === 'LOST';
-      });
-
-      // Valori di fallback nel caso in cui il database sia ancora privo di chiusure
-      if (closedBets.length === 0) {
-        // Fallback predefinito coerente con lo storico verificato
-        document.getElementById('simPureWR').innerText = "100.0%";
-        document.getElementById('simPureYield').innerText = "+57.2%";
-        document.getElementById('simPureUnits').innerText = "+3.43u";
-        document.getElementById('simPureCash').innerText = "+" + (3.43 * unitVal).toFixed(2) + " €";
-
-        document.getElementById('simFullWR').innerText = "75.0%";
-        document.getElementById('simFullYield').innerText = "+28.4%";
-        document.getElementById('simFullUnits').innerText = "+4.80u";
-        document.getElementById('simFullCash').innerText = "+" + (4.80 * unitVal).toFixed(2) + " €";
-
-        document.getElementById('winRateVal').innerText = "100.0%";
-        document.getElementById('roiVal').innerText = "+57.2%";
-        document.getElementById('totalBetsVal').innerText = "6";
-        return;
-      }
-
-      // 3.A) Calcolo AtmBet Selection (Top 5 / Pure Model)
-      const pureBets = closedBets.filter(b => {
-        const tip = (b.fornitore || b.tipster || '').toLowerCase();
-        return tip.includes('atmbetsignal') || tip.includes('atmbet selection') || b.isPure === true;
-      });
-
-      let pureWins = 0, pureStakeSum = 0, pureProfitUnits = 0;
-      pureBets.forEach(b => {
-        const stake = parseFloat(b.stake) || 1.0;
-        const quota = parseFloat(b.quota || b.odds) || 1.0;
-        const stato = (b.stato || b.status || '').toUpperCase();
-        pureStakeSum += stake;
-        if (stato === 'VINTA' || stato === 'WON') {
-          pureWins++;
-          pureProfitUnits += (quota - 1.0) * stake;
-        } else if (stato === 'PERSA' || stato === 'LOST') {
-          pureProfitUnits -= stake;
-        }
-      });
-
-      const pureWR = pureBets.length > 0 ? ((pureWins / pureBets.length) * 100).toFixed(1) : "0.0";
-      const pureYield = pureStakeSum > 0 ? ((pureProfitUnits / pureStakeSum) * 100).toFixed(1) : "0.0";
-
-      // 3.B) Calcolo AtmBet Signal (Tutti i pronostici e fornitori monitorati)
-      let fullWins = 0, fullStakeSum = 0, fullProfitUnits = 0;
-      closedBets.forEach(b => {
-        const stake = parseFloat(b.stake) || 1.0;
-        const quota = parseFloat(b.quota || b.odds) || 1.0;
-        const stato = (b.stato || b.status || '').toUpperCase();
-        fullStakeSum += stake;
-        if (stato === 'VINTA' || stato === 'WON') {
-          fullWins++;
-          fullProfitUnits += (quota - 1.0) * stake;
-        } else if (stato === 'PERSA' || stato === 'LOST') {
-          fullProfitUnits -= stake;
-        }
-      });
-
-      const fullWR = closedBets.length > 0 ? ((fullWins / closedBets.length) * 100).toFixed(1) : "0.0";
-      const fullYield = fullStakeSum > 0 ? ((fullProfitUnits / fullStakeSum) * 100).toFixed(1) : "0.0";
-
-      // Aggiornamento DOM Riquadro Pure (AtmBet Selection)
-      document.getElementById('simPureWR').innerText = pureWR + "%";
-      document.getElementById('simPureYield').innerText = (pureYield >= 0 ? "+" : "") + pureYield + "%";
-      document.getElementById('simPureUnits').innerText = (pureProfitUnits >= 0 ? "+" : "") + pureProfitUnits.toFixed(2) + "u";
-      document.getElementById('simPureCash').innerText = (pureProfitUnits >= 0 ? "+" : "") + (pureProfitUnits * unitVal).toFixed(2) + " €";
-
-      // Aggiornamento DOM Riquadro Full (AtmBet Signal)
-      document.getElementById('simFullWR').innerText = fullWR + "%";
-      document.getElementById('simFullYield').innerText = (fullYield >= 0 ? "+" : "") + fullYield + "%";
-      document.getElementById('simFullUnits').innerText = (fullProfitUnits >= 0 ? "+" : "") + fullProfitUnits.toFixed(2) + "u";
-      document.getElementById('simFullCash').innerText = (fullProfitUnits >= 0 ? "+" : "") + (fullProfitUnits * unitVal).toFixed(2) + " €";
-
-      // Aggiornamento KPI Superiori (allineati con le performance ufficiali AtmBet Selection)
-      document.getElementById('winRateVal').innerText = pureWR + "%";
-      document.getElementById('roiVal').innerText = (pureYield >= 0 ? "+" : "") + pureYield + "%";
-      document.getElementById('totalBetsVal').innerText = pureBets.length.toString();
-    }
-
-    // 4. Caricamento Dati Storico
-    async function initData() {
-      try {
-        // Prova a recuperare da GitHub bets.json o da endpoint statico
-        const res = await fetch('data/bets.json?t=' + Date.now());
-        if (res.ok) {
-          cachedBets = await res.json();
-        } else {
-          // Fallback da localStorage admin
-          const localData = localStorage.getItem('atm_bets') || localStorage.getItem('bets');
-          if (localData) cachedBets = JSON.parse(localData);
-        }
-      } catch (err) {
-        const localData = localStorage.getItem('atm_bets') || localStorage.getItem('bets');
-        if (localData) cachedBets = JSON.parse(localData);
-      }
-      aggiornaSimulatore();
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      initData();
-    });
-  </script>
-</body>
-</html>
+     " 
