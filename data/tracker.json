@@ -149,6 +149,76 @@
       "tier": "OFFICIAL",
       "status": "PENDING",
       "profit": 0.0
+    },
+    {
+      "id": "667cf69986b200753742c90cb9c5126c_1",
+      "date": "2026-10-29T17:30:00Z",
+      "match": "Frosinone vs Lecce",
+      "league": "Serie A - Italy",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.67,
+      "prob": 0.6903,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "33320ad169692216a91dec030e7ef6a6_UNDER_35",
+      "date": "2026-10-28T17:30:00Z",
+      "match": "Venezia vs Inter Milan",
+      "league": "Serie A - Italy",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.86,
+      "prob": 0.6779,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "da159a6b84dbb548b4d7b94c722caac5_1X",
+      "date": "2026-10-29T19:45:00Z",
+      "match": "Fiorentina vs Atalanta BC",
+      "league": "Serie A - Italy",
+      "bet": "Doppia Chance 1X",
+      "market_key": "1X",
+      "odd": 1.45,
+      "prob": 0.7527,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "482c18a8081afdfa310324fa8f37e95a_OVER_15",
+      "date": "2026-10-28T17:30:00Z",
+      "match": "Parma vs Udinese",
+      "league": "Serie A - Italy",
+      "bet": "Over 1.5 Gol",
+      "market_key": "OVER_15",
+      "odd": 1.5,
+      "prob": 0.721,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "f02c050c4de5efdae4be07ff9b97406f_1X",
+      "date": "2026-10-29T19:45:00Z",
+      "match": "Everton vs Newcastle United",
+      "league": "EFL Cup",
+      "bet": "Doppia Chance 1X",
+      "market_key": "1X",
+      "odd": 1.43,
+      "prob": 0.7315,
+      "stake_pct": 2.5,
+      "tier": "OFFICIAL",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ]
 }
