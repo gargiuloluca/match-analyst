@@ -6,5 +6,76 @@
   "win_rate": 0.0,
   "net_profit_units": 0.0,
   "roi_pct": 0.0,
-  "bets": []
+  "bets": [
+    {
+      "id": "b102dbaf4e2ff82df26d9ebe27c7f5b1_1",
+      "date": "2026-10-28T19:30:00Z",
+      "match": "Manchester City vs Brighton and Hove Albion",
+      "league": "EFL Cup",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.68,
+      "prob": 0.7382,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "667cf69986b200753742c90cb9c5126c_1",
+      "date": "2026-10-29T17:30:00Z",
+      "match": "Frosinone vs Lecce",
+      "league": "Serie A - Italy",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.66,
+      "prob": 0.7084,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "abec89862e33762414fcb8b2232aba08_2",
+      "date": "2026-10-28T19:45:00Z",
+      "match": "Monza vs Napoli",
+      "league": "Serie A - Italy",
+      "bet": "Vittoria Trasferta (2)",
+      "market_key": "2",
+      "odd": 1.73,
+      "prob": 0.6987,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "34848497b90b1392f6a767fc183d3ac1_2",
+      "date": "2026-10-28T19:45:00Z",
+      "match": "Genoa vs Juventus",
+      "league": "Serie A - Italy",
+      "bet": "Vittoria Trasferta (2)",
+      "market_key": "2",
+      "odd": 1.76,
+      "prob": 0.6748,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "01307f387f466184f92bea6c08c6b635_1",
+      "date": "2026-10-28T19:45:00Z",
+      "match": "Fulham vs Crystal Palace",
+      "league": "EFL Cup",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.75,
+      "prob": 0.6651,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    }
+  ]
 }
