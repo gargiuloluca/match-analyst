@@ -1,11 +1,11 @@
 {
-  "total_bets": 3,
-  "won": 3,
-  "lost": 0,
+  "total_bets": 7,
+  "won": 5,
+  "lost": 2,
   "void": 0,
-  "win_rate": 100.0,
-  "net_profit_units": 5.53,
-  "roi_pct": 73.7,
+  "win_rate": 71.4,
+  "net_profit_units": 2.93,
+  "roi_pct": 18.2,
   "bets": [
     {
       "id": "sevilla_osasuna_won",
@@ -63,8 +63,9 @@
       "prob": 0.737,
       "stake_pct": 2.5,
       "tier": "GOLD",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "0-0"
     },
     {
       "id": "genoa_juventus_o15",
@@ -77,8 +78,9 @@
       "prob": 0.668,
       "stake_pct": 2.5,
       "tier": "GOLD",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.2,
+      "score": "2-0"
     },
     {
       "id": "venezia_inter_u35",
@@ -91,8 +93,9 @@
       "prob": 0.678,
       "stake_pct": 1.25,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.08,
+      "score": "0-2"
     },
     {
       "id": "sunderland_brentford_dnb2",
@@ -105,8 +108,9 @@
       "prob": 0.719,
       "stake_pct": 2.38,
       "tier": "OFFICIAL",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.38,
+      "score": "3-2"
     },
     {
       "id": "frosinone_lecce_1",
@@ -147,6 +151,48 @@
       "prob": 0.734,
       "stake_pct": 2.5,
       "tier": "OFFICIAL",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "75daf3f21fd7945dcc4215b1fe8a5da3_BTTS_NO",
+      "date": "2026-10-30T20:15:00Z",
+      "match": "Casa Pia vs Sporting Lisbon",
+      "league": "Primeira Liga - Portugal",
+      "bet": "NoGol",
+      "market_key": "BTTS_NO",
+      "odd": 2.71,
+      "prob": 0.7514,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "9a9f6c78276f74f15f42b013b033aa5d_UNDER_35",
+      "date": "2026-10-30T18:00:00Z",
+      "match": "Le Havre vs Paris Saint Germain",
+      "league": "Ligue 1 - France",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.96,
+      "prob": 0.6964,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "2dd4ff7c9aef0d27f3f30acf413dfa8b_2",
+      "date": "2026-10-30T19:45:00Z",
+      "match": "SV Zulte-Waregem vs Club Brugge",
+      "league": "Belgium First Div",
+      "bet": "Vittoria Trasferta (2)",
+      "market_key": "2",
+      "odd": 1.47,
+      "prob": 0.7816,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
       "status": "PENDING",
       "profit": 0.0
     }

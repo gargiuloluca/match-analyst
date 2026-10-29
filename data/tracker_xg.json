@@ -76,6 +76,62 @@
       "tier": "DIAMOND",
       "status": "PENDING",
       "profit": 0.0
+    },
+    {
+      "id": "75daf3f21fd7945dcc4215b1fe8a5da3_BTTS_NO",
+      "date": "2026-10-30T20:15:00Z",
+      "match": "Casa Pia vs Sporting Lisbon",
+      "league": "Primeira Liga - Portugal",
+      "bet": "NoGol",
+      "market_key": "BTTS_NO",
+      "odd": 2.71,
+      "prob": 0.7514,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "9a9f6c78276f74f15f42b013b033aa5d_UNDER_35",
+      "date": "2026-10-30T18:00:00Z",
+      "match": "Le Havre vs Paris Saint Germain",
+      "league": "Ligue 1 - France",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.96,
+      "prob": 0.6964,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "2dd4ff7c9aef0d27f3f30acf413dfa8b_2",
+      "date": "2026-10-30T19:45:00Z",
+      "match": "SV Zulte-Waregem vs Club Brugge",
+      "league": "Belgium First Div",
+      "bet": "Vittoria Trasferta (2)",
+      "market_key": "2",
+      "odd": 1.47,
+      "prob": 0.7816,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "b275fe870ec88a9f0054c9220beb2673_X2",
+      "date": "2026-10-30T19:30:00Z",
+      "match": "Elversberg vs FSV Mainz 05",
+      "league": "Bundesliga - Germany",
+      "bet": "Doppia Chance X2",
+      "market_key": "X2",
+      "odd": 1.44,
+      "prob": 0.7439,
+      "stake_pct": 2.5,
+      "tier": "OFFICIAL",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ]
 }
