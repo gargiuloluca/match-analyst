@@ -195,6 +195,20 @@
       "tier": "GOLD",
       "status": "PENDING",
       "profit": 0.0
+    },
+    {
+      "id": "b275fe870ec88a9f0054c9220beb2673_X2",
+      "date": "2026-10-30T19:30:00Z",
+      "match": "Elversberg vs FSV Mainz 05",
+      "league": "Bundesliga - Germany",
+      "bet": "Doppia Chance X2",
+      "market_key": "X2",
+      "odd": 1.45,
+      "prob": 0.7425,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ]
 }
