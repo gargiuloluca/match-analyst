@@ -1,5 +1,5 @@
 {
-  "total_bets": 10,
+  "total_bets": 14,
   "won": 8,
   "lost": 2,
   "void": 0,
@@ -212,7 +212,6 @@
       "tier": "GOLD",
       "status": "PENDING",
       "profit": 0.0
-    }
     }
   ]
 }
