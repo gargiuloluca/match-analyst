@@ -132,6 +132,62 @@
       "tier": "OFFICIAL",
       "status": "PENDING",
       "profit": 0.0
+    },
+    {
+      "id": "2db2b55e71574a19ff0557898d3e9933_BTTS_NO",
+      "date": "2026-10-31T20:00:00Z",
+      "match": "Barcelona vs Alavés",
+      "league": "La Liga - Spain",
+      "bet": "NoGol",
+      "market_key": "BTTS_NO",
+      "odd": 2.09,
+      "prob": 0.8952,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "49a7de86105dbc67bec3e1390c7bcbb3_BTTS_NO",
+      "date": "2026-10-31T17:45:00Z",
+      "match": "PSV Eindhoven vs Willem II",
+      "league": "Dutch Eredivisie",
+      "bet": "NoGol",
+      "market_key": "BTTS_NO",
+      "odd": 2.09,
+      "prob": 0.8812,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "60352ce6c1b34bca7b294edae8aa388b_BTTS_NO",
+      "date": "2026-10-31T20:30:00Z",
+      "match": "FC Porto vs Estoril",
+      "league": "Primeira Liga - Portugal",
+      "bet": "NoGol",
+      "market_key": "BTTS_NO",
+      "odd": 2.52,
+      "prob": 0.8269,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "1836e9e3241ea98ae062bab0f288ce2c_BTTS_NO",
+      "date": "2026-10-31T15:30:00Z",
+      "match": "Feyenoord vs Fortuna Sittard",
+      "league": "Dutch Eredivisie",
+      "bet": "NoGol",
+      "market_key": "BTTS_NO",
+      "odd": 2.09,
+      "prob": 0.7626,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ]
 }
