@@ -1,6 +1,6 @@
 """
 fetch_fixtures.py — AtmBetSignal Odds & Daily Window Fetcher (Multi-Key Fallback)
-Scarica quote per le leghe europee con The Odds API (h2h, totals).
+Scarica quote reali per le leghe europee con The Odds API (h2h, totals).
 Supporta rotazione automatica su chiavi multiple (separate da virgola in ODDSAPI_KEY).
 FILTRO TEMPORALE RIGIDO: analizza esclusivamente i match in programma entro le prossime 36 ore.
 """
@@ -95,6 +95,7 @@ def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
         over15, under15 = [], []
         over25, under25 = [], []
         over35, under35 = [], []
+        btts_yes_list, btts_no_list = [], []
 
         for b in bookmakers:
             for market in b.get("markets", []):
@@ -124,6 +125,14 @@ def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
                         elif point == 3.5:
                             if name_low in ["over", "più"]: over35.append(price)
                             elif name_low in ["under", "meno"]: under35.append(price)
+                elif m_key == "btts":
+                    for outcome in market.get("outcomes", []):
+                        price = outcome.get("price", 0.0)
+                        name_low = outcome.get("name", "").lower()
+                        if name_low in ["yes", "si", "sì"] and price > 1.0:
+                            btts_yes_list.append(price)
+                        elif name_low in ["no"] and price > 1.0:
+                            btts_no_list.append(price)
 
         if not (h2h_home and h2h_draw and h2h_away):
             continue
@@ -132,7 +141,7 @@ def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
         odd_x = sum(h2h_draw) / len(h2h_draw)
         odd_2 = sum(h2h_away) / len(h2h_away)
 
-        # Doppie Chance sintetiche con aggio banco reale
+        # Doppie Chance sintetiche con overround protetto
         prob_1x = (1.0 / odd_1) + (1.0 / odd_x)
         odd_1x = round(1.0 / (prob_1x * 1.05), 2) if prob_1x > 0 else 0.0
 
@@ -152,10 +161,13 @@ def parse_match_data(raw_matches, sport_key: str, existing_openings: dict):
         o35 = sum(over35) / len(over35) if over35 else (round(o25 * 1.85, 2) if o25 > 1.0 else 3.20)
         u35 = sum(under35) / len(under35) if under35 else (round(1.0 + (u25 - 1.0) * 0.45, 2) if u25 > 1.0 else 1.30)
 
-        # Gol / NoGol calibrato: quote protette senza divisioni errate
-        # Nessun NoGol supera mai quota 1.85 (evita falsi allarmi e finti Edge)
-        btts_yes = round(min(2.15, max(1.45, o25 * 0.95)), 2) if o25 > 1.0 else 1.80
-        btts_no = round(min(1.85, max(1.40, 3.40 - btts_yes)), 2)
+        # Gol / NoGol: Solo quote reali dai bookmaker. Se non presenti, non si inventano quote (0.0)
+        if btts_yes_list and btts_no_list:
+            btts_yes = round(sum(btts_yes_list) / len(btts_yes_list), 2)
+            btts_no = round(sum(btts_no_list) / len(btts_no_list), 2)
+        else:
+            btts_yes = 0.0
+            btts_no = 0.0
 
         current_odds = {
             "1": round(odd_1, 2),
