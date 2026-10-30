@@ -22,14 +22,16 @@ HIGH_VARIANCE_DERBIES = [
     {"celtic", "rangers"},
     {"galatasaray", "fenerbahce"},
     {"inter", "milan"},
-    {"juventus", "torino"}
+    {"juventus", "torino"},
+    {"sporting", "benfica"},
+    {"porto", "benfica"}
 ]
 
 EUROPEAN_COMPETITORS = {
     "real madrid", "barcelona", "atletico madrid", "manchester city",
     "arsenal", "liverpool", "bayern munchen", "borussia dortmund",
     "inter", "juventus", "milan", "atalanta", "paris saint germain",
-    "sporting cp", "benfica", "porto", "feyenoord", "psv eindhoven"
+    "sporting", "benfica", "porto", "feyenoord", "psv"
 }
 
 LEAGUE_GOAL_PROFILES = {
@@ -67,19 +69,62 @@ TEAM_XG_DATABASE = {
     "cagliari": {"xg_for": 0.90, "xg_against": 1.30},
     "lecce": {"xg_for": 0.85, "xg_against": 1.25},
     "frosinone": {"xg_for": 0.92, "xg_against": 1.28},
-    # Premier League
+    "torino": {"xg_for": 0.92, "xg_against": 0.88},
+    "monza": {"xg_for": 0.82, "xg_against": 1.18},
+    
+    # Premier League & Championship
     "manchester city": {"xg_for": 1.45, "xg_against": 0.70},
     "liverpool": {"xg_for": 1.40, "xg_against": 0.78},
     "arsenal": {"xg_for": 1.38, "xg_against": 0.72},
     "chelsea": {"xg_for": 1.25, "xg_against": 1.05},
     "aston villa": {"xg_for": 1.22, "xg_against": 1.08},
     "tottenham": {"xg_for": 1.28, "xg_against": 1.15},
-    "newcastle united": {"xg_for": 1.18, "xg_against": 1.05},
+    "newcastle": {"xg_for": 1.18, "xg_against": 1.05},
     "everton": {"xg_for": 0.92, "xg_against": 1.10},
     "brentford": {"xg_for": 1.12, "xg_against": 1.20},
     "brighton": {"xg_for": 1.20, "xg_against": 1.18},
     "fulham": {"xg_for": 1.05, "xg_against": 1.12},
     "crystal palace": {"xg_for": 0.95, "xg_against": 1.08},
+    "sunderland": {"xg_for": 0.95, "xg_against": 1.15},
+    "oxford": {"xg_for": 0.85, "xg_against": 1.25},
+    "stockport": {"xg_for": 0.85, "xg_against": 1.20},
+
+    # La Liga
+    "real madrid": {"xg_for": 1.45, "xg_against": 0.68},
+    "barcelona": {"xg_for": 1.48, "xg_against": 0.72},
+    "atletico madrid": {"xg_for": 1.25, "xg_against": 0.65},
+    "athletic club": {"xg_for": 1.15, "xg_against": 0.80},
+    "real sociedad": {"xg_for": 1.08, "xg_against": 0.82},
+    "villarreal": {"xg_for": 1.22, "xg_against": 1.15},
+    "sevilla": {"xg_for": 1.05, "xg_against": 1.02},
+    "osasuna": {"xg_for": 0.90, "xg_against": 1.05},
+    "alavés": {"xg_for": 0.78, "xg_against": 1.22},
+    "alaves": {"xg_for": 0.78, "xg_against": 1.22},
+
+    # Dutch Eredivisie
+    "psv": {"xg_for": 1.55, "xg_against": 0.62},
+    "feyenoord": {"xg_for": 1.38, "xg_against": 0.72},
+    "ajax": {"xg_for": 1.30, "xg_against": 0.88},
+    "willem ii": {"xg_for": 0.72, "xg_against": 1.40},
+    "fortuna sittard": {"xg_for": 0.78, "xg_against": 1.32},
+
+    # Primeira Liga Portugal
+    "sporting": {"xg_for": 1.48, "xg_against": 0.60},
+    "porto": {"xg_for": 1.38, "xg_against": 0.65},
+    "benfica": {"xg_for": 1.42, "xg_against": 0.65},
+    "estoril": {"xg_for": 0.78, "xg_against": 1.35},
+    "casa pia": {"xg_for": 0.72, "xg_against": 1.28},
+
+    # Altre Europee
+    "paris saint germain": {"xg_for": 1.50, "xg_against": 0.68},
+    "le havre": {"xg_for": 0.75, "xg_against": 1.30},
+    "bayern": {"xg_for": 1.58, "xg_against": 0.70},
+    "leverkusen": {"xg_for": 1.40, "xg_against": 0.78},
+    "dortmund": {"xg_for": 1.32, "xg_against": 1.05},
+    "mainz": {"xg_for": 0.95, "xg_against": 1.10},
+    "club brugge": {"xg_for": 1.30, "xg_against": 0.85},
+    "zulte": {"xg_for": 0.80, "xg_against": 1.30},
+
     "default": {"xg_for": 1.00, "xg_against": 1.00}
 }
 
@@ -349,6 +394,8 @@ def main():
         "engine": "Model B (Dixon-Coles + Rolling xG)",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_officials": len(top_5_officials),
+        "diamond_count": sum(1 for p in top_5_officials if p["tier"] == "DIAMOND"),
+        "gold_count": sum(1 for p in top_5_officials if p["tier"] == "GOLD"),
         "all_selected_picks": top_5_officials,
         "radar_watchlist": top_10_radar
     }
@@ -356,15 +403,25 @@ def main():
     LATEST_XG_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[Model xG] Analisi Conclusa: {len(top_5_officials)} selezioni generate in latest_xg.json.")
 
-    # Tracker dedicato di laboratorio
-    tracker_xg_data = {"bets": []}
+    # Inizializzazione struttura completa per evitare blocchi al frontend
+    tracker_xg_data = {
+        "total_bets": 0,
+        "won": 0,
+        "lost": 0,
+        "void": 0,
+        "win_rate": 0.0,
+        "net_profit_units": 0.0,
+        "roi_pct": 0.0,
+        "bets": []
+    }
+    
     if TRACKER_XG_FILE.exists():
         try:
-            tracker_xg_data = json.loads(TRACKER_XG_FILE.read_text(encoding="utf-8"))
-            if not isinstance(tracker_xg_data.get("bets"), list):
-                tracker_xg_data["bets"] = []
+            loaded = json.loads(TRACKER_XG_FILE.read_text(encoding="utf-8"))
+            if isinstance(loaded, dict) and isinstance(loaded.get("bets"), list):
+                tracker_xg_data = loaded
         except Exception:
-            tracker_xg_data = {"bets": []}
+            pass
 
     existing_pairs = set()
     for b in tracker_xg_data.get("bets", []):
@@ -372,6 +429,7 @@ def main():
         mkt = str(b.get("market_key", "")).strip().upper()
         existing_pairs.add((m_norm, mkt))
 
+    new_added = 0
     for op in top_5_officials:
         op_match_norm = normalize_match_str(op["match"])
         op_mkt = str(op["market_key"]).strip().upper()
@@ -394,8 +452,11 @@ def main():
                 "profit": 0.0
             })
             existing_pairs.add(pair_key)
+            new_added += 1
 
+    tracker_xg_data["total_bets"] = len(tracker_xg_data["bets"])
     TRACKER_XG_FILE.write_text(json.dumps(tracker_xg_data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[Model xG] Tracker sincronizzato: {new_added} nuove selezioni aggiunte.")
 
 if __name__ == "__main__":
     main()
