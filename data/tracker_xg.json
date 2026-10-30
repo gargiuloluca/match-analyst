@@ -1,5 +1,5 @@
 {
-  "total_bets": 0,
+  "total_bets": 8,
   "won": 0,
   "lost": 0,
   "void": 0,
@@ -78,20 +78,6 @@
       "profit": 0.0
     },
     {
-      "id": "75daf3f21fd7945dcc4215b1fe8a5da3_BTTS_NO",
-      "date": "2026-10-30T20:15:00Z",
-      "match": "Casa Pia vs Sporting Lisbon",
-      "league": "Primeira Liga - Portugal",
-      "bet": "NoGol",
-      "market_key": "BTTS_NO",
-      "odd": 2.71,
-      "prob": 0.7514,
-      "stake_pct": 1.25,
-      "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
-    },
-    {
       "id": "9a9f6c78276f74f15f42b013b033aa5d_UNDER_35",
       "date": "2026-10-30T18:00:00Z",
       "match": "Le Havre vs Paris Saint Germain",
@@ -132,7 +118,6 @@
       "tier": "OFFICIAL",
       "status": "PENDING",
       "profit": 0.0
-    }
     }
   ]
 }
