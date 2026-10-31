@@ -93,6 +93,75 @@
     .badge-official { background: var(--accent); color: #000; }
     .badge-radar { background: #334155; color: #cbd5e1; }
 
+    /* Barra Controllo Operativo Pipeline */
+    .control-card {
+      background: #0d1526;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .control-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .btn-action-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+      transition: all 0.2s ease;
+    }
+    .btn-action-secondary {
+      background: linear-gradient(135deg, #059669, #047857);
+      color: #fff;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(5,150,105,0.25);
+      transition: all 0.2s ease;
+    }
+    .btn-token-config {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-action-primary:disabled, .btn-action-secondary:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    #actionStatusMsg {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
     /* Selettore Motori A/B */
     .engine-switch {
       display: flex;
@@ -148,6 +217,33 @@
         </div>
       </header>
 
+      <!-- BARRA CONTROLLO OPERATIVO REMOTO PIPELINE -->
+      <div class="control-card">
+        <div class="control-flex">
+          <div>
+            <h3 style="font-size: 1.05rem; color: #f9fafb; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+              ⚡ Controllo Operativo Pipeline Cloud
+            </h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;">
+              Comanda l'avvio immediato dell'analisi quote o la refertazione dei risultati senza aprire GitHub.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+            <button id="btnRunAnalysis" class="btn-action-primary" onclick="triggerWorkflow('analyze_only', this)">
+              🚀 Avvia Analisi Quote Oggi
+            </button>
+            <button id="btnRunSettle" class="btn-action-secondary" onclick="triggerWorkflow('settle_only', this)">
+              ⚖️ Calcola & Aggiorna Storico
+            </button>
+            <button class="btn-token-config" onclick="configureGitHubToken()" title="Configura chiave personale">
+              ⚙️ Token
+            </button>
+          </div>
+        </div>
+        <div id="actionStatusMsg"></div>
+      </div>
+
       <!-- SELETTORE MOTORI A / B -->
       <div class="engine-switch">
         <button id="btn-official" class="engine-btn active" onclick="switchEngine('official')">
@@ -168,6 +264,89 @@
 
   <script>
     let currentEngine = 'official';
+
+    // CONFIGURAZIONE GITHUB ACTIONS REST API
+    const GITHUB_OWNER = "gargiuloluca";
+    const GITHUB_REPO = "match-analyst";
+    const WORKFLOW_ID = "daily-analysis.yml";
+
+    function configureGitHubToken() {
+      const currentToken = localStorage.getItem("atm_gh_token") || "";
+      const token = prompt("Inserisci il tuo Personal Access Token di GitHub (ghp_...):", currentToken);
+      if (token !== null) {
+        localStorage.setItem("atm_gh_token", token.trim());
+        alert("Token salvato nel browser con successo!");
+      }
+    }
+
+    async function triggerWorkflow(mode, btnElement) {
+      let token = localStorage.getItem("atm_gh_token");
+      if (!token) {
+        token = prompt("Inserisci il tuo Personal Access Token GitHub per autorizzare il comando:");
+        if (!token) return;
+        localStorage.setItem("atm_gh_token", token.trim());
+      }
+
+      const originalHtml = btnElement.innerHTML;
+      const statusDiv = document.getElementById("actionStatusMsg");
+      const btnAnalysis = document.getElementById("btnRunAnalysis");
+      const btnSettle = document.getElementById("btnRunSettle");
+
+      btnAnalysis.disabled = true;
+      btnSettle.disabled = true;
+      btnElement.innerHTML = "⏳ Invio ai server...";
+
+      statusDiv.style.display = "block";
+      statusDiv.style.background = "rgba(37, 99, 235, 0.1)";
+      statusDiv.style.border = "1px solid #1e40af";
+      statusDiv.style.color = "#93c5fd";
+      statusDiv.innerHTML = "Connessione sicura a GitHub Actions in corso...";
+
+      const labelTask = mode === 'analyze_only' ? "Analisi Quote Fresche" : "Refertazione Risultati & Storico";
+
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${WORKFLOW_ID}/dispatches`, {
+          method: "POST",
+          headers: {
+            "Accept": "application/vnd.github+json",
+            "Authorization": `Bearer ${token}`,
+            "X-GitHub-Api-Version": "2022-11-28"
+          },
+          body: JSON.stringify({
+            ref: "main",
+            inputs: {
+              task_mode: mode,
+              action_note: `Esecuzione: ${labelTask}`
+            }
+          })
+        });
+
+        if (res.status === 204) {
+          statusDiv.style.background = "rgba(16, 185, 129, 0.1)";
+          statusDiv.style.border = "1px solid #059669";
+          statusDiv.style.color = "#34d399";
+          statusDiv.innerHTML = `✅ <b>Operazione "${labelTask}" avviata con successo!</b> I server GitHub stanno elaborando. Tra 60-90 secondi i dati saranno aggiornati.`;
+        } else {
+          const err = await res.json().catch(() => ({}));
+          statusDiv.style.background = "rgba(239, 68, 68, 0.1)";
+          statusDiv.style.border = "1px solid #b91c1c";
+          statusDiv.style.color = "#f87171";
+          statusDiv.innerHTML = `❌ Errore (${res.status}): ${err.message || "Verifica che il token abbia i permessi repo e workflow."}`;
+          if (res.status === 401) {
+            localStorage.removeItem("atm_gh_token");
+          }
+        }
+      } catch (e) {
+        statusDiv.style.background = "rgba(239, 68, 68, 0.1)";
+        statusDiv.style.border = "1px solid #b91c1c";
+        statusDiv.style.color = "#f87171";
+        statusDiv.innerHTML = "Errore di rete: " + e.message;
+      } finally {
+        btnAnalysis.disabled = false;
+        btnSettle.disabled = false;
+        btnElement.innerHTML = originalHtml;
+      }
+    }
 
     function checkAdmin() {
       const pass = document.getElementById('adminPass').value;
@@ -287,7 +466,7 @@
           }
         })
         .catch(err => {
-          offCont.innerHTML = '<p style="color: var(--muted); padding: 12px; background: var(--card-bg); border-radius: 8px;">Dati non ancora disponibili per questo motore. Verranno generati alla prima esecuzione programmata.</p>';
+          offCont.innerHTML = '<p style="color: var(--muted); padding: 12px; background: var(--card-bg); border-radius: 8px;">Dati non ancora disponibili per questo motore. Verranno generati alla prima esecuzione.</p>';
           radCont.innerHTML = '<p style="color: var(--muted);">Nessun dato radar.</p>';
         });
     }
