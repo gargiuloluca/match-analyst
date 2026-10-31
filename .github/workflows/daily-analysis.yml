@@ -67,6 +67,11 @@ jobs:
         if: ${{ github.event.inputs.task_mode == 'all' || github.event.inputs.task_mode == 'analyze_only' }}
         run: python scripts/analyze_xg.py
 
+      # FASE 3C: Motore Sicurezza Sniper C (Probabilità >= 80%, Quota >= 1.40)
+      - name: Run Sniper Safe analysis (Model C)
+        if: ${{ github.event.inputs.task_mode == 'all' || github.event.inputs.task_mode == 'analyze_only' }}
+        run: python scripts/analyze_safe.py
+        
       # FASE 4: Invio selezioni ufficiali su Telegram
       - name: Send new signals to Telegram
         if: ${{ github.event.inputs.task_mode == 'all' || github.event.inputs.task_mode == 'analyze_only' }}
