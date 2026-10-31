@@ -568,4 +568,118 @@
                     <span style="color: var(--muted); font-size: 0.8rem;">${p.league || ''}</span>
                   </div>
                   <h3 style="margin-bottom: 4px; font-size: 1.1rem;">${p.match}</h3>
-                  <p style="color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 6px;">🎯 Esito: ${p.outcome_label
+                  <p style="color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 6px;">🎯 Esito: ${p.outcome_label} @ ${Number(p.odd).toFixed(2)}</p>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--muted);">
+                    Probabilità: ${prob}% | Stake Kelly: ${p.suggested_stake_pct}% | Edge: +${edge}%
+                  </div>
+                </div>
+              `;
+            });
+            offCont.innerHTML = html;
+          }
+
+          const radar = d.radar_watchlist || [];
+          if (radar.length === 0) {
+            radCont.innerHTML = '<p style="color: var(--muted);">Nessun match secondario nel radar per questo modello.</p>';
+          } else {
+            let htmlR = '';
+            radar.forEach((r, i) => {
+              const prob = ((r.estimated_probability || 0) * 100).toFixed(1);
+              htmlR += `
+                <div class="pick-item" style="border: 1px solid var(--border);">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span class="badge badge-radar">RADAR #${i+1}</span>
+                    <span style="color: var(--muted); font-size: 0.8rem;">${r.league || ''}</span>
+                  </div>
+                  <h4 style="margin-bottom: 4px; font-size: 1rem;">${r.match}</h4>
+                  <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 4px;">🎯 Esito: <b>${r.outcome_label}</b> @ <b>${Number(r.odd).toFixed(2)}</b></p>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted);">
+                    Probabilità stimata: ${prob}% (Esclusivamente per Studio)
+                  </div>
+                </div>
+              `;
+            });
+            radCont.innerHTML = htmlR;
+          }
+        })
+        .catch(err => {
+          offCont.innerHTML = '<p style="color: var(--muted); padding: 12px; background: var(--card-bg); border-radius: 8px;">Dati non ancora disponibili per questo motore.</p>';
+          radCont.innerHTML = '<p style="color: var(--muted);">Nessun dato radar.</p>';
+        });
+    }
+
+    // Caricamento Storico & Performance
+    function loadTrackerData(trackerPath) {
+      const tbody = document.getElementById('historyTableBody');
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--muted); padding: 18px;">Caricamento storico...</td></tr>';
+
+      fetch(trackerPath + '?nocache=' + Date.now())
+        .then(r => {
+          if (!r.ok) throw new Error('File storico non trovato');
+          return r.json();
+        })
+        .then(d => {
+          const bets = d.bets || [];
+          const concluded = bets.filter(b => b.status === 'WON' || b.status === 'LOST');
+          const pending = bets.filter(b => b.status === 'PENDING');
+
+          const wonCount = bets.filter(b => b.status === 'WON').length;
+          const lostCount = bets.filter(b => b.status === 'LOST').length;
+
+          // Calcolo dinamico preciso
+          const winRate = concluded.length > 0 ? ((wonCount / concluded.length) * 100).toFixed(1) : (d.win_rate !== undefined ? Number(d.win_rate).toFixed(1) : '0.0');
+          const roi = d.roi_pct !== undefined ? Number(d.roi_pct).toFixed(1) : '0.0';
+
+          document.getElementById('kpiWinRate').textContent = `${winRate}%`;
+          document.getElementById('kpiRoi').textContent = `${roi > 0 ? '+' : ''}${roi}%`;
+          document.getElementById('kpiConcluded').textContent = `${concluded.length} (${wonCount}V - ${lostCount}P)`;
+          document.getElementById('kpiPending').textContent = pending.length;
+
+          if (bets.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--muted); padding: 18px;">Nessuna operazione registrata nel tracker di questo motore.</td></tr>';
+            return;
+          }
+
+          let tableHtml = '';
+          bets.forEach(b => {
+            let statusBadge = `<span class="status-badge status-pending">PENDING</span>`;
+            let profitText = '-';
+
+            if (b.status === 'WON') {
+              statusBadge = `<span class="status-badge status-won">WON</span>`;
+              profitText = `<span style="color: var(--accent); font-weight: 700;">+${Number(b.profit || 0).toFixed(2)}u</span>`;
+            } else if (b.status === 'LOST') {
+              statusBadge = `<span class="status-badge status-lost">LOST</span>`;
+              profitText = `<span style="color: var(--red); font-weight: 700;">-${Number(b.stake_pct || 0).toFixed(2)}u</span>`;
+            }
+
+            const dateStr = b.date ? b.date.substring(0, 10) : '-';
+
+            tableHtml += `
+              <tr>
+                <td style="color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">${dateStr}</td>
+                <td><b>${b.match}</b><br><span style="color: var(--muted); font-size: 0.75rem;">${b.league || ''}</span></td>
+                <td style="color: var(--cyan); font-weight: 600;">${b.bet}</td>
+                <td style="font-family: 'JetBrains Mono', monospace;">${Number(b.odd).toFixed(2)}</td>
+                <td>${statusBadge}</td>
+                <td style="font-family: 'JetBrains Mono', monospace;">${profitText}</td>
+              </tr>
+            `;
+          });
+          tbody.innerHTML = tableHtml;
+        })
+        .catch(err => {
+          document.getElementById('kpiWinRate').textContent = '0.0%';
+          document.getElementById('kpiRoi').textContent = '0.0%';
+          document.getElementById('kpiConcluded').textContent = '0';
+          document.getElementById('kpiPending').textContent = '0';
+          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--muted); padding: 18px;">Nessun dato storico ancora registrato per questo motore. Verrà popolato con le prime refertazioni.</td></tr>';
+        });
+    }
+
+    if (sessionStorage.getItem('atm_admin_auth') === 'true') {
+      showPanel();
+    }
+  </script>
+</body>
+</html>
