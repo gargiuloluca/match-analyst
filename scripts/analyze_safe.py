@@ -1,8 +1,9 @@
 """
-analyze_safe.py — AtmBetSignal High-Probability Sniper Engine (Model C: Safe >= 80%, Quota >= 1.40)
+analyze_safe.py — AtmBetSignal High-Probability Sniper Engine (Model C: Safe >= 74%, Quota >= 1.32)
 Filtra con precisione matematica e alimenta in automatico data/tracker_safe.json:
-- Probabilità stimata: >= 80.0%
-- Quota minima: >= 1.40
+- Probabilità stimata: >= 74.0%
+- Quota minima: >= 1.32
+- Mercati valutati: 1X2, Doppia Chance (1X, X2), Draw No Bet (DNB), Over 1.5, Under 3.5
 Salva i risultati separatamente in data/latest_safe.json e data/tracker_safe.json.
 """
 
@@ -73,6 +74,10 @@ def evaluate_sniper_markets(matrix, odds_dict):
     p_1x = p_home + p_draw
     p_x2 = p_away + p_draw
 
+    decisive = p_home + p_away
+    p_dnb_1 = (p_home / decisive) if decisive > 0 else 0.0
+    p_dnb_2 = (p_away / decisive) if decisive > 0 else 0.0
+
     p_over15 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 1.5)
     p_under35 = sum(prob for (x, y), prob in matrix.items() if (x + y) < 3.5)
 
@@ -81,15 +86,18 @@ def evaluate_sniper_markets(matrix, odds_dict):
         {"key": "2", "label": "Vittoria Trasferta (2)", "prob": p_away, "odd": odds_dict.get("2", 0.0)},
         {"key": "1X", "label": "Doppia Chance 1X", "prob": p_1x, "odd": odds_dict.get("1X", 0.0)},
         {"key": "X2", "label": "Doppia Chance X2", "prob": p_x2, "odd": odds_dict.get("X2", 0.0)},
+        {"key": "DNB_1", "label": "Casa Draw No Bet (Rimborso X)", "prob": p_dnb_1, "odd": odds_dict.get("DNB_1", 0.0)},
+        {"key": "DNB_2", "label": "Trasferta Draw No Bet (Rimborso X)", "prob": p_dnb_2, "odd": odds_dict.get("DNB_2", 0.0)},
         {"key": "OVER_15", "label": "Over 1.5 Gol", "prob": p_over15, "odd": odds_dict.get("OVER_15", 0.0)},
         {"key": "UNDER_35", "label": "Under 3.5 Gol", "prob": p_under35, "odd": odds_dict.get("UNDER_35", 0.0)}
     ]
 
     valid = []
     for m in markets:
-        if m["odd"] >= 1.40 and m["prob"] >= 0.80:
+        # FILTRO SNIPER CALIBRATO: Probabilità >= 74% e Quota >= 1.32
+        if m["odd"] >= 1.32 and m["prob"] >= 0.74:
             edge = (m["prob"] * m["odd"]) - 1.0
-            if edge > 0.01:
+            if edge >= 0.015:  # Valore atteso reale (Edge minimo +1.5%)
                 m["edge"] = round(edge, 4)
                 valid.append(m)
     return valid
@@ -155,20 +163,21 @@ def main():
                 "tier": "SNIPER 80+"
             })
 
+    # Ordina per probabilità decrescente e poi per Edge
     safe_picks.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
 
     payload = {
-        "engine": "Model C (Sniper Safe >= 80% @ >= 1.40)",
+        "engine": "Model C (Sniper Safe >= 74% @ >= 1.32)",
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "min_probability": "80%",
-        "min_odd": 1.40,
+        "min_probability": "74%",
+        "min_odd": 1.32,
         "total_officials": len(safe_picks),
         "all_selected_picks": safe_picks,
         "radar_watchlist": []
     }
 
     OUTPUT_SAFE_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model C Sniper] Analisi completata: trovate {len(safe_picks)} selezioni con Quota >= 1.40 e Prob >= 80%.")
+    print(f"[Model C Sniper] Analisi completata: trovate {len(safe_picks)} selezioni con Quota >= 1.32 e Prob >= 74%.")
 
     # Sincronizzazione Tracker Safe
     tracker_safe_data = {
