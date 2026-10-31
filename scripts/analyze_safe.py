@@ -4,6 +4,8 @@ Filtra con precisione matematica e alimenta in automatico data/tracker_safe.json
 - Probabilità stimata: >= 74.0%
 - Quota minima: >= 1.32
 - Mercati valutati: 1X2, Doppia Chance (1X, X2), Draw No Bet (DNB), Over 1.5, Under 3.5
+- Filtro Smart Money: scarta selezioni con quota in rialzo anomalo (> +3.5% vs apertura)
+- Filtro De-Correlazione: massimo 1 selezione a valore più alto per singolo match
 Salva i risultati separatamente in data/latest_safe.json e data/tracker_safe.json.
 """
 
@@ -66,7 +68,7 @@ def normalize_match_str(s: str) -> str:
         n = n.replace(drop, "")
     return n
 
-def evaluate_sniper_markets(matrix, odds_dict):
+def evaluate_sniper_markets(matrix, odds_dict, open_odds_dict):
     p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
     p_draw = sum(prob for (x, y), prob in matrix.items() if x == y)
     p_away = sum(prob for (x, y), prob in matrix.items() if x < y)
@@ -94,12 +96,25 @@ def evaluate_sniper_markets(matrix, odds_dict):
 
     valid = []
     for m in markets:
-        # FILTRO SNIPER CALIBRATO: Probabilità >= 74% e Quota >= 1.32
+        # FILTRO BASE: Probabilità >= 74% e Quota >= 1.32
         if m["odd"] >= 1.32 and m["prob"] >= 0.74:
             edge = (m["prob"] * m["odd"]) - 1.0
-            if edge >= 0.015:  # Valore atteso reale (Edge minimo +1.5%)
-                m["edge"] = round(edge, 4)
-                valid.append(m)
+            if edge < 0.015:  # Valore atteso reale (Edge minimo +1.5%)
+                continue
+
+            # FILTRO SMART MONEY / MARKET SHIFT:
+            # Calcola lo scostamento percentuale rispetto all'apertura
+            op_odd = open_odds_dict.get(m["key"], m["odd"])
+            line_shift_pct = round(((m["odd"] - op_odd) / op_odd) * 100, 1) if op_odd > 0 else 0.0
+
+            # Se la quota è salita di oltre il 3.5% (drift sfavorevole del mercato), scarta l'evento
+            if line_shift_pct > 3.5:
+                continue
+
+            m["edge"] = round(edge, 4)
+            m["line_shift_pct"] = line_shift_pct
+            valid.append(m)
+
     return valid
 
 def main():
@@ -113,7 +128,7 @@ def main():
         print("Nessun match presente.")
         return
 
-    safe_picks = []
+    all_candidate_picks = []
 
     for item in fixtures:
         m_id = item.get("id")
@@ -121,6 +136,8 @@ def main():
         profile = LEAGUE_GOAL_PROFILES.get(league_key, LEAGUE_GOAL_PROFILES["default"])
 
         odds = item.get("odds", {})
+        open_odds = item.get("opening_odds", odds)
+
         o1 = odds.get("1", 2.0)
         o2 = odds.get("2", 3.0)
         o_over25 = odds.get("OVER_25", 1.95)
@@ -141,15 +158,17 @@ def main():
         mu_a = expected_total * share_a
 
         matrix = build_score_matrix(lambda_h, mu_a, profile["tau"])
-        valid_markets = evaluate_sniper_markets(matrix, odds)
+        valid_markets = evaluate_sniper_markets(matrix, odds, open_odds)
 
+        # Raccoglie i candidati per il singolo match
+        match_candidates = []
         for mkt in valid_markets:
             b = mkt["odd"] - 1.0
             p = mkt["prob"]
             raw_kelly = ((b * p) - (1.0 - p)) / b if b > 0 else 0.0
             stake = round(min(2.5, max(1.25, (raw_kelly * 0.25) * 100)), 2)
 
-            safe_picks.append({
+            match_candidates.append({
                 "match_id": m_id,
                 "match": f"{item.get('home_team')} vs {item.get('away_team')}",
                 "commence_time": item.get("commence_time"),
@@ -157,27 +176,33 @@ def main():
                 "market_key": mkt["key"],
                 "outcome_label": mkt["label"],
                 "odd": round(mkt["odd"], 2),
+                "line_shift_pct": mkt["line_shift_pct"],
                 "estimated_probability": round(mkt["prob"], 4),
                 "edge": mkt["edge"],
                 "suggested_stake_pct": stake,
                 "tier": "SNIPER 80+"
             })
 
-    # Ordina per probabilità decrescente e poi per Edge
-    safe_picks.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
+        # FILTRO DE-CORRELAZIONE: Se ci sono più esiti validi sullo stesso match, tiene il migliore
+        if match_candidates:
+            match_candidates.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
+            all_candidate_picks.append(match_candidates[0])
+
+    # Ordina la selezione finale per probabilità ed edge
+    all_candidate_picks.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
 
     payload = {
         "engine": "Model C (Sniper Safe >= 74% @ >= 1.32)",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "min_probability": "74%",
         "min_odd": 1.32,
-        "total_officials": len(safe_picks),
-        "all_selected_picks": safe_picks,
+        "total_officials": len(all_candidate_picks),
+        "all_selected_picks": all_candidate_picks,
         "radar_watchlist": []
     }
 
     OUTPUT_SAFE_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model C Sniper] Analisi completata: trovate {len(safe_picks)} selezioni con Quota >= 1.32 e Prob >= 74%.")
+    print(f"[Model C Sniper] Analisi completata: trovate {len(all_candidate_picks)} selezioni d'alta qualità.")
 
     # Sincronizzazione Tracker Safe
     tracker_safe_data = {
@@ -200,7 +225,7 @@ def main():
         existing_pairs.add((m_norm, mkt))
 
     new_added = 0
-    for op in safe_picks:
+    for op in all_candidate_picks:
         op_match_norm = normalize_match_str(op["match"])
         op_mkt = str(op["market_key"]).strip().upper()
         pair_key = (op_match_norm, op_mkt)
@@ -230,4 +255,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
