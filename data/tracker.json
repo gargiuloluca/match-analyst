@@ -1,11 +1,11 @@
 {
-  "total_bets": 10,
-  "won": 8,
-  "lost": 2,
+  "total_bets": 15,
+  "won": 11,
+  "lost": 4,
   "void": 0,
-  "win_rate": 80.0,
-  "net_profit_units": 6.46,
-  "roi_pct": 27.9,
+  "win_rate": 73.3,
+  "net_profit_units": 6.28,
+  "roi_pct": 19.2,
   "bets": [
     {
       "id": "sevilla_osasuna_won",
@@ -168,8 +168,9 @@
       "prob": 0.7514,
       "stake_pct": 1.25,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.96,
+      "score": "0-2"
     },
     {
       "id": "9a9f6c78276f74f15f42b013b033aa5d_UNDER_35",
@@ -182,8 +183,9 @@
       "prob": 0.6964,
       "stake_pct": 1.25,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -1.25,
+      "score": "1-5"
     },
     {
       "id": "2dd4ff7c9aef0d27f3f30acf413dfa8b_2",
@@ -196,8 +198,9 @@
       "prob": 0.7816,
       "stake_pct": 2.5,
       "tier": "GOLD",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.17,
+      "score": "2-4"
     },
     {
       "id": "b275fe870ec88a9f0054c9220beb2673_X2",
@@ -210,8 +213,9 @@
       "prob": 0.7425,
       "stake_pct": 2.5,
       "tier": "GOLD",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "4-1"
     },
     {
       "id": "2db2b55e71574a19ff0557898d3e9933_UNDER_35",
@@ -238,8 +242,9 @@
       "prob": 0.6887,
       "stake_pct": 2.0,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.44,
+      "score": "0-1"
     },
     {
       "id": "f1880fd6746a6232fe1ac7ff5fac67e6_1",
@@ -264,6 +269,62 @@
       "market_key": "1",
       "odd": 1.69,
       "prob": 0.6728,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "6c520ed959578ca3aebe351ee3765d53_UNDER_35",
+      "date": "2026-11-01T15:15:00Z",
+      "match": "Real Racing Club de Santander vs Real Madrid",
+      "league": "La Liga - Spain",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 2.44,
+      "prob": 0.8002,
+      "stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "a7ba9b844f121a4a8777d87b1f863137_1",
+      "date": "2026-10-31T14:30:00Z",
+      "match": "Bayer Leverkusen vs VfB Stuttgart",
+      "league": "Bundesliga - Germany",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.69,
+      "prob": 0.7066,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "8f0b7ef29a47f675429758e83a426d7e_UNDER_35",
+      "date": "2026-10-31T17:30:00Z",
+      "match": "Real Betis vs Málaga",
+      "league": "La Liga - Spain",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.66,
+      "prob": 0.6947,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "98d807a20799e7f1629f1431601e37dc_1",
+      "date": "2026-10-31T15:00:00Z",
+      "match": "Leicester City vs Stevenage",
+      "league": "League 1",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.62,
+      "prob": 0.6886,
       "stake_pct": 2.0,
       "tier": "DIAMOND",
       "status": "PENDING",
