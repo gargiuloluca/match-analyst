@@ -4,7 +4,7 @@
   "lost": 0,
   "void": 0,
   "win_rate": 0.0,
-  "net_profit_units": 0.0,
+  "net_profit_units": 0,
   "roi_pct": 0.0,
   "bets": []
 }
