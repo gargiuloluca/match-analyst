@@ -1,9 +1,8 @@
 name: AtmBetSignal Daily Unified Engine
 
+name: AtmBetSignal Daily Unified Engine
+
 on:
-  schedule:
-    # Esecuzione automatica ogni mattina alle 08:43 UTC (09:43 ora italiana)
-    - cron: '43 8 * * *'
   workflow_dispatch:
     inputs:
       action_note:
