@@ -335,6 +335,62 @@
       "status": "LOST",
       "profit": -2.0,
       "score": "2-2"
+    },
+    {
+      "id": "81d52c9bdfaaa5eacaadb9245bc2d883_2",
+      "date": "2026-11-01T17:30:00Z",
+      "match": "Lommel SK vs Gent",
+      "league": "Belgium First Div",
+      "bet": "Vittoria Trasferta (2)",
+      "market_key": "2",
+      "odd": 1.67,
+      "prob": 0.6897,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "961d9c9f07b1f911e211cd6a750cddba_1",
+      "date": "2026-11-01T15:45:00Z",
+      "match": "Groningen vs Sparta Rotterdam",
+      "league": "Dutch Eredivisie",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.74,
+      "prob": 0.6711,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "12fa9f636dbb126cfd4118fa8cdc8fad_1",
+      "date": "2026-11-01T20:30:00Z",
+      "match": "Braga vs Famalicão",
+      "league": "Primeira Liga - Portugal",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.7,
+      "prob": 0.6503,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "ed2ef578ae4e95bdcd81e662dfec5381_1",
+      "date": "2026-11-01T18:15:00Z",
+      "match": "Charleroi vs RAAL La Louvière",
+      "league": "Belgium First Div",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.46,
+      "prob": 0.7819,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ]
 }

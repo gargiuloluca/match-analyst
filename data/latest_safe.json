@@ -1,6 +1,8 @@
 {
   "engine": "Model C (Sniper Safe >= 80% @ >= 1.40)",
-  "generated_at": null,
+  "generated_at": "2026-10-31T22:23:00.720557+00:00",
+  "min_probability": "80%",
+  "min_odd": 1.4,
   "total_officials": 0,
   "all_selected_picks": [],
   "radar_watchlist": []
