@@ -3,10 +3,19 @@ name: AtmBetSignal Daily Unified Engine
 on:
   workflow_dispatch:
     inputs:
+      task_mode:
+        description: 'Seleziona operazione da eseguire'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - analyze_only
+          - settle_only
       action_note:
-        description: 'Nota di avvio manuale'
+        description: 'Nota operativa'
         required: false
-        default: 'Avvio manuale unificato'
+        default: 'Trigger da Console Admin'
 
 permissions:
   contents: write
@@ -30,8 +39,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests
 
-      # FASE 1: Refertazione esiti precedenti e aggiornamento Equity Line Ufficiale
+      # FASE 1: Refertazione esiti (eseguita se 'all' o 'settle_only')
       - name: Settle previous results and manage subscribers
+        if: ${{ github.event.inputs.task_mode == 'all' || github.event.inputs.task_mode == 'settle_only' }}
         run: |
           python scripts/settle_results.py
           if [ -f scripts/manage_subscribers.py ]; then python scripts/manage_subscribers.py; fi
@@ -40,31 +50,36 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
-      # FASE 2: Scaricamento quote fresche di giornata (con Multi-Key Fallback)
+      # FASE 2: Scaricamento quote fresche (eseguita se 'all' o 'analyze_only')
       - name: Fetch daily fixtures
+        if: ${{ github.event.inputs.task_mode == 'all' || github.event.inputs.task_mode == 'analyze_only' }}
         run: python scripts/fetch_fixtures.py
         env:
           ODDSAPI_KEY: ${{ secrets.ODDSAPI_KEY }}
 
-      # FASE 3A: Motore Ufficiale A (Dixon-Coles Matematico Standard)
+      # FASE 3A: Motore Ufficiale A (Dixon-Coles Standard)
       - name: Run official quantitative analysis (Model A)
+        if: ${{ github.event.inputs.task_mode == 'all' || github.event.inputs.task_mode == 'analyze_only' }}
         run: python scripts/analyze.py
 
       # FASE 3B: Motore Sperimentale B (Dixon-Coles + Rolling xG)
       - name: Run experimental xG analysis (Model B)
+        if: ${{ github.event.inputs.task_mode == 'all' || github.event.inputs.task_mode == 'analyze_only' }}
         run: python scripts/analyze_xg.py
 
       # FASE 4: Invio selezioni ufficiali su Telegram
       - name: Send new signals to Telegram
+        if: ${{ github.event.inputs.task_mode == 'all' || github.event.inputs.task_mode == 'analyze_only' }}
         run: python scripts/send_telegram.py
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
-      # FASE 5: Salvataggio automatico di tutti i file dati (Ufficiali e Sperimentali)
+      # FASE 5: Salvataggio automatico di tutti i file dati
       - name: Commit and push updated data
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated update: official & experimental xG data [skip ci]" && git pull --rebase origin main && git push origin main)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Automated update via Admin Console [skip ci]" && git pull --rebase origin main && git push origin main)
+          
