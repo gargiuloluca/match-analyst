@@ -1,9 +1,9 @@
 """
 analyze_safe.py — AtmBetSignal High-Probability Sniper Engine (Model C: Safe >= 80%, Quota >= 1.40)
-Filtra con precisione matematica:
+Filtra con precisione matematica e alimenta in automatico data/tracker_safe.json:
 - Probabilità stimata: >= 80.0%
 - Quota minima: >= 1.40
-Salva i risultati separatamente in data/latest_safe.json.
+Salva i risultati separatamente in data/latest_safe.json e data/tracker_safe.json.
 """
 
 import json
@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 FIXTURES_FILE = DATA_DIR / "fixtures.json"
 OUTPUT_SAFE_FILE = DATA_DIR / "latest_safe.json"
+TRACKER_SAFE_FILE = DATA_DIR / "tracker_safe.json"
 
 LEAGUE_GOAL_PROFILES = {
     "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.05},
@@ -58,6 +59,12 @@ def build_score_matrix(lambda_h: float, mu_a: float, rho: float, max_goals: int 
         matrix = {k: v / total for k, v in matrix.items()}
     return matrix
 
+def normalize_match_str(s: str) -> str:
+    n = s.lower()
+    for drop in [" fc", " ac", " as", "cf", "ssc ", "afc ", " "]:
+        n = n.replace(drop, "")
+    return n
+
 def evaluate_sniper_markets(matrix, odds_dict):
     p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
     p_draw = sum(prob for (x, y), prob in matrix.items() if x == y)
@@ -79,7 +86,6 @@ def evaluate_sniper_markets(matrix, odds_dict):
     ]
 
     valid = []
-    # FILTRO: Quota >= 1.40 e Probabilità >= 80% (0.80)
     for m in markets:
         if m["odd"] >= 1.40 and m["prob"] >= 0.80:
             edge = (m["prob"] * m["odd"]) - 1.0
@@ -149,7 +155,6 @@ def main():
                 "tier": "SNIPER 80+"
             })
 
-    # Ordina per probabilità decrescente e poi per Edge
     safe_picks.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
 
     payload = {
@@ -165,6 +170,55 @@ def main():
     OUTPUT_SAFE_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"[Model C Sniper] Analisi completata: trovate {len(safe_picks)} selezioni con Quota >= 1.40 e Prob >= 80%.")
 
+    # Sincronizzazione Tracker Safe
+    tracker_safe_data = {
+        "total_bets": 0, "won": 0, "lost": 0, "void": 0,
+        "win_rate": 0.0, "net_profit_units": 0.0, "roi_pct": 0.0, "bets": []
+    }
+
+    if TRACKER_SAFE_FILE.exists():
+        try:
+            loaded = json.loads(TRACKER_SAFE_FILE.read_text(encoding="utf-8"))
+            if isinstance(loaded, dict) and isinstance(loaded.get("bets"), list):
+                tracker_safe_data = loaded
+        except Exception:
+            pass
+
+    existing_pairs = set()
+    for b in tracker_safe_data.get("bets", []):
+        m_norm = normalize_match_str(b.get("match", ""))
+        mkt = str(b.get("market_key", "")).strip().upper()
+        existing_pairs.add((m_norm, mkt))
+
+    new_added = 0
+    for op in safe_picks:
+        op_match_norm = normalize_match_str(op["match"])
+        op_mkt = str(op["market_key"]).strip().upper()
+        pair_key = (op_match_norm, op_mkt)
+
+        if pair_key not in existing_pairs:
+            bet_id = f"{op['match_id']}_{op['market_key']}"
+            tracker_safe_data["bets"].append({
+                "id": bet_id,
+                "date": op["commence_time"],
+                "match": op["match"],
+                "league": op["league"],
+                "bet": op["outcome_label"],
+                "market_key": op["market_key"],
+                "odd": op["odd"],
+                "prob": op["estimated_probability"],
+                "stake_pct": op["suggested_stake_pct"],
+                "tier": op["tier"],
+                "status": "PENDING",
+                "profit": 0.0
+            })
+            existing_pairs.add(pair_key)
+            new_added += 1
+
+    tracker_safe_data["total_bets"] = len(tracker_safe_data["bets"])
+    TRACKER_SAFE_FILE.write_text(json.dumps(tracker_safe_data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[Model C Sniper] Tracker sincronizzato: {new_added} nuove selezioni aggiunte.")
+
 if __name__ == "__main__":
     main()
-  
+    
