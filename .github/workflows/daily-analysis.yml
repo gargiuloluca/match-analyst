@@ -1,7 +1,5 @@
 name: AtmBetSignal Daily Unified Engine
 
-name: AtmBetSignal Daily Unified Engine
-
 on:
   workflow_dispatch:
     inputs:
