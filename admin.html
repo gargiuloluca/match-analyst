@@ -347,7 +347,7 @@
           🧪 Lab Sperimentale (Rolling xG)
         </button>
         <button id="btn-safe" class="engine-btn" onclick="switchEngine('safe')">
-          🛡️ Sniper Safe (Prob ≥ 74% | Quota ≥ 1.32)
+          🛡️ Safe80 (Top 5 | Prob ≥ 74% | Quota ≥ 1.40)
         </button>
       </div>
 
@@ -435,8 +435,8 @@
       safe: {
         latest: 'data/latest_safe.json',
         tracker: 'data/tracker_safe.json',
-        label: 'Sniper Safe (Prob ≥ 74% | Quota ≥ 1.32)',
-        officialsTitle: '🛡️ Selezioni Sniper ad Altissima Probabilità (≥ 74% @ ≥ 1.32)'
+        label: 'Safe80 Cecchino (Quota ≥ 1.40 | Prob ≥ 74%)',
+        officialsTitle: '🛡️ Safe80 Cecchino — Top 5 Assolute (Probabilità ≥ 74% @ Quota ≥ 1.40)'
       }
     };
 
@@ -593,8 +593,8 @@
               } else if (p.tier === 'GOLD') {
                 badgeHtml = `<span class="badge badge-gold">🥇 GOLD PICK</span>`;
                 borderStyle = 'border: 1px solid #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);';
-              } else if (p.tier === 'SNIPER 80+' || p.tier === 'SAFE 80+') {
-                badgeHtml = `<span class="badge badge-sniper">🛡️ SNIPER SAFE</span>`;
+              } else if (p.tier === 'SAFE 80+' || p.tier === 'SNIPER 80+') {
+                badgeHtml = `<span class="badge badge-sniper">🛡️ SAFE 80+</span>`;
                 borderStyle = 'border: 1px solid #a855f7; box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);';
               }
 
@@ -645,13 +645,11 @@
         });
     }
 
-    // Caricamento Storico & Performance con Editor
     async function loadTrackerData(trackerPath) {
       const tbody = document.getElementById('historyTableBody');
       tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted); padding: 18px;">Caricamento storico...</td></tr>';
 
       try {
-        // Recupera SHA del file da GitHub per permettere il salvataggio via API
         fetchGithubFileSha(trackerPath);
 
         const res = await fetch(trackerPath + '?nocache=' + Date.now());
@@ -776,7 +774,6 @@
       document.getElementById('kpiPending').textContent = pending.length;
     }
 
-    // Salvataggio istantaneo su GitHub via API REST
     async function saveTrackerModifications() {
       let token = localStorage.getItem("atm_gh_token");
       if (!token) {
@@ -794,7 +791,6 @@
       const targetFilePath = cfg.tracker;
 
       try {
-        // Se manca lo SHA, lo recupera al volo
         if (!currentTrackerSha) {
           const checkRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFilePath}`, {
             headers: { "Authorization": `Bearer ${token}` }
