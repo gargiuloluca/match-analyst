@@ -1,13 +1,14 @@
 """
-analyze_safe.py — AtmBetSignal High-Probability Sniper Engine (Model C: Safe80 Top 5 @ Quota >= 1.40)
-Filtra con precisione matematica e alimenta in automatico data/tracker_safe.json:
-- Quota minima assoluta: >= 1.40 (nessun compromesso al ribasso)
+analyze_safe.py — AtmBetSignal High-Probability Sniper Engine (Model C: Safe80 Rigorous)
+- Nessun compromesso di palinsesto: 0 selezioni forzate, le Top 5 sono un limite massimo
 - Probabilità stimata: >= 74.0%
-- Selezione Top 5: estrae solo le migliori 5 opportunità della giornata
-- Riconoscimento Fair Odds ed eliminazione dell'aggio del bookmaker
-- Filtro Smart Money: scarta variazioni in salita oltre il +2.5% vs apertura
-- Filtro De-Correlazione: massimo 1 selezione a valore più alto per partita
-Salva i risultati separatamente in data/latest_safe.json e data/tracker_safe.json.
+- Quota minima reale: >= 1.40
+- Valore Atteso Minimo (EV): >= +3.0% (Eliminato il bug del 95% Fair Odd)
+- Kelly Push-Adjusted specifico per mercati Draw No Bet (DNB)
+- Cap rigoroso di portafoglio: max 1.5% a giocata, max 3.0% complessivo di giornata
+- Filtro Smart Money anti-drift: scarta se quota sale oltre +2.5%
+- Ranking composito: Probabilità + EV - Drift di mercato
+Salva i risultati in data/latest_safe.json e data/tracker_safe.json.
 """
 
 import json
@@ -20,7 +21,6 @@ FIXTURES_FILE = DATA_DIR / "fixtures.json"
 OUTPUT_SAFE_FILE = DATA_DIR / "latest_safe.json"
 TRACKER_SAFE_FILE = DATA_DIR / "tracker_safe.json"
 
-# Profili calibrati con tau correttivo potenziato per leghe tattiche
 LEAGUE_GOAL_PROFILES = {
     "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.06},
     "soccer_epl": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
@@ -70,7 +70,26 @@ def normalize_match_str(s: str) -> str:
         n = n.replace(drop, "")
     return n
 
-def evaluate_sniper_markets(matrix, odds_dict, open_odds_dict, fair_odds_dict):
+def calculate_kelly_stake(prob: float, odd: float, push_prob: float = 0.0) -> float:
+    """
+    Calcola il Quarter-Kelly.
+    Per i mercati DNB con rimborso, la formula tiene conto del push rate:
+    f* = (p * b - (1 - p - push_prob)) / b
+    """
+    b = odd - 1.0
+    if b <= 0.0 or prob <= 0.0:
+        return 0.0
+
+    loss_prob = max(0.0, 1.0 - prob - push_prob)
+    raw_kelly = ((b * prob) - loss_prob) / b
+    if raw_kelly <= 0.0:
+        return 0.0
+
+    # Quarter-Kelly (1/4 di frazione ottimale) con cap rigido a 1.5%
+    stake = (raw_kelly * 0.25) * 100.0
+    return round(min(1.50, max(0.50, stake)), 2)
+
+def evaluate_sniper_markets(matrix, odds_dict, open_odds_dict):
     p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
     p_draw = sum(prob for (x, y), prob in matrix.items() if x == y)
     p_away = sum(prob for (x, y), prob in matrix.items() if x < y)
@@ -86,39 +105,38 @@ def evaluate_sniper_markets(matrix, odds_dict, open_odds_dict, fair_odds_dict):
     p_under35 = sum(prob for (x, y), prob in matrix.items() if (x + y) < 3.5)
 
     markets = [
-        {"key": "1", "label": "Vittoria Casa (1)", "prob": p_home, "odd": odds_dict.get("1", 0.0)},
-        {"key": "2", "label": "Vittoria Trasferta (2)", "prob": p_away, "odd": odds_dict.get("2", 0.0)},
-        {"key": "1X", "label": "Doppia Chance 1X", "prob": p_1x, "odd": odds_dict.get("1X", 0.0)},
-        {"key": "X2", "label": "Doppia Chance X2", "prob": p_x2, "odd": odds_dict.get("X2", 0.0)},
-        {"key": "DNB_1", "label": "Casa Draw No Bet (Rimborso X)", "prob": p_dnb_1, "odd": odds_dict.get("DNB_1", 0.0)},
-        {"key": "DNB_2", "label": "Trasferta Draw No Bet (Rimborso X)", "prob": p_dnb_2, "odd": odds_dict.get("DNB_2", 0.0)},
-        {"key": "OVER_15", "label": "Over 1.5 Gol", "prob": p_over15, "odd": odds_dict.get("OVER_15", 0.0)},
-        {"key": "UNDER_35", "label": "Under 3.5 Gol", "prob": p_under35, "odd": odds_dict.get("UNDER_35", 0.0)}
+        {"key": "1", "label": "Vittoria Casa (1)", "prob": p_home, "push_prob": 0.0, "odd": odds_dict.get("1", 0.0)},
+        {"key": "2", "label": "Vittoria Trasferta (2)", "prob": p_away, "push_prob": 0.0, "odd": odds_dict.get("2", 0.0)},
+        {"key": "1X", "label": "Doppia Chance 1X", "prob": p_1x, "push_prob": 0.0, "odd": odds_dict.get("1X", 0.0)},
+        {"key": "X2", "label": "Doppia Chance X2", "prob": p_x2, "push_prob": 0.0, "odd": odds_dict.get("X2", 0.0)},
+        {"key": "DNB_1", "label": "Casa Draw No Bet (Rimborso X)", "prob": p_dnb_1, "push_prob": p_draw, "odd": odds_dict.get("DNB_1", 0.0)},
+        {"key": "DNB_2", "label": "Trasferta Draw No Bet (Rimborso X)", "prob": p_dnb_2, "push_prob": p_draw, "odd": odds_dict.get("DNB_2", 0.0)},
+        {"key": "OVER_15", "label": "Over 1.5 Gol", "prob": p_over15, "push_prob": 0.0, "odd": odds_dict.get("OVER_15", 0.0)},
+        {"key": "UNDER_35", "label": "Under 3.5 Gol", "prob": p_under35, "push_prob": 0.0, "odd": odds_dict.get("UNDER_35", 0.0)}
     ]
 
     valid = []
     for m in markets:
-        # FILTRO DI FERRO: Quota minima >= 1.40 e Probabilità stimata >= 74%
+        # FILTRO DI FERRO: Quota >= 1.40 e Probabilità stimata >= 74.0%
         if m["odd"] >= 1.40 and m["prob"] >= 0.74:
-            edge = (m["prob"] * m["odd"]) - 1.0
-            if edge < 0.02:  # Minimo 2% di valore atteso effettivo
+            ev = (m["prob"] * m["odd"]) - 1.0
+
+            # VINCOLO MATEMATICO RIGOROSO: Valore Atteso netto minimo del +3.0%
+            if ev < 0.03:
                 continue
 
-            # FILTRO SMART MONEY STRINGENTE:
+            # FILTRO SMART MONEY STRINGENTE (Anti-drift <= +2.5%)
             op_odd = open_odds_dict.get(m["key"], m["odd"])
             line_shift_pct = round(((m["odd"] - op_odd) / op_odd) * 100, 1) if op_odd > 0 else 0.0
-
-            # Scarta se la quota è salita oltre il +2.5% rispetto all'apertura
             if line_shift_pct > 2.5:
                 continue
 
-            # Validazione su Fair Odds se presenti
-            fair_odd = fair_odds_dict.get(m["key"], 0.0)
-            if fair_odd > 0 and m["odd"] < (fair_odd * 0.95):
-                continue
+            # Score composito per ranking qualitativo: Probabilità + EV - Drift
+            composite_score = (m["prob"] * 0.50) + (ev * 0.35) - (max(0.0, line_shift_pct / 100.0) * 0.15)
 
-            m["edge"] = round(edge, 4)
+            m["ev"] = round(ev, 4)
             m["line_shift_pct"] = line_shift_pct
+            m["composite_score"] = round(composite_score, 4)
             valid.append(m)
 
     return valid
@@ -143,7 +161,6 @@ def main():
 
         odds = item.get("odds", {})
         open_odds = item.get("opening_odds", odds)
-        fair_odds = item.get("fair_odds", {})
 
         o1 = odds.get("1", 2.0)
         o2 = odds.get("2", 3.0)
@@ -165,15 +182,11 @@ def main():
         mu_a = expected_total * share_a
 
         matrix = build_score_matrix(lambda_h, mu_a, profile["tau"])
-        valid_markets = evaluate_sniper_markets(matrix, odds, open_odds, fair_odds)
+        valid_markets = evaluate_sniper_markets(matrix, odds, open_odds)
 
-        # Raccoglie i candidati per il singolo match
         match_candidates = []
         for mkt in valid_markets:
-            b = mkt["odd"] - 1.0
-            p = mkt["prob"]
-            raw_kelly = ((b * p) - (1.0 - p)) / b if b > 0 else 0.0
-            stake = round(min(2.5, max(1.25, (raw_kelly * 0.25) * 100)), 2)
+            stake = calculate_kelly_stake(mkt["prob"], mkt["odd"], mkt.get("push_prob", 0.0))
 
             match_candidates.append({
                 "match_id": m_id,
@@ -185,37 +198,47 @@ def main():
                 "odd": round(mkt["odd"], 2),
                 "line_shift_pct": mkt["line_shift_pct"],
                 "estimated_probability": round(mkt["prob"], 4),
-                "edge": mkt["edge"],
+                "ev": mkt["ev"],
+                "edge": mkt["ev"],
+                "composite_score": mkt["composite_score"],
                 "suggested_stake_pct": stake,
                 "tier": "SAFE 80+"
             })
 
-        # DE-CORRELAZIONE: Massimo 1 selezione per match (la migliore per edge e probabilità)
+        # DE-CORRELAZIONE RIGIDA: 1 sola selezione per incontro (la migliore per Composite Score)
         if match_candidates:
-            match_candidates.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
+            match_candidates.sort(key=lambda x: x["composite_score"], reverse=True)
             all_candidate_picks.append(match_candidates[0])
 
-    # Ordinamento finale per probabilità ed Edge
-    all_candidate_picks.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
+    # Ordinamento complessivo basato su Composite Score
+    all_candidate_picks.sort(key=lambda x: x["composite_score"], reverse=True)
 
-    # SELEZIONE TOP 5 ASSOLUTA: Isolamento rigoroso delle 5 migliori perle
-    top_5_picks = all_candidate_picks[:5]
+    # CAP MASSIMO: Fino a un massimo di 5 selezioni (se presenti, altrimenti quelle effettivamente idonee)
+    final_picks = all_candidate_picks[:5]
+
+    # CONTROLLO CAP ESPOSIZIONE DI PORTAFOGLIO (Max 3.0% complessivo sul bankroll)
+    total_exposure = sum(p["suggested_stake_pct"] for p in final_picks)
+    if total_exposure > 3.0:
+        scale_ratio = 3.0 / total_exposure
+        for p in final_picks:
+            p["suggested_stake_pct"] = round(p["suggested_stake_pct"] * scale_ratio, 2)
 
     payload = {
-        "engine": "Model C (Safe80 Top 5 Sniper >= 74% @ >= 1.40)",
+        "engine": "Model C (Safe80 Sniper EV >= +3% @ Quota >= 1.40)",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "min_probability": "74%",
         "min_odd": 1.40,
-        "max_picks": 5,
-        "total_officials": len(top_5_picks),
-        "all_selected_picks": top_5_picks,
+        "min_ev": "+3.0%",
+        "max_portfolio_exposure": "3.0%",
+        "total_officials": len(final_picks),
+        "all_selected_picks": final_picks,
         "radar_watchlist": []
     }
 
     OUTPUT_SAFE_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model C Safe80] Analisi completata: isolate le Top {len(top_5_picks)} perle (Quota >= 1.40).")
+    print(f"[Model C Safe80] Analisi completata: trovate {len(final_picks)} selezioni autenticamente a valore positivo.")
 
-    # Sincronizzazione Tracker Safe80
+    # Sincronizzazione Tracker Safe80 con persistenza id e quote
     tracker_safe_data = {
         "total_bets": 0, "won": 0, "lost": 0, "void": 0,
         "win_rate": 0.0, "net_profit_units": 0.0, "roi_pct": 0.0, "bets": []
@@ -236,7 +259,7 @@ def main():
         existing_pairs.add((m_norm, mkt))
 
     new_added = 0
-    for op in top_5_picks:
+    for op in final_picks:
         op_match_norm = normalize_match_str(op["match"])
         op_mkt = str(op["market_key"]).strip().upper()
         pair_key = (op_match_norm, op_mkt)
@@ -245,6 +268,7 @@ def main():
             bet_id = f"{op['match_id']}_{op['market_key']}"
             tracker_safe_data["bets"].append({
                 "id": bet_id,
+                "event_id": op["match_id"],
                 "date": op["commence_time"],
                 "match": op["match"],
                 "league": op["league"],
@@ -252,6 +276,7 @@ def main():
                 "market_key": op["market_key"],
                 "odd": op["odd"],
                 "prob": op["estimated_probability"],
+                "ev": op["ev"],
                 "stake_pct": op["suggested_stake_pct"],
                 "tier": op["tier"],
                 "status": "PENDING",
@@ -266,3 +291,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
