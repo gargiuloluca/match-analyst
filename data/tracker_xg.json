@@ -1,11 +1,11 @@
 {
-  "total_bets": 24,
-  "won": 8,
-  "lost": 8,
+  "total_bets": 19,
+  "won": 9,
+  "lost": 10,
   "void": 0,
-  "win_rate": 50.0,
-  "net_profit_units": -4.02,
-  "roi_pct": -12.9,
+  "win_rate": 47.4,
+  "net_profit_units": -6.56,
+  "roi_pct": -17.6,
   "bets": [
     {
       "id": "b102dbaf4e2ff82df26d9ebe27c7f5b1_1",
@@ -16,10 +16,10 @@
       "market_key": "1",
       "odd": 1.68,
       "prob": 0.7382,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "LOST",
-      "profit": -2.0,
+      "profit": -2,
       "score": "0-1"
     },
     {
@@ -31,7 +31,7 @@
       "market_key": "1",
       "odd": 1.66,
       "prob": 0.7084,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "WON",
       "profit": 1.32,
@@ -46,10 +46,10 @@
       "market_key": "2",
       "odd": 1.73,
       "prob": 0.6987,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.46
     },
     {
       "id": "34848497b90b1392f6a767fc183d3ac1_2",
@@ -60,10 +60,10 @@
       "market_key": "2",
       "odd": 1.76,
       "prob": 0.6748,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2
     },
     {
       "id": "01307f387f466184f92bea6c08c6b635_1",
@@ -74,10 +74,10 @@
       "market_key": "1",
       "odd": 1.75,
       "prob": 0.6651,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2
     },
     {
       "id": "9a9f6c78276f74f15f42b013b033aa5d_UNDER_35",
@@ -133,10 +133,10 @@
       "market_key": "1",
       "odd": 1.77,
       "prob": 0.7269,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "LOST",
-      "profit": -2.0,
+      "profit": -2,
       "score": "2-4"
     },
     {
@@ -148,7 +148,7 @@
       "market_key": "1",
       "odd": 1.69,
       "prob": 0.7207,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "WON",
       "profit": 1.38,
@@ -178,7 +178,7 @@
       "market_key": "UNDER_35",
       "odd": 1.66,
       "prob": 0.6869,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "WON",
       "profit": 1.32,
@@ -193,10 +193,10 @@
       "market_key": "1",
       "odd": 1.68,
       "prob": 0.682,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "LOST",
-      "profit": -2.0,
+      "profit": -2,
       "score": "1-1"
     },
     {
@@ -223,7 +223,7 @@
       "market_key": "1",
       "odd": 1.72,
       "prob": 0.7235,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "WON",
       "profit": 1.44,
@@ -238,10 +238,10 @@
       "market_key": "2",
       "odd": 1.67,
       "prob": 0.6897,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "LOST",
-      "profit": -2.0,
+      "profit": -2,
       "score": "2-0"
     },
     {
@@ -253,10 +253,10 @@
       "market_key": "1",
       "odd": 1.74,
       "prob": 0.6711,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "LOST",
-      "profit": -2.0,
+      "profit": -2,
       "score": "2-3"
     },
     {
@@ -268,7 +268,7 @@
       "market_key": "1",
       "odd": 1.7,
       "prob": 0.6503,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "WON",
       "profit": 1.4,
@@ -298,10 +298,10 @@
       "market_key": "DNB_1",
       "odd": 1.66,
       "prob": 0.6678,
-      "stake_pct": 2.0,
+      "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "2e488800d615a94e5377c195810303c0_1",
@@ -315,7 +315,7 @@
       "stake_pct": 2.5,
       "tier": "GOLD",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "7a2cd2744fdf15ea675423a6c23df46b_DNB_1",
@@ -329,7 +329,7 @@
       "stake_pct": 2.5,
       "tier": "OFFICIAL",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "5118966f484adf525196d196a61bc5d6_OVER_15",
@@ -343,7 +343,7 @@
       "stake_pct": 2.28,
       "tier": "OFFICIAL",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "97ce048d06fc45fc59e114548540828f_OVER_15",
@@ -357,7 +357,7 @@
       "stake_pct": 2.5,
       "tier": "OFFICIAL",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     }
   ]
 }
