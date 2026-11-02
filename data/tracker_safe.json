@@ -1,11 +1,11 @@
 {
   "total_bets": 15,
-  "won": 0,
-  "lost": 0,
+  "won": 9,
+  "lost": 6,
   "void": 0,
-  "win_rate": 0.0,
-  "net_profit_units": 0,
-  "roi_pct": 0.0,
+  "win_rate": 60.0,
+  "net_profit_units": -3.11,
+  "roi_pct": -8.6,
   "bets": [
     {
       "id": "f2fac0be6c577027b70b4493101b1772_DNB_1",
@@ -18,8 +18,9 @@
       "prob": 0.8233,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "1-1"
     },
     {
       "id": "fd5c6a92f2448c1cfe7a2d9b8075172b_DNB_1",
@@ -32,8 +33,9 @@
       "prob": 0.8206,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "1-0"
     },
     {
       "id": "961d9c9f07b1f911e211cd6a750cddba_DNB_1",
@@ -46,8 +48,9 @@
       "prob": 0.8181,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "2-3"
     },
     {
       "id": "81d52c9bdfaaa5eacaadb9245bc2d883_OVER_15",
@@ -60,8 +63,9 @@
       "prob": 0.8035,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.85,
+      "score": "2-0"
     },
     {
       "id": "448a1083448ea9dff55bfebf15ff20b4_DNB_1",
@@ -74,8 +78,9 @@
       "prob": 0.7982,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "5-1"
     },
     {
       "id": "961df571fad52d969150e9ced52b16f7_1",
@@ -88,8 +93,9 @@
       "prob": 0.7938,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.97,
+      "score": "2-0"
     },
     {
       "id": "ce5c2cbdf5db2a13f40f528d3e5044b9_DNB_1",
@@ -102,8 +108,9 @@
       "prob": 0.7904,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "2-1"
     },
     {
       "id": "6a3819cdbe2ba2fe5a3d8f9b4b459965_OVER_15",
@@ -116,8 +123,9 @@
       "prob": 0.7825,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "0-1"
     },
     {
       "id": "ed2ef578ae4e95bdcd81e662dfec5381_1",
@@ -130,8 +138,9 @@
       "prob": 0.7819,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.15,
+      "score": "5-2"
     },
     {
       "id": "3f9f4bc9a19bf36dcb74be2f29610d55_1",
@@ -144,8 +153,9 @@
       "prob": 0.7815,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.1,
+      "score": "2-1"
     },
     {
       "id": "1eb5e1a69ae9dd9edd92fde344308a4e_1",
@@ -158,8 +168,9 @@
       "prob": 0.7729,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.38,
+      "score": "3-1"
     },
     {
       "id": "6c520ed959578ca3aebe351ee3765d53_UNDER_35",
@@ -172,8 +183,9 @@
       "prob": 0.7686,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 3.6,
+      "score": "0-3"
     },
     {
       "id": "5262991e389930615bec34b642428c93_UNDER_35",
@@ -186,8 +198,9 @@
       "prob": 0.7634,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.0,
+      "score": "0-1"
     },
     {
       "id": "c0c32575c239ac72913af247ce084ea2_2",
@@ -200,8 +213,9 @@
       "prob": 0.7624,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.38,
+      "score": "0-9"
     },
     {
       "id": "aeadf1388a1075328536501576b3d550_UNDER_35",
@@ -214,8 +228,9 @@
       "prob": 0.7412,
       "stake_pct": 1.25,
       "tier": "SNIPER 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.46,
+      "score": "2-0"
     }
   ]
 }
