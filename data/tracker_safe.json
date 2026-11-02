@@ -1,11 +1,11 @@
 {
-  "total_bets": 18,
-  "won": 9,
-  "lost": 6,
+  "total_bets": 14,
+  "won": 12,
+  "lost": 2,
   "void": 0,
-  "win_rate": 60.0,
-  "net_profit_units": -3.11,
-  "roi_pct": -8.6,
+  "win_rate": 85.7,
+  "net_profit_units": 9.64,
+  "roi_pct": 28.6,
   "bets": [
     {
       "id": "f2fac0be6c577027b70b4493101b1772_DNB_1",
@@ -18,8 +18,8 @@
       "prob": 0.8233,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "LOST",
-      "profit": -2.5,
+      "status": "VOID",
+      "profit": 0,
       "score": "1-1"
     },
     {
@@ -33,8 +33,8 @@
       "prob": 0.8206,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "LOST",
-      "profit": -2.5,
+      "status": "WON",
+      "profit": 0.85,
       "score": "1-0"
     },
     {
@@ -78,8 +78,8 @@
       "prob": 0.7982,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "LOST",
-      "profit": -2.5,
+      "status": "WON",
+      "profit": 0.95,
       "score": "5-1"
     },
     {
@@ -108,8 +108,8 @@
       "prob": 0.7904,
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
-      "status": "LOST",
-      "profit": -2.5,
+      "status": "WON",
+      "profit": 0.95,
       "score": "2-1"
     },
     {
@@ -199,7 +199,7 @@
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
       "status": "WON",
-      "profit": 1.0,
+      "profit": 1,
       "score": "0-1"
     },
     {
@@ -244,7 +244,7 @@
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "5118966f484adf525196d196a61bc5d6_UNDER_35",
@@ -258,7 +258,7 @@
       "stake_pct": 1.99,
       "tier": "SNIPER 80+",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "2e488800d615a94e5377c195810303c0_1",
@@ -272,7 +272,7 @@
       "stake_pct": 2.5,
       "tier": "SNIPER 80+",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     }
   ]
 }
