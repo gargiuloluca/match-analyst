@@ -1,6 +1,7 @@
 """
 analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine (V3 - Perfect)
 - Matrice bivariata Dixon-Coles con calcolo dinamico dai mercati 1X2 e Totali
+- Integrazione Fair Odds per neutralizzazione dell'aggio del bookmaker
 - Smorzamento Bayesiano dell'Edge (Edge Shrinkage contro overconfidence)
 - Quarter-Kelly Adattivo su 3 scaglioni di quota
 - Vincolo Rigido di Diversificazione: MAX 1 SELEZIONE PER MATCH (Zero auto-cannibalizzazione)
@@ -36,16 +37,16 @@ EUROPEAN_COMPETITORS = {
 }
 
 LEAGUE_GOAL_PROFILES = {
-    "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.05},
+    "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.06},
     "soccer_epl": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
-    "soccer_spain_la_liga": {"mu_home": 1.40, "mu_away": 1.05, "tau": -0.06},
+    "soccer_spain_la_liga": {"mu_home": 1.38, "mu_away": 1.05, "tau": -0.07},
     "soccer_germany_bundesliga": {"mu_home": 1.70, "mu_away": 1.35, "tau": -0.03},
-    "soccer_france_ligue_one": {"mu_home": 1.40, "mu_away": 1.10, "tau": -0.05},
+    "soccer_france_ligue_one": {"mu_home": 1.38, "mu_away": 1.08, "tau": -0.08},
     "soccer_uefa_champs_league": {"mu_home": 1.60, "mu_away": 1.30, "tau": -0.04},
     "soccer_uefa_europa_league": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
     "soccer_netherlands_eredivisie": {"mu_home": 1.75, "mu_away": 1.30, "tau": -0.02},
-    "soccer_england_championship": {"mu_home": 1.42, "mu_away": 1.12, "tau": -0.05},
-    "soccer_portugal_primeira_liga": {"mu_home": 1.48, "mu_away": 1.02, "tau": -0.06},
+    "soccer_england_championship": {"mu_home": 1.40, "mu_away": 1.10, "tau": -0.07},
+    "soccer_portugal_primeira_liga": {"mu_home": 1.48, "mu_away": 1.02, "tau": -0.07},
     "soccer_belgium_first_div": {"mu_home": 1.58, "mu_away": 1.28, "tau": -0.04},
     "soccer_england_league1": {"mu_home": 1.40, "mu_away": 1.15, "tau": -0.05},
     "soccer_england_efl_cup": {"mu_home": 1.50, "mu_away": 1.20, "tau": -0.04},
@@ -184,6 +185,7 @@ def main():
         away_team = item.get("away_team", "")
         odds = item.get("odds", {})
         open_odds = item.get("opening_odds", {})
+        fair_odds = item.get("fair_odds", {})
 
         o1 = odds.get("1", 2.0)
         o2 = odds.get("2", 3.0)
@@ -195,11 +197,15 @@ def main():
             pace_factor = (1.95 / o_over25) ** 0.45
             expected_total *= pace_factor
 
-        # 2. Ripartizione del volume attacco Casa/Trasferta
-        p_home_fair = 1.0 / max(1.05, o1)
-        p_away_fair = 1.0 / max(1.05, o2)
-        strength_sum = p_home_fair + p_away_fair
+        # 2. Ripartizione del volume attacco Casa/Trasferta con Fair Odds
+        if fair_odds and "1" in fair_odds and "2" in fair_odds:
+            p_home_fair = 1.0 / fair_odds["1"]
+            p_away_fair = 1.0 / fair_odds["2"]
+        else:
+            p_home_fair = 1.0 / max(1.05, o1)
+            p_away_fair = 1.0 / max(1.05, o2)
 
+        strength_sum = p_home_fair + p_away_fair
         share_home = p_home_fair / strength_sum if strength_sum > 0 else 0.55
         share_away = p_away_fair / strength_sum if strength_sum > 0 else 0.45
 
@@ -237,7 +243,8 @@ def main():
             tier = "STANDARD"
             is_official = False
 
-            has_heavy_drift = line_shift_pct >= 7.0
+            # Filtro Smart Money affinato: tolleranza massima +3.5%
+            has_heavy_drift = line_shift_pct >= 3.5
             is_safe_fixture = not is_derby and not has_heavy_drift
 
             # Criterio Ufficiale
@@ -248,7 +255,7 @@ def main():
                 if prob >= 0.72 and odd >= 1.45 and edge >= 0.05:
                     tier = "GOLD"
 
-                if (prob >= 0.66 and odd >= 1.65 and edge >= 0.09) or (edge >= 0.07 and line_shift_pct <= -3.0):
+                if (prob >= 0.66 and odd >= 1.65 and edge >= 0.09) or (edge >= 0.07 and line_shift_pct <= -2.5):
                     tier = "DIAMOND"
 
             # Efficienza score per ordinamento qualitativo
