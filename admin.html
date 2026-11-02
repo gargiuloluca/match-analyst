@@ -26,7 +26,7 @@
       font-family: 'Space Grotesk', sans-serif;
       padding: 30px 20px 80px;
     }
-    .container { max-width: 950px; margin: 0 auto; }
+    .container { max-width: 1000px; margin: 0 auto; }
     
     .login-box {
       background: var(--card-bg);
@@ -123,7 +123,6 @@
       align-items: center;
       gap: 6px;
       box-shadow: 0 4px 12px rgba(37,99,235,0.25);
-      transition: all 0.2s ease;
     }
     .btn-action-secondary {
       background: linear-gradient(135deg, #059669, #047857);
@@ -138,7 +137,6 @@
       align-items: center;
       gap: 6px;
       box-shadow: 0 4px 12px rgba(5,150,105,0.25);
-      transition: all 0.2s ease;
     }
     .btn-token-config {
       background: #1e293b;
@@ -148,9 +146,21 @@
       border-radius: 8px;
       font-size: 0.85rem;
       cursor: pointer;
-      transition: all 0.2s ease;
     }
-    .btn-action-primary:disabled, .btn-action-secondary:disabled {
+    .btn-save-tracker {
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-action-primary:disabled, .btn-action-secondary:disabled, .btn-save-tracker:disabled {
       opacity: 0.55;
       cursor: not-allowed;
     }
@@ -249,21 +259,35 @@
       white-space: nowrap;
     }
     table.history-table td {
-      padding: 12px 14px;
+      padding: 10px 14px;
       border-bottom: 1px solid #131d31;
       white-space: nowrap;
     }
-    .status-badge {
+    .status-select {
+      background: #070a11;
+      color: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .status-select.won { color: #34d399; border-color: rgba(16,185,129,0.5); }
+    .status-select.lost { color: #f87171; border-color: rgba(239,68,68,0.5); }
+    .status-select.void { color: #cbd5e1; border-color: rgba(148,163,184,0.5); }
+    .status-select.pending { color: #fbbf24; border-color: rgba(245,158,11,0.5); }
+    .score-badge {
       display: inline-block;
+      background: #070a11;
+      border: 1px solid #334155;
       padding: 2px 6px;
       border-radius: 4px;
-      font-weight: 700;
-      font-size: 0.72rem;
       font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #94a3b8;
     }
-    .status-won { background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.4); }
-    .status-lost { background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); }
-    .status-pending { background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.4); }
   </style>
 </head>
 <body>
@@ -295,7 +319,7 @@
               ⚡ Controllo Operativo Pipeline Cloud
             </h3>
             <p style="font-size: 0.85rem; color: #94a3b8;">
-              Comanda l'avvio immediato dell'analisi quote o la refertazione dei risultati senza aprire GitHub.
+              Comanda l'avvio dell'analisi quote o la refertazione senza aprire GitHub.
             </p>
           </div>
 
@@ -323,7 +347,7 @@
           🧪 Lab Sperimentale (Rolling xG)
         </button>
         <button id="btn-safe" class="engine-btn" onclick="switchEngine('safe')">
-          🛡️ Sniper Safe (Prob ≥ 80% | Quota ≥ 1.40)
+          🛡️ Sniper Safe (Prob ≥ 74% | Quota ≥ 1.32)
         </button>
       </div>
 
@@ -335,11 +359,16 @@
       <div id="adminRadar">Caricamento radar...</div>
 
       <!-- 2. STORICO E PERFORMANCE SPECIFICO DEL MOTORE -->
-      <div class="section-title" style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 25px;">
-        📊 Performance & Storico Certificato — <span id="engineHistoryLabel" style="color: var(--cyan); margin-left: 5px;">Motore Ufficiale</span>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 25px; flex-wrap: wrap; gap: 10px;">
+        <div class="section-title" style="margin: 0;">
+          📊 Performance & Storico — <span id="engineHistoryLabel" style="color: var(--cyan); margin-left: 5px;">Motore Ufficiale</span>
+        </div>
+        <button id="btnSaveTracker" class="btn-save-tracker" onclick="saveTrackerModifications()" style="display: none;">
+          💾 Salva Correzioni su GitHub
+        </button>
       </div>
 
-      <div class="kpi-grid">
+      <div class="kpi-grid" style="margin-top: 15px;">
         <div class="kpi-card">
           <div class="kpi-sub">Win Rate Concluso</div>
           <div class="kpi-val" id="kpiWinRate" style="color: var(--accent);">--%</div>
@@ -366,12 +395,13 @@
               <th>Match & Lega</th>
               <th>Pronostico</th>
               <th>Quota</th>
-              <th>Stato</th>
+              <th>Risultato Reale</th>
+              <th>Stato (Modifica Rapida)</th>
               <th>Profitto</th>
             </tr>
           </thead>
           <tbody id="historyTableBody">
-            <tr><td colspan="6" style="text-align: center; color: var(--muted); padding: 18px;">Caricamento storico...</td></tr>
+            <tr><td colspan="7" style="text-align: center; color: var(--muted); padding: 18px;">Caricamento storico...</td></tr>
           </tbody>
         </table>
       </div>
@@ -381,12 +411,14 @@
 
   <script>
     let currentEngine = 'official';
+    let currentTrackerData = null;
+    let currentTrackerSha = null;
+    let hasUnsavedChanges = false;
 
     const GITHUB_OWNER = "gargiuloluca";
     const GITHUB_REPO = "match-analyst";
     const WORKFLOW_ID = "daily-analysis.yml";
 
-    // Mappatura percorsi file per ciascun motore
     const ENGINE_CONFIG = {
       official: {
         latest: 'data/latest.json',
@@ -403,8 +435,8 @@
       safe: {
         latest: 'data/latest_safe.json',
         tracker: 'data/tracker_safe.json',
-        label: 'Sniper Safe (Prob ≥ 80% | Quota ≥ 1.40)',
-        officialsTitle: '🛡️ Selezioni Sniper ad Altissima Probabilità (≥ 80% @ ≥ 1.40)'
+        label: 'Sniper Safe (Prob ≥ 74% | Quota ≥ 1.32)',
+        officialsTitle: '🛡️ Selezioni Sniper ad Altissima Probabilità (≥ 74% @ ≥ 1.32)'
       }
     };
 
@@ -506,8 +538,14 @@
     }
 
     function switchEngine(engine) {
-      if (currentEngine === engine) return;
+      if (hasUnsavedChanges) {
+        if (!confirm("Hai modifiche non salvate sullo storico. Vuoi davvero cambiare motore senza salvare?")) {
+          return;
+        }
+      }
       currentEngine = engine;
+      hasUnsavedChanges = false;
+      document.getElementById('btnSaveTracker').style.display = 'none';
 
       document.getElementById('btn-official').classList.toggle('active', engine === 'official');
       document.getElementById('btn-xg').classList.toggle('active', engine === 'xg');
@@ -525,7 +563,6 @@
       loadTrackerData(cfg.tracker);
     }
 
-    // Caricamento Pronostici Giornata
     function loadPicksData(filePath) {
       const offCont = document.getElementById('adminOfficials');
       const radCont = document.getElementById('adminRadar');
@@ -556,8 +593,8 @@
               } else if (p.tier === 'GOLD') {
                 badgeHtml = `<span class="badge badge-gold">🥇 GOLD PICK</span>`;
                 borderStyle = 'border: 1px solid #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);';
-              } else if (p.tier === 'SNIPER 80+') {
-                badgeHtml = `<span class="badge badge-sniper">🛡️ SNIPER 80+</span>`;
+              } else if (p.tier === 'SNIPER 80+' || p.tier === 'SAFE 80+') {
+                badgeHtml = `<span class="badge badge-sniper">🛡️ SNIPER SAFE</span>`;
                 borderStyle = 'border: 1px solid #a855f7; box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);';
               }
 
@@ -608,73 +645,201 @@
         });
     }
 
-    // Caricamento Storico & Performance
-    function loadTrackerData(trackerPath) {
+    // Caricamento Storico & Performance con Editor
+    async function loadTrackerData(trackerPath) {
       const tbody = document.getElementById('historyTableBody');
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--muted); padding: 18px;">Caricamento storico...</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted); padding: 18px;">Caricamento storico...</td></tr>';
 
-      fetch(trackerPath + '?nocache=' + Date.now())
-        .then(r => {
-          if (!r.ok) throw new Error('File storico non trovato');
-          return r.json();
-        })
-        .then(d => {
-          const bets = d.bets || [];
-          const concluded = bets.filter(b => b.status === 'WON' || b.status === 'LOST');
-          const pending = bets.filter(b => b.status === 'PENDING');
+      try {
+        // Recupera SHA del file da GitHub per permettere il salvataggio via API
+        fetchGithubFileSha(trackerPath);
 
-          const wonCount = bets.filter(b => b.status === 'WON').length;
-          const lostCount = bets.filter(b => b.status === 'LOST').length;
+        const res = await fetch(trackerPath + '?nocache=' + Date.now());
+        if (!res.ok) throw new Error('File non trovato');
+        currentTrackerData = await res.json();
+        renderTrackerTable();
+      } catch (err) {
+        document.getElementById('kpiWinRate').textContent = '0.0%';
+        document.getElementById('kpiRoi').textContent = '0.0%';
+        document.getElementById('kpiConcluded').textContent = '0';
+        document.getElementById('kpiPending').textContent = '0';
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted); padding: 18px;">Nessun dato storico ancora registrato.</td></tr>';
+      }
+    }
 
-          // Calcolo dinamico preciso
-          const winRate = concluded.length > 0 ? ((wonCount / concluded.length) * 100).toFixed(1) : (d.win_rate !== undefined ? Number(d.win_rate).toFixed(1) : '0.0');
-          const roi = d.roi_pct !== undefined ? Number(d.roi_pct).toFixed(1) : '0.0';
-
-          document.getElementById('kpiWinRate').textContent = `${winRate}%`;
-          document.getElementById('kpiRoi').textContent = `${roi > 0 ? '+' : ''}${roi}%`;
-          document.getElementById('kpiConcluded').textContent = `${concluded.length} (${wonCount}V - ${lostCount}P)`;
-          document.getElementById('kpiPending').textContent = pending.length;
-
-          if (bets.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--muted); padding: 18px;">Nessuna operazione registrata nel tracker di questo motore.</td></tr>';
-            return;
-          }
-
-          let tableHtml = '';
-          bets.forEach(b => {
-            let statusBadge = `<span class="status-badge status-pending">PENDING</span>`;
-            let profitText = '-';
-
-            if (b.status === 'WON') {
-              statusBadge = `<span class="status-badge status-won">WON</span>`;
-              profitText = `<span style="color: var(--accent); font-weight: 700;">+${Number(b.profit || 0).toFixed(2)}u</span>`;
-            } else if (b.status === 'LOST') {
-              statusBadge = `<span class="status-badge status-lost">LOST</span>`;
-              profitText = `<span style="color: var(--red); font-weight: 700;">-${Number(b.stake_pct || 0).toFixed(2)}u</span>`;
-            }
-
-            const dateStr = b.date ? b.date.substring(0, 10) : '-';
-
-            tableHtml += `
-              <tr>
-                <td style="color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">${dateStr}</td>
-                <td><b>${b.match}</b><br><span style="color: var(--muted); font-size: 0.75rem;">${b.league || ''}</span></td>
-                <td style="color: var(--cyan); font-weight: 600;">${b.bet}</td>
-                <td style="font-family: 'JetBrains Mono', monospace;">${Number(b.odd).toFixed(2)}</td>
-                <td>${statusBadge}</td>
-                <td style="font-family: 'JetBrains Mono', monospace;">${profitText}</td>
-              </tr>
-            `;
-          });
-          tbody.innerHTML = tableHtml;
-        })
-        .catch(err => {
-          document.getElementById('kpiWinRate').textContent = '0.0%';
-          document.getElementById('kpiRoi').textContent = '0.0%';
-          document.getElementById('kpiConcluded').textContent = '0';
-          document.getElementById('kpiPending').textContent = '0';
-          tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: var(--muted); padding: 18px;">Nessun dato storico ancora registrato per questo motore. Verrà popolato con le prime refertazioni.</td></tr>';
+    async function fetchGithubFileSha(filePath) {
+      currentTrackerSha = null;
+      let token = localStorage.getItem("atm_gh_token");
+      if (!token) return;
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}`, {
+          headers: { "Authorization": `Bearer ${token}` }
         });
+        if (res.ok) {
+          const d = await res.json();
+          currentTrackerSha = d.sha;
+        }
+      } catch(e) {}
+    }
+
+    function renderTrackerTable() {
+      const bets = currentTrackerData.bets || [];
+      const tbody = document.getElementById('historyTableBody');
+
+      recalcKPIs();
+
+      if (bets.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted); padding: 18px;">Nessuna operazione registrata.</td></tr>';
+        return;
+      }
+
+      let tableHtml = '';
+      bets.forEach((b, idx) => {
+        const dateStr = b.date ? b.date.substring(0, 10) : '-';
+        const scoreStr = b.score ? `<span class="score-badge">${b.score}</span>` : `<span style="color: var(--muted); font-size: 0.75rem;">In attesa</span>`;
+
+        let profitText = '-';
+        if (b.status === 'WON') {
+          profitText = `<span style="color: var(--accent); font-weight: 700;">+${Number(b.profit || 0).toFixed(2)}u</span>`;
+        } else if (b.status === 'LOST') {
+          profitText = `<span style="color: var(--red); font-weight: 700;">-${Number(b.stake_pct || 2.5).toFixed(2)}u</span>`;
+        } else if (b.status === 'VOID') {
+          profitText = `<span style="color: var(--muted); font-weight: 700;">0.00u</span>`;
+        }
+
+        const selClass = b.status ? b.status.toLowerCase() : 'pending';
+
+        tableHtml += `
+          <tr>
+            <td style="color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">${dateStr}</td>
+            <td><b>${b.match}</b><br><span style="color: var(--muted); font-size: 0.75rem;">${b.league || ''}</span></td>
+            <td style="color: var(--cyan); font-weight: 600;">${b.bet}</td>
+            <td style="font-family: 'JetBrains Mono', monospace;">${Number(b.odd).toFixed(2)}</td>
+            <td>${scoreStr}</td>
+            <td>
+              <select class="status-select ${selClass}" onchange="updateBetStatus(${idx}, this.value)">
+                <option value="PENDING" ${b.status === 'PENDING' ? 'selected' : ''}>⏳ PENDING</option>
+                <option value="WON" ${b.status === 'WON' ? 'selected' : ''}>✅ WON</option>
+                <option value="LOST" ${b.status === 'LOST' ? 'selected' : ''}>❌ LOST</option>
+                <option value="VOID" ${b.status === 'VOID' ? 'selected' : ''}>🔄 VOID (Rimborso)</option>
+              </select>
+            </td>
+            <td style="font-family: 'JetBrains Mono', monospace;">${profitText}</td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = tableHtml;
+    }
+
+    function updateBetStatus(index, newStatus) {
+      const b = currentTrackerData.bets[index];
+      b.status = newStatus;
+      const odd = Number(b.odd) || 1.0;
+      const stake = Number(b.stake_pct) || 2.5;
+
+      if (newStatus === 'WON') {
+        b.profit = Number((stake * (odd - 1.0)).toFixed(2));
+      } else if (newStatus === 'LOST') {
+        b.profit = Number((-stake).toFixed(2));
+      } else {
+        b.profit = 0.0;
+      }
+
+      hasUnsavedChanges = true;
+      document.getElementById('btnSaveTracker').style.display = 'inline-flex';
+      renderTrackerTable();
+    }
+
+    function recalcKPIs() {
+      const bets = currentTrackerData.bets || [];
+      const concluded = bets.filter(b => b.status === 'WON' || b.status === 'LOST');
+      const pending = bets.filter(b => b.status === 'PENDING');
+      const won = bets.filter(b => b.status === 'WON').length;
+      const lost = bets.filter(b => b.status === 'LOST').length;
+
+      const netProfit = bets.reduce((acc, b) => acc + (Number(b.profit) || 0), 0);
+      const totalStaked = concluded.reduce((acc, b) => acc + (Number(b.stake_pct) || 2.5), 0);
+
+      const winRate = concluded.length > 0 ? ((won / concluded.length) * 100).toFixed(1) : '0.0';
+      const roi = totalStaked > 0 ? ((netProfit / totalStaked) * 100).toFixed(1) : '0.0';
+
+      currentTrackerData.total_bets = concluded.length;
+      currentTrackerData.won = won;
+      currentTrackerData.lost = lost;
+      currentTrackerData.win_rate = Number(winRate);
+      currentTrackerData.net_profit_units = Number(netProfit.toFixed(2));
+      currentTrackerData.roi_pct = Number(roi);
+
+      document.getElementById('kpiWinRate').textContent = `${winRate}%`;
+      document.getElementById('kpiRoi').textContent = `${Number(roi) > 0 ? '+' : ''}${roi}%`;
+      document.getElementById('kpiConcluded').textContent = `${concluded.length} (${won}V - ${lost}P)`;
+      document.getElementById('kpiPending').textContent = pending.length;
+    }
+
+    // Salvataggio istantaneo su GitHub via API REST
+    async function saveTrackerModifications() {
+      let token = localStorage.getItem("atm_gh_token");
+      if (!token) {
+        token = prompt("Inserisci il tuo Personal Access Token GitHub per salvare:");
+        if (!token) return;
+        localStorage.setItem("atm_gh_token", token.trim());
+      }
+
+      const btn = document.getElementById('btnSaveTracker');
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = "⏳ Salvataggio in corso...";
+
+      const cfg = ENGINE_CONFIG[currentEngine];
+      const targetFilePath = cfg.tracker;
+
+      try {
+        // Se manca lo SHA, lo recupera al volo
+        if (!currentTrackerSha) {
+          const checkRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFilePath}`, {
+            headers: { "Authorization": `Bearer ${token}` }
+          });
+          if (checkRes.ok) {
+            const checkData = await checkRes.json();
+            currentTrackerSha = checkData.sha;
+          }
+        }
+
+        const contentJson = JSON.stringify(currentTrackerData, null, 2);
+        const encodedContent = btoa(unescape(encodeURIComponent(contentJson)));
+
+        const payload = {
+          message: `Manual update tracker [${currentEngine}] from Admin Panel`,
+          content: encodedContent,
+          sha: currentTrackerSha
+        };
+
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFilePath}`, {
+          method: "PUT",
+          headers: {
+            "Accept": "application/vnd.github+json",
+            "Authorization": `Bearer ${token}`,
+            "X-GitHub-Api-Version": "2022-11-28"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          const resData = await res.json();
+          currentTrackerSha = resData.content.sha;
+          hasUnsavedChanges = false;
+          btn.style.display = 'none';
+          alert(`✅ File ${targetFilePath} aggiornato con successo su GitHub! Le modifiche sono ora ufficiali.`);
+        } else {
+          const err = await res.json().catch(() => ({}));
+          alert(`❌ Errore salvataggio: ${err.message || 'Verifica permessi token'}`);
+        }
+      } catch (e) {
+        alert("Errore di connessione: " + e.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }
     }
 
     if (sessionStorage.getItem('atm_admin_auth') === 'true') {
