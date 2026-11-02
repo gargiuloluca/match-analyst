@@ -1,9 +1,9 @@
 """
 settle_results.py — AtmBetSignal Triple-Engine Auto Settler
-Verifica i risultati ufficiali e referta in un colpo solo:
-- data/tracker.json (Motore Ufficiale A)
-- data/tracker_xg.json (Motore B xG)
-- data/tracker_safe.json (Motore C Sniper Safe)
+Verifica i risultati ufficiali con logica prudenziale:
+- Gestisce correttamente il pareggio nel Draw No Bet (DNB) come VOID (Rimborso, profitto 0.0)
+- In caso di discrepanza nei nomi o match non terminato, lascia il pronostico in PENDING
+- Aggiorna i file tracker.json, tracker_xg.json, tracker_safe.json
 """
 
 import os
@@ -45,25 +45,71 @@ def fetch_completed_scores(sport_key: str):
             pass
     return []
 
-def evaluate_bet_outcome(market_key: str, home_score: int, away_score: int) -> bool:
-    total_goals = home_score + away_score
-    m = market_key.upper()
-    if m == "1": return home_score > away_score
-    if m == "X": return home_score == away_score
-    if m == "2": return away_score > home_score
-    if m == "1X": return home_score >= away_score
-    if m == "X2": return away_score >= home_score
-    if m == "OVER_15": return total_goals > 1.5
-    if m == "UNDER_15": return total_goals < 1.5
-    if m == "OVER_25": return total_goals > 2.5
-    if m == "UNDER_25": return total_goals < 2.5
-    if m == "OVER_35": return total_goals > 3.5
-    if m == "UNDER_35": return total_goals < 3.5
-    if m == "BTTS_YES": return home_score > 0 and away_score > 0
-    if m == "BTTS_NO": return home_score == 0 or away_score == 0
-    return False
+def clean_name(s: str) -> str:
+    n = s.lower()
+    for drop in [" fc", " ac", " as", "cf", "ssc ", "afc ", " "]:
+        n = n.replace(drop, "")
+    return n
 
-def settle_single_tracker(tracker_file: Path, completed_matches: dict):
+def match_teams_strictly(m_name: str, h_api: str, a_api: str) -> bool:
+    h_clean = clean_name(h_api)
+    a_clean = clean_name(a_api)
+    m_clean = clean_name(m_name)
+    # Entrambe le squadre devono avere una corrispondenza significativa
+    return (h_clean[:5] in m_clean) and (a_clean[:5] in m_clean)
+
+def evaluate_bet_outcome(market_key: str, h_score: int, a_score: int):
+    """
+    Ritorna:
+    'WON' (Vinta)
+    'LOST' (Persa)
+    'VOID' (Rimborsata - specifico per Draw No Bet in caso di pareggio)
+    """
+    total_goals = h_score + a_score
+    m = market_key.upper().strip()
+
+    if m == "1":
+        return "WON" if h_score > a_score else "LOST"
+    if m == "X":
+        return "WON" if h_score == a_score else "LOST"
+    if m == "2":
+        return "WON" if a_score > h_score else "LOST"
+    if m == "1X":
+        return "WON" if h_score >= a_score else "LOST"
+    if m == "X2":
+        return "WON" if a_score >= h_score else "LOST"
+
+    # GESTIONE RIGOROSA DRAW NO BET (DNB)
+    if m in ["DNB_1", "DNB_HOME"]:
+        if h_score > a_score: return "WON"
+        if h_score == a_score: return "VOID"
+        return "LOST"
+
+    if m in ["DNB_2", "DNB_AWAY"]:
+        if a_score > h_score: return "WON"
+        if h_score == a_score: return "VOID"
+        return "LOST"
+
+    if m == "OVER_15":
+        return "WON" if total_goals > 1.5 else "LOST"
+    if m == "UNDER_15":
+        return "WON" if total_goals < 1.5 else "LOST"
+    if m == "OVER_25":
+        return "WON" if total_goals > 2.5 else "LOST"
+    if m == "UNDER_25":
+        return "WON" if total_goals < 2.5 else "LOST"
+    if m == "OVER_35":
+        return "WON" if total_goals > 3.5 else "LOST"
+    if m == "UNDER_35":
+        return "WON" if total_goals < 3.5 else "LOST"
+    if m == "BTTS_YES":
+        return "WON" if h_score > 0 and a_score > 0 else "LOST"
+    if m == "BTTS_NO":
+        return "WON" if h_score == 0 or a_score == 0 else "LOST"
+
+    return "PENDING"
+
+def settle_single_tracker(tracker_file: Path, completed_matches: list):
     if not tracker_file.exists():
         return
     try:
@@ -75,60 +121,72 @@ def settle_single_tracker(tracker_file: Path, completed_matches: dict):
     updated = False
 
     for b in bets:
-        if b.get("status") != "PENDING":
+        # Se è già stata decisa o corretta a mano, non la sovrascrive
+        if b.get("status") not in ["PENDING", None]:
             continue
 
         match_name = b.get("match", "")
-        # Match ricerca per nomi squadre
-        match_info = None
-        for (h, a), info in completed_matches.items():
-            if h.lower() in match_name.lower() and a.lower() in match_name.lower():
-                match_info = info
+        matched_info = None
+
+        for item in completed_matches:
+            if match_teams_strictly(match_name, item["home_team"], item["away_team"]):
+                matched_info = item
                 break
 
-        if match_info and match_info.get("completed"):
-            h_score = match_info["home_score"]
-            a_score = match_info["away_score"]
-            m_key = b.get("market_key", "")
-            is_won = evaluate_bet_outcome(m_key, h_score, a_score)
+        # Se non c'è certezza assoluta o la partita non è conclusa, lascia PENDING
+        if not matched_info or not matched_info.get("completed"):
+            continue
 
-            b["score"] = f"{h_score}-{a_score}"
-            odd = float(b.get("odd", 1.0))
-            stake = float(b.get("stake_pct", 1.0))
+        h_score = matched_info["home_score"]
+        a_score = matched_info["away_score"]
+        m_key = b.get("market_key", "")
+        
+        outcome = evaluate_bet_outcome(m_key, h_score, a_score)
+        if outcome == "PENDING":
+            continue
 
-            if is_won:
-                b["status"] = "WON"
-                b["profit"] = round(stake * (odd - 1.0), 2)
-            else:
-                b["status"] = "LOST"
-                b["profit"] = round(-stake, 2)
-            updated = True
+        odd = float(b.get("odd", 1.0))
+        stake = float(b.get("stake_pct", 2.5))
 
-    if updated or True:
-        concluded = [b for b in bets if b.get("status") in ["WON", "LOST"]]
-        won = sum(1 for b in concluded if b["status"] == "WON")
-        lost = sum(1 for b in concluded if b["status"] == "LOST")
-        net_profit = sum(float(b.get("profit", 0.0)) for b in concluded)
-        total_staked = sum(float(b.get("stake_pct", 1.0)) for b in concluded)
+        b["score"] = f"{h_score}-{a_score}"
+        b["status"] = outcome
 
-        win_rate = round((won / len(concluded)) * 100, 1) if concluded else 0.0
-        roi_pct = round((net_profit / total_staked) * 100, 1) if total_staked > 0 else 0.0
+        if outcome == "WON":
+            b["profit"] = round(stake * (odd - 1.0), 2)
+        elif outcome == "LOST":
+            b["profit"] = round(-stake, 2)
+        elif outcome == "VOID":
+            b["profit"] = 0.0
 
-        data["total_bets"] = len(concluded)
-        data["won"] = won
-        data["lost"] = lost
-        data["win_rate"] = win_rate
-        data["net_profit_units"] = round(net_profit, 2)
-        data["roi_pct"] = roi_pct
-        data["bets"] = bets
+        updated = True
 
-        tracker_file.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"[{tracker_file.name}] Refertato: Concluse {len(concluded)} | WR {win_rate}% | ROI {roi_pct}%")
+    # Ricalcolo contabilità
+    concluded = [b for b in bets if b.get("status") in ["WON", "LOST"]]
+    won = sum(1 for b in concluded if b["status"] == "WON")
+    lost = sum(1 for b in concluded if b["status"] == "LOST")
+    void_count = sum(1 for b in bets if b.get("status") == "VOID")
+
+    net_profit = sum(float(b.get("profit", 0.0)) for b in bets if b.get("status") in ["WON", "LOST", "VOID"])
+    total_staked = sum(float(b.get("stake_pct", 2.5)) for b in concluded)
+
+    win_rate = round((won / len(concluded)) * 100, 1) if concluded else 0.0
+    roi_pct = round((net_profit / total_staked) * 100, 1) if total_staked > 0 else 0.0
+
+    data["total_bets"] = len(concluded)
+    data["won"] = won
+    data["lost"] = lost
+    data["void"] = void_count
+    data["win_rate"] = win_rate
+    data["net_profit_units"] = round(net_profit, 2)
+    data["roi_pct"] = roi_pct
+    data["bets"] = bets
+
+    tracker_file.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"[{tracker_file.name}] Allineato: Concluse {len(concluded)} | WinRate {win_rate}% | ROI {roi_pct}%")
 
 def main():
-    print("Scaricamento risultati finali campionati...")
-    completed_matches = {}
-
+    completed_matches = []
+    print("Scaricamento risultati finali ufficiali...")
     for league in LEAGUES:
         scores = fetch_completed_scores(league)
         for s in scores:
@@ -139,13 +197,15 @@ def main():
                     a_team = s.get("away_team", "")
                     h_sc = int(scores_list[0].get("score", 0)) if scores_list[0].get("name") == h_team else int(scores_list[1].get("score", 0))
                     a_sc = int(scores_list[1].get("score", 0)) if scores_list[1].get("name") == a_team else int(scores_list[0].get("score", 0))
-                    completed_matches[(h_team, a_team)] = {
-                        "completed": True,
+                    completed_matches.append({
+                        "home_team": h_team,
+                        "away_team": a_team,
                         "home_score": h_sc,
-                        "away_score": a_sc
-                    }
+                        "away_score": a_sc,
+                        "completed": True
+                    })
 
-    print(f"Match conclusi recuperati: {len(completed_matches)}. Refertazione tracker in corso...")
+    print(f"Match validati: {len(completed_matches)}. Verifica tracker...")
     for tf in TRACKER_FILES:
         settle_single_tracker(tf, completed_matches)
 
