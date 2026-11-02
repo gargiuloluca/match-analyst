@@ -1,5 +1,5 @@
 {
-  "total_bets": 15,
+  "total_bets": 18,
   "won": 9,
   "lost": 6,
   "void": 0,
@@ -231,6 +231,48 @@
       "status": "WON",
       "profit": 0.46,
       "score": "2-0"
+    },
+    {
+      "id": "0f552d9c6990c69474f50ff2fb54e9a3_OVER_15",
+      "date": "2026-11-02T20:00:00Z",
+      "match": "Newcastle United vs Everton",
+      "league": "EPL",
+      "bet": "Over 1.5 Gol",
+      "market_key": "OVER_15",
+      "odd": 1.32,
+      "prob": 0.802,
+      "stake_pct": 2.5,
+      "tier": "SNIPER 80+",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "5118966f484adf525196d196a61bc5d6_UNDER_35",
+      "date": "2026-11-02T19:45:00Z",
+      "match": "Lorient vs Brest",
+      "league": "Ligue 1 - France",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.33,
+      "prob": 0.7717,
+      "stake_pct": 1.99,
+      "tier": "SNIPER 80+",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "2e488800d615a94e5377c195810303c0_1",
+      "date": "2026-11-02T19:45:00Z",
+      "match": "Atalanta BC vs Parma",
+      "league": "Serie A - Italy",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.5,
+      "prob": 0.7555,
+      "stake_pct": 2.5,
+      "tier": "SNIPER 80+",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ]
 }

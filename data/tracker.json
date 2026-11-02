@@ -396,6 +396,76 @@
       "status": "WON",
       "profit": 1.15,
       "score": "5-2"
+    },
+    {
+      "id": "cdf1a22ce6d16f0903216518d909e02a_UNDER_35",
+      "date": "2026-11-02T20:15:00Z",
+      "match": "Benfica vs Alverca",
+      "league": "Primeira Liga - Portugal",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.84,
+      "prob": 0.6983,
+      "stake_pct": 2.0,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "2e488800d615a94e5377c195810303c0_1",
+      "date": "2026-11-02T19:45:00Z",
+      "match": "Atalanta BC vs Parma",
+      "league": "Serie A - Italy",
+      "bet": "Vittoria Casa (1)",
+      "market_key": "1",
+      "odd": 1.5,
+      "prob": 0.728,
+      "stake_pct": 2.5,
+      "tier": "GOLD",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "5118966f484adf525196d196a61bc5d6_OVER_15",
+      "date": "2026-11-02T19:45:00Z",
+      "match": "Lorient vs Brest",
+      "league": "Ligue 1 - France",
+      "bet": "Over 1.5 Gol",
+      "market_key": "OVER_15",
+      "odd": 1.48,
+      "prob": 0.7053,
+      "stake_pct": 2.28,
+      "tier": "OFFICIAL",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "97ce048d06fc45fc59e114548540828f_OVER_15",
+      "date": "2026-11-02T20:15:00Z",
+      "match": "Gil Vicente vs Vitória SC",
+      "league": "Primeira Liga - Portugal",
+      "bet": "Over 1.5 Gol",
+      "market_key": "OVER_15",
+      "odd": 1.54,
+      "prob": 0.6923,
+      "stake_pct": 2.5,
+      "tier": "OFFICIAL",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "7a2cd2744fdf15ea675423a6c23df46b_DNB_1",
+      "date": "2026-11-02T20:00:00Z",
+      "match": "Deportivo La Coruña vs CA Osasuna",
+      "league": "La Liga - Spain",
+      "bet": "Casa Draw No Bet (Rimborso Parità)",
+      "market_key": "DNB_1",
+      "odd": 1.53,
+      "prob": 0.6908,
+      "stake_pct": 2.5,
+      "tier": "OFFICIAL",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ]
 }
