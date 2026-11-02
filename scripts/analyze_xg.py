@@ -1,10 +1,12 @@
 """
-analyze_xg.py — AtmBetSignal Experimental Engine (Model B: Dixon-Coles + Rolling xG)
-Motore parallelo di laboratorio.
-- Integrazione Fair Odds con neutralizzazione del margine del bookmaker
-- Calibrazione bivariata avanzata con pesi xG (Expected Goals)
-- Smorzamento Bayesiano dell'Edge e Quarter-Kelly Adattivo
-- De-correlazione rigida: max 1 selezione per match
+analyze_xg.py — AtmBetSignal Experimental Engine (Model B: Independent Rolling xG & Performance Gap)
+Motore parallelo di laboratorio quantitativo.
+- Stima dei parametri 100% indipendente dalle quote (Zero dipendenza circolare)
+- Normalizzazione degli xG per la forza specifica dell'avversario
+- Analisi del Performance Gap (xG creati vs gol effettivi per individuare anomalie di mercato)
+- Smorzamento Bayesiano dell'Edge (Edge Shrinkage) e Kelly Push-Adjusted (DNB)
+- Cap di esposizione portafoglio: max 1.5% singola giocata, max 3.0% cumulato di giornata
+- De-correlazione rigida: max 1 selezione a valore ottimale per match
 Salva i risultati in data/latest_xg.json e data/tracker_xg.json.
 """
 
@@ -54,89 +56,72 @@ LEAGUE_GOAL_PROFILES = {
     "default": {"mu_home": 1.48, "mu_away": 1.18, "tau": -0.05}
 }
 
+# Database metriche sottostanti Rolling xG (con fattore di conversione e performance gap)
 TEAM_XG_DATABASE = {
     # Serie A
-    "inter": {"xg_for": 1.35, "xg_against": 0.75},
-    "juventus": {"xg_for": 1.22, "xg_against": 0.80},
-    "milan": {"xg_for": 1.28, "xg_against": 0.95},
-    "atalanta": {"xg_for": 1.38, "xg_against": 1.05},
-    "napoli": {"xg_for": 1.25, "xg_against": 0.82},
-    "roma": {"xg_for": 1.18, "xg_against": 0.92},
-    "lazio": {"xg_for": 1.15, "xg_against": 1.00},
-    "fiorentina": {"xg_for": 1.16, "xg_against": 0.98},
-    "bologna": {"xg_for": 1.10, "xg_against": 0.90},
-    "udinese": {"xg_for": 0.95, "xg_against": 1.15},
-    "parma": {"xg_for": 1.02, "xg_against": 1.25},
-    "genoa": {"xg_for": 0.88, "xg_against": 1.10},
-    "venezia": {"xg_for": 0.82, "xg_against": 1.35},
-    "cagliari": {"xg_for": 0.90, "xg_against": 1.30},
-    "lecce": {"xg_for": 0.85, "xg_against": 1.25},
-    "frosinone": {"xg_for": 0.92, "xg_against": 1.28},
-    "torino": {"xg_for": 0.92, "xg_against": 0.88},
-    "monza": {"xg_for": 0.82, "xg_against": 1.18},
+    "inter": {"xg_for": 1.38, "xg_against": 0.72, "gap": +0.12},
+    "juventus": {"xg_for": 1.20, "xg_against": 0.75, "gap": +0.05},
+    "milan": {"xg_for": 1.28, "xg_against": 0.92, "gap": -0.08},
+    "atalanta": {"xg_for": 1.42, "xg_against": 1.02, "gap": +0.15},
+    "napoli": {"xg_for": 1.28, "xg_against": 0.80, "gap": +0.10},
+    "roma": {"xg_for": 1.18, "xg_against": 0.90, "gap": -0.04},
+    "lazio": {"xg_for": 1.14, "xg_against": 0.98, "gap": -0.02},
+    "fiorentina": {"xg_for": 1.18, "xg_against": 0.95, "gap": +0.08},
+    "bologna": {"xg_for": 1.12, "xg_against": 0.88, "gap": +0.06},
+    "udinese": {"xg_for": 0.95, "xg_against": 1.15, "gap": -0.05},
+    "parma": {"xg_for": 1.05, "xg_against": 1.22, "gap": +0.04},
+    "genoa": {"xg_for": 0.88, "xg_against": 1.10, "gap": -0.02},
+    "venezia": {"xg_for": 0.82, "xg_against": 1.32, "gap": -0.06},
+    "cagliari": {"xg_for": 0.92, "xg_against": 1.28, "gap": -0.03},
+    "lecce": {"xg_for": 0.86, "xg_against": 1.22, "gap": -0.08},
+    "frosinone": {"xg_for": 0.92, "xg_against": 1.28, "gap": -0.04},
+    "torino": {"xg_for": 0.94, "xg_against": 0.86, "gap": +0.02},
+    "monza": {"xg_for": 0.84, "xg_against": 1.16, "gap": -0.07},
     
-    # Premier League & Championship
-    "manchester city": {"xg_for": 1.45, "xg_against": 0.70},
-    "liverpool": {"xg_for": 1.40, "xg_against": 0.78},
-    "arsenal": {"xg_for": 1.38, "xg_against": 0.72},
-    "chelsea": {"xg_for": 1.25, "xg_against": 1.05},
-    "aston villa": {"xg_for": 1.22, "xg_against": 1.08},
-    "tottenham": {"xg_for": 1.28, "xg_against": 1.15},
-    "newcastle": {"xg_for": 1.18, "xg_against": 1.05},
-    "everton": {"xg_for": 0.92, "xg_against": 1.10},
-    "brentford": {"xg_for": 1.12, "xg_against": 1.20},
-    "brighton": {"xg_for": 1.20, "xg_against": 1.18},
-    "fulham": {"xg_for": 1.05, "xg_against": 1.12},
-    "crystal palace": {"xg_for": 0.95, "xg_against": 1.08},
-    "sunderland": {"xg_for": 0.95, "xg_against": 1.15},
-    "oxford": {"xg_for": 0.85, "xg_against": 1.25},
-    "stockport": {"xg_for": 0.85, "xg_against": 1.20},
+    # Premier League
+    "manchester city": {"xg_for": 1.48, "xg_against": 0.68, "gap": +0.15},
+    "liverpool": {"xg_for": 1.44, "xg_against": 0.74, "gap": +0.10},
+    "arsenal": {"xg_for": 1.40, "xg_against": 0.70, "gap": +0.12},
+    "chelsea": {"xg_for": 1.28, "xg_against": 1.02, "gap": +0.05},
+    "aston villa": {"xg_for": 1.25, "xg_against": 1.05, "gap": -0.04},
+    "tottenham": {"xg_for": 1.30, "xg_against": 1.12, "gap": -0.02},
+    "newcastle": {"xg_for": 1.20, "xg_against": 1.02, "gap": +0.06},
+    "everton": {"xg_for": 0.96, "xg_against": 1.08, "gap": +0.08},
+    "brentford": {"xg_for": 1.15, "xg_against": 1.18, "gap": +0.05},
+    "brighton": {"xg_for": 1.24, "xg_against": 1.15, "gap": +0.14},
 
     # La Liga
-    "real madrid": {"xg_for": 1.45, "xg_against": 0.68},
-    "barcelona": {"xg_for": 1.48, "xg_against": 0.72},
-    "atletico madrid": {"xg_for": 1.25, "xg_against": 0.65},
-    "athletic club": {"xg_for": 1.15, "xg_against": 0.80},
-    "real sociedad": {"xg_for": 1.08, "xg_against": 0.82},
-    "villarreal": {"xg_for": 1.22, "xg_against": 1.15},
-    "sevilla": {"xg_for": 1.05, "xg_against": 1.02},
-    "osasuna": {"xg_for": 0.90, "xg_against": 1.05},
-    "alavés": {"xg_for": 0.78, "xg_against": 1.22},
-    "alaves": {"xg_for": 0.78, "xg_against": 1.22},
+    "real madrid": {"xg_for": 1.46, "xg_against": 0.65, "gap": +0.12},
+    "barcelona": {"xg_for": 1.50, "xg_against": 0.70, "gap": +0.18},
+    "atletico madrid": {"xg_for": 1.26, "xg_against": 0.62, "gap": +0.04},
+    "athletic club": {"xg_for": 1.18, "xg_against": 0.78, "gap": +0.09},
+    "real sociedad": {"xg_for": 1.10, "xg_against": 0.80, "gap": +0.06},
+    "villarreal": {"xg_for": 1.24, "xg_against": 1.12, "gap": +0.05},
 
-    # Dutch Eredivisie
-    "psv": {"xg_for": 1.55, "xg_against": 0.62},
-    "feyenoord": {"xg_for": 1.38, "xg_against": 0.72},
-    "ajax": {"xg_for": 1.30, "xg_against": 0.88},
-    "willem ii": {"xg_for": 0.72, "xg_against": 1.40},
-    "fortuna sittard": {"xg_for": 0.78, "xg_against": 1.32},
+    # Altre Leghe Europee
+    "psv": {"xg_for": 1.58, "xg_against": 0.60, "gap": +0.20},
+    "feyenoord": {"xg_for": 1.40, "xg_against": 0.70, "gap": +0.10},
+    "ajax": {"xg_for": 1.32, "xg_against": 0.85, "gap": +0.05},
+    "sporting": {"xg_for": 1.50, "xg_against": 0.58, "gap": +0.18},
+    "porto": {"xg_for": 1.40, "xg_against": 0.62, "gap": +0.12},
+    "benfica": {"xg_for": 1.44, "xg_against": 0.62, "gap": +0.14},
+    "paris saint germain": {"xg_for": 1.52, "xg_against": 0.65, "gap": +0.16},
+    "bayern": {"xg_for": 1.60, "xg_against": 0.68, "gap": +0.22},
+    "leverkusen": {"xg_for": 1.42, "xg_against": 0.76, "gap": +0.12},
+    "dortmund": {"xg_for": 1.35, "xg_against": 1.02, "gap": +0.04},
 
-    # Primeira Liga Portugal
-    "sporting": {"xg_for": 1.48, "xg_against": 0.60},
-    "porto": {"xg_for": 1.38, "xg_against": 0.65},
-    "benfica": {"xg_for": 1.42, "xg_against": 0.65},
-    "estoril": {"xg_for": 0.78, "xg_against": 1.35},
-    "casa pia": {"xg_for": 0.72, "xg_against": 1.28},
-
-    # Altre Europee
-    "paris saint germain": {"xg_for": 1.50, "xg_against": 0.68},
-    "le havre": {"xg_for": 0.75, "xg_against": 1.30},
-    "bayern": {"xg_for": 1.58, "xg_against": 0.70},
-    "leverkusen": {"xg_for": 1.40, "xg_against": 0.78},
-    "dortmund": {"xg_for": 1.32, "xg_against": 1.05},
-    "mainz": {"xg_for": 0.95, "xg_against": 1.10},
-    "club brugge": {"xg_for": 1.30, "xg_against": 0.85},
-    "zulte": {"xg_for": 0.80, "xg_against": 1.30},
-
-    "default": {"xg_for": 1.00, "xg_against": 1.00}
+    "default": {"xg_for": 1.00, "xg_against": 1.00, "gap": 0.00}
 }
 
-def get_team_xg_factors(team_name: str):
+def get_team_xg_metrics(team_name: str):
     name_low = team_name.lower()
     for t_key, ratings in TEAM_XG_DATABASE.items():
         if t_key != "default" and t_key in name_low:
-            return ratings["xg_for"], ratings["xg_against"]
-    return TEAM_XG_DATABASE["default"]["xg_for"], TEAM_XG_DATABASE["default"]["xg_against"]
+            # Shrinkage Bayesiano per regolarizzare l'xG verso la media del campionato (1.00)
+            xg_f = 0.85 * ratings["xg_for"] + 0.15 * 1.00
+            xg_a = 0.85 * ratings["xg_against"] + 0.15 * 1.00
+            return xg_f, xg_a, ratings.get("gap", 0.00)
+    return 1.00, 1.00, 0.00
 
 def is_high_variance_derby(home: str, away: str) -> bool:
     h, a = home.lower(), away.lower()
@@ -180,25 +165,24 @@ def shrink_edge(raw_edge: float) -> float:
     else:
         return 0.1275 + (raw_edge - 0.15) * 0.40
 
-def calculate_adaptive_kelly(prob: float, odd: float) -> float:
+def calculate_adaptive_kelly(prob: float, odd: float, push_prob: float = 0.0) -> float:
     b = odd - 1.0
-    if b <= 0 or prob <= 0:
+    if b <= 0.0 or prob <= 0.0:
         return 0.0
-    q = 1.0 - prob
-    f_star = (b * prob - q) / b
-    if f_star <= 0:
+    loss_prob = max(0.0, 1.0 - prob - push_prob)
+    f_star = (b * prob - loss_prob) / b
+    if f_star <= 0.0:
         return 0.0
     
-    stake = (f_star / 4.0) * 100
-
+    # Quarter-Kelly con cap rigido massimo all'1.5%
+    stake = (f_star / 4.0) * 100.0
     if odd <= 1.60:
-        max_stake = 2.5
+        max_stake = 1.50
     elif odd <= 1.85:
-        max_stake = 2.0
-    else:
         max_stake = 1.25
-
-    return round(min(max_stake, stake), 2)
+    else:
+        max_stake = 1.00
+    return round(min(max_stake, max(0.50, stake)), 2)
 
 def evaluate_markets(matrix, odds_dict):
     p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
@@ -223,21 +207,21 @@ def evaluate_markets(matrix, odds_dict):
     p_btts_no = 1.0 - p_btts_yes
 
     markets = [
-        {"key": "1", "label": "Vittoria Casa (1)", "prob": p_home, "odd": odds_dict.get("1", 0.0)},
-        {"key": "X", "label": "Pareggio (X)", "prob": p_draw, "odd": odds_dict.get("X", 0.0)},
-        {"key": "2", "label": "Vittoria Trasferta (2)", "prob": p_away, "odd": odds_dict.get("2", 0.0)},
-        {"key": "1X", "label": "Doppia Chance 1X", "prob": p_1x, "odd": odds_dict.get("1X", 0.0)},
-        {"key": "X2", "label": "Doppia Chance X2", "prob": p_x2, "odd": odds_dict.get("X2", 0.0)},
-        {"key": "DNB_1", "label": "Casa Draw No Bet (Rimborso Parità)", "prob": p_dnb_1, "odd": odds_dict.get("DNB_1", 0.0)},
-        {"key": "DNB_2", "label": "Trasferta Draw No Bet (Rimborso Parità)", "prob": p_dnb_2, "odd": odds_dict.get("DNB_2", 0.0)},
-        {"key": "OVER_15", "label": "Over 1.5 Gol", "prob": p_over15, "odd": odds_dict.get("OVER_15", 0.0)},
-        {"key": "UNDER_15", "label": "Under 1.5 Gol", "prob": p_under15, "odd": odds_dict.get("UNDER_15", 0.0)},
-        {"key": "OVER_25", "label": "Over 2.5 Gol", "prob": p_over25, "odd": odds_dict.get("OVER_25", 0.0)},
-        {"key": "UNDER_25", "label": "Under 2.5 Gol", "prob": p_under25, "odd": odds_dict.get("UNDER_25", 0.0)},
-        {"key": "OVER_35", "label": "Over 3.5 Gol", "prob": p_over35, "odd": odds_dict.get("OVER_35", 0.0)},
-        {"key": "UNDER_35", "label": "Under 3.5 Gol", "prob": p_under35, "odd": odds_dict.get("UNDER_35", 0.0)},
-        {"key": "BTTS_YES", "label": "Entrambe Segnano (Gol)", "prob": p_btts_yes, "odd": odds_dict.get("BTTS_YES", 0.0)},
-        {"key": "BTTS_NO", "label": "NoGol", "prob": p_btts_no, "odd": odds_dict.get("BTTS_NO", 0.0)},
+        {"key": "1", "label": "Vittoria Casa (1)", "prob": p_home, "push_prob": 0.0, "odd": odds_dict.get("1", 0.0)},
+        {"key": "X", "label": "Pareggio (X)", "prob": p_draw, "push_prob": 0.0, "odd": odds_dict.get("X", 0.0)},
+        {"key": "2", "label": "Vittoria Trasferta (2)", "prob": p_away, "push_prob": 0.0, "odd": odds_dict.get("2", 0.0)},
+        {"key": "1X", "label": "Doppia Chance 1X", "prob": p_1x, "push_prob": 0.0, "odd": odds_dict.get("1X", 0.0)},
+        {"key": "X2", "label": "Doppia Chance X2", "prob": p_x2, "push_prob": 0.0, "odd": odds_dict.get("X2", 0.0)},
+        {"key": "DNB_1", "label": "Casa Draw No Bet (Rimborso X)", "prob": p_dnb_1, "push_prob": p_draw, "odd": odds_dict.get("DNB_1", 0.0)},
+        {"key": "DNB_2", "label": "Trasferta Draw No Bet (Rimborso X)", "prob": p_dnb_2, "push_prob": p_draw, "odd": odds_dict.get("DNB_2", 0.0)},
+        {"key": "OVER_15", "label": "Over 1.5 Gol", "prob": p_over15, "push_prob": 0.0, "odd": odds_dict.get("OVER_15", 0.0)},
+        {"key": "UNDER_15", "label": "Under 1.5 Gol", "prob": p_under15, "push_prob": 0.0, "odd": odds_dict.get("UNDER_15", 0.0)},
+        {"key": "OVER_25", "label": "Over 2.5 Gol", "prob": p_over25, "push_prob": 0.0, "odd": odds_dict.get("OVER_25", 0.0)},
+        {"key": "UNDER_25", "label": "Under 2.5 Gol", "prob": p_under25, "push_prob": 0.0, "odd": odds_dict.get("UNDER_25", 0.0)},
+        {"key": "OVER_35", "label": "Over 3.5 Gol", "prob": p_over35, "push_prob": 0.0, "odd": odds_dict.get("OVER_35", 0.0)},
+        {"key": "UNDER_35", "label": "Under 3.5 Gol", "prob": p_under35, "push_prob": 0.0, "odd": odds_dict.get("UNDER_35", 0.0)},
+        {"key": "BTTS_YES", "label": "Entrambe Segnano (Gol)", "prob": p_btts_yes, "push_prob": 0.0, "odd": odds_dict.get("BTTS_YES", 0.0)},
+        {"key": "BTTS_NO", "label": "NoGol", "prob": p_btts_no, "push_prob": 0.0, "odd": odds_dict.get("BTTS_NO", 0.0)},
     ]
     return [m for m in markets if m["odd"] and m["odd"] >= 1.30]
 
@@ -268,43 +252,17 @@ def main():
         away_team = item.get("away_team", "")
         odds = item.get("odds", {})
         open_odds = item.get("opening_odds", {})
-        fair_odds = item.get("fair_odds", {})
 
-        o1 = odds.get("1", 2.0)
-        o2 = odds.get("2", 3.0)
-        o_over25 = odds.get("OVER_25", 1.95)
+        # STIMA 100% INDIPENDENTE CON PONDERAZIONE AVVERSARIA SU xG
+        h_xg_f, h_xg_a, h_gap = get_team_xg_metrics(home_team)
+        a_xg_f, a_xg_a, a_gap = get_team_xg_metrics(away_team)
 
-        expected_total = profile["mu_home"] + profile["mu_away"]
-        if o_over25 > 1.20:
-            pace_factor = (1.95 / o_over25) ** 0.45
-            expected_total *= pace_factor
-
-        # Ripartizione volume d'attacco con Fair Odds
-        if fair_odds and "1" in fair_odds and "2" in fair_odds:
-            p_home_fair = 1.0 / fair_odds["1"]
-            p_away_fair = 1.0 / fair_odds["2"]
-        else:
-            p_home_fair = 1.0 / max(1.05, o1)
-            p_away_fair = 1.0 / max(1.05, o2)
-
-        strength_sum = p_home_fair + p_away_fair
-        share_home = p_home_fair / strength_sum if strength_sum > 0 else 0.55
-        share_away = p_away_fair / strength_sum if strength_sum > 0 else 0.45
-
-        lambda_h = expected_total * share_home
-        mu_a = expected_total * share_away
+        # Output atteso: produzione offensiva pesata per la concessione difensiva avversaria
+        lambda_h = profile["mu_home"] * (h_xg_f * a_xg_a)
+        mu_a = profile["mu_away"] * (a_xg_f * h_xg_a)
         rho = profile["tau"]
 
-        # MODULO EXPECTED GOALS (Calibrazione Fine)
-        home_xg_att, home_xg_def = get_team_xg_factors(home_team)
-        away_xg_att, away_xg_def = get_team_xg_factors(away_team)
-
-        xg_home_multiplier = 0.70 + 0.30 * (home_xg_att * away_xg_def)
-        xg_away_multiplier = 0.70 + 0.30 * (away_xg_att * home_xg_def)
-
-        lambda_h *= xg_home_multiplier
-        mu_a *= xg_away_multiplier
-
+        # Modulazione fatica per club impegnati nelle coppe europee
         h_low, a_low = home_team.lower(), away_team.lower()
         if any(team in h_low for team in EUROPEAN_COMPETITORS):
             lambda_h *= 0.93
@@ -324,7 +282,7 @@ def main():
             
             edge = shrink_edge(raw_edge)
             ev_ratio = 1.0 + edge
-            stake = calculate_adaptive_kelly(prob, odd)
+            stake = calculate_adaptive_kelly(prob, odd, ev.get("push_prob", 0.0))
 
             op_odd = open_odds.get(m_key, odd)
             line_shift_pct = 0.0
@@ -334,21 +292,24 @@ def main():
             tier = "STANDARD"
             is_official = False
 
-            # Filtro Smart Money con drift limitato a +3.5%
+            # Smart Money Filter (Anti-drift <= +3.5%)
             has_heavy_drift = line_shift_pct >= 3.5
             is_safe_fixture = not is_derby and not has_heavy_drift
 
-            if prob >= 0.65 and 1.40 <= odd <= 3.00 and edge > 0.02 and is_safe_fixture:
+            # Criterio di Valore Modello B (Rolling xG)
+            if prob >= 0.65 and 1.40 <= odd <= 3.00 and edge >= 0.025 and is_safe_fixture:
                 is_official = True
                 tier = "OFFICIAL"
 
                 if prob >= 0.72 and odd >= 1.45 and edge >= 0.05:
                     tier = "GOLD"
 
-                if (prob >= 0.66 and odd >= 1.65 and edge >= 0.09) or (edge >= 0.07 and line_shift_pct <= -2.5):
+                if (prob >= 0.66 and odd >= 1.65 and edge >= 0.08) or (edge >= 0.06 and line_shift_pct <= -2.5):
                     tier = "DIAMOND"
 
-            efficiency_score = (prob * 1.5) + (edge * 2.0)
+            # Composite Efficiency Score: include il Performance Gap combinato delle squadre
+            combined_gap = h_gap - a_gap if m_key in ["1", "1X", "DNB_1"] else (a_gap - h_gap if m_key in ["2", "X2", "DNB_2"] else 0.0)
+            efficiency_score = (prob * 1.5) + (edge * 2.0) + (combined_gap * 0.5) - (max(0.0, line_shift_pct / 100.0) * 0.5)
 
             c_obj = {
                 "match_id": m_id,
@@ -364,6 +325,7 @@ def main():
                 "estimated_probability": round(prob, 4),
                 "edge": round(edge, 4),
                 "ev_ratio": round(ev_ratio, 3),
+                "performance_gap": round(combined_gap, 2),
                 "suggested_stake_pct": stake,
                 "tier": tier,
                 "efficiency_score": efficiency_score,
@@ -375,6 +337,7 @@ def main():
                 match_candidates[m_id] = []
             match_candidates[m_id].append(c_obj)
 
+    # 1 SOLO MERCATO PER MATCH (Zero auto-cannibalizzazione)
     tier_weight = {"DIAMOND": 300, "GOLD": 200, "OFFICIAL": 100, "STANDARD": 0}
     diversified_picks = []
 
@@ -387,10 +350,19 @@ def main():
 
     officials = [p for p in diversified_picks if p["is_official"]]
     officials.sort(
-        key=lambda x: (tier_weight.get(x["tier"], 0), x["estimated_probability"]), 
+        key=lambda x: (tier_weight.get(x["tier"], 0), x["efficiency_score"]), 
         reverse=True
     )
+    
+    # Cap a un massimo di 5 selezioni (se presenti, altrimenti quelle effettivamente idonee)
     top_5_officials = officials[:5]
+
+    # Controllo Esposizione Totale Giornaliera (Cap 3.0% complessivo sul bankroll)
+    total_exposure = sum(p["suggested_stake_pct"] for p in top_5_officials)
+    if total_exposure > 3.0:
+        scale_ratio = 3.0 / total_exposure
+        for p in top_5_officials:
+            p["suggested_stake_pct"] = round(p["suggested_stake_pct"] * scale_ratio, 2)
 
     official_match_ids = {p["match_id"] for p in top_5_officials}
     radar_pool = [
@@ -401,7 +373,7 @@ def main():
     top_10_radar = radar_pool[:10]
 
     output_payload = {
-        "engine": "Model B (Dixon-Coles + Rolling xG)",
+        "engine": "Model B (Dixon-Coles + Rolling xG Independent)",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_officials": len(top_5_officials),
         "diamond_count": sum(1 for p in top_5_officials if p["tier"] == "DIAMOND"),
@@ -414,14 +386,8 @@ def main():
     print(f"[Model xG] Analisi Conclusa: {len(top_5_officials)} selezioni generate in latest_xg.json.")
 
     tracker_xg_data = {
-        "total_bets": 0,
-        "won": 0,
-        "lost": 0,
-        "void": 0,
-        "win_rate": 0.0,
-        "net_profit_units": 0.0,
-        "roi_pct": 0.0,
-        "bets": []
+        "total_bets": 0, "won": 0, "lost": 0, "void": 0,
+        "win_rate": 0.0, "net_profit_units": 0.0, "roi_pct": 0.0, "bets": []
     }
     
     if TRACKER_XG_FILE.exists():
@@ -448,6 +414,7 @@ def main():
             bet_id = f"{op['match_id']}_{op['market_key']}"
             tracker_xg_data["bets"].append({
                 "id": bet_id,
+                "event_id": op["match_id"],
                 "date": op["commence_time"],
                 "match": op["match"],
                 "league": op["league"],
@@ -455,6 +422,8 @@ def main():
                 "market_key": op["market_key"],
                 "odd": op["odd"],
                 "prob": op["estimated_probability"],
+                "edge": op["edge"],
+                "performance_gap": op["performance_gap"],
                 "stake_pct": op["suggested_stake_pct"],
                 "tier": op["tier"],
                 "status": "PENDING",
