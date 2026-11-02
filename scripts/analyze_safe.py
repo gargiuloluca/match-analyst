@@ -1,11 +1,12 @@
 """
-analyze_safe.py — AtmBetSignal High-Probability Sniper Engine (Model C: Safe >= 74%, Quota >= 1.32)
+analyze_safe.py — AtmBetSignal High-Probability Sniper Engine (Model C: Safe80 Top 5 @ Quota >= 1.40)
 Filtra con precisione matematica e alimenta in automatico data/tracker_safe.json:
+- Quota minima assoluta: >= 1.40 (nessun compromesso al ribasso)
 - Probabilità stimata: >= 74.0%
-- Quota minima: >= 1.32
-- Mercati valutati: 1X2, Doppia Chance (1X, X2), Draw No Bet (DNB), Over 1.5, Under 3.5
-- Filtro Smart Money: scarta selezioni con quota in rialzo anomalo (> +3.5% vs apertura)
-- Filtro De-Correlazione: massimo 1 selezione a valore più alto per singolo match
+- Selezione Top 5: estrae solo le migliori 5 opportunità della giornata
+- Riconoscimento Fair Odds ed eliminazione dell'aggio del bookmaker
+- Filtro Smart Money: scarta variazioni in salita oltre il +2.5% vs apertura
+- Filtro De-Correlazione: massimo 1 selezione a valore più alto per partita
 Salva i risultati separatamente in data/latest_safe.json e data/tracker_safe.json.
 """
 
@@ -19,17 +20,18 @@ FIXTURES_FILE = DATA_DIR / "fixtures.json"
 OUTPUT_SAFE_FILE = DATA_DIR / "latest_safe.json"
 TRACKER_SAFE_FILE = DATA_DIR / "tracker_safe.json"
 
+# Profili calibrati con tau correttivo potenziato per leghe tattiche
 LEAGUE_GOAL_PROFILES = {
-    "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.05},
+    "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.06},
     "soccer_epl": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
-    "soccer_spain_la_liga": {"mu_home": 1.40, "mu_away": 1.05, "tau": -0.06},
+    "soccer_spain_la_liga": {"mu_home": 1.38, "mu_away": 1.05, "tau": -0.07},
     "soccer_germany_bundesliga": {"mu_home": 1.70, "mu_away": 1.35, "tau": -0.03},
-    "soccer_france_ligue_one": {"mu_home": 1.40, "mu_away": 1.10, "tau": -0.05},
+    "soccer_france_ligue_one": {"mu_home": 1.38, "mu_away": 1.08, "tau": -0.08},
     "soccer_uefa_champs_league": {"mu_home": 1.60, "mu_away": 1.30, "tau": -0.04},
     "soccer_uefa_europa_league": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
     "soccer_netherlands_eredivisie": {"mu_home": 1.75, "mu_away": 1.30, "tau": -0.02},
-    "soccer_england_championship": {"mu_home": 1.42, "mu_away": 1.12, "tau": -0.05},
-    "soccer_portugal_primeira_liga": {"mu_home": 1.48, "mu_away": 1.02, "tau": -0.06},
+    "soccer_england_championship": {"mu_home": 1.40, "mu_away": 1.10, "tau": -0.07},
+    "soccer_portugal_primeira_liga": {"mu_home": 1.48, "mu_away": 1.02, "tau": -0.07},
     "soccer_belgium_first_div": {"mu_home": 1.58, "mu_away": 1.28, "tau": -0.04},
     "soccer_england_league1": {"mu_home": 1.40, "mu_away": 1.15, "tau": -0.05},
     "soccer_england_efl_cup": {"mu_home": 1.50, "mu_away": 1.20, "tau": -0.04},
@@ -68,7 +70,7 @@ def normalize_match_str(s: str) -> str:
         n = n.replace(drop, "")
     return n
 
-def evaluate_sniper_markets(matrix, odds_dict, open_odds_dict):
+def evaluate_sniper_markets(matrix, odds_dict, open_odds_dict, fair_odds_dict):
     p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
     p_draw = sum(prob for (x, y), prob in matrix.items() if x == y)
     p_away = sum(prob for (x, y), prob in matrix.items() if x < y)
@@ -96,19 +98,23 @@ def evaluate_sniper_markets(matrix, odds_dict, open_odds_dict):
 
     valid = []
     for m in markets:
-        # FILTRO BASE: Probabilità >= 74% e Quota >= 1.32
-        if m["odd"] >= 1.32 and m["prob"] >= 0.74:
+        # FILTRO DI FERRO: Quota minima >= 1.40 e Probabilità stimata >= 74%
+        if m["odd"] >= 1.40 and m["prob"] >= 0.74:
             edge = (m["prob"] * m["odd"]) - 1.0
-            if edge < 0.015:  # Valore atteso reale (Edge minimo +1.5%)
+            if edge < 0.02:  # Minimo 2% di valore atteso effettivo
                 continue
 
-            # FILTRO SMART MONEY / MARKET SHIFT:
-            # Calcola lo scostamento percentuale rispetto all'apertura
+            # FILTRO SMART MONEY STRINGENTE:
             op_odd = open_odds_dict.get(m["key"], m["odd"])
             line_shift_pct = round(((m["odd"] - op_odd) / op_odd) * 100, 1) if op_odd > 0 else 0.0
 
-            # Se la quota è salita di oltre il 3.5% (drift sfavorevole del mercato), scarta l'evento
-            if line_shift_pct > 3.5:
+            # Scarta se la quota è salita oltre il +2.5% rispetto all'apertura
+            if line_shift_pct > 2.5:
+                continue
+
+            # Validazione su Fair Odds se presenti
+            fair_odd = fair_odds_dict.get(m["key"], 0.0)
+            if fair_odd > 0 and m["odd"] < (fair_odd * 0.95):
                 continue
 
             m["edge"] = round(edge, 4)
@@ -137,6 +143,7 @@ def main():
 
         odds = item.get("odds", {})
         open_odds = item.get("opening_odds", odds)
+        fair_odds = item.get("fair_odds", {})
 
         o1 = odds.get("1", 2.0)
         o2 = odds.get("2", 3.0)
@@ -158,7 +165,7 @@ def main():
         mu_a = expected_total * share_a
 
         matrix = build_score_matrix(lambda_h, mu_a, profile["tau"])
-        valid_markets = evaluate_sniper_markets(matrix, odds, open_odds)
+        valid_markets = evaluate_sniper_markets(matrix, odds, open_odds, fair_odds)
 
         # Raccoglie i candidati per il singolo match
         match_candidates = []
@@ -180,31 +187,35 @@ def main():
                 "estimated_probability": round(mkt["prob"], 4),
                 "edge": mkt["edge"],
                 "suggested_stake_pct": stake,
-                "tier": "SNIPER 80+"
+                "tier": "SAFE 80+"
             })
 
-        # FILTRO DE-CORRELAZIONE: Se ci sono più esiti validi sullo stesso match, tiene il migliore
+        # DE-CORRELAZIONE: Massimo 1 selezione per match (la migliore per edge e probabilità)
         if match_candidates:
             match_candidates.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
             all_candidate_picks.append(match_candidates[0])
 
-    # Ordina la selezione finale per probabilità ed edge
+    # Ordinamento finale per probabilità ed Edge
     all_candidate_picks.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
 
+    # SELEZIONE TOP 5 ASSOLUTA: Isolamento rigoroso delle 5 migliori perle
+    top_5_picks = all_candidate_picks[:5]
+
     payload = {
-        "engine": "Model C (Sniper Safe >= 74% @ >= 1.32)",
+        "engine": "Model C (Safe80 Top 5 Sniper >= 74% @ >= 1.40)",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "min_probability": "74%",
-        "min_odd": 1.32,
-        "total_officials": len(all_candidate_picks),
-        "all_selected_picks": all_candidate_picks,
+        "min_odd": 1.40,
+        "max_picks": 5,
+        "total_officials": len(top_5_picks),
+        "all_selected_picks": top_5_picks,
         "radar_watchlist": []
     }
 
     OUTPUT_SAFE_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model C Sniper] Analisi completata: trovate {len(all_candidate_picks)} selezioni d'alta qualità.")
+    print(f"[Model C Safe80] Analisi completata: isolate le Top {len(top_5_picks)} perle (Quota >= 1.40).")
 
-    # Sincronizzazione Tracker Safe
+    # Sincronizzazione Tracker Safe80
     tracker_safe_data = {
         "total_bets": 0, "won": 0, "lost": 0, "void": 0,
         "win_rate": 0.0, "net_profit_units": 0.0, "roi_pct": 0.0, "bets": []
@@ -225,7 +236,7 @@ def main():
         existing_pairs.add((m_norm, mkt))
 
     new_added = 0
-    for op in all_candidate_picks:
+    for op in top_5_picks:
         op_match_norm = normalize_match_str(op["match"])
         op_mkt = str(op["market_key"]).strip().upper()
         pair_key = (op_match_norm, op_mkt)
@@ -251,7 +262,7 @@ def main():
 
     tracker_safe_data["total_bets"] = len(tracker_safe_data["bets"])
     TRACKER_SAFE_FILE.write_text(json.dumps(tracker_safe_data, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model C Sniper] Tracker sincronizzato: {new_added} nuove selezioni aggiunte.")
+    print(f"[Model C Safe80] Tracker sincronizzato: {new_added} nuove selezioni aggiunte.")
 
 if __name__ == "__main__":
     main()
