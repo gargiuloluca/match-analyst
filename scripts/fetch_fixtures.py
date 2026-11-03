@@ -31,29 +31,35 @@ LEAGUES = [
     # --- COMPETIZIONI EUROPEE ---
     "soccer_uefa_champs_league",
     "soccer_uefa_europa_league",
-    "soccer_uefa_conference_league",  # Aggiunta: Conference League (ottima per match asimmetrici)
+    "soccer_uefa_conference_league",
     
     # --- CAMPIONATI CADETTI AD ALTA PREVEDIBILITÀ ---
-    "soccer_efl_champ",            # Championship Inglese
-    "soccer_italy_serie_b",        # Serie B Italiana (tattica, ottima per Under e DNB)
-    "soccer_spain_segunda_division", # Segunda Division Spagnola
+    "soccer_efl_champ",
+    "soccer_italy_serie_b",
+    "soccer_spain_segunda_division",
     
     # --- NORD EUROPA & GOAL LEAGUES (Alto valore statistico) ---
     "soccer_netherlands_eredivisie",
     "soccer_portugal_primeira_liga",
     "soccer_belgium_first_div",
-    "soccer_turkey_super_lig",       # Super Lig Turca
-    "soccer_scotland_premiership",   # Premiership Scozzese
-    "soccer_denmark_superliga",      # Superliga Danese
-    "soccer_sweden_allsvenskan",     # Allsvenskan Svedese
-    "soccer_norway_eliteserien",     # Eliteserien Norvegese
-    "soccer_austria_bundesliga",     # Bundesliga Austriaca
-    "soccer_switzerland_super_league", # Super League Svizzera
+    "soccer_turkey_super_lig",
+    "soccer_scotland_premiership",
+    "soccer_denmark_superliga",
+    "soccer_sweden_allsvenskan",
+    "soccer_norway_eliteserien",
+    "soccer_austria_bundesliga",
+    "soccer_switzerland_super_league",
     
     # --- INGHILTERRA LOWER LEAGUES ---
     "soccer_england_league1",
     "soccer_england_league2",
-    "soccer_england_efl_cup"
+    "soccer_england_efl_cup",
+
+    # --- EXTRA EUROPE & VALORE INTERNAZIONALE AGGIUNTIVO ---
+    "soccer_poland_ekstraklasa",
+    "soccer_argentina_primera_division",
+    "soccer_brazil_campeonato_serie_a",
+    "soccer_usa_mls"
 ]
 
 def get_fixtures_for_league(sport_key: str):
