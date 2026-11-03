@@ -21,18 +21,38 @@ ODDSAPI_KEY_RAW = os.environ.get("ODDSAPI_KEY", "").strip()
 API_KEYS = [k.strip() for k in ODDSAPI_KEY_RAW.split(",") if k.strip()]
 
 LEAGUES = [
+    # --- TOP CAMPIONATI EUROPEI ---
     "soccer_italy_serie_a",
     "soccer_spain_la_liga",
     "soccer_epl",
     "soccer_germany_bundesliga",
     "soccer_france_ligue_one",
+    
+    # --- COMPETIZIONI EUROPEE ---
     "soccer_uefa_champs_league",
     "soccer_uefa_europa_league",
-    "soccer_efl_champ",
+    "soccer_uefa_conference_league",  # Aggiunta: Conference League (ottima per match asimmetrici)
+    
+    # --- CAMPIONATI CADETTI AD ALTA PREVEDIBILITÀ ---
+    "soccer_efl_champ",            # Championship Inglese
+    "soccer_italy_serie_b",        # Serie B Italiana (tattica, ottima per Under e DNB)
+    "soccer_spain_segunda_division", # Segunda Division Spagnola
+    
+    # --- NORD EUROPA & GOAL LEAGUES (Alto valore statistico) ---
     "soccer_netherlands_eredivisie",
     "soccer_portugal_primeira_liga",
     "soccer_belgium_first_div",
+    "soccer_turkey_super_lig",       # Super Lig Turca
+    "soccer_scotland_premiership",   # Premiership Scozzese
+    "soccer_denmark_superliga",      # Superliga Danese
+    "soccer_sweden_allsvenskan",     # Allsvenskan Svedese
+    "soccer_norway_eliteserien",     # Eliteserien Norvegese
+    "soccer_austria_bundesliga",     # Bundesliga Austriaca
+    "soccer_switzerland_super_league", # Super League Svizzera
+    
+    # --- INGHILTERRA LOWER LEAGUES ---
     "soccer_england_league1",
+    "soccer_england_league2",
     "soccer_england_efl_cup"
 ]
 
