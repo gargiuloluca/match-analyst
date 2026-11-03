@@ -31,7 +31,6 @@ LEAGUES = [
     # --- COMPETIZIONI EUROPEE ---
     "soccer_uefa_champs_league",
     "soccer_uefa_europa_league",
-    "soccer_uefa_conference_league",
     
     # --- CAMPIONATI CADETTI AD ALTA PREVEDIBILITÀ ---
     "soccer_efl_champ",
@@ -42,8 +41,6 @@ LEAGUES = [
     "soccer_netherlands_eredivisie",
     "soccer_portugal_primeira_liga",
     "soccer_belgium_first_div",
-    "soccer_turkey_super_lig",
-    "soccer_scotland_premiership",
     "soccer_denmark_superliga",
     "soccer_sweden_allsvenskan",
     "soccer_norway_eliteserien",
@@ -55,10 +52,9 @@ LEAGUES = [
     "soccer_england_league2",
     "soccer_england_efl_cup",
 
-    # --- EXTRA EUROPE & VALORE INTERNAZIONALE AGGIUNTIVO ---
+    # --- EXTRA EUROPE & VALORE INTERNAZIONALE VERIFICATO ---
     "soccer_poland_ekstraklasa",
     "soccer_argentina_primera_division",
-    "soccer_brazil_campeonato_serie_a",
     "soccer_usa_mls"
 ]
 
