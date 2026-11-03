@@ -1,6 +1,6 @@
 """
-send_telegram.py — Report Istituzionale Giornaliero AtmBetSignal
-Evidenzia giocate DIAMOND, GOLD, OFFICIAL e flussi Smart Money.
+send_telegram.py — Report Istituzionale Master Top 5 AtmBetSignal
+Invia su Telegram esclusivamente le Top 5 opportunità assolute filtrate dall'AI Master Selector.
 """
 
 import os
@@ -12,7 +12,7 @@ BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-LATEST_FILE = DATA_DIR / "latest.json"
+LATEST_MASTER_FILE = DATA_DIR / "latest_master.json"
 
 def send_message(text: str):
     if not BOT_TOKEN or not CHAT_ID:
@@ -32,54 +32,57 @@ def send_message(text: str):
         print(f"Errore invio Telegram: {r.status_code} — {r.text}")
 
 def main():
-    if not LATEST_FILE.exists():
-        print("latest.json non trovato.")
+    if not LATEST_MASTER_FILE.exists():
+        print("latest_master.json non trovato.")
         return
 
-    data = json.loads(LATEST_FILE.read_text(encoding="utf-8"))
-    officials = data.get("all_selected_picks", [])
-    radar = data.get("radar_watchlist", [])
+    data = json.loads(LATEST_MASTER_FILE.read_text(encoding="utf-8"))
+    selections = data.get("selections", [])
 
     lines = []
-    lines.append("<b>🏧 AtmBetSignal — Intelligence Report</b>")
-    lines.append("<i>Modello Bivariato Dixon-Coles & Smart Money Flow</i>\n")
+    lines.append("<b>🏧 AtmBetSignal — Master AI Intelligence Report</b>")
+    lines.append("<i>Selezione Istituzionale di Élite (Top 5 Giornaliere)</i>\n")
 
-    if not officials:
-        lines.append("🛡️ <b>Capitale Protetto:</b> Nessun evento del palinsesto supera la soglia istituzionale del 65% o rispetta i vincoli di flusso di quota. Zero scommesse forzate per preservare il bankroll.")
+    if not selections:
+        lines.append("🛡️ <b>Capitale Protetto:</b> Nessuna opportunità odierna ha superato i rigorosi filtri di qualità del Master Selector. Zero scommesse forzate per preservare il bankroll.")
     else:
-        lines.append(f"🎯 <b>TOP {len(officials)} SELEZIONI UFFICIALI (Soglia ≥ 65%)</b>\n")
-        for i, p in enumerate(officials, 1):
-            tier = p.get("tier", "OFFICIAL")
-            badge = "🎯 SEGNALE PRO"
-            if tier == "DIAMOND":
-                badge = "💎 <b>DIAMOND PICK (Massimo Edge & Smart Money)</b>"
-            elif tier == "GOLD":
-                badge = "🥇 <b>GOLD PICK (Super Affidabilità)</b>"
+        lines.append(f"🎯 <b>LE TOP {len(selections)} OCCASIONI ASSOLUTE DELLA GIORNATA</b>\n")
+        
+        for i, p in enumerate(selections, 1):
+            # Gestione flessibile dei campi tra i vari motori
+            home = p.get("home_team", "")
+            away = p.get("away_team", "")
+            match_name = p.get("match", f"{home} - {away}" if home and away else "Match")
+            league = p.get("league_name", p.get("league", "Campionato Internazionale"))
+            
+            outcome = p.get("outcome_label", p.get("market", "Esito Consigliato"))
+            
+            # Estrazione quota (supporta 'odds' come dizionario o float, 'odd', 'price')
+            raw_odds = p.get("odds", p.get("odd", p.get("price", 1.80)))
+            if isinstance(raw_odds, dict):
+                # Se è un dizionario, prendiamo la quota principale dell'esito o default
+                odd_val = float(raw_odds.get("1", raw_odds.get("OVER_25", 1.80)))
+            else:
+                odd_val = float(raw_odds)
 
-            prob_pct = f"{p['estimated_probability'] * 100:.1f}%"
-            edge_pct = f"{p['edge'] * 100:+.1f}%"
-            shift = p.get("line_shift_pct", 0.0)
-            shift_tag = f" | Quota: {shift:+.1f}%" if shift != 0.0 else ""
+            score = p.get("master_score", 0.0)
+            stake = p.get("fund_stake_units", p.get("suggested_stake_pct", 1.0))
+
+            badge = f"🔥 <b>RANK #{i} (AI Score: {score}/100)</b>"
 
             lines.append(f"{badge}")
-            lines.append(f"⚽ <b>{p['match']}</b>")
-            lines.append(f"🏆 {p['league']}")
-            lines.append(f"📍 Esito: <b>{p['outcome_label']}</b> @ <b>{p['odd']:.2f}</b>")
-            lines.append(f"📊 Stima: <b>{prob_pct}</b> | Edge: <code>{edge_pct}</code>{shift_tag}")
-            lines.append(f"💰 Stake Kelly: <b>{p['suggested_stake_pct']}% del Bankroll</b>\n")
+            lines.append(f"⚽ <b>{match_name}</b>")
+            lines.append(f"🏆 {league}")
+            lines.append(f"📍 Esito: <b>{outcome}</b> @ <b>{odd_val:.2f}</b>")
+            lines.append(f"💰 Stake Consigliato: <b>{stake}% del Bankroll</b>\n")
 
-    if radar:
-        lines.append("─────────────────────")
-        lines.append(f"📡 <b>WATCHLIST RADAR ({len(radar)} Match per Studio)</b>")
-        lines.append("<i>(Quote / Esiti a scopo puramente statistico)</i>\n")
-        for i, r in enumerate(radar, 1):
-            r_prob = f"{r['estimated_probability'] * 100:.1f}%"
-            lines.append(f"{i}. <b>{r['match']}</b>")
-            lines.append(f"   ↳ {r['outcome_label']} @ {r['odd']:.2f} (Prob: {r_prob})")
-
-    lines.append("\n🔗 <i>Verifica il track-record e la dashboard sul portale web.</i>")
+    lines.append("─────────────────────")
+    lines.append("🔗 <i>Verifica il track-record e la dashboard sul portale web.</i>")
 
     send_message("\n".join(lines))
+
+if __name__ == "__main__":
+    main()
 
 if __name__ == "__main__":
     main()
