@@ -93,6 +93,7 @@
     .badge-official { background: var(--accent); color: #000; }
     .badge-radar { background: #334155; color: #cbd5e1; }
     .badge-sniper { background: #a855f7; color: #fff; }
+    .badge-master { background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; }
 
     /* Barra Controllo Operativo Pipeline */
     .control-card {
@@ -173,7 +174,7 @@
       font-family: 'JetBrains Mono', monospace;
     }
 
-    /* Selettore Motori A / B / C */
+    /* Selettore Motori Esteso */
     .engine-switch {
       display: flex;
       gap: 10px;
@@ -186,20 +187,21 @@
     }
     .engine-btn {
       flex: 1;
-      min-width: 220px;
+      min-width: 170px;
       padding: 12px 14px;
       border-radius: 8px;
       border: 1px solid var(--border);
       background: var(--card-bg);
       color: var(--muted);
       font-weight: 700;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       cursor: pointer;
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
+      text-align: center;
     }
     .engine-btn.active {
       background: #0284c7;
@@ -338,16 +340,22 @@
         <div id="actionStatusMsg"></div>
       </div>
 
-      <!-- SELETTORE MOTORI A / B / C -->
+      <!-- SELETTORE MOTORI ESTESO (A, B, C, D, Master E) -->
       <div class="engine-switch">
         <button id="btn-official" class="engine-btn active" onclick="switchEngine('official')">
-          🟢 Motore Ufficiale (Dixon-Coles)
+          🟢 Ufficiale
         </button>
         <button id="btn-xg" class="engine-btn" onclick="switchEngine('xg')">
-          🧪 Lab Sperimentale (Rolling xG)
+          🧪 xG Lab
         </button>
         <button id="btn-safe" class="engine-btn" onclick="switchEngine('safe')">
-          🛡️ Safe80 (Top 5 | Prob ≥ 74% | Quota ≥ 1.40)
+          🛡️ Safe80
+        </button>
+        <button id="btn-fund" class="engine-btn" onclick="switchEngine('fund')">
+          🏦 Fondo D
+        </button>
+        <button id="btn-master" class="engine-btn" onclick="switchEngine('master')">
+          🔥 Master Top 5
         </button>
       </div>
 
@@ -417,7 +425,7 @@
 
     const GITHUB_OWNER = "gargiuloluca";
     const GITHUB_REPO = "match-analyst";
-    const WORKFLOW_ID = "daily-analysis.yml";
+    const WORKFLOW_ID = "run-unified-pipeline.yml";
 
     const ENGINE_CONFIG = {
       official: {
@@ -437,6 +445,18 @@
         tracker: 'data/tracker_safe.json',
         label: 'Safe80 Cecchino (Quota ≥ 1.40 | Prob ≥ 74%)',
         officialsTitle: '🛡️ Safe80 Cecchino — Top 5 Assolute (Probabilità ≥ 74% @ Quota ≥ 1.40)'
+      },
+      fund: {
+        latest: 'data/latest_fund.json',
+        tracker: 'data/tracker_fund.json',
+        label: 'Fondo Istituzionale (Modello D)',
+        officialsTitle: '🏦 Allocazioni Fondo Istituzionale (Risk Parity & Kelly Dinamico)'
+      },
+      master: {
+        latest: 'data/latest_master.json',
+        tracker: 'data/tracker_master.json',
+        label: 'Master Selector AI (Top 5 Assolute)',
+        officialsTitle: '🔥 Master Selector AI — Le Migliori 5 Opportunità della Giornata'
       }
     };
 
@@ -550,6 +570,8 @@
       document.getElementById('btn-official').classList.toggle('active', engine === 'official');
       document.getElementById('btn-xg').classList.toggle('active', engine === 'xg');
       document.getElementById('btn-safe').classList.toggle('active', engine === 'safe');
+      document.getElementById('btn-fund').classList.toggle('active', engine === 'fund');
+      document.getElementById('btn-master').classList.toggle('active', engine === 'master');
 
       loadCurrentEngineViews();
     }
@@ -575,16 +597,17 @@
           return r.json();
         })
         .then(d => {
-          const officials = d.all_selected_picks || [];
+          const officials = d.selections || d.all_selected_picks || [];
           if (officials.length === 0) {
             offCont.innerHTML = '<p style="color: var(--muted); padding: 12px; background: var(--card-bg); border-radius: 8px;">Nessuna selezione per questo modello oggi. Capitale protetto.</p>';
           } else {
             let html = '';
             officials.forEach((p, i) => {
-              const prob = ((p.estimated_probability || 0) * (p.estimated_probability <= 1 ? 100 : 1)).toFixed(1);
+              const prob = ((p.estimated_probability || p.probability || 0) * (p.estimated_probability <= 1 ? 100 : 1)).toFixed(1);
               const edge = (((p.edge || 0)) * 100).toFixed(1);
+              const score = p.master_score ? ` | AI Score: <b>${p.master_score}/100</b>` : '';
               
-              let badgeHtml = `<span class="badge badge-official">TOP PICK #${i+1}</span>`;
+              let badgeHtml = `<span class="badge badge-master">🔥 RANK #${i+1}</span>`;
               let borderStyle = 'border: 1px solid var(--border);';
 
               if (p.tier === 'DIAMOND') {
@@ -593,21 +616,29 @@
               } else if (p.tier === 'GOLD') {
                 badgeHtml = `<span class="badge badge-gold">🥇 GOLD PICK</span>`;
                 borderStyle = 'border: 1px solid #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);';
-              } else if (p.tier === 'SAFE 80+' || p.tier === 'SNIPER 80+') {
-                badgeHtml = `<span class="badge badge-sniper">🛡️ SAFE 80+</span>`;
-                borderStyle = 'border: 1px solid #a855f7; box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);';
+              } else if (p.master_score) {
+                badgeHtml = `<span class="badge badge-master">🔥 MASTER TOP #${i+1}</span>`;
+                borderStyle = 'border: 1px solid #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);';
+              } else {
+                badgeHtml = `<span class="badge badge-official">TOP PICK #${i+1}</span>`;
               }
+
+              const matchName = p.match || `${p.home_team || ''} vs ${p.away_team || ''}`;
+              const leagueName = p.league || p.league_name || '';
+              const outcomeLabel = p.outcome_label || p.market || '';
+              const oddVal = Number(p.odd || p.odds || 1.80).toFixed(2);
+              const stakeVal = p.fund_stake_units || p.suggested_stake_pct || 1.0;
 
               html += `
                 <div class="pick-item" style="${borderStyle}">
                   <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
                     ${badgeHtml}
-                    <span style="color: var(--muted); font-size: 0.8rem;">${p.league || ''}</span>
+                    <span style="color: var(--muted); font-size: 0.8rem;">${leagueName}</span>
                   </div>
-                  <h3 style="margin-bottom: 4px; font-size: 1.1rem;">${p.match}</h3>
-                  <p style="color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 6px;">🎯 Esito: ${p.outcome_label} @ ${Number(p.odd).toFixed(2)}</p>
+                  <h3 style="margin-bottom: 4px; font-size: 1.1rem;">${matchName}</h3>
+                  <p style="color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 6px;">🎯 Esito: ${outcomeLabel} @ ${oddVal}</p>
                   <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--muted);">
-                    Probabilità: ${prob}% | Stake Kelly: ${p.suggested_stake_pct}% | Edge: +${edge}%
+                    Stake: ${stakeVal}%${score}
                   </div>
                 </div>
               `;
