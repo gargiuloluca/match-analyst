@@ -1,8 +1,8 @@
 """
-fetch_fixtures.py — AtmBetSignal Odds Ingestion & Normalization Engine (V3 Robust)
+fetch_fixtures.py — AtmBetSignal Odds Ingestion & Normalization Engine (V3 Robust - Day & Night Focus)
 - Fallback multi-chiave API con gestione header di quota residua
 - Parsing robusto di quote 1X2 (h2h) e Totali indipendentemente dal formato bookmaker
-- Finestra temporale dinamica a 72 ore (copre turni infrasettimanali e coppe)
+- Finestra temporale estesa: include tutto il giorno in corso fino alle 05:00 del mattino seguente (UTC)
 - Filtro liquidità: overround <= 7.5% per evitare lavagne opache
 - Generazione automatica di Fair Odds de-marginalizzate
 - Archiviazione atomica con ID nativo in data/fixtures.json
@@ -20,7 +20,6 @@ FIXTURES_FILE = DATA_DIR / "fixtures.json"
 ODDSAPI_KEY_RAW = os.environ.get("ODDSAPI_KEY", "").strip()
 API_KEYS = [k.strip() for k in ODDSAPI_KEY_RAW.split(",") if k.strip()]
 
-# Chiavi ufficiali verificate The Odds API
 LEAGUES = [
     "soccer_italy_serie_a",
     "soccer_spain_la_liga",
@@ -29,7 +28,7 @@ LEAGUES = [
     "soccer_france_ligue_one",
     "soccer_uefa_champs_league",
     "soccer_uefa_europa_league",
-    "soccer_efl_champ",            # Corretto: era soccer_england_championship (404)
+    "soccer_efl_champ",
     "soccer_netherlands_eredivisie",
     "soccer_portugal_primeira_liga",
     "soccer_belgium_first_div",
@@ -73,7 +72,6 @@ def extract_market_odds(bookmakers: list, home_team: str, away_team: str):
     h_clean = home_team.strip().lower()
     a_clean = away_team.strip().lower()
 
-    # 1. Estrazione quote 1X2 cercando il primo bookmaker con mercato completo
     for bm in bookmakers:
         for m in bm.get("markets", []):
             if m.get("key") == "h2h":
@@ -90,7 +88,6 @@ def extract_market_odds(bookmakers: list, home_team: str, away_team: str):
         if "1" in odds and "2" in odds and "X" in odds:
             break
 
-    # 2. Estrazione Totali (Over/Under 1.5, 2.5, 3.5)
     for bm in bookmakers:
         for m in bm.get("markets", []):
             if m.get("key") == "totals":
@@ -108,7 +105,6 @@ def extract_market_odds(bookmakers: list, home_team: str, away_team: str):
                         if side == "over": odds["OVER_35"] = price
                         elif side == "under": odds["UNDER_35"] = price
 
-    # 3. Derivazione Fair Odds, Doppia Chance e Draw No Bet (DNB)
     o1 = odds.get("1", 0.0)
     ox = odds.get("X", 0.0)
     o2 = odds.get("2", 0.0)
@@ -120,16 +116,13 @@ def extract_market_odds(bookmakers: list, home_team: str, away_team: str):
         inv_sum = (1.0 / o1) + (1.0 / ox) + (1.0 / o2)
         overround = round((inv_sum - 1.0) * 100, 2)
 
-        # Riconduzione a probabilità pura e calcolo quota equa (Fair Odd)
         fair_odds["1"] = round(1.0 / ((1.0 / o1) / inv_sum), 3)
         fair_odds["X"] = round(1.0 / ((1.0 / ox) / inv_sum), 3)
         fair_odds["2"] = round(1.0 / ((1.0 / o2) / inv_sum), 3)
 
-        # Doppia Chance derivata (regola delle probabilità congiunte)
         odds["1X"] = round(1.0 / ((1.0 / o1) + (1.0 / ox)), 2)
         odds["X2"] = round(1.0 / ((1.0 / o2) + (1.0 / ox)), 2)
 
-        # Draw No Bet (Rimborso Pareggio)
         odds["DNB_1"] = round(o1 * (1.0 - (1.0 / ox)), 2)
         odds["DNB_2"] = round(o2 * (1.0 - (1.0 / ox)), 2)
 
@@ -138,7 +131,6 @@ def extract_market_odds(bookmakers: list, home_team: str, away_team: str):
 def main():
     DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-    # Conserva opening_odds per calcolo dello scostamento Smart Money
     existing_openings = {}
     if FIXTURES_FILE.exists():
         try:
@@ -151,12 +143,14 @@ def main():
             pass
 
     now_utc = datetime.now(timezone.utc)
-    # Tolleranza di 15 minuti indietro per match appena iniziati e orizzonte a 72 ore
     min_horizon = now_utc - timedelta(minutes=15)
-    max_horizon = now_utc + timedelta(hours=72)
+    
+    # Finestra intelligente: copre tutto oggi e si estende fino alle 05:00 del mattino successivo (UTC)
+    next_day = now_utc + timedelta(days=1)
+    max_horizon = datetime(next_day.year, next_day.month, next_day.day, 5, 0, 0, tzinfo=timezone.utc)
 
     processed_fixtures = []
-    print(f"Avvio scaricamento palinsesto (Finestra: 72 ore da {now_utc.strftime('%Y-%m-%d %H:%M UTC')})...")
+    print(f"Avvio scaricamento palinsesto (Copertura fino alle 05:00 di domani UTC)...")
 
     for league in LEAGUES:
         raw_events = get_fixtures_for_league(league)
@@ -174,7 +168,7 @@ def main():
             except Exception:
                 continue
 
-            # Filtro temporale a 72h
+            # Filtro temporale: da adesso fino alle 05:00 del giorno dopo
             if commence_dt < min_horizon or commence_dt > max_horizon:
                 continue
 
@@ -184,11 +178,9 @@ def main():
 
             odds, fair_odds, overround = extract_market_odds(bookmakers, home, away)
 
-            # Per entrare nel modello quantitativo devono esistere almeno 1 e 2
             if not odds.get("1") or not odds.get("2"):
                 continue
 
-            # Filtro liquidità (scarta mercati con aggio > 7.5%)
             if overround > 7.5:
                 continue
 
@@ -214,7 +206,7 @@ def main():
     }
 
     FIXTURES_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"Operazione completata: salvate {len(processed_fixtures)} partite in data/fixtures.json.")
+    print(f"Operazione completata: salvate {len(processed_fixtures)} partite (inclusi match serali/notturni) in data/fixtures.json.")
 
 if __name__ == "__main__":
     main()
