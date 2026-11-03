@@ -45,7 +45,6 @@ LEAGUES = [
     "soccer_sweden_allsvenskan",
     "soccer_norway_eliteserien",
     "soccer_austria_bundesliga",
-    "soccer_switzerland_super_league",
     
     # --- INGHILTERRA LOWER LEAGUES ---
     "soccer_england_league1",
