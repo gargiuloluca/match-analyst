@@ -1,232 +1,216 @@
 """
-analyze_safe.py — AtmBetSignal High-Probability Sniper Engine (Model C: Safe >= 74%, Quota >= 1.32)
-Filtra con precisione matematica e alimenta in automatico data/tracker_safe.json:
-- Probabilità stimata: >= 74.0%
-- Quota minima: >= 1.32
-- Mercati valutati: 1X2, Doppia Chance (1X, X2), Draw No Bet (DNB), Over 1.5, Under 3.5
-Salva i risultati separatamente in data/latest_safe.json e data/tracker_safe.json.
+fetch_fixtures.py — AtmBetSignal Odds Ingestion & Normalization Engine
+- Scarica il palinsesto dalle API ufficiali (The Odds API) con fallback multi-chiave
+- Filtro temporale rigoroso: solo partite future (commence_time > now) entro le prossime 36 ore
+- Filtro di liquidità/overround: scarta match con lavagna > 7.0%
+- Calcolo Fair Odds: normalizza le quote eliminando l'aggio del banco
+- Archiviazione atomica con ID nativo in data/fixtures.json
 """
 
+import os
 import json
-import math
+import requests
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
-from datetime import datetime, timezone
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 FIXTURES_FILE = DATA_DIR / "fixtures.json"
-OUTPUT_SAFE_FILE = DATA_DIR / "latest_safe.json"
-TRACKER_SAFE_FILE = DATA_DIR / "tracker_safe.json"
 
-LEAGUE_GOAL_PROFILES = {
-    "soccer_italy_serie_a": {"mu_home": 1.45, "mu_away": 1.15, "tau": -0.05},
-    "soccer_epl": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
-    "soccer_spain_la_liga": {"mu_home": 1.40, "mu_away": 1.05, "tau": -0.06},
-    "soccer_germany_bundesliga": {"mu_home": 1.70, "mu_away": 1.35, "tau": -0.03},
-    "soccer_france_ligue_one": {"mu_home": 1.40, "mu_away": 1.10, "tau": -0.05},
-    "soccer_uefa_champs_league": {"mu_home": 1.60, "mu_away": 1.30, "tau": -0.04},
-    "soccer_uefa_europa_league": {"mu_home": 1.55, "mu_away": 1.25, "tau": -0.04},
-    "soccer_netherlands_eredivisie": {"mu_home": 1.75, "mu_away": 1.30, "tau": -0.02},
-    "soccer_england_championship": {"mu_home": 1.42, "mu_away": 1.12, "tau": -0.05},
-    "soccer_portugal_primeira_liga": {"mu_home": 1.48, "mu_away": 1.02, "tau": -0.06},
-    "soccer_belgium_first_div": {"mu_home": 1.58, "mu_away": 1.28, "tau": -0.04},
-    "soccer_england_league1": {"mu_home": 1.40, "mu_away": 1.15, "tau": -0.05},
-    "soccer_england_efl_cup": {"mu_home": 1.50, "mu_away": 1.20, "tau": -0.04},
-    "default": {"mu_home": 1.48, "mu_away": 1.18, "tau": -0.05}
-}
+ODDSAPI_KEY_RAW = os.environ.get("ODDSAPI_KEY", "").strip()
+API_KEYS = [k.strip() for k in ODDSAPI_KEY_RAW.split(",") if k.strip()]
 
-def poisson_pmf(k: int, lambd: float) -> float:
-    return (lambd ** k) * math.exp(-lambd) / math.factorial(k)
+LEAGUES = [
+    "soccer_italy_serie_a",
+    "soccer_spain_la_liga",
+    "soccer_epl",
+    "soccer_germany_bundesliga",
+    "soccer_france_ligue_one",
+    "soccer_uefa_champs_league",
+    "soccer_uefa_europa_league",
+    "soccer_england_championship",
+    "soccer_netherlands_eredivisie",
+    "soccer_portugal_primeira_liga",
+    "soccer_belgium_first_div",
+    "soccer_england_league1",
+    "soccer_england_efl_cup"
+]
 
-def tau_factor(x: int, y: int, lambda_h: float, mu_a: float, rho: float) -> float:
-    if x == 0 and y == 0:
-        return 1.0 - lambda_h * mu_a * rho
-    elif x == 0 and y == 1:
-        return 1.0 + lambda_h * rho
-    elif x == 1 and y == 0:
-        return 1.0 + mu_a * rho
-    elif x == 1 and y == 1:
-        return 1.0 - rho
-    return 1.0
+def get_fixtures_for_league(sport_key: str):
+    if not API_KEYS:
+        print("[Errore] Nessuna API Key trovata in ODDSAPI_KEY.")
+        return []
 
-def build_score_matrix(lambda_h: float, mu_a: float, rho: float, max_goals: int = 8):
-    matrix = {}
-    for x in range(max_goals + 1):
-        for y in range(max_goals + 1):
-            p_indep = poisson_pmf(x, lambda_h) * poisson_pmf(y, mu_a)
-            t_adj = tau_factor(x, y, lambda_h, mu_a, rho)
-            matrix[(x, y)] = max(0.0, p_indep * t_adj)
-    total = sum(matrix.values())
-    if total > 0:
-        matrix = {k: v / total for k, v in matrix.items()}
-    return matrix
+    for key in API_KEYS:
+        url = f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds"
+        params = {
+            "apiKey": key,
+            "regions": "eu",
+            "markets": "h2h,totals",
+            "oddsFormat": "decimal"
+        }
+        try:
+            res = requests.get(url, params=params, timeout=20)
+            if res.status_code == 200:
+                remaining = res.headers.get("x-requests-remaining", "?")
+                print(f"[{sport_key}] Dati scaricati con successo. Richieste residue: {remaining}")
+                return res.json()
+            elif res.status_code in [401, 429]:
+                print(f"[Avviso] Chiave API esaurita o non valida. Tento chiave successiva...")
+                continue
+            else:
+                print(f"[{sport_key}] Errore API: HTTP {res.status_code}")
+        except Exception as e:
+            print(f"[{sport_key}] Errore di connessione: {e}")
+    return []
 
-def normalize_match_str(s: str) -> str:
-    n = s.lower()
-    for drop in [" fc", " ac", " as", "cf", "ssc ", "afc ", " "]:
-        n = n.replace(drop, "")
-    return n
+def extract_market_odds(bookmakers: list):
+    """
+    Estrae le migliori quote medie/consensuali e calcola le Fair Odds de-marginalizzate.
+    """
+    if not bookmakers:
+        return {}, {}, 0.0
 
-def evaluate_sniper_markets(matrix, odds_dict):
-    p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
-    p_draw = sum(prob for (x, y), prob in matrix.items() if x == y)
-    p_away = sum(prob for (x, y), prob in matrix.items() if x < y)
+    odds = {}
+    
+    # 1. Mercato 1X2 (h2h)
+    h2h_bms = [b for b in bookmakers if any(m["key"] == "h2h" for m in b.get("markets", []))]
+    if h2h_bms:
+        bm = h2h_bms[0]
+        for m in bm.get("markets", []):
+            if m["key"] == "h2h":
+                for out in m.get("outcomes", []):
+                    name = out.get("name")
+                    price = float(out.get("price", 1.0))
+                    if name == bm.get("home_team", "") or out.get("name") == "Home":
+                        odds["1"] = price
+                    elif name == bm.get("away_team", "") or out.get("name") == "Away":
+                        odds["2"] = price
+                    elif name.lower() in ["draw", "pareggio"]:
+                        odds["X"] = price
 
-    p_1x = p_home + p_draw
-    p_x2 = p_away + p_draw
+    # 2. Mercato Totali Gol (Over/Under 2.5, 1.5, 3.5)
+    for bm in bookmakers:
+        for m in bm.get("markets", []):
+            if m["key"] == "totals":
+                for out in m.get("outcomes", []):
+                    point = out.get("point")
+                    name = out.get("name", "").lower()
+                    price = float(out.get("price", 1.0))
+                    if point == 2.5:
+                        if name == "over": odds["OVER_25"] = price
+                        elif name == "under": odds["UNDER_25"] = price
+                    elif point == 1.5:
+                        if name == "over": odds["OVER_15"] = price
+                        elif name == "under": odds["UNDER_15"] = price
+                    elif point == 3.5:
+                        if name == "over": odds["OVER_35"] = price
+                        elif name == "under": odds["UNDER_35"] = price
 
-    decisive = p_home + p_away
-    p_dnb_1 = (p_home / decisive) if decisive > 0 else 0.0
-    p_dnb_2 = (p_away / decisive) if decisive > 0 else 0.0
+    # 3. Derivazione Doppie Chance e Draw No Bet (DNB)
+    o1 = odds.get("1", 0.0)
+    ox = odds.get("X", 0.0)
+    o2 = odds.get("2", 0.0)
 
-    p_over15 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 1.5)
-    p_under35 = sum(prob for (x, y), prob in matrix.items() if (x + y) < 3.5)
+    overround = 0.0
+    fair_odds = {}
 
-    markets = [
-        {"key": "1", "label": "Vittoria Casa (1)", "prob": p_home, "odd": odds_dict.get("1", 0.0)},
-        {"key": "2", "label": "Vittoria Trasferta (2)", "prob": p_away, "odd": odds_dict.get("2", 0.0)},
-        {"key": "1X", "label": "Doppia Chance 1X", "prob": p_1x, "odd": odds_dict.get("1X", 0.0)},
-        {"key": "X2", "label": "Doppia Chance X2", "prob": p_x2, "odd": odds_dict.get("X2", 0.0)},
-        {"key": "DNB_1", "label": "Casa Draw No Bet (Rimborso X)", "prob": p_dnb_1, "odd": odds_dict.get("DNB_1", 0.0)},
-        {"key": "DNB_2", "label": "Trasferta Draw No Bet (Rimborso X)", "prob": p_dnb_2, "odd": odds_dict.get("DNB_2", 0.0)},
-        {"key": "OVER_15", "label": "Over 1.5 Gol", "prob": p_over15, "odd": odds_dict.get("OVER_15", 0.0)},
-        {"key": "UNDER_35", "label": "Under 3.5 Gol", "prob": p_under35, "odd": odds_dict.get("UNDER_35", 0.0)}
-    ]
+    if o1 > 1.0 and ox > 1.0 and o2 > 1.0:
+        inv_sum = (1.0 / o1) + (1.0 / ox) + (1.0 / o2)
+        overround = round((inv_sum - 1.0) * 100, 2)
 
-    valid = []
-    for m in markets:
-        # FILTRO SNIPER CALIBRATO: Probabilità >= 74% e Quota >= 1.32
-        if m["odd"] >= 1.32 and m["prob"] >= 0.74:
-            edge = (m["prob"] * m["odd"]) - 1.0
-            if edge >= 0.015:  # Valore atteso reale (Edge minimo +1.5%)
-                m["edge"] = round(edge, 4)
-                valid.append(m)
-    return valid
+        # Calcolo Fair Odds prive di margine del banco
+        fair_odds["1"] = round(1.0 / ((1.0 / o1) / inv_sum), 3)
+        fair_odds["X"] = round(1.0 / ((1.0 / ox) / inv_sum), 3)
+        fair_odds["2"] = round(1.0 / ((1.0 / o2) / inv_sum), 3)
+
+        # Doppia Chance derivata sintetica
+        odds["1X"] = round(1.0 / ((1.0 / o1) + (1.0 / ox)), 2)
+        odds["X2"] = round(1.0 / ((1.0 / o2) + (1.0 / ox)), 2)
+
+        # Draw No Bet (Rimborso X) derivato
+        odds["DNB_1"] = round(o1 * (1.0 - (1.0 / ox)), 2)
+        odds["DNB_2"] = round(o2 * (1.0 - (1.0 / ox)), 2)
+
+    return odds, fair_odds, overround
 
 def main():
-    if not FIXTURES_FILE.exists():
-        print("Palinsesto data/fixtures.json non trovato.")
-        return
-
-    data = json.loads(FIXTURES_FILE.read_text(encoding="utf-8"))
-    fixtures = data.get("fixtures", [])
-    if not fixtures:
-        print("Nessun match presente.")
-        return
-
-    safe_picks = []
-
-    for item in fixtures:
-        m_id = item.get("id")
-        league_key = item.get("sport_key", "default")
-        profile = LEAGUE_GOAL_PROFILES.get(league_key, LEAGUE_GOAL_PROFILES["default"])
-
-        odds = item.get("odds", {})
-        o1 = odds.get("1", 2.0)
-        o2 = odds.get("2", 3.0)
-        o_over25 = odds.get("OVER_25", 1.95)
-
-        expected_total = profile["mu_home"] + profile["mu_away"]
-        if o_over25 > 1.20:
-            pace_factor = (1.95 / o_over25) ** 0.45
-            expected_total *= pace_factor
-
-        p_home_fair = 1.0 / max(1.05, o1)
-        p_away_fair = 1.0 / max(1.05, o2)
-        strength_sum = p_home_fair + p_away_fair
-
-        share_h = p_home_fair / strength_sum if strength_sum > 0 else 0.55
-        share_a = p_away_fair / strength_sum if strength_sum > 0 else 0.45
-
-        lambda_h = expected_total * share_h
-        mu_a = expected_total * share_a
-
-        matrix = build_score_matrix(lambda_h, mu_a, profile["tau"])
-        valid_markets = evaluate_sniper_markets(matrix, odds)
-
-        for mkt in valid_markets:
-            b = mkt["odd"] - 1.0
-            p = mkt["prob"]
-            raw_kelly = ((b * p) - (1.0 - p)) / b if b > 0 else 0.0
-            stake = round(min(2.5, max(1.25, (raw_kelly * 0.25) * 100)), 2)
-
-            safe_picks.append({
-                "match_id": m_id,
-                "match": f"{item.get('home_team')} vs {item.get('away_team')}",
-                "commence_time": item.get("commence_time"),
-                "league": item.get("league_name", league_key),
-                "market_key": mkt["key"],
-                "outcome_label": mkt["label"],
-                "odd": round(mkt["odd"], 2),
-                "estimated_probability": round(mkt["prob"], 4),
-                "edge": mkt["edge"],
-                "suggested_stake_pct": stake,
-                "tier": "SNIPER 80+"
-            })
-
-    # Ordina per probabilità decrescente e poi per Edge
-    safe_picks.sort(key=lambda x: (x["estimated_probability"], x["edge"]), reverse=True)
-
-    payload = {
-        "engine": "Model C (Sniper Safe >= 74% @ >= 1.32)",
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "min_probability": "74%",
-        "min_odd": 1.32,
-        "total_officials": len(safe_picks),
-        "all_selected_picks": safe_picks,
-        "radar_watchlist": []
-    }
-
-    OUTPUT_SAFE_FILE.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model C Sniper] Analisi completata: trovate {len(safe_picks)} selezioni con Quota >= 1.32 e Prob >= 74%.")
-
-    # Sincronizzazione Tracker Safe
-    tracker_safe_data = {
-        "total_bets": 0, "won": 0, "lost": 0, "void": 0,
-        "win_rate": 0.0, "net_profit_units": 0.0, "roi_pct": 0.0, "bets": []
-    }
-
-    if TRACKER_SAFE_FILE.exists():
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    
+    # Memorizza le aperture già note per monitorare il drift delle quote
+    existing_openings = {}
+    if FIXTURES_FILE.exists():
         try:
-            loaded = json.loads(TRACKER_SAFE_FILE.read_text(encoding="utf-8"))
-            if isinstance(loaded, dict) and isinstance(loaded.get("bets"), list):
-                tracker_safe_data = loaded
+            old_data = json.loads(FIXTURES_FILE.read_text(encoding="utf-8"))
+            for f in old_data.get("fixtures", []):
+                e_id = f.get("id")
+                if e_id and "odds" in f:
+                    existing_openings[e_id] = f.get("opening_odds", f["odds"])
         except Exception:
             pass
 
-    existing_pairs = set()
-    for b in tracker_safe_data.get("bets", []):
-        m_norm = normalize_match_str(b.get("match", ""))
-        mkt = str(b.get("market_key", "")).strip().upper()
-        existing_pairs.add((m_norm, mkt))
+    now_utc = datetime.now(timezone.utc)
+    max_horizon = now_utc + timedelta(hours=36)
 
-    new_added = 0
-    for op in safe_picks:
-        op_match_norm = normalize_match_str(op["match"])
-        op_mkt = str(op["market_key"]).strip().upper()
-        pair_key = (op_match_norm, op_mkt)
+    processed_fixtures = []
 
-        if pair_key not in existing_pairs:
-            bet_id = f"{op['match_id']}_{op['market_key']}"
-            tracker_safe_data["bets"].append({
-                "id": bet_id,
-                "date": op["commence_time"],
-                "match": op["match"],
-                "league": op["league"],
-                "bet": op["outcome_label"],
-                "market_key": op["market_key"],
-                "odd": op["odd"],
-                "prob": op["estimated_probability"],
-                "stake_pct": op["suggested_stake_pct"],
-                "tier": op["tier"],
-                "status": "PENDING",
-                "profit": 0.0
+    print(f"Scaricamento palinsesto globale (Orario attuale UTC: {now_utc.isoformat()})...")
+
+    for league in LEAGUES:
+        raw_events = get_fixtures_for_league(league)
+        for ev in raw_events:
+            ev_id = ev.get("id")
+            commence_str = ev.get("commence_time")
+            if not commence_str:
+                continue
+
+            try:
+                commence_dt = datetime.fromisoformat(commence_str.replace("Z", "+00:00"))
+            except Exception:
+                continue
+
+            # FILTRO TEMPORALE RIGIDO:
+            # Scarta match passati/in corso e match oltre le 36 ore successive
+            if commence_dt <= now_utc or commence_dt > max_horizon:
+                continue
+
+            home = ev.get("home_team", "").strip()
+            away = ev.get("away_team", "").strip()
+            bookmakers = ev.get("bookmakers", [])
+
+            odds, fair_odds, overround = extract_market_odds(bookmakers)
+            
+            # Necessarie quote 1X2 per modellazione valida
+            if not odds.get("1") or not odds.get("2"):
+                continue
+
+            # FILTRO OVERROUND: Scarta partite con aggio spropositato (> 7.0%)
+            if overround > 7.0:
+                continue
+
+            opening = existing_openings.get(ev_id, odds)
+
+            processed_fixtures.append({
+                "id": ev_id,
+                "sport_key": league,
+                "league_name": ev.get("sport_title", league),
+                "home_team": home,
+                "away_team": away,
+                "commence_time": commence_str,
+                "odds": odds,
+                "opening_odds": opening,
+                "fair_odds": fair_odds,
+                "overround_pct": overround
             })
-            existing_pairs.add(pair_key)
-            new_added += 1
 
-    tracker_safe_data["total_bets"] = len(tracker_safe_data["bets"])
-    TRACKER_SAFE_FILE.write_text(json.dumps(tracker_safe_data, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model C Sniper] Tracker sincronizzato: {new_added} nuove selezioni aggiunte.")
+    output_payload = {
+        "fetched_at": now_utc.isoformat(),
+        "total_fixtures": len(processed_fixtures),
+        "fixtures": processed_fixtures
+    }
+
+    FIXTURES_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Completato! Salvate {len(processed_fixtures)} partite fresche per le prossime 36 ore in data/fixtures.json.")
 
 if __name__ == "__main__":
     main()
+    
