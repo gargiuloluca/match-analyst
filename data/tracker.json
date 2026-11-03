@@ -1,11 +1,11 @@
 {
-  "total_bets": 26,
-  "won": 16,
-  "lost": 10,
+  "total_bets": 31,
+  "won": 19,
+  "lost": 12,
   "void": 0,
-  "win_rate": 61.5,
-  "net_profit_units": 2.08,
-  "roi_pct": 3.9,
+  "win_rate": 61.3,
+  "net_profit_units": 1.18,
+  "roi_pct": 1.8,
   "bets": [
     {
       "id": "sevilla_osasuna_won",
@@ -408,8 +408,9 @@
       "prob": 0.6983,
       "stake_pct": 2.0,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.68,
+      "score": "1-0"
     },
     {
       "id": "2e488800d615a94e5377c195810303c0_1",
@@ -422,8 +423,9 @@
       "prob": 0.728,
       "stake_pct": 2.5,
       "tier": "GOLD",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "0-3"
     },
     {
       "id": "5118966f484adf525196d196a61bc5d6_OVER_15",
@@ -436,8 +438,9 @@
       "prob": 0.7053,
       "stake_pct": 2.28,
       "tier": "OFFICIAL",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.09,
+      "score": "0-2"
     },
     {
       "id": "97ce048d06fc45fc59e114548540828f_OVER_15",
@@ -450,8 +453,9 @@
       "prob": 0.6923,
       "stake_pct": 2.5,
       "tier": "OFFICIAL",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -2.5,
+      "score": "0-0"
     },
     {
       "id": "7a2cd2744fdf15ea675423a6c23df46b_DNB_1",
@@ -464,8 +468,11 @@
       "prob": 0.6908,
       "stake_pct": 2.5,
       "tier": "OFFICIAL",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 1.33,
+      "score": "2-1"
     }
-  ]
+  ],
+  "brier_score": 0.2485,
+  "avg_clv_pct": null
 }
