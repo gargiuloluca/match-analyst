@@ -1,38 +1,12 @@
 {
-  "engine": "Model C (Sniper Safe >= 74% @ >= 1.32)",
-  "generated_at": "2026-11-02T05:43:34.000969+00:00",
+  "engine": "Model C (Safe80 Sniper EV >= +3% @ Quota >= 1.40)",
+  "generated_at": "2026-11-03T06:32:18.202786+00:00",
   "min_probability": "74%",
-  "min_odd": 1.32,
-  "total_officials": 3,
+  "min_odd": 1.4,
+  "min_ev": "+3.0%",
+  "max_portfolio_exposure": "3.0%",
+  "total_officials": 1,
   "all_selected_picks": [
-    {
-      "match_id": "0f552d9c6990c69474f50ff2fb54e9a3",
-      "match": "Newcastle United vs Everton",
-      "commence_time": "2026-11-02T20:00:00Z",
-      "league": "EPL",
-      "market_key": "OVER_15",
-      "outcome_label": "Over 1.5 Gol",
-      "odd": 1.32,
-      "line_shift_pct": 0.0,
-      "estimated_probability": 0.802,
-      "edge": 0.0586,
-      "suggested_stake_pct": 2.5,
-      "tier": "SNIPER 80+"
-    },
-    {
-      "match_id": "5118966f484adf525196d196a61bc5d6",
-      "match": "Lorient vs Brest",
-      "commence_time": "2026-11-02T19:45:00Z",
-      "league": "Ligue 1 - France",
-      "market_key": "UNDER_35",
-      "outcome_label": "Under 3.5 Gol",
-      "odd": 1.33,
-      "line_shift_pct": 0.0,
-      "estimated_probability": 0.7717,
-      "edge": 0.0263,
-      "suggested_stake_pct": 1.99,
-      "tier": "SNIPER 80+"
-    },
     {
       "match_id": "2e488800d615a94e5377c195810303c0",
       "match": "Atalanta BC vs Parma",
@@ -42,10 +16,12 @@
       "outcome_label": "Vittoria Casa (1)",
       "odd": 1.5,
       "line_shift_pct": 0.0,
-      "estimated_probability": 0.7555,
-      "edge": 0.1332,
-      "suggested_stake_pct": 2.5,
-      "tier": "SNIPER 80+"
+      "estimated_probability": 0.7547,
+      "ev": 0.132,
+      "edge": 0.132,
+      "composite_score": 0.4236,
+      "suggested_stake_pct": 1.5,
+      "tier": "SAFE 80+"
     }
   ],
   "radar_watchlist": []
