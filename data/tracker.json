@@ -600,6 +600,38 @@
       "tier": "OFFICIAL",
       "status": "PENDING",
       "profit": 0
+    },
+    {
+      "id": "47523374e8d8cdd5b43677e358317587_1X",
+      "event_id": "47523374e8d8cdd5b43677e358317587",
+      "date": "2026-11-04T19:45:00Z",
+      "match": "Cardiff City vs West Ham United",
+      "league": "Championship",
+      "bet": "Doppia Chance 1X",
+      "market_key": "1X",
+      "odd": 1.86,
+      "prob": 0.7039,
+      "edge": 0.1912,
+      "stake_pct": 0.6,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "7e605ab1c3e8d0a9b4df244dcdab71a9_1X",
+      "event_id": "7e605ab1c3e8d0a9b4df244dcdab71a9",
+      "date": "2026-11-04T19:45:00Z",
+      "match": "Oxford United vs Reading",
+      "league": "League 1",
+      "bet": "Doppia Chance 1X",
+      "market_key": "1X",
+      "odd": 1.48,
+      "prob": 0.6974,
+      "edge": 0.0322,
+      "stake_pct": 0.9,
+      "tier": "OFFICIAL",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ],
   "brier_score": 0.2542,

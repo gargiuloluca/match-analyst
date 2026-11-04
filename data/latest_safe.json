@@ -1,44 +1,11 @@
 {
   "engine": "Model C (Safe80 Sniper EV >= +3% @ Quota >= 1.40)",
-  "generated_at": "2026-11-03T07:04:10.522086+00:00",
+  "generated_at": "2026-11-04T08:20:26.332312+00:00",
   "min_probability": "74%",
   "min_odd": 1.4,
   "min_ev": "+3.0%",
   "max_portfolio_exposure": "3.0%",
-  "total_officials": 2,
-  "all_selected_picks": [
-    {
-      "match_id": "84b68e09ecbe93fdbce759cd822322a2",
-      "match": "SK Sturm Graz vs NK Celje",
-      "commence_time": "2026-11-05T20:00:00Z",
-      "league": "UEFA Europa League",
-      "market_key": "1",
-      "outcome_label": "Vittoria Casa (1)",
-      "odd": 1.53,
-      "line_shift_pct": 0.0,
-      "estimated_probability": 0.7597,
-      "ev": 0.1624,
-      "edge": 0.1624,
-      "composite_score": 0.4367,
-      "suggested_stake_pct": 1.5,
-      "tier": "SAFE 80+"
-    },
-    {
-      "match_id": "c91f4c9744f6ca502b7986a564e858df",
-      "match": "AZ Alkmaar vs Juventus",
-      "commence_time": "2026-11-05T20:00:00Z",
-      "league": "UEFA Europa League",
-      "market_key": "DNB_2",
-      "outcome_label": "Trasferta Draw No Bet (Rimborso X)",
-      "odd": 1.44,
-      "line_shift_pct": 0.0,
-      "estimated_probability": 0.7503,
-      "ev": 0.0804,
-      "edge": 0.0804,
-      "composite_score": 0.4033,
-      "suggested_stake_pct": 1.5,
-      "tier": "SAFE 80+"
-    }
-  ],
+  "total_officials": 0,
+  "all_selected_picks": [],
   "radar_watchlist": []
 }
