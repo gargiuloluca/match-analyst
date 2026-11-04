@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AtmBetSignal — Institutional Quantitative Betting Intelligence</title>
+  <title>AtmBet Selection — Institutional Quantitative Betting Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -74,19 +74,13 @@
       transition: all 0.2s;
     }
     nav a:hover, nav a.active { color: #fff; }
-    .nav-login {
+    .nav-official {
       color: var(--accent) !important;
       border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 5px 14px;
+      padding: 6px 14px;
       border-radius: 6px;
       background: rgba(16, 185, 129, 0.05);
-    }
-    .nav-admin {
-      color: var(--gold) !important;
-      background: rgba(245, 158, 11, 0.1);
-      padding: 5px 12px;
-      border-radius: 6px;
-      border: 1px solid rgba(245, 158, 11, 0.25);
+      font-weight: 700;
     }
     .container {
       max-width: 1100px;
@@ -295,102 +289,26 @@
       line-height: 1.55;
     }
 
-    /* PRICING */
-    .pricing-section {
+    /* BANNER CTA */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 18px;
+      padding: 40px;
+      text-align: center;
       margin-bottom: 75px;
     }
-    .plan-selector {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 30px;
-      background: rgba(15, 23, 42, 0.6);
-      padding: 6px;
-      border-radius: 12px;
-      border: 1px solid var(--card-border);
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
+    .cta-banner h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
     }
-    .plan-tab {
-      flex: 1;
-      padding: 10px 16px;
-      border-radius: 8px;
-      background: transparent;
-      border: none;
+    .cta-banner p {
       color: var(--text-muted);
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: all 0.2s;
+      max-width: 600px;
+      margin: 0 auto 24px;
+      font-size: 1rem;
     }
-    .plan-tab.active {
-      background: var(--accent);
-      color: #000;
-      font-weight: 700;
-    }
-    .vip-card {
-      background: linear-gradient(180deg, rgba(16, 185, 129, 0.1) 0%, rgba(15, 23, 42, 0.85) 100%);
-      border: 1px solid var(--accent);
-      border-radius: 18px;
-      padding: 42px 28px;
-      text-align: center;
-      max-width: 620px;
-      margin: 0 auto;
-      box-shadow: 0 0 45px rgba(16, 185, 129, 0.15);
-      position: relative;
-    }
-    .vip-tag {
-      position: absolute;
-      top: -13px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: var(--accent);
-      color: #000;
-      font-weight: 800;
-      font-size: 0.72rem;
-      padding: 4px 14px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-    }
-    .price-num {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 3.2rem;
-      font-weight: 800;
-      margin: 16px 0 2px;
-    }
-    .price-sub {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin-bottom: 24px;
-    }
-    .trial-badge {
-      background: rgba(56, 189, 248, 0.15);
-      color: var(--cyan);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 8px 16px;
-      border-radius: 8px;
-      display: inline-block;
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 20px;
-    }
-    .benefits-list {
-      text-align: left;
-      max-width: 440px;
-      margin: 0 auto 28px;
-      list-style: none;
-    }
-    .benefits-list li {
-      padding: 7px 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.9rem;
-      color: #e2e8f0;
-    }
-    .benefits-list li span { color: var(--accent); font-weight: 700; }
 
     /* FAQ */
     .faq-container {
@@ -426,30 +344,24 @@
 
   <header>
     <div class="brand">
-      <span>🏧 AtmBetSignal</span>
-      <span class="brand-badge">PRO</span>
+      <span>🏧 AtmBet Selection</span>
+      <span class="brand-badge">CORE ENGINE</span>
     </div>
     <nav>
-      <a href="index.html" class="active">Metodo</a>
-      <a href="tracker.html">Storico Live</a>
-      <a href="dashboard.html" class="nav-login">Area Utenti ⚡</a>
-      <a href="admin.html" class="nav-admin">Area Admin 🔒</a>
+      <a href="https://atmbetofficial.com" target="_blank" class="nav-official">Visita AtmBetOfficial.com ↗</a>
     </nav>
   </header>
 
   <div class="container">
     <!-- HERO -->
     <section class="hero">
-      <div class="pill">● Algoritmo Matematico Operativo 2026</div>
-      <h1>Il Betting Tradizionale È Morto.<br>Benvenuto nel <span>Metodo Quantitativo</span>.</h1>
-      <p>I bookmaker usano la matematica contro di te. Noi applichiamo modelli bivariati Dixon-Coles e il criterio Quarter-Kelly per invertire il vantaggio statistico a tuo favore.</p>
+      <div class="pill">● Infrastruttura di Ricerca & Analisi Quantitativa</div>
+      <h1>Il Cuore Matematico di <br><span>AtmBet Selection</span>.</h1>
+      <p>I bookmaker usano la matematica contro di te. Questa infrastruttura applica modelli bivariati Dixon-Coles e il criterio Quarter-Kelly per invertire il vantaggio statistico, alimentando il portale ufficiale.</p>
       
       <div class="btn-group">
-        <a href="#piani" class="btn-primary">
-          <span>🎁 Inizia 7 Giorni di Prova Gratuita</span>
-        </a>
-        <a href="tracker.html" class="btn-secondary">
-          <span>Verifica lo Storico Certificato ↗</span>
+        <a href="https://atmbetofficial.com" target="_blank" class="btn-primary">
+          <span>🚀 Vai al Portale Ufficiale AtmBetOfficial.com</span>
         </a>
       </div>
     </section>
@@ -478,7 +390,7 @@
     <section>
       <div class="section-title">
         <h2>Perché il 96% degli Scommettitori Perde</h2>
-        <p>Il confronto netto tra il comportamento del pubblico comune e l'approccio quantitativo AtmBetSignal.</p>
+        <p>Il confronto netto tra il comportamento del pubblico comune e l'approccio quantitativo AtmBet Selection.</p>
       </div>
 
       <div class="table-wrapper">
@@ -550,43 +462,13 @@
       </div>
     </section>
 
-    <!-- SEZIONE PRICING -->
-    <section class="pricing-section" id="piani">
-      <div class="section-title">
-        <h2>Piani di Accesso Istituzionale</h2>
-        <p>Scegli il piano più adatto a te. Prova il sistema per 7 giorni senza rischi.</p>
-      </div>
-
-      <div class="plan-selector">
-        <button class="plan-tab active" onclick="setPlan('mensile')">Mensile</button>
-        <button class="plan-tab" onclick="setPlan('trimestrale')">Trimestrale (-25%)</button>
-        <button class="plan-tab" onclick="setPlan('annuale')">Annuale (-38%)</button>
-      </div>
-
-      <div class="vip-card">
-        <div class="vip-tag" id="planBadge">PIANO MENSILE</div>
-        
-        <div class="trial-badge">
-          🎉 7 Giorni di Prova Gratuita Inclusi
-        </div>
-
-        <div class="price-num" id="planPrice">39,90€</div>
-        <div class="price-sub" id="planPeriod">al mese dopo 7 giorni di prova gratuita • Disdici quando vuoi con 1 clic</div>
-
-        <ul class="benefits-list">
-          <li><span>✓</span> <strong>Accesso Web Diretto:</strong> consulta i segnali sul sito senza obbligo di Telegram</li>
-          <li><span>✓</span> Top 5 giornaliera ad altissima probabilità (≥ 65%)</li>
-          <li><span>✓</span> Dimensionamento matematico dello Stake con Quarter-Kelly</li>
-          <li><span>✓</span> Watchlist Radar (Top 10) per studio statistico extra</li>
-          <li><span>✓</span> Canale Telegram VIP incluso per chi desidera le notifiche istantanee</li>
-          <li><span>✓</span> Storico 100% trasparente certificato su GitHub Pages</li>
-        </ul>
-
-        <a id="ctaBtn" href="https://buy.stripe.com/tuo_link_mensile" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1.05rem; padding: 16px 0;">
-          Attiva 7 Giorni di Prova Gratuita
-        </a>
-        <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 14px;">Nessun addebito durante i primi 7 giorni. Cancellazione istantanea con un clic.</p>
-      </div>
+    <!-- BANNER CTA FINALE -->
+    <section class="cta-banner">
+      <h2>Stai cercando i servizi di pronostico ufficiali?</h2>
+      <p>Tutti i piani di abbonamento, i segnali giornalieri e l'accesso alla community sono ora gestiti interamente sulla nuova piattaforma dedicata.</p>
+      <a href="https://atmbetofficial.com" target="_blank" class="btn-primary">
+        Visita AtmBetOfficial.com ↗
+      </a>
     </section>
 
     <!-- FAQ -->
@@ -596,13 +478,13 @@
       </div>
 
       <div class="faq-item">
-        <h4>Come funziona la prova gratuita di 7 giorni?</h4>
-        <p>Attivi la prova inserendo i tuoi dati. Per 7 giorni hai accesso completo a tutte le Top 5 e alla Watchlist Radar sul pannello web e su Telegram. Se non sei soddisfatto, puoi annullare prima del settimo giorno senza pagare un centesimo.</p>
+        <h4>Che cos'è AtmBet Selection?</h4>
+        <p>È l'infrastruttura tecnologica e di ricerca quantitativa avanzata che alimenta i pronostici e le selezioni statistiche ad alta probabilità.</p>
       </div>
 
       <div class="faq-item">
-        <h4>È obbligatorio avere Telegram per usare il servizio?</h4>
-        <p>No. Telegram è una comodità per ricevere le notifiche in tempo reale, ma ogni abbonato riceve una chiave di accesso personale per consultare i pronostici e le statistiche direttamente dall'Area Utenti del sito web.</p>
+        <h4>Dove posso trovare i servizi e i piani commerciali?</h4>
+        <p>Tutta la parte commerciale, i piani di accesso e le iscrizioni ufficiali sono disponibili esclusivamente sul portale ufficiale <a href="https://atmbetofficial.com" target="_blank" style="color: var(--cyan); text-decoration: none;">atmbetofficial.com</a>.</p>
       </div>
 
       <div class="faq-item">
@@ -613,47 +495,11 @@
   </div>
 
   <footer>
-    <p>AtmBetSignal Quantitative Intelligence © 2026. Tutti i diritti riservati.</p>
-    <p style="margin-top: 6px; font-size: 0.78rem;">Il gioco d'azzardo può creare dipendenza patologica ed è vietato ai minori di 18 anni. I dati storici non costituiscono garanzia di profitti futuri.</p>
+    <p>AtmBet Selection Engine © 2026. Tutti i diritti riservati.</p>
+    <p style="margin-top: 6px; font-size: 0.78rem;">Infrastruttura di ricerca e sviluppo quantitativo associata a AtmBetOfficial.com.</p>
   </footer>
 
   <script>
-    // Configurazione Piani Commerciali
-    const plans = {
-      mensile: {
-        badge: "PIANO MENSILE",
-        price: "39,90€",
-        period: "al mese dopo 7 giorni di prova • Disdici con 1 clic",
-        link: "https://buy.stripe.com/tuo_link_mensile"
-      },
-      trimestrale: {
-        badge: "PIANO TRIMESTRALE (RISPARMIA 25%)",
-        price: "89,00€",
-        period: "ogni 3 mesi dopo 7 giorni di prova (29,60€/mese)",
-        link: "https://buy.stripe.com/tuo_link_trimestrale"
-      },
-      annuale: {
-        badge: "PIANO ANNUALE VIP (RISPARMIA 38%)",
-        price: "299,00€",
-        period: "all'anno dopo 7 giorni di prova (24,90€/mese)",
-        link: "https://buy.stripe.com/tuo_link_annuale"
-      }
-    };
-
-    function setPlan(tipo) {
-      document.querySelectorAll('.plan-tab').forEach(b => b.classList.remove('active'));
-      const activeBtn = Array.from(document.querySelectorAll('.plan-tab')).find(b => b.textContent.toLowerCase().includes(tipo.substring(0, 4)));
-      if (activeBtn) activeBtn.classList.add('active');
-
-      const p = plans[tipo];
-      if (!p) return;
-
-      document.getElementById('planBadge').textContent = p.badge;
-      document.getElementById('planPrice').textContent = p.price;
-      document.getElementById('planPeriod').textContent = p.period;
-      document.getElementById('ctaBtn').href = p.link;
-    }
-
     // Caricamento KPI Dinamici da data/tracker.json
     async function loadLiveStats() {
       try {
