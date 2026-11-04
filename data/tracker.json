@@ -1,11 +1,11 @@
 {
-  "total_bets": 34,
-  "won": 20,
+  "total_bets": 35,
+  "won": 21,
   "lost": 14,
   "void": 0,
-  "win_rate": 58.8,
-  "net_profit_units": 0.35,
-  "roi_pct": 0.5,
+  "win_rate": 60.0,
+  "net_profit_units": 0.78,
+  "roi_pct": 1.2,
   "bets": [
     {
       "id": "sevilla_osasuna_won",
@@ -549,8 +549,9 @@
       "edge": 0.1529,
       "stake_pct": 0.58,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0
+      "status": "WON",
+      "profit": 0.43,
+      "score": "0-0"
     },
     {
       "id": "7d58b1a0732fa9d2c2fa42d44e636eed_1X",
@@ -601,6 +602,6 @@
       "profit": 0
     }
   ],
-  "brier_score": 0.2485,
+  "brier_score": 0.2542,
   "avg_clv_pct": null
 }

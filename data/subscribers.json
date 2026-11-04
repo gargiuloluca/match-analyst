@@ -11,7 +11,7 @@
       "email": "prova@esempio.com",
       "telegram_id": null,
       "plan": "trial_7d",
-      "status": "ACTIVE",
+      "status": "EXPIRED",
       "valid_until": "2026-11-03T23:59:59Z"
     }
   ]
