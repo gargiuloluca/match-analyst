@@ -1,11 +1,11 @@
 {
-  "total_bets": 28,
-  "won": 14,
-  "lost": 14,
+  "total_bets": 30,
+  "won": 15,
+  "lost": 15,
   "void": 0,
   "win_rate": 50.0,
-  "net_profit_units": -10.57,
-  "roi_pct": -20.6,
+  "net_profit_units": -10.66,
+  "roi_pct": -20.0,
   "bets": [
     {
       "id": "b102dbaf4e2ff82df26d9ebe27c7f5b1_1",
@@ -501,8 +501,9 @@
       "performance_gap": 0.0,
       "stake_pct": 0.67,
       "tier": "OFFICIAL",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.67,
+      "score": "1-3"
     },
     {
       "id": "47523374e8d8cdd5b43677e358317587_1X",
@@ -535,10 +536,11 @@
       "performance_gap": 0.0,
       "stake_pct": 1.2,
       "tier": "OFFICIAL",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.58,
+      "score": "2-0"
     }
   ],
-  "brier_score": 0.2885,
+  "brier_score": 0.2884,
   "avg_clv_pct": null
 }
