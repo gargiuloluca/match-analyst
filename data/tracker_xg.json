@@ -1,5 +1,5 @@
 {
-  "total_bets": 30,
+  "total_bets": 36,
   "won": 15,
   "lost": 15,
   "void": 0,
@@ -539,6 +539,40 @@
       "status": "WON",
       "profit": 0.58,
       "score": "2-0"
+    },
+    {
+      "id": "15d62dc210bdd9cdfc3a985397de2a2d_1X",
+      "event_id": "15d62dc210bdd9cdfc3a985397de2a2d",
+      "date": "2026-11-05T18:00:00Z",
+      "match": "Aldosivi Mar del Plata vs River Plate",
+      "league": "Primera División - Argentina",
+      "bet": "Doppia Chance 1X",
+      "market_key": "1X",
+      "odd": 2.84,
+      "prob": 0.7039,
+      "edge": 0.4672,
+      "performance_gap": 0.0,
+      "stake_pct": 0.8,
+      "tier": "DIAMOND",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "9604c5b1c465435911e038db95ab2a7b_UNDER_35",
+      "event_id": "9604c5b1c465435911e038db95ab2a7b",
+      "date": "2026-11-05T17:45:00Z",
+      "match": "Anderlecht vs Salzburg",
+      "league": "UEFA Europa League",
+      "bet": "Under 3.5 Gol",
+      "market_key": "UNDER_35",
+      "odd": 1.54,
+      "prob": 0.692,
+      "edge": 0.0558,
+      "performance_gap": 0.0,
+      "stake_pct": 1.2,
+      "tier": "OFFICIAL",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ],
   "brier_score": 0.2884,

@@ -1,230 +1,302 @@
 {
-  "fetched_at": "2026-11-04T08:20:23.918830+00:00",
-  "total_fixtures": 6,
+  "fetched_at": "2026-11-05T07:08:59.366532+00:00",
+  "total_fixtures": 8,
   "fixtures": [
     {
-      "id": "6d386ed81fabf67aa19fbd442c0d8c60",
-      "sport_key": "soccer_uefa_champs_league",
-      "league_name": "UEFA Champions League",
-      "home_team": "Borussia Dortmund",
-      "away_team": "Real Betis",
-      "commence_time": "2026-11-04T20:00:00Z",
-      "odds": {
-        "1": 1.8,
-        "2": 4.57,
-        "X": 4.16,
-        "OVER_35": 2.36,
-        "UNDER_35": 1.72,
-        "OVER_25": 1.44,
-        "UNDER_25": 2.5,
-        "1X": 1.26,
-        "X2": 2.18,
-        "DNB_1": 1.37,
-        "DNB_2": 3.47
-      },
-      "opening_odds": {
-        "1": 1.8,
-        "2": 4.57,
-        "X": 4.16,
-        "OVER_35": 2.36,
-        "UNDER_35": 1.72,
-        "OVER_25": 1.44,
-        "UNDER_25": 2.5,
-        "1X": 1.26,
-        "X2": 2.18,
-        "DNB_1": 1.37,
-        "DNB_2": 3.47
-      },
-      "fair_odds": {
-        "1": 1.827,
-        "X": 4.221,
-        "2": 4.637
-      },
-      "overround_pct": 1.48
-    },
-    {
-      "id": "29ebc4d234c1c6e86ebea07ab9174818",
+      "id": "9604c5b1c465435911e038db95ab2a7b",
       "sport_key": "soccer_uefa_europa_league",
       "league_name": "UEFA Europa League",
-      "home_team": "Rennes",
-      "away_team": "Olympiakos Piraeus",
-      "commence_time": "2026-11-04T15:30:00Z",
+      "home_team": "Anderlecht",
+      "away_team": "Salzburg",
+      "commence_time": "2026-11-05T17:45:00Z",
       "odds": {
-        "2": 3.19,
-        "1": 2.27,
-        "X": 3.61,
-        "OVER_25": 1.75,
-        "UNDER_25": 2.05,
-        "1X": 1.39,
-        "X2": 1.69,
-        "DNB_1": 1.64,
-        "DNB_2": 2.31
+        "1": 1.94,
+        "2": 3.4,
+        "X": 3.8,
+        "OVER_25": 1.6,
+        "UNDER_25": 2.38,
+        "OVER_35": 2.26,
+        "UNDER_35": 1.54,
+        "1X": 1.28,
+        "X2": 1.79,
+        "DNB_1": 1.43,
+        "DNB_2": 2.51
       },
       "opening_odds": {
-        "2": 3.19,
-        "1": 2.27,
-        "X": 3.61,
-        "OVER_25": 1.75,
-        "UNDER_25": 2.05,
-        "1X": 1.39,
-        "X2": 1.69,
-        "DNB_1": 1.64,
-        "DNB_2": 2.31
+        "1": 1.94,
+        "2": 3.4,
+        "X": 3.8,
+        "OVER_25": 1.6,
+        "UNDER_25": 2.38,
+        "OVER_35": 2.26,
+        "UNDER_35": 1.54,
+        "1X": 1.28,
+        "X2": 1.79,
+        "DNB_1": 1.43,
+        "DNB_2": 2.51
       },
       "fair_odds": {
-        "1": 2.34,
-        "X": 3.722,
-        "2": 3.289
+        "1": 2.081,
+        "X": 4.076,
+        "2": 3.647
       },
-      "overround_pct": 3.1
+      "overround_pct": 7.27
     },
     {
-      "id": "47523374e8d8cdd5b43677e358317587",
-      "sport_key": "soccer_efl_champ",
-      "league_name": "Championship",
-      "home_team": "Cardiff City",
-      "away_team": "West Ham United",
-      "commence_time": "2026-11-04T19:45:00Z",
+      "id": "c91f4c9744f6ca502b7986a564e858df",
+      "sport_key": "soccer_uefa_europa_league",
+      "league_name": "UEFA Europa League",
+      "home_team": "AZ Alkmaar",
+      "away_team": "Juventus",
+      "commence_time": "2026-11-05T20:00:00Z",
       "odds": {
-        "1": 3.4,
-        "2": 2.02,
-        "X": 4.1,
-        "OVER_35": 1.93,
-        "UNDER_35": 1.72,
-        "OVER_25": 1.36,
-        "UNDER_25": 2.9,
-        "1X": 1.86,
-        "X2": 1.35,
-        "DNB_1": 2.57,
-        "DNB_2": 1.53
+        "1": 3.64,
+        "2": 2.01,
+        "X": 3.76,
+        "OVER_25": 1.79,
+        "UNDER_25": 1.99,
+        "1X": 1.85,
+        "X2": 1.31,
+        "DNB_1": 2.67,
+        "DNB_2": 1.48
       },
       "opening_odds": {
-        "1": 3.4,
-        "2": 2.02,
-        "X": 4.1,
-        "OVER_35": 1.93,
-        "UNDER_35": 1.72,
-        "OVER_25": 1.36,
-        "UNDER_25": 2.9,
-        "1X": 1.86,
-        "X2": 1.35,
-        "DNB_1": 2.57,
-        "DNB_2": 1.53
+        "1": 3.64,
+        "2": 2.01,
+        "X": 3.76,
+        "OVER_25": 1.79,
+        "UNDER_25": 1.99,
+        "1X": 1.85,
+        "X2": 1.31,
+        "DNB_1": 2.67,
+        "DNB_2": 1.48
       },
       "fair_odds": {
-        "1": 3.512,
-        "X": 4.236,
+        "1": 3.779,
+        "X": 3.904,
         "2": 2.087
       },
-      "overround_pct": 3.31
+      "overround_pct": 3.82
     },
     {
-      "id": "7d58b1a0732fa9d2c2fa42d44e636eed",
-      "sport_key": "soccer_efl_champ",
-      "league_name": "Championship",
-      "home_team": "Bristol City",
-      "away_team": "Wolverhampton Wanderers",
-      "commence_time": "2026-11-04T20:00:00Z",
+      "id": "b828d43ba5fa1c8cdd2e34aabea9d0ce",
+      "sport_key": "soccer_uefa_europa_league",
+      "league_name": "UEFA Europa League",
+      "home_team": "Celta Vigo",
+      "away_team": "Union Saint-Gilloise",
+      "commence_time": "2026-11-05T20:00:00Z",
       "odds": {
-        "1": 3.25,
-        "2": 2.12,
-        "X": 3.4,
-        "OVER_25": 2.02,
-        "UNDER_25": 1.95,
-        "1X": 1.66,
-        "X2": 1.31,
-        "DNB_1": 2.29,
-        "DNB_2": 1.5
+        "1": 2.31,
+        "2": 3.14,
+        "X": 3.56,
+        "OVER_25": 1.81,
+        "UNDER_25": 1.97,
+        "1X": 1.4,
+        "X2": 1.67,
+        "DNB_1": 1.66,
+        "DNB_2": 2.26
       },
       "opening_odds": {
-        "1": 3.25,
-        "2": 2.12,
-        "X": 3.4,
-        "OVER_25": 2.02,
-        "UNDER_25": 1.95,
-        "1X": 1.66,
-        "X2": 1.31,
-        "DNB_1": 2.29,
-        "DNB_2": 1.5
+        "1": 2.31,
+        "2": 3.14,
+        "X": 3.56,
+        "OVER_25": 1.81,
+        "UNDER_25": 1.97,
+        "1X": 1.4,
+        "X2": 1.67,
+        "DNB_1": 1.66,
+        "DNB_2": 2.26
       },
       "fair_odds": {
-        "1": 3.489,
-        "X": 3.65,
-        "2": 2.276
+        "1": 2.385,
+        "X": 3.675,
+        "2": 3.241
       },
-      "overround_pct": 7.35
+      "overround_pct": 3.23
     },
     {
-      "id": "12c73c238e22b4d2b70797fdfbd3a8a6",
-      "sport_key": "soccer_belgium_first_div",
-      "league_name": "Belgium First Div",
-      "home_team": "KV Kortrijk",
-      "away_team": "KV Mechelen",
-      "commence_time": "2026-11-04T19:30:00Z",
+      "id": "6dad8d4dd99ba6f5dae0b3abdf8f669b",
+      "sport_key": "soccer_uefa_europa_league",
+      "league_name": "UEFA Europa League",
+      "home_team": "Sunderland",
+      "away_team": "Dinamo Zagreb",
+      "commence_time": "2026-11-05T20:00:00Z",
       "odds": {
-        "1": 2.43,
-        "2": 3.04,
-        "X": 3.46,
-        "OVER_25": 1.88,
-        "UNDER_25": 1.85,
-        "1X": 1.43,
-        "X2": 1.62,
-        "DNB_1": 1.73,
-        "DNB_2": 2.16
+        "2": 6.0,
+        "1": 1.43,
+        "X": 4.8,
+        "OVER_25": 1.7,
+        "UNDER_25": 2.36,
+        "1X": 1.1,
+        "X2": 2.67,
+        "DNB_1": 1.13,
+        "DNB_2": 4.75
       },
       "opening_odds": {
-        "1": 2.43,
-        "2": 3.04,
-        "X": 3.46,
-        "OVER_25": 1.88,
-        "UNDER_25": 1.85,
-        "1X": 1.43,
-        "X2": 1.62,
-        "DNB_1": 1.73,
-        "DNB_2": 2.16
+        "2": 6.0,
+        "1": 1.43,
+        "X": 4.8,
+        "OVER_25": 1.7,
+        "UNDER_25": 2.36,
+        "1X": 1.1,
+        "X2": 2.67,
+        "DNB_1": 1.13,
+        "DNB_2": 4.75
       },
       "fair_odds": {
-        "1": 2.502,
-        "X": 3.562,
-        "2": 3.13
+        "1": 1.536,
+        "X": 5.157,
+        "2": 6.446
       },
-      "overround_pct": 2.95
+      "overround_pct": 7.43
     },
     {
-      "id": "7e605ab1c3e8d0a9b4df244dcdab71a9",
-      "sport_key": "soccer_england_league1",
-      "league_name": "League 1",
-      "home_team": "Oxford United",
-      "away_team": "Reading",
-      "commence_time": "2026-11-04T19:45:00Z",
+      "id": "2af127e906ae56f3543d283b85f7b54e",
+      "sport_key": "soccer_uefa_europa_league",
+      "league_name": "UEFA Europa League",
+      "home_team": "Hapoel Be'er Sheva",
+      "away_team": "OFI Crete",
+      "commence_time": "2026-11-05T20:00:00Z",
       "odds": {
-        "1": 2.6,
-        "2": 2.55,
-        "X": 3.45,
-        "OVER_25": 1.92,
-        "UNDER_25": 2.04,
-        "1X": 1.48,
-        "X2": 1.47,
-        "DNB_1": 1.85,
-        "DNB_2": 1.81
+        "1": 2.15,
+        "2": 3.43,
+        "X": 3.58,
+        "OVER_25": 1.66,
+        "UNDER_25": 2.05,
+        "1X": 1.34,
+        "X2": 1.75,
+        "DNB_1": 1.55,
+        "DNB_2": 2.47
       },
       "opening_odds": {
-        "1": 2.6,
-        "2": 2.55,
-        "X": 3.45,
-        "OVER_25": 1.92,
-        "UNDER_25": 2.04,
-        "1X": 1.48,
-        "X2": 1.47,
-        "DNB_1": 1.85,
-        "DNB_2": 1.81
+        "1": 2.15,
+        "2": 3.43,
+        "X": 3.58,
+        "OVER_25": 1.66,
+        "UNDER_25": 2.05,
+        "1X": 1.34,
+        "X2": 1.75,
+        "DNB_1": 1.55,
+        "DNB_2": 2.47
       },
       "fair_odds": {
-        "1": 2.773,
-        "X": 3.68,
-        "2": 2.72
+        "1": 2.227,
+        "X": 3.709,
+        "2": 3.553
       },
-      "overround_pct": 6.66
+      "overround_pct": 3.6
+    },
+    {
+      "id": "84b68e09ecbe93fdbce759cd822322a2",
+      "sport_key": "soccer_uefa_europa_league",
+      "league_name": "UEFA Europa League",
+      "home_team": "SK Sturm Graz",
+      "away_team": "NK Celje",
+      "commence_time": "2026-11-05T20:00:00Z",
+      "odds": {
+        "2": 5.9,
+        "1": 1.52,
+        "X": 4.72,
+        "OVER_35": 2.52,
+        "UNDER_35": 1.63,
+        "OVER_25": 1.6,
+        "UNDER_25": 2.38,
+        "1X": 1.15,
+        "X2": 2.62,
+        "DNB_1": 1.2,
+        "DNB_2": 4.65
+      },
+      "opening_odds": {
+        "2": 5.9,
+        "1": 1.52,
+        "X": 4.72,
+        "OVER_35": 2.52,
+        "UNDER_35": 1.63,
+        "OVER_25": 1.6,
+        "UNDER_25": 2.38,
+        "1X": 1.15,
+        "X2": 2.62,
+        "DNB_1": 1.2,
+        "DNB_2": 4.65
+      },
+      "fair_odds": {
+        "1": 1.58,
+        "X": 4.905,
+        "2": 6.132
+      },
+      "overround_pct": 3.93
+    },
+    {
+      "id": "15d62dc210bdd9cdfc3a985397de2a2d",
+      "sport_key": "soccer_argentina_primera_division",
+      "league_name": "Primera División - Argentina",
+      "home_team": "Aldosivi Mar del Plata",
+      "away_team": "River Plate",
+      "commence_time": "2026-11-05T18:00:00Z",
+      "odds": {
+        "1": 7.27,
+        "2": 1.44,
+        "X": 4.65,
+        "OVER_25": 1.85,
+        "UNDER_25": 1.89,
+        "1X": 2.84,
+        "X2": 1.1,
+        "DNB_1": 5.71,
+        "DNB_2": 1.13
+      },
+      "opening_odds": {
+        "1": 7.27,
+        "2": 1.44,
+        "X": 4.65,
+        "OVER_25": 1.85,
+        "UNDER_25": 1.89,
+        "1X": 2.84,
+        "X2": 1.1,
+        "DNB_1": 5.71,
+        "DNB_2": 1.13
+      },
+      "fair_odds": {
+        "1": 7.612,
+        "X": 4.869,
+        "2": 1.508
+      },
+      "overround_pct": 4.7
+    },
+    {
+      "id": "68f644784f86f60e3602791054c87c24",
+      "sport_key": "soccer_argentina_primera_division",
+      "league_name": "Primera División - Argentina",
+      "home_team": "Gimnasia La Plata",
+      "away_team": "Belgrano de Cordoba",
+      "commence_time": "2026-11-05T22:15:00Z",
+      "odds": {
+        "2": 3.55,
+        "1": 2.3,
+        "X": 3.02,
+        "OVER_25": 2.01,
+        "UNDER_25": 1.75,
+        "1X": 1.31,
+        "X2": 1.63,
+        "DNB_1": 1.54,
+        "DNB_2": 2.37
+      },
+      "opening_odds": {
+        "2": 3.55,
+        "1": 2.3,
+        "X": 3.02,
+        "OVER_25": 2.01,
+        "UNDER_25": 1.75,
+        "1X": 1.31,
+        "X2": 1.63,
+        "DNB_1": 1.54,
+        "DNB_2": 2.37
+      },
+      "fair_odds": {
+        "1": 2.409,
+        "X": 3.164,
+        "2": 3.719
+      },
+      "overround_pct": 4.76
     }
   ]
 }
