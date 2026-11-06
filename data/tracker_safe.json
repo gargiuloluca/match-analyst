@@ -1,11 +1,11 @@
 {
-  "total_bets": 22,
-  "won": 14,
+  "total_bets": 21,
+  "won": 15,
   "lost": 6,
   "void": 1,
-  "win_rate": 70.0,
-  "net_profit_units": 3.46,
-  "roi_pct": 7.7,
+  "win_rate": 71.4,
+  "net_profit_units": 3.9,
+  "roi_pct": 8.5,
   "bets": [
     {
       "id": "f2fac0be6c577027b70b4493101b1772_DNB_1",
@@ -322,10 +322,10 @@
       "odd": 1.44,
       "prob": 0.7863,
       "ev": 0.1322,
-      "stake_pct": 1.0,
+      "stake_pct": 1,
       "tier": "SAFE 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.44
     },
     {
       "id": "6dad8d4dd99ba6f5dae0b3abdf8f669b_1",
@@ -338,10 +338,10 @@
       "odd": 1.43,
       "prob": 0.7778,
       "ev": 0.1123,
-      "stake_pct": 1.0,
+      "stake_pct": 1,
       "tier": "SAFE 80+",
       "status": "LOST",
-      "profit": -1.0,
+      "profit": -1,
       "score": "0-2"
     }
   ],
