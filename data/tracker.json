@@ -1,11 +1,11 @@
 {
-  "total_bets": 39,
-  "won": 24,
-  "lost": 15,
+  "total_bets": 43,
+  "won": 26,
+  "lost": 17,
   "void": 0,
-  "win_rate": 61.5,
-  "net_profit_units": 1.56,
-  "roi_pct": 2.2,
+  "win_rate": 60.5,
+  "net_profit_units": 1.18,
+  "roi_pct": 1.6,
   "bets": [
     {
       "id": "sevilla_osasuna_won",
@@ -533,8 +533,8 @@
       "edge": 0.1967,
       "stake_pct": 0.58,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0
+      "status": "WON",
+      "profit": 0.48
     },
     {
       "id": "40277b0cdbae300995d9e1c2ecb611c1_1X",
@@ -566,8 +566,8 @@
       "edge": 0.1321,
       "stake_pct": 0.58,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0
+      "status": "LOST",
+      "profit": -0.58
     },
     {
       "id": "6d386ed81fabf67aa19fbd442c0d8c60_UNDER_35",
@@ -616,8 +616,8 @@
       "edge": 0.1912,
       "stake_pct": 0.6,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.52
     },
     {
       "id": "7e605ab1c3e8d0a9b4df244dcdab71a9_1X",
@@ -649,8 +649,8 @@
       "edge": 0.4672,
       "stake_pct": 0.8,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.8
     },
     {
       "id": "9604c5b1c465435911e038db95ab2a7b_UNDER_35",
@@ -683,7 +683,7 @@
       "stake_pct": 0.62,
       "tier": "GOLD",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "c664e36e2d2856fcbd3b637422d7a8dc_OVER_15",
@@ -699,7 +699,7 @@
       "stake_pct": 0.62,
       "tier": "GOLD",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "b2eb5387bd74e1c65fc5ad050c24e674_UNDER_35",
@@ -715,7 +715,7 @@
       "stake_pct": 0.52,
       "tier": "GOLD",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "af665449ac9e2c4e1f183376e85fc936_1X",
@@ -731,7 +731,7 @@
       "stake_pct": 0.62,
       "tier": "OFFICIAL",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "e50c3b5d28caa718fe5211de892d5a02_1X",
@@ -747,7 +747,7 @@
       "stake_pct": 0.62,
       "tier": "OFFICIAL",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     }
   ],
   "brier_score": 0.2476,
