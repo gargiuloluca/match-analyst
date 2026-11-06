@@ -1,9 +1,10 @@
 """
 analyze_xg.py — AtmBetSignal Experimental Engine (Model B: Independent Rolling xG & Performance Gap)
-Motore parallelo di laboratorio quantitativo avanzato (Versione ad Alta Precisione).
+Motore parallelo di laboratorio quantitativo avanzato (Versione Specializzata sui Gol).
 - Stima dei parametri 100% indipendente dalle quote
 - Filtri di élite innalzati (Probabilità minima >= 70%)
 - Gestione rigorosa del Performance Gap e scostamento quote
+- Specializzazione esclusiva sui mercati Under/Over e BTTS (Zero sovrapposizioni con Motore A)
 - Cap di esposizione portafoglio: max 1.25% singola giocata, max 2.5% cumulato di giornata
 Salva i risultati in data/latest_xg.json e data/tracker_xg.json.
 """
@@ -166,7 +167,6 @@ def calculate_adaptive_kelly(prob: float, odd: float, push_prob: float = 0.0) ->
     if f_star <= 0.0:
         return 0.0
     
-    # Quarter-Kelly restrittivo con cap massimo all'1.25%
     stake = (f_star / 4.0) * 100.0
     if odd <= 1.60:
         max_stake = 1.25
@@ -177,17 +177,6 @@ def calculate_adaptive_kelly(prob: float, odd: float, push_prob: float = 0.0) ->
     return round(min(max_stake, max(0.40, stake)), 2)
 
 def evaluate_markets(matrix, odds_dict):
-    p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
-    p_draw = sum(prob for (x, y), prob in matrix.items() if x == y)
-    p_away = sum(prob for (x, y), prob in matrix.items() if x < y)
-
-    p_1x = p_home + p_draw
-    p_x2 = p_away + p_draw
-
-    decisive = p_home + p_away
-    p_dnb_1 = (p_home / decisive) if decisive > 0 else 0.0
-    p_dnb_2 = (p_away / decisive) if decisive > 0 else 0.0
-
     p_over15 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 1.5)
     p_under15 = 1.0 - p_over15
     p_over25 = sum(prob for (x, y), prob in matrix.items() if (x + y) > 2.5)
@@ -198,14 +187,8 @@ def evaluate_markets(matrix, odds_dict):
     p_btts_yes = sum(prob for (x, y), prob in matrix.items() if x > 0 and y > 0)
     p_btts_no = 1.0 - p_btts_yes
 
+    # SPECIALIZZAZIONE ESCLUSIVA SUI MERCATI DEI GOL (UNDER/OVER E BTTS)
     markets = [
-        {"key": "1", "label": "Vittoria Casa (1)", "prob": p_home, "push_prob": 0.0, "odd": odds_dict.get("1", 0.0)},
-        {"key": "X", "label": "Pareggio (X)", "prob": p_draw, "push_prob": 0.0, "odd": odds_dict.get("X", 0.0)},
-        {"key": "2", "label": "Vittoria Trasferta (2)", "prob": p_away, "push_prob": 0.0, "odd": odds_dict.get("2", 0.0)},
-        {"key": "1X", "label": "Doppia Chance 1X", "prob": p_1x, "push_prob": 0.0, "odd": odds_dict.get("1X", 0.0)},
-        {"key": "X2", "label": "Doppia Chance X2", "prob": p_x2, "push_prob": 0.0, "odd": odds_dict.get("X2", 0.0)},
-        {"key": "DNB_1", "label": "Casa Draw No Bet (Rimborso X)", "prob": p_dnb_1, "push_prob": p_draw, "odd": odds_dict.get("DNB_1", 0.0)},
-        {"key": "DNB_2", "label": "Trasferta Draw No Bet (Rimborso X)", "prob": p_dnb_2, "push_prob": p_draw, "odd": odds_dict.get("DNB_2", 0.0)},
         {"key": "OVER_15", "label": "Over 1.5 Gol", "prob": p_over15, "push_prob": 0.0, "odd": odds_dict.get("OVER_15", 0.0)},
         {"key": "UNDER_15", "label": "Under 1.5 Gol", "prob": p_under15, "push_prob": 0.0, "odd": odds_dict.get("UNDER_15", 0.0)},
         {"key": "OVER_25", "label": "Over 2.5 Gol", "prob": p_over25, "push_prob": 0.0, "odd": odds_dict.get("OVER_25", 0.0)},
@@ -281,11 +264,9 @@ def main():
             tier = "STANDARD"
             is_official = False
 
-            # Filtri Smart Money più severi (anti-drift marcato)
             has_heavy_drift = line_shift_pct >= 2.5
             is_safe_fixture = not is_derby and not has_heavy_drift
 
-            # CRITERI DI ACCETTAZIONE POTENZIATI (PROB >= 70%)
             if prob >= 0.70 and 1.45 <= odd <= 2.80 and edge >= 0.04 and is_safe_fixture:
                 is_official = True
                 tier = "OFFICIAL"
@@ -296,7 +277,7 @@ def main():
                 if (prob >= 0.72 and odd >= 1.70 and edge >= 0.10) or (edge >= 0.08 and line_shift_pct <= -2.0):
                     tier = "DIAMOND"
 
-            combined_gap = h_gap - a_gap if m_key in ["1", "1X", "DNB_1"] else (a_gap - h_gap if m_key in ["2", "X2", "DNB_2"] else 0.0)
+            combined_gap = h_gap - a_gap if m_key in ["OVER_15", "OVER_25", "OVER_35", "BTTS_YES"] else (a_gap - h_gap)
             efficiency_score = (prob * 1.8) + (edge * 2.5) + (combined_gap * 0.8) - (max(0.0, line_shift_pct / 100.0) * 0.8)
 
             c_obj = {
@@ -343,7 +324,6 @@ def main():
     
     top_5_officials = officials[:5]
 
-    # Cap esposizione giornaliera ristretto al 2.5% max
     total_exposure = sum(p["suggested_stake_pct"] for p in top_5_officials)
     if total_exposure > 2.5:
         scale_ratio = 2.5 / total_exposure
@@ -359,7 +339,7 @@ def main():
     top_10_radar = radar_pool[:10]
 
     output_payload = {
-        "engine": "Model B (Dixon-Coles + Rolling xG Independent High-Precision)",
+        "engine": "Model B (Dixon-Coles + Rolling xG Goals Specialist)",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_officials": len(top_5_officials),
         "diamond_count": sum(1 for p in top_5_officials if p["tier"] == "DIAMOND"),
@@ -369,7 +349,7 @@ def main():
     }
 
     LATEST_XG_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model xG] Analisi Conclusa (High-Precision): {len(top_5_officials)} selezioni generate in latest_xg.json.")
+    print(f"[Model xG] Analisi Conclusa (Goals Specialist): {len(top_5_officials)} selezioni generate in latest_xg.json.")
 
     tracker_xg_data = {
         "total_bets": 0, "won": 0, "lost": 0, "void": 0,
@@ -424,4 +404,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-                    
+    
