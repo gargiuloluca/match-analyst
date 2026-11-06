@@ -1,11 +1,11 @@
 """
 analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine (Model A: Independent Dixon-Coles)
+Versione Ottimizzata ad Alta Precisione
 - Stima dei parametri lambda e mu 100% indipendente dalle quote (Zero circolarità)
 - Matrice bivariata Dixon-Coles con correzione tau per leghe tattiche
-- Smorzamento Bayesiano dell'Edge (Edge Shrinkage contro overconfidence)
-- Quarter-Kelly Push-Adjusted su scaglioni di quota e mercati DNB
-- Cap di esposizione portafoglio: max 1.5% singola giocata, max 3.0% cumulato di giornata
-- De-correlazione assoluta: max 1 selezione a valore ottimale per match
+- Smorzamento Bayesiano dell'Edge e Quarter-Kelly Push-Adjusted
+- Filtri di quota minima innalzati a 1.45 per proteggere il ROI sul lungo termine
+- Cap di esposizione portafoglio e de-correlazione assoluta per match
 - Tracciamento nativo via event_id e persistenza sicura su data/latest.json e data/tracker.json
 """
 
@@ -55,9 +55,7 @@ LEAGUE_GOAL_PROFILES = {
     "default": {"mu_home": 1.48, "mu_away": 1.18, "tau": -0.05}
 }
 
-# Rating statistici indipendenti attacco/difesa (Home/Away split)
 TEAM_STRENGTH_RATINGS = {
-    # Serie A
     "inter": {"att_h": 1.32, "def_h": 0.72, "att_a": 1.25, "def_a": 0.78},
     "juventus": {"att_h": 1.20, "def_h": 0.70, "att_a": 1.10, "def_a": 0.78},
     "milan": {"att_h": 1.25, "def_h": 0.88, "att_a": 1.15, "def_a": 0.95},
@@ -68,7 +66,6 @@ TEAM_STRENGTH_RATINGS = {
     "fiorentina": {"att_h": 1.18, "def_h": 0.90, "att_a": 1.05, "def_a": 1.02},
     "bologna": {"att_h": 1.12, "def_h": 0.82, "att_a": 1.02, "def_a": 0.92},
 
-    # Premier League
     "manchester city": {"att_h": 1.45, "def_h": 0.65, "att_a": 1.35, "def_a": 0.75},
     "liverpool": {"att_h": 1.40, "def_h": 0.70, "att_a": 1.30, "def_a": 0.80},
     "arsenal": {"att_h": 1.38, "def_h": 0.68, "att_a": 1.28, "def_a": 0.72},
@@ -77,14 +74,12 @@ TEAM_STRENGTH_RATINGS = {
     "tottenham": {"att_h": 1.28, "def_h": 1.05, "att_a": 1.18, "def_a": 1.15},
     "newcastle": {"att_h": 1.25, "def_h": 0.90, "att_a": 1.05, "def_a": 1.12},
 
-    # La Liga
     "real madrid": {"att_h": 1.42, "def_h": 0.65, "att_a": 1.32, "def_a": 0.70},
     "barcelona": {"att_h": 1.45, "def_h": 0.70, "att_a": 1.35, "def_a": 0.75},
     "atletico madrid": {"att_h": 1.25, "def_h": 0.60, "att_a": 1.10, "def_a": 0.68},
     "athletic club": {"att_h": 1.18, "def_h": 0.75, "att_a": 1.02, "def_a": 0.85},
     "villarreal": {"att_h": 1.22, "def_h": 1.05, "att_a": 1.10, "def_a": 1.15},
 
-    # Altre Europee
     "bayern": {"att_h": 1.55, "def_h": 0.68, "att_a": 1.40, "def_a": 0.75},
     "leverkusen": {"att_h": 1.38, "def_h": 0.75, "att_a": 1.25, "def_a": 0.82},
     "paris saint germain": {"att_h": 1.48, "def_h": 0.65, "att_a": 1.35, "def_a": 0.70},
@@ -101,7 +96,6 @@ def get_team_ratings(team_name: str, is_home: bool):
         if t_key != "default" and t_key in name_low:
             att = r["att_h"] if is_home else r["att_a"]
             defense = r["def_h"] if is_home else r["def_a"]
-            # Shrinkage verso la media (0.85 peso specifico + 0.15 media di lega)
             return (0.85 * att + 0.15 * 1.00), (0.85 * defense + 0.15 * 1.00)
     return 1.00, 1.00
 
@@ -141,11 +135,11 @@ def build_score_matrix(lambda_h: float, mu_a: float, rho: float, max_goals: int 
 
 def shrink_edge(raw_edge: float) -> float:
     if raw_edge <= 0.05:
-        return raw_edge
+        return raw_edge * 0.90
     elif raw_edge <= 0.15:
-        return raw_edge * 0.85
+        return raw_edge * 0.80
     else:
-        return 0.1275 + (raw_edge - 0.15) * 0.40
+        return 0.12 + (raw_edge - 0.15) * 0.35
 
 def calculate_adaptive_kelly(prob: float, odd: float, push_prob: float = 0.0) -> float:
     b = odd - 1.0
@@ -156,15 +150,14 @@ def calculate_adaptive_kelly(prob: float, odd: float, push_prob: float = 0.0) ->
     if f_star <= 0.0:
         return 0.0
     
-    # Quarter-Kelly con cap rigido massimo all'1.5% a singola operazione
     stake = (f_star / 4.0) * 100.0
     if odd <= 1.60:
-        max_stake = 1.50
-    elif odd <= 1.85:
         max_stake = 1.25
-    else:
+    elif odd <= 1.85:
         max_stake = 1.00
-    return round(min(max_stake, max(0.50, stake)), 2)
+    else:
+        max_stake = 0.75
+    return round(min(max_stake, max(0.40, stake)), 2)
 
 def evaluate_markets(matrix, odds_dict):
     p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
@@ -205,7 +198,8 @@ def evaluate_markets(matrix, odds_dict):
         {"key": "BTTS_YES", "label": "Entrambe Segnano (Gol)", "prob": p_btts_yes, "push_prob": 0.0, "odd": odds_dict.get("BTTS_YES", 0.0)},
         {"key": "BTTS_NO", "label": "NoGol", "prob": p_btts_no, "push_prob": 0.0, "odd": odds_dict.get("BTTS_NO", 0.0)},
     ]
-    return [m for m in markets if m["odd"] and m["odd"] >= 1.30]
+    # SOGLIA QUOTA MINIMA INNALZATA A 1.45 PER EVITARE MERCATI COMPRESSI
+    return [m for m in markets if m["odd"] and m["odd"] >= 1.45]
 
 def normalize_match_str(s: str) -> str:
     n = s.lower()
@@ -236,7 +230,6 @@ def main():
         odds = item.get("odds", {})
         open_odds = item.get("opening_odds", {})
 
-        # STIMA 100% INDIPENDENTE (Zero dipendenza circolare dalle quote)
         att_h, def_h = get_team_ratings(home_team, is_home=True)
         att_a, def_a = get_team_ratings(away_team, is_home=False)
 
@@ -244,7 +237,6 @@ def main():
         mu_a = profile["mu_away"] * att_a * def_h
         rho = profile["tau"]
 
-        # Penalizzazione impegni coppe europee infrasettimanali
         h_low, a_low = home_team.lower(), away_team.lower()
         if any(team in h_low for team in EUROPEAN_COMPETITORS):
             lambda_h *= 0.93
@@ -274,23 +266,21 @@ def main():
             tier = "STANDARD"
             is_official = False
 
-            # Smart Money Filter (Anti-drift <= +3.5%)
-            has_heavy_drift = line_shift_pct >= 3.5
+            has_heavy_drift = line_shift_pct >= 2.5
             is_safe_fixture = not is_derby and not has_heavy_drift
 
-            # Criterio di Valore Ufficiale Model A
-            if prob >= 0.65 and 1.40 <= odd <= 3.00 and edge >= 0.025 and is_safe_fixture:
+            # CRITERI DI ACCETTAZIONE POTENZIATI (PROB >= 68%, QUOTA >= 1.45)
+            if prob >= 0.68 and 1.45 <= odd <= 2.90 and edge >= 0.035 and is_safe_fixture:
                 is_official = True
                 tier = "OFFICIAL"
 
-                if prob >= 0.72 and odd >= 1.45 and edge >= 0.05:
+                if prob >= 0.74 and odd >= 1.50 and edge >= 0.06:
                     tier = "GOLD"
 
-                if (prob >= 0.66 and odd >= 1.65 and edge >= 0.08) or (edge >= 0.06 and line_shift_pct <= -2.5):
+                if (prob >= 0.70 and odd >= 1.70 and edge >= 0.09) or (edge >= 0.07 and line_shift_pct <= -2.0):
                     tier = "DIAMOND"
 
-            # Composite Efficiency Score: bilancia probabilità ed Edge
-            efficiency_score = (prob * 1.5) + (edge * 2.0) - (max(0.0, line_shift_pct / 100.0) * 0.5)
+            efficiency_score = (prob * 1.8) + (edge * 2.5) - (max(0.0, line_shift_pct / 100.0) * 0.8)
 
             c_obj = {
                 "match_id": m_id,
@@ -317,7 +307,6 @@ def main():
                 match_candidates[m_id] = []
             match_candidates[m_id].append(c_obj)
 
-    # 1 SOLO MERCATO PER MATCH (Zero auto-cannibalizzazione)
     tier_weight = {"DIAMOND": 300, "GOLD": 200, "OFFICIAL": 100, "STANDARD": 0}
     diversified_picks = []
 
@@ -328,35 +317,32 @@ def main():
         )
         diversified_picks.append(candidates_list[0])
 
-    # Selezioni Ufficiali
     officials = [p for p in diversified_picks if p["is_official"]]
     officials.sort(
         key=lambda x: (tier_weight.get(x["tier"], 0), x["efficiency_score"]), 
         reverse=True
     )
     
-    # Cap a un massimo di 5 selezioni (solo se autenticamente a valore)
     top_5_officials = officials[:5]
 
-    # Controllo Esposizione Totale Giornaliera (Cap 3.0% complessivo)
+    # Cap esposizione giornaliera limitato a max 2.5% per maggiore sicurezza
     total_exposure = sum(p["suggested_stake_pct"] for p in top_5_officials)
-    if total_exposure > 3.0:
-        scale_ratio = 3.0 / total_exposure
+    if total_exposure > 2.5:
+        scale_ratio = 2.5 / total_exposure
         for p in top_5_officials:
             p["suggested_stake_pct"] = round(p["suggested_stake_pct"] * scale_ratio, 2)
 
-    # Watchlist Radar (Match secondari non tra le ufficiali)
     official_match_ids = {p["match_id"] for p in top_5_officials}
     radar_pool = [
         p for p in diversified_picks 
-        if p["match_id"] not in official_match_ids and p["estimated_probability"] >= 0.55
+        if p["match_id"] not in official_match_ids and p["estimated_probability"] >= 0.60
     ]
     radar_pool.sort(key=lambda x: x["estimated_probability"], reverse=True)
     top_10_radar = radar_pool[:10]
 
     latest_output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "engine": "Model A (Dixon-Coles Pure Independent)",
+        "engine": "Model A (Dixon-Coles High-Precision)",
         "total_officials": len(top_5_officials),
         "diamond_count": sum(1 for c in top_5_officials if c["tier"] == "DIAMOND"),
         "gold_count": sum(1 for c in top_5_officials if c["tier"] == "GOLD"),
@@ -365,9 +351,8 @@ def main():
     }
 
     LATEST_FILE.write_text(json.dumps(latest_output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model A] Analisi conclusa: {len(top_5_officials)} selezioni autenticamente a valore (1 pick per match).")
+    print(f"[Model A] Analisi conclusa (High-Precision): {len(top_5_officials)} selezioni generate.")
 
-    # Sincronizzazione atomica con data/tracker.json via event_id
     tracker_data = {"bets": []}
     if TRACKER_FILE.exists():
         try:
@@ -416,3 +401,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
