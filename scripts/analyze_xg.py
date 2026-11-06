@@ -1,12 +1,10 @@
 """
 analyze_xg.py — AtmBetSignal Experimental Engine (Model B: Independent Rolling xG & Performance Gap)
-Motore parallelo di laboratorio quantitativo.
-- Stima dei parametri 100% indipendente dalle quote (Zero dipendenza circolare)
-- Normalizzazione degli xG per la forza specifica dell'avversario
-- Analisi del Performance Gap (xG creati vs gol effettivi per individuare anomalie di mercato)
-- Smorzamento Bayesiano dell'Edge (Edge Shrinkage) e Kelly Push-Adjusted (DNB)
-- Cap di esposizione portafoglio: max 1.5% singola giocata, max 3.0% cumulato di giornata
-- De-correlazione rigida: max 1 selezione a valore ottimale per match
+Motore parallelo di laboratorio quantitativo avanzato (Versione ad Alta Precisione).
+- Stima dei parametri 100% indipendente dalle quote
+- Filtri di élite innalzati (Probabilità minima >= 70%)
+- Gestione rigorosa del Performance Gap e scostamento quote
+- Cap di esposizione portafoglio: max 1.25% singola giocata, max 2.5% cumulato di giornata
 Salva i risultati in data/latest_xg.json e data/tracker_xg.json.
 """
 
@@ -56,9 +54,7 @@ LEAGUE_GOAL_PROFILES = {
     "default": {"mu_home": 1.48, "mu_away": 1.18, "tau": -0.05}
 }
 
-# Database metriche sottostanti Rolling xG (con fattore di conversione e performance gap)
 TEAM_XG_DATABASE = {
-    # Serie A
     "inter": {"xg_for": 1.38, "xg_against": 0.72, "gap": +0.12},
     "juventus": {"xg_for": 1.20, "xg_against": 0.75, "gap": +0.05},
     "milan": {"xg_for": 1.28, "xg_against": 0.92, "gap": -0.08},
@@ -78,7 +74,6 @@ TEAM_XG_DATABASE = {
     "torino": {"xg_for": 0.94, "xg_against": 0.86, "gap": +0.02},
     "monza": {"xg_for": 0.84, "xg_against": 1.16, "gap": -0.07},
     
-    # Premier League
     "manchester city": {"xg_for": 1.48, "xg_against": 0.68, "gap": +0.15},
     "liverpool": {"xg_for": 1.44, "xg_against": 0.74, "gap": +0.10},
     "arsenal": {"xg_for": 1.40, "xg_against": 0.70, "gap": +0.12},
@@ -90,7 +85,6 @@ TEAM_XG_DATABASE = {
     "brentford": {"xg_for": 1.15, "xg_against": 1.18, "gap": +0.05},
     "brighton": {"xg_for": 1.24, "xg_against": 1.15, "gap": +0.14},
 
-    # La Liga
     "real madrid": {"xg_for": 1.46, "xg_against": 0.65, "gap": +0.12},
     "barcelona": {"xg_for": 1.50, "xg_against": 0.70, "gap": +0.18},
     "atletico madrid": {"xg_for": 1.26, "xg_against": 0.62, "gap": +0.04},
@@ -98,7 +92,6 @@ TEAM_XG_DATABASE = {
     "real sociedad": {"xg_for": 1.10, "xg_against": 0.80, "gap": +0.06},
     "villarreal": {"xg_for": 1.24, "xg_against": 1.12, "gap": +0.05},
 
-    # Altre Leghe Europee
     "psv": {"xg_for": 1.58, "xg_against": 0.60, "gap": +0.20},
     "feyenoord": {"xg_for": 1.40, "xg_against": 0.70, "gap": +0.10},
     "ajax": {"xg_for": 1.32, "xg_against": 0.85, "gap": +0.05},
@@ -117,7 +110,6 @@ def get_team_xg_metrics(team_name: str):
     name_low = team_name.lower()
     for t_key, ratings in TEAM_XG_DATABASE.items():
         if t_key != "default" and t_key in name_low:
-            # Shrinkage Bayesiano per regolarizzare l'xG verso la media del campionato (1.00)
             xg_f = 0.85 * ratings["xg_for"] + 0.15 * 1.00
             xg_a = 0.85 * ratings["xg_against"] + 0.15 * 1.00
             return xg_f, xg_a, ratings.get("gap", 0.00)
@@ -159,11 +151,11 @@ def build_score_matrix(lambda_h: float, mu_a: float, rho: float, max_goals: int 
 
 def shrink_edge(raw_edge: float) -> float:
     if raw_edge <= 0.05:
-        return raw_edge
+        return raw_edge * 0.90
     elif raw_edge <= 0.15:
-        return raw_edge * 0.85
+        return raw_edge * 0.80
     else:
-        return 0.1275 + (raw_edge - 0.15) * 0.40
+        return 0.12 + (raw_edge - 0.15) * 0.35
 
 def calculate_adaptive_kelly(prob: float, odd: float, push_prob: float = 0.0) -> float:
     b = odd - 1.0
@@ -174,15 +166,15 @@ def calculate_adaptive_kelly(prob: float, odd: float, push_prob: float = 0.0) ->
     if f_star <= 0.0:
         return 0.0
     
-    # Quarter-Kelly con cap rigido massimo all'1.5%
+    # Quarter-Kelly restrittivo con cap massimo all'1.25%
     stake = (f_star / 4.0) * 100.0
     if odd <= 1.60:
-        max_stake = 1.50
-    elif odd <= 1.85:
         max_stake = 1.25
-    else:
+    elif odd <= 1.85:
         max_stake = 1.00
-    return round(min(max_stake, max(0.50, stake)), 2)
+    else:
+        max_stake = 0.75
+    return round(min(max_stake, max(0.40, stake)), 2)
 
 def evaluate_markets(matrix, odds_dict):
     p_home = sum(prob for (x, y), prob in matrix.items() if x > y)
@@ -223,7 +215,7 @@ def evaluate_markets(matrix, odds_dict):
         {"key": "BTTS_YES", "label": "Entrambe Segnano (Gol)", "prob": p_btts_yes, "push_prob": 0.0, "odd": odds_dict.get("BTTS_YES", 0.0)},
         {"key": "BTTS_NO", "label": "NoGol", "prob": p_btts_no, "push_prob": 0.0, "odd": odds_dict.get("BTTS_NO", 0.0)},
     ]
-    return [m for m in markets if m["odd"] and m["odd"] >= 1.30]
+    return [m for m in markets if m["odd"] and m["odd"] >= 1.40]
 
 def normalize_match_str(s: str) -> str:
     n = s.lower()
@@ -253,16 +245,13 @@ def main():
         odds = item.get("odds", {})
         open_odds = item.get("opening_odds", {})
 
-        # STIMA 100% INDIPENDENTE CON PONDERAZIONE AVVERSARIA SU xG
         h_xg_f, h_xg_a, h_gap = get_team_xg_metrics(home_team)
         a_xg_f, a_xg_a, a_gap = get_team_xg_metrics(away_team)
 
-        # Output atteso: produzione offensiva pesata per la concessione difensiva avversaria
         lambda_h = profile["mu_home"] * (h_xg_f * a_xg_a)
         mu_a = profile["mu_away"] * (a_xg_f * h_xg_a)
         rho = profile["tau"]
 
-        # Modulazione fatica per club impegnati nelle coppe europee
         h_low, a_low = home_team.lower(), away_team.lower()
         if any(team in h_low for team in EUROPEAN_COMPETITORS):
             lambda_h *= 0.93
@@ -292,24 +281,23 @@ def main():
             tier = "STANDARD"
             is_official = False
 
-            # Smart Money Filter (Anti-drift <= +3.5%)
-            has_heavy_drift = line_shift_pct >= 3.5
+            # Filtri Smart Money più severi (anti-drift marcato)
+            has_heavy_drift = line_shift_pct >= 2.5
             is_safe_fixture = not is_derby and not has_heavy_drift
 
-            # Criterio di Valore Modello B (Rolling xG)
-            if prob >= 0.65 and 1.40 <= odd <= 3.00 and edge >= 0.025 and is_safe_fixture:
+            # CRITERI DI ACCETTAZIONE POTENZIATI (PROB >= 70%)
+            if prob >= 0.70 and 1.45 <= odd <= 2.80 and edge >= 0.04 and is_safe_fixture:
                 is_official = True
                 tier = "OFFICIAL"
 
-                if prob >= 0.72 and odd >= 1.45 and edge >= 0.05:
+                if prob >= 0.76 and odd >= 1.50 and edge >= 0.07:
                     tier = "GOLD"
 
-                if (prob >= 0.66 and odd >= 1.65 and edge >= 0.08) or (edge >= 0.06 and line_shift_pct <= -2.5):
+                if (prob >= 0.72 and odd >= 1.70 and edge >= 0.10) or (edge >= 0.08 and line_shift_pct <= -2.0):
                     tier = "DIAMOND"
 
-            # Composite Efficiency Score: include il Performance Gap combinato delle squadre
             combined_gap = h_gap - a_gap if m_key in ["1", "1X", "DNB_1"] else (a_gap - h_gap if m_key in ["2", "X2", "DNB_2"] else 0.0)
-            efficiency_score = (prob * 1.5) + (edge * 2.0) + (combined_gap * 0.5) - (max(0.0, line_shift_pct / 100.0) * 0.5)
+            efficiency_score = (prob * 1.8) + (edge * 2.5) + (combined_gap * 0.8) - (max(0.0, line_shift_pct / 100.0) * 0.8)
 
             c_obj = {
                 "match_id": m_id,
@@ -337,7 +325,6 @@ def main():
                 match_candidates[m_id] = []
             match_candidates[m_id].append(c_obj)
 
-    # 1 SOLO MERCATO PER MATCH (Zero auto-cannibalizzazione)
     tier_weight = {"DIAMOND": 300, "GOLD": 200, "OFFICIAL": 100, "STANDARD": 0}
     diversified_picks = []
 
@@ -354,26 +341,25 @@ def main():
         reverse=True
     )
     
-    # Cap a un massimo di 5 selezioni (se presenti, altrimenti quelle effettivamente idonee)
     top_5_officials = officials[:5]
 
-    # Controllo Esposizione Totale Giornaliera (Cap 3.0% complessivo sul bankroll)
+    # Cap esposizione giornaliera ristretto al 2.5% max
     total_exposure = sum(p["suggested_stake_pct"] for p in top_5_officials)
-    if total_exposure > 3.0:
-        scale_ratio = 3.0 / total_exposure
+    if total_exposure > 2.5:
+        scale_ratio = 2.5 / total_exposure
         for p in top_5_officials:
             p["suggested_stake_pct"] = round(p["suggested_stake_pct"] * scale_ratio, 2)
 
     official_match_ids = {p["match_id"] for p in top_5_officials}
     radar_pool = [
         p for p in diversified_picks 
-        if p["match_id"] not in official_match_ids and p["estimated_probability"] >= 0.55
+        if p["match_id"] not in official_match_ids and p["estimated_probability"] >= 0.60
     ]
     radar_pool.sort(key=lambda x: x["estimated_probability"], reverse=True)
     top_10_radar = radar_pool[:10]
 
     output_payload = {
-        "engine": "Model B (Dixon-Coles + Rolling xG Independent)",
+        "engine": "Model B (Dixon-Coles + Rolling xG Independent High-Precision)",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_officials": len(top_5_officials),
         "diamond_count": sum(1 for p in top_5_officials if p["tier"] == "DIAMOND"),
@@ -383,7 +369,7 @@ def main():
     }
 
     LATEST_XG_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model xG] Analisi Conclusa: {len(top_5_officials)} selezioni generate in latest_xg.json.")
+    print(f"[Model xG] Analisi Conclusa (High-Precision): {len(top_5_officials)} selezioni generate in latest_xg.json.")
 
     tracker_xg_data = {
         "total_bets": 0, "won": 0, "lost": 0, "void": 0,
@@ -438,3 +424,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+                    
