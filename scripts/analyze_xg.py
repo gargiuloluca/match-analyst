@@ -1,10 +1,10 @@
 """
 analyze_xg.py — AtmBetSignal Experimental Engine (Model B: Independent Rolling xG & Performance Gap)
-Motore parallelo di laboratorio quantitativo avanzato (Versione Specializzata sui Gol).
+Motore parallelo di laboratorio quantitativo avanzato (Versione Specializzata sui Gol ad Alta Precisione).
 - Stima dei parametri 100% indipendente dalle quote
 - Filtri di élite innalzati (Probabilità minima >= 70%)
-- Gestione rigorosa del Performance Gap e scostamento quote
 - Specializzazione esclusiva sui mercati Under/Over e BTTS (Zero sovrapposizioni con Motore A)
+- Performance Gap ottimizzato specificamente sui flussi di reti attese
 - Cap di esposizione portafoglio: max 1.25% singola giocata, max 2.5% cumulato di giornata
 Salva i risultati in data/latest_xg.json e data/tracker_xg.json.
 """
@@ -277,7 +277,12 @@ def main():
                 if (prob >= 0.72 and odd >= 1.70 and edge >= 0.10) or (edge >= 0.08 and line_shift_pct <= -2.0):
                     tier = "DIAMOND"
 
-            combined_gap = h_gap - a_gap if m_key in ["OVER_15", "OVER_25", "OVER_35", "BTTS_YES"] else (a_gap - h_gap)
+            # Performance Gap calibrato specificamente sui mercati di gol
+            if m_key in ["OVER_15", "OVER_25", "OVER_35", "BTTS_YES"]:
+                combined_gap = (h_xg_f + a_xg_f) - (h_xg_a + a_xg_a)
+            else:
+                combined_gap = max(0.0, 2.0 - (h_xg_a + a_xg_a))
+
             efficiency_score = (prob * 1.8) + (edge * 2.5) + (combined_gap * 0.8) - (max(0.0, line_shift_pct / 100.0) * 0.8)
 
             c_obj = {
@@ -404,4 +409,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
