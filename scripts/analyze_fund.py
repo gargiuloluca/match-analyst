@@ -14,22 +14,26 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 TRACKER_FILE = DATA_DIR / "tracker_fund.json"
 LATEST_FILE = DATA_DIR / "latest_fund.json"
 
-# Selezioni unificate dai modelli precedenti (A, B, C) o lettura diretta di fixtures/analisi
 def load_all_signals():
     signals = []
-    # Legge dai singoli modelli se disponibili, oppure dal file fixtures arricchito
+    # Legge dai singoli modelli supportando sia 'all_selected_picks' che 'selections'
     for model_filename in ["latest.json", "latest_xg.json", "latest_safe.json"]:
         f_path = DATA_DIR / model_filename
         if f_path.exists():
             try:
                 data = json.loads(f_path.read_text(encoding="utf-8"))
-                # Supporta sia dizionari singoli che liste di segnali
-                items = data if isinstance(data, list) else data.get("selections", [])
+                if isinstance(data, list):
+                    items = data
+                elif isinstance(data, dict):
+                    items = data.get("all_selected_picks", data.get("selections", []))
+                else:
+                    items = []
+
                 for item in items:
                     if item not in signals:
                         signals.append(item)
-            except Exception:
-                pass
+            except Exception as e:
+                print(f"Errore lettura {model_filename}: {e}")
     return signals
 
 def calculate_portfolio_risk(selections):
@@ -45,14 +49,11 @@ def calculate_portfolio_risk(selections):
     optimized_portfolio = []
     seen_events = set()
 
-    # Parametri di Risk Management del Fondo
     MAX_DAILY_EXPOSURE_PCT = 5.0  # Esposizione massima giornaliera sul bankroll (%)
-    base_stake_fraction = 1.0     # Unità standard di partenza
 
-    # Filtro anti-correlazione: massimo 1 selezione per match
     filtered_candidates = []
     for sel in selections:
-        event_id = sel.get("id") or f"{sel.get('home_team')}-{sel.get('away_team')}"
+        event_id = sel.get("match_id") or sel.get("id") or f"{sel.get('home_team')}-{sel.get('away_team')}"
         if event_id not in seen_events:
             seen_events.add(event_id)
             filtered_candidates.append(sel)
@@ -60,25 +61,21 @@ def calculate_portfolio_risk(selections):
     if not filtered_candidates:
         return []
 
-    # Calcolo dello stake adattivo (Risk Parity / Volatility scaling)
     n_bets = len(filtered_candidates)
-    # Se ci sono molte selezioni, riduciamo leggermente lo stake unitario per evitare picchi di varianza
     allocation_factor = min(1.0, 4.0 / n_bets) if n_bets > 0 else 1.0
 
     for sel in filtered_candidates:
-        # Estrae o stima la quota e la probabilità implicita
-        odds = float(sel.get("odds", sel.get("price", 1.80)))
-        prob = float(sel.get("probability", sel.get("fair_probability", 0.5)))
+        # Estrae la quota e la probabilità stimata dai modelli precedenti
+        odds = float(sel.get("odd", sel.get("odds", 1.80)))
+        prob = float(sel.get("estimated_probability", sel.get("probability", 0.5)))
         
         if odds <= 1.0 or prob <= 0:
             continue
 
-        # Kelly Criterion Frazionato (Quarter Kelly istituzionale)
         q = 1.0 - prob
         kelly_full = (prob * odds - 1.0) / (odds - 1.0)
         kelly_fraction = max(0.0, kelly_full * 0.25) # 1/4 Kelly conservativo
 
-        # Calcolo stake finale ponderato dal fattore di portafoglio
         institutional_stake = round(max(0.5, kelly_fraction * 10 * allocation_factor), 2)
 
         sel_optimized = sel.copy()
@@ -103,7 +100,6 @@ def main():
 
     LATEST_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     
-    # Aggiorna anche il tracker storico del fondo
     tracker_data = []
     if TRACKER_FILE.exists():
         try:
@@ -113,13 +109,15 @@ def main():
     
     if portfolio:
         tracker_data.append({
-            "date": DATA_DIR.stat().st_mtime if hasattr(DATA_DIR, 'stat') else "latest",
+            "date": datetime.now(timezone.utc).isoformat() if 'datetime' in globals() else "latest",
             "selections_count": len(portfolio),
             "portfolio": portfolio
         })
-        TRACKER_FILE.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
+        TRACKER_SAFE_FILE_path = DATA_DIR / "tracker_fund.json"
+        TRACKER_SAFE_FILE_path.write_text(json.dumps(tracker_data, ensure_ascii=False, indent=2), encoding="utf-8")
 
     print(f"Modello D (Fund Engine) completato: generate {len(portfolio)} allocazioni di portafoglio ottimizzate.")
 
 if __name__ == "__main__":
     main()
+    
