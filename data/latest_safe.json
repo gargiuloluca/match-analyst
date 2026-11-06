@@ -1,60 +1,11 @@
 {
   "engine": "Model C (Safe80 Sniper EV >= +3% @ Quota >= 1.40)",
-  "generated_at": "2026-11-05T07:09:01.997878+00:00",
+  "generated_at": "2026-11-06T06:38:45.313496+00:00",
   "min_probability": "74%",
   "min_odd": 1.4,
   "min_ev": "+3.0%",
   "max_portfolio_exposure": "3.0%",
-  "total_officials": 3,
-  "all_selected_picks": [
-    {
-      "match_id": "84b68e09ecbe93fdbce759cd822322a2",
-      "match": "SK Sturm Graz vs NK Celje",
-      "commence_time": "2026-11-05T20:00:00Z",
-      "league": "UEFA Europa League",
-      "market_key": "1",
-      "outcome_label": "Vittoria Casa (1)",
-      "odd": 1.52,
-      "line_shift_pct": 0.0,
-      "estimated_probability": 0.7698,
-      "ev": 0.1701,
-      "edge": 0.1701,
-      "composite_score": 0.4444,
-      "suggested_stake_pct": 1.0,
-      "tier": "SAFE 80+"
-    },
-    {
-      "match_id": "15d62dc210bdd9cdfc3a985397de2a2d",
-      "match": "Aldosivi Mar del Plata vs River Plate",
-      "commence_time": "2026-11-05T18:00:00Z",
-      "league": "Primera División - Argentina",
-      "market_key": "2",
-      "outcome_label": "Vittoria Trasferta (2)",
-      "odd": 1.44,
-      "line_shift_pct": 0.0,
-      "estimated_probability": 0.7863,
-      "ev": 0.1322,
-      "edge": 0.1322,
-      "composite_score": 0.4394,
-      "suggested_stake_pct": 1.0,
-      "tier": "SAFE 80+"
-    },
-    {
-      "match_id": "6dad8d4dd99ba6f5dae0b3abdf8f669b",
-      "match": "Sunderland vs Dinamo Zagreb",
-      "commence_time": "2026-11-05T20:00:00Z",
-      "league": "UEFA Europa League",
-      "market_key": "1",
-      "outcome_label": "Vittoria Casa (1)",
-      "odd": 1.43,
-      "line_shift_pct": 0.0,
-      "estimated_probability": 0.7778,
-      "ev": 0.1123,
-      "edge": 0.1123,
-      "composite_score": 0.4282,
-      "suggested_stake_pct": 1.0,
-      "tier": "SAFE 80+"
-    }
-  ],
+  "total_officials": 0,
+  "all_selected_picks": [],
   "radar_watchlist": []
 }
