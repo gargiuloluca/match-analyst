@@ -1,3 +1,33 @@
 {
-  "selections": []
+  "engine": "Model E — Master Selector AI Top 5",
+  "total_evaluated": 1,
+  "selections": [
+    {
+      "match_id": "d2b023e1f4716513148b17f8e486964b",
+      "commence_time": "2026-11-06T22:15:00Z",
+      "league": "Primera División - Argentina",
+      "home_team": "San Lorenzo",
+      "away_team": "Platense",
+      "match": "San Lorenzo vs Platense",
+      "market_key": "OVER_15",
+      "outcome_label": "Over 1.5 Gol",
+      "odd": 1.51,
+      "line_shift_pct": -3.2,
+      "estimated_probability": 0.7501,
+      "edge": 0.1061,
+      "ev_ratio": 1.106,
+      "suggested_stake_pct": 1.25,
+      "tier": "DIAMOND",
+      "efficiency_score": 1.6154341472671727,
+      "is_derby": false,
+      "is_official": true,
+      "fund_stake_units": 0.65,
+      "portfolio_weight_pct": 13.0,
+      "_unique_key": [
+        null,
+        "1X2"
+      ],
+      "master_score": 80.0
+    }
+  ]
 }
