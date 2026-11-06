@@ -1,11 +1,11 @@
 {
-  "total_bets": 41,
-  "won": 16,
-  "lost": 16,
+  "total_bets": 36,
+  "won": 17,
+  "lost": 19,
   "void": 0,
-  "win_rate": 50.0,
-  "net_profit_units": -10.68,
-  "roi_pct": -19.4,
+  "win_rate": 47.2,
+  "net_profit_units": -11.91,
+  "roi_pct": -20.6,
   "bets": [
     {
       "id": "b102dbaf4e2ff82df26d9ebe27c7f5b1_1",
@@ -301,7 +301,7 @@
       "stake_pct": 2,
       "tier": "DIAMOND",
       "status": "LOST",
-      "profit": -2.0,
+      "profit": -2,
       "score": "0-1"
     },
     {
@@ -375,7 +375,7 @@
       "odd": 1.84,
       "prob": 0.7401,
       "edge": 0.2136,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.54,
       "tier": "DIAMOND",
       "status": "WON",
@@ -393,7 +393,7 @@
       "odd": 1.57,
       "prob": 0.7109,
       "edge": 0.1018,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.64,
       "tier": "OFFICIAL",
       "status": "LOST",
@@ -411,7 +411,7 @@
       "odd": 1.54,
       "prob": 0.707,
       "edge": 0.0754,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.64,
       "tier": "OFFICIAL",
       "status": "WON",
@@ -429,11 +429,11 @@
       "odd": 1.83,
       "prob": 0.7229,
       "edge": 0.1967,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.56,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.56
     },
     {
       "id": "40277b0cdbae300995d9e1c2ecb611c1_1X",
@@ -446,7 +446,7 @@
       "odd": 1.74,
       "prob": 0.6974,
       "edge": 0.1529,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.56,
       "tier": "DIAMOND",
       "status": "WON",
@@ -464,11 +464,11 @@
       "odd": 1.65,
       "prob": 0.7039,
       "edge": 0.1321,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.56,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.56
     },
     {
       "id": "84b68e09ecbe93fdbce759cd822322a2_UNDER_35",
@@ -481,7 +481,7 @@
       "odd": 1.56,
       "prob": 0.692,
       "edge": 0.0675,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.67,
       "tier": "OFFICIAL",
       "status": "LOST",
@@ -499,7 +499,7 @@
       "odd": 1.51,
       "prob": 0.6951,
       "edge": 0.0496,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.67,
       "tier": "OFFICIAL",
       "status": "LOST",
@@ -517,11 +517,11 @@
       "odd": 1.86,
       "prob": 0.7039,
       "edge": 0.1912,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.8,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.69
     },
     {
       "id": "7e605ab1c3e8d0a9b4df244dcdab71a9_1X",
@@ -534,7 +534,7 @@
       "odd": 1.48,
       "prob": 0.6974,
       "edge": 0.0322,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 1.2,
       "tier": "OFFICIAL",
       "status": "WON",
@@ -552,11 +552,11 @@
       "odd": 2.84,
       "prob": 0.7039,
       "edge": 0.4672,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.8,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.8
     },
     {
       "id": "9604c5b1c465435911e038db95ab2a7b_UNDER_35",
@@ -569,7 +569,7 @@
       "odd": 1.54,
       "prob": 0.692,
       "edge": 0.0558,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 1.2,
       "tier": "OFFICIAL",
       "status": "WON",
@@ -587,11 +587,11 @@
       "odd": 1.56,
       "prob": 0.7501,
       "edge": 0.1356,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.62,
       "tier": "GOLD",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "c664e36e2d2856fcbd3b637422d7a8dc_OVER_15",
@@ -604,11 +604,11 @@
       "odd": 1.52,
       "prob": 0.7501,
       "edge": 0.1191,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.62,
       "tier": "GOLD",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "b2eb5387bd74e1c65fc5ad050c24e674_UNDER_35",
@@ -621,11 +621,11 @@
       "odd": 1.62,
       "prob": 0.7229,
       "edge": 0.1359,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.52,
       "tier": "GOLD",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "af665449ac9e2c4e1f183376e85fc936_1X",
@@ -638,11 +638,11 @@
       "odd": 1.48,
       "prob": 0.7039,
       "edge": 0.0418,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.62,
       "tier": "OFFICIAL",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "e50c3b5d28caa718fe5211de892d5a02_1X",
@@ -655,11 +655,11 @@
       "odd": 1.46,
       "prob": 0.7039,
       "edge": 0.0277,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.62,
       "tier": "OFFICIAL",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     }
   ],
   "brier_score": 0.2883,
