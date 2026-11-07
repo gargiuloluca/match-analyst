@@ -1,5 +1,5 @@
 {
-  "total_bets": 22,
+  "total_bets": 21,
   "won": 15,
   "lost": 6,
   "void": 1,
@@ -345,6 +345,6 @@
       "score": "0-2"
     }
   ],
-  "brier_score": 0.2185,
+  "brier_score": 0.2103,
   "avg_clv_pct": null
 }
