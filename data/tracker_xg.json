@@ -1,11 +1,11 @@
 {
   "total_bets": 41,
-  "won": 17,
-  "lost": 19,
+  "won": 21,
+  "lost": 20,
   "void": 0,
-  "win_rate": 47.2,
-  "net_profit_units": -11.91,
-  "roi_pct": -20.6,
+  "win_rate": 51.2,
+  "net_profit_units": -11.17,
+  "roi_pct": -18.4,
   "bets": [
     {
       "id": "b102dbaf4e2ff82df26d9ebe27c7f5b1_1",
@@ -590,8 +590,8 @@
       "performance_gap": 0,
       "stake_pct": 0.62,
       "tier": "GOLD",
-      "status": "PENDING",
-      "profit": 0
+      "status": "WON",
+      "profit": 0.35
     },
     {
       "id": "c664e36e2d2856fcbd3b637422d7a8dc_OVER_15",
@@ -607,8 +607,8 @@
       "performance_gap": 0,
       "stake_pct": 0.62,
       "tier": "GOLD",
-      "status": "PENDING",
-      "profit": 0
+      "status": "WON",
+      "profit": 0.32
     },
     {
       "id": "b2eb5387bd74e1c65fc5ad050c24e674_UNDER_35",
@@ -624,8 +624,8 @@
       "performance_gap": 0,
       "stake_pct": 0.52,
       "tier": "GOLD",
-      "status": "PENDING",
-      "profit": 0
+      "status": "LOST",
+      "profit": -0.52
     },
     {
       "id": "af665449ac9e2c4e1f183376e85fc936_1X",
@@ -641,8 +641,8 @@
       "performance_gap": 0,
       "stake_pct": 0.62,
       "tier": "OFFICIAL",
-      "status": "PENDING",
-      "profit": 0
+      "status": "WON",
+      "profit": 0.3
     },
     {
       "id": "e50c3b5d28caa718fe5211de892d5a02_1X",
@@ -658,8 +658,8 @@
       "performance_gap": 0,
       "stake_pct": 0.62,
       "tier": "OFFICIAL",
-      "status": "PENDING",
-      "profit": 0
+      "status": "WON",
+      "profit": 0.29
     }
   ],
   "brier_score": 0.2883,
