@@ -1,11 +1,11 @@
 {
   "total_bets": 2,
   "won": 1,
-  "lost": 0,
+  "lost": 1,
   "void": 0,
-  "win_rate": 50.0,
-  "net_profit_units": 0.73,
-  "roi_pct": 73.0,
+  "win_rate": 50,
+  "net_profit_units": 0.23,
+  "roi_pct": 23,
   "bets": [
     {
       "id": "san_diego_sporting_kc_X2",
@@ -16,7 +16,7 @@
       "bet": "Doppia Chance X2",
       "market_key": "X2",
       "odd": 2.45,
-      "prob": 0.60,
+      "prob": 0.6,
       "stake_pct": 0.5,
       "tier": "MASTER AI (80.0)",
       "status": "WON",
@@ -31,11 +31,11 @@
       "bet": "Doppia Chance 1X",
       "market_key": "1X",
       "odd": 2.87,
-      "prob": 0.60,
+      "prob": 0.6,
       "stake_pct": 0.5,
       "tier": "MASTER AI (80.0)",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.5
     }
   ]
 }
