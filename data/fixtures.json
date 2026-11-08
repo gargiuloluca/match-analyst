@@ -1,2138 +1,1106 @@
 {
-  "fetched_at": "2026-11-07T08:38:14.304598+00:00",
-  "total_fixtures": 56,
+  "fetched_at": "2026-11-08T06:59:38.931813+00:00",
+  "total_fixtures": 29,
   "fixtures": [
     {
-      "id": "52b256088d29b4abb82e0c63ea9852fe",
+      "id": "23bf8ea47358ef82f65aa7398a2b3921",
       "sport_key": "soccer_italy_serie_a",
       "league_name": "Serie A - Italy",
-      "home_team": "Cagliari",
-      "away_team": "Frosinone",
-      "commence_time": "2026-11-07T14:00:00Z",
+      "home_team": "Napoli",
+      "away_team": "Lazio",
+      "commence_time": "2026-11-08T11:30:00Z",
       "odds": {
-        "1": 3.12,
-        "2": 2.24,
-        "X": 3.87,
-        "OVER_35": 2.17,
-        "UNDER_35": 1.76,
-        "OVER_25": 1.45,
-        "UNDER_25": 2.79,
-        "1X": 1.73,
-        "X2": 1.42,
-        "DNB_1": 2.31,
-        "DNB_2": 1.66
+        "2": 3.07,
+        "1": 2.31,
+        "X": 3.67,
+        "OVER_25": 1.65,
+        "UNDER_25": 2.25,
+        "1X": 1.42,
+        "X2": 1.67,
+        "DNB_1": 1.68,
+        "DNB_2": 2.23
       },
       "opening_odds": {
-        "1": 3.09,
-        "2": 2.24,
-        "X": 3.84,
-        "OVER_35": 2.17,
-        "UNDER_35": 1.76,
+        "2": 3.07,
+        "1": 2.31,
+        "X": 3.67,
+        "OVER_25": 1.65,
+        "UNDER_25": 2.25,
+        "1X": 1.42,
+        "X2": 1.67,
+        "DNB_1": 1.68,
+        "DNB_2": 2.23
+      },
+      "fair_odds": {
+        "1": 2.382,
+        "X": 3.784,
+        "2": 3.166
+      },
+      "overround_pct": 3.11
+    },
+    {
+      "id": "7a68b099b47ed7724062b661cd9af464",
+      "sport_key": "soccer_italy_serie_a",
+      "league_name": "Serie A - Italy",
+      "home_team": "Genoa",
+      "away_team": "AC Milan",
+      "commence_time": "2026-11-08T14:00:00Z",
+      "odds": {
+        "2": 2.0,
+        "1": 4.23,
+        "X": 3.38,
+        "OVER_25": 2.15,
+        "UNDER_25": 1.71,
+        "1X": 1.88,
+        "X2": 1.26,
+        "DNB_1": 2.98,
+        "DNB_2": 1.41
+      },
+      "opening_odds": {
+        "2": 2.0,
+        "1": 4.23,
+        "X": 3.38,
+        "OVER_25": 2.15,
+        "UNDER_25": 1.71,
+        "1X": 1.88,
+        "X2": 1.26,
+        "DNB_1": 2.98,
+        "DNB_2": 1.41
+      },
+      "fair_odds": {
+        "1": 4.366,
+        "X": 3.489,
+        "2": 2.065
+      },
+      "overround_pct": 3.23
+    },
+    {
+      "id": "5ea6b7050b00fcc1832f7938794dd755",
+      "sport_key": "soccer_italy_serie_a",
+      "league_name": "Serie A - Italy",
+      "home_team": "Monza",
+      "away_team": "Atalanta BC",
+      "commence_time": "2026-11-08T14:00:00Z",
+      "odds": {
+        "2": 2.05,
+        "1": 3.48,
+        "X": 3.91,
+        "OVER_35": 2.2,
+        "UNDER_35": 1.63,
         "OVER_25": 1.46,
-        "UNDER_25": 2.76,
-        "1X": 1.71,
-        "X2": 1.41,
-        "DNB_1": 2.29,
-        "DNB_2": 1.66
-      },
-      "fair_odds": {
-        "1": 3.199,
-        "X": 3.968,
-        "2": 2.297
-      },
-      "overround_pct": 2.53
-    },
-    {
-      "id": "0d53a5dbd9d4f4716e923b97e92dfb0d",
-      "sport_key": "soccer_italy_serie_a",
-      "league_name": "Serie A - Italy",
-      "home_team": "Torino",
-      "away_team": "Lecce",
-      "commence_time": "2026-11-07T14:00:00Z",
-      "odds": {
-        "2": 4.69,
-        "1": 1.85,
-        "X": 3.63,
-        "OVER_25": 1.87,
-        "UNDER_25": 1.95,
-        "1X": 1.23,
-        "X2": 2.05,
-        "DNB_1": 1.34,
-        "DNB_2": 3.4
-      },
-      "opening_odds": {
-        "2": 4.62,
-        "1": 1.85,
-        "X": 3.65,
-        "OVER_25": 1.87,
-        "UNDER_25": 1.95,
-        "1X": 1.23,
-        "X2": 2.04,
-        "DNB_1": 1.34,
-        "DNB_2": 3.35
-      },
-      "fair_odds": {
-        "1": 1.904,
-        "X": 3.736,
-        "2": 4.827
-      },
-      "overround_pct": 2.92
-    },
-    {
-      "id": "813cc4970b2dcab8457490a332fb5a6c",
-      "sport_key": "soccer_italy_serie_a",
-      "league_name": "Serie A - Italy",
-      "home_team": "Parma",
-      "away_team": "Bologna",
-      "commence_time": "2026-11-07T17:00:00Z",
-      "odds": {
-        "2": 1.75,
-        "1": 5.34,
-        "X": 3.71,
-        "OVER_25": 2.05,
-        "UNDER_25": 1.8,
-        "1X": 2.19,
-        "X2": 1.19,
-        "DNB_1": 3.9,
-        "DNB_2": 1.28
-      },
-      "opening_odds": {
-        "2": 1.75,
-        "1": 5.24,
-        "X": 3.7,
-        "OVER_25": 2.1,
-        "UNDER_25": 1.77,
-        "1X": 2.17,
-        "X2": 1.19,
-        "DNB_1": 3.82,
-        "DNB_2": 1.28
-      },
-      "fair_odds": {
-        "1": 5.491,
-        "X": 3.815,
-        "2": 1.799
-      },
-      "overround_pct": 2.82
-    },
-    {
-      "id": "f110107bca066ac1a598c89661c88fa3",
-      "sport_key": "soccer_italy_serie_a",
-      "league_name": "Serie A - Italy",
-      "home_team": "AS Roma",
-      "away_team": "Sassuolo",
-      "commence_time": "2026-11-07T19:45:00Z",
-      "odds": {
-        "1": 1.3,
-        "2": 9.65,
-        "X": 6.31,
-        "OVER_35": 1.93,
-        "UNDER_35": 1.88,
-        "OVER_25": 1.36,
-        "UNDER_25": 3.2,
-        "1X": 1.08,
-        "X2": 3.82,
-        "DNB_1": 1.09,
-        "DNB_2": 8.12
-      },
-      "opening_odds": {
-        "1": 1.3,
-        "2": 9.5,
-        "X": 6.24,
-        "OVER_35": 1.93,
-        "UNDER_35": 1.88,
-        "OVER_25": 1.36,
-        "UNDER_25": 3.2,
-        "1X": 1.08,
-        "X2": 3.77,
-        "DNB_1": 1.09,
-        "DNB_2": 7.98
-      },
-      "fair_odds": {
-        "1": 1.341,
-        "X": 6.508,
-        "2": 9.952
-      },
-      "overround_pct": 3.13
-    },
-    {
-      "id": "de935794b7d93f3607ac9ad54d18f4c7",
-      "sport_key": "soccer_spain_la_liga",
-      "league_name": "La Liga - Spain",
-      "home_team": "Málaga",
-      "away_team": "Real Racing Club de Santander",
-      "commence_time": "2026-11-07T13:00:00Z",
-      "odds": {
-        "1": 2.46,
-        "2": 3.01,
-        "X": 3.49,
-        "OVER_25": 1.63,
-        "UNDER_25": 2.11,
-        "1X": 1.44,
-        "X2": 1.62,
-        "DNB_1": 1.76,
-        "DNB_2": 2.15
-      },
-      "opening_odds": {
-        "1": 2.45,
-        "2": 3.0,
-        "X": 3.46,
-        "OVER_25": 1.64,
-        "UNDER_25": 2.08,
-        "1X": 1.43,
-        "X2": 1.61,
-        "DNB_1": 1.74,
-        "DNB_2": 2.13
-      },
-      "fair_odds": {
-        "1": 2.522,
-        "X": 3.578,
-        "2": 3.086
-      },
-      "overround_pct": 2.53
-    },
-    {
-      "id": "262c2c99c38456b8a70cb9daa32f2f6d",
-      "sport_key": "soccer_spain_la_liga",
-      "league_name": "La Liga - Spain",
-      "home_team": "Espanyol",
-      "away_team": "Deportivo La Coruña",
-      "commence_time": "2026-11-07T15:15:00Z",
-      "odds": {
-        "2": 3.11,
-        "1": 2.52,
-        "X": 3.27,
-        "OVER_25": 2.12,
-        "UNDER_25": 1.79,
-        "1X": 1.42,
-        "X2": 1.59,
-        "DNB_1": 1.75,
-        "DNB_2": 2.16
-      },
-      "opening_odds": {
-        "2": 3.09,
-        "1": 2.51,
-        "X": 3.25,
-        "OVER_25": 2.06,
-        "UNDER_25": 1.84,
-        "1X": 1.42,
-        "X2": 1.58,
-        "DNB_1": 1.74,
-        "DNB_2": 2.14
-      },
-      "fair_odds": {
-        "1": 2.581,
-        "X": 3.349,
-        "2": 3.185
-      },
-      "overround_pct": 2.42
-    },
-    {
-      "id": "71ca5141a1c532e390c6fa14e080d8bd",
-      "sport_key": "soccer_spain_la_liga",
-      "league_name": "La Liga - Spain",
-      "home_team": "CA Osasuna",
-      "away_team": "Athletic Bilbao",
-      "commence_time": "2026-11-07T17:30:00Z",
-      "odds": {
-        "2": 2.08,
-        "1": 3.92,
-        "X": 3.45,
-        "OVER_25": 2.2,
-        "UNDER_25": 1.74,
+        "UNDER_25": 2.68,
         "1X": 1.84,
-        "X2": 1.3,
-        "DNB_1": 2.78,
-        "DNB_2": 1.48
+        "X2": 1.34,
+        "DNB_1": 2.59,
+        "DNB_2": 1.53
       },
       "opening_odds": {
-        "2": 2.07,
-        "1": 3.9,
-        "X": 3.43,
-        "OVER_25": 2.2,
-        "UNDER_25": 1.74,
-        "1X": 1.82,
-        "X2": 1.29,
-        "DNB_1": 2.76,
-        "DNB_2": 1.47
+        "2": 2.05,
+        "1": 3.48,
+        "X": 3.91,
+        "OVER_35": 2.2,
+        "UNDER_35": 1.63,
+        "OVER_25": 1.46,
+        "UNDER_25": 2.68,
+        "1X": 1.84,
+        "X2": 1.34,
+        "DNB_1": 2.59,
+        "DNB_2": 1.53
       },
       "fair_odds": {
-        "1": 4.021,
-        "X": 3.539,
-        "2": 2.134
+        "1": 3.588,
+        "X": 4.031,
+        "2": 2.113
       },
-      "overround_pct": 2.57
+      "overround_pct": 3.09
     },
     {
-      "id": "5b386dfdf6f76705116fbb4120ee8493",
-      "sport_key": "soccer_spain_la_liga",
-      "league_name": "La Liga - Spain",
-      "home_team": "Valencia",
-      "away_team": "Real Madrid",
-      "commence_time": "2026-11-07T20:00:00Z",
+      "id": "657fd1ac35832f65fcc6feba93970e10",
+      "sport_key": "soccer_italy_serie_a",
+      "league_name": "Serie A - Italy",
+      "home_team": "Inter Milan",
+      "away_team": "Como",
+      "commence_time": "2026-11-08T17:00:00Z",
       "odds": {
-        "2": 1.26,
-        "1": 11.39,
-        "X": 6.43,
-        "OVER_25": 1.43,
-        "UNDER_25": 2.78,
-        "OVER_35": 2.17,
-        "UNDER_35": 1.76,
-        "1X": 4.11,
-        "X2": 1.05,
-        "DNB_1": 9.62,
-        "DNB_2": 1.06
-      },
-      "opening_odds": {
-        "2": 1.25,
-        "1": 11.52,
-        "X": 6.47,
-        "OVER_25": 1.43,
-        "UNDER_25": 2.78,
-        "OVER_35": 2.17,
-        "UNDER_35": 1.76,
-        "1X": 4.14,
-        "X2": 1.05,
-        "DNB_1": 9.74,
-        "DNB_2": 1.06
-      },
-      "fair_odds": {
-        "1": 11.811,
-        "X": 6.668,
-        "2": 1.307
-      },
-      "overround_pct": 3.7
-    },
-    {
-      "id": "842fcc5b9feb8c63054a661ad1fc8926",
-      "sport_key": "soccer_epl",
-      "league_name": "EPL",
-      "home_team": "Arsenal",
-      "away_team": "Hull City",
-      "commence_time": "2026-11-07T15:00:00Z",
-      "odds": {
-        "1": 1.18,
-        "2": 21.0,
-        "X": 8.55,
-        "OVER_35": 2.28,
-        "UNDER_35": 1.61,
-        "OVER_25": 1.48,
-        "UNDER_25": 2.6,
-        "1X": 1.04,
-        "X2": 6.08,
-        "DNB_1": 1.04,
-        "DNB_2": 18.54
-      },
-      "opening_odds": {
-        "1": 1.18,
-        "2": 21.0,
-        "X": 8.55,
-        "OVER_35": 2.28,
-        "UNDER_35": 1.61,
+        "2": 3.4,
+        "1": 2.08,
+        "X": 3.91,
+        "OVER_35": 2.22,
+        "UNDER_35": 1.64,
         "OVER_25": 1.5,
-        "UNDER_25": 2.55,
-        "1X": 1.04,
-        "X2": 6.08,
-        "DNB_1": 1.04,
-        "DNB_2": 18.54
-      },
-      "fair_odds": {
-        "1": 1.194,
-        "X": 8.653,
-        "2": 21.253
-      },
-      "overround_pct": 1.2
-    },
-    {
-      "id": "3903e98a54db0f2cc23095407fe9dad8",
-      "sport_key": "soccer_epl",
-      "league_name": "EPL",
-      "home_team": "Fulham",
-      "away_team": "Newcastle United",
-      "commence_time": "2026-11-07T15:00:00Z",
-      "odds": {
-        "1": 2.09,
-        "2": 3.58,
-        "X": 3.9,
-        "OVER_25": 1.66,
-        "UNDER_25": 2.18,
+        "UNDER_25": 2.48,
         "1X": 1.36,
-        "X2": 1.87,
+        "X2": 1.82,
         "DNB_1": 1.55,
-        "DNB_2": 2.66
+        "DNB_2": 2.53
       },
       "opening_odds": {
-        "1": 2.09,
-        "2": 3.58,
-        "X": 3.9,
-        "OVER_25": 1.66,
-        "UNDER_25": 2.18,
+        "2": 3.4,
+        "1": 2.08,
+        "X": 3.91,
+        "OVER_35": 2.22,
+        "UNDER_35": 1.64,
+        "OVER_25": 1.5,
+        "UNDER_25": 2.48,
         "1X": 1.36,
-        "X2": 1.87,
+        "X2": 1.82,
         "DNB_1": 1.55,
-        "DNB_2": 2.66
+        "DNB_2": 2.53
       },
       "fair_odds": {
-        "1": 2.12,
-        "X": 3.955,
-        "2": 3.631
-      },
-      "overround_pct": 1.42
-    },
-    {
-      "id": "cdb5f9dd39e79db69659c76cd96d0bbe",
-      "sport_key": "soccer_germany_bundesliga",
-      "league_name": "Bundesliga - Germany",
-      "home_team": "RB Leipzig",
-      "away_team": "Augsburg",
-      "commence_time": "2026-11-07T14:30:00Z",
-      "odds": {
-        "2": 6.18,
-        "1": 1.45,
-        "X": 5.4,
-        "OVER_35": 1.68,
-        "UNDER_35": 2.14,
-        "OVER_25": 1.24,
-        "UNDER_25": 3.95,
-        "1X": 1.14,
-        "X2": 2.88,
-        "DNB_1": 1.18,
-        "DNB_2": 5.04
-      },
-      "opening_odds": {
-        "2": 6.07,
-        "1": 1.46,
-        "X": 5.37,
-        "OVER_35": 1.68,
-        "UNDER_35": 2.14,
-        "OVER_25": 1.25,
-        "UNDER_25": 3.85,
-        "1X": 1.15,
-        "X2": 2.85,
-        "DNB_1": 1.19,
-        "DNB_2": 4.94
-      },
-      "fair_odds": {
-        "1": 1.503,
-        "X": 5.598,
-        "2": 6.407
-      },
-      "overround_pct": 3.67
-    },
-    {
-      "id": "fe97f5adf397dd6b0a8a9e0a5272f307",
-      "sport_key": "soccer_germany_bundesliga",
-      "league_name": "Bundesliga - Germany",
-      "home_team": "FSV Mainz 05",
-      "away_team": "Bayern Munich",
-      "commence_time": "2026-11-07T14:30:00Z",
-      "odds": {
-        "2": 1.28,
-        "1": 8.83,
-        "X": 6.78,
-        "OVER_35": 1.65,
-        "UNDER_35": 2.26,
-        "OVER_25": 1.22,
-        "UNDER_25": 4.0,
-        "1X": 3.84,
-        "X2": 1.08,
-        "DNB_1": 7.53,
-        "DNB_2": 1.09
-      },
-      "opening_odds": {
-        "2": 1.29,
-        "1": 8.61,
-        "X": 6.7,
-        "OVER_35": 1.65,
-        "UNDER_35": 2.26,
-        "OVER_25": 1.22,
-        "UNDER_25": 4.0,
-        "1X": 3.77,
-        "X2": 1.08,
-        "DNB_1": 7.32,
-        "DNB_2": 1.1
-      },
-      "fair_odds": {
-        "1": 9.201,
-        "X": 7.065,
-        "2": 1.334
-      },
-      "overround_pct": 4.2
-    },
-    {
-      "id": "3ef62ef56758041178c5280225fe5db7",
-      "sport_key": "soccer_germany_bundesliga",
-      "league_name": "Bundesliga - Germany",
-      "home_team": "Borussia Dortmund",
-      "away_team": "Elversberg",
-      "commence_time": "2026-11-07T14:30:00Z",
-      "odds": {
-        "1": 1.34,
-        "2": 8.37,
-        "X": 5.87,
-        "OVER_35": 1.96,
-        "UNDER_35": 1.88,
-        "OVER_25": 1.38,
-        "UNDER_25": 3.12,
-        "1X": 1.09,
-        "X2": 3.45,
-        "DNB_1": 1.11,
-        "DNB_2": 6.94
-      },
-      "opening_odds": {
-        "1": 1.35,
-        "2": 8.22,
-        "X": 5.82,
-        "OVER_35": 1.96,
-        "UNDER_35": 1.88,
-        "OVER_25": 1.38,
-        "UNDER_25": 3.12,
-        "1X": 1.1,
-        "X2": 3.41,
-        "DNB_1": 1.12,
-        "DNB_2": 6.81
-      },
-      "fair_odds": {
-        "1": 1.388,
-        "X": 6.082,
-        "2": 8.672
-      },
-      "overround_pct": 3.61
-    },
-    {
-      "id": "4ca4c7a2a1c15e9121f9a7eaa7f42ddb",
-      "sport_key": "soccer_germany_bundesliga",
-      "league_name": "Bundesliga - Germany",
-      "home_team": "SC Paderborn",
-      "away_team": "Eintracht Frankfurt",
-      "commence_time": "2026-11-07T14:30:00Z",
-      "odds": {
-        "2": 2.3,
-        "1": 2.97,
-        "X": 3.86,
-        "OVER_35": 2.14,
-        "UNDER_35": 1.67,
-        "OVER_25": 1.47,
-        "UNDER_25": 2.71,
-        "1X": 1.68,
-        "X2": 1.44,
-        "DNB_1": 2.2,
-        "DNB_2": 1.7
-      },
-      "opening_odds": {
-        "2": 2.33,
-        "1": 2.92,
-        "X": 3.88,
-        "OVER_35": 2.14,
-        "UNDER_35": 1.67,
-        "OVER_25": 1.47,
-        "UNDER_25": 2.71,
-        "1X": 1.67,
-        "X2": 1.46,
-        "DNB_1": 2.17,
-        "DNB_2": 1.73
-      },
-      "fair_odds": {
-        "1": 3.061,
-        "X": 3.978,
-        "2": 2.37
+        "1": 2.144,
+        "X": 4.03,
+        "2": 3.504
       },
       "overround_pct": 3.06
     },
     {
-      "id": "716d6e3f3e91c47a6efaa2e93d570533",
-      "sport_key": "soccer_germany_bundesliga",
-      "league_name": "Bundesliga - Germany",
-      "home_team": "VfB Stuttgart",
-      "away_team": "Werder Bremen",
-      "commence_time": "2026-11-07T17:30:00Z",
+      "id": "7f50eb7deaebfbcd45c3f4e7cd3724e4",
+      "sport_key": "soccer_italy_serie_a",
+      "league_name": "Serie A - Italy",
+      "home_team": "Fiorentina",
+      "away_team": "Juventus",
+      "commence_time": "2026-11-08T19:45:00Z",
       "odds": {
-        "1": 1.88,
-        "2": 3.78,
-        "X": 4.22,
-        "OVER_35": 1.87,
-        "UNDER_35": 1.96,
-        "OVER_25": 1.34,
-        "UNDER_25": 3.2,
-        "1X": 1.3,
-        "X2": 1.99,
-        "DNB_1": 1.43,
-        "DNB_2": 2.88
+        "1": 3.51,
+        "2": 2.18,
+        "X": 3.48,
+        "OVER_25": 1.8,
+        "UNDER_25": 1.98,
+        "1X": 1.75,
+        "X2": 1.34,
+        "DNB_1": 2.5,
+        "DNB_2": 1.55
       },
       "opening_odds": {
-        "1": 1.88,
-        "2": 3.78,
-        "X": 4.21,
-        "OVER_35": 1.87,
-        "UNDER_35": 1.96,
-        "OVER_25": 1.34,
-        "UNDER_25": 3.2,
-        "1X": 1.3,
-        "X2": 1.99,
-        "DNB_1": 1.43,
-        "DNB_2": 2.88
+        "1": 3.51,
+        "2": 2.18,
+        "X": 3.48,
+        "OVER_25": 1.8,
+        "UNDER_25": 1.98,
+        "1X": 1.75,
+        "X2": 1.34,
+        "DNB_1": 2.5,
+        "DNB_2": 1.55
       },
       "fair_odds": {
-        "1": 1.943,
-        "X": 4.361,
-        "2": 3.906
-      },
-      "overround_pct": 3.34
-    },
-    {
-      "id": "8553a80cf1ae5cbe3e7a69b76ce8167f",
-      "sport_key": "soccer_france_ligue_one",
-      "league_name": "Ligue 1 - France",
-      "home_team": "Auxerre",
-      "away_team": "Paris FC",
-      "commence_time": "2026-11-07T18:00:00Z",
-      "odds": {
-        "1": 4.7,
-        "2": 1.74,
-        "X": 4.07,
-        "OVER_25": 1.74,
-        "UNDER_25": 2.14,
-        "1X": 2.18,
-        "X2": 1.22,
-        "DNB_1": 3.55,
-        "DNB_2": 1.31
-      },
-      "opening_odds": {
-        "1": 4.7,
-        "2": 1.74,
-        "X": 4.07,
-        "OVER_25": 1.72,
-        "UNDER_25": 2.17,
-        "1X": 2.18,
-        "X2": 1.22,
-        "DNB_1": 3.55,
-        "DNB_2": 1.31
-      },
-      "fair_odds": {
-        "1": 4.856,
-        "X": 4.205,
-        "2": 1.798
-      },
-      "overround_pct": 3.32
-    },
-    {
-      "id": "f7b240389fa5ec055c58a48ab153dcdd",
-      "sport_key": "soccer_france_ligue_one",
-      "league_name": "Ligue 1 - France",
-      "home_team": "Paris Saint Germain",
-      "away_team": "Troyes",
-      "commence_time": "2026-11-07T20:05:00Z",
-      "odds": {
-        "1": 1.13,
-        "2": 19.4,
-        "X": 9.66,
-        "OVER_35": 1.87,
-        "UNDER_35": 1.98,
-        "OVER_25": 1.33,
-        "UNDER_25": 3.37,
-        "1X": 1.01,
-        "X2": 6.45,
-        "DNB_1": 1.01,
-        "DNB_2": 17.39
-      },
-      "opening_odds": {
-        "1": 1.14,
-        "2": 18.99,
-        "X": 9.53,
-        "OVER_35": 1.82,
-        "UNDER_35": 2.02,
-        "OVER_25": 1.32,
-        "UNDER_25": 3.42,
-        "1X": 1.02,
-        "X2": 6.35,
-        "DNB_1": 1.02,
-        "DNB_2": 17.0
-      },
-      "fair_odds": {
-        "1": 1.175,
-        "X": 10.047,
-        "2": 20.176
-      },
-      "overround_pct": 4.0
-    },
-    {
-      "id": "89fe6860f3058526dd227dc27efd902a",
-      "sport_key": "soccer_efl_champ",
-      "league_name": "Championship",
-      "home_team": "Bristol City",
-      "away_team": "Norwich City",
-      "commence_time": "2026-11-07T12:30:00Z",
-      "odds": {
-        "1": 2.75,
-        "2": 2.55,
-        "X": 3.6,
-        "OVER_25": 1.67,
-        "UNDER_25": 2.0,
-        "1X": 1.56,
-        "X2": 1.49,
-        "DNB_1": 1.99,
-        "DNB_2": 1.84
-      },
-      "opening_odds": {
-        "1": 2.65,
-        "2": 2.63,
-        "X": 3.65,
-        "OVER_25": 1.67,
-        "UNDER_25": 2.0,
-        "1X": 1.54,
-        "X2": 1.53,
-        "DNB_1": 1.92,
-        "DNB_2": 1.91
-      },
-      "fair_odds": {
-        "1": 2.842,
-        "X": 3.721,
-        "2": 2.636
-      },
-      "overround_pct": 3.36
-    },
-    {
-      "id": "a88341ac02c8103eedc594a2ceb3a400",
-      "sport_key": "soccer_efl_champ",
-      "league_name": "Championship",
-      "home_team": "Wrexham AFC",
-      "away_team": "Wolverhampton Wanderers",
-      "commence_time": "2026-11-07T12:30:00Z",
-      "odds": {
-        "2": 2.1,
-        "1": 3.65,
-        "X": 3.5,
-        "OVER_25": 1.83,
-        "UNDER_25": 1.83,
-        "1X": 1.79,
-        "X2": 1.31,
-        "DNB_1": 2.61,
-        "DNB_2": 1.5
-      },
-      "opening_odds": {
-        "2": 2.1,
-        "1": 3.65,
-        "X": 3.5,
-        "OVER_25": 1.77,
-        "UNDER_25": 1.87,
-        "1X": 1.79,
-        "X2": 1.31,
-        "DNB_1": 2.61,
-        "DNB_2": 1.5
-      },
-      "fair_odds": {
-        "1": 3.781,
-        "X": 3.626,
-        "2": 2.175
-      },
-      "overround_pct": 3.59
-    },
-    {
-      "id": "228a3fca36f1fc8943ab0b7c54f06860",
-      "sport_key": "soccer_efl_champ",
-      "league_name": "Championship",
-      "home_team": "Blackburn Rovers",
-      "away_team": "West Ham United",
-      "commence_time": "2026-11-07T15:00:00Z",
-      "odds": {
-        "1": 4.7,
-        "2": 1.65,
-        "X": 4.0,
-        "OVER_25": 1.64,
-        "UNDER_25": 2.46,
-        "OVER_35": 2.2,
-        "UNDER_35": 1.55,
-        "1X": 2.16,
-        "X2": 1.17,
-        "DNB_1": 3.53,
-        "DNB_2": 1.24
-      },
-      "opening_odds": {
-        "1": 4.7,
-        "2": 1.65,
-        "X": 4.0,
-        "OVER_25": 1.64,
-        "UNDER_25": 2.46,
-        "OVER_35": 2.2,
-        "UNDER_35": 1.55,
-        "1X": 2.16,
-        "X2": 1.17,
-        "DNB_1": 3.53,
-        "DNB_2": 1.24
-      },
-      "fair_odds": {
-        "1": 5.023,
-        "X": 4.275,
-        "2": 1.764
-      },
-      "overround_pct": 6.88
-    },
-    {
-      "id": "463c2870517b0ad28afcbd8775287064",
-      "sport_key": "soccer_efl_champ",
-      "league_name": "Championship",
-      "home_team": "Cardiff City",
-      "away_team": "Burnley",
-      "commence_time": "2026-11-07T15:00:00Z",
-      "odds": {
-        "2": 3.3,
-        "1": 2.12,
-        "X": 3.85,
-        "OVER_35": 2.0,
-        "UNDER_35": 1.67,
-        "OVER_25": 1.47,
-        "UNDER_25": 2.69,
-        "1X": 1.37,
-        "X2": 1.78,
-        "DNB_1": 1.57,
-        "DNB_2": 2.44
-      },
-      "opening_odds": {
-        "2": 3.3,
-        "1": 2.12,
-        "X": 3.85,
-        "OVER_35": 2.0,
-        "UNDER_35": 1.67,
-        "OVER_25": 1.47,
-        "UNDER_25": 2.69,
-        "1X": 1.37,
-        "X2": 1.78,
-        "DNB_1": 1.57,
-        "DNB_2": 2.44
-      },
-      "fair_odds": {
-        "1": 2.193,
-        "X": 3.983,
-        "2": 3.414
-      },
-      "overround_pct": 3.45
-    },
-    {
-      "id": "e1b2a10bfd51e1716202de92f585f502",
-      "sport_key": "soccer_efl_champ",
-      "league_name": "Championship",
-      "home_team": "Charlton Athletic",
-      "away_team": "Sheffield United",
-      "commence_time": "2026-11-07T15:00:00Z",
-      "odds": {
-        "1": 3.7,
-        "2": 2.06,
-        "X": 3.6,
-        "OVER_25": 1.89,
-        "UNDER_25": 1.89,
-        "1X": 1.82,
-        "X2": 1.31,
-        "DNB_1": 2.67,
-        "DNB_2": 1.49
-      },
-      "opening_odds": {
-        "1": 3.7,
-        "2": 2.06,
-        "X": 3.6,
-        "OVER_25": 1.89,
-        "UNDER_25": 1.89,
-        "1X": 1.82,
-        "X2": 1.31,
-        "DNB_1": 2.67,
-        "DNB_2": 1.49
-      },
-      "fair_odds": {
-        "1": 3.824,
-        "X": 3.721,
-        "2": 2.129
-      },
-      "overround_pct": 3.35
-    },
-    {
-      "id": "611adbd4bc3a3e1b8b03def9d8a29e54",
-      "sport_key": "soccer_efl_champ",
-      "league_name": "Championship",
-      "home_team": "Queens Park Rangers",
-      "away_team": "Lincoln City",
-      "commence_time": "2026-11-07T15:00:00Z",
-      "odds": {
-        "2": 4.8,
-        "1": 1.73,
-        "X": 4.0,
-        "OVER_25": 1.75,
-        "UNDER_25": 2.02,
-        "1X": 1.21,
-        "X2": 2.18,
-        "DNB_1": 1.3,
-        "DNB_2": 3.6
-      },
-      "opening_odds": {
-        "2": 4.8,
-        "1": 1.73,
-        "X": 4.0,
-        "OVER_25": 1.75,
-        "UNDER_25": 2.02,
-        "1X": 1.21,
-        "X2": 2.18,
-        "DNB_1": 1.3,
-        "DNB_2": 3.6
-      },
-      "fair_odds": {
-        "1": 1.793,
-        "X": 4.145,
-        "2": 4.975
-      },
-      "overround_pct": 3.64
-    },
-    {
-      "id": "4330962b4e3ef6768d90008d6befb10d",
-      "sport_key": "soccer_efl_champ",
-      "league_name": "Championship",
-      "home_team": "Preston North End",
-      "away_team": "Southampton",
-      "commence_time": "2026-11-07T15:00:00Z",
-      "odds": {
-        "1": 4.9,
-        "2": 1.6,
-        "X": 4.1,
-        "OVER_35": 2.48,
-        "UNDER_35": 1.5,
-        "OVER_25": 1.55,
-        "UNDER_25": 2.2,
-        "1X": 2.23,
-        "X2": 1.15,
-        "DNB_1": 3.7,
-        "DNB_2": 1.21
-      },
-      "opening_odds": {
-        "1": 4.9,
-        "2": 1.6,
-        "X": 4.1,
-        "OVER_35": 2.48,
-        "UNDER_35": 1.5,
-        "OVER_25": 1.55,
-        "UNDER_25": 2.2,
-        "1X": 2.23,
-        "X2": 1.15,
-        "DNB_1": 3.7,
-        "DNB_2": 1.21
-      },
-      "fair_odds": {
-        "1": 5.258,
-        "X": 4.399,
-        "2": 1.717
-      },
-      "overround_pct": 7.3
-    },
-    {
-      "id": "fda8738874fa4ae1ba6f50f77386e4d2",
-      "sport_key": "soccer_italy_serie_b",
-      "league_name": "Serie B - Italy",
-      "home_team": "Juve Stabia",
-      "away_team": "Arezzo",
-      "commence_time": "2026-11-07T14:00:00Z",
-      "odds": {
-        "2": 4.7,
-        "1": 1.74,
-        "X": 3.55,
-        "OVER_25": 2.02,
-        "UNDER_25": 1.88,
-        "1X": 1.17,
-        "X2": 2.02,
-        "DNB_1": 1.25,
-        "DNB_2": 3.38
-      },
-      "opening_odds": {
-        "2": 4.7,
-        "1": 1.74,
-        "X": 3.55,
-        "OVER_25": 2.02,
-        "UNDER_25": 1.88,
-        "1X": 1.17,
-        "X2": 2.02,
-        "DNB_1": 1.25,
-        "DNB_2": 3.38
-      },
-      "fair_odds": {
-        "1": 1.86,
-        "X": 3.796,
-        "2": 5.025
-      },
-      "overround_pct": 6.92
-    },
-    {
-      "id": "6e5b5162f681a43e9a71f3fb76f8f28f",
-      "sport_key": "soccer_italy_serie_b",
-      "league_name": "Serie B - Italy",
-      "home_team": "Pisa",
-      "away_team": "Südtirol",
-      "commence_time": "2026-11-07T14:00:00Z",
-      "odds": {
-        "1": 1.64,
-        "2": 5.2,
-        "X": 3.7,
-        "OVER_25": 1.9,
-        "UNDER_25": 2.0,
-        "1X": 1.14,
-        "X2": 2.16,
-        "DNB_1": 1.2,
-        "DNB_2": 3.79
-      },
-      "opening_odds": {
-        "1": 1.64,
-        "2": 5.2,
-        "X": 3.7,
-        "OVER_25": 1.91,
-        "UNDER_25": 2.0,
-        "1X": 1.14,
-        "X2": 2.16,
-        "DNB_1": 1.2,
-        "DNB_2": 3.79
-      },
-      "fair_odds": {
-        "1": 1.759,
-        "X": 3.968,
-        "2": 5.576
-      },
-      "overround_pct": 7.23
-    },
-    {
-      "id": "ef6e2cc0b7ed5a3852d963aba8b2ad84",
-      "sport_key": "soccer_italy_serie_b",
-      "league_name": "Serie B - Italy",
-      "home_team": "Mantova",
-      "away_team": "Hellas Verona",
-      "commence_time": "2026-11-07T16:15:00Z",
-      "odds": {
-        "2": 2.65,
-        "1": 2.55,
-        "X": 3.35,
-        "OVER_25": 1.89,
-        "UNDER_25": 2.04,
-        "1X": 1.45,
-        "X2": 1.48,
-        "DNB_1": 1.79,
-        "DNB_2": 1.86
-      },
-      "opening_odds": {
-        "2": 2.65,
-        "1": 2.55,
-        "X": 3.35,
-        "OVER_25": 1.89,
-        "UNDER_25": 2.04,
-        "1X": 1.45,
-        "X2": 1.48,
-        "DNB_1": 1.79,
-        "DNB_2": 1.86
-      },
-      "fair_odds": {
-        "1": 2.723,
-        "X": 3.578,
-        "2": 2.83
-      },
-      "overround_pct": 6.8
-    },
-    {
-      "id": "74b73ae67252501f068cac62f02f25bb",
-      "sport_key": "soccer_spain_segunda_division",
-      "league_name": "La Liga 2 - Spain",
-      "home_team": "Leganés",
-      "away_team": "Albacete",
-      "commence_time": "2026-11-07T17:30:00Z",
-      "odds": {
-        "2": 3.65,
-        "1": 2.0,
-        "X": 3.4,
-        "OVER_25": 1.97,
-        "UNDER_25": 1.79,
-        "1X": 1.26,
-        "X2": 1.76,
-        "DNB_1": 1.41,
-        "DNB_2": 2.58
-      },
-      "opening_odds": {
-        "2": 3.65,
-        "1": 2.0,
-        "X": 3.4,
-        "OVER_25": 1.97,
-        "UNDER_25": 1.79,
-        "1X": 1.26,
-        "X2": 1.76,
-        "DNB_1": 1.41,
-        "DNB_2": 2.58
-      },
-      "fair_odds": {
-        "1": 2.136,
-        "X": 3.632,
-        "2": 3.899
-      },
-      "overround_pct": 6.81
-    },
-    {
-      "id": "ec36d0af95915a31fefdf2f72bb8adeb",
-      "sport_key": "soccer_spain_segunda_division",
-      "league_name": "La Liga 2 - Spain",
-      "home_team": "Granada CF",
-      "away_team": "Tenerife",
-      "commence_time": "2026-11-07T20:00:00Z",
-      "odds": {
-        "1": 1.81,
-        "2": 4.5,
-        "X": 3.5,
-        "OVER_25": 1.98,
-        "UNDER_25": 1.77,
-        "1X": 1.19,
-        "X2": 1.97,
-        "DNB_1": 1.29,
-        "DNB_2": 3.21
-      },
-      "opening_odds": {
-        "1": 1.81,
-        "2": 4.5,
-        "X": 3.5,
-        "OVER_25": 1.98,
-        "UNDER_25": 1.77,
-        "1X": 1.19,
-        "X2": 1.97,
-        "DNB_1": 1.29,
-        "DNB_2": 3.21
-      },
-      "fair_odds": {
-        "1": 1.919,
-        "X": 3.711,
-        "2": 4.772
-      },
-      "overround_pct": 6.04
-    },
-    {
-      "id": "33c5cad848eb423e163a9bf5631ccefe",
-      "sport_key": "soccer_netherlands_eredivisie",
-      "league_name": "Dutch Eredivisie",
-      "home_team": "Fortuna Sittard",
-      "away_team": "SC Telstar",
-      "commence_time": "2026-11-07T15:30:00Z",
-      "odds": {
-        "1": 2.11,
-        "2": 3.44,
-        "X": 3.61,
-        "OVER_25": 1.72,
-        "UNDER_25": 2.2,
-        "OVER_35": 2.59,
-        "UNDER_35": 1.46,
-        "1X": 1.33,
-        "X2": 1.76,
-        "DNB_1": 1.53,
-        "DNB_2": 2.49
-      },
-      "opening_odds": {
-        "1": 2.11,
-        "2": 3.44,
-        "X": 3.61,
-        "OVER_25": 1.72,
-        "UNDER_25": 2.26,
-        "OVER_35": 2.59,
-        "UNDER_35": 1.46,
-        "1X": 1.33,
-        "X2": 1.76,
-        "DNB_1": 1.53,
-        "DNB_2": 2.49
-      },
-      "fair_odds": {
-        "1": 2.198,
-        "X": 3.76,
-        "2": 3.583
-      },
-      "overround_pct": 4.16
-    },
-    {
-      "id": "ba0a2d492dfcc89ab465eddd7a9e98c2",
-      "sport_key": "soccer_portugal_primeira_liga",
-      "league_name": "Primeira Liga - Portugal",
-      "home_team": "Sporting Lisbon",
-      "away_team": "Moreirense FC",
-      "commence_time": "2026-11-07T20:30:00Z",
-      "odds": {
-        "2": 17.51,
-        "1": 1.14,
-        "X": 9.39,
-        "OVER_25": 1.4,
-        "UNDER_25": 2.8,
-        "OVER_35": 2.1,
-        "UNDER_35": 1.82,
-        "1X": 1.02,
-        "X2": 6.11,
-        "DNB_1": 1.02,
-        "DNB_2": 15.65
-      },
-      "opening_odds": {
-        "2": 16.9,
-        "1": 1.14,
-        "X": 9.2,
-        "OVER_25": 1.4,
-        "UNDER_25": 2.8,
-        "OVER_35": 2.1,
-        "UNDER_35": 1.82,
-        "1X": 1.01,
-        "X2": 5.96,
-        "DNB_1": 1.02,
-        "DNB_2": 15.06
-      },
-      "fair_odds": {
-        "1": 1.187,
-        "X": 9.773,
-        "2": 18.224
-      },
-      "overround_pct": 4.08
-    },
-    {
-      "id": "6dd9bd70df940845fd51c7af37ea1510",
-      "sport_key": "soccer_sweden_allsvenskan",
-      "league_name": "Allsvenskan - Sweden",
-      "home_team": "Degerfors IF",
-      "away_team": "GAIS",
-      "commence_time": "2026-11-07T16:30:00Z",
-      "odds": {
-        "1": 3.15,
-        "2": 2.3,
-        "X": 3.15,
-        "OVER_25": 1.88,
-        "UNDER_25": 1.85,
-        "1X": 1.58,
-        "X2": 1.33,
-        "DNB_1": 2.15,
-        "DNB_2": 1.57
-      },
-      "opening_odds": {
-        "1": 3.15,
-        "2": 2.3,
-        "X": 3.15,
-        "OVER_25": 1.88,
-        "UNDER_25": 1.85,
-        "1X": 1.58,
-        "X2": 1.33,
-        "DNB_1": 2.15,
-        "DNB_2": 1.57
-      },
-      "fair_odds": {
-        "1": 3.37,
-        "X": 3.37,
-        "2": 2.46
-      },
-      "overround_pct": 6.97
-    },
-    {
-      "id": "615fc58d9980422a8fea00e339e13949",
-      "sport_key": "soccer_norway_eliteserien",
-      "league_name": "Eliteserien - Norway",
-      "home_team": "Kristiansund BK",
-      "away_team": "Vålerenga",
-      "commence_time": "2026-11-07T15:00:00Z",
-      "odds": {
-        "1": 2.41,
-        "2": 2.65,
-        "X": 4.19,
-        "OVER_35": 2.01,
-        "UNDER_35": 1.88,
-        "1X": 1.53,
-        "X2": 1.62,
-        "DNB_1": 1.83,
-        "DNB_2": 2.02
-      },
-      "opening_odds": {
-        "1": 2.41,
-        "2": 2.65,
-        "X": 4.19,
-        "OVER_35": 2.01,
-        "UNDER_35": 1.88,
-        "1X": 1.53,
-        "X2": 1.62,
-        "DNB_1": 1.83,
-        "DNB_2": 2.02
-      },
-      "fair_odds": {
-        "1": 2.485,
-        "X": 4.32,
-        "2": 2.732
+        "1": 3.619,
+        "X": 3.588,
+        "2": 2.248
       },
       "overround_pct": 3.1
     },
     {
-      "id": "110f0c14909249dee819119e3affbab5",
-      "sport_key": "soccer_norway_eliteserien",
-      "league_name": "Eliteserien - Norway",
-      "home_team": "Rosenborg",
-      "away_team": "IK Start",
-      "commence_time": "2026-11-07T17:00:00Z",
+      "id": "c35673eb1e889309d6985c091a43a3f5",
+      "sport_key": "soccer_spain_la_liga",
+      "league_name": "La Liga - Spain",
+      "home_team": "Elche CF",
+      "away_team": "Real Betis",
+      "commence_time": "2026-11-08T13:00:00Z",
       "odds": {
-        "2": 9.5,
-        "1": 1.26,
-        "X": 6.0,
-        "OVER_35": 2.04,
-        "UNDER_35": 1.89,
-        "OVER_25": 1.36,
-        "UNDER_25": 2.9,
-        "1X": 1.04,
-        "X2": 3.68,
-        "DNB_1": 1.05,
-        "DNB_2": 7.92
+        "1": 3.71,
+        "2": 2.0,
+        "X": 3.83,
+        "OVER_25": 1.6,
+        "UNDER_25": 2.15,
+        "1X": 1.88,
+        "X2": 1.31,
+        "DNB_1": 2.74,
+        "DNB_2": 1.48
       },
       "opening_odds": {
-        "2": 9.5,
-        "1": 1.26,
-        "X": 6.0,
-        "OVER_35": 2.04,
-        "UNDER_35": 1.9,
-        "OVER_25": 1.36,
-        "UNDER_25": 2.9,
-        "1X": 1.04,
-        "X2": 3.68,
-        "DNB_1": 1.05,
-        "DNB_2": 7.92
+        "1": 3.71,
+        "2": 2.0,
+        "X": 3.83,
+        "OVER_25": 1.6,
+        "UNDER_25": 2.15,
+        "1X": 1.88,
+        "X2": 1.31,
+        "DNB_1": 2.74,
+        "DNB_2": 1.48
       },
       "fair_odds": {
-        "1": 1.343,
-        "X": 6.393,
-        "2": 10.123
+        "1": 3.824,
+        "X": 3.947,
+        "2": 2.061
       },
-      "overround_pct": 6.56
+      "overround_pct": 3.06
     },
     {
-      "id": "328536a210997eb2595077031a250747",
-      "sport_key": "soccer_austria_bundesliga",
-      "league_name": "Austrian Football Bundesliga",
-      "home_team": "Ried",
-      "away_team": "LASK",
-      "commence_time": "2026-11-07T18:30:00Z",
+      "id": "339a6465fa5153fd8f31e487cf557cf0",
+      "sport_key": "soccer_spain_la_liga",
+      "league_name": "La Liga - Spain",
+      "home_team": "Real Sociedad",
+      "away_team": "Rayo Vallecano",
+      "commence_time": "2026-11-08T15:15:00Z",
       "odds": {
-        "2": 1.53,
-        "1": 5.58,
-        "X": 4.98,
-        "OVER_35": 2.0,
-        "UNDER_35": 1.88,
-        "OVER_25": 1.36,
-        "UNDER_25": 2.9,
-        "1X": 2.63,
-        "X2": 1.17,
-        "DNB_1": 4.46,
-        "DNB_2": 1.22
+        "2": 4.4,
+        "1": 1.75,
+        "X": 4.1,
+        "OVER_25": 1.57,
+        "UNDER_25": 2.32,
+        "OVER_35": 2.25,
+        "UNDER_35": 1.55,
+        "1X": 1.23,
+        "X2": 2.12,
+        "DNB_1": 1.32,
+        "DNB_2": 3.33
       },
       "opening_odds": {
-        "2": 1.54,
-        "1": 5.58,
-        "X": 4.88,
-        "OVER_35": 2.12,
-        "UNDER_35": 1.76,
-        "OVER_25": 1.4,
-        "UNDER_25": 2.8,
-        "1X": 2.6,
-        "X2": 1.17,
-        "DNB_1": 4.44,
-        "DNB_2": 1.22
+        "2": 4.4,
+        "1": 1.75,
+        "X": 4.1,
+        "OVER_25": 1.57,
+        "UNDER_25": 2.32,
+        "OVER_35": 2.25,
+        "UNDER_35": 1.55,
+        "1X": 1.23,
+        "X2": 2.12,
+        "DNB_1": 1.32,
+        "DNB_2": 3.33
       },
       "fair_odds": {
-        "1": 5.768,
-        "X": 5.147,
-        "2": 1.581
+        "1": 1.825,
+        "X": 4.275,
+        "2": 4.587
       },
-      "overround_pct": 3.36
+      "overround_pct": 4.26
     },
     {
-      "id": "d212cc4c7707bbc11eea293ee861be61",
-      "sport_key": "soccer_poland_ekstraklasa",
-      "league_name": "Ekstraklasa - Poland",
-      "home_team": "Korona Kielce",
-      "away_team": "Radomiak Radom",
-      "commence_time": "2026-11-07T11:15:00Z",
+      "id": "0d2e199bfba0db42871696c10037bad3",
+      "sport_key": "soccer_spain_la_liga",
+      "league_name": "La Liga - Spain",
+      "home_team": "Celta Vigo",
+      "away_team": "Levante",
+      "commence_time": "2026-11-08T17:30:00Z",
       "odds": {
-        "1": 1.72,
-        "2": 4.6,
-        "X": 3.8,
-        "OVER_25": 1.71,
-        "UNDER_25": 2.14,
-        "1X": 1.18,
-        "X2": 2.08,
-        "DNB_1": 1.27,
-        "DNB_2": 3.39
+        "1": 1.83,
+        "2": 4.72,
+        "X": 3.65,
+        "OVER_25": 1.94,
+        "UNDER_25": 1.89,
+        "1X": 1.22,
+        "X2": 2.06,
+        "DNB_1": 1.33,
+        "DNB_2": 3.43
       },
       "opening_odds": {
-        "1": 1.72,
-        "2": 4.5,
-        "X": 3.8,
-        "OVER_25": 1.71,
-        "UNDER_25": 2.14,
-        "1X": 1.18,
+        "1": 1.83,
+        "2": 4.72,
+        "X": 3.65,
+        "OVER_25": 1.94,
+        "UNDER_25": 1.89,
+        "1X": 1.22,
+        "X2": 2.06,
+        "DNB_1": 1.33,
+        "DNB_2": 3.43
+      },
+      "fair_odds": {
+        "1": 1.889,
+        "X": 3.768,
+        "2": 4.872
+      },
+      "overround_pct": 3.23
+    },
+    {
+      "id": "81ad04996f63fb60b494d243b13ac586",
+      "sport_key": "soccer_spain_la_liga",
+      "league_name": "La Liga - Spain",
+      "home_team": "Villarreal",
+      "away_team": "Getafe",
+      "commence_time": "2026-11-08T17:30:00Z",
+      "odds": {
+        "2": 7.22,
+        "1": 1.48,
+        "X": 4.51,
+        "OVER_25": 1.79,
+        "UNDER_25": 2.05,
+        "1X": 1.11,
+        "X2": 2.78,
+        "DNB_1": 1.15,
+        "DNB_2": 5.62
+      },
+      "opening_odds": {
+        "2": 7.22,
+        "1": 1.48,
+        "X": 4.51,
+        "OVER_25": 1.79,
+        "UNDER_25": 2.05,
+        "1X": 1.11,
+        "X2": 2.78,
+        "DNB_1": 1.15,
+        "DNB_2": 5.62
+      },
+      "fair_odds": {
+        "1": 1.533,
+        "X": 4.672,
+        "2": 7.479
+      },
+      "overround_pct": 3.59
+    },
+    {
+      "id": "dd247b356d8fc53e4b4f9bfcfe09c924",
+      "sport_key": "soccer_spain_la_liga",
+      "league_name": "La Liga - Spain",
+      "home_team": "Atlético Madrid",
+      "away_team": "Barcelona",
+      "commence_time": "2026-11-08T20:00:00Z",
+      "odds": {
+        "1": 3.38,
+        "2": 2.05,
+        "X": 4.31,
+        "OVER_35": 1.85,
+        "UNDER_35": 1.99,
+        "OVER_25": 1.31,
+        "UNDER_25": 3.35,
+        "1X": 1.89,
+        "X2": 1.39,
+        "DNB_1": 2.6,
+        "DNB_2": 1.57
+      },
+      "opening_odds": {
+        "1": 3.38,
+        "2": 2.05,
+        "X": 4.31,
+        "OVER_35": 1.85,
+        "UNDER_35": 1.99,
+        "OVER_25": 1.31,
+        "UNDER_25": 3.35,
+        "1X": 1.89,
+        "X2": 1.39,
+        "DNB_1": 2.6,
+        "DNB_2": 1.57
+      },
+      "fair_odds": {
+        "1": 3.433,
+        "X": 4.378,
+        "2": 2.082
+      },
+      "overround_pct": 1.57
+    },
+    {
+      "id": "0cfbab01e152f81e34f9014e02c7eb79",
+      "sport_key": "soccer_epl",
+      "league_name": "EPL",
+      "home_team": "Crystal Palace",
+      "away_team": "Liverpool",
+      "commence_time": "2026-11-08T14:00:00Z",
+      "odds": {
+        "1": 5.48,
+        "2": 1.61,
+        "X": 4.67,
+        "OVER_35": 2.21,
+        "UNDER_35": 1.62,
+        "OVER_25": 1.49,
+        "UNDER_25": 2.66,
+        "1X": 2.52,
+        "X2": 1.2,
+        "DNB_1": 4.31,
+        "DNB_2": 1.27
+      },
+      "opening_odds": {
+        "1": 5.48,
+        "2": 1.61,
+        "X": 4.67,
+        "OVER_35": 2.21,
+        "UNDER_35": 1.62,
+        "OVER_25": 1.49,
+        "UNDER_25": 2.66,
+        "1X": 2.52,
+        "X2": 1.2,
+        "DNB_1": 4.31,
+        "DNB_2": 1.27
+      },
+      "fair_odds": {
+        "1": 5.577,
+        "X": 4.753,
+        "2": 1.639
+      },
+      "overround_pct": 1.77
+    },
+    {
+      "id": "c70f9f21f48464daa93973147502e183",
+      "sport_key": "soccer_germany_bundesliga",
+      "league_name": "Bundesliga - Germany",
+      "home_team": "1. FC Köln",
+      "away_team": "Bayer Leverkusen",
+      "commence_time": "2026-11-08T14:30:00Z",
+      "odds": {
+        "1": 4.18,
+        "2": 1.84,
+        "X": 4.01,
+        "OVER_35": 2.13,
+        "UNDER_35": 1.68,
+        "OVER_25": 1.48,
+        "UNDER_25": 2.62,
+        "1X": 2.05,
+        "X2": 1.26,
+        "DNB_1": 3.14,
+        "DNB_2": 1.38
+      },
+      "opening_odds": {
+        "1": 4.18,
+        "2": 1.84,
+        "X": 4.01,
+        "OVER_35": 2.13,
+        "UNDER_35": 1.68,
+        "OVER_25": 1.48,
+        "UNDER_25": 2.62,
+        "1X": 2.05,
+        "X2": 1.26,
+        "DNB_1": 3.14,
+        "DNB_2": 1.38
+      },
+      "fair_odds": {
+        "1": 4.314,
+        "X": 4.139,
+        "2": 1.899
+      },
+      "overround_pct": 3.21
+    },
+    {
+      "id": "c1b9696d88719cb8832d794b986cdd68",
+      "sport_key": "soccer_germany_bundesliga",
+      "league_name": "Bundesliga - Germany",
+      "home_team": "SC Freiburg",
+      "away_team": "Union Berlin",
+      "commence_time": "2026-11-08T16:30:00Z",
+      "odds": {
+        "1": 1.5,
+        "2": 6.67,
+        "X": 4.62,
+        "OVER_25": 1.6,
+        "UNDER_25": 2.3,
+        "OVER_35": 2.62,
+        "UNDER_35": 1.5,
+        "1X": 1.13,
+        "X2": 2.73,
+        "DNB_1": 1.18,
+        "DNB_2": 5.23
+      },
+      "opening_odds": {
+        "1": 1.5,
+        "2": 6.67,
+        "X": 4.62,
+        "OVER_25": 1.6,
+        "UNDER_25": 2.3,
+        "OVER_35": 2.62,
+        "UNDER_35": 1.5,
+        "1X": 1.13,
+        "X2": 2.73,
+        "DNB_1": 1.18,
+        "DNB_2": 5.23
+      },
+      "fair_odds": {
+        "1": 1.55,
+        "X": 4.773,
+        "2": 6.89
+      },
+      "overround_pct": 3.3
+    },
+    {
+      "id": "8963081c3457212ee238b498bbc33a03",
+      "sport_key": "soccer_germany_bundesliga",
+      "league_name": "Bundesliga - Germany",
+      "home_team": "TSG Hoffenheim",
+      "away_team": "FC Schalke 04",
+      "commence_time": "2026-11-08T18:30:00Z",
+      "odds": {
+        "2": 5.57,
+        "1": 1.58,
+        "X": 4.48,
+        "OVER_35": 2.26,
+        "UNDER_35": 1.65,
+        "OVER_25": 1.55,
+        "UNDER_25": 2.48,
+        "1X": 1.17,
+        "X2": 2.48,
+        "DNB_1": 1.23,
+        "DNB_2": 4.33
+      },
+      "opening_odds": {
+        "2": 5.57,
+        "1": 1.58,
+        "X": 4.48,
+        "OVER_35": 2.26,
+        "UNDER_35": 1.65,
+        "OVER_25": 1.55,
+        "UNDER_25": 2.48,
+        "1X": 1.17,
+        "X2": 2.48,
+        "DNB_1": 1.23,
+        "DNB_2": 4.33
+      },
+      "fair_odds": {
+        "1": 1.636,
+        "X": 4.64,
+        "2": 5.769
+      },
+      "overround_pct": 3.57
+    },
+    {
+      "id": "4288fbe018e6e6fb223e389bcf3e57dd",
+      "sport_key": "soccer_france_ligue_one",
+      "league_name": "Ligue 1 - France",
+      "home_team": "Rennes",
+      "away_team": "Lille",
+      "commence_time": "2026-11-08T14:00:00Z",
+      "odds": {
+        "2": 3.14,
+        "1": 2.35,
+        "X": 3.48,
+        "OVER_25": 1.66,
+        "UNDER_25": 2.12,
+        "1X": 1.4,
+        "X2": 1.65,
+        "DNB_1": 1.67,
+        "DNB_2": 2.24
+      },
+      "opening_odds": {
+        "2": 3.14,
+        "1": 2.35,
+        "X": 3.48,
+        "OVER_25": 1.66,
+        "UNDER_25": 2.12,
+        "1X": 1.4,
+        "X2": 1.65,
+        "DNB_1": 1.67,
+        "DNB_2": 2.24
+      },
+      "fair_odds": {
+        "1": 2.424,
+        "X": 3.589,
+        "2": 3.238
+      },
+      "overround_pct": 3.14
+    },
+    {
+      "id": "a529e5762f18d97981194ec3668dc3d3",
+      "sport_key": "soccer_france_ligue_one",
+      "league_name": "Ligue 1 - France",
+      "home_team": "Le Mans FC",
+      "away_team": "AS Monaco",
+      "commence_time": "2026-11-08T16:15:00Z",
+      "odds": {
+        "2": 1.71,
+        "1": 5.02,
+        "X": 3.98,
+        "OVER_25": 1.91,
+        "UNDER_25": 1.94,
+        "1X": 2.22,
+        "X2": 1.2,
+        "DNB_1": 3.76,
+        "DNB_2": 1.28
+      },
+      "opening_odds": {
+        "2": 1.71,
+        "1": 5.02,
+        "X": 3.98,
+        "OVER_25": 1.91,
+        "UNDER_25": 1.94,
+        "1X": 2.22,
+        "X2": 1.2,
+        "DNB_1": 3.76,
+        "DNB_2": 1.28
+      },
+      "fair_odds": {
+        "1": 5.197,
+        "X": 4.12,
+        "2": 1.77
+      },
+      "overround_pct": 3.53
+    },
+    {
+      "id": "54fae64b1421d836e07a17cad0536c73",
+      "sport_key": "soccer_france_ligue_one",
+      "league_name": "Ligue 1 - France",
+      "home_team": "Angers",
+      "away_team": "Nice",
+      "commence_time": "2026-11-08T16:15:00Z",
+      "odds": {
+        "1": 3.66,
+        "2": 2.08,
+        "X": 3.6,
+        "OVER_25": 1.74,
+        "UNDER_25": 2.09,
+        "1X": 1.81,
+        "X2": 1.32,
+        "DNB_1": 2.64,
+        "DNB_2": 1.5
+      },
+      "opening_odds": {
+        "1": 3.66,
+        "2": 2.08,
+        "X": 3.6,
+        "OVER_25": 1.74,
+        "UNDER_25": 2.09,
+        "1X": 1.81,
+        "X2": 1.32,
+        "DNB_1": 2.64,
+        "DNB_2": 1.5
+      },
+      "fair_odds": {
+        "1": 3.776,
+        "X": 3.714,
+        "2": 2.146
+      },
+      "overround_pct": 3.18
+    },
+    {
+      "id": "cc9731ee7796fe0d532f11ca2aa522c9",
+      "sport_key": "soccer_france_ligue_one",
+      "league_name": "Ligue 1 - France",
+      "home_team": "Brest",
+      "away_team": "Lyon",
+      "commence_time": "2026-11-08T16:15:00Z",
+      "odds": {
+        "1": 2.87,
+        "2": 2.57,
+        "X": 3.42,
+        "OVER_25": 1.86,
+        "UNDER_25": 1.95,
+        "1X": 1.56,
+        "X2": 1.47,
+        "DNB_1": 2.03,
+        "DNB_2": 1.82
+      },
+      "opening_odds": {
+        "1": 2.87,
+        "2": 2.57,
+        "X": 3.42,
+        "OVER_25": 1.86,
+        "UNDER_25": 1.95,
+        "1X": 1.56,
+        "X2": 1.47,
+        "DNB_1": 2.03,
+        "DNB_2": 1.82
+      },
+      "fair_odds": {
+        "1": 2.956,
+        "X": 3.522,
+        "2": 2.647
+      },
+      "overround_pct": 2.99
+    },
+    {
+      "id": "3e9954446f26494c04c4967db523d375",
+      "sport_key": "soccer_france_ligue_one",
+      "league_name": "Ligue 1 - France",
+      "home_team": "Le Havre",
+      "away_team": "Lorient",
+      "commence_time": "2026-11-08T16:15:00Z",
+      "odds": {
+        "1": 3.12,
+        "2": 2.5,
+        "X": 3.22,
+        "OVER_25": 2.15,
+        "UNDER_25": 1.71,
+        "1X": 1.58,
+        "X2": 1.41,
+        "DNB_1": 2.15,
+        "DNB_2": 1.72
+      },
+      "opening_odds": {
+        "1": 3.12,
+        "2": 2.5,
+        "X": 3.22,
+        "OVER_25": 2.15,
+        "UNDER_25": 1.71,
+        "1X": 1.58,
+        "X2": 1.41,
+        "DNB_1": 2.15,
+        "DNB_2": 1.72
+      },
+      "fair_odds": {
+        "1": 3.217,
+        "X": 3.32,
+        "2": 2.578
+      },
+      "overround_pct": 3.11
+    },
+    {
+      "id": "c22d673775e6a4dc0810cc88b0ed75ec",
+      "sport_key": "soccer_netherlands_eredivisie",
+      "league_name": "Dutch Eredivisie",
+      "home_team": "AZ Alkmaar",
+      "away_team": "Groningen",
+      "commence_time": "2026-11-08T15:45:00Z",
+      "odds": {
+        "1": 1.54,
+        "2": 5.77,
+        "X": 4.59,
+        "OVER_35": 2.16,
+        "UNDER_35": 1.79,
+        "OVER_25": 1.41,
+        "UNDER_25": 2.73,
+        "1X": 1.15,
+        "X2": 2.56,
+        "DNB_1": 1.2,
+        "DNB_2": 4.51
+      },
+      "opening_odds": {
+        "1": 1.54,
+        "2": 5.77,
+        "X": 4.59,
+        "OVER_35": 2.16,
+        "UNDER_35": 1.79,
+        "OVER_25": 1.41,
+        "UNDER_25": 2.73,
+        "1X": 1.15,
+        "X2": 2.56,
+        "DNB_1": 1.2,
+        "DNB_2": 4.51
+      },
+      "fair_odds": {
+        "1": 1.602,
+        "X": 4.776,
+        "2": 6.004
+      },
+      "overround_pct": 4.05
+    },
+    {
+      "id": "9d545e362d9e690aa8e41b4ccf4d4c78",
+      "sport_key": "soccer_portugal_primeira_liga",
+      "league_name": "Primeira Liga - Portugal",
+      "home_team": "Nacional",
+      "away_team": "Académico de Viseu",
+      "commence_time": "2026-11-08T15:30:00Z",
+      "odds": {
+        "2": 2.44,
+        "1": 3.13,
+        "X": 3.33,
+        "OVER_25": 1.99,
+        "UNDER_25": 1.76,
+        "1X": 1.61,
+        "X2": 1.41,
+        "DNB_1": 2.19,
+        "DNB_2": 1.71
+      },
+      "opening_odds": {
+        "2": 2.44,
+        "1": 3.13,
+        "X": 3.33,
+        "OVER_25": 1.99,
+        "UNDER_25": 1.76,
+        "1X": 1.61,
+        "X2": 1.41,
+        "DNB_1": 2.19,
+        "DNB_2": 1.71
+      },
+      "fair_odds": {
+        "1": 3.223,
+        "X": 3.429,
+        "2": 2.512
+      },
+      "overround_pct": 2.96
+    },
+    {
+      "id": "76b8d2047cea0309b144b134e22f4743",
+      "sport_key": "soccer_denmark_superliga",
+      "league_name": "Denmark Superliga",
+      "home_team": "FC Copenhagen",
+      "away_team": "Brondby IF",
+      "commence_time": "2026-11-08T11:00:00Z",
+      "odds": {
+        "2": 4.35,
+        "1": 1.71,
+        "X": 3.9,
+        "OVER_25": 1.87,
+        "UNDER_25": 2.1,
+        "1X": 1.19,
         "X2": 2.06,
         "DNB_1": 1.27,
-        "DNB_2": 3.32
-      },
-      "fair_odds": {
-        "1": 1.827,
-        "X": 4.035,
-        "2": 4.885
-      },
-      "overround_pct": 6.19
-    },
-    {
-      "id": "5c8042e0122ba7201d1dd9707b99ec5b",
-      "sport_key": "soccer_poland_ekstraklasa",
-      "league_name": "Ekstraklasa - Poland",
-      "home_team": "Śląsk Wrocław",
-      "away_team": "Piast Gliwice",
-      "commence_time": "2026-11-07T13:45:00Z",
-      "odds": {
-        "2": 2.55,
-        "1": 2.5,
-        "X": 3.6,
-        "OVER_25": 1.54,
-        "UNDER_25": 2.36,
-        "OVER_35": 2.46,
-        "UNDER_35": 1.61,
-        "1X": 1.48,
-        "X2": 1.49,
-        "DNB_1": 1.81,
-        "DNB_2": 1.84
+        "DNB_2": 3.23
       },
       "opening_odds": {
-        "2": 2.55,
-        "1": 2.5,
-        "X": 3.6,
-        "OVER_25": 1.54,
-        "UNDER_25": 2.36,
-        "OVER_35": 2.46,
-        "UNDER_35": 1.62,
-        "1X": 1.48,
-        "X2": 1.49,
-        "DNB_1": 1.81,
-        "DNB_2": 1.84
-      },
-      "fair_odds": {
-        "1": 2.675,
-        "X": 3.852,
-        "2": 2.728
-      },
-      "overround_pct": 6.99
-    },
-    {
-      "id": "5c33c4a6a816b8506602426e4a94c3dd",
-      "sport_key": "soccer_poland_ekstraklasa",
-      "league_name": "Ekstraklasa - Poland",
-      "home_team": "Widzew Łódź",
-      "away_team": "Pogoń Szczecin",
-      "commence_time": "2026-11-07T19:15:00Z",
-      "odds": {
-        "2": 3.1,
-        "1": 2.2,
-        "X": 3.45,
-        "OVER_25": 1.74,
-        "UNDER_25": 2.18,
-        "1X": 1.34,
-        "X2": 1.63,
-        "DNB_1": 1.56,
-        "DNB_2": 2.2
-      },
-      "opening_odds": {
-        "2": 3.1,
-        "1": 2.2,
-        "X": 3.45,
-        "OVER_25": 1.74,
-        "UNDER_25": 2.18,
-        "1X": 1.34,
-        "X2": 1.63,
-        "DNB_1": 1.56,
-        "DNB_2": 2.2
-      },
-      "fair_odds": {
-        "1": 2.347,
-        "X": 3.681,
-        "2": 3.308
-      },
-      "overround_pct": 6.7
-    },
-    {
-      "id": "c8d54d20e3fa9acb251716ff6820a0c6",
-      "sport_key": "soccer_argentina_primera_division",
-      "league_name": "Primera División - Argentina",
-      "home_team": "Talleres",
-      "away_team": "Estudiantes",
-      "commence_time": "2026-11-07T18:00:00Z",
-      "odds": {
-        "2": 2.75,
-        "1": 2.55,
-        "X": 3.15,
-        "OVER_25": 2.22,
-        "UNDER_25": 1.62,
-        "1X": 1.41,
-        "X2": 1.47,
-        "DNB_1": 1.74,
-        "DNB_2": 1.88
-      },
-      "opening_odds": {
-        "2": 2.75,
-        "1": 2.55,
-        "X": 3.15,
-        "OVER_25": 2.22,
-        "UNDER_25": 1.62,
-        "1X": 1.41,
-        "X2": 1.47,
-        "DNB_1": 1.74,
-        "DNB_2": 1.88
-      },
-      "fair_odds": {
-        "1": 2.737,
-        "X": 3.381,
-        "2": 2.951
-      },
-      "overround_pct": 7.33
-    },
-    {
-      "id": "077e9bfa253514e27bdae1ce5956c78e",
-      "sport_key": "soccer_argentina_primera_division",
-      "league_name": "Primera División - Argentina",
-      "home_team": "Gimnasia Mendoza",
-      "away_team": "Independiente Rivadavia",
-      "commence_time": "2026-11-07T18:00:00Z",
-      "odds": {
-        "1": 3.25,
-        "2": 2.35,
-        "X": 3.0,
-        "OVER_25": 2.25,
-        "UNDER_25": 1.6,
-        "1X": 1.56,
-        "X2": 1.32,
-        "DNB_1": 2.17,
-        "DNB_2": 1.57
-      },
-      "opening_odds": {
-        "1": 3.25,
-        "2": 2.35,
-        "X": 3.0,
-        "OVER_25": 2.25,
-        "UNDER_25": 1.6,
-        "1X": 1.56,
-        "X2": 1.32,
-        "DNB_1": 2.17,
-        "DNB_2": 1.57
-      },
-      "fair_odds": {
-        "1": 3.466,
-        "X": 3.2,
-        "2": 2.506
-      },
-      "overround_pct": 6.66
-    },
-    {
-      "id": "4dbcec00debc1a175148bdb6824e14b3",
-      "sport_key": "soccer_argentina_primera_division",
-      "league_name": "Primera División - Argentina",
-      "home_team": "Argentinos Juniors",
-      "away_team": "Atlético Huracán",
-      "commence_time": "2026-11-07T20:30:00Z",
-      "odds": {
-        "1": 1.93,
-        "2": 4.3,
-        "X": 3.15,
-        "OVER_25": 2.62,
-        "UNDER_25": 1.47,
-        "OVER_15": 1.52,
-        "UNDER_15": 2.42,
-        "1X": 1.2,
-        "X2": 1.82,
-        "DNB_1": 1.32,
-        "DNB_2": 2.93
-      },
-      "opening_odds": {
-        "1": 1.93,
-        "2": 4.3,
-        "X": 3.15,
-        "OVER_25": 2.62,
-        "UNDER_25": 1.47,
-        "OVER_15": 1.52,
-        "UNDER_15": 2.42,
-        "1X": 1.2,
-        "X2": 1.82,
-        "DNB_1": 1.32,
-        "DNB_2": 2.93
-      },
-      "fair_odds": {
-        "1": 2.062,
-        "X": 3.365,
-        "2": 4.593
-      },
-      "overround_pct": 6.82
-    },
-    {
-      "id": "c9e285d98525711130aa5801e9634657",
-      "sport_key": "soccer_argentina_primera_division",
-      "league_name": "Primera División - Argentina",
-      "home_team": "Boca Juniors",
-      "away_team": "Defensa y Justicia",
-      "commence_time": "2026-11-07T20:30:00Z",
-      "odds": {
-        "1": 1.38,
-        "2": 8.5,
-        "X": 4.5,
-        "OVER_25": 1.8,
-        "UNDER_25": 1.95,
-        "1X": 1.06,
-        "X2": 2.94,
-        "DNB_1": 1.07,
-        "DNB_2": 6.61
-      },
-      "opening_odds": {
-        "1": 1.38,
-        "2": 8.5,
-        "X": 4.5,
-        "OVER_25": 1.8,
-        "UNDER_25": 1.95,
-        "1X": 1.06,
-        "X2": 2.94,
-        "DNB_1": 1.07,
-        "DNB_2": 6.61
-      },
-      "fair_odds": {
-        "1": 1.469,
-        "X": 4.79,
-        "2": 9.048
-      },
-      "overround_pct": 6.45
-    },
-    {
-      "id": "88fead70e852197758d9b67fdce0e93f",
-      "sport_key": "soccer_argentina_primera_division",
-      "league_name": "Primera División - Argentina",
-      "home_team": "Rosario Central",
-      "away_team": "Estudiantes de Río Cuarto",
-      "commence_time": "2026-11-07T20:30:00Z",
-      "odds": {
-        "2": 15.0,
-        "1": 1.19,
-        "X": 6.5,
-        "OVER_25": 1.62,
-        "UNDER_25": 2.22,
-        "1X": 1.01,
-        "X2": 4.53,
-        "DNB_1": 1.01,
-        "DNB_2": 12.69
-      },
-      "opening_odds": {
-        "2": 15.0,
-        "1": 1.19,
-        "X": 6.5,
-        "OVER_25": 1.62,
-        "UNDER_25": 2.22,
-        "1X": 1.01,
-        "X2": 4.53,
-        "DNB_1": 1.01,
-        "DNB_2": 12.69
-      },
-      "fair_odds": {
-        "1": 1.262,
-        "X": 6.896,
-        "2": 15.913
-      },
-      "overround_pct": 6.08
-    },
-    {
-      "id": "3faca22879b6a624f3bbd039fa7d9072",
-      "sport_key": "soccer_argentina_primera_division",
-      "league_name": "Primera División - Argentina",
-      "home_team": "Instituto de Córdoba",
-      "away_team": "Newells Old Boys",
-      "commence_time": "2026-11-08T01:00:00Z",
-      "odds": {
-        "1": 1.85,
-        "2": 4.4,
-        "X": 3.3,
-        "OVER_25": 2.48,
-        "UNDER_25": 1.5,
-        "OVER_15": 1.5,
-        "UNDER_15": 2.37,
+        "2": 4.35,
+        "1": 1.71,
+        "X": 3.9,
+        "OVER_25": 1.87,
+        "UNDER_25": 2.1,
         "1X": 1.19,
-        "X2": 1.89,
-        "DNB_1": 1.29,
-        "DNB_2": 3.07
-      },
-      "opening_odds": {
-        "1": 1.85,
-        "2": 4.4,
-        "X": 3.3,
-        "OVER_25": 2.48,
-        "UNDER_25": 1.5,
-        "OVER_15": 1.5,
-        "UNDER_15": 2.37,
-        "1X": 1.19,
-        "X2": 1.89,
-        "DNB_1": 1.29,
-        "DNB_2": 3.07
+        "X2": 2.06,
+        "DNB_1": 1.27,
+        "DNB_2": 3.23
       },
       "fair_odds": {
-        "1": 1.981,
-        "X": 3.534,
-        "2": 4.712
+        "1": 1.832,
+        "X": 4.177,
+        "2": 4.659
+      },
+      "overround_pct": 7.11
+    },
+    {
+      "id": "922c2dd253c81c2c53bcda1806eb7a09",
+      "sport_key": "soccer_sweden_allsvenskan",
+      "league_name": "Allsvenskan - Sweden",
+      "home_team": "Kalmar FF",
+      "away_team": "IK Sirius",
+      "commence_time": "2026-11-08T15:30:00Z",
+      "odds": {
+        "2": 2.25,
+        "1": 3.3,
+        "X": 3.6,
+        "OVER_25": 1.79,
+        "UNDER_25": 2.14,
+        "1X": 1.72,
+        "X2": 1.38,
+        "DNB_1": 2.38,
+        "DNB_2": 1.62
+      },
+      "opening_odds": {
+        "2": 2.25,
+        "1": 3.3,
+        "X": 3.6,
+        "OVER_25": 1.79,
+        "UNDER_25": 2.14,
+        "1X": 1.72,
+        "X2": 1.38,
+        "DNB_1": 2.38,
+        "DNB_2": 1.62
+      },
+      "fair_odds": {
+        "1": 3.383,
+        "X": 3.691,
+        "2": 2.307
+      },
+      "overround_pct": 2.53
+    },
+    {
+      "id": "7c7cdf1a0fee0a3434d8f648392c8e65",
+      "sport_key": "soccer_norway_eliteserien",
+      "league_name": "Eliteserien - Norway",
+      "home_team": "Tromso",
+      "away_team": "Bodø/Glimt",
+      "commence_time": "2026-11-08T13:30:00Z",
+      "odds": {
+        "2": 1.38,
+        "1": 6.75,
+        "X": 5.0,
+        "OVER_35": 2.14,
+        "UNDER_35": 1.82,
+        "OVER_25": 1.4,
+        "UNDER_25": 2.7,
+        "1X": 2.87,
+        "X2": 1.08,
+        "DNB_1": 5.4,
+        "DNB_2": 1.1
+      },
+      "opening_odds": {
+        "2": 1.38,
+        "1": 6.75,
+        "X": 5.0,
+        "OVER_35": 2.14,
+        "UNDER_35": 1.82,
+        "OVER_25": 1.4,
+        "UNDER_25": 2.7,
+        "1X": 2.87,
+        "X2": 1.08,
+        "DNB_1": 5.4,
+        "DNB_2": 1.1
+      },
+      "fair_odds": {
+        "1": 7.241,
+        "X": 5.364,
+        "2": 1.48
+      },
+      "overround_pct": 7.28
+    },
+    {
+      "id": "a0a5702fe3cd7f3217c66c13b234989b",
+      "sport_key": "soccer_norway_eliteserien",
+      "league_name": "Eliteserien - Norway",
+      "home_team": "HamKam",
+      "away_team": "Sarpsborg FK",
+      "commence_time": "2026-11-08T16:00:00Z",
+      "odds": {
+        "1": 3.05,
+        "2": 2.15,
+        "X": 3.6,
+        "OVER_25": 1.5,
+        "UNDER_25": 2.4,
+        "OVER_35": 2.44,
+        "UNDER_35": 1.65,
+        "1X": 1.65,
+        "X2": 1.35,
+        "DNB_1": 2.2,
+        "DNB_2": 1.55
+      },
+      "opening_odds": {
+        "1": 3.05,
+        "2": 2.15,
+        "X": 3.6,
+        "OVER_25": 1.5,
+        "UNDER_25": 2.4,
+        "OVER_35": 2.44,
+        "UNDER_35": 1.65,
+        "1X": 1.65,
+        "X2": 1.35,
+        "DNB_1": 2.2,
+        "DNB_2": 1.55
+      },
+      "fair_odds": {
+        "1": 3.266,
+        "X": 3.855,
+        "2": 2.302
       },
       "overround_pct": 7.08
     },
     {
-      "id": "1cecab6721bb9ac477e36301c2c5412b",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "CF Montreal",
-      "away_team": "Vancouver Whitecaps FC",
-      "commence_time": "2026-11-07T21:00:00Z",
+      "id": "460e6fc9e2af7ea0784ed473f39befe5",
+      "sport_key": "soccer_norway_eliteserien",
+      "league_name": "Eliteserien - Norway",
+      "home_team": "Viking FK",
+      "away_team": "KFUM",
+      "commence_time": "2026-11-08T16:00:00Z",
       "odds": {
-        "1": 4.9,
-        "2": 1.57,
-        "X": 4.3,
-        "OVER_35": 2.1,
-        "UNDER_35": 1.82,
-        "OVER_25": 1.43,
-        "UNDER_25": 2.75,
-        "1X": 2.29,
-        "X2": 1.15,
-        "DNB_1": 3.76,
-        "DNB_2": 1.2
-      },
-      "opening_odds": {
-        "1": 4.9,
-        "2": 1.57,
-        "X": 4.3,
-        "OVER_35": 2.32,
-        "UNDER_35": 1.69,
-        "OVER_25": 1.49,
-        "UNDER_25": 2.58,
-        "1X": 2.29,
-        "X2": 1.15,
-        "DNB_1": 3.76,
-        "DNB_2": 1.2
-      },
-      "fair_odds": {
-        "1": 5.261,
-        "X": 4.616,
-        "2": 1.686
-      },
-      "overround_pct": 7.36
-    },
-    {
-      "id": "b26aa1979396e60e599b7ef1cdaa606a",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "D.C. United",
-      "away_team": "New York City FC",
-      "commence_time": "2026-11-07T21:00:00Z",
-      "odds": {
-        "1": 2.95,
-        "2": 2.25,
-        "X": 3.45,
-        "OVER_25": 1.84,
-        "UNDER_25": 2.14,
-        "1X": 1.59,
-        "X2": 1.36,
-        "DNB_1": 2.09,
-        "DNB_2": 1.6
-      },
-      "opening_odds": {
-        "1": 2.95,
-        "2": 2.25,
-        "X": 3.45,
-        "OVER_25": 1.97,
-        "UNDER_25": 1.94,
-        "1X": 1.59,
-        "X2": 1.36,
-        "DNB_1": 2.09,
-        "DNB_2": 1.6
-      },
-      "fair_odds": {
-        "1": 3.166,
-        "X": 3.703,
-        "2": 2.415
-      },
-      "overround_pct": 7.33
-    },
-    {
-      "id": "e373abc8622b9853aa4fbd3d01c33d8e",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "FC Cincinnati",
-      "away_team": "Nashville SC",
-      "commence_time": "2026-11-07T21:00:00Z",
-      "odds": {
-        "1": 2.55,
-        "2": 2.55,
-        "X": 3.85,
-        "OVER_35": 2.4,
-        "UNDER_35": 1.66,
-        "OVER_25": 1.5,
-        "UNDER_25": 2.52,
-        "1X": 1.53,
-        "X2": 1.53,
-        "DNB_1": 1.89,
-        "DNB_2": 1.89
-      },
-      "opening_odds": {
-        "1": 2.55,
-        "2": 2.55,
-        "X": 3.95,
-        "OVER_35": 2.4,
-        "UNDER_35": 1.66,
-        "OVER_25": 1.52,
-        "UNDER_25": 2.48,
-        "1X": 1.55,
-        "X2": 1.55,
-        "DNB_1": 1.9,
-        "DNB_2": 1.9
-      },
-      "fair_odds": {
-        "1": 2.662,
-        "X": 4.02,
-        "2": 2.662
-      },
-      "overround_pct": 4.41
-    },
-    {
-      "id": "2999abe7822c923b29c9fd21905c1723",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "Orlando City SC",
-      "away_team": "New England Revolution",
-      "commence_time": "2026-11-07T21:00:00Z",
-      "odds": {
-        "2": 3.45,
-        "1": 1.96,
-        "X": 4.25,
+        "2": 10.5,
+        "1": 1.23,
+        "X": 6.4,
         "OVER_35": 1.9,
-        "UNDER_35": 2.0,
-        "OVER_25": 1.34,
-        "UNDER_25": 3.2,
-        "1X": 1.34,
-        "X2": 1.9,
-        "DNB_1": 1.5,
-        "DNB_2": 2.64
+        "UNDER_35": 2.04,
+        "OVER_25": 1.3,
+        "UNDER_25": 3.3,
+        "1X": 1.03,
+        "X2": 3.98,
+        "DNB_1": 1.04,
+        "DNB_2": 8.86
       },
       "opening_odds": {
-        "2": 3.45,
-        "1": 1.96,
-        "X": 4.25,
+        "2": 10.5,
+        "1": 1.23,
+        "X": 6.4,
         "OVER_35": 1.9,
-        "UNDER_35": 2.0,
-        "OVER_25": 1.34,
-        "UNDER_25": 3.2,
-        "1X": 1.34,
-        "X2": 1.9,
-        "DNB_1": 1.5,
-        "DNB_2": 2.64
+        "UNDER_35": 2.04,
+        "OVER_25": 1.3,
+        "UNDER_25": 3.3,
+        "1X": 1.03,
+        "X2": 3.98,
+        "DNB_1": 1.04,
+        "DNB_2": 8.86
       },
       "fair_odds": {
-        "1": 2.029,
+        "1": 1.309,
+        "X": 6.813,
+        "2": 11.177
+      },
+      "overround_pct": 6.45
+    },
+    {
+      "id": "9ec4219adf394482a2a72a7109cb72e5",
+      "sport_key": "soccer_norway_eliteserien",
+      "league_name": "Eliteserien - Norway",
+      "home_team": "Sandefjord",
+      "away_team": "Molde",
+      "commence_time": "2026-11-08T16:00:00Z",
+      "odds": {
+        "2": 1.75,
+        "1": 4.0,
         "X": 4.4,
-        "2": 3.572
+        "OVER_25": 1.29,
+        "UNDER_25": 3.4,
+        "OVER_35": 1.8,
+        "UNDER_35": 2.18,
+        "1X": 2.1,
+        "X2": 1.25,
+        "DNB_1": 3.09,
+        "DNB_2": 1.35
       },
-      "overround_pct": 3.54
+      "opening_odds": {
+        "2": 1.75,
+        "1": 4.0,
+        "X": 4.4,
+        "OVER_25": 1.29,
+        "UNDER_25": 3.4,
+        "OVER_35": 1.8,
+        "UNDER_35": 2.18,
+        "1X": 2.1,
+        "X2": 1.25,
+        "DNB_1": 3.09,
+        "DNB_2": 1.35
+      },
+      "fair_odds": {
+        "1": 4.195,
+        "X": 4.614,
+        "2": 1.835
+      },
+      "overround_pct": 4.87
     },
     {
-      "id": "c0c73d9305b8e399fb6cf9a234a7b9e4",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "Philadelphia Union",
-      "away_team": "Toronto FC",
-      "commence_time": "2026-11-07T21:00:00Z",
+      "id": "ba67d60b86eca4f5a81b7043d24bf905",
+      "sport_key": "soccer_norway_eliteserien",
+      "league_name": "Eliteserien - Norway",
+      "home_team": "Fredrikstad FK",
+      "away_team": "SK Brann",
+      "commence_time": "2026-11-08T18:15:00Z",
       "odds": {
-        "1": 1.47,
-        "2": 6.75,
-        "X": 4.9,
+        "1": 2.7,
+        "2": 2.4,
+        "X": 3.6,
+        "OVER_25": 1.44,
+        "UNDER_25": 2.6,
         "OVER_35": 2.16,
-        "UNDER_35": 1.8,
-        "OVER_25": 1.43,
-        "UNDER_25": 2.82,
-        "1X": 1.13,
-        "X2": 2.84,
-        "DNB_1": 1.17,
-        "DNB_2": 5.37
+        "UNDER_35": 1.77,
+        "1X": 1.54,
+        "X2": 1.44,
+        "DNB_1": 1.95,
+        "DNB_2": 1.73
       },
       "opening_odds": {
-        "1": 1.44,
-        "2": 6.75,
-        "X": 5.1,
+        "1": 2.7,
+        "2": 2.4,
+        "X": 3.6,
+        "OVER_25": 1.44,
+        "UNDER_25": 2.6,
         "OVER_35": 2.16,
-        "UNDER_35": 1.8,
-        "OVER_25": 1.43,
-        "UNDER_25": 2.82,
-        "1X": 1.12,
-        "X2": 2.91,
-        "DNB_1": 1.16,
-        "DNB_2": 5.43
+        "UNDER_35": 1.77,
+        "1X": 1.54,
+        "X2": 1.44,
+        "DNB_1": 1.95,
+        "DNB_2": 1.73
       },
       "fair_odds": {
-        "1": 1.518,
-        "X": 5.059,
-        "2": 6.969
+        "1": 2.875,
+        "X": 3.833,
+        "2": 2.556
       },
-      "overround_pct": 3.25
+      "overround_pct": 6.48
     },
     {
-      "id": "21a304be611df436b73802b3a5d9995a",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "Austin FC",
-      "away_team": "Portland Timbers",
-      "commence_time": "2026-11-08T00:00:00Z",
+      "id": "a0bd5663efc354e1a58ea639f6f3d572",
+      "sport_key": "soccer_argentina_primera_division",
+      "league_name": "Primera División - Argentina",
+      "home_team": "Central Córdoba",
+      "away_team": "Lanus",
+      "commence_time": "2026-11-08T22:30:00Z",
       "odds": {
-        "1": 4.75,
-        "2": 1.66,
-        "X": 4.5,
-        "OVER_35": 2.0,
-        "UNDER_35": 1.89,
-        "OVER_25": 1.37,
-        "UNDER_25": 3.05,
-        "1X": 2.31,
-        "X2": 1.21,
-        "DNB_1": 3.69,
-        "DNB_2": 1.29
+        "1": 5.3,
+        "2": 1.67,
+        "X": 3.6,
+        "OVER_25": 2.2,
+        "UNDER_25": 1.67,
+        "1X": 2.14,
+        "X2": 1.14,
+        "DNB_1": 3.83,
+        "DNB_2": 1.21
       },
       "opening_odds": {
-        "1": 4.75,
-        "2": 1.66,
-        "X": 4.5,
-        "OVER_35": 2.0,
-        "UNDER_35": 1.89,
-        "OVER_25": 1.37,
-        "UNDER_25": 3.05,
-        "1X": 2.31,
-        "X2": 1.21,
-        "DNB_1": 3.69,
-        "DNB_2": 1.29
+        "1": 5.3,
+        "2": 1.67,
+        "X": 3.6,
+        "OVER_25": 2.2,
+        "UNDER_25": 1.67,
+        "1X": 2.14,
+        "X2": 1.14,
+        "DNB_1": 3.83,
+        "DNB_2": 1.21
       },
       "fair_odds": {
-        "1": 4.917,
-        "X": 4.658,
-        "2": 1.718
+        "1": 5.646,
+        "X": 3.835,
+        "2": 1.779
       },
-      "overround_pct": 3.52
-    },
-    {
-      "id": "db5e2057ebc4fbcd2110819712ce2916",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "FC Dallas",
-      "away_team": "Colorado Rapids",
-      "commence_time": "2026-11-08T00:00:00Z",
-      "odds": {
-        "2": 3.4,
-        "1": 2.0,
-        "X": 3.65,
-        "OVER_25": 1.67,
-        "UNDER_25": 2.36,
-        "1X": 1.29,
-        "X2": 1.76,
-        "DNB_1": 1.45,
-        "DNB_2": 2.47
-      },
-      "opening_odds": {
-        "2": 3.4,
-        "1": 2.0,
-        "X": 3.65,
-        "OVER_25": 1.67,
-        "UNDER_25": 2.36,
-        "1X": 1.29,
-        "X2": 1.76,
-        "DNB_1": 1.45,
-        "DNB_2": 2.47
-      },
-      "fair_odds": {
-        "1": 2.136,
-        "X": 3.899,
-        "2": 3.632
-      },
-      "overround_pct": 6.81
-    },
-    {
-      "id": "4700f8b90846ac8a1cf14f077523f486",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "Houston Dynamo",
-      "away_team": "St. Louis City SC",
-      "commence_time": "2026-11-08T00:00:00Z",
-      "odds": {
-        "1": 2.43,
-        "2": 2.7,
-        "X": 3.45,
-        "OVER_25": 1.68,
-        "UNDER_25": 2.28,
-        "1X": 1.43,
-        "X2": 1.51,
-        "DNB_1": 1.73,
-        "DNB_2": 1.92
-      },
-      "opening_odds": {
-        "1": 2.43,
-        "2": 2.7,
-        "X": 3.45,
-        "OVER_25": 1.68,
-        "UNDER_25": 2.28,
-        "1X": 1.43,
-        "X2": 1.51,
-        "DNB_1": 1.73,
-        "DNB_2": 1.92
-      },
-      "fair_odds": {
-        "1": 2.604,
-        "X": 3.698,
-        "2": 2.894
-      },
-      "overround_pct": 7.17
-    },
-    {
-      "id": "acf95111eb7b4a661b16372eb8d3a6e1",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "Real Salt Lake",
-      "away_team": "LA Galaxy",
-      "commence_time": "2026-11-08T00:00:00Z",
-      "odds": {
-        "2": 4.2,
-        "1": 1.68,
-        "X": 4.2,
-        "OVER_35": 2.1,
-        "UNDER_35": 1.84,
-        "OVER_25": 1.41,
-        "UNDER_25": 2.85,
-        "1X": 1.2,
-        "X2": 2.1,
-        "DNB_1": 1.28,
-        "DNB_2": 3.2
-      },
-      "opening_odds": {
-        "2": 4.2,
-        "1": 1.68,
-        "X": 4.2,
-        "OVER_35": 2.1,
-        "UNDER_35": 1.83,
-        "OVER_25": 1.41,
-        "UNDER_25": 2.85,
-        "1X": 1.2,
-        "X2": 2.1,
-        "DNB_1": 1.28,
-        "DNB_2": 3.2
-      },
-      "fair_odds": {
-        "1": 1.8,
-        "X": 4.5,
-        "2": 4.5
-      },
-      "overround_pct": 7.14
-    },
-    {
-      "id": "8afef7f1a4041f69d3bce0e3d39a7ee8",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "Seattle Sounders FC",
-      "away_team": "Los Angeles FC",
-      "commence_time": "2026-11-08T00:00:00Z",
-      "odds": {
-        "2": 3.7,
-        "1": 1.95,
-        "X": 4.0,
-        "OVER_35": 2.2,
-        "UNDER_35": 1.55,
-        "OVER_25": 1.63,
-        "UNDER_25": 2.46,
-        "1X": 1.31,
-        "X2": 1.92,
-        "DNB_1": 1.46,
-        "DNB_2": 2.78
-      },
-      "opening_odds": {
-        "2": 3.7,
-        "1": 1.95,
-        "X": 4.0,
-        "OVER_35": 2.2,
-        "UNDER_35": 1.55,
-        "OVER_25": 1.61,
-        "UNDER_25": 2.46,
-        "1X": 1.31,
-        "X2": 1.92,
-        "DNB_1": 1.46,
-        "DNB_2": 2.78
-      },
-      "fair_odds": {
-        "1": 2.015,
-        "X": 4.132,
-        "2": 3.822
-      },
-      "overround_pct": 3.31
-    },
-    {
-      "id": "551a91ff0d1abf418624bf290b9e87fe",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "Minnesota United FC",
-      "away_team": "San Jose Earthquakes",
-      "commence_time": "2026-11-08T00:00:00Z",
-      "odds": {
-        "1": 1.75,
-        "2": 4.35,
-        "X": 4.35,
-        "OVER_35": 2.1,
-        "UNDER_35": 1.84,
-        "OVER_25": 1.39,
-        "UNDER_25": 2.95,
-        "1X": 1.25,
-        "X2": 2.17,
-        "DNB_1": 1.35,
-        "DNB_2": 3.35
-      },
-      "opening_odds": {
-        "1": 1.75,
-        "2": 4.35,
-        "X": 4.35,
-        "OVER_35": 2.1,
-        "UNDER_35": 1.84,
-        "OVER_25": 1.39,
-        "UNDER_25": 2.95,
-        "1X": 1.25,
-        "X2": 2.17,
-        "DNB_1": 1.35,
-        "DNB_2": 3.35
-      },
-      "fair_odds": {
-        "1": 1.805,
-        "X": 4.486,
-        "2": 4.486
-      },
-      "overround_pct": 3.12
-    },
-    {
-      "id": "0db0938ab636e18037e77f2375ade121",
-      "sport_key": "soccer_usa_mls",
-      "league_name": "MLS",
-      "home_team": "San Diego FC",
-      "away_team": "Sporting Kansas City",
-      "commence_time": "2026-11-08T00:00:00Z",
-      "odds": {
-        "1": 1.56,
-        "2": 5.1,
-        "X": 4.7,
-        "OVER_35": 1.75,
-        "UNDER_35": 2.22,
-        "OVER_25": 1.27,
-        "UNDER_25": 3.7,
-        "1X": 1.17,
-        "X2": 2.45,
-        "DNB_1": 1.23,
-        "DNB_2": 4.01
-      },
-      "opening_odds": {
-        "1": 1.52,
-        "2": 5.3,
-        "X": 4.95,
-        "OVER_35": 1.75,
-        "UNDER_35": 2.22,
-        "OVER_25": 1.27,
-        "UNDER_25": 3.7,
-        "1X": 1.16,
-        "X2": 2.56,
-        "DNB_1": 1.21,
-        "DNB_2": 4.23
-      },
-      "fair_odds": {
-        "1": 1.638,
-        "X": 4.934,
-        "2": 5.354
-      },
-      "overround_pct": 4.99
+      "overround_pct": 6.53
     }
   ]
 }
