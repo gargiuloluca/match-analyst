@@ -1,11 +1,11 @@
 {
-  "total_bets": 49,
+  "total_bets": 50,
   "won": 27,
-  "lost": 22,
+  "lost": 23,
   "void": 0,
-  "win_rate": 55.1,
-  "net_profit_units": -9.21,
-  "roi_pct": -14.2,
+  "win_rate": 54,
+  "net_profit_units": -9.8,
+  "roi_pct": -15,
   "bets": [
     {
       "id": "b102dbaf4e2ff82df26d9ebe27c7f5b1_1",
@@ -828,8 +828,8 @@
       "performance_gap": 0,
       "stake_pct": 0.59,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0
+      "status": "LOST",
+      "profit": -0.59
     }
   ],
   "brier_score": 0.2603,
