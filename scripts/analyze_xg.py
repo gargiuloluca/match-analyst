@@ -1,10 +1,10 @@
 """
-analyze_xg.py — AtmBetSignal Experimental Engine (Model B: Independent Rolling xG & Performance Gap)
-Motore parallelo di laboratorio quantitativo avanzato (Versione Specializzata sui Gol ad Alta Precisione).
+analyze_xg.py — AtmBetSignal Experimental Engine (Model B: Independent Rolling xG & Performance Gap Sniper Edition)
+Motore parallelo di laboratorio quantitativo avanzato (Versione Specializzata sui Gol ad Altissima Precisione).
 - Stima dei parametri 100% indipendente dalle quote
-- Filtri di élite innalzati (Probabilità minima >= 70%)
+- Filtri di élite innalzati (Probabilità minima >= 75%, Edge >= 0.06)
 - Specializzazione esclusiva sui mercati Under/Over e BTTS (Zero sovrapposizioni con Motore A)
-- Performance Gap ottimizzato specificamente sui flussi di reti attese
+- Performance Gap ottimizzato specificamente sui flussi di reti attese e controllo anti-drift severo
 - Cap di esposizione portafoglio: max 1.25% singola giocata, max 2.5% cumulato di giornata
 Salva i risultati in data/latest_xg.json e data/tracker_xg.json.
 """
@@ -198,7 +198,7 @@ def evaluate_markets(matrix, odds_dict):
         {"key": "BTTS_YES", "label": "Entrambe Segnano (Gol)", "prob": p_btts_yes, "push_prob": 0.0, "odd": odds_dict.get("BTTS_YES", 0.0)},
         {"key": "BTTS_NO", "label": "NoGol", "prob": p_btts_no, "push_prob": 0.0, "odd": odds_dict.get("BTTS_NO", 0.0)},
     ]
-    return [m for m in markets if m["odd"] and m["odd"] >= 1.40]
+    return [m for m in markets if m["odd"] and m["odd"] >= 1.45]
 
 def normalize_match_str(s: str) -> str:
     n = s.lower()
@@ -264,17 +264,19 @@ def main():
             tier = "STANDARD"
             is_official = False
 
-            has_heavy_drift = line_shift_pct >= 2.5
+            # FILTRI SMART MONEY ULTRARIGIDI (ZERO DRIFT)
+            has_heavy_drift = line_shift_pct >= 1.0
             is_safe_fixture = not is_derby and not has_heavy_drift
 
-            if prob >= 0.70 and 1.45 <= odd <= 2.80 and edge >= 0.04 and is_safe_fixture:
+            # CRITERI DI ACCETTAZIONE SNIPER SPECIALIZZATO GOL (PROB >= 75%, EDGE >= 0.06)
+            if prob >= 0.75 and 1.45 <= odd <= 2.70 and edge >= 0.06 and is_safe_fixture:
                 is_official = True
                 tier = "OFFICIAL"
 
-                if prob >= 0.76 and odd >= 1.50 and edge >= 0.07:
+                if prob >= 0.80 and odd >= 1.50 and edge >= 0.09:
                     tier = "GOLD"
 
-                if (prob >= 0.72 and odd >= 1.70 and edge >= 0.10) or (edge >= 0.08 and line_shift_pct <= -2.0):
+                if (prob >= 0.76 and odd >= 1.70 and edge >= 0.12) or (edge >= 0.10 and line_shift_pct <= -2.5):
                     tier = "DIAMOND"
 
             # Performance Gap calibrato specificamente sui mercati di gol
@@ -338,13 +340,13 @@ def main():
     official_match_ids = {p["match_id"] for p in top_5_officials}
     radar_pool = [
         p for p in diversified_picks 
-        if p["match_id"] not in official_match_ids and p["estimated_probability"] >= 0.60
+        if p["match_id"] not in official_match_ids and p["estimated_probability"] >= 0.68
     ]
     radar_pool.sort(key=lambda x: x["estimated_probability"], reverse=True)
     top_10_radar = radar_pool[:10]
 
     output_payload = {
-        "engine": "Model B (Dixon-Coles + Rolling xG Goals Specialist)",
+        "engine": "Model B (Dixon-Coles + Rolling xG Sniper Edition)",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "total_officials": len(top_5_officials),
         "diamond_count": sum(1 for p in top_5_officials if p["tier"] == "DIAMOND"),
@@ -354,7 +356,7 @@ def main():
     }
 
     LATEST_XG_FILE.write_text(json.dumps(output_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model xG] Analisi Conclusa (Goals Specialist): {len(top_5_officials)} selezioni generate in latest_xg.json.")
+    print(f"[Model xG] Analisi Conclusa (Sniper Edition): {len(top_5_officials)} selezioni generate in latest_xg.json.")
 
     tracker_xg_data = {
         "total_bets": 0, "won": 0, "lost": 0, "void": 0,
@@ -409,3 +411,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
