@@ -1,11 +1,11 @@
 {
-  "total_bets": 33,
-  "won": 20,
+  "total_bets": 32,
+  "won": 25,
   "lost": 7,
   "void": 1,
-  "win_rate": 74.1,
-  "net_profit_units": 4.7,
-  "roi_pct": 9.5,
+  "win_rate": 78.1,
+  "net_profit_units": 6.33,
+  "roi_pct": 12.1,
   "bets": [
     {
       "id": "f2fac0be6c577027b70b4493101b1772_DNB_1",
@@ -453,8 +453,8 @@
       "ev": 0.2203,
       "stake_pct": 0.6,
       "tier": "SAFE 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.3
     },
     {
       "id": "c22d673775e6a4dc0810cc88b0ed75ec_1",
@@ -469,8 +469,8 @@
       "ev": 0.2251,
       "stake_pct": 0.6,
       "tier": "SAFE 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.32
     },
     {
       "id": "8963081c3457212ee238b498bbc33a03_1",
@@ -485,8 +485,8 @@
       "ev": 0.2222,
       "stake_pct": 0.6,
       "tier": "SAFE 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.35
     },
     {
       "id": "0cfbab01e152f81e34f9014e02c7eb79_2",
@@ -501,8 +501,8 @@
       "ev": 0.2084,
       "stake_pct": 0.6,
       "tier": "SAFE 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.37
     },
     {
       "id": "81ad04996f63fb60b494d243b13ac586_1",
@@ -517,8 +517,8 @@
       "ev": 0.1265,
       "stake_pct": 0.6,
       "tier": "SAFE 80+",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.29
     }
   ],
   "brier_score": 0.1936,
