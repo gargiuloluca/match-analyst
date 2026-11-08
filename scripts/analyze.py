@@ -1,10 +1,10 @@
 """
-analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine (Model A: Independent Dixon-Coles)
-Versione Ottimizzata ad Alta Precisione
+analyze.py — AtmBetSignal Institutional Quantitative Analysis Engine (Model A: Independent Dixon-Coles Sniper Edition)
+Versione Alta Precisione & Filtri Cecchino Blindati
 - Stima dei parametri lambda e mu 100% indipendente dalle quote (Zero circolarità)
 - Matrice bivariata Dixon-Coles con correzione tau per leghe tattiche
 - Smorzamento Bayesiano dell'Edge e Quarter-Kelly Push-Adjusted
-- Filtri di quota minima innalzati a 1.45 per proteggere il ROI sul lungo termine
+- Filtri di élite innalzati (Probabilità minima >= 74%, Edge >= 5.5%)
 - Cap di esposizione portafoglio e de-correlazione assoluta per match
 - Tracciamento nativo via event_id e persistenza sicura su data/latest.json e data/tracker.json
 """
@@ -198,8 +198,8 @@ def evaluate_markets(matrix, odds_dict):
         {"key": "BTTS_YES", "label": "Entrambe Segnano (Gol)", "prob": p_btts_yes, "push_prob": 0.0, "odd": odds_dict.get("BTTS_YES", 0.0)},
         {"key": "BTTS_NO", "label": "NoGol", "prob": p_btts_no, "push_prob": 0.0, "odd": odds_dict.get("BTTS_NO", 0.0)},
     ]
-    # SOGLIA QUOTA MINIMA INNALZATA A 1.45 PER EVITARE MERCATI COMPRESSI
-    return [m for m in markets if m["odd"] and m["odd"] >= 1.45]
+    # SOGLIA QUOTA MINIMA ALZATA A 1.50 PER EVITARE VALIDI COMPRESSI
+    return [m for m in markets if m["odd"] and m["odd"] >= 1.50]
 
 def normalize_match_str(s: str) -> str:
     n = s.lower()
@@ -266,18 +266,19 @@ def main():
             tier = "STANDARD"
             is_official = False
 
-            has_heavy_drift = line_shift_pct >= 2.5
+            # Filtri Smart Money anti-drift severi
+            has_heavy_drift = line_shift_pct >= 2.0
             is_safe_fixture = not is_derby and not has_heavy_drift
 
-            # CRITERI DI ACCETTAZIONE POTENZIATI (PROB >= 68%, QUOTA >= 1.45)
-            if prob >= 0.68 and 1.45 <= odd <= 2.90 and edge >= 0.035 and is_safe_fixture:
+            # FILTRI CECCHINO D'ÉLITE (PROB >= 74%, EDGE >= 0.055)
+            if prob >= 0.74 and 1.50 <= odd <= 2.70 and edge >= 0.055 and is_safe_fixture:
                 is_official = True
                 tier = "OFFICIAL"
 
-                if prob >= 0.74 and odd >= 1.50 and edge >= 0.06:
+                if prob >= 0.78 and odd >= 1.55 and edge >= 0.08:
                     tier = "GOLD"
 
-                if (prob >= 0.70 and odd >= 1.70 and edge >= 0.09) or (edge >= 0.07 and line_shift_pct <= -2.0):
+                if (prob >= 0.74 and odd >= 1.75 and edge >= 0.11) or (edge >= 0.09 and line_shift_pct <= -2.0):
                     tier = "DIAMOND"
 
             efficiency_score = (prob * 1.8) + (edge * 2.5) - (max(0.0, line_shift_pct / 100.0) * 0.8)
@@ -323,9 +324,9 @@ def main():
         reverse=True
     )
     
+    # Seleziona al massimo le migliori 3-5 occasioni di altissima qualità
     top_5_officials = officials[:5]
 
-    # Cap esposizione giornaliera limitato a max 2.5% per maggiore sicurezza
     total_exposure = sum(p["suggested_stake_pct"] for p in top_5_officials)
     if total_exposure > 2.5:
         scale_ratio = 2.5 / total_exposure
@@ -335,14 +336,14 @@ def main():
     official_match_ids = {p["match_id"] for p in top_5_officials}
     radar_pool = [
         p for p in diversified_picks 
-        if p["match_id"] not in official_match_ids and p["estimated_probability"] >= 0.60
+        if p["match_id"] not in official_match_ids and p["estimated_probability"] >= 0.65
     ]
     radar_pool.sort(key=lambda x: x["estimated_probability"], reverse=True)
     top_10_radar = radar_pool[:10]
 
     latest_output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "engine": "Model A (Dixon-Coles High-Precision)",
+        "engine": "Model A (Dixon-Coles Sniper High-Precision)",
         "total_officials": len(top_5_officials),
         "diamond_count": sum(1 for c in top_5_officials if c["tier"] == "DIAMOND"),
         "gold_count": sum(1 for c in top_5_officials if c["tier"] == "GOLD"),
@@ -351,7 +352,7 @@ def main():
     }
 
     LATEST_FILE.write_text(json.dumps(latest_output, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[Model A] Analisi conclusa (High-Precision): {len(top_5_officials)} selezioni generate.")
+    print(f"[Model A] Analisi conclusa (Sniper Edition): {len(top_5_officials)} selezioni di alta qualità generate.")
 
     tracker_data = {"bets": []}
     if TRACKER_FILE.exists():
