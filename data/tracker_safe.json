@@ -441,6 +441,6 @@
       "profit": 0.28
     }
   ],
-  "brier_score": 0.2103,
+  "brier_score": 0.1936,
   "avg_clv_pct": null
 }
