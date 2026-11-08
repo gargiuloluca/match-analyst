@@ -1,11 +1,11 @@
 {
-  "total_bets": 23,
-  "won": 0,
-  "lost": 0,
+  "total_bets": 21,
+  "won": 15,
+  "lost": 6,
   "void": 0,
-  "win_rate": 0.0,
-  "net_profit_units": 0.0,
-  "roi_pct": 0.0,
+  "win_rate": 71.4,
+  "net_profit_units": 2.37,
+  "roi_pct": 22.6,
   "bets": [
     {
       "id": "0db0938ab636e18037e77f2375ade121_X2",
@@ -19,8 +19,8 @@
       "prob": 0.7438,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.73
     },
     {
       "id": "328536a210997eb2595077031a250747_1X",
@@ -34,8 +34,8 @@
       "prob": 0.7039,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.5
     },
     {
       "id": "5b386dfdf6f76705116fbb4120ee8493_UNDER_35",
@@ -49,8 +49,8 @@
       "prob": 0.8054,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.38
     },
     {
       "id": "21a304be611df436b73802b3a5d9995a_1X",
@@ -64,8 +64,8 @@
       "prob": 0.7039,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.5
     },
     {
       "id": "1cecab6721bb9ac477e36301c2c5412b_1X",
@@ -79,8 +79,8 @@
       "prob": 0.7039,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.5
     },
     {
       "id": "f7b240389fa5ec055c58a48ab153dcdd_UNDER_35",
@@ -94,8 +94,8 @@
       "prob": 0.7341,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.49
     },
     {
       "id": "ba0a2d492dfcc89ab465eddd7a9e98c2_UNDER_35",
@@ -109,8 +109,8 @@
       "prob": 0.7324,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.41
     },
     {
       "id": "2999abe7822c923b29c9fd21905c1723_UNDER_35",
@@ -120,12 +120,12 @@
       "league": "MLS",
       "bet": "Under 3.5 Gol",
       "market_key": "UNDER_35",
-      "odd": 2.0,
+      "odd": 2,
       "prob": 0.7229,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.5
     },
     {
       "id": "cdb5f9dd39e79db69659c76cd96d0bbe_1",
@@ -139,8 +139,8 @@
       "prob": 0.8304,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.22
     },
     {
       "id": "c0c73d9305b8e399fb6cf9a234a7b9e4_1",
@@ -154,8 +154,8 @@
       "prob": 0.7985,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.23
     },
     {
       "id": "716d6e3f3e91c47a6efaa2e93d570533_DNB_1",
@@ -169,8 +169,8 @@
       "prob": 0.787,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.21
     },
     {
       "id": "8afef7f1a4041f69d3bce0e3d39a7ee8_DNB_1",
@@ -184,8 +184,8 @@
       "prob": 0.7523,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.23
     },
     {
       "id": "7c7cdf1a0fee0a3434d8f648392c8e65_1X",
@@ -199,8 +199,8 @@
       "prob": 0.7039,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.5
     },
     {
       "id": "dd247b356d8fc53e4b4f9bfcfe09c924_UNDER_35",
@@ -215,7 +215,7 @@
       "stake_pct": 0.52,
       "tier": "FUND D",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "a529e5762f18d97981194ec3668dc3d3_1X",
@@ -229,8 +229,8 @@
       "prob": 0.7163,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.61
     },
     {
       "id": "9ec4219adf394482a2a72a7109cb72e5_UNDER_35",
@@ -244,8 +244,8 @@
       "prob": 0.7229,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.5
     },
     {
       "id": "460e6fc9e2af7ea0784ed473f39befe5_UNDER_35",
@@ -259,8 +259,8 @@
       "prob": 0.7229,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "LOST",
+      "profit": -0.5
     },
     {
       "id": "ba67d60b86eca4f5a81b7043d24bf905_UNDER_35",
@@ -275,7 +275,7 @@
       "stake_pct": 0.5,
       "tier": "FUND D",
       "status": "PENDING",
-      "profit": 0.0
+      "profit": 0
     },
     {
       "id": "c1b9696d88719cb8832d794b986cdd68_1",
@@ -289,8 +289,8 @@
       "prob": 0.8135,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.25
     },
     {
       "id": "c22d673775e6a4dc0810cc88b0ed75ec_1",
@@ -304,8 +304,8 @@
       "prob": 0.7955,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.27
     },
     {
       "id": "8963081c3457212ee238b498bbc33a03_1",
@@ -319,8 +319,8 @@
       "prob": 0.7735,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.29
     },
     {
       "id": "0cfbab01e152f81e34f9014e02c7eb79_2",
@@ -334,8 +334,8 @@
       "prob": 0.7506,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.31
     },
     {
       "id": "81ad04996f63fb60b494d243b13ac586_1",
@@ -349,8 +349,8 @@
       "prob": 0.7612,
       "stake_pct": 0.5,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.24
     }
   ]
 }
