@@ -139,6 +139,20 @@
       gap: 6px;
       box-shadow: 0 4px 12px rgba(5,150,105,0.25);
     }
+    .btn-action-backup {
+      background: linear-gradient(135deg, #2b6cb0, #2c5282);
+      color: #fff;
+      border: none;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(43,108,176,0.25);
+    }
     .btn-token-config {
       background: #1e293b;
       color: #cbd5e1;
@@ -321,7 +335,7 @@
               ⚡ Controllo Operativo Pipeline Cloud
             </h3>
             <p style="font-size: 0.85rem; color: #94a3b8;">
-              Comanda l'avvio dell'analisi quote o la refertazione senza aprire GitHub.
+              Comanda l'avvio dell'analisi quote, la refertazione o scarica un backup completo.
             </p>
           </div>
 
@@ -331,6 +345,9 @@
             </button>
             <button id="btnRunSettle" class="btn-action-secondary" onclick="triggerWorkflow('settle_only', this)">
               ⚖️ Calcola & Aggiorna Storico
+            </button>
+            <button class="btn-action-backup" onclick="downloadBackup()" title="Scarica backup completo di tutti i dati e tracker">
+              📥 Backup Dati
             </button>
             <button class="btn-token-config" onclick="configureGitHubToken()" title="Configura chiave personale">
               ⚙️ Token
@@ -466,6 +483,59 @@
       if (token !== null) {
         localStorage.setItem("atm_gh_token", token.trim());
         alert("Token salvato nel browser con successo!");
+      }
+    }
+
+    async function downloadBackup() {
+      const filesToBackup = [
+        "fixtures.json",
+        "latest.json", "tracker.json",
+        "latest_xg.json", "tracker_xg.json",
+        "latest_safe.json", "tracker_safe.json",
+        "latest_fund.json", "tracker_fund.json",
+        "latest_master.json", "tracker_master.json"
+      ];
+
+      const backupData = {
+        backup_date: new Date().toISOString(),
+        system: "AtmBetSignal Institutional Console",
+        data: {}
+      };
+
+      try {
+        let downloadedCount = 0;
+        for (let file of filesToBackup) {
+          try {
+            let response = await fetch(`data/${file}?nocache=` + Date.now());
+            if (response.ok) {
+              backupData.data[file] = await response.json();
+              downloadedCount++;
+            }
+          } catch (err) {
+            console.warn(`File ${file} non trovato o non accessibile.`);
+          }
+        }
+
+        if (downloadedCount === 0) {
+          alert("Impossibile recuperare i file di dati per il backup.");
+          return;
+        }
+
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData, null, 2));
+        const downloadAnchor = document.createElement('a');
+        const dateStr = new Date().toISOString().slice(0, 10);
+        
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `atmbet_backup_completo_${dateStr}.json`);
+        
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+
+        alert(`✅ Backup completato! Scaricati con successo ${downloadedCount} file di dati e tracker.`);
+      } catch (error) {
+        console.error("Errore durante la creazione del backup:", error);
+        alert("Errore durante la generazione del backup.");
       }
     }
 
