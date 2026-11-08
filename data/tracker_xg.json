@@ -1,11 +1,11 @@
 {
   "total_bets": 46,
-  "won": 21,
+  "won": 26,
   "lost": 20,
   "void": 0,
-  "win_rate": 51.2,
-  "net_profit_units": -11.17,
-  "roi_pct": -18.4,
+  "win_rate": 56.5,
+  "net_profit_units": -8.81,
+  "roi_pct": -13.9,
   "bets": [
     {
       "id": "b102dbaf4e2ff82df26d9ebe27c7f5b1_1",
@@ -675,8 +675,8 @@
       "performance_gap": 0.36,
       "stake_pct": 0.44,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.54
     },
     {
       "id": "5b386dfdf6f76705116fbb4120ee8493_UNDER_35",
@@ -692,8 +692,8 @@
       "performance_gap": 0.3,
       "stake_pct": 0.59,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.45
     },
     {
       "id": "f7b240389fa5ec055c58a48ab153dcdd_UNDER_35",
@@ -709,8 +709,8 @@
       "performance_gap": 0.3,
       "stake_pct": 0.44,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.45
     },
     {
       "id": "ba0a2d492dfcc89ab465eddd7a9e98c2_UNDER_35",
@@ -726,8 +726,8 @@
       "performance_gap": 0.36,
       "stake_pct": 0.59,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.48
     },
     {
       "id": "2999abe7822c923b29c9fd21905c1723_UNDER_35",
@@ -737,14 +737,14 @@
       "league": "MLS",
       "bet": "Under 3.5 Gol",
       "market_key": "UNDER_35",
-      "odd": 2.0,
+      "odd": 2,
       "prob": 0.7229,
       "edge": 0.2235,
-      "performance_gap": 0.0,
+      "performance_gap": 0,
       "stake_pct": 0.44,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0.0
+      "status": "WON",
+      "profit": 0.44
     }
   ],
   "brier_score": 0.2841,
