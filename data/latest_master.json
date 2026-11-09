@@ -1,33 +1,3 @@
 {
-  "engine": "Model E — Master Selector AI Top 5",
-  "total_evaluated": 1,
-  "selections": [
-    {
-      "match_id": "7c7cdf1a0fee0a3434d8f648392c8e65",
-      "commence_time": "2026-11-08T13:30:00Z",
-      "league": "Eliteserien - Norway",
-      "home_team": "Tromso",
-      "away_team": "Bodø/Glimt",
-      "match": "Tromso vs Bodø/Glimt",
-      "market_key": "1X",
-      "outcome_label": "Doppia Chance 1X",
-      "odd": 2.87,
-      "line_shift_pct": 0.0,
-      "estimated_probability": 0.7039,
-      "edge": 0.4246,
-      "ev_ratio": 1.425,
-      "suggested_stake_pct": 0.5,
-      "tier": "DIAMOND",
-      "efficiency_score": 2.3285613353540953,
-      "is_derby": false,
-      "is_official": true,
-      "fund_stake_units": 0.5,
-      "portfolio_weight_pct": 10.0,
-      "_unique_key": [
-        null,
-        "1X2"
-      ],
-      "master_score": 80.0
-    }
-  ]
+  "selections": []
 }
