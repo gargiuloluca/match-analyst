@@ -1,11 +1,11 @@
 {
-  "total_bets": 50,
-  "won": 27,
-  "lost": 23,
+  "total_bets": 51,
+  "won": 29,
+  "lost": 22,
   "void": 0,
-  "win_rate": 54,
-  "net_profit_units": -9.8,
-  "roi_pct": -15,
+  "win_rate": 56.9,
+  "net_profit_units": -8.4,
+  "roi_pct": -12.8,
   "bets": [
     {
       "id": "b102dbaf4e2ff82df26d9ebe27c7f5b1_1",
@@ -760,8 +760,8 @@
       "performance_gap": 0.25,
       "stake_pct": 0.44,
       "tier": "DIAMOND",
-      "status": "PENDING",
-      "profit": 0
+      "status": "WON",
+      "profit": 0.44
     },
     {
       "id": "9ec4219adf394482a2a72a7109cb72e5_UNDER_35",
@@ -777,8 +777,8 @@
       "performance_gap": 0,
       "stake_pct": 0.44,
       "tier": "DIAMOND",
-      "status": "LOST",
-      "profit": -0.44
+      "status": "WON",
+      "profit": 0.52
     },
     {
       "id": "460e6fc9e2af7ea0784ed473f39befe5_UNDER_35",
