@@ -1,11 +1,11 @@
 {
-  "total_bets": 22,
-  "won": 15,
+  "total_bets": 23,
+  "won": 16,
   "lost": 7,
   "void": 0,
-  "win_rate": 68.2,
-  "net_profit_units": 1.87,
-  "roi_pct": 17,
+  "win_rate": 69.6,
+  "net_profit_units": 2.38,
+  "roi_pct": 20.7,
   "bets": [
     {
       "id": "0db0938ab636e18037e77f2375ade121_X2",
@@ -214,8 +214,8 @@
       "prob": 0.7883,
       "stake_pct": 0.52,
       "tier": "FUND D",
-      "status": "PENDING",
-      "profit": 0
+      "status": "WON",
+      "profit": 0.51
     },
     {
       "id": "a529e5762f18d97981194ec3668dc3d3_1X",
