@@ -78,10 +78,11 @@ jobs:
         run: python scripts/analyze_fund.py
 
       # FASE 3E: Master Selector AI (Filtra e seleziona le Top 5 assolute)
-      - name: Run Master Selector (Model E)
+      - name: Run Master Selector & Make Backup
         if: ${{ github.event.inputs.task_mode == 'all' || github.event.inputs.task_mode == 'analyze_only' }}
-        run: python scripts/master_selector.py
-        run: python scripts/make_backup.py
+        run: |
+          python scripts/master_selector.py
+          python scripts/make_backup.py
         
       # FASE 4: Invio selezioni ufficiali su Telegram (Legge le Top 5)
       - name: Send new signals to Telegram
@@ -98,3 +99,4 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add data/
           git diff --quiet && git diff --staged --quiet || (git commit -m "Automated update via Admin Console [skip ci]" && git pull --rebase origin main && git push origin main)
+          
