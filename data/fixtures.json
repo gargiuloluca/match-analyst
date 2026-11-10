@@ -1,46 +1,5 @@
 {
-  "fetched_at": "2026-11-09T05:47:45.596934+00:00",
-  "total_fixtures": 1,
-  "fixtures": [
-    {
-      "id": "a878bfc5e7eae6808debf217c23c93f5",
-      "sport_key": "soccer_norway_eliteserien",
-      "league_name": "Eliteserien - Norway",
-      "home_team": "Kristiansund BK",
-      "away_team": "Vålerenga",
-      "commence_time": "2026-11-09T18:00:00Z",
-      "odds": {
-        "1": 2.7,
-        "2": 2.25,
-        "X": 4.0,
-        "OVER_35": 2.02,
-        "UNDER_35": 1.89,
-        "OVER_25": 1.39,
-        "UNDER_25": 2.98,
-        "1X": 1.61,
-        "X2": 1.44,
-        "DNB_1": 2.03,
-        "DNB_2": 1.69
-      },
-      "opening_odds": {
-        "1": 2.7,
-        "2": 2.25,
-        "X": 4.0,
-        "OVER_35": 2.02,
-        "UNDER_35": 1.89,
-        "OVER_25": 1.39,
-        "UNDER_25": 2.98,
-        "1X": 1.61,
-        "X2": 1.44,
-        "DNB_1": 2.03,
-        "DNB_2": 1.69
-      },
-      "fair_odds": {
-        "1": 2.875,
-        "X": 4.259,
-        "2": 2.396
-      },
-      "overround_pct": 6.48
-    }
-  ]
+  "fetched_at": "2026-11-10T07:01:40.977191+00:00",
+  "total_fixtures": 0,
+  "fixtures": []
 }
