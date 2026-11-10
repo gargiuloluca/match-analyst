@@ -364,7 +364,7 @@
     <section class="kpi-container">
       <div class="kpi-box">
         <div class="kpi-title">Soglia Minima Sniper</div>
-        <div class="kpi-val green">≥ 65%</div>
+        <div class="kpi-val green">≥ 80%</div>
       </div>
       <div class="kpi-box">
         <div class="kpi-title">Win Rate Certificato</div>
@@ -400,7 +400,7 @@
             <tr>
               <td><strong>Scelta delle Giocate</strong></td>
               <td>Ispirazione da tifoso, schedine multiple a quota impossibile</td>
-              <td class="col-highlight">Solo singole con probabilità oggettiva ≥ 65% e quota ≥ 1.40</td>
+              <td class="col-highlight">Solo singole con probabilità oggettiva ≥ 80% e quota ≥ 1.40</td>
             </tr>
             <tr>
               <td><strong>Modello di Calcolo</strong></td>
@@ -445,7 +445,7 @@
         <div class="feature-card">
           <div class="feature-icon">🛡️</div>
           <h3>Filtro Sniper Anti-Trappola</h3>
-          <p>Nessun volume forzato: se una partita non supera la probabilità minima certificata del 65%, viene scartata per preservare il capitale.</p>
+          <p>Nessun volume forzato: se una partita non supera la probabilità minima certificata dell'80%, viene scartata per preservare il capitale.</p>
         </div>
 
         <div class="feature-card">
@@ -494,16 +494,16 @@
   </footer>
 
   <script>
-    // Caricamento KPI Dinamici da data/tracker.json
+    // Caricamento KPI Dinamici da data/tracker_safe.json (Motore Safe)
     async function loadLiveStats() {
       try {
-        const res = await fetch('data/tracker.json?nocache=' + Date.now());
+        const res = await fetch('data/tracker_safe.json?nocache=' + Date.now());
         if (!res.ok) return;
         const d = await res.json();
         
         const wr = d.win_rate !== undefined ? d.win_rate : 100.0;
-        const roi = d.roi_pct !== undefined ? d.roi_pct : 73.7;
-        const total = d.total_bets !== undefined ? d.total_bets : 3;
+        const roi = d.roi_pct !== undefined ? d.roi_pct : 0.0;
+        const total = d.total_bets !== undefined ? d.total_bets : 0;
 
         document.getElementById('winRateVal').textContent = Number(wr).toFixed(1) + '%';
         document.getElementById('roiVal').textContent = (roi > 0 ? '+' : '') + Number(roi).toFixed(1) + '%';
