@@ -1,41 +1,57 @@
 {
   "system": "AtmBetSignal Institutional Backup",
-  "backup_timestamp": "2026-11-12T11:34:04.124918+00:00",
+  "backup_timestamp": "2026-11-13T06:46:28.112668+00:00",
   "data": {
     "fixtures.json": {
-      "fetched_at": "2026-11-12T11:33:56.863486+00:00",
-      "total_fixtures": 0,
-      "fixtures": []
+      "fetched_at": "2026-11-13T06:46:23.699607+00:00",
+      "total_fixtures": 1,
+      "fixtures": [
+        {
+          "id": "fed29050dc7e99c7dd6b3b4580f142b7",
+          "sport_key": "soccer_spain_segunda_division",
+          "league_name": "La Liga 2 - Spain",
+          "home_team": "Leganés",
+          "away_team": "Burgos CF",
+          "commence_time": "2026-11-13T19:30:00Z",
+          "odds": {
+            "2": 3.05,
+            "1": 2.35,
+            "X": 3.2,
+            "OVER_25": 2.38,
+            "UNDER_25": 1.69,
+            "1X": 1.35,
+            "X2": 1.56,
+            "DNB_1": 1.62,
+            "DNB_2": 2.1
+          },
+          "opening_odds": {
+            "2": 3.05,
+            "1": 2.35,
+            "X": 3.2,
+            "OVER_25": 2.38,
+            "UNDER_25": 1.69,
+            "1X": 1.35,
+            "X2": 1.56,
+            "DNB_1": 1.62,
+            "DNB_2": 2.1
+          },
+          "fair_odds": {
+            "1": 2.505,
+            "X": 3.411,
+            "2": 3.251
+          },
+          "overround_pct": 6.59
+        }
+      ]
     },
     "latest.json": {
-      "generated_at": "2026-11-09T05:47:51.883126+00:00",
+      "generated_at": "2026-11-13T06:46:27.930510+00:00",
       "engine": "Model A (Dixon-Coles Ultimate Sniper)",
       "total_officials": 0,
       "diamond_count": 0,
       "gold_count": 0,
       "all_selected_picks": [],
-      "radar_watchlist": [
-        {
-          "match_id": "a878bfc5e7eae6808debf217c23c93f5",
-          "commence_time": "2026-11-09T18:00:00Z",
-          "league": "Eliteserien - Norway",
-          "home_team": "Kristiansund BK",
-          "away_team": "Vålerenga",
-          "match": "Kristiansund BK vs Vålerenga",
-          "market_key": "UNDER_35",
-          "outcome_label": "Under 3.5 Gol",
-          "odd": 1.89,
-          "line_shift_pct": 0.0,
-          "estimated_probability": 0.7229,
-          "edge": 0.1957,
-          "ev_ratio": 1.196,
-          "suggested_stake_pct": 0.75,
-          "tier": "STANDARD",
-          "efficiency_score": 1.790505605200667,
-          "is_derby": false,
-          "is_official": false
-        }
-      ]
+      "radar_watchlist": []
     },
     "tracker.json": {
       "total_bets": 58,
@@ -954,34 +970,12 @@
     },
     "latest_xg.json": {
       "engine": "Model B (Dixon-Coles + Rolling xG Sniper Edition)",
-      "generated_at": "2026-11-09T05:47:51.924264+00:00",
+      "generated_at": "2026-11-13T06:46:27.971611+00:00",
       "total_officials": 0,
       "diamond_count": 0,
       "gold_count": 0,
       "all_selected_picks": [],
-      "radar_watchlist": [
-        {
-          "match_id": "a878bfc5e7eae6808debf217c23c93f5",
-          "commence_time": "2026-11-09T18:00:00Z",
-          "league": "Eliteserien - Norway",
-          "home_team": "Kristiansund BK",
-          "away_team": "Vålerenga",
-          "match": "Kristiansund BK vs Vålerenga",
-          "market_key": "UNDER_35",
-          "outcome_label": "Under 3.5 Gol",
-          "odd": 1.89,
-          "line_shift_pct": 0.0,
-          "estimated_probability": 0.7229,
-          "edge": 0.1957,
-          "ev_ratio": 1.196,
-          "performance_gap": 0.0,
-          "suggested_stake_pct": 0.75,
-          "tier": "STANDARD",
-          "efficiency_score": 1.790505605200667,
-          "is_derby": false,
-          "is_official": false
-        }
-      ]
+      "radar_watchlist": []
     },
     "tracker_xg.json": {
       "total_bets": 51,
@@ -1822,7 +1816,7 @@
     },
     "latest_safe.json": {
       "engine": "Model C (Safe80 Sniper EV >= +3% @ Quota >= 1.40)",
-      "generated_at": "2026-11-09T05:47:51.963815+00:00",
+      "generated_at": "2026-11-13T06:46:28.013082+00:00",
       "min_probability": "74%",
       "min_odd": 1.4,
       "min_ev": "+3.0%",

@@ -1,31 +1,9 @@
 {
   "engine": "Model B (Dixon-Coles + Rolling xG Sniper Edition)",
-  "generated_at": "2026-11-09T05:47:51.924264+00:00",
+  "generated_at": "2026-11-13T06:46:27.971611+00:00",
   "total_officials": 0,
   "diamond_count": 0,
   "gold_count": 0,
   "all_selected_picks": [],
-  "radar_watchlist": [
-    {
-      "match_id": "a878bfc5e7eae6808debf217c23c93f5",
-      "commence_time": "2026-11-09T18:00:00Z",
-      "league": "Eliteserien - Norway",
-      "home_team": "Kristiansund BK",
-      "away_team": "Vålerenga",
-      "match": "Kristiansund BK vs Vålerenga",
-      "market_key": "UNDER_35",
-      "outcome_label": "Under 3.5 Gol",
-      "odd": 1.89,
-      "line_shift_pct": 0.0,
-      "estimated_probability": 0.7229,
-      "edge": 0.1957,
-      "ev_ratio": 1.196,
-      "performance_gap": 0.0,
-      "suggested_stake_pct": 0.75,
-      "tier": "STANDARD",
-      "efficiency_score": 1.790505605200667,
-      "is_derby": false,
-      "is_official": false
-    }
-  ]
+  "radar_watchlist": []
 }

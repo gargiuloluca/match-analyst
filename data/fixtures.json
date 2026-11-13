@@ -1,5 +1,42 @@
 {
-  "fetched_at": "2026-11-12T11:33:56.863486+00:00",
-  "total_fixtures": 0,
-  "fixtures": []
+  "fetched_at": "2026-11-13T06:46:23.699607+00:00",
+  "total_fixtures": 1,
+  "fixtures": [
+    {
+      "id": "fed29050dc7e99c7dd6b3b4580f142b7",
+      "sport_key": "soccer_spain_segunda_division",
+      "league_name": "La Liga 2 - Spain",
+      "home_team": "Leganés",
+      "away_team": "Burgos CF",
+      "commence_time": "2026-11-13T19:30:00Z",
+      "odds": {
+        "2": 3.05,
+        "1": 2.35,
+        "X": 3.2,
+        "OVER_25": 2.38,
+        "UNDER_25": 1.69,
+        "1X": 1.35,
+        "X2": 1.56,
+        "DNB_1": 1.62,
+        "DNB_2": 2.1
+      },
+      "opening_odds": {
+        "2": 3.05,
+        "1": 2.35,
+        "X": 3.2,
+        "OVER_25": 2.38,
+        "UNDER_25": 1.69,
+        "1X": 1.35,
+        "X2": 1.56,
+        "DNB_1": 1.62,
+        "DNB_2": 2.1
+      },
+      "fair_odds": {
+        "1": 2.505,
+        "X": 3.411,
+        "2": 3.251
+      },
+      "overround_pct": 6.59
+    }
+  ]
 }
