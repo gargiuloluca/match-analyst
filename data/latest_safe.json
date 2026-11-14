@@ -1,11 +1,11 @@
 {
   "engine": "Model C (Safe80 Sniper EV >= +3% @ Quota >= 1.40)",
-  "generated_at": "2026-11-14T09:50:00.351924+00:00",
+  "generated_at": "2026-11-14T10:10:31.841207+00:00",
   "min_probability": "74%",
   "min_odd": 1.4,
   "min_ev": "+3.0%",
   "max_portfolio_exposure": "3.0%",
-  "total_officials": 2,
+  "total_officials": 4,
   "all_selected_picks": [
     {
       "match_id": "371f8125767427c4b599eab458bb5549",
@@ -20,7 +20,23 @@
       "ev": 0.1052,
       "edge": 0.1052,
       "composite_score": 0.4316,
-      "suggested_stake_pct": 1.5,
+      "suggested_stake_pct": 0.75,
+      "tier": "SAFE 80+"
+    },
+    {
+      "match_id": "8c883d569a4f4682e918e8b2b37f65ea",
+      "match": "Salford City vs Northampton Town",
+      "commence_time": "2026-11-14T15:00:00Z",
+      "league": "League 2",
+      "market_key": "1",
+      "outcome_label": "Vittoria Casa (1)",
+      "odd": 1.55,
+      "line_shift_pct": -0.6,
+      "estimated_probability": 0.741,
+      "ev": 0.1486,
+      "edge": 0.1486,
+      "composite_score": 0.4225,
+      "suggested_stake_pct": 0.75,
       "tier": "SAFE 80+"
     },
     {
@@ -32,11 +48,27 @@
       "outcome_label": "Casa Draw No Bet (Rimborso X)",
       "odd": 1.4,
       "line_shift_pct": 0.0,
-      "estimated_probability": 0.7729,
-      "ev": 0.082,
-      "edge": 0.082,
-      "composite_score": 0.4151,
-      "suggested_stake_pct": 1.5,
+      "estimated_probability": 0.7727,
+      "ev": 0.0818,
+      "edge": 0.0818,
+      "composite_score": 0.415,
+      "suggested_stake_pct": 0.75,
+      "tier": "SAFE 80+"
+    },
+    {
+      "match_id": "7bf0d1f95bb9b2b6003386c82ba96b6a",
+      "match": "Exeter City vs Cheltenham Town",
+      "commence_time": "2026-11-14T12:30:00Z",
+      "league": "League 2",
+      "market_key": "DNB_1",
+      "outcome_label": "Casa Draw No Bet (Rimborso X)",
+      "odd": 1.4,
+      "line_shift_pct": 1.4,
+      "estimated_probability": 0.77,
+      "ev": 0.078,
+      "edge": 0.078,
+      "composite_score": 0.4102,
+      "suggested_stake_pct": 0.75,
       "tier": "SAFE 80+"
     }
   ],

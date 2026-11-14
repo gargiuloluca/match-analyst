@@ -15,7 +15,7 @@
       "ev": 0.1052,
       "edge": 0.1052,
       "composite_score": 0.4316,
-      "suggested_stake_pct": 1.5,
+      "suggested_stake_pct": 0.75,
       "tier": "SAFE 80+",
       "fund_stake_units": 0.66,
       "portfolio_weight_pct": 13.2,
