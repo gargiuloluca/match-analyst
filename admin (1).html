@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AtmBetSignal — Admin Console Multi-Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070a11;
+      --card-bg: #0f172a;
+      --border: #1e293b;
+      --accent: #10b981;
+      --cyan: #38bdf8;
+      --gold: #f59e0b;
+      --red: #ef4444;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Space Grotesk', sans-serif;
+      padding: 30px 20px 80px;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    
+    .login-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 400px;
+      margin: 80px auto;
+      text-align: center;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #070a11;
+      color: #fff;
+      margin: 15px 0;
+      text-align: center;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
+
+    .admin-panel { display: none; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 15px;
+      margin-bottom: 25px;
+    }
+    .section-title {
+      font-size: 1.15rem;
+      margin: 25px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pick-item {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .badge-diamond { background: #38bdf8; color: #000; }
+    .badge-gold { background: #f59e0b; color: #000; }
+    .badge-official { background: var(--accent); color: #000; }
+    .badge-radar { background: #334155; color: #cbd5e1; }
+    .badge-sniper { background: #a855f7; color: #fff; }
+    .badge-master { background: linear-gradient(135deg, #f59e0b, #d97706); color: #000; }
+
+    /* Barra Controllo Operativo Pipeline */
+    .control-card {
+      background: #0d1526;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .control-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .btn-action-primary {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #fff;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(37,99,235,0.25);
+    }
+    .btn-action-secondary {
+      background: linear-gradient(135deg, #059669, #047857);
+      color: #fff;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(5,150,105,0.25);
+    }
+    .btn-action-backup {
+      background: linear-gradient(135deg, #2b6cb0, #2c5282);
+      color: #fff;
+      border: none;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(43,108,176,0.25);
+    }
+    .btn-token-config {
+      background: #1e293b;
+      color: #cbd5e1;
+      border: 1px solid #334155;
+      padding: 11px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .btn-save-tracker {
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-action-primary:disabled, .btn-action-secondary:disabled, .btn-save-tracker:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    #actionStatusMsg {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Selettore Motori Esteso */
+    .engine-switch {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      background: #0c1322;
+      padding: 8px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .engine-btn {
+      flex: 1;
+      min-width: 170px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
+    }
+    .engine-btn.active {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.25);
+    }
+
+    /* KPI Box Storico */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .kpi-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+    .kpi-val {
+      font-size: 1.4rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text);
+      margin-top: 4px;
+    }
+    .kpi-sub {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Tabella Storico */
+    .history-table-wrap {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow-x: auto;
+      margin-bottom: 30px;
+    }
+    table.history-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+    table.history-table th {
+      background: #0b1120;
+      color: var(--muted);
+      padding: 12px 14px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    table.history-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #131d31;
+      white-space: nowrap;
+    }
+    .status-select {
+      background: #070a11;
+      color: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .status-select.won { color: #34d399; border-color: rgba(16,185,129,0.5); }
+    .status-select.lost { color: #f87171; border-color: rgba(239,68,68,0.5); }
+    .status-select.void { color: #cbd5e1; border-color: rgba(148,163,184,0.5); }
+    .status-select.pending { color: #fbbf24; border-color: rgba(245,158,11,0.5); }
+    .score-badge {
+      display: inline-block;
+      background: #070a11;
+      border: 1px solid #334155;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="login-box" id="adminLogin">
+      <h2>👑 Admin Login</h2>
+      <input type="email" id="adminEmail" placeholder="Email admin" autocomplete="username">
+      <input type="password" id="adminPass" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')checkAdmin()">
+      <button id="adminLoginBtn" onclick="checkAdmin()">Entra</button>
+      <p id="adminLoginErr" style="color:#f87171;font-size:0.85rem;margin-top:12px;display:none;"></p>
+    </div>
+
+    <div class="admin-panel" id="adminPanel">
+      <header>
+        <div>
+          <h2>👑 AtmBetSignal Admin Console</h2>
+          <p style="color: var(--muted); font-size: 0.85rem;">Laboratorio Decisionale & Monitoraggio Storico Multi-Motore</p>
+        </div>
+        <div>
+          <a href="index.html" style="color: var(--muted); text-decoration: none; margin-right: 15px;">← Torna al Sito</a>
+          <button onclick="logoutAdmin()" style="background: none; border: 1px solid var(--border); color: #fff; padding: 4px 10px; border-radius: 6px; cursor: pointer;">Esci</button>
+        </div>
+      </header>
+
+      <!-- BARRA CONTROLLO OPERATIVO REMOTO PIPELINE -->
+      <div class="control-card">
+        <div class="control-flex">
+          <div>
+            <h3 style="font-size: 1.05rem; color: #f9fafb; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
+              ⚡ Controllo Operativo Pipeline Cloud
+            </h3>
+            <p style="font-size: 0.85rem; color: #94a3b8;">
+              Comanda l'avvio dell'analisi quote, la refertazione o scarica un backup completo.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+            <button id="btnRunAnalysis" class="btn-action-primary" onclick="triggerWorkflow('analyze_only', this)">
+              🚀 Avvia Analisi Quote Oggi
+            </button>
+            <button id="btnRunSettle" class="btn-action-secondary" onclick="triggerWorkflow('settle_only', this)">
+              ⚖️ Calcola & Aggiorna Storico
+            </button>
+            <button class="btn-action-backup" onclick="downloadBackup()" title="Scarica backup completo di tutti i dati e tracker">
+              📥 Backup Dati
+            </button>
+            <button class="btn-token-config" onclick="configureGitHubToken()" title="Configura chiave personale">
+              ⚙️ Token
+            </button>
+          </div>
+        </div>
+        <div id="actionStatusMsg"></div>
+      </div>
+
+      <!-- SELETTORE MOTORI ESTESO (A, B, C, D, Master E) -->
+      <div class="engine-switch">
+        <button id="btn-official" class="engine-btn active" onclick="switchEngine('official')">
+          🟢 Ufficiale
+        </button>
+        <button id="btn-xg" class="engine-btn" onclick="switchEngine('xg')">
+          🧪 xG Lab
+        </button>
+        <button id="btn-safe" class="engine-btn" onclick="switchEngine('safe')">
+          🛡️ Safe80
+        </button>
+        <button id="btn-fund" class="engine-btn" onclick="switchEngine('fund')">
+          🏦 Fondo D
+        </button>
+        <button id="btn-master" class="engine-btn" onclick="switchEngine('master')">
+          🔥 Master Top 5
+        </button>
+      </div>
+
+      <!-- 1. PRONOSTICI FRESCHI -->
+      <div class="section-title" id="officialsTitle">🎯 Selezioni Ufficiali Tracked (Probabilità ≥ 65%)</div>
+      <div id="adminOfficials">Caricamento selezioni...</div>
+
+      <div class="section-title" id="radarTitle" style="color: var(--muted);">📡 Watchlist Radar Top 10 (Studio & Monitoraggio)</div>
+      <div id="adminRadar">Caricamento radar...</div>
+
+      <!-- 2. STORICO E PERFORMANCE SPECIFICO DEL MOTORE -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 25px; flex-wrap: wrap; gap: 10px;">
+        <div class="section-title" style="margin: 0;">
+          📊 Performance & Storico — <span id="engineHistoryLabel" style="color: var(--cyan); margin-left: 5px;">Motore Ufficiale</span>
+        </div>
+        <button id="btnSaveTracker" class="btn-save-tracker" onclick="saveTrackerModifications()" style="display: none;">
+          💾 Salva Correzioni su GitHub
+        </button>
+      </div>
+
+      <div class="kpi-grid" style="margin-top: 15px;">
+        <div class="kpi-card">
+          <div class="kpi-sub">Win Rate Concluso</div>
+          <div class="kpi-val" id="kpiWinRate" style="color: var(--accent);">--%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-sub">ROI Netto</div>
+          <div class="kpi-val" id="kpiRoi" style="color: var(--cyan);">--%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-sub">Operazioni Concluse</div>
+          <div class="kpi-val" id="kpiConcluded">--</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-sub">In Attesa (Pending)</div>
+          <div class="kpi-val" id="kpiPending" style="color: var(--gold);">--</div>
+        </div>
+      </div>
+
+      <div class="history-table-wrap">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Match & Lega</th>
+              <th>Pronostico</th>
+              <th>Quota</th>
+              <th>Risultato Reale</th>
+              <th>Stato (Modifica Rapida)</th>
+              <th>Profitto</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody">
+            <tr><td colspan="7" style="text-align: center; color: var(--muted); padding: 18px;">Caricamento storico...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script>
+    let currentEngine = 'official';
+    let currentTrackerData = null;
+    let currentTrackerSha = null;
+    let hasUnsavedChanges = false;
+
+    const GITHUB_OWNER = "gargiuloluca";
+    const GITHUB_REPO = "match-analyst";
+    const WORKFLOW_ID = "run-unified-pipeline.yml";
+
+    const ENGINE_CONFIG = {
+      official: {
+        latest: 'data/latest.json',
+        tracker: 'data/tracker.json',
+        label: 'Motore Ufficiale (Dixon-Coles)',
+        officialsTitle: '🎯 Selezioni Ufficiali Tracked (Probabilità ≥ 65%)'
+      },
+      xg: {
+        latest: 'data/latest_xg.json',
+        tracker: 'data/tracker_xg.json',
+        label: 'Lab Sperimentale (Rolling xG)',
+        officialsTitle: '🧪 Selezioni Sperimentali Rolling xG (Laboratorio)'
+      },
+      safe: {
+        latest: 'data/latest_safe.json',
+        tracker: 'data/tracker_safe.json',
+        label: 'Safe80 Cecchino (Quota ≥ 1.40 | Prob ≥ 74%)',
+        officialsTitle: '🛡️ Safe80 Cecchino — Top 5 Assolute (Probabilità ≥ 74% @ Quota ≥ 1.40)'
+      },
+      fund: {
+        latest: 'data/latest_fund.json',
+        tracker: 'data/tracker_fund.json',
+        label: 'Fondo Istituzionale (Modello D)',
+        officialsTitle: '🏦 Allocazioni Fondo Istituzionale (Risk Parity & Kelly Dinamico)'
+      },
+      master: {
+        latest: 'data/latest_master.json',
+        tracker: 'data/tracker_master.json',
+        label: 'Master Selector AI (Top 5 Assolute)',
+        officialsTitle: '🔥 Master Selector AI — Le Migliori 5 Opportunità della Giornata'
+      }
+    };
+
+    function configureGitHubToken() {
+      const currentToken = localStorage.getItem("atm_gh_token") || "";
+      const token = prompt("Inserisci il tuo Personal Access Token di GitHub (ghp_...):", currentToken);
+      if (token !== null) {
+        localStorage.setItem("atm_gh_token", token.trim());
+        alert("Token salvato nel browser con successo!");
+      }
+    }
+
+    async function downloadBackup() {
+      const filesToBackup = [
+        "fixtures.json",
+        "latest.json", "tracker.json",
+        "latest_xg.json", "tracker_xg.json",
+        "latest_safe.json", "tracker_safe.json",
+        "latest_fund.json", "tracker_fund.json",
+        "latest_master.json", "tracker_master.json"
+      ];
+
+      const backupData = {
+        backup_date: new Date().toISOString(),
+        system: "AtmBetSignal Institutional Console",
+        data: {}
+      };
+
+      try {
+        let downloadedCount = 0;
+        for (let file of filesToBackup) {
+          try {
+            let response = await fetch(`data/${file}?nocache=` + Date.now());
+            if (response.ok) {
+              backupData.data[file] = await response.json();
+              downloadedCount++;
+            }
+          } catch (err) {
+            console.warn(`File ${file} non trovato o non accessibile.`);
+          }
+        }
+
+        if (downloadedCount === 0) {
+          alert("Impossibile recuperare i file di dati per il backup.");
+          return;
+        }
+
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData, null, 2));
+        const downloadAnchor = document.createElement('a');
+        const dateStr = new Date().toISOString().slice(0, 10);
+        
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `atmbet_backup_completo_${dateStr}.json`);
+        
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+
+        alert(`✅ Backup completato! Scaricati con successo ${downloadedCount} file di dati e tracker.`);
+      } catch (error) {
+        console.error("Errore durante la creazione del backup:", error);
+        alert("Errore durante la generazione del backup.");
+      }
+    }
+
+    async function triggerWorkflow(mode, btnElement) {
+      let token = localStorage.getItem("atm_gh_token");
+      if (!token) {
+        token = prompt("Inserisci il tuo Personal Access Token GitHub per autorizzare il comando:");
+        if (!token) return;
+        localStorage.setItem("atm_gh_token", token.trim());
+      }
+
+      const originalHtml = btnElement.innerHTML;
+      const statusDiv = document.getElementById("actionStatusMsg");
+      const btnAnalysis = document.getElementById("btnRunAnalysis");
+      const btnSettle = document.getElementById("btnRunSettle");
+
+      btnAnalysis.disabled = true;
+      btnSettle.disabled = true;
+      btnElement.innerHTML = "⏳ Invio ai server...";
+
+      statusDiv.style.display = "block";
+      statusDiv.style.background = "rgba(37, 99, 235, 0.1)";
+      statusDiv.style.border = "1px solid #1e40af";
+      statusDiv.style.color = "#93c5fd";
+      statusDiv.innerHTML = "Connessione sicura a GitHub Actions in corso...";
+
+      const labelTask = mode === 'analyze_only' ? "Analisi Quote Fresche" : "Refertazione Risultati & Storico";
+
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${WORKFLOW_ID}/dispatches`, {
+          method: "POST",
+          headers: {
+            "Accept": "application/vnd.github+json",
+            "Authorization": `Bearer ${token}`,
+            "X-GitHub-Api-Version": "2022-11-28"
+          },
+          body: JSON.stringify({
+            ref: "main",
+            inputs: {
+              task_mode: mode,
+              action_note: `Esecuzione: ${labelTask}`
+            }
+          })
+        });
+
+        if (res.status === 204) {
+          statusDiv.style.background = "rgba(16, 185, 129, 0.1)";
+          statusDiv.style.border = "1px solid #059669";
+          statusDiv.style.color = "#34d399";
+          statusDiv.innerHTML = `✅ <b>Operazione "${labelTask}" avviata con successo!</b> Tra 60-90 secondi i dati saranno aggiornati.`;
+        } else {
+          const err = await res.json().catch(() => ({}));
+          statusDiv.style.background = "rgba(239, 68, 68, 0.1)";
+          statusDiv.style.border = "1px solid #b91c1c";
+          statusDiv.style.color = "#f87171";
+          statusDiv.innerHTML = `❌ Errore (${res.status}): ${err.message || "Verifica i permessi del token."}`;
+          if (res.status === 401) localStorage.removeItem("atm_gh_token");
+        }
+      } catch (e) {
+        statusDiv.style.background = "rgba(239, 68, 68, 0.1)";
+        statusDiv.style.border = "1px solid #b91c1c";
+        statusDiv.style.color = "#f87171";
+        statusDiv.innerHTML = "Errore di rete: " + e.message;
+      } finally {
+        btnAnalysis.disabled = false;
+        btnSettle.disabled = false;
+        btnElement.innerHTML = originalHtml;
+      }
+    }
+
+    // --- Accesso con le stesse credenziali admin di AtmBet (Supabase) ---
+    const SB_URL = 'https://kepejyxhwpbyvjwpmyff.supabase.co';
+    const SB_KEY = 'sb_publishable_tadf2N16hk5FwTXIYj4Daw_TYn-ln99'; // chiave pubblica: la sicurezza e' nelle regole del database
+    const sbClient = (window.supabase && window.supabase.createClient)
+      ? window.supabase.createClient(SB_URL, SB_KEY, { auth: { persistSession: true, autoRefreshToken: true } })
+      : null;
+
+    function showLoginError(msg) {
+      const el = document.getElementById('adminLoginErr');
+      if (!el) return;
+      el.textContent = msg || '';
+      el.style.display = msg ? 'block' : 'none';
+    }
+
+    // true solo se esiste una sessione valida E il profilo sul server ha ruolo admin
+    async function isAdminSession() {
+      if (!sbClient) return false;
+      try {
+        const { data: { session } } = await sbClient.auth.getSession();
+        if (!session) return false;
+        const { data, error } = await sbClient.from('profiles').select('role').eq('id', session.user.id).single();
+        return !error && data && data.role === 'admin';
+      } catch (e) {
+        return false;
+      }
+    }
+
+    async function checkAdmin() {
+      const email = document.getElementById('adminEmail').value.trim();
+      const pass = document.getElementById('adminPass').value;
+      const btn = document.getElementById('adminLoginBtn');
+      showLoginError('');
+      if (!sbClient) { showLoginError('Servizio di accesso non raggiungibile. Ricarica la pagina.'); return; }
+      if (!email || !pass) { showLoginError('Inserisci email e password.'); return; }
+      btn.disabled = true;
+      try {
+        const { error } = await sbClient.auth.signInWithPassword({ email, password: pass });
+        if (error) { showLoginError('Email o password non corretta.'); return; }
+        if (await isAdminSession()) {
+          document.getElementById('adminPass').value = '';
+          showPanel();
+        } else {
+          await sbClient.auth.signOut();
+          showLoginError('Questo account non è abilitato come admin.');
+        }
+      } catch (e) {
+        showLoginError('Errore di rete: ' + e.message);
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    function showPanel() {
+      document.getElementById('adminLogin').style.display = 'none';
+      document.getElementById('adminPanel').style.display = 'block';
+      loadCurrentEngineViews();
+    }
+
+    async function logoutAdmin() {
+      try { if (sbClient) await sbClient.auth.signOut(); } catch (e) {}
+      sessionStorage.removeItem('atm_admin_auth');
+      location.reload();
+    }
+
+    function switchEngine(engine) {
+      if (hasUnsavedChanges) {
+        if (!confirm("Hai modifiche non salvate sullo storico. Vuoi davvero cambiare motore senza salvare?")) {
+          return;
+        }
+      }
+      currentEngine = engine;
+      hasUnsavedChanges = false;
+      document.getElementById('btnSaveTracker').style.display = 'none';
+
+      document.getElementById('btn-official').classList.toggle('active', engine === 'official');
+      document.getElementById('btn-xg').classList.toggle('active', engine === 'xg');
+      document.getElementById('btn-safe').classList.toggle('active', engine === 'safe');
+      document.getElementById('btn-fund').classList.toggle('active', engine === 'fund');
+      document.getElementById('btn-master').classList.toggle('active', engine === 'master');
+
+      loadCurrentEngineViews();
+    }
+
+    function loadCurrentEngineViews() {
+      const cfg = ENGINE_CONFIG[currentEngine];
+      document.getElementById('officialsTitle').innerHTML = cfg.officialsTitle;
+      document.getElementById('engineHistoryLabel').textContent = cfg.label;
+
+      loadPicksData(cfg.latest);
+      loadTrackerData(cfg.tracker);
+    }
+
+    function loadPicksData(filePath) {
+      const offCont = document.getElementById('adminOfficials');
+      const radCont = document.getElementById('adminRadar');
+      offCont.innerHTML = '<p style="color: var(--muted);">Caricamento dati...</p>';
+      radCont.innerHTML = '<p style="color: var(--muted);">Caricamento radar...</p>';
+
+      fetch(filePath + '?nocache=' + Date.now())
+        .then(r => {
+          if (!r.ok) throw new Error('File non trovato');
+          return r.json();
+        })
+        .then(d => {
+          const officials = d.selections || d.all_selected_picks || [];
+          if (officials.length === 0) {
+            offCont.innerHTML = '<p style="color: var(--muted); padding: 12px; background: var(--card-bg); border-radius: 8px;">Nessuna selezione per questo modello oggi. Capitale protetto.</p>';
+          } else {
+            let html = '';
+            officials.forEach((p, i) => {
+              const prob = ((p.estimated_probability || p.probability || 0) * (p.estimated_probability <= 1 ? 100 : 1)).toFixed(1);
+              const edge = (((p.edge || 0)) * 100).toFixed(1);
+              const score = p.master_score ? ` | AI Score: <b>${p.master_score}/100</b>` : '';
+              
+              let badgeHtml = `<span class="badge badge-master">🔥 RANK #${i+1}</span>`;
+              let borderStyle = 'border: 1px solid var(--border);';
+
+              if (p.tier === 'DIAMOND') {
+                badgeHtml = `<span class="badge badge-diamond">💎 DIAMOND PICK</span>`;
+                borderStyle = 'border: 1px solid #38bdf8; box-shadow: 0 0 10px rgba(56, 189, 248, 0.15);';
+              } else if (p.tier === 'GOLD') {
+                badgeHtml = `<span class="badge badge-gold">🥇 GOLD PICK</span>`;
+                borderStyle = 'border: 1px solid #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);';
+              } else if (p.master_score) {
+                badgeHtml = `<span class="badge badge-master">🔥 MASTER TOP #${i+1}</span>`;
+                borderStyle = 'border: 1px solid #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.15);';
+              } else {
+                badgeHtml = `<span class="badge badge-official">TOP PICK #${i+1}</span>`;
+              }
+
+              const matchName = p.match || `${p.home_team || ''} vs ${p.away_team || ''}`;
+              const leagueName = p.league || p.league_name || '';
+              const outcomeLabel = p.outcome_label || p.market || '';
+              const oddVal = Number(p.odd || p.odds || 1.80).toFixed(2);
+              const stakeVal = p.fund_stake_units || p.suggested_stake_pct || 1.0;
+
+              html += `
+                <div class="pick-item" style="${borderStyle}">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                    ${badgeHtml}
+                    <span style="color: var(--muted); font-size: 0.8rem;">${leagueName}</span>
+                  </div>
+                  <h3 style="margin-bottom: 4px; font-size: 1.1rem;">${matchName}</h3>
+                  <p style="color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 6px;">🎯 Esito: ${outcomeLabel} @ ${oddVal}</p>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--muted);">
+                    Stake: ${stakeVal}%${score}
+                  </div>
+                </div>
+              `;
+            });
+            offCont.innerHTML = html;
+          }
+
+          const radar = d.radar_watchlist || [];
+          if (radar.length === 0) {
+            radCont.innerHTML = '<p style="color: var(--muted);">Nessun match secondario nel radar per questo modello.</p>';
+          } else {
+            let htmlR = '';
+            radar.forEach((r, i) => {
+              const prob = ((r.estimated_probability || 0) * 100).toFixed(1);
+              htmlR += `
+                <div class="pick-item" style="border: 1px solid var(--border);">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span class="badge badge-radar">RADAR #${i+1}</span>
+                    <span style="color: var(--muted); font-size: 0.8rem;">${r.league || ''}</span>
+                  </div>
+                  <h4 style="margin-bottom: 4px; font-size: 1rem;">${r.match}</h4>
+                  <p style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 4px;">🎯 Esito: <b>${r.outcome_label}</b> @ <b>${Number(r.odd).toFixed(2)}</b></p>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted);">
+                    Probabilità stimata: ${prob}% (Esclusivamente per Studio)
+                  </div>
+                </div>
+              `;
+            });
+            radCont.innerHTML = htmlR;
+          }
+        })
+        .catch(err => {
+          offCont.innerHTML = '<p style="color: var(--muted); padding: 12px; background: var(--card-bg); border-radius: 8px;">Dati non ancora disponibili per questo motore.</p>';
+          radCont.innerHTML = '<p style="color: var(--muted);">Nessun dato radar.</p>';
+        });
+    }
+
+    async function loadTrackerData(trackerPath) {
+      const tbody = document.getElementById('historyTableBody');
+      tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted); padding: 18px;">Caricamento storico...</td></tr>';
+
+      try {
+        fetchGithubFileSha(trackerPath);
+
+        const res = await fetch(trackerPath + '?nocache=' + Date.now());
+        if (!res.ok) throw new Error('File non trovato');
+        currentTrackerData = await res.json();
+        renderTrackerTable();
+      } catch (err) {
+        document.getElementById('kpiWinRate').textContent = '0.0%';
+        document.getElementById('kpiRoi').textContent = '0.0%';
+        document.getElementById('kpiConcluded').textContent = '0';
+        document.getElementById('kpiPending').textContent = '0';
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted); padding: 18px;">Nessun dato storico ancora registrato.</td></tr>';
+      }
+    }
+
+    async function fetchGithubFileSha(filePath) {
+      currentTrackerSha = null;
+      let token = localStorage.getItem("atm_gh_token");
+      if (!token) return;
+      try {
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${filePath}`, {
+          headers: { "Authorization": `Bearer ${token}` }
+        });
+        if (res.ok) {
+          const d = await res.json();
+          currentTrackerSha = d.sha;
+        }
+      } catch(e) {}
+    }
+
+    function renderTrackerTable() {
+      const bets = currentTrackerData.bets || [];
+      const tbody = document.getElementById('historyTableBody');
+
+      recalcKPIs();
+
+      if (bets.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; color: var(--muted); padding: 18px;">Nessuna operazione registrata.</td></tr>';
+        return;
+      }
+
+      let tableHtml = '';
+      bets.forEach((b, idx) => {
+        const dateStr = b.date ? b.date.substring(0, 10) : '-';
+        const scoreStr = b.score ? `<span class="score-badge">${b.score}</span>` : `<span style="color: var(--muted); font-size: 0.75rem;">In attesa</span>`;
+
+        let profitText = '-';
+        if (b.status === 'WON') {
+          profitText = `<span style="color: var(--accent); font-weight: 700;">+${Number(b.profit || 0).toFixed(2)}u</span>`;
+        } else if (b.status === 'LOST') {
+          profitText = `<span style="color: var(--red); font-weight: 700;">-${Number(b.stake_pct || 2.5).toFixed(2)}u</span>`;
+        } else if (b.status === 'VOID') {
+          profitText = `<span style="color: var(--muted); font-weight: 700;">0.00u</span>`;
+        }
+
+        const selClass = b.status ? b.status.toLowerCase() : 'pending';
+
+        tableHtml += `
+          <tr>
+            <td style="color: var(--muted); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">${dateStr}</td>
+            <td><b>${b.match}</b><br><span style="color: var(--muted); font-size: 0.75rem;">${b.league || ''}</span></td>
+            <td style="color: var(--cyan); font-weight: 600;">${b.bet}</td>
+            <td style="font-family: 'JetBrains Mono', monospace;">${Number(b.odd).toFixed(2)}</td>
+            <td>${scoreStr}</td>
+            <td>
+              <select class="status-select ${selClass}" onchange="updateBetStatus(${idx}, this.value)">
+                <option value="PENDING" ${b.status === 'PENDING' ? 'selected' : ''}>⏳ PENDING</option>
+                <option value="WON" ${b.status === 'WON' ? 'selected' : ''}>✅ WON</option>
+                <option value="LOST" ${b.status === 'LOST' ? 'selected' : ''}>❌ LOST</option>
+                <option value="VOID" ${b.status === 'VOID' ? 'selected' : ''}>🔄 VOID (Rimborso)</option>
+              </select>
+            </td>
+            <td style="font-family: 'JetBrains Mono', monospace;">${profitText}</td>
+          </tr>
+        `;
+      });
+      tbody.innerHTML = tableHtml;
+    }
+
+    function updateBetStatus(index, newStatus) {
+      const b = currentTrackerData.bets[index];
+      b.status = newStatus;
+      const odd = Number(b.odd) || 1.0;
+      const stake = Number(b.stake_pct) || 2.5;
+
+      if (newStatus === 'WON') {
+        b.profit = Number((stake * (odd - 1.0)).toFixed(2));
+      } else if (newStatus === 'LOST') {
+        b.profit = Number((-stake).toFixed(2));
+      } else {
+        b.profit = 0.0;
+      }
+
+      hasUnsavedChanges = true;
+      document.getElementById('btnSaveTracker').style.display = 'inline-flex';
+      renderTrackerTable();
+    }
+
+    function recalcKPIs() {
+      const bets = currentTrackerData.bets || [];
+      const concluded = bets.filter(b => b.status === 'WON' || b.status === 'LOST');
+      const pending = bets.filter(b => b.status === 'PENDING');
+      const won = bets.filter(b => b.status === 'WON').length;
+      const lost = bets.filter(b => b.status === 'LOST').length;
+
+      const netProfit = bets.reduce((acc, b) => acc + (Number(b.profit) || 0), 0);
+      const totalStaked = concluded.reduce((acc, b) => acc + (Number(b.stake_pct) || 2.5), 0);
+
+      const winRate = concluded.length > 0 ? ((won / concluded.length) * 100).toFixed(1) : '0.0';
+      const roi = totalStaked > 0 ? ((netProfit / totalStaked) * 100).toFixed(1) : '0.0';
+
+      currentTrackerData.total_bets = concluded.length;
+      currentTrackerData.won = won;
+      currentTrackerData.lost = lost;
+      currentTrackerData.win_rate = Number(winRate);
+      currentTrackerData.net_profit_units = Number(netProfit.toFixed(2));
+      currentTrackerData.roi_pct = Number(roi);
+
+      document.getElementById('kpiWinRate').textContent = `${winRate}%`;
+      document.getElementById('kpiRoi').textContent = `${Number(roi) > 0 ? '+' : ''}${roi}%`;
+      document.getElementById('kpiConcluded').textContent = `${concluded.length} (${won}V - ${lost}P)`;
+      document.getElementById('kpiPending').textContent = pending.length;
+    }
+
+    async function saveTrackerModifications() {
+      let token = localStorage.getItem("atm_gh_token");
+      if (!token) {
+        token = prompt("Inserisci il tuo Personal Access Token GitHub per salvare:");
+        if (!token) return;
+        localStorage.setItem("atm_gh_token", token.trim());
+      }
+
+      const btn = document.getElementById('btnSaveTracker');
+      const originalText = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = "⏳ Salvataggio in corso...";
+
+      const cfg = ENGINE_CONFIG[currentEngine];
+      const targetFilePath = cfg.tracker;
+
+      try {
+        if (!currentTrackerSha) {
+          const checkRes = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFilePath}`, {
+            headers: { "Authorization": `Bearer ${token}` }
+          });
+          if (checkRes.ok) {
+            const checkData = await checkRes.json();
+            currentTrackerSha = checkData.sha;
+          }
+        }
+
+        const contentJson = JSON.stringify(currentTrackerData, null, 2);
+        const encodedContent = btoa(unescape(encodeURIComponent(contentJson)));
+
+        const payload = {
+          message: `Manual update tracker [${currentEngine}] from Admin Panel`,
+          content: encodedContent,
+          sha: currentTrackerSha
+        };
+
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFilePath}`, {
+          method: "PUT",
+          headers: {
+            "Accept": "application/vnd.github+json",
+            "Authorization": `Bearer ${token}`,
+            "X-GitHub-Api-Version": "2022-11-28"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          const resData = await res.json();
+          currentTrackerSha = resData.content.sha;
+          hasUnsavedChanges = false;
+          btn.style.display = 'none';
+          alert(`✅ File ${targetFilePath} aggiornato con successo su GitHub! Le modifiche sono ora ufficiali.`);
+        } else {
+          const err = await res.json().catch(() => ({}));
+          alert(`❌ Errore salvataggio: ${err.message || 'Verifica permessi token'}`);
+        }
+      } catch (e) {
+        alert("Errore di connessione: " + e.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      }
+    }
+
+    // Se esiste gia una sessione admin valida sul server, apri direttamente il pannello
+    isAdminSession().then(ok => { if (ok) showPanel(); });
+  </script>
+</body>
+</html>
