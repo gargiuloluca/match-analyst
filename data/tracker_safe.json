@@ -1,5 +1,5 @@
 {
-  "total_bets": 33,
+  "total_bets": 35,
   "won": 25,
   "lost": 7,
   "void": 1,
@@ -519,6 +519,38 @@
       "tier": "SAFE 80+",
       "status": "WON",
       "profit": 0.29
+    },
+    {
+      "id": "371f8125767427c4b599eab458bb5549_DNB_1",
+      "event_id": "371f8125767427c4b599eab458bb5549",
+      "date": "2026-11-14T15:00:00Z",
+      "match": "Stockport County FC vs Reading",
+      "league": "League 1",
+      "bet": "Casa Draw No Bet (Rimborso X)",
+      "market_key": "DNB_1",
+      "odd": 1.4,
+      "prob": 0.7895,
+      "ev": 0.1052,
+      "stake_pct": 1.5,
+      "tier": "SAFE 80+",
+      "status": "PENDING",
+      "profit": 0.0
+    },
+    {
+      "id": "b8c1674ee9357dafd107c231c7d8277e_DNB_1",
+      "event_id": "b8c1674ee9357dafd107c231c7d8277e",
+      "date": "2026-11-14T17:30:00Z",
+      "match": "Fleetwood Town vs Tranmere Rovers",
+      "league": "League 2",
+      "bet": "Casa Draw No Bet (Rimborso X)",
+      "market_key": "DNB_1",
+      "odd": 1.4,
+      "prob": 0.7729,
+      "ev": 0.082,
+      "stake_pct": 1.5,
+      "tier": "SAFE 80+",
+      "status": "PENDING",
+      "profit": 0.0
     }
   ],
   "brier_score": 0.1936,

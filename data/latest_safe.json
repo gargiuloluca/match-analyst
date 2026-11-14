@@ -1,11 +1,44 @@
 {
   "engine": "Model C (Safe80 Sniper EV >= +3% @ Quota >= 1.40)",
-  "generated_at": "2026-11-13T06:46:28.013082+00:00",
+  "generated_at": "2026-11-14T09:50:00.351924+00:00",
   "min_probability": "74%",
   "min_odd": 1.4,
   "min_ev": "+3.0%",
   "max_portfolio_exposure": "3.0%",
-  "total_officials": 0,
-  "all_selected_picks": [],
+  "total_officials": 2,
+  "all_selected_picks": [
+    {
+      "match_id": "371f8125767427c4b599eab458bb5549",
+      "match": "Stockport County FC vs Reading",
+      "commence_time": "2026-11-14T15:00:00Z",
+      "league": "League 1",
+      "market_key": "DNB_1",
+      "outcome_label": "Casa Draw No Bet (Rimborso X)",
+      "odd": 1.4,
+      "line_shift_pct": 0.0,
+      "estimated_probability": 0.7895,
+      "ev": 0.1052,
+      "edge": 0.1052,
+      "composite_score": 0.4316,
+      "suggested_stake_pct": 1.5,
+      "tier": "SAFE 80+"
+    },
+    {
+      "match_id": "b8c1674ee9357dafd107c231c7d8277e",
+      "match": "Fleetwood Town vs Tranmere Rovers",
+      "commence_time": "2026-11-14T17:30:00Z",
+      "league": "League 2",
+      "market_key": "DNB_1",
+      "outcome_label": "Casa Draw No Bet (Rimborso X)",
+      "odd": 1.4,
+      "line_shift_pct": 0.0,
+      "estimated_probability": 0.7729,
+      "ev": 0.082,
+      "edge": 0.082,
+      "composite_score": 0.4151,
+      "suggested_stake_pct": 1.5,
+      "tier": "SAFE 80+"
+    }
+  ],
   "radar_watchlist": []
 }
